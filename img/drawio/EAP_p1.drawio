@@ -1,0 +1,144 @@
+<mxfile host="Electron">
+  <diagram name="Page-1" id="pnhIijRgSjUgqS2hehc-">
+    <mxGraphModel dx="822" dy="339" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-85" edge="1" parent="1" source="-Bi9Y8Mz0eDpA7526pwO-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="-Bi9Y8Mz0eDpA7526pwO-41">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="180" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-86" edge="1" parent="1" source="-Bi9Y8Mz0eDpA7526pwO-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" target="-Bi9Y8Mz0eDpA7526pwO-53">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-88" edge="1" parent="1" source="-Bi9Y8Mz0eDpA7526pwO-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="-Bi9Y8Mz0eDpA7526pwO-68">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="419" y="194" as="sourcePoint" />
+            <mxPoint x="678" y="313" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-135" edge="1" parent="1" source="-Bi9Y8Mz0eDpA7526pwO-39" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;" target="-Bi9Y8Mz0eDpA7526pwO-60">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-39" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=14;verticalAlign=middle;align=center;container=0;" value="COGME - Conversor de Ganhos em Moeda Estrangeira" vertex="1">
+          <mxGeometry height="57" width="280" x="279" y="92" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-40" edge="1" parent="1" source="-Bi9Y8Mz0eDpA7526pwO-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="-Bi9Y8Mz0eDpA7526pwO-43" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-41" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;verticalAlign=middle;align=center;container=0;" value="1. Iniciação e Planejamento" vertex="1">
+          <mxGeometry height="40" width="150" x="90" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-42" edge="1" parent="1" source="-Bi9Y8Mz0eDpA7526pwO-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="-Bi9Y8Mz0eDpA7526pwO-45" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-43" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;container=0;" value="1.1. Termo de Abertura (TAP)" vertex="1">
+          <mxGeometry height="40" width="150" x="90" y="299" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-44" edge="1" parent="1" source="-Bi9Y8Mz0eDpA7526pwO-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="-Bi9Y8Mz0eDpA7526pwO-47" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-45" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;container=0;" value="1.2. Identificação de Stakeholders" vertex="1">
+          <mxGeometry height="40" width="150" x="90" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-46" edge="1" parent="1" source="-Bi9Y8Mz0eDpA7526pwO-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="-Bi9Y8Mz0eDpA7526pwO-49" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-47" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;container=0;" value="1.3. Planos de Gerenciamento&lt;br&gt;(Escopo, Cronograma, Custo, Riscos)" vertex="1">
+          <mxGeometry height="64" width="150" x="90" y="422" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-48" edge="1" parent="1" source="-Bi9Y8Mz0eDpA7526pwO-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="-Bi9Y8Mz0eDpA7526pwO-51" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-49" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;container=0;" value="1.4. Plano de Gerenciamento da Qualidade" vertex="1">
+          <mxGeometry height="50" width="150" x="90" y="507" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-50" edge="1" parent="1" source="-Bi9Y8Mz0eDpA7526pwO-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="-Bi9Y8Mz0eDpA7526pwO-52" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-51" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;container=0;" value="1.5. Política de Licenciamento FOSS" vertex="1">
+          <mxGeometry height="48" width="150" x="90" y="580" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-52" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=center;container=0;" value="1.6. Definição do Backlog e&lt;br&gt;Estruturação das Sprints (Ágil)" vertex="1">
+          <mxGeometry height="64" width="150" x="90" y="652" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-53" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;verticalAlign=middle;align=center;container=0;" value="2. Levantamento e Análise de Requisitos" vertex="1">
+          <mxGeometry height="40" width="150" x="260" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-54" edge="1" parent="1" source="-Bi9Y8Mz0eDpA7526pwO-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="-Bi9Y8Mz0eDpA7526pwO-53" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-55" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=center;container=0;" value="2.1. Elicitação de Requisitos Funcionais&lt;br&gt;(Regimes, Cálculos, Invoices)" vertex="1">
+          <mxGeometry height="64" width="150" x="260" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-56" edge="1" parent="1" source="-Bi9Y8Mz0eDpA7526pwO-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="-Bi9Y8Mz0eDpA7526pwO-59" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-57" edge="1" parent="1" source="-Bi9Y8Mz0eDpA7526pwO-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="-Bi9Y8Mz0eDpA7526pwO-55" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-58" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=center;container=0;" value="2.2. Elicitação de Requisitos Não Funcionais&lt;br&gt;(Performance, Segurança, FOSS)" vertex="1">
+          <mxGeometry height="64" width="150" x="260" y="385" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-59" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=center;container=0;" value="2.3. Especificação de Casos de Uso e&lt;br&gt;Histórias de Usuário" vertex="1">
+          <mxGeometry height="57" width="150" x="260" y="473" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-60" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=12;verticalAlign=middle;align=center;container=0;" value="3. Modelagem e Prototipação" vertex="1">
+          <mxGeometry height="40" width="150" x="430" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-61" edge="1" parent="1" source="-Bi9Y8Mz0eDpA7526pwO-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="-Bi9Y8Mz0eDpA7526pwO-60" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-62" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;container=0;" value="3.1. Arquitetura da Solução&lt;br&gt;(Frontend/Backend/API)" vertex="1">
+          <mxGeometry height="40" width="150" x="430" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-63" edge="1" parent="1" source="-Bi9Y8Mz0eDpA7526pwO-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="-Bi9Y8Mz0eDpA7526pwO-66" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-64" edge="1" parent="1" source="-Bi9Y8Mz0eDpA7526pwO-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="-Bi9Y8Mz0eDpA7526pwO-62" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-65" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;container=0;" value="3.2. Protótipo de Interface (UX/UI)" vertex="1">
+          <mxGeometry height="40" width="150" x="430" y="371" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-66" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;container=0;" value="3.3. Modelagem de Dados" vertex="1">
+          <mxGeometry height="35" width="150" x="430" y="435" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-67" edge="1" parent="1" source="-Bi9Y8Mz0eDpA7526pwO-68" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="-Bi9Y8Mz0eDpA7526pwO-69" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-68" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=12;verticalAlign=middle;align=center;container=0;" value="4. Configuração de Ambiente e Ferramentas FOSS" vertex="1">
+          <mxGeometry height="50" width="150" x="600" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-69" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=center;container=0;" value="4.1. Seleção e Validação da Stack&lt;br&gt;(Linguagens, Frameworks, Bancos)" vertex="1">
+          <mxGeometry height="72.5" width="150" x="600" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-70" edge="1" parent="1" source="-Bi9Y8Mz0eDpA7526pwO-71" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="-Bi9Y8Mz0eDpA7526pwO-69" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-71" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=center;container=0;" value="4.2. Configuração do Repositório Git" vertex="1">
+          <mxGeometry height="35" width="150" x="600" y="407" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-72" edge="1" parent="1" source="-Bi9Y8Mz0eDpA7526pwO-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="-Bi9Y8Mz0eDpA7526pwO-71" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-73" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=center;container=0;" value="4.3. Setup do Ambiente de Desenvolvimento Local" vertex="1">
+          <mxGeometry height="35" width="150" x="600" y="466" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-74" edge="1" parent="1" source="-Bi9Y8Mz0eDpA7526pwO-76" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="-Bi9Y8Mz0eDpA7526pwO-77" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-75" edge="1" parent="1" source="-Bi9Y8Mz0eDpA7526pwO-76" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="-Bi9Y8Mz0eDpA7526pwO-73" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-76" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=center;container=0;" value="4.4. Setup do Ambiente de Homologação" vertex="1">
+          <mxGeometry height="35" width="150" x="600" y="525" as="geometry" />
+        </mxCell>
+        <mxCell id="-Bi9Y8Mz0eDpA7526pwO-77" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=center;container=0;" value="4.5. Auditoria de Licenças das Dependências" vertex="1">
+          <mxGeometry height="35" width="150" x="600" y="583" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

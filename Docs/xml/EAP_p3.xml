@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Electron">
+  <diagram name="Page-1" id="bTRWpFRFR_UFIn6CVt9E">
+    <mxGraphModel dx="2054" dy="847" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-1" edge="1" parent="1" source="3NBgzB6fK7pIYDs5O0hZ-2" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;" target="3NBgzB6fK7pIYDs5O0hZ-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-26" edge="1" parent="1" source="3NBgzB6fK7pIYDs5O0hZ-2" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;" target="3NBgzB6fK7pIYDs5O0hZ-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-27" edge="1" parent="1" source="3NBgzB6fK7pIYDs5O0hZ-2" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;" target="3NBgzB6fK7pIYDs5O0hZ-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontStyle=1;fontSize=14;verticalAlign=middle;align=center;" value="COGME - Conversor de Ganhos em Moeda Estrangeira" vertex="1">
+          <mxGeometry height="57" width="280" x="289" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-3" edge="1" parent="1" source="3NBgzB6fK7pIYDs5O0hZ-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="3NBgzB6fK7pIYDs5O0hZ-5" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd1dc;strokeColor=#b85450;fontStyle=1;fontSize=12;verticalAlign=middle;align=center;" value="9. Documentação do Projeto" vertex="1">
+          <mxGeometry height="40" width="150" x="184" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd1dc;strokeColor=#b85450;align=center;" value="9.1. Documentação Técnica&lt;br&gt;(Arquitetura, APIs, Código)" vertex="1">
+          <mxGeometry height="57" width="150" x="184" y="304" as="geometry" />
+        </mxCell>
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-6" edge="1" parent="1" source="3NBgzB6fK7pIYDs5O0hZ-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="3NBgzB6fK7pIYDs5O0hZ-5" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-7" edge="1" parent="1" source="3NBgzB6fK7pIYDs5O0hZ-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="3NBgzB6fK7pIYDs5O0hZ-10" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd1dc;strokeColor=#b85450;align=center;" value="9.2. Manual do Usuário" vertex="1">
+          <mxGeometry height="35" width="150" x="184" y="396" as="geometry" />
+        </mxCell>
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-9" edge="1" parent="1" source="3NBgzB6fK7pIYDs5O0hZ-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="3NBgzB6fK7pIYDs5O0hZ-11" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd1dc;strokeColor=#b85450;align=center;" value="9.3. Relatórios de Desempenho&lt;br&gt;(EVM/Burndown)" vertex="1">
+          <mxGeometry height="64" width="150" x="184" y="464" as="geometry" />
+        </mxCell>
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd1dc;strokeColor=#b85450;align=center;" value="9.4. Consolidação da Documentação Parcial&lt;br&gt;(Entrega até 08/09/2026)" vertex="1">
+          <mxGeometry height="64" width="150" x="184" y="561" as="geometry" />
+        </mxCell>
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-12" edge="1" parent="1" source="3NBgzB6fK7pIYDs5O0hZ-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="3NBgzB6fK7pIYDs5O0hZ-14" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#666666;fontStyle=1;fontSize=12;verticalAlign=middle;align=center;" value="10. Encerramento" vertex="1">
+          <mxGeometry height="40" width="150" x="354" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#666666;align=center;" value="10.1. Relatório de Lições Aprendidas" vertex="1">
+          <mxGeometry height="50" width="150" x="354" y="303" as="geometry" />
+        </mxCell>
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-15" edge="1" parent="1" source="3NBgzB6fK7pIYDs5O0hZ-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="3NBgzB6fK7pIYDs5O0hZ-14" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-16" edge="1" parent="1" source="3NBgzB6fK7pIYDs5O0hZ-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="3NBgzB6fK7pIYDs5O0hZ-18" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-17" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#666666;align=center;" value="10.2. Verificação dos Critérios SMART" vertex="1">
+          <mxGeometry height="40" width="150" x="354" y="385" as="geometry" />
+        </mxCell>
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-18" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#666666;align=center;" value="10.3. Apresentação Final e&lt;br&gt;Aceite do Patrocinador" vertex="1">
+          <mxGeometry height="50" width="150" x="354" y="457" as="geometry" />
+        </mxCell>
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-19" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4cccc;strokeColor=#b85450;fontStyle=1;fontSize=12;verticalAlign=middle;align=center;" value="11. Governança e Conformidade (FOSS)" vertex="1">
+          <mxGeometry height="40" width="150" x="524" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-20" edge="1" parent="1" source="3NBgzB6fK7pIYDs5O0hZ-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="3NBgzB6fK7pIYDs5O0hZ-19" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-21" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4cccc;strokeColor=#b85450;align=center;" value="11.1. Validação de Licenças das&lt;br&gt;Ferramentas de Desenvolvimento" vertex="1">
+          <mxGeometry height="72.5" width="150" x="524" y="301" as="geometry" />
+        </mxCell>
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-22" edge="1" parent="1" source="3NBgzB6fK7pIYDs5O0hZ-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="3NBgzB6fK7pIYDs5O0hZ-21" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-23" edge="1" parent="1" source="3NBgzB6fK7pIYDs5O0hZ-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" target="3NBgzB6fK7pIYDs5O0hZ-25" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-24" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4cccc;strokeColor=#b85450;align=center;" value="11.2. Validação de Licenças das&lt;br&gt;Bibliotecas/Dependências" vertex="1">
+          <mxGeometry height="64" width="150" x="524" y="404" as="geometry" />
+        </mxCell>
+        <mxCell id="3NBgzB6fK7pIYDs5O0hZ-25" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4cccc;strokeColor=#b85450;align=center;" value="11.3. Definição e Registro da Licença&lt;br&gt;do Produto Final (Ex: MIT/GPL)" vertex="1">
+          <mxGeometry height="79" width="150" x="524" y="498" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
