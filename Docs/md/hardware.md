@@ -93,3 +93,5 @@ Fan Speeds (rpm): N/A
 
 Memory: total: 60 GiB note: est. available: 58.54 GiB used: 9.57 GiB (16.4%)
 Processes: 496 Uptime: 4h 44m Shell: Sudo inxi: 3.3.41
+
+Teste
