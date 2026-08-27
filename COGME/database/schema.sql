@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS simulations (
+  id CHAR(36) NOT NULL,
+  user_email VARCHAR(255) NOT NULL,
+  currency ENUM('USD', 'EUR') NOT NULL,
+  regime ENUM('hour', 'day', 'week', 'month', 'fixed') NOT NULL,
+  unit_rate DECIMAL(18, 6) NOT NULL,
+  exchange_rate DECIMAL(18, 8) NOT NULL,
+  spread DECIMAL(8, 4) NOT NULL,
+  iof DECIMAL(8, 4) NOT NULL,
+  other_fees DECIMAL(8, 4) NOT NULL,
+  quantity DECIMAL(18, 6) NOT NULL,
+  foreign_amount DECIMAL(18, 6) NOT NULL,
+  gross_brl DECIMAL(18, 6) NOT NULL,
+  fees_brl DECIMAL(18, 6) NOT NULL,
+  net_brl DECIMAL(18, 6) NOT NULL,
+  effective_rate DECIMAL(18, 8) NOT NULL,
+  created_at DATETIME(3) NOT NULL,
+  PRIMARY KEY (id),
+  INDEX idx_simulations_user_created (user_email, created_at)
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
