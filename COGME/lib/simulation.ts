@@ -19,7 +19,7 @@ export type SimulationResult = SimulationInput & {
   effectiveRate: number;
 };
 
-const quantities: Record<Regime, number> = { hour: 176, day: 22, week: 4.33, month: 1, fixed: 1 };
+export const regimeQuantities: Record<Regime, number> = { hour: 176, day: 22, week: 4.33, month: 1, fixed: 1 };
 
 export const regimeLabels: Record<Regime, string> = {
   hour: "Por hora",
@@ -30,11 +30,22 @@ export const regimeLabels: Record<Regime, string> = {
 };
 
 export function calculateSimulation(input: SimulationInput): SimulationResult {
-  const quantity = quantities[input.regime];
+  const quantity = regimeQuantities[input.regime];
   const foreignAmount = input.unitRate * quantity;
   const grossBRL = foreignAmount * input.exchangeRate;
   const feeRate = (input.spread + input.iof + input.otherFees) / 100;
   const feesBRL = grossBRL * feeRate;
   const netBRL = grossBRL - feesBRL;
   return { ...input, quantity, foreignAmount, grossBRL, feesBRL, netBRL, effectiveRate: netBRL / foreignAmount };
+}
+
+/**
+ * Compares regimes using the same total foreign-currency amount as the
+ * selected regime instead of reusing a value with a different unit.
+ */
+export function calculateEquivalentRegime(input: SimulationInput, comparisonRegime: Regime): SimulationResult {
+  const sourceQuantity = regimeQuantities[input.regime];
+  const comparisonQuantity = regimeQuantities[comparisonRegime];
+  const equivalentUnitRate = (input.unitRate * sourceQuantity) / comparisonQuantity;
+  return calculateSimulation({ ...input, regime: comparisonRegime, unitRate: equivalentUnitRate });
 }

@@ -16,6 +16,13 @@ describe("parseSourceHtml", () => {
     const html = '<a href="https://example.com/noticia">Uma notícia econômica suficientemente longa para o teste</a>';
     expect(parseSourceHtml(html, source)).toHaveLength(0);
   });
+
+  it("descarta datas futuras ou impossíveis", () => {
+    const source = newsSources[0];
+    const html = '<a href="/economia/noticia-futura">Mercado recebe novos dados de inflacao nesta manha</a><time datetime="2316-06-26T00:00:00Z"></time>';
+    const [article] = parseSourceHtml(html, source);
+    expect(article.publishedAt).toBeUndefined();
+  });
 });
 
 describe("validade do cache de notícias", () => {

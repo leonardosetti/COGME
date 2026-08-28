@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { calculateSimulation, regimeLabels, type Regime, type SimulationResult } from "@/lib/simulation";
+import { calculateEquivalentRegime, calculateSimulation, regimeLabels, type Regime, type SimulationResult } from "@/lib/simulation";
 
 const money = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
 const foreignMoney = (currency: "USD" | "EUR", value: number) => new Intl.NumberFormat("en-US", { style: "currency", currency }).format(value);
@@ -29,15 +29,15 @@ export default function SimulationForm() {
     iof: Number(iof) || 0,
     otherFees: Number(otherFees) || 0,
   }), [currency, regime, unitRate, exchangeRate, spread, iof, otherFees]);
-  const comparisons = useMemo(() => (Object.keys(regimeLabels) as Regime[]).map((comparisonRegime) => calculateSimulation({
+  const comparisons = useMemo(() => (Object.keys(regimeLabels) as Regime[]).map((comparisonRegime) => calculateEquivalentRegime({
     currency,
-    regime: comparisonRegime,
+    regime,
     unitRate: Number(unitRate) || 0,
     exchangeRate: Number(exchangeRate) || 0,
     spread: Number(spread) || 0,
     iof: Number(iof) || 0,
     otherFees: Number(otherFees) || 0,
-  })), [currency, unitRate, exchangeRate, spread, iof, otherFees]);
+  }, comparisonRegime)), [currency, regime, unitRate, exchangeRate, spread, iof, otherFees]);
 
   useEffect(() => { void loadQuote(currency); }, [currency]);
 
@@ -99,7 +99,7 @@ export default function SimulationForm() {
         <div className="field"><label htmlFor="currency">Moeda de recebimento</label><select id="currency" value={currency} onChange={(event) => setCurrency(event.target.value as "USD" | "EUR")}><option value="USD">Dólar americano (USD)</option><option value="EUR">Euro (EUR)</option></select></div>
         <div className="field"><label htmlFor="regime">Regime de contratação</label><select id="regime" value={regime} onChange={(event) => setRegime(event.target.value as Regime)}>{Object.entries(regimeLabels).map(([value, label]) => <option value={value} key={value}>{label}</option>)}</select></div>
         <div className="field"><label htmlFor="unitRate">Valor {regime === "fixed" ? "do contrato" : "por unidade"} ({currency})</label><input id="unitRate" type="number" min="0" step="0.01" value={unitRate} onChange={(event) => setUnitRate(Number(event.target.value))} /><span className="helper">{unitHelp}</span></div>
-        <div className="field"><label htmlFor="exchangeRate">Cotação {currency} → BRL</label><input id="exchangeRate" type="number" min="0" step="0.0001" value={exchangeRate} onChange={(event) => setExchangeRate(Number(event.target.value))} /><span className="source-badge">{loadingQuote ? "Atualizando..." : quoteSource}</span></div>
+        <div className="field"><label htmlFor="exchangeRate">Cotação {currency} → BRL</label><input id="exchangeRate" type="number" min="0" step="0.0001" value={exchangeRate} readOnly aria-readonly="true" /><span className="source-badge">{loadingQuote ? "Atualizando..." : quoteSource}</span></div>
         <div className="field"><label htmlFor="spread">Spread da operação (%)</label><input id="spread" type="number" min="0" step="0.01" value={spread} onChange={(event) => setSpread(Number(event.target.value))} /></div>
         <div className="field"><label htmlFor="iof">IOF simulado (%)</label><input id="iof" type="number" min="0" step="0.01" value={iof} onChange={(event) => setIof(Number(event.target.value))} /></div>
         <div className="field full"><label htmlFor="otherFees">Outros encargos (%)</label><input id="otherFees" type="number" min="0" step="0.01" value={otherFees} onChange={(event) => setOtherFees(Number(event.target.value))} /><span className="helper">Os encargos são estimativas para comparação e não constituem orientação tributária.</span></div>
@@ -120,8 +120,8 @@ export default function SimulationForm() {
   </div>
   <section className="surface-card comparison-card">
     <h2>Compare os regimes</h2>
-    <p className="subtle">Veja como o mesmo valor unitário se comporta em cada frequência de contratação.</p>
-    <table className="comparison-table"><thead><tr><th>Regime</th><th>Volume mensal</th><th>Ganho líquido estimado</th></tr></thead><tbody>{comparisons.map((comparison) => <tr className={comparison.regime === regime ? "current" : ""} key={comparison.regime}><td>{regimeLabels[comparison.regime]} {comparison.regime === regime ? "· atual" : ""}</td><td>{comparison.quantity.toLocaleString("pt-BR")}</td><td>{money.format(comparison.netBRL)}</td></tr>)}</tbody></table>
+    <p className="subtle">Compare frequências diferentes mantendo o mesmo ganho bruto mensal equivalente.</p>
+    <table className="comparison-table"><thead><tr><th>Regime</th><th>Valor por unidade</th><th>Volume mensal</th><th>Ganho líquido estimado</th></tr></thead><tbody>{comparisons.map((comparison) => <tr className={comparison.regime === regime ? "current" : ""} key={comparison.regime}><td>{regimeLabels[comparison.regime]} {comparison.regime === regime ? "· atual" : ""}</td><td>{foreignMoney(currency, comparison.unitRate)}</td><td>{comparison.quantity.toLocaleString("pt-BR")}</td><td>{money.format(comparison.netBRL)}</td></tr>)}</tbody></table>
   </section>
   </>;
 }

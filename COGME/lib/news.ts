@@ -100,11 +100,11 @@ function imageValue(value: unknown): string | undefined {
 function parseDate(value: string | undefined) {
   if (!value) return undefined;
   const timestamp = Date.parse(value);
-  if (!Number.isNaN(timestamp)) return new Date(timestamp).toISOString();
+  if (!Number.isNaN(timestamp) && timestamp <= Date.now()) return new Date(timestamp).toISOString();
   const match = value.match(/(\d{2})[/-](\d{2})[/-](\d{4})(?:[^\d]+(\d{1,2}):(\d{2}))?/);
   if (!match) return undefined;
   const date = new Date(Date.UTC(Number(match[3]), Number(match[2]) - 1, Number(match[1]), Number(match[4] || 0), Number(match[5] || 0)));
-  return date.toISOString();
+  return date.getTime() <= Date.now() ? date.toISOString() : undefined;
 }
 
 function nearbyDate(context: string) {

@@ -9,7 +9,7 @@ function formatDate(value: string | null) {
 export default function NewsSection({ news }: { news: NewsCache }) {
   const cardsBySource = new Map(news.cards.map((card) => [card.source, card]));
   return <section className="news-section">
-    <div className="news-section-header"><div><div className="eyebrow">Radar econômico</div><h2>O que está movimentando a economia</h2><p>Uma seleção curta dos destaques mais recentes de CNN, UOL, G1 e Record, resumida por IA.</p><small>{formatDate(news.updatedAt)}</small></div><NewsRefreshButton /></div>
+    <div className="news-section-header"><div><div className="eyebrow">Radar econômico</div><h2>O que está movimentando a economia</h2><small>{formatDate(news.updatedAt)}</small></div><NewsRefreshButton /></div>
     <div className="news-grid">{newsSources.map((source) => {
       const card = cardsBySource.get(source.key);
       if (!card) return <article className={"news-card news-placeholder " + source.accent} key={source.key}><div className="news-card-media news-placeholder-media"><span>{source.shortName}</span></div><div className="news-card-body"><div className="news-source">{source.name}</div><h3>Notícia aguardando atualização</h3><p>O próximo job buscará o destaque econômico mais atual desta fonte.</p><a href={source.url} target="_blank" rel="noreferrer">Abrir fonte original ↗</a></div></article>;
