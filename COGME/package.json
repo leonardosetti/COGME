@@ -10,7 +10,9 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "news:update": "node scripts/update-news.mjs",
-    "db:setup": "node scripts/setup-db.mjs"
+    "db:create": "node scripts/create-database.mjs",
+    "db:tables": "node scripts/create-tables.mjs",
+    "db:setup": "node scripts/setup-database.mjs"
   },
   "dependencies": {
     "mysql2": "^3.24.2",

@@ -24,7 +24,30 @@ Abra http://localhost:3000. O ambiente de demonstração usa admin@cogme.local e
 
 ## Banco de dados MySQL
 
-O backend usa MySQL para persistir as simulações e invoices exibidas na aplicação. Por padrão, a conexão usa localhost:3306, usuário root e banco cogme. Defina MYSQL_PASSWORD no .env.local e execute npm run db:setup uma vez para criar o banco e a tabela. A senha do banco nunca deve ser colocada no código ou commitada.
+O backend usa MySQL para persistir as simulações e invoices exibidas na aplicação. Por padrão, a conexão usa `localhost:3306`, usuário `root` e banco `cogme`. A senha do banco nunca deve ser colocada no código ou commitada.
+
+### Configuração
+
+1. Instale e inicie o MySQL 8 ou superior.
+2. Copie `.env.example` para `.env.local` e preencha as variáveis `MYSQL_*`.
+3. Use um usuário com permissão para criar banco e tabelas. Em uma instalação local, o usuário `root` costuma ser suficiente.
+
+Os scripts são idempotentes: podem ser executados novamente sem apagar os dados existentes.
+
+```powershell
+npm install
+Copy-Item .env.example .env.local
+npm run db:setup
+```
+
+O comando `npm run db:setup` cria o banco configurado em `MYSQL_DATABASE` e todas as tabelas definidas em `database/schema.sql`. As etapas também podem ser executadas separadamente:
+
+```powershell
+npm run db:create   # cria apenas o banco
+npm run db:tables   # cria apenas as tabelas; o banco já deve existir
+```
+
+Também estão disponíveis diretamente os scripts `scripts/create-database.mjs`, `scripts/create-tables.mjs` e `scripts/setup-database.mjs`. O schema atual cria a tabela `simulations`, usada pelas rotas de salvar, listar e excluir simulações.
 
 ## Notícias econômicas e job de atualização
 

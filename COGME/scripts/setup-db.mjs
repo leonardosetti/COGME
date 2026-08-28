@@ -1,3 +1,5 @@
+/* Deprecated compatibility script. Use setup-database.mjs. */
+/*
 import fs from "node:fs/promises";
 import path from "node:path";
 import mysql from "mysql2/promise";
@@ -38,3 +40,5 @@ const schema = await fs.readFile(path.join(process.cwd(), "database", "schema.sq
 await connection.query(schema);
 await connection.end();
 console.log("Banco " + database + " e tabela simulations configurados com sucesso.");
+*/
+await import("./setup-database.mjs");
