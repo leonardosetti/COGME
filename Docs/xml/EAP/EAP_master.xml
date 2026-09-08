@@ -1,0 +1,185 @@
+<mxGraphModel>
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    
+    <!-- RAIZ -->
+    <mxCell id="N0" value="N0: Projeto COGME&#10;Conversor de Ganhos em Moeda Estrangeira" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=14;" vertex="1" parent="1" custom:id="N0" custom:macroFase="RAIZ" custom:fasePai="N/A" custom:tipo="raiz" custom:dominioPMBOK7="Integração" custom:kanbanEpico="N/A" custom:status="em_andamento">
+      <mxGeometry x="40" y="1200" width="240" height="60" as="geometry"/>
+    </mxCell>
+
+    <!-- MF1: FUNDAÇÃO (Verde) -->
+    <mxCell id="N1" value="N1: 1. Iniciação e Planejamento [MF1]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1" custom:id="N1" custom:macroFase="MF1" custom:fasePai="N0" custom:tipo="fase" custom:dominioPMBOK7="Planejamento" custom:kanbanEpico="Epic-1" custom:status="em_andamento">
+      <mxGeometry x="340" y="100" width="260" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="edge_N0_N1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N0" target="N1"/>
+    <mxCell id="N1.1" value="1.1. TAP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9fff9;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1" custom:id="N1.1" custom:macroFase="MF1" custom:fasePai="N1" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Planejamento" custom:kanbanEpico="Epic-1.1" custom:status="concluido"><mxGeometry x="660" y="20" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N1_N1.1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N1" target="N1.1"/>
+    <mxCell id="N1.2" value="1.2. Stakeholders" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9fff9;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1" custom:id="N1.2" custom:macroFase="MF1" custom:fasePai="N1" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Stakeholders" custom:kanbanEpico="Epic-1.2" custom:status="em_andamento"><mxGeometry x="660" y="60" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N1_N1.2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N1" target="N1.2"/>
+    <mxCell id="N1.3" value="1.3. Planos de Gerenciamento" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9fff9;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1" custom:id="N1.3" custom:macroFase="MF1" custom:fasePai="N1" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Planejamento" custom:kanbanEpico="Epic-1.3" custom:status="em_andamento"><mxGeometry x="660" y="100" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N1_N1.3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N1" target="N1.3"/>
+    <mxCell id="N1.4" value="1.4. Plano da Qualidade" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9fff9;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1" custom:id="N1.4" custom:macroFase="MF1" custom:fasePai="N1" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Medição" custom:kanbanEpico="Epic-1.4" custom:status="pendente"><mxGeometry x="660" y="140" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N1_N1.4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N1" target="N1.4"/>
+    <mxCell id="N1.5" value="1.5. Política de Licenciamento FOSS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9fff9;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1" custom:id="N1.5" custom:macroFase="MF1" custom:fasePai="N1" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Abordagem" custom:kanbanEpico="Epic-1.5" custom:status="pendente"><mxGeometry x="660" y="180" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N1_N1.5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N1" target="N1.5"/>
+    <mxCell id="N1.6" value="1.6. Backlog e Kanban (GitHub)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9fff9;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1" custom:id="N1.6" custom:macroFase="MF1" custom:fasePai="N1" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Trabalho" custom:kanbanEpico="Epic-1.6" custom:status="em_andamento"><mxGeometry x="660" y="220" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N1_N1.6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N1" target="N1.6"/>
+
+    <mxCell id="N2" value="N2: 2. Levantamento e Análise de Requisitos [MF1]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1" custom:id="N2" custom:macroFase="MF1" custom:fasePai="N0" custom:tipo="fase" custom:dominioPMBOK7="Planejamento" custom:kanbanEpico="Epic-2" custom:status="em_andamento">
+      <mxGeometry x="340" y="300" width="260" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="edge_N0_N2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N0" target="N2"/>
+    <mxCell id="N2.1" value="2.1. Requisitos Funcionais" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9fff9;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1" custom:id="N2.1" custom:macroFase="MF1" custom:fasePai="N2" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Planejamento" custom:kanbanEpico="Epic-2.1" custom:status="pendente"><mxGeometry x="660" y="270" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N2_N2.1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N2" target="N2.1"/>
+    <mxCell id="N2.2" value="2.2. Requisitos Não Funcionais" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9fff9;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1" custom:id="N2.2" custom:macroFase="MF1" custom:fasePai="N2" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Planejamento" custom:kanbanEpico="Epic-2.2" custom:status="pendente"><mxGeometry x="660" y="310" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N2_N2.2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N2" target="N2.2"/>
+    <mxCell id="N2.3" value="2.3. Casos de Uso e Histórias" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9fff9;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1" custom:id="N2.3" custom:macroFase="MF1" custom:fasePai="N2" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Planejamento" custom:kanbanEpico="Epic-2.3" custom:status="pendente"><mxGeometry x="660" y="350" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N2_N2.3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N2" target="N2.3"/>
+
+    <mxCell id="N3" value="N3: 3. Modelagem e Prototipação [MF1]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1" custom:id="N3" custom:macroFase="MF1" custom:fasePai="N0" custom:tipo="fase" custom:dominioPMBOK7="Planejamento" custom:kanbanEpico="Epic-3" custom:status="pendente">
+      <mxGeometry x="340" y="420" width="260" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="edge_N0_N3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N0" target="N3"/>
+    <mxCell id="N3.1" value="3.1. Arquitetura da Solução" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9fff9;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1" custom:id="N3.1" custom:macroFase="MF1" custom:fasePai="N3" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Abordagem" custom:kanbanEpico="Epic-3.1" custom:status="pendente"><mxGeometry x="660" y="390" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N3_N3.1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N3" target="N3.1"/>
+    <mxCell id="N3.2" value="3.2. Protótipo UX/UI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9fff9;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1" custom:id="N3.2" custom:macroFase="MF1" custom:fasePai="N3" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Entrega" custom:kanbanEpico="Epic-3.2" custom:status="pendente"><mxGeometry x="660" y="430" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N3_N3.2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N3" target="N3.2"/>
+    <mxCell id="N3.3" value="3.3. Modelagem de Dados (DER)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9fff9;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1" custom:id="N3.3" custom:macroFase="MF1" custom:fasePai="N3" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Planejamento" custom:kanbanEpico="Epic-3.3" custom:status="pendente"><mxGeometry x="660" y="470" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N3_N3.3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N3" target="N3.3"/>
+
+    <mxCell id="N4" value="N4: 4. Configuração de Ambiente [MF1]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1" custom:id="N4" custom:macroFase="MF1" custom:fasePai="N0" custom:tipo="fase" custom:dominioPMBOK7="Trabalho" custom:kanbanEpico="Epic-4" custom:status="pendente">
+      <mxGeometry x="340" y="540" width="260" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="edge_N0_N4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N0" target="N4"/>
+    <mxCell id="N4.1" value="4.1. Seleção e Validação Stack FOSS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9fff9;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1" custom:id="N4.1" custom:macroFase="MF1" custom:fasePai="N4" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Abordagem" custom:kanbanEpico="Epic-4.1" custom:status="pendente"><mxGeometry x="660" y="510" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N4_N4.1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N4" target="N4.1"/>
+    <mxCell id="N4.2" value="4.2. Repositório Git + CI/CD" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9fff9;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1" custom:id="N4.2" custom:macroFase="MF1" custom:fasePai="N4" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Trabalho" custom:kanbanEpico="Epic-4.2" custom:status="pendente"><mxGeometry x="660" y="550" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N4_N4.2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N4" target="N4.2"/>
+    <mxCell id="N4.3" value="4.3. Setup Local e Homologação" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9fff9;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1" custom:id="N4.3" custom:macroFase="MF1" custom:fasePai="N4" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Trabalho" custom:kanbanEpico="Epic-4.3" custom:status="pendente"><mxGeometry x="660" y="590" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N4_N4.3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N4" target="N4.3"/>
+    <mxCell id="N4.4" value="4.4. Auditoria de Licenças" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9fff9;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1" custom:id="N4.4" custom:macroFase="MF1" custom:fasePai="N4" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Medição" custom:kanbanEpico="Epic-4.4" custom:status="pendente"><mxGeometry x="660" y="630" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N4_N4.4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N4" target="N4.4"/>
+
+    <mxCell id="N9" value="N9: 9. Comunicação [MF1]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1" custom:id="N9" custom:macroFase="MF1" custom:fasePai="N0" custom:tipo="fase" custom:dominioPMBOK7="Stakeholders" custom:kanbanEpico="Epic-9" custom:status="pendente">
+      <mxGeometry x="340" y="660" width="260" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="edge_N0_N9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N0" target="N9"/>
+    <mxCell id="N9.1" value="9.1. Matriz de Comunicação (RACI)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9fff9;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1" custom:id="N9.1" custom:macroFase="MF1" custom:fasePai="N9" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Stakeholders" custom:kanbanEpico="Epic-9.1" custom:status="pendente"><mxGeometry x="660" y="670" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N9_N9.1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N9" target="N9.1"/>
+    <mxCell id="N9.4" value="9.4. Cerimônias com Stakeholder" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9fff9;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1" custom:id="N9.4" custom:macroFase="MF1" custom:fasePai="N9" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Stakeholders" custom:kanbanEpico="Epic-9.4" custom:status="pendente"><mxGeometry x="660" y="710" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N9_N9.4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N9" target="N9.4"/>
+
+    <mxCell id="N10" value="N10: 10. Base de Conhecimento [MF1]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1" custom:id="N10" custom:macroFase="MF1" custom:fasePai="N0" custom:tipo="fase" custom:dominioPMBOK7="Equipe" custom:kanbanEpico="Epic-10" custom:status="pendente">
+      <mxGeometry x="340" y="780" width="260" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="edge_N0_N10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N0" target="N10"/>
+    <mxCell id="N10.1" value="10.1. ADRs (decisões arquiteturais)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9fff9;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1" custom:id="N10.1" custom:macroFase="MF1" custom:fasePai="N10" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Equipe" custom:kanbanEpico="Epic-10.1" custom:status="pendente"><mxGeometry x="660" y="750" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N10_N10.1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N10" target="N10.1"/>
+    <mxCell id="N10.3" value="10.3. Catálogo de Prompts SDD" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f9fff9;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1" custom:id="N10.3" custom:macroFase="MF1" custom:fasePai="N10" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Equipe" custom:kanbanEpico="Epic-10.3" custom:status="pendente"><mxGeometry x="660" y="790" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N10_N10.3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N10" target="N10.3"/>
+
+    <!-- MF2: CONSTRUÇÃO (Laranja) -->
+    <mxCell id="N5" value="N5: 5. Desenvolvimento do Sistema [MF2]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;" vertex="1" parent="1" custom:id="N5" custom:macroFase="MF2" custom:fasePai="N0" custom:tipo="fase" custom:dominioPMBOK7="Entrega" custom:kanbanEpico="Epic-5" custom:status="pendente">
+      <mxGeometry x="340" y="900" width="260" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="edge_N0_N5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N0" target="N5"/>
+    <mxCell id="N5.1" value="5.1. Backend — Lógica de Negócio" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9f0;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1" custom:id="N5.1" custom:macroFase="MF2" custom:fasePai="N5" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Entrega" custom:kanbanEpico="Epic-5.1" custom:status="pendente"><mxGeometry x="660" y="840" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N5_N5.1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N5" target="N5.1"/>
+    <mxCell id="N5.2" value="5.2. Backend — API de Câmbio + Cache" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9f0;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1" custom:id="N5.2" custom:macroFase="MF2" custom:fasePai="N5" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Entrega" custom:kanbanEpico="Epic-5.2" custom:status="pendente"><mxGeometry x="660" y="880" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N5_N5.2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N5" target="N5.2"/>
+    <mxCell id="N5.3" value="5.3. Frontend — Interface e Simulações" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9f0;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1" custom:id="N5.3" custom:macroFase="MF2" custom:fasePai="N5" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Entrega" custom:kanbanEpico="Epic-5.3" custom:status="pendente"><mxGeometry x="660" y="920" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N5_N5.3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N5" target="N5.3"/>
+    <mxCell id="N5.4" value="5.4. Módulo PDF (WeasyPrint)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9f0;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1" custom:id="N5.4" custom:macroFase="MF2" custom:fasePai="N5" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Entrega" custom:kanbanEpico="Epic-5.4" custom:status="pendente"><mxGeometry x="660" y="960" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N5_N5.4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N5" target="N5.4"/>
+    <mxCell id="N5.5" value="5.5. SDD com IA (Prompts + Revisão)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9f0;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1" custom:id="N5.5" custom:macroFase="MF2" custom:fasePai="N5" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Entrega" custom:kanbanEpico="Epic-5.5" custom:status="pendente"><mxGeometry x="660" y="1000" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N5_N5.5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N5" target="N5.5"/>
+    <mxCell id="N5.6" value="5.6. Execução Kanban (Rituais)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9f0;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1" custom:id="N5.6" custom:macroFase="MF2" custom:fasePai="N5" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Trabalho" custom:kanbanEpico="Epic-5.6" custom:status="pendente"><mxGeometry x="660" y="1040" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N5_N5.6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N5" target="N5.6"/>
+
+    <mxCell id="N6" value="N6: 6. Garantia da Qualidade e Testes [MF2]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;" vertex="1" parent="1" custom:id="N6" custom:macroFase="MF2" custom:fasePai="N0" custom:tipo="fase" custom:dominioPMBOK7="Medição" custom:kanbanEpico="Epic-6" custom:status="pendente">
+      <mxGeometry x="340" y="1060" width="260" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="edge_N0_N6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N0" target="N6"/>
+    <mxCell id="N6.1" value="6.1. Testes Unitários/Integração (≥ 80%)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9f0;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1" custom:id="N6.1" custom:macroFase="MF2" custom:fasePai="N6" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Medição" custom:kanbanEpico="Epic-6.1" custom:status="pendente"><mxGeometry x="660" y="1080" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N6_N6.1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N6" target="N6.1"/>
+    <mxCell id="N6.2" value="6.2. Testes de Aceitação (UAT)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9f0;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1" custom:id="N6.2" custom:macroFase="MF2" custom:fasePai="N6" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Medição" custom:kanbanEpico="Epic-6.2" custom:status="pendente"><mxGeometry x="660" y="1120" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N6_N6.2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N6" target="N6.2"/>
+
+    <mxCell id="N7" value="N7: 7. DevOps e CI/CD [MF2]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;" vertex="1" parent="1" custom:id="N7" custom:macroFase="MF2" custom:fasePai="N0" custom:tipo="fase" custom:dominioPMBOK7="Entrega" custom:kanbanEpico="Epic-7" custom:status="pendente">
+      <mxGeometry x="340" y="1160" width="260" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="edge_N0_N7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N0" target="N7"/>
+    <mxCell id="N7.1" value="7.1. Pipeline CI (lint + testes)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9f0;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1" custom:id="N7.1" custom:macroFase="MF2" custom:fasePai="N7" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Entrega" custom:kanbanEpico="Epic-7.1" custom:status="pendente"><mxGeometry x="660" y="1170" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N7_N7.1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N7" target="N7.1"/>
+    <mxCell id="N7.2" value="7.2. Pipeline CD (build + deploy)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9f0;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1" custom:id="N7.2" custom:macroFase="MF2" custom:fasePai="N7" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Entrega" custom:kanbanEpico="Epic-7.2" custom:status="pendente"><mxGeometry x="660" y="1210" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N7_N7.2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N7" target="N7.2"/>
+
+    <mxCell id="N8" value="N8: 8. Implantação (Deploy) [MF2]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;" vertex="1" parent="1" custom:id="N8" custom:macroFase="MF2" custom:fasePai="N0" custom:tipo="fase" custom:dominioPMBOK7="Entrega" custom:kanbanEpico="Epic-8" custom:status="pendente">
+      <mxGeometry x="340" y="1280" width="260" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="edge_N0_N8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N0" target="N8"/>
+    <mxCell id="N8.1" value="8.1. Publicação em Produção" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9f0;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1" custom:id="N8.1" custom:macroFase="MF2" custom:fasePai="N8" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Entrega" custom:kanbanEpico="Epic-8.1" custom:status="pendente"><mxGeometry x="660" y="1290" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N8_N8.1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N8" target="N8.1"/>
+    <mxCell id="N8.2" value="8.2. Documentação de Deploy + Rollback" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9f0;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1" custom:id="N8.2" custom:macroFase="MF2" custom:fasePai="N8" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Entrega" custom:kanbanEpico="Epic-8.2" custom:status="pendente"><mxGeometry x="660" y="1330" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N8_N8.2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N8" target="N8.2"/>
+
+    <mxCell id="N11" value="N11: 11. Gestão de Mudanças [MF2]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;" vertex="1" parent="1" custom:id="N11" custom:macroFase="MF2" custom:fasePai="N0" custom:tipo="fase" custom:dominioPMBOK7="Incerteza" custom:kanbanEpico="Epic-11" custom:status="pendente">
+      <mxGeometry x="340" y="1400" width="260" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="edge_N0_N11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N0" target="N11"/>
+    <mxCell id="N11.1" value="11.1. CCB (Change Control Board)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9f0;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1" custom:id="N11.1" custom:macroFase="MF2" custom:fasePai="N11" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Incerteza" custom:kanbanEpico="Epic-11.1" custom:status="pendente"><mxGeometry x="660" y="1410" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N11_N11.1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N11" target="N11.1"/>
+    <mxCell id="N11.2" value="11.2. Registro de Solicitações de Mudança" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9f0;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1" custom:id="N11.2" custom:macroFase="MF2" custom:fasePai="N11" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Incerteza" custom:kanbanEpico="Epic-11.2" custom:status="pendente"><mxGeometry x="660" y="1450" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N11_N11.2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N11" target="N11.2"/>
+
+    <!-- MF3: CONSOLIDAÇÃO (Roxo) -->
+    <mxCell id="N12" value="N12: 12. Documentação do Projeto [MF3]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" vertex="1" parent="1" custom:id="N12" custom:macroFase="MF3" custom:fasePai="N0" custom:tipo="fase" custom:dominioPMBOK7="Medição" custom:kanbanEpico="Epic-12" custom:status="pendente">
+      <mxGeometry x="340" y="1540" width="260" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="edge_N0_N12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N0" target="N12"/>
+    <mxCell id="N12.1" value="12.1. Documentação Técnica" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fcf4fd;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1" custom:id="N12.1" custom:macroFase="MF3" custom:fasePai="N12" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Medição" custom:kanbanEpico="Epic-12.1" custom:status="pendente"><mxGeometry x="660" y="1550" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N12_N12.1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N12" target="N12.1"/>
+    <mxCell id="N12.4" value="12.4. Consolidação Documental Parcial" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fcf4fd;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1" custom:id="N12.4" custom:macroFase="MF3" custom:fasePai="N12" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Medição" custom:kanbanEpico="Epic-12.4" custom:status="pendente"><mxGeometry x="660" y="1590" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N12_N12.4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N12" target="N12.4"/>
+
+    <mxCell id="N13" value="N13: 13. Encerramento [MF3]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" vertex="1" parent="1" custom:id="N13" custom:macroFase="MF3" custom:fasePai="N0" custom:tipo="fase" custom:dominioPMBOK7="Medição" custom:kanbanEpico="Epic-13" custom:status="pendente">
+      <mxGeometry x="340" y="1680" width="260" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="edge_N0_N13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N0" target="N13"/>
+    <mxCell id="N13.1" value="13.1. Lições Aprendidas Finais" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fcf4fd;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1" custom:id="N13.1" custom:macroFase="MF3" custom:fasePai="N13" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Equipe" custom:kanbanEpico="Epic-13.1" custom:status="pendente"><mxGeometry x="660" y="1690" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N13_N13.1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N13" target="N13.1"/>
+    <mxCell id="N13.3" value="13.3. Apresentação Final + Aceite" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fcf4fd;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1" custom:id="N13.3" custom:macroFase="MF3" custom:fasePai="N13" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Stakeholders" custom:kanbanEpico="Epic-13.3" custom:status="pendente"><mxGeometry x="660" y="1730" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N13_N13.3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="N13" target="N13.3"/>
+
+    <!-- PÓS-ENTREGA (Cinza) -->
+    <mxCell id="N14" value="N14: 14. Segurança e Privacidade [PÓS]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=3;" vertex="1" parent="1" custom:id="N14" custom:macroFase="PÓS-ENTREGA" custom:fasePai="N0" custom:tipo="fase" custom:dominioPMBOK7="Incerteza" custom:kanbanEpico="Epic-14" custom:status="backlog">
+      <mxGeometry x="340" y="1820" width="260" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="edge_N0_N14" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="N0" target="N14"/>
+    <mxCell id="N14.1" value="14.1. Análise OWASP Top 10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;fontStyle=3;" vertex="1" parent="1" custom:id="N14.1" custom:macroFase="PÓS-ENTREGA" custom:fasePai="N14" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Incerteza" custom:kanbanEpico="Epic-14.1" custom:status="backlog"><mxGeometry x="660" y="1830" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N14_N14.1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="N14" target="N14.1"/>
+
+    <mxCell id="N15" value="N15: 15. Acessibilidade [PÓS]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=3;" vertex="1" parent="1" custom:id="N15" custom:macroFase="PÓS-ENTREGA" custom:fasePai="N0" custom:tipo="fase" custom:dominioPMBOK7="Entrega" custom:kanbanEpico="Epic-15" custom:status="backlog">
+      <mxGeometry x="340" y="1920" width="260" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="edge_N0_N15" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="N0" target="N15"/>
+    <mxCell id="N15.1" value="15.1. Auditoria WCAG 2.1 AA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;fontStyle=3;" vertex="1" parent="1" custom:id="N15.1" custom:macroFase="PÓS-ENTREGA" custom:fasePai="N15" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Entrega" custom:kanbanEpico="Epic-15.1" custom:status="backlog"><mxGeometry x="660" y="1930" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N15_N15.1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="N15" target="N15.1"/>
+
+    <mxCell id="N16" value="N16: 16. Observabilidade [PÓS]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=3;" vertex="1" parent="1" custom:id="N16" custom:macroFase="PÓS-ENTREGA" custom:fasePai="N0" custom:tipo="fase" custom:dominioPMBOK7="Medição" custom:kanbanEpico="Epic-16" custom:status="backlog">
+      <mxGeometry x="340" y="2020" width="260" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="edge_N0_N16" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="N0" target="N16"/>
+    <mxCell id="N16.1" value="16.1. Logging Estruturado (JSON)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;fontStyle=3;" vertex="1" parent="1" custom:id="N16.1" custom:macroFase="PÓS-ENTREGA" custom:fasePai="N16" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Medição" custom:kanbanEpico="Epic-16.1" custom:status="backlog"><mxGeometry x="660" y="2030" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N16_N16.1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="N16" target="N16.1"/>
+
+    <mxCell id="N17" value="N17: 17. Internacionalização (i18n) [PÓS]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=3;" vertex="1" parent="1" custom:id="N17" custom:macroFase="PÓS-ENTREGA" custom:fasePai="N0" custom:tipo="fase" custom:dominioPMBOK7="Entrega" custom:kanbanEpico="Epic-17" custom:status="backlog">
+      <mxGeometry x="340" y="2120" width="260" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="edge_N0_N17" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="N0" target="N17"/>
+    <mxCell id="N17.1" value="17.1. Múltiplas moedas e locales" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=12;fontStyle=3;" vertex="1" parent="1" custom:id="N17.1" custom:macroFase="PÓS-ENTREGA" custom:fasePai="N17" custom:tipo="pacote_trabalho" custom:dominioPMBOK7="Entrega" custom:kanbanEpico="Epic-17.1" custom:status="backlog"><mxGeometry x="660" y="2130" width="200" height="30" as="geometry"/></mxCell>
+    <mxCell id="edge_N17_N17.1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="N17" target="N17.1"/>
+
+  </root>
+</mxGraphModel>
