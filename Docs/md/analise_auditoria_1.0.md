@@ -91,8 +91,8 @@ Aplicação do **teste GMV (OKB v3.0 §4.2)** em cada artefato/seção:
 
 - **P1:** O Prof. Nivaldo exigirá na avaliação? -
 - **P2:** Evita retrabalho futuro?
-- **P3:** É exigido pelo PMBOK 7ª como evidência de domínio? 
-- **P4:** É útil para a equipe (não só para o professor)? 
+- **P3:** É exigido pelo PMBOK 7ª como evidência de domínio?
+- **P4:** É útil para a equipe (não só para o professor)?
 
 **Regra de descarte:** ≥ 2 respostas "NÃO" → candidato a eliminação.
 
@@ -161,27 +161,27 @@ Aplicação do **teste GMV (OKB v3.0 §4.2)** em cada artefato/seção:
 
 ### 3.2. Stack Recomendada (ADR-002 draft)
 
-| Camada                     | Tecnologia                                                                                                            | Licença                   | Justificativa KISS                                                         | Alternativa Rejeitada                                           |
-| -------------------------- | --------------------------------------------------------------------------------------------------------------------- | -------------------------- | -------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| **Backend**          | **Python 3.12 + FastAPI**                                                                                       | MIT                        | Sintaxe simples, LLM treinadíssimo, async nativo, OpenAPI automático     | Django (overkill), Go (curva íngreme), Node.js (tipagem fraca) |
-| **Banco de Dados**   | **SQLite 3**                                                                                                    | Public Domain              | Zero setup, ACID nativo, single-file (deploy trivial), 80% coverage fácil | PostgreSQL (exige servidor), MySQL (licença Oracle)            |
-| **Cache**            | **FASE (in-process dict + TTL)**                                                                                | —                         | 1 provider de câmbio (Frankfurter) → cache distribuído é YAGNI         | Redis (exige container, bloat para MVP)                         |
-| **Frontend**         | **HTML + HTMX + Tailwind CSS**                                                                                  | MIT                        | Server-side rendering elimina 90% do JS; KISS puro                         | React/Next.js (build pipeline complexo), Vue (mesmo problema)   |
-| **Geração PDF**    | **WeasyPrint**                                                                                                  | BSD3                       | Já especificado no TAP; maduro, FOSS, HTML→PDF                           | ReportLab (curva íngreme), wkhtmltopdf (deprecated)            |
-| **Testes**           | **pytest + coverage.py**                                                                                        | MIT                        | Padrão de fato Python, integração CI trivial                            | unittest (verboso)                                              |
-| **CI/CD**            | **GitHub Actions**                                                                                              | Gratuito (2000 min/mês)   | Já especificado; integrado ao SSOT                                        | GitLab CI (mudança de plataforma)                              |
-| **~~Deploy~~**     | ~~**Railway.app** (tier gratuito)~~                                                                           | ~~Proprietário (SaaS)~~ | ~~500h/mês grátis, deploy via git push~~                               | ~~Fly.io (complexidade), Render (limitações)~~              |
-| **LLM Local (SDD)**  | **llama.cpp + Qwen2.5-Coder-7B-Q4**<br />Verifique a seção 9. Stack SDD Local: Arquitetura e Organização Padrão | MIT / Apache 2.0           | Roda no hardware (60GB RAM sobra), offline, FOSS                           | Ollama (wrapper, adiciona camada), modelos cloud (custo)        |
-| **TUI para Prompts** | **OpenCode**                                                                                                    | MIT                        | Já especificado na nova premissa; TUI nativa                              | Aider (Python, mas menos maduro), Continue.dev (VSCode-only)    |
+| Camada                     | Tecnologia                                                                                                                 | Licença                  | Justificativa KISS                                                         | Alternativa Rejeitada                                           |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------- | -------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| **Backend**          | **Python 3.12 + FastAPI**                                                                                            | MIT                       | Sintaxe simples, LLM treinadíssimo, async nativo, OpenAPI automático     | Django (overkill), Go (curva íngreme), Node.js (tipagem fraca) |
+| **Banco de Dados**   | **SQLite 3**                                                                                                         | Public Domain             | Zero setup, ACID nativo, single-file (deploy trivial), 80% coverage fácil | PostgreSQL (exige servidor), MySQL (licença Oracle)            |
+| **Cache**            | **FASE (in-process dict + TTL)**                                                                                     | —                        | 1 provider de câmbio (Frankfurter) → cache distribuído é YAGNI         | Redis (exige container, bloat para MVP)                         |
+| **Frontend**         | **HTML + HTMX + Tailwind CSS**                                                                                       | MIT                       | Server-side rendering elimina 90% do JS; KISS puro                         | React/Next.js (build pipeline complexo), Vue (mesmo problema)   |
+| **Geração PDF**    | **WeasyPrint**                                                                                                       | BSD3                      | Já especificado no TAP; maduro, FOSS, HTML→PDF                           | ReportLab (curva íngreme), wkhtmltopdf (deprecated)            |
+| **Testes**           | **pytest + coverage.py**                                                                                             | MIT                       | Padrão de fato Python, integração CI trivial                            | unittest (verboso)                                              |
+| **CI/CD**            | **GitHub Actions**                                                                                                   | Gratuito (2000 min/mês)  | Já especificado; integrado ao SSOT                                        | GitLab CI (mudança de plataforma)                              |
+| **~~Deploy~~**      | ~~**Railway.app** (tier gratuito)~~                                                                                 | ~~Proprietário (SaaS)~~ | ~~500h/mês grátis, deploy via git push~~                                | ~~Fly.io (complexidade), Render (limitações)~~               |
+| **LLM Local (SDD)**  | **llama.cpp + Qwen2.5-Coder-7B-Q4**<br />Verifique a seção 9. Stack SDD Local: Arquitetura e Organização Padrão | MIT / Apache 2.0          | Roda no hardware (60GB RAM sobra), offline, FOSS                           | Ollama (wrapper, adiciona camada), modelos cloud (custo)        |
+| **TUI para Prompts** | **OpenCode**                                                                                                         | MIT                       | Já especificado na nova premissa; TUI nativa                              | Aider (Python, mas menos maduro), Continue.dev (VSCode-only)    |
 
 ### 3.3. Trade-offs Declarados
 
-| Trade-off                           | Risco                              | Mitigação                                                                      |
-| ----------------------------------- | ---------------------------------- | -------------------------------------------------------------------------------- |
-| SQLite em produção multi-usuário | Limitação de escrita concorrente | MVP acadêmico = 1-2 usuários simultâneos; YAGNI escalar                       |
-| HTMX em vez de SPA                  | UX menos "fluida"                  | MVP foca em funcionalidade, não em animações                                  |
-| Qwen-7B quantizado vs GPT-4         | Qualidade de geração inferior    | Revisão humana obrigatória (P4); prompts catalogados                           |
-| ~~Railway (SaaS proprietário)~~  | ~~Não é FOSS puro~~            | ~~Camada de aplicação é 100% FOSS; Railway é apenas runtime (como Linux)~~ |
+| Trade-off                           | Risco                              | Mitigação                                                                     |
+| ----------------------------------- | ---------------------------------- | ------------------------------------------------------------------------------- |
+| SQLite em produção multi-usuário | Limitação de escrita concorrente | MVP acadêmico = 1-2 usuários simultâneos; YAGNI escalar                      |
+| HTMX em vez de SPA                  | UX menos "fluida"                  | MVP foca em funcionalidade, não em animações                                 |
+| Qwen-7B quantizado vs GPT-4         | Qualidade de geração inferior    | Revisão humana obrigatória (P4); prompts catalogados                          |
+| ~~Railway (SaaS proprietário)~~   | ~~Não é FOSS puro~~             | ~~Camada de aplicação é 100% FOSS; Railway é apenas runtime (como Linux)~~ |
 
 ---
 
@@ -432,7 +432,6 @@ Este relatório:
 ---
 
 **Fim do Relatório Analítico**
-
 
 # 9. Stack SDD Local: Arquitetura e Organização Padrão
 
