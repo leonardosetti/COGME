@@ -1,0 +1,43 @@
+{
+  "updatedAt": "2026-08-27T22:52:34.570Z",
+  "cards": [
+    {
+      "source": "cnn",
+      "title": "Caixa bate R$ 1 tri em crédito imobiliário pela 1ª vez e projeta expansão",
+      "description": "",
+      "url": "https://www.cnnbrasil.com.br/economia/money/negocios/caixa-bate-r-1-tri-em-credito-imobiliario-pela-1a-vez-e-projeta-expansao/",
+      "imageUrl": "https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2026/06/2316_EC6A6CBCED61669C-21.webp?w=419&h=283&crop=1&quality=90",
+      "publishedAt": null,
+      "sourceName": "CNN Brasil",
+      "sourceUrl": "https://www.cnnbrasil.com.br/economia/",
+      "summary": "A Caixa Econômica Federal atingiu, pela primeira vez, R$ 1 trilhão em crédito imobiliário concedido e anuncia planos de expansão para ampliar a portfólio de financiamentos no setor habitacional.",
+      "fetchedAt": "2026-08-27T22:52:34.570Z",
+      "aiGenerated": true
+    },
+    {
+      "source": "g1",
+      "title": "Do Habib's às Casas Bahia, por que tantas empresas estão quebrando no Brasil?",
+      "description": "",
+      "url": "https://g1.globo.com/economia/noticia/2026/08/27/do-habib-s-as-casas-bahia-por-que-tantas-empresas-estao-quebrando-no-brasil.ghtml",
+      "imageUrl": "https://s2-g1.glbimg.com/MKKlqOtTKdQ33_QSNxPKvwRAwYE=/540x304/top/smart/https://i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/h/l/vtQZu0QC6NWx1v88Z1ng/2026-07-24t170058z-410891129-rc2jhmappxuu-rtrmadp-3-meta-platforms-ai.jpg",
+      "sourceName": "G1 Economia",
+      "sourceUrl": "https://g1.globo.com/economia/",
+      "summary": "Confira os principais detalhes e os impactos econômicos diretamente na reportagem original.",
+      "fetchedAt": "2026-08-27T22:52:34.570Z",
+      "aiGenerated": false
+    },
+    {
+      "source": "record",
+      "title": "Tira-dúvidas do IR 2026 com a Receita Federal",
+      "description": "",
+      "url": "https://noticias.r7.com/economia/video/tira-duvidas-do-ir-2026-com-a-receita-federal-17042026/",
+      "imageUrl": "https://newr7-r7-prod.web.arc-cdn.net/resizer/v2/https%3A%2F%2Fd22yf0mxeu0gma.cloudfront.net%2F04-17-2026%2Ft_caf587587ce449f49b95afc80333735b_name_Dica_da_receita.png?smart=true&auth=e3efcafab43f2613ea73802b730c252b35d7f99535ac8120b62b0f5292f0785a&width=1920&height=1080",
+      "publishedAt": null,
+      "sourceName": "Record / R7 Economia",
+      "sourceUrl": "https://noticias.r7.com/economia/",
+      "summary": "Confira os principais detalhes e os impactos econômicos diretamente na reportagem original.",
+      "fetchedAt": "2026-08-27T22:52:34.570Z",
+      "aiGenerated": false
+    }
+  ]
+}
