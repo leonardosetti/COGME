@@ -1,0 +1,175 @@
+<mxfile host="Electron" agent="GP Senior PMBOK 7a">
+  <diagram name="EAP COGME - Visao Principal" id="principal">
+    <mxGraphModel dx="2054" dy="847" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Tomp-1RXjn-tJHfb7XLO-2" edge="1" parent="1" source="N0" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;" target="N1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="100" />
+              <mxPoint x="690" y="150" />
+              <mxPoint x="140" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Tomp-1RXjn-tJHfb7XLO-3" edge="1" parent="1" source="N0" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;" target="N3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="150" />
+              <mxPoint x="580" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Tomp-1RXjn-tJHfb7XLO-4" edge="1" parent="1" source="N0" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;" target="N2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="150" />
+              <mxPoint x="360" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Tomp-1RXjn-tJHfb7XLO-5" edge="1" parent="1" source="N0" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;" target="N4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="150" />
+              <mxPoint x="800" y="150" />
+              <mxPoint x="800" y="205" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Tomp-1RXjn-tJHfb7XLO-6" edge="1" parent="1" source="N0" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;" target="N5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="150" />
+              <mxPoint x="1020" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Tomp-1RXjn-tJHfb7XLO-7" edge="1" parent="1" source="N0" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;" target="N6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="150" />
+              <mxPoint x="1240" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Tomp-1RXjn-tJHfb7XLO-8" edge="1" parent="1" source="N0" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;" target="N7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="150" />
+              <mxPoint x="249" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Tomp-1RXjn-tJHfb7XLO-9" edge="1" parent="1" source="N0" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;" target="N8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="150" />
+              <mxPoint x="469" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Tomp-1RXjn-tJHfb7XLO-10" edge="1" parent="1" source="N0" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;" target="N9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="377" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Tomp-1RXjn-tJHfb7XLO-11" edge="1" parent="1" source="N0" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;" target="N10">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="150" />
+              <mxPoint x="909" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Tomp-1RXjn-tJHfb7XLO-12" edge="1" parent="1" source="N0" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;" target="N11">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="150" />
+              <mxPoint x="1129" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Tomp-1RXjn-tJHfb7XLO-13" edge="1" parent="1" source="N0" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;" target="N12">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="150" />
+              <mxPoint x="1349" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Tomp-1RXjn-tJHfb7XLO-14" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="100" />
+              <mxPoint x="690" y="310" />
+              <mxPoint x="580" y="310" />
+            </Array>
+            <mxPoint x="669" y="100" as="sourcePoint" />
+            <mxPoint x="580" y="520" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="N0" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F3864;fontColor=#FFFFFF;fontSize=14;fontStyle=1;arcSize=20;" value="N0: COGME&#xa;Conversor de Ganhos em Moeda Estrangeira" vertex="1">
+          <mxGeometry height="60" width="400" x="494" y="57" as="geometry" />
+        </mxCell>
+        <mxCell id="N1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#70AD47;fontColor=#FFFFFF;fontSize=12;fontStyle=1;arcSize=15;" value="N1: Iniciação e Planejamento&#xa;[MF1 - Fundação]" vertex="1">
+          <mxGeometry height="60" width="200" x="40" y="205" as="geometry" />
+        </mxCell>
+        <mxCell id="N2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#70AD47;fontColor=#FFFFFF;fontSize=12;fontStyle=1;arcSize=15;" value="N2: Levantamento de Requisitos&#xa;[MF1 - Fundação]" vertex="1">
+          <mxGeometry height="60" width="200" x="260" y="205" as="geometry" />
+        </mxCell>
+        <mxCell id="N3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#70AD47;fontColor=#FFFFFF;fontSize=12;fontStyle=1;arcSize=15;" value="N3: Modelagem e Prototipação&#xa;[MF1 - Fundação]" vertex="1">
+          <mxGeometry height="60" width="200" x="480" y="205" as="geometry" />
+        </mxCell>
+        <mxCell id="N4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#70AD47;fontColor=#FFFFFF;fontSize=12;fontStyle=1;arcSize=15;" value="N4: Configuração de Ambiente&#xa;[MF1 - Fundação]" vertex="1">
+          <mxGeometry height="60" width="200" x="700" y="205" as="geometry" />
+        </mxCell>
+        <mxCell id="N5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ED7D31;fontColor=#FFFFFF;fontSize=12;fontStyle=1;arcSize=15;" value="N5: Desenvolvimento do Sistema&#xa;[MF2 - Construção]" vertex="1">
+          <mxGeometry height="60" width="200" x="920" y="205" as="geometry" />
+        </mxCell>
+        <mxCell id="N6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ED7D31;fontColor=#FFFFFF;fontSize=12;fontStyle=1;arcSize=15;" value="N6: Garantia da Qualidade&#xa;[MF2 - Construção]" vertex="1">
+          <mxGeometry height="60" width="200" x="1140" y="205" as="geometry" />
+        </mxCell>
+        <mxCell id="N7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ED7D31;fontColor=#FFFFFF;fontSize=12;fontStyle=1;arcSize=15;" value="N7: DevOps e CI/CD&#xa;[MF2 - Construção]" vertex="1">
+          <mxGeometry height="60" width="200" x="149" y="361" as="geometry" />
+        </mxCell>
+        <mxCell id="N8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ED7D31;fontColor=#FFFFFF;fontSize=12;fontStyle=1;arcSize=15;" value="N8: Implantação (Deploy)&#xa;[MF2 - Construção]" vertex="1">
+          <mxGeometry height="60" width="200" x="369" y="361" as="geometry" />
+        </mxCell>
+        <mxCell id="N9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#70AD47;fontColor=#FFFFFF;fontSize=12;fontStyle=1;arcSize=15;" value="N9: Comunicação&#xa;[MF1 - Fundação]" vertex="1">
+          <mxGeometry height="60" width="200" x="589" y="361" as="geometry" />
+        </mxCell>
+        <mxCell id="N10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#70AD47;fontColor=#FFFFFF;fontSize=12;fontStyle=1;arcSize=15;" value="N10: Base de Conhecimento&#xa;[MF1 - Fundação]" vertex="1">
+          <mxGeometry height="60" width="200" x="809" y="361" as="geometry" />
+        </mxCell>
+        <mxCell id="N11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ED7D31;fontColor=#FFFFFF;fontSize=12;fontStyle=1;arcSize=15;" value="N11: Gestão de Mudanças&#xa;[MF2 - Construção]" vertex="1">
+          <mxGeometry height="60" width="200" x="1029" y="361" as="geometry" />
+        </mxCell>
+        <mxCell id="N12" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7030A0;fontColor=#FFFFFF;fontSize=12;fontStyle=1;arcSize=15;" value="N12: Documentação do Projeto&#xa;[MF3 - Consolidação]" vertex="1">
+          <mxGeometry height="60" width="200" x="1249" y="361" as="geometry" />
+        </mxCell>
+        <mxCell id="N13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7030A0;fontColor=#FFFFFF;fontSize=12;fontStyle=1;arcSize=15;" value="N13: Encerramento&#xa;[MF3 - Consolidação]" vertex="1">
+          <mxGeometry height="60" width="200" x="481" y="465" as="geometry" />
+        </mxCell>
+        <mxCell id="legenda_titulo" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;" value="LEGENDA" vertex="1">
+          <mxGeometry height="30" width="120" x="40" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="legenda_mf1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#70AD47;fontColor=#FFFFFF;fontSize=10;" value="MF1: Fundação (Set/2026)" vertex="1">
+          <mxGeometry height="30" width="180" x="40" y="613" as="geometry" />
+        </mxCell>
+        <mxCell id="legenda_mf2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ED7D31;fontColor=#FFFFFF;fontSize=10;" value="MF2: Construção (Out-Nov/2026)" vertex="1">
+          <mxGeometry height="30" width="200" x="240" y="613" as="geometry" />
+        </mxCell>
+        <mxCell id="legenda_mf3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7030A0;fontColor=#FFFFFF;fontSize=10;" value="MF3: Consolidação (Nov-Dez/2026)" vertex="1">
+          <mxGeometry height="30" width="220" x="460" y="613" as="geometry" />
+        </mxCell>
+        <mxCell id="legenda_raiz" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F3864;fontColor=#FFFFFF;fontSize=10;" value="N0: Raiz do Projeto" vertex="1">
+          <mxGeometry height="30" width="160" x="700" y="613" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

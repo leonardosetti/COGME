@@ -1,0 +1,55 @@
+<mxfile host="Electron" agent="GP Senior PMBOK 7a">
+  <diagram name="EAP COGME - MF3 Consolidação" id="mf3">
+    <mxGraphModel dx="2054" dy="847" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="e_N12_N12.1" edge="1" parent="1" source="N12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7030A0;strokeWidth=1;endArrow=none;endFill=0;" target="N12.1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_N12_N12.2" edge="1" parent="1" source="N12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7030A0;strokeWidth=1;endArrow=none;endFill=0;" target="N12.2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_N12_N12.4" edge="1" parent="1" source="N12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7030A0;strokeWidth=1;endArrow=none;endFill=0;" target="N12.4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_N13_N13.1" edge="1" parent="1" source="N13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7030A0;strokeWidth=1;endArrow=none;endFill=0;" target="N13.1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_N13_N13.2" edge="1" parent="1" source="N13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7030A0;strokeWidth=1;endArrow=none;endFill=0;" target="N13.2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_N13_N13.3" edge="1" parent="1" source="N13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7030A0;strokeWidth=1;endArrow=none;endFill=0;" target="N13.3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="titulo" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#7030A0;" value="MACRO-FASE 3: CONSOLIDAÇÃO&lt;br&gt;6 Pacotes de Trabalho" vertex="1">
+          <mxGeometry height="40" width="290" x="380" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="N12" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7030A0;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" value="N12: Documentação do Projeto" vertex="1">
+          <mxGeometry height="50" width="280" x="200" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="N12.1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E2D0F0;fontColor=#000000;fontSize=10;" value="N12.1: Documentação Técnica (Arquitetura, APIs)" vertex="1">
+          <mxGeometry height="40" width="280" x="200" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="N12.2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E2D0F0;fontColor=#000000;fontSize=10;" value="N12.2: Manual do Usuário" vertex="1">
+          <mxGeometry height="40" width="280" x="200" y="232" as="geometry" />
+        </mxCell>
+        <mxCell id="N12.4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E2D0F0;fontColor=#000000;fontSize=10;" value="N12.4: Consolidação da Documentação Parcial" vertex="1">
+          <mxGeometry height="40" width="280" x="200" y="293" as="geometry" />
+        </mxCell>
+        <mxCell id="N13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7030A0;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" value="N13: Encerramento" vertex="1">
+          <mxGeometry height="50" width="280" x="602" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="N13.1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E2D0F0;fontColor=#000000;fontSize=10;" value="N13.1: Lições Aprendidas Finais" vertex="1">
+          <mxGeometry height="40" width="280" x="602" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="N13.2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E2D0F0;fontColor=#000000;fontSize=10;" value="N13.2: Verificação SMART" vertex="1">
+          <mxGeometry height="40" width="280" x="602" y="232" as="geometry" />
+        </mxCell>
+        <mxCell id="N13.3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E2D0F0;fontColor=#000000;fontSize=10;" value="N13.3: Apresentação Final + Aceite" vertex="1">
+          <mxGeometry height="40" width="280" x="602" y="293" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

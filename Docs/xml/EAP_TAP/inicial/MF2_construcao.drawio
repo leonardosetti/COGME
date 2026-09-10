@@ -1,0 +1,118 @@
+<mxfile host="Electron" agent="GP Senior PMBOK 7a">
+  <diagram name="EAP COGME - MF2 Construção" id="mf2">
+    <mxGraphModel dx="2416" dy="996" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="e_N5_N5.1" edge="1" parent="1" source="N5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ED7D31;strokeWidth=1;endArrow=none;endFill=0;" target="N5.1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_N5_N5.2" edge="1" parent="1" source="N5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ED7D31;strokeWidth=1;endArrow=none;endFill=0;" target="N5.2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_N5_N5.3" edge="1" parent="1" source="N5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ED7D31;strokeWidth=1;endArrow=none;endFill=0;" target="N5.3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_N5_N5.4" edge="1" parent="1" source="N5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ED7D31;strokeWidth=1;endArrow=none;endFill=0;" target="N5.4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_N5_N5.5" edge="1" parent="1" source="N5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ED7D31;strokeWidth=1;endArrow=none;endFill=0;" target="N5.5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_N6_N6.1" edge="1" parent="1" source="N6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ED7D31;strokeWidth=1;endArrow=none;endFill=0;" target="N6.1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_N6_N6.2" edge="1" parent="1" source="N6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ED7D31;strokeWidth=1;endArrow=none;endFill=0;" target="N6.2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_N7_N7.1" edge="1" parent="1" source="N7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ED7D31;strokeWidth=1;endArrow=none;endFill=0;" target="N7.1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_N7_N7.2" edge="1" parent="1" source="N7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ED7D31;strokeWidth=1;endArrow=none;endFill=0;" target="N7.2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_N8_N8.1" edge="1" parent="1" source="N8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ED7D31;strokeWidth=1;endArrow=none;endFill=0;" target="N8.1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_N8_N8.2" edge="1" parent="1" source="N8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ED7D31;strokeWidth=1;endArrow=none;endFill=0;" target="N8.2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_N11_N11.1" edge="1" parent="1" source="N11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ED7D31;strokeWidth=1;endArrow=none;endFill=0;" target="N11.1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_N11_N11.2" edge="1" parent="1" source="N11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ED7D31;strokeWidth=1;endArrow=none;endFill=0;" target="N11.2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_N11_N11.3" edge="1" parent="1" source="N11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ED7D31;strokeWidth=1;endArrow=none;endFill=0;" target="N11.3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_N11_N11.4" edge="1" parent="1" source="N11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ED7D31;strokeWidth=1;endArrow=none;endFill=0;" target="N11.4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="titulo" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#ED7D31;" value="MACRO-FASE 2: CONSTRUÇÃO&lt;br&gt;16 Pacotes de Trabalho" vertex="1">
+          <mxGeometry height="40" width="250" x="315" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="N5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ED7D31;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" value="N5: Desenvolvimento do Sistema" vertex="1">
+          <mxGeometry height="50" width="240" x="40" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="N5.1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FCE4D6;fontColor=#000000;fontSize=10;" value="N5.1: Backend — Lógica de Negócio" vertex="1">
+          <mxGeometry height="40" width="240" x="40" y="185" as="geometry" />
+        </mxCell>
+        <mxCell id="N5.2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FCE4D6;fontColor=#000000;fontSize=10;" value="N5.2: Backend — API de Câmbio + Cache" vertex="1">
+          <mxGeometry height="40" width="240" x="40" y="256" as="geometry" />
+        </mxCell>
+        <mxCell id="N5.3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FCE4D6;fontColor=#000000;fontSize=10;" value="N5.3: Frontend — Interface e Simulações" vertex="1">
+          <mxGeometry height="40" width="240" x="40" y="328" as="geometry" />
+        </mxCell>
+        <mxCell id="N5.4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FCE4D6;fontColor=#000000;fontSize=10;" value="N5.4: Módulo PDF (WeasyPrint)" vertex="1">
+          <mxGeometry height="40" width="240" x="40" y="399" as="geometry" />
+        </mxCell>
+        <mxCell id="N5.5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FCE4D6;fontColor=#000000;fontSize=10;" value="N5.5: SDD com IA (Prompts + Revisão)" vertex="1">
+          <mxGeometry height="40" width="240" x="40" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="N6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ED7D31;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" value="N6: Garantia da Qualidade" vertex="1">
+          <mxGeometry height="50" width="240" x="320" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="N6.1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FCE4D6;fontColor=#000000;fontSize=10;" value="N6.1: Testes Unitários/Integração (≥ 80%)" vertex="1">
+          <mxGeometry height="40" width="240" x="320" y="185" as="geometry" />
+        </mxCell>
+        <mxCell id="N6.2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FCE4D6;fontColor=#000000;fontSize=10;" value="N6.2: Testes de Aceitação (UAT)" vertex="1">
+          <mxGeometry height="40" width="240" x="320" y="257" as="geometry" />
+        </mxCell>
+        <mxCell id="N7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ED7D31;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" value="N7: DevOps e CI/CD" vertex="1">
+          <mxGeometry height="50" width="240" x="600" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="N7.1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FCE4D6;fontColor=#000000;fontSize=10;" value="N7.1: Pipeline CI (lint + testes)" vertex="1">
+          <mxGeometry height="40" width="240" x="600" y="184" as="geometry" />
+        </mxCell>
+        <mxCell id="N7.2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FCE4D6;fontColor=#000000;fontSize=10;" value="N7.2: Deploy Manual Documentado" vertex="1">
+          <mxGeometry height="40" width="240" x="600" y="255" as="geometry" />
+        </mxCell>
+        <mxCell id="N8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ED7D31;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" value="N8: Implantação (Deploy)" vertex="1">
+          <mxGeometry height="50" width="240" x="40" y="569" as="geometry" />
+        </mxCell>
+        <mxCell id="N8.1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FCE4D6;fontColor=#000000;fontSize=10;" value="N8.1: Publicação em Produção" vertex="1">
+          <mxGeometry height="40" width="240" x="40" y="654" as="geometry" />
+        </mxCell>
+        <mxCell id="N8.2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FCE4D6;fontColor=#000000;fontSize=10;" value="N8.2: Documentação de Deploy + Rollback" vertex="1">
+          <mxGeometry height="40" width="240" x="40" y="725" as="geometry" />
+        </mxCell>
+        <mxCell id="N11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ED7D31;fontColor=#FFFFFF;fontSize=12;fontStyle=1;" value="N11: Gestão de Mudanças" vertex="1">
+          <mxGeometry height="50" width="240" x="320" y="569" as="geometry" />
+        </mxCell>
+        <mxCell id="N11.1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FCE4D6;fontColor=#000000;fontSize=10;" value="N11.1: CCB — Prof. Dr. Nivaldo Carletto" vertex="1">
+          <mxGeometry height="40" width="240" x="320" y="655" as="geometry" />
+        </mxCell>
+        <mxCell id="N11.2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FCE4D6;fontColor=#000000;fontSize=10;" value="N11.2: Registro de Solicitações de Mudança" vertex="1">
+          <mxGeometry height="40" width="240" x="320" y="725" as="geometry" />
+        </mxCell>
+        <mxCell id="N11.3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FCE4D6;fontColor=#000000;fontSize=10;" value="N11.3: Label change-request no GitHub" vertex="1">
+          <mxGeometry height="40" width="240" x="320" y="792" as="geometry" />
+        </mxCell>
+        <mxCell id="N11.4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FCE4D6;fontColor=#000000;fontSize=10;" value="N11.4: Aprovação e Versionamento" vertex="1">
+          <mxGeometry height="40" width="240" x="320" y="860" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

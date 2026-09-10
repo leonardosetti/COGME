@@ -1,0 +1,163 @@
+<mxfile host="Electron" agent="GP Senior PMBOK 7a">
+  <diagram name="EAP COGME v2.0 - Visao Principal" id="principal">
+    <mxGraphModel dx="3423" dy="1412" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="e_N0_N1" edge="1" parent="1" source="N0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F3864;strokeWidth=2;endArrow=none;endFill=0;" target="N1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="170" />
+              <mxPoint x="130" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_N0_N2" edge="1" parent="1" source="N0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F3864;strokeWidth=2;endArrow=none;endFill=0;" target="N2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="170" />
+              <mxPoint x="330" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_N0_N3" edge="1" parent="1" source="N0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F3864;strokeWidth=2;endArrow=none;endFill=0;" target="N3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="170" />
+              <mxPoint x="530" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_N0_N4" edge="1" parent="1" source="N0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F3864;strokeWidth=2;endArrow=none;endFill=0;" target="N4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="170" />
+              <mxPoint x="730" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_N0_N5" edge="1" parent="1" source="N0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F3864;strokeWidth=2;endArrow=none;endFill=0;" target="N5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="170" />
+              <mxPoint x="230" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_N0_N8" edge="1" parent="1" source="N0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F3864;strokeWidth=2;endArrow=none;endFill=0;" target="N8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="170" />
+              <mxPoint x="930" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_N0_N9" edge="1" parent="1" source="N0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F3864;strokeWidth=2;endArrow=none;endFill=0;" target="N9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="170" />
+              <mxPoint x="1130" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_N0_N10" edge="1" parent="1" source="N0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F3864;strokeWidth=2;endArrow=none;endFill=0;" target="N10">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="170" />
+              <mxPoint x="1030" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_N0_N11" edge="1" parent="1" source="N0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F3864;strokeWidth=2;endArrow=none;endFill=0;" target="N11">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="170" />
+              <mxPoint x="432" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_N0_N12" edge="1" parent="1" source="N0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F3864;strokeWidth=2;endArrow=none;endFill=0;" target="N12">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="170" />
+              <mxPoint x="830" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="titulo" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#1F3864;" value="EAP —&amp;nbsp;12 Fases Nível 1 | 37 Pacotes Nível 2 | 3 Macro-Fases" vertex="1">
+          <mxGeometry height="40" width="530" x="365" y="18" as="geometry" />
+        </mxCell>
+        <mxCell id="N0" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F3864;fontColor=#FFFFFF;fontSize=15;fontStyle=1;arcSize=20;" value="N0: COGME&#xa;Conversor de Ganhos em Moeda Estrangeira" vertex="1">
+          <mxGeometry height="60" width="400" x="430" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="N1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#70AD47;fontColor=#FFFFFF;fontSize=13;fontStyle=1;arcSize=15;" value="N1: Iniciação e&#xa;Planejamento [MF1]" vertex="1">
+          <mxGeometry height="55" width="180" x="40" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="N2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#70AD47;fontColor=#FFFFFF;fontSize=13;fontStyle=1;arcSize=15;" value="N2: Levantamento de&#xa;Requisitos [MF1]" vertex="1">
+          <mxGeometry height="55" width="180" x="240" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="N3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#70AD47;fontColor=#FFFFFF;fontSize=13;fontStyle=1;arcSize=15;" value="N3: Modelagem e&#xa;Prototipação [MF1]" vertex="1">
+          <mxGeometry height="55" width="180" x="440" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="N4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#70AD47;fontColor=#FFFFFF;fontSize=13;fontStyle=1;arcSize=15;" value="N4: Configuração de&#xa;Ambiente [MF1]" vertex="1">
+          <mxGeometry height="55" width="180" x="640" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="N8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#70AD47;fontColor=#FFFFFF;fontSize=13;fontStyle=1;arcSize=15;" value="N8: Comunicação&#xa;[MF1]" vertex="1">
+          <mxGeometry height="55" width="180" x="840" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="N9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#70AD47;fontColor=#FFFFFF;fontSize=13;fontStyle=1;arcSize=15;" value="N9: Base de&#xa;Conhecimento [MF1]" vertex="1">
+          <mxGeometry height="55" width="180" x="1040" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="N5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ED7D31;fontColor=#FFFFFF;fontSize=13;fontStyle=1;arcSize=15;" value="N5: Desenvolvimento&#xa;do Sistema [MF2]" vertex="1">
+          <mxGeometry height="55" width="180" x="141" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="N6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ED7D31;fontColor=#FFFFFF;fontSize=13;fontStyle=1;arcSize=15;" value="N6: Garantia da&#xa;Qualidade [MF2]" vertex="1">
+          <mxGeometry height="55" width="180" x="440" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="N7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ED7D31;fontColor=#FFFFFF;fontSize=13;fontStyle=1;arcSize=15;" value="N7: DevOps e CI/CD&#xa;[MF2]" vertex="1">
+          <mxGeometry height="55" width="180" x="640" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="N10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ED7D31;fontColor=#FFFFFF;fontSize=13;fontStyle=1;arcSize=15;" value="N10: Gestão de&#xa;Mudanças [MF2]" vertex="1">
+          <mxGeometry height="55" width="180" x="941" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="N11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7030A0;fontColor=#FFFFFF;fontSize=13;fontStyle=1;arcSize=15;" value="N11: Documentação&#xa;do Projeto [MF3]" vertex="1">
+          <mxGeometry height="55" width="180" x="342" y="403" as="geometry" />
+        </mxCell>
+        <mxCell id="N12" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7030A0;fontColor=#FFFFFF;fontSize=13;fontStyle=1;arcSize=15;" value="N12: Encerramento&#xa;[MF3]" vertex="1">
+          <mxGeometry height="55" width="180" x="740" y="403" as="geometry" />
+        </mxCell>
+        <mxCell id="legenda_titulo" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;" value="LEGENDA" vertex="1">
+          <mxGeometry height="20" width="120" x="60" y="487" as="geometry" />
+        </mxCell>
+        <mxCell id="legenda_raiz" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F3864;fontColor=#FFFFFF;fontSize=12;" value="N0: Raiz do Projeto" vertex="1">
+          <mxGeometry height="30" width="160" x="60" y="517" as="geometry" />
+        </mxCell>
+        <mxCell id="legenda_mf1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#70AD47;fontColor=#FFFFFF;fontSize=12;" value="MF1: Fundação (20 pacotes)&amp;nbsp;" vertex="1">
+          <mxGeometry height="30" width="260" x="240" y="517" as="geometry" />
+        </mxCell>
+        <mxCell id="legenda_mf2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ED7D31;fontColor=#FFFFFF;fontSize=12;" value="MF2: Construção (12 pacotes)&amp;nbsp;" vertex="1">
+          <mxGeometry height="30" width="280" x="520" y="517" as="geometry" />
+        </mxCell>
+        <mxCell id="legenda_mf3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7030A0;fontColor=#FFFFFF;fontSize=12;" value="MF3: Consolidação (5 pacotes)&amp;nbsp;" vertex="1">
+          <mxGeometry height="30" width="280" x="820" y="517" as="geometry" />
+        </mxCell>
+        <mxCell id="e_N0_N6" edge="1" parent="1" source="N0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F3864;strokeWidth=2;endArrow=none;endFill=0;" target="N6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="280" />
+              <mxPoint x="530" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_N0_N7" edge="1" parent="1" source="N0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1F3864;strokeWidth=2;endArrow=none;endFill=0;" target="N7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="280" />
+              <mxPoint x="730" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
