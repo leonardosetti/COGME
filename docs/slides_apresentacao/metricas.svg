@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="Arial, Helvetica, sans-serif">
+  <rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <text x="640" y="40" text-anchor="middle" font-size="24" font-weight="bold" fill="#111111">Métricas de Fluxo e Obsolescência Formal de EVM</text>
+  <text x="640" y="65" text-anchor="middle" font-size="14" fill="#555555">ADR-003 | Domínio de Medição PMBOK 7ª | Período de Calibração: 23/09 — 03/10</text>
+  <!-- Declaração EVM -->
+  <rect x="60" y="90" width="1160" height="90" rx="8" fill="#FDECEA" stroke="#C0392B" stroke-width="2"/>
+  <text x="640" y="120" text-anchor="middle" font-size="16" font-weight="bold" fill="#C0392B">⚠ DECLARAÇÃO FORMAL — ADR-003</text>
+  <text x="640" y="145" text-anchor="middle" font-size="13" fill="#333333">EVM (Earned Value Management), SPI, CPI e VAC são declarados LEGADO — NÃO APLICÁVEIS no COGME</text>
+  <text x="640" y="168" text-anchor="middle" font-size="12" font-style="italic" fill="#555555">Justificativa: (1) Orçamento zero → AC=0 → índices indeterminados · (2) Escopo emergente · (3) Fluxo contínuo Kanban</text>
+  <!-- Métricas oficiais -->
+  <text x="640" y="215" text-anchor="middle" font-size="16" font-weight="bold" fill="#1F3A5F">Métricas Oficiais de Fluxo (Substituição de EVM)</text>
+  <rect x="60" y="235" width="360" height="90" rx="6" fill="#1F3A5F"/>
+  <text x="240" y="262" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">Cycle Time</text>
+  <text x="240" y="285" text-anchor="middle" font-size="12" fill="#E0E7EF">In Progress → Done</text>
+  <text x="240" y="308" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">Meta: ≤ 3 dias</text>
+  <rect x="440" y="235" width="360" height="90" rx="6" fill="#2E7D32"/>
+  <text x="620" y="262" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">Throughput</text>
+  <text x="620" y="285" text-anchor="middle" font-size="12" fill="#E8F5E9">Cards concluídos / semana</text>
+  <text x="620" y="308" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">Meta: ≥ 5 cards/sem</text>
+  <rect x="820" y="235" width="400" height="90" rx="6" fill="#6A1B9A"/>
+  <text x="1020" y="262" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">CFD — Cumulative Flow</text>
+  <text x="1020" y="285" text-anchor="middle" font-size="12" fill="#F3E5F5">Visualização de gargalos</text>
+  <text x="1020" y="308" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">Meta: sem bandas largas</text>
+  <rect x="60" y="335" width="360" height="90" rx="6" fill="#E65100"/>
+  <text x="240" y="362" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">WIP em Fluxo</text>
+  <text x="240" y="385" text-anchor="middle" font-size="12" fill="#FFFFFF">Cards em In Progress</text>
+  <text x="240" y="408" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">Limite: ≤ 9 (3 × 3 pessoas)</text>
+  <rect x="440" y="335" width="360" height="90" rx="6" fill="#546E7A"/>
+  <text x="620" y="362" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">Coverage</text>
+  <text x="620" y="385" text-anchor="middle" font-size="12" fill="#FFFFFF">Linhas testadas / totais</text>
+  <text x="620" y="408" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">Meta: ≥ 80% (por push)</text>
+  <rect x="820" y="335" width="400" height="90" rx="6" fill="#C0392B"/>
+  <text x="1020" y="362" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">Burnout</text>
+  <text x="1020" y="385" text-anchor="middle" font-size="12" fill="#FFFFFF">Carga horária semanal</text>
+  <text x="1020" y="408" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">Limite: ≤ 20h/pessoa</text>
+  <!-- Caminho crítico empírico -->
+  <rect x="60" y="450" width="720" height="240" rx="8" fill="#F4F6F8" stroke="#1F3A5F" stroke-width="2"/>
+  <text x="420" y="480" text-anchor="middle" font-size="15" font-weight="bold" fill="#1F3A5F">Caminho Crítico Empírico (sem rede CPM)</text>
+  <text x="420" y="508" text-anchor="middle" font-size="12" fill="#333333">Quatro detectores nativos do SSOT substituem a rede preditiva:</text>
+  <rect x="90" y="525" width="300" height="55" rx="4" fill="#FDECEA" stroke="#C0392B" stroke-width="1.5"/>
+  <text x="240" y="548" text-anchor="middle" font-size="12" font-weight="bold" fill="#C0392B">① Cards P0</text>
+  <text x="240" y="568" text-anchor="middle" font-size="10" fill="#333333">Prioridade temporal crítica do marco</text>
+  <rect x="410" y="525" width="340" height="55" rx="4" fill="#FDECEA" stroke="#C0392B" stroke-width="1.5"/>
+  <text x="580" y="548" text-anchor="middle" font-size="12" font-weight="bold" fill="#C0392B">② Label blocked</text>
+  <text x="580" y="568" text-anchor="middle" font-size="10" fill="#333333">Dependência registrada no corpo da Issue</text>
+  <rect x="90" y="595" width="300" height="55" rx="4" fill="#FFF3E0" stroke="#E65100" stroke-width="1.5"/>
+  <text x="240" y="618" text-anchor="middle" font-size="12" font-weight="bold" fill="#E65100">③ Bandas do CFD</text>
+  <text x="240" y="638" text-anchor="middle" font-size="10" fill="#333333">Alargamento &gt; 2× média por 2 semanas</text>
+  <rect x="410" y="595" width="340" height="55" rx="4" fill="#FFF3E0" stroke="#E65100" stroke-width="1.5"/>
+  <text x="580" y="618" text-anchor="middle" font-size="12" font-weight="bold" fill="#E65100">④ Desvio de Cycle Time</text>
+  <text x="580" y="638" text-anchor="middle" font-size="10" fill="#333333">Meta ≤ 3 dias violada persistentemente</text>
+  <text x="420" y="678" text-anchor="middle" font-size="11" font-style="italic" fill="#555555">Revisão no Refinement semanal + Retrospectiva quinzenal</text>
+  <!-- Próximos passos -->
+  <rect x="800" y="450" width="420" height="240" rx="8" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+  <text x="1010" y="480" text-anchor="middle" font-size="15" font-weight="bold" fill="#2E7D32">Próximos Passos (até M2 — 30/09)</text>
+  <text x="830" y="515" text-anchor="start" font-size="12" font-weight="bold" fill="#C0392B">🔴 P0</text>
+  <text x="870" y="515" text-anchor="start" font-size="12" fill="#333333">Emitir ADR-005 (freeze do TAP)</text>
+  <text x="830" y="545" text-anchor="start" font-size="12" font-weight="bold" fill="#E65100">🟠 P1</text>
+  <text x="870" y="545" text-anchor="start" font-size="12" fill="#333333">Saneamento do Glossário v3.2</text>
+  <text x="830" y="575" text-anchor="start" font-size="12" font-weight="bold" fill="#E65100">🟠 P1</text>
+  <text x="870" y="575" text-anchor="start" font-size="12" fill="#333333">Iniciar calibração de métricas</text>
+  <text x="830" y="605" text-anchor="start" font-size="12" font-weight="bold" fill="#1F3A5F">🟡 P2</text>
+  <text x="870" y="605" text-anchor="start" font-size="12" fill="#333333">Planos: Recursos, Comunicações,</text>
+  <text x="870" y="622" text-anchor="start" font-size="12" fill="#333333">Riscos (Áreas 6–8)</text>
+  <text x="830" y="652" text-anchor="start" font-size="12" font-weight="bold" fill="#546E7A">🟢 P3</text>
+  <text x="870" y="652" text-anchor="start" font-size="12" fill="#333333">SVGs pendentes (Ishikawa,</text>
+  <text x="870" y="669" text-anchor="start" font-size="12" fill="#333333">Roadmap, Fluxo Qualidade)</text>
+  <text x="1010" y="685" text-anchor="middle" font-size="10" font-style="italic" fill="#555555">Baseline publicada até 03/10/2026</text>
+</svg>

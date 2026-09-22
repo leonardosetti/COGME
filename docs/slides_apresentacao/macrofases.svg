@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="ar-flow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#1F3A5F"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <text x="640" y="40" text-anchor="middle" font-size="24" font-weight="bold" fill="#111111">Macro-Fases, Marcos e Estrutura Analítica do Projeto</text>
+  <text x="640" y="65" text-anchor="middle" font-size="14" fill="#555555">EAP: 12 fases de Nível 1 + 37 pacotes de Nível 2 | 5 Marcos oficiais</text>
+  <!-- Timeline Macro -->
+  <rect x="60" y="100" width="360" height="110" rx="8" fill="#1F3A5F" stroke="#1F3A5F" stroke-width="2"/>
+  <text x="240" y="130" text-anchor="middle" font-size="17" font-weight="bold" fill="#FFFFFF">MF1: Fundação</text>
+  <text x="240" y="155" text-anchor="middle" font-size="12" fill="#E0E7EF">01/09 — 30/09/2026</text>
+  <text x="240" y="178" text-anchor="middle" font-size="11" fill="#E0E7EF">6 fases | 20 pacotes</text>
+  <text x="240" y="198" text-anchor="middle" font-size="11" fill="#E0E7EF">N1, N2, N3, N4, N8, N9</text>
+  <line x1="420" y1="155" x2="450" y2="155" stroke="#1F3A5F" stroke-width="2" marker-end="url(#ar-flow)"/>
+  <polygon points="470,140 490,155 470,170 450,155" fill="#E67E22" stroke="#E67E22" stroke-width="2"/>
+  <text x="470" y="195" text-anchor="middle" font-size="11" font-weight="bold" fill="#E67E22">M2</text>
+  <text x="470" y="210" text-anchor="middle" font-size="10" fill="#555555">30/09</text>
+  <rect x="490" y="100" width="380" height="110" rx="8" fill="#2E7D32" stroke="#2E7D32" stroke-width="2"/>
+  <text x="680" y="130" text-anchor="middle" font-size="17" font-weight="bold" fill="#FFFFFF">MF2: Construção</text>
+  <text x="680" y="155" text-anchor="middle" font-size="12" fill="#E8F5E9">01/10 — 15/11/2026</text>
+  <text x="680" y="178" text-anchor="middle" font-size="11" fill="#E8F5E9">4 fases | 12 pacotes</text>
+  <text x="680" y="198" text-anchor="middle" font-size="11" fill="#E8F5E9">N5, N6, N7, N10</text>
+  <line x1="870" y1="155" x2="900" y2="155" stroke="#1F3A5F" stroke-width="2" marker-end="url(#ar-flow)"/>
+  <polygon points="920,140 940,155 920,170 900,155" fill="#E67E22" stroke="#E67E22" stroke-width="2"/>
+  <text x="920" y="195" text-anchor="middle" font-size="11" font-weight="bold" fill="#E67E22">M3</text>
+  <text x="920" y="210" text-anchor="middle" font-size="10" fill="#555555">15/11</text>
+  <rect x="940" y="100" width="280" height="110" rx="8" fill="#6A1B9A" stroke="#6A1B9A" stroke-width="2"/>
+  <text x="1080" y="130" text-anchor="middle" font-size="17" font-weight="bold" fill="#FFFFFF">MF3: Consolidação</text>
+  <text x="1080" y="155" text-anchor="middle" font-size="12" fill="#F3E5F5">16/11 — 15/12/2026</text>
+  <text x="1080" y="178" text-anchor="middle" font-size="11" fill="#F3E5F5">2 fases | 5 pacotes</text>
+  <text x="1080" y="198" text-anchor="middle" font-size="11" fill="#F3E5F5">N11, N12</text>
+  <line x1="1220" y1="155" x2="1240" y2="155" stroke="#1F3A5F" stroke-width="2" marker-end="url(#ar-flow)"/>
+  <!-- Marcos -->
+  <text x="640" y="260" text-anchor="middle" font-size="16" font-weight="bold" fill="#1F3A5F">Linha de Base Temporal — Marcos Oficiais</text>
+  <rect x="60" y="280" width="220" height="90" rx="6" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+  <text x="170" y="305" text-anchor="middle" font-size="14" font-weight="bold" fill="#2E7D32">M1 — 22/09</text>
+  <text x="170" y="325" text-anchor="middle" font-size="11" fill="#333333">Entrega Parcial</text>
+  <text x="170" y="342" text-anchor="middle" font-size="11" fill="#333333">Documental</text>
+  <text x="170" y="360" text-anchor="middle" font-size="10" font-weight="bold" fill="#2E7D32">✅ ENTREGUE</text>
+  <rect x="300" y="280" width="220" height="90" rx="6" fill="#F8F9FA" stroke="#1F3A5F" stroke-width="2"/>
+  <text x="410" y="305" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3A5F">M2 — 30/09</text>
+  <text x="410" y="325" text-anchor="middle" font-size="11" fill="#333333">Ambiente +</text>
+  <text x="410" y="342" text-anchor="middle" font-size="11" fill="#333333">Modelagem + Áreas 6-8</text>
+  <text x="410" y="360" text-anchor="middle" font-size="10" fill="#E67E22">⏳ Em andamento</text>
+  <rect x="540" y="280" width="200" height="90" rx="6" fill="#FFF3E0" stroke="#E65100" stroke-width="2" stroke-dasharray="4,2"/>
+  <text x="640" y="305" text-anchor="middle" font-size="14" font-weight="bold" fill="#E65100">Calibração — 03/10</text>
+  <text x="640" y="325" text-anchor="middle" font-size="11" fill="#333333">Baseline empírica</text>
+  <text x="640" y="342" text-anchor="middle" font-size="11" fill="#333333">de métricas de fluxo</text>
+  <text x="640" y="360" text-anchor="middle" font-size="10" fill="#E65100">(auxiliar)</text>
+  <rect x="760" y="280" width="220" height="90" rx="6" fill="#F8F9FA" stroke="#1F3A5F" stroke-width="2"/>
+  <text x="870" y="305" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3A5F">M3 — 15/11</text>
+  <text x="870" y="325" text-anchor="middle" font-size="11" fill="#333333">MVP Funcional</text>
+  <text x="870" y="342" text-anchor="middle" font-size="11" fill="#333333">Beta + Coverage ≥80%</text>
+  <text x="870" y="360" text-anchor="middle" font-size="10" fill="#555555">UAT aprovado</text>
+  <rect x="1000" y="280" width="220" height="90" rx="6" fill="#F8F9FA" stroke="#1F3A5F" stroke-width="2"/>
+  <text x="1110" y="305" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3A5F">M4 — 15/12</text>
+  <text x="1110" y="325" text-anchor="middle" font-size="11" fill="#333333">Encerramento</text>
+  <text x="1110" y="342" text-anchor="middle" font-size="11" fill="#333333">+ Aceite Acadêmico</text>
+  <text x="1110" y="360" text-anchor="middle" font-size="10" fill="#555555">Tag de release</text>
+  <!-- Status M1 -->
+  <rect x="60" y="410" width="1160" height="280" rx="8" fill="#F4F6F8" stroke="#1F3A5F" stroke-width="2"/>
+  <text x="640" y="440" text-anchor="middle" font-size="16" font-weight="bold" fill="#1F3A5F">Status do Marco M1 — Entregues</text>
+  <text x="220" y="475" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">✅ TAP v3</text>
+  <text x="220" y="495" text-anchor="middle" font-size="11" fill="#333333">Aprovado + congelado</text>
+  <text x="220" y="512" text-anchor="middle" font-size="11" fill="#333333">(desde 18/09)</text>
+  <text x="460" y="475" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">✅ 5 Planos</text>
+  <text x="460" y="495" text-anchor="middle" font-size="11" fill="#333333">Integração, Escopo,</text>
+  <text x="460" y="512" text-anchor="middle" font-size="11" fill="#333333">Cronograma, Custos, Qualidade</text>
+  <text x="700" y="475" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">✅ 4 ADRs</text>
+  <text x="700" y="495" text-anchor="middle" font-size="11" fill="#333333">Stack, Kanban,</text>
+  <text x="700" y="512" text-anchor="middle" font-size="11" fill="#333333">Métricas, Tasklists</text>
+  <text x="940" y="475" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">✅ SSOT Configurado</text>
+  <text x="940" y="495" text-anchor="middle" font-size="11" fill="#333333">27 labels | 5 milestones</text>
+  <text x="940" y="512" text-anchor="middle" font-size="11" fill="#333333">21 cards M1</text>
+  <line x1="100" y1="540" x2="1180" y2="540" stroke="#1F3A5F" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="220" y="570" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">✅ EAP Canônica</text>
+  <text x="220" y="590" text-anchor="middle" font-size="11" fill="#333333">12 fases + 37 pacotes</text>
+  <text x="460" y="570" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">✅ 12 PDCAs</text>
+  <text x="460" y="590" text-anchor="middle" font-size="11" fill="#333333">+ 3 Ishikawa 6M</text>
+  <text x="700" y="570" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">✅ Equipe</text>
+  <text x="700" y="590" text-anchor="middle" font-size="11" fill="#333333">≤ 20h/semana por membro</text>
+  <text x="700" y="607" text-anchor="middle" font-size="11" fill="#333333">(Premissa P5)</text>
+  <text x="940" y="570" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">✅ Backlog Priorizado</text>
+  <text x="940" y="590" text-anchor="middle" font-size="11" fill="#333333">15 must + 6 should</text>
+  <text x="940" y="607" text-anchor="middle" font-size="11" fill="#333333">P0–P3 + MoSCoW</text>
+  <text x="640" y="665" text-anchor="middle" font-size="12" font-style="italic" fill="#555555">Paralelismo integral dentro de cada Macro-Fase — Kanban pull system (não sequencial)</text>
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="Arial, Helvetica, sans-serif">
+  <rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <!-- Faixa superior -->
+  <rect x="0" y="0" width="1280" height="90" fill="#1F3A5F"/>
+  <text x="640" y="55" text-anchor="middle" font-size="30" font-weight="bold" fill="#FFFFFF">COGME — Conversor de Ganhos em Moeda Estrangeira</text>
+  <!-- Título principal -->
+  <text x="640" y="160" text-anchor="middle" font-size="26" font-weight="bold" fill="#111111">Marco M1 — Entrega Parcial Documental</text>
+  <text x="640" y="195" text-anchor="middle" font-size="18" fill="#555555">22 de setembro de 2026 | Fatec Taquaritinga — ADS</text>
+  <!-- Equipe -->
+  <rect x="180" y="240" width="920" height="90" rx="8" fill="#F8F9FA" stroke="#1F3A5F" stroke-width="2"/>
+  <text x="640" y="275" text-anchor="middle" font-size="16" font-weight="bold" fill="#1F3A5F">Equipe do Projeto</text>
+  <text x="340" y="305" text-anchor="middle" font-size="14" fill="#333333">Leonardo D. S. Setti — GP / CCB</text>
+  <text x="640" y="305" text-anchor="middle" font-size="14" fill="#333333">Fabricio de L. Cabral — Desenvolvedor</text>
+  <text x="940" y="305" text-anchor="middle" font-size="14" fill="#333333">Edson Luis Silva — Desenvolvedor</text>
+  <!-- Pilares -->
+  <text x="640" y="380" text-anchor="middle" font-size="18" font-weight="bold" fill="#111111">Pilares do Projeto</text>
+  <rect x="100" y="410" width="320" height="110" rx="6" fill="#1F3A5F"/>
+  <text x="260" y="445" text-anchor="middle" font-size="16" font-weight="bold" fill="#FFFFFF">Lacuna Prática</text>
+  <text x="260" y="475" text-anchor="middle" font-size="12" fill="#E0E7EF">Solução única, gratuita</text>
+  <text x="260" y="495" text-anchor="middle" font-size="12" fill="#E0E7EF">e open source para</text>
+  <text x="260" y="515" text-anchor="middle" font-size="12" fill="#E0E7EF">simulação cambial</text>
+  <rect x="480" y="410" width="320" height="110" rx="6" fill="#2E7D32"/>
+  <text x="640" y="445" text-anchor="middle" font-size="16" font-weight="bold" fill="#FFFFFF">Valor Social</text>
+  <text x="640" y="475" text-anchor="middle" font-size="12" fill="#E8F5E9">Autonomia financeira</text>
+  <text x="640" y="495" text-anchor="middle" font-size="12" fill="#E8F5E9">para PJs, MEIs e</text>
+  <text x="640" y="515" text-anchor="middle" font-size="12" fill="#E8F5E9">freelancers internacionais</text>
+  <rect x="860" y="410" width="320" height="110" rx="6" fill="#6A1B9A"/>
+  <text x="1020" y="445" text-anchor="middle" font-size="16" font-weight="bold" fill="#FFFFFF">Alinhamento Acadêmico</text>
+  <text x="1020" y="475" text-anchor="middle" font-size="12" fill="#F3E5F5">Domínio real complexo</text>
+  <text x="1020" y="495" text-anchor="middle" font-size="12" fill="#F3E5F5">aplicando PMBOK em</text>
+  <text x="1020" y="515" text-anchor="middle" font-size="12" fill="#F3E5F5">ciclo de vida completo</text>
+  <!-- Rodapé -->
+  <rect x="0" y="640" width="1280" height="80" fill="#F4F6F8"/>
+  <text x="640" y="670" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3A5F">Compromisso Fundante: 100% FOSS — Free and Open Source Software</text>
+  <text x="640" y="695" text-anchor="middle" font-size="12" fill="#555555">Orientador: Prof. Dr. Nivaldo Carletto | Disciplina de Gerência de Projetos</text>
+</svg>

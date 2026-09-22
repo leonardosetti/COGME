@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="Arial, Helvetica, sans-serif">
+  <rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <text x="640" y="40" text-anchor="middle" font-size="24" font-weight="bold" fill="#111111">Stack Tecnológica FOSS e SDD com IA Generativa</text>
+  <text x="640" y="65" text-anchor="middle" font-size="14" fill="#555555">ADR-001 | Regra de ouro: licença OSI + plano gratuito + registro em ADR</text>
+  <!-- Stack de desenvolvimento -->
+  <text x="320" y="105" text-anchor="middle" font-size="16" font-weight="bold" fill="#1F3A5F">Stack de Desenvolvimento (MVP)</text>
+  <rect x="80" y="125" width="480" height="60" rx="6" fill="#1F3A5F"/>
+  <text x="320" y="152" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">Backend — Python 3.11 + FastAPI (MIT)</text>
+  <text x="320" y="172" text-anchor="middle" font-size="11" fill="#E0E7EF">Assíncrono nativo, type-safe, ecossistema maduro</text>
+  <rect x="80" y="195" width="480" height="60" rx="6" fill="#2E7D32"/>
+  <text x="320" y="222" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">Banco — SQLite (Public Domain)</text>
+  <text x="320" y="242" text-anchor="middle" font-size="11" fill="#E8F5E9">Zero-config, ACID, cache integrado | Fallback: mesmo banco</text>
+  <rect x="80" y="265" width="480" height="60" rx="6" fill="#6A1B9A"/>
+  <text x="320" y="292" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">PDF — WeasyPrint (BSD-3-Clause)</text>
+  <text x="320" y="312" text-anchor="middle" font-size="11" fill="#F3E5F5">HTML/CSS → PDF | Invoice em ≤ 3s (REQ-04)</text>
+  <rect x="80" y="335" width="480" height="60" rx="6" fill="#E65100"/>
+  <text x="320" y="362" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">Frontend — HTML5 + HTMX + Tailwind</text>
+  <text x="320" y="382" text-anchor="middle" font-size="11" fill="#FFFFFF">KISS, interatividade sem JS pesado, responsivo</text>
+  <rect x="80" y="405" width="480" height="60" rx="6" fill="#546E7A"/>
+  <text x="320" y="432" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">Testes — pytest + coverage.py (MIT)</text>
+  <text x="320" y="452" text-anchor="middle" font-size="11" fill="#FFFFFF">Meta ≥ 80% coverage | CI bloqueia merge se &lt; 80%</text>
+  <rect x="80" y="475" width="480" height="60" rx="6" fill="#37474F"/>
+  <text x="320" y="502" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">CI/CD — GitHub Actions Free Tier</text>
+  <text x="320" y="522" text-anchor="middle" font-size="11" fill="#FFFFFF">Lint + testes ≤ 5min | Pipeline verde obrigatório</text>
+  <!-- SDD com IA -->
+  <text x="940" y="105" text-anchor="middle" font-size="16" font-weight="bold" fill="#2E7D32">SDD Local com IA Generativa (P3 + P6)</text>
+  <rect x="680" y="125" width="520" height="180" rx="8" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
+  <text x="940" y="155" text-anchor="middle" font-size="15" font-weight="bold" fill="#2E7D32">Stack SDD Canônica — Custo Zero</text>
+  <text x="940" y="185" text-anchor="middle" font-size="13" fill="#333333">Motor de Inferência: llama.cpp 0.4.0-dev (MIT)</text>
+  <text x="940" y="208" text-anchor="middle" font-size="13" fill="#333333">Modelo: Qwen 32B Instruct (Q4_K_M)</text>
+  <text x="940" y="231" text-anchor="middle" font-size="13" fill="#333333">Interface: OpenCode</text>
+  <text x="940" y="254" text-anchor="middle" font-size="13" fill="#333333">Hardware local: AMD Ryzen 7 8700G + 60GB RAM</text>
+  <text x="940" y="277" text-anchor="middle" font-size="13" fill="#333333">GPU: Radeon 780M (RDNA 3) via Vulkan/radv</text>
+  <text x="940" y="297" text-anchor="middle" font-size="11" font-style="italic" fill="#555555">Fallback: Qwen 14B se RAM exceder</text>
+  <!-- Princípio P6 -->
+  <rect x="680" y="320" width="520" height="110" rx="8" fill="#FFF3E0" stroke="#E65100" stroke-width="2"/>
+  <text x="940" y="348" text-anchor="middle" font-size="14" font-weight="bold" fill="#E65100">Princípio P6 — Especialização via Prompt</text>
+  <text x="940" y="375" text-anchor="middle" font-size="12" fill="#333333">1 modelo (Qwen 32B) + N prompts = N especialistas</text>
+  <text x="940" y="400" text-anchor="middle" font-size="12" fill="#333333">PM · Coder · Reviewer · Tester</text>
+  <text x="940" y="420" text-anchor="middle" font-size="11" font-style="italic" fill="#555555">Personas em .ai/personas/ · Symlink active.md</text>
+  <!-- Rastreabilidade -->
+  <rect x="680" y="445" width="520" height="90" rx="8" fill="#F4F6F8" stroke="#1F3A5F" stroke-width="2"/>
+  <text x="940" y="473" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3A5F">Rastreabilidade Auditável</text>
+  <text x="940" y="498" text-anchor="middle" font-size="12" fill="#333333">✓ Prompts em .ai/handoffs/ (versionados)</text>
+  <text x="940" y="518" text-anchor="middle" font-size="12" fill="#333333">✓ Commits com co-autoria LLM declarada</text>
+  <text x="940" y="535" text-anchor="middle" font-size="11" font-style="italic" fill="#555555">Revisão humana obrigatória antes do merge</text>
+  <!-- Whitelist -->
+  <rect x="80" y="560" width="1120" height="130" rx="8" fill="#F8F9FA" stroke="#1F3A5F" stroke-width="2"/>
+  <text x="640" y="588" text-anchor="middle" font-size="15" font-weight="bold" fill="#1F3A5F">Governança de Licenciamento — Whitelist FOSS (8 licenças aprovadas)</text>
+  <text x="200" y="620" text-anchor="middle" font-size="12" font-weight="bold" fill="#2E7D32">MIT</text>
+  <text x="320" y="620" text-anchor="middle" font-size="12" font-weight="bold" fill="#2E7D32">Apache 2.0</text>
+  <text x="440" y="620" text-anchor="middle" font-size="12" font-weight="bold" fill="#2E7D32">BSD-2/3</text>
+  <text x="560" y="620" text-anchor="middle" font-size="12" font-weight="bold" fill="#2E7D32">GPL v2/v3</text>
+  <text x="680" y="620" text-anchor="middle" font-size="12" font-weight="bold" fill="#2E7D32">LGPL</text>
+  <text x="800" y="620" text-anchor="middle" font-size="12" font-weight="bold" fill="#2E7D32">ISC</text>
+  <text x="920" y="620" text-anchor="middle" font-size="12" font-weight="bold" fill="#2E7D32">PSF</text>
+  <text x="1060" y="620" text-anchor="middle" font-size="12" font-weight="bold" fill="#2E7D32">Public Domain</text>
+  <text x="640" y="655" text-anchor="middle" font-size="12" fill="#C0392B" font-weight="bold">❌ Blacklist: proprietárias · shareware · source-available não-OSI · Creative Commons</text>
+  <text x="640" y="678" text-anchor="middle" font-size="11" font-style="italic" fill="#555555">Auditoria contínua via GitHub Dependency Graph | Fase N4.4 da EAP | Linha de base R$ 0,00 imutável</text>
+</svg>
