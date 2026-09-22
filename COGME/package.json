@@ -1,0 +1,30 @@
+{
+  "name": "cogme-conversor",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "news:update": "node scripts/update-news.mjs",
+    "db:create": "node scripts/create-database.mjs",
+    "db:tables": "node scripts/create-tables.mjs",
+    "db:setup": "node scripts/setup-database.mjs"
+  },
+  "dependencies": {
+    "mysql2": "^3.24.2",
+    "next": "16.3.3",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "20.17.30",
+    "@types/react": "18.3.18",
+    "@types/react-dom": "18.3.5",
+    "typescript": "5.8.2",
+    "vitest": "3.2.7"
+  }
+}

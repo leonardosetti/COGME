@@ -1,0 +1,83 @@
+flowchart TB
+    INI(["Início da rede do MVP"])
+    subgraph MF1["MF1 — Fundação"]
+        direction TB
+        N21["N2.1 — Requisitos funcionais"]
+        N22["N2.2 — Requisitos não funcionais"]
+        N23["N2.3 — Casos de uso e histórias"]
+        N31["N3.1 — Arquitetura da solução"]
+        N32["N3.2 — Protótipo UX/UI"]
+        N33["N3.3 — Modelagem de dados"]
+        N41["N4.1 — Seleção da stack FOSS"]
+        N42["N4.2 — Repositório e configuração CI/CD"]
+        N43["N4.3 — Ambiente local e homologação"]
+    end
+    subgraph MF2["MF2 — Construção"]
+        direction TB
+        N51["N5.1 — Lógica de negócio e cálculos"]
+        N52["N5.2 — API de câmbio e cache"]
+        N53["N5.3 — Interface e simulações"]
+        N54["N5.4 — Geração de invoice PDF"]
+        PTAX["N5.5* — Integração PTAX"]
+        N56["N5.6 — Comparação de provedores"]
+        N61["N6.1 — Verificação de testes e cobertura"]
+        N62["N6.2 — Testes de aceitação"]
+        N71["N7.1 — Validação do pipeline CI"]
+        N81["N8.1 — Publicação em produção"]
+        N82["N8.2 — Documentação de deploy e rollback"]
+    end
+    subgraph MF3["MF3 — Consolidação"]
+        direction TB
+        N121["N12.1 — Documentação técnica"]
+        N122["N12.2 — Manual do usuário"]
+        N124["N12.4* — Consolidação documental"]
+        N131["N13.1 — Lições aprendidas finais"]
+        N132["N13.2 — Verificação SMART"]
+        N133["N13.3 — Apresentação e aceite"]
+    end
+    FIM(["Fim — Entrega e aceite do MVP"])
+    N21 --> N31
+    N22 --> N31
+    N23 --> N31
+    N31 --> N33
+    N31 --> N41
+    N41 --> N42
+    N42 --> N43
+    N33 --> N51
+    N43 --> N51
+    N51 --> N52
+    N32 --> N53
+    N51 --> N53
+    N51 --> N54
+    N52 --> N61
+    N53 --> N61
+    N54 --> N61
+    N61 --> N62
+    N42 --> N71
+    N61 --> N71
+    N62 --> N81
+    N71 --> N81
+    N81 --> N82
+    N52 --> N121
+    N81 --> N121
+    N121 --> N124
+    N122 --> N124
+    N81 --> N132
+    N124 --> N132
+    N131 --> N133
+    N132 --> N133
+    N52 --> PTAX
+    PTAX --> N56
+    INI -.-> N21
+    INI -.-> N22
+    INI -.-> N23
+    N31 -.-> N32
+    N56 -.-> N61
+    N81 -.-> N122
+    N82 -.-> N124
+    N124 -.-> N131
+    N133 -.-> FIM
+    classDef marco fill:#e2e8f0,stroke:#334155,color:#0f172a;
+    classDef pendencia fill:#fff7ed,stroke:#c2410c,color:#7c2d12;
+    class INI,FIM marco;
+    class PTAX,N124 pendencia;
