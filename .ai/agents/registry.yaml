@@ -62,6 +62,41 @@ agents:
   - agent-gatekeeper
   - agent-project-auditor
   - agent-skill-master
+- file: .opencode/agents/agent-pm.md
+  name: agent-pm
+  version: 0.1.0
+  layer: L1
+  role: specialist
+  description: COGME PM steward. Custodian of PMBOK 7 corpus, TAP/EAP consistency, milestone tracking
+    M1-M4, CCB drafting and flow metrics. Recommends; the Human decises alone per constitution Art. 5.
+  status: promulgado
+  upstream:
+  - agent-orchestrator
+  downstream:
+  - agent-po
+  - agent-architect
+  - agent-project-analyst
+  - agent-devops
+  - agent-project-auditor
+  - agent-sdd-specialist
+- file: .opencode/agents/agent-po.md
+  name: agent-po
+  version: 0.1.0
+  layer: L1
+  role: specialist
+  description: COGME PO steward. Owns backlog hygiene in GitHub Projects SSOT, DoR/DoD checkboxes, WIP
+    cap enforcement and slice sizing. Translates PMBOK scope into Kanban flow. Recommends; Human decises
+    (constitution Art. 5).
+  status: promulgado
+  upstream:
+  - agent-orchestrator
+  - agent-pm
+  downstream:
+  - agent-backend-dev
+  - agent-frontend-dev
+  - agent-qa-sdet
+  - agent-gatekeeper
+  - agent-sdd-specialist
 - file: .opencode/agents/agent-sdd-specialist.md
   name: agent-sdd-specialist
   version: 0.1.0

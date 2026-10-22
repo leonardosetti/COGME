@@ -87,7 +87,7 @@ class TestDispatcher:
 
     def test_not_promulgated_rejected(self, tmp_path, seeded_registry):
         rc, env = run(DISPATCH, "--check", write_task(tmp_path, {
-            "task_id": "TA-003", "target": "agent-sdd-specialist", "action": "spec"}))
+            "task_id": "TA-003", "target": "agent-architect", "action": "plan"}))
         assert rc == 1
         assert any("promulgado" in e for e in env["errors"])
 
