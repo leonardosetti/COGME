@@ -8,6 +8,26 @@ registry:
   project: COGME
   slug_rule: kebab-case com prefixo agent- (constitution.md Art. 4)
 agents:
+- file: .opencode/agents/agent-architect.md
+  name: agent-architect
+  version: 0.1.0
+  layer: L1
+  role: specialist
+  description: 'COGME architect. Custodian of architecture: ADR lifecycle, diagrams, src structure integrity
+    and stack-drift vigilance (vector R-01). Co-guards CVE watch with security. Recommends ADR amendments;
+    Human CCB ratifies.'
+  status: promulgado
+  upstream:
+  - agent-orchestrator
+  - agent-pm
+  - agent-sdd-specialist
+  downstream:
+  - agent-api-specialist
+  - agent-dba
+  - agent-backend-dev
+  - agent-frontend-dev
+  - agent-infrastructure-specialist
+  - agent-digital-security
 - file: .opencode/agents/agent-factory-architect.md
   name: agent-factory-architect
   version: null
@@ -97,6 +117,23 @@ agents:
   - agent-qa-sdet
   - agent-gatekeeper
   - agent-sdd-specialist
+- file: .opencode/agents/agent-project-analyst.md
+  name: agent-project-analyst
+  version: 0.1.0
+  layer: L1
+  role: specialist
+  description: COGME analyst. Consolidates whole-project state (docs, specs, code, tests, roster) into
+    evidence-based findings. No decision authority, no edits to canon files; feeds PM/architect/auditor
+    with quantified parcels.
+  status: promulgado
+  upstream:
+  - agent-orchestrator
+  - agent-pm
+  downstream:
+  - agent-pm
+  - agent-architect
+  - agent-project-auditor
+  - agent-docer-specialist
 - file: .opencode/agents/agent-sdd-specialist.md
   name: agent-sdd-specialist
   version: 0.1.0
