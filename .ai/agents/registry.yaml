@@ -8,6 +8,24 @@ registry:
   project: COGME
   slug_rule: kebab-case com prefixo agent- (constitution.md Art. 4)
 agents:
+- file: .opencode/agents/agent-api-specialist.md
+  name: agent-api-specialist
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: 'COGME API custody. Owns the REST contract SSOT (OpenAPI via FastAPI), src/shared/schemas.py,
+    error model, versioning /v1 and contract-test discipline. Contract-first: nothing ships in router
+    without schema+version.'
+  status: promulgado
+  upstream:
+  - agent-orchestrator
+  - agent-python-specialist
+  - agent-architect
+  downstream:
+  - agent-backend-dev
+  - agent-frontend-dev
+  - agent-qa-sdet
+  - agent-docer-specialist
 - file: .opencode/agents/agent-architect.md
   name: agent-architect
   version: 0.1.0
@@ -28,6 +46,56 @@ agents:
   - agent-frontend-dev
   - agent-infrastructure-specialist
   - agent-digital-security
+- file: .opencode/agents/agent-backend-dev.md
+  name: agent-backend-dev
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: COGME backend implementer. Implements services/routers per API contract, python standards
+    and DB schema. Tests-first with QA strategy; FastAPI + SQLite only; CPU-local; zero deps rule. Ships
+    parcels to reviewer/gatekeeper, never merges.
+  status: promulgado
+  upstream:
+  - agent-orchestrator
+  - agent-python-specialist
+  - agent-api-specialist
+  - agent-dba
+  downstream:
+  - agent-reviewer
+  - agent-gatekeeper
+  - agent-qa-sdet
+  - agent-github-specialist
+- file: .opencode/agents/agent-bash-specialist.md
+  name: agent-bash-specialist
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: COGME shell custody. Owns automation scripts (.ai/workflows/, maintenance), bash hygiene
+    (set -euo pipefail), portable POSIX-first patterns, systemd integration for llama-server and shell-side
+    LGPD discipline. No sudo without human confirmation marker.
+  status: promulgado
+  upstream:
+  - agent-orchestrator
+  downstream:
+  - agent-infrastructure-specialist
+  - agent-devops
+  - agent-digital-security
+- file: .opencode/agents/agent-dba.md
+  name: agent-dba
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: COGME SQLite custody. Owns schema DDL, migrations, indices, integrity checks, cache quota
+    for FX rate cache, backups and LGPD retention. Data layer reconciles after contract, never before.
+  status: promulgado
+  upstream:
+  - agent-orchestrator
+  - agent-api-specialist
+  - agent-architect
+  downstream:
+  - agent-backend-dev
+  - agent-qa-sdet
+  - agent-digital-security
 - file: .opencode/agents/agent-factory-architect.md
   name: agent-factory-architect
   version: null
@@ -46,6 +114,24 @@ agents:
   status: legacy-forge
   upstream: []
   downstream: []
+- file: .opencode/agents/agent-frontend-dev.md
+  name: agent-frontend-dev
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: COGME frontend implementer. Server-rendered templates (Jinja/FastAPI), HTMX progressive
+    enhancement, Tailwind via committed util classes. Consumes ui-ux advisory + api contract. No build
+    chain, no CDN-first, CPU-local friendly.
+  status: promulgado
+  upstream:
+  - agent-orchestrator
+  - agent-ui-ux-advisor
+  - agent-api-specialist
+  - agent-python-specialist
+  downstream:
+  - agent-reviewer
+  - agent-gatekeeper
+  - agent-qa-sdet
 - file: .opencode/agents/agent-orchestrator.md
   name: agent-orchestrator
   version: 0.1.0
@@ -134,6 +220,23 @@ agents:
   - agent-architect
   - agent-project-auditor
   - agent-docer-specialist
+- file: .opencode/agents/agent-python-specialist.md
+  name: agent-python-specialist
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: COGME Python codebase steward. Owns standards (PEP 311-py3.11, typing, docstrings, stdlib-first),
+    pyproject.toml, dependency whitelist and Python runtime hygiene for 100% CPU local execution. Blocks
+    non-FOSS and cloud-bound coercions.
+  status: promulgado
+  upstream:
+  - agent-orchestrator
+  - agent-architect
+  downstream:
+  - agent-backend-dev
+  - agent-qa-sdet
+  - agent-docer-specialist
+  - agent-artifact-builder
 - file: .opencode/agents/agent-sdd-specialist.md
   name: agent-sdd-specialist
   version: 0.1.0
@@ -155,6 +258,22 @@ agents:
   - agent-docer-specialist
   - agent-reviewer
   - agent-gatekeeper
+- file: .opencode/agents/agent-ui-ux-advisor.md
+  name: agent-ui-ux-advisor
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: COGME UI/UX advisory. Owns flows, copy, wireframes (HTML mockups/mermaid) and accessibility
+    baseline for the currency-sim and invoice flows prior to implementation. Advisory only, no code merges.
+  status: promulgado
+  upstream:
+  - agent-orchestrator
+  - agent-pm
+  - agent-api-specialist
+  downstream:
+  - agent-frontend-dev
+  - agent-qa-sdet
+  - agent-reviewer
 deprecated:
   archived_at: 2026-10-22
   path: .opencode/agents/archive/

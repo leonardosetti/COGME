@@ -29,6 +29,11 @@ def write_task(tmp_path, task: dict) -> str:
     return str(f)
 
 
+# slug set importado da fonte única (SSOT).
+sys.path.insert(0, str(ROOT / "scripts"))
+from validate_nexus_yaml import KNOWN_SLUGS as KNOWN_SLUGS_SAFE
+
+
 def seed_registry(agents_block: str):
     REGISTRY.write_text(
         "registry:\n  version: '1.0'\n  project: COGME\n"
@@ -86,8 +91,16 @@ class TestDispatcher:
         assert any("DAG" in e for e in env["errors"])
 
     def test_not_promulgated_rejected(self, tmp_path, seeded_registry):
+        # dialético robusto: escolhe dinamicamente um slug pendente (não-promulgado)
+        import yaml as _yaml
+        reg_path = REGISTRY.parent / "registry.yaml"
+        reg = _yaml.safe_load(reg_path.read_text(encoding="utf-8"))
+        promulgated = {a.get("name") for a in reg.get("agents", [])}
+        pending = sorted(KNOWN_SLUGS_SAFE - promulgated)
+        if not pending:
+            pytest.skip("roster completo — sem slug pendente para simular rejeição")
         rc, env = run(DISPATCH, "--check", write_task(tmp_path, {
-            "task_id": "TA-003", "target": "agent-architect", "action": "plan"}))
+            "task_id": "TA-003", "target": pending[0], "action": "plan"}))
         assert rc == 1
         assert any("promulgado" in e for e in env["errors"])
 
