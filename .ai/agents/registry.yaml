@@ -181,6 +181,21 @@ agents:
   - agent-reviewer
   - agent-gatekeeper
   - agent-qa-sdet
+- file: .opencode/agents/agent-gatekeeper.md
+  name: agent-gatekeeper
+  version: 0.1.0
+  layer: L3
+  role: gate
+  description: COGME merge gate custody (L3). Owns merge authorization via full chain verification (reviewer
+    pass + CI green + coverage + compliance + Human approval), branch-protection co-custody, revert-first
+    policy and release gating. The chain or nothing.
+  status: promulgado
+  upstream:
+  - agent-orchestrator
+  - agent-reviewer
+  downstream:
+  - agent-project-auditor
+  - agent-github-specialist
 - file: .opencode/agents/agent-github-specialist.md
   name: agent-github-specialist
   version: 0.1.0
@@ -301,6 +316,18 @@ agents:
   - agent-architect
   - agent-project-auditor
   - agent-docer-specialist
+- file: .opencode/agents/agent-project-auditor.md
+  name: agent-project-auditor
+  version: 0.1.0
+  layer: L3
+  role: gate
+  description: COGME final audit custody (L3, terminal). Owns chain audits (REQ->HF->PR->run->release),
+    the append-only violation register (VIO-NNN), roster governance checks, quality trends and academic
+    honesty verification. Reports to Human (Art. 5.1); audits are never bypassed.
+  status: promulgado
+  upstream:
+  - agent-orchestrator
+  downstream: []
 - file: .opencode/agents/agent-python-specialist.md
   name: agent-python-specialist
   version: 0.1.0
@@ -318,6 +345,37 @@ agents:
   - agent-qa-sdet
   - agent-docer-specialist
   - agent-artifact-builder
+- file: .opencode/agents/agent-qa-sdet.md
+  name: agent-qa-sdet
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: 'COGME test custody (QA+QE+SDET consolidated). Owns test strategy per REQ, test code engineering,
+    coverage gate (>= 80%) and contract-test derivation. Evidence-first: verdicts carry run ids, exit
+    codes and flake status; never mutes red.'
+  status: promulgado
+  upstream:
+  - agent-orchestrator
+  - agent-python-specialist
+  - agent-api-specialist
+  downstream:
+  - agent-reviewer
+  - agent-gatekeeper
+  - agent-project-auditor
+- file: .opencode/agents/agent-reviewer.md
+  name: agent-reviewer
+  version: 0.1.0
+  layer: L3
+  role: gate
+  description: 'COGME code review verdict custody (L3). Issues pass|amend|block verdicts citing an immutable
+    rubric (R-01..R-07), with risk classification, evidence requirements and actionable PT-BR amendments.
+    Verdicts only: never merges, never implements.'
+  status: promulgado
+  upstream:
+  - agent-orchestrator
+  downstream:
+  - agent-gatekeeper
+  - agent-project-auditor
 - file: .opencode/agents/agent-sdd-specialist.md
   name: agent-sdd-specialist
   version: 0.1.0
