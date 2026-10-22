@@ -91,6 +91,8 @@ Fluxo half-duplex: toda delegação retorna parcela estruturada ao chamador; bri
 
 ### FASE A — Ondas de Forja (ordem estrita: upstream concluído antes do downstream)
 
+> **Camadas finais (DAG canônica, `AGENT_TOPOLOGY`):** L0 → 1 | L1 → 5 | L2 → 15 (execução, inclui `agent-qa-sdet`) | L3 → 3 (portões: reviewer, gatekeeper, auditor) | META → skill-master + forjador. Total: 25.
+
 #### ONDA 1 — Comando do Sistema
 
 | Ordem | Agente | Camada | Pré-requisito | Critério de aceite |
