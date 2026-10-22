@@ -82,6 +82,20 @@ O projeto adota um **modelo híbrido trifásico** declarado no [Termo de Abertur
 | [ADR-004](docs/decisoes/ADR-004-tasklists.md) | Tasklists Markdown (rejeição de subissues) | ✅ Aprovada |
 | [ADR-005](docs/decisoes/ADR-005-freeze.md) | Regime de freeze do TAP | ⏳ Antes do M2 |
 
+### Tecelagem Constitucional e Agentes
+
+A produção de agentes segue o [Plano Canônico de Produção](docs/planos/plano-producao-agentes.md), governado pela [Constituição do Projeto](constitution.md):
+
+| Gate | Artefato | Validador |
+|---|---|---|
+| Lei suprema | `constitution.md` | auditoria humana (CCB) |
+| Contratos de agentes | `.opencode/agents/*.md` | `scripts/validate_nexus_yaml.py` |
+| Score de forja (≥ 85/100) | 16 seções AFA | `scripts/validate_afa_output.py` |
+| Roster SSOT | `.ai/agents/registry.yaml` | `scripts/sync_agent_registry.py` |
+| Dispatch half-duplex | DAG `AGENT_TOPOLOGY` | `scripts/nexus_dispatcher.py` |
+
+Roster em consolidação: 25 agentes (`agent-*`) em 8 ondas de produção.
+
 ---
 
 ## Roadmap e Marcos
