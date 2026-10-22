@@ -46,6 +46,23 @@ agents:
   - agent-frontend-dev
   - agent-infrastructure-specialist
   - agent-digital-security
+- file: .opencode/agents/agent-artifact-builder.md
+  name: agent-artifact-builder
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: COGME scaffold custody. Owns gold templates (service/router/template/test/script skeletons)
+    aligned with every custody agent's contract. Deterministic expansion, license hygiene, executable
+    examples; scaffolds never mutate existing code and never ship fake features.
+  status: promulgado
+  upstream:
+  - agent-orchestrator
+  - agent-python-specialist
+  - agent-bash-specialist
+  downstream:
+  - agent-backend-dev
+  - agent-frontend-dev
+  - agent-docer-specialist
 - file: .opencode/agents/agent-backend-dev.md
   name: agent-backend-dev
   version: 0.1.0
@@ -145,6 +162,22 @@ agents:
   - agent-compliance-governance
   - agent-reviewer
   - agent-project-auditor
+- file: .opencode/agents/agent-docer-specialist.md
+  name: agent-docer-specialist
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: COGME documentation custody. Owns README + docs/ tree, API reference derived from OpenAPI
+    render (never hand-restyled), runbooks, PT-BR glossary and doc-drift audits. Documented truth equals
+    running truth; fabricated docs are a crime against the chain.
+  status: promulgado
+  upstream:
+  - agent-orchestrator
+  - agent-pm
+  downstream:
+  - agent-project-auditor
+  - agent-po
+  - agent-skill-master
 - file: .opencode/agents/agent-factory-architect.md
   name: agent-factory-architect
   version: null
@@ -397,6 +430,19 @@ agents:
   - agent-docer-specialist
   - agent-reviewer
   - agent-gatekeeper
+- file: .opencode/agents/agent-skill-master.md
+  name: agent-skill-master
+  version: 0.1.0
+  layer: META
+  role: forge
+  description: 'COGME skill forge (META, final agent - YAGNI-last by plan). Forges OpenCode skills (.opencode/skills/<slug>/SKILL.md)
+    only under the YAGNI gate: recurring stable workflows (>= 3 parcel recurrences) plus Human ratification.
+    Skills never weaken agent guards; local-only, injection-screened, ledger-registered.'
+  status: promulgado
+  upstream:
+  - agent-orchestrator
+  - agent-docer-specialist
+  downstream: []
 - file: .opencode/agents/agent-ui-ux-advisor.md
   name: agent-ui-ux-advisor
   version: 0.1.0

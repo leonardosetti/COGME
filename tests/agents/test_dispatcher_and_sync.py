@@ -111,13 +111,15 @@ class TestDispatcher:
         assert any("action" in e for e in env["errors"])
 
     def test_topology_report(self):
+        """Roster COMPLETO (25/25 do plano promulgados): DAG canônico intacto,
+        pendências zero — assegurado pela ONDA 7 (skill-master fecha o plano)."""
         rc, rep = run(DISPATCH, "--report")
         assert rc == 0
         assert rep["dag_totals"]["L0"] == 1
         assert rep["dag_totals"]["L1"] == 5
         assert rep["dag_totals"]["L2"] == 15  # inclui agent-qa-sdet (execução)
         assert rep["dag_totals"]["L3"] == 3   # itens do portão: reviewer, gatekeeper, auditor
-        assert len(rep["missing_from_dag"]) >= 1
+        assert rep["missing_from_dag"] == []
 
 
 class TestSync:
