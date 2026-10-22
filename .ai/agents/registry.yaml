@@ -26,6 +26,63 @@ agents:
   status: legacy-forge
   upstream: []
   downstream: []
+- file: .opencode/agents/agent-orchestrator.md
+  name: agent-orchestrator
+  version: 0.1.0
+  layer: L0
+  role: orchestrator
+  description: COGME L0 orchestrator - sole DAG dispatcher. Triages tasks, enforces half-duplex contracts,
+    aggregates structured parcels, owns escalation to human. Governs all promulgated agents per constitution.md
+    Art. 4.
+  status: promulgado
+  upstream:
+  - agent-factory-architect-ultimate
+  downstream:
+  - agent-sdd-specialist
+  - agent-pm
+  - agent-po
+  - agent-architect
+  - agent-project-analyst
+  - agent-python-specialist
+  - agent-api-specialist
+  - agent-dba
+  - agent-backend-dev
+  - agent-ui-ux-advisor
+  - agent-frontend-dev
+  - agent-bash-specialist
+  - agent-infrastructure-specialist
+  - agent-devops
+  - agent-github-specialist
+  - agent-digital-security
+  - agent-compliance-governance
+  - agent-docer-specialist
+  - agent-artifact-builder
+  - agent-qa-sdet
+  - agent-reviewer
+  - agent-gatekeeper
+  - agent-project-auditor
+  - agent-skill-master
+- file: .opencode/agents/agent-sdd-specialist.md
+  name: agent-sdd-specialist
+  version: 0.1.0
+  layer: L1
+  role: specialist
+  description: COGME SDD custodian. Understands, orients and applies Spec-Driven Development. Owns spec
+    lifecycle, canonical handoff contract, .ai/specs custody and SDD cycle v2 integration. Gates against
+    constitution.md Art. 6.
+  status: promulgado
+  upstream:
+  - agent-orchestrator
+  downstream:
+  - agent-pm
+  - agent-po
+  - agent-architect
+  - agent-backend-dev
+  - agent-frontend-dev
+  - agent-qa-sdet
+  - agent-docer-specialist
+  - agent-reviewer
+  - agent-gatekeeper
 deprecated:
   archived_at: 2026-10-22
   path: .opencode/agents/archive/
