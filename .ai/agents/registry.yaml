@@ -80,6 +80,22 @@ agents:
   - agent-infrastructure-specialist
   - agent-devops
   - agent-digital-security
+- file: .opencode/agents/agent-compliance-governance.md
+  name: agent-compliance-governance
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: COGME compliance custody. Owns LGPD (primary) + Marco Civil alignment, FOSS license whitelist
+    (L-01 auditor absorbed by consolidation), Bypass pillar verification and Constitution drift audits.
+    Legal truth precedes feature truth; Human remains sole authority (Art. 5.1).
+  status: promulgado
+  upstream:
+  - agent-orchestrator
+  - agent-digital-security
+  downstream:
+  - agent-project-auditor
+  - agent-gatekeeper
+  - agent-po
 - file: .opencode/agents/agent-dba.md
   name: agent-dba
   version: 0.1.0
@@ -96,6 +112,39 @@ agents:
   - agent-backend-dev
   - agent-qa-sdet
   - agent-digital-security
+- file: .opencode/agents/agent-devops.md
+  name: agent-devops
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: COGME CI/CD custody. Owns .github/workflows/ci.yml (currently empty gap G-05), gate enforcement
+    (pytest+coverage>=80), free-tier GitHub Actions discipline, secrets hygiene and rollback runbooks.
+    Automation serves gates, never bypasses them.
+  status: promulgado
+  upstream:
+  - agent-orchestrator
+  - agent-infrastructure-specialist
+  - agent-python-specialist
+  downstream:
+  - agent-qa-sdet
+  - agent-gatekeeper
+  - agent-digital-security
+- file: .opencode/agents/agent-digital-security.md
+  name: agent-digital-security
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: COGME digital security custody. Owns threat model, OWASP ASVS-lite hardening baseline,
+    secrets and file permissions hygiene, local-only network enforcement and dependency CVE watch (R-01
+    co-owner with architect). Security verdicts precede compliance and merge steps.
+  status: promulgado
+  upstream:
+  - agent-orchestrator
+  - agent-architect
+  downstream:
+  - agent-compliance-governance
+  - agent-reviewer
+  - agent-project-auditor
 - file: .opencode/agents/agent-factory-architect.md
   name: agent-factory-architect
   version: null
@@ -132,6 +181,38 @@ agents:
   - agent-reviewer
   - agent-gatekeeper
   - agent-qa-sdet
+- file: .opencode/agents/agent-github-specialist.md
+  name: agent-github-specialist
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: COGME GitHub ecosystem custody. Owns Projects board mirror sync, branch protection, PR/issue
+    templates, release tag discipline and gh API usage under least-privilege tokens. Accelerates traceability;
+    never owns merge verdicts or CI gates.
+  status: promulgado
+  upstream:
+  - agent-orchestrator
+  - agent-pm
+  downstream:
+  - agent-pm
+  - agent-devops
+  - agent-gatekeeper
+  - agent-project-auditor
+- file: .opencode/agents/agent-infrastructure-specialist.md
+  name: agent-infrastructure-specialist
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: 'COGME runtime custody. Owns llama.cpp local serving (systemd, flags, model weights), 8700G/60GB
+    envelope discipline, disk quotas, health checks and upgrade trajectories. CPU-only forever: no CUDA,
+    no cloud inference, ever.'
+  status: promulgado
+  upstream:
+  - agent-orchestrator
+  downstream:
+  - agent-devops
+  - agent-digital-security
+  - agent-compliance-governance
 - file: .opencode/agents/agent-orchestrator.md
   name: agent-orchestrator
   version: 0.1.0
