@@ -80,5 +80,5 @@ def test_wave4_chain_wiring():
             .read_text(encoding="utf-8").split("---")[1])
     assert "agent-backend-dev" in (fm("agent-dba")["downstream"])
     assert "agent-api-specialist" in (fm("agent-dba")["upstream"])
-    assert "agent-api-specialist" in (fm("agent-python-specialist")["downstream"])
+    assert "agent-python-specialist" in (fm("agent-api-specialist")["upstream"])
     assert "agent-frontend-dev" in (fm("agent-ui-ux-advisor")["downstream"])
