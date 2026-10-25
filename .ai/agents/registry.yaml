@@ -8,6 +8,22 @@ registry:
   project: COGME
   slug_rule: kebab-case com prefixo agent- (constitution.md Art. 4)
 agents:
+- file: .opencode/agents/agent-ai-llm-rag-dag-mcp-roster-master-specialist.md
+  name: agent-ai-llm-rag-dag-mcp-roster-master-specialist
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: COGME AI/LLM/RAG/DAG/MCP/Roster master. Local AI engineering, RAG pipeline design, DAG
+    orchestration, MCP bridge, and agent roster mastery.
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+  - agent-infrastructure-specialist
+  - agent-skill-master
+  downstream:
+  - agent-project-auditor
+  - agent-skill-master
+  - agent-compliance-governance
 - file: .opencode/agents/agent-api-specialist.md
   name: agent-api-specialist
   version: 0.1.0
@@ -18,7 +34,7 @@ agents:
     without schema+version.'
   status: promulgado
   upstream:
-  - agent-orchestrator
+  - agent-nexus-prime-ultimate
   - agent-python-specialist
   - agent-architect
   downstream:
@@ -36,9 +52,9 @@ agents:
     Human CCB ratifies.'
   status: promulgado
   upstream:
-  - agent-orchestrator
+  - agent-nexus-prime-ultimate
   - agent-pm
-  - agent-sdd-specialist
+  - agent-pm
   downstream:
   - agent-api-specialist
   - agent-dba
@@ -46,6 +62,22 @@ agents:
   - agent-frontend-dev
   - agent-infrastructure-specialist
   - agent-digital-security
+- file: .opencode/agents/agent-art-communication-marketing-pr-specialist.md
+  name: agent-art-communication-marketing-pr-specialist
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: COGME art/communication/marketing/PR custody. Visual identity, communication strategy,
+    public relations, and deliverable presentation.
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+  - agent-pm
+  - agent-po
+  downstream:
+  - agent-project-auditor
+  - agent-gatekeeper
+  - agent-docker-specialist
 - file: .opencode/agents/agent-artifact-builder.md
   name: agent-artifact-builder
   version: 0.1.0
@@ -56,7 +88,7 @@ agents:
     examples; scaffolds never mutate existing code and never ship fake features.
   status: promulgado
   upstream:
-  - agent-orchestrator
+  - agent-nexus-prime-ultimate
   - agent-python-specialist
   - agent-bash-specialist
   downstream:
@@ -73,7 +105,7 @@ agents:
     parcels to reviewer/gatekeeper, never merges.
   status: promulgado
   upstream:
-  - agent-orchestrator
+  - agent-nexus-prime-ultimate
   - agent-python-specialist
   - agent-api-specialist
   - agent-dba
@@ -81,7 +113,6 @@ agents:
   - agent-reviewer
   - agent-gatekeeper
   - agent-qa-sdet
-  - agent-github-specialist
 - file: .opencode/agents/agent-bash-specialist.md
   name: agent-bash-specialist
   version: 0.1.0
@@ -92,11 +123,60 @@ agents:
     LGPD discipline. No sudo without human confirmation marker.
   status: promulgado
   upstream:
-  - agent-orchestrator
+  - agent-nexus-prime-ultimate
   downstream:
   - agent-infrastructure-specialist
   - agent-devops
   - agent-digital-security
+- file: .opencode/agents/agent-business-analysis-specialist.md
+  name: agent-business-analysis-specialist
+  version: 0.1.0
+  layer: L1
+  role: specialist
+  description: COGME business analysis custody. Requirements elicitation, process modeling, stakeholder
+    analysis, REQ traceability. Feeds SDD specs, PM scope, PO backlog.
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+  - agent-pm
+  - agent-po
+  downstream:
+  - agent-pm
+  - agent-architect
+  - agent-project-analyst
+  - agent-qa-sdet
+- file: .opencode/agents/agent-clean-code-evaluator.md
+  name: agent-clean-code-evaluator
+  version: 0.1.0
+  layer: L3
+  role: gate
+  description: 'COGME clean code evaluator (L3 gate). Evaluates source code against clean code principles:
+    readability, simplicity, naming, functions, comments, formatting, and defect prevention.'
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+  - agent-python-specialist
+  - agent-backend-dev
+  - agent-frontend-dev
+  downstream:
+  - agent-gatekeeper
+  - agent-project-auditor
+- file: .opencode/agents/agent-cobit-specialist.md
+  name: agent-cobit-specialist
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: COGME COBIT custody. IT governance framework, control objectives, management practices,
+    and IT governance compliance.
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+  - agent-compliance-governance
+  - agent-project-auditor
+  downstream:
+  - agent-project-auditor
+  - agent-gatekeeper
+  - agent-pm
 - file: .opencode/agents/agent-compliance-governance.md
   name: agent-compliance-governance
   version: 0.1.0
@@ -107,8 +187,24 @@ agents:
     Legal truth precedes feature truth; Human remains sole authority (Art. 5.1).
   status: promulgado
   upstream:
-  - agent-orchestrator
+  - agent-nexus-prime-ultimate
   - agent-digital-security
+  downstream:
+  - agent-project-auditor
+  - agent-gatekeeper
+  - agent-po
+- file: .opencode/agents/agent-copyright-specialist.md
+  name: agent-copyright-specialist
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: COGME copyright custody. Authorship, derivative works, licensing of creative output, public
+    domain vs copyleft, copyright compliance for deliverables.
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+  - agent-compliance-governance
+  - agent-project-analyst
   downstream:
   - agent-project-auditor
   - agent-gatekeeper
@@ -122,7 +218,7 @@ agents:
     for FX rate cache, backups and LGPD retention. Data layer reconciles after contract, never before.
   status: promulgado
   upstream:
-  - agent-orchestrator
+  - agent-nexus-prime-ultimate
   - agent-api-specialist
   - agent-architect
   downstream:
@@ -139,7 +235,7 @@ agents:
     Automation serves gates, never bypasses them.
   status: promulgado
   upstream:
-  - agent-orchestrator
+  - agent-nexus-prime-ultimate
   - agent-infrastructure-specialist
   - agent-python-specialist
   downstream:
@@ -156,7 +252,7 @@ agents:
     co-owner with architect). Security verdicts precede compliance and merge steps.
   status: promulgado
   upstream:
-  - agent-orchestrator
+  - agent-nexus-prime-ultimate
   - agent-architect
   downstream:
   - agent-compliance-governance
@@ -172,7 +268,23 @@ agents:
     running truth; fabricated docs are a crime against the chain.
   status: promulgado
   upstream:
-  - agent-orchestrator
+  - agent-nexus-prime-ultimate
+  - agent-pm
+  downstream:
+  - agent-project-auditor
+  - agent-po
+  - agent-skill-master
+- file: .opencode/agents/agent-docker-specialist.md
+  name: agent-docker-specialist
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: COGME documentation custody. Owns README + docs/ tree, API reference derived from OpenAPI
+    render (never hand-restyled), runbooks, PT-BR glossary and doc-drift audits. Documented truth equals
+    running truth; fabricated docs are a crime against the chain.
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
   - agent-pm
   downstream:
   - agent-project-auditor
@@ -206,7 +318,7 @@ agents:
     chain, no CDN-first, CPU-local friendly.
   status: promulgado
   upstream:
-  - agent-orchestrator
+  - agent-nexus-prime-ultimate
   - agent-ui-ux-advisor
   - agent-api-specialist
   - agent-python-specialist
@@ -224,11 +336,10 @@ agents:
     policy and release gating. The chain or nothing.
   status: promulgado
   upstream:
-  - agent-orchestrator
+  - agent-nexus-prime-ultimate
   - agent-reviewer
   downstream:
   - agent-project-auditor
-  - agent-github-specialist
 - file: .opencode/agents/agent-github-specialist.md
   name: agent-github-specialist
   version: 0.1.0
@@ -239,12 +350,11 @@ agents:
     never owns merge verdicts or CI gates.
   status: promulgado
   upstream:
-  - agent-orchestrator
+  - agent-nexus-prime-ultimate
   - agent-pm
   downstream:
   - agent-pm
   - agent-devops
-  - agent-gatekeeper
   - agent-project-auditor
 - file: .opencode/agents/agent-infrastructure-specialist.md
   name: agent-infrastructure-specialist
@@ -256,24 +366,58 @@ agents:
     no cloud inference, ever.'
   status: promulgado
   upstream:
-  - agent-orchestrator
+  - agent-nexus-prime-ultimate
   downstream:
   - agent-devops
   - agent-digital-security
   - agent-compliance-governance
-- file: .opencode/agents/agent-orchestrator.md
-  name: agent-orchestrator
+- file: .opencode/agents/agent-iso-26514-specialist.md
+  name: agent-iso-26514-specialist
   version: 0.1.0
-  layer: L0
-  role: orchestrator
-  description: COGME L0 orchestrator - sole DAG dispatcher. Triages tasks, enforces half-duplex contracts,
-    aggregates structured parcels, owns escalation to human. Governs all promulgated agents per constitution.md
-    Art. 4.
+  layer: L2
+  role: specialist
+  description: COGME ISO/IEC/IEEE 26514:2022 custody. Systems and software engineering documentation requirements,
+    documentation planning, and documentation quality assurance.
   status: promulgado
   upstream:
-  - agent-factory-architect-ultimate
+  - agent-nexus-prime-ultimate
+  - agent-pm
+  - agent-docker-specialist
   downstream:
-  - agent-sdd-specialist
+  - agent-project-auditor
+  - agent-gatekeeper
+  - agent-compliance-governance
+- file: .opencode/agents/agent-itil-specialist.md
+  name: agent-itil-specialist
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: COGME ITIL custody. IT service management, incident/change/problem/service desk processes,
+    and service management compliance.
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+  - agent-devops
+  - agent-compliance-governance
+  downstream:
+  - agent-project-auditor
+  - agent-gatekeeper
+  - agent-pm
+- file: .opencode/agents/agent-nexus-prime-ultimate.md
+  name: agent-nexus-prime-ultimate
+  version: 1.3.0-ULTIMATE
+  layer: L0
+  role: orchestrator
+  description: COGME L0 orchestrator - sole DAG dispatcher, constitutional compliance enforcer, half-duplex
+    contracts, aggregates structured parcels, owns escalation to human. Governs all promulgated agents
+    per constitution.md Art. 4. Also responsible for RAG/DAG/Roster/MCP ecosystem integrity and nexus-prime
+    ultimate orchestration.
+  status: promulgado
+  upstream:
+  - agent-factory-architect
+    downstream: agent-docker-specialist-ultimate
+  downstream:
+  - agent-pm
   - agent-pm
   - agent-po
   - agent-architect
@@ -290,7 +434,7 @@ agents:
   - agent-github-specialist
   - agent-digital-security
   - agent-compliance-governance
-  - agent-docer-specialist
+  - agent-docker-specialist
   - agent-artifact-builder
   - agent-qa-sdet
   - agent-reviewer
@@ -306,14 +450,13 @@ agents:
     M1-M4, CCB drafting and flow metrics. Recommends; the Human decises alone per constitution Art. 5.
   status: promulgado
   upstream:
-  - agent-orchestrator
+  - agent-nexus-prime-ultimate
   downstream:
   - agent-po
   - agent-architect
-  - agent-project-analyst
   - agent-devops
   - agent-project-auditor
-  - agent-sdd-specialist
+  - agent-pm
 - file: .opencode/agents/agent-po.md
   name: agent-po
   version: 0.1.0
@@ -324,14 +467,13 @@ agents:
     (constitution Art. 5).
   status: promulgado
   upstream:
-  - agent-orchestrator
+  - agent-nexus-prime-ultimate
   - agent-pm
   downstream:
   - agent-backend-dev
   - agent-frontend-dev
   - agent-qa-sdet
   - agent-gatekeeper
-  - agent-sdd-specialist
 - file: .opencode/agents/agent-project-analyst.md
   name: agent-project-analyst
   version: 0.1.0
@@ -342,7 +484,7 @@ agents:
     with quantified parcels.
   status: promulgado
   upstream:
-  - agent-orchestrator
+  - agent-nexus-prime-ultimate
   - agent-pm
   downstream:
   - agent-pm
@@ -359,8 +501,44 @@ agents:
     honesty verification. Reports to Human (Art. 5.1); audits are never bypassed.
   status: promulgado
   upstream:
-  - agent-orchestrator
+  - agent-nexus-prime-ultimate
   downstream: []
+- file: .opencode/agents/agent-project-design-specialist.md
+  name: agent-project-design-specialist
+  version: 0.1.0
+  layer: L1
+  role: specialist
+  description: COGME project design custody. Solution design, architectural sketches, design pattern selection,
+    and design review. Feeds implementation agents with design artifacts.
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+  - agent-architect
+  - agent-pm
+  downstream:
+  - agent-backend-dev
+  - agent-frontend-dev
+  - agent-api-specialist
+  - agent-dba
+  - agent-ui-ux-advisor
+- file: .opencode/agents/agent-project-patterns-standards-specialist.md
+  name: agent-project-patterns-standards-specialist
+  version: 0.1.0
+  layer: L1
+  role: specialist
+  description: COGME project patterns & standards custody. Reusable design patterns, coding standards,
+    templates, and anti-pattern catalog. Feeds all implementation agents.
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+  - agent-architect
+  - agent-pm
+  downstream:
+  - agent-python-specialist
+  - agent-api-specialist
+  - agent-backend-dev
+  - agent-frontend-dev
+  - agent-artifact-builder
 - file: .opencode/agents/agent-python-specialist.md
   name: agent-python-specialist
   version: 0.1.0
@@ -371,7 +549,7 @@ agents:
     non-FOSS and cloud-bound coercions.
   status: promulgado
   upstream:
-  - agent-orchestrator
+  - agent-nexus-prime-ultimate
   - agent-architect
   downstream:
   - agent-backend-dev
@@ -388,13 +566,30 @@ agents:
     codes and flake status; never mutes red.'
   status: promulgado
   upstream:
-  - agent-orchestrator
+  - agent-nexus-prime-ultimate
   - agent-python-specialist
   - agent-api-specialist
   downstream:
   - agent-reviewer
   - agent-gatekeeper
   - agent-project-auditor
+- file: .opencode/agents/agent-quality-architect-specialist.md
+  name: agent-quality-architect-specialist
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: COGME quality architecture custody. Quality attributes, quality gate design, SQA planning,
+    and quality attribute trade-off analysis.
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+  - agent-architect
+  - agent-pm
+  downstream:
+  - agent-qa-sdet
+  - agent-reviewer
+  - agent-project-auditor
+  - agent-devops
 - file: .opencode/agents/agent-reviewer.md
   name: agent-reviewer
   version: 0.1.0
@@ -405,7 +600,7 @@ agents:
     Verdicts only: never merges, never implements.'
   status: promulgado
   upstream:
-  - agent-orchestrator
+  - agent-nexus-prime-ultimate
   downstream:
   - agent-gatekeeper
   - agent-project-auditor
@@ -419,7 +614,7 @@ agents:
     constitution.md Art. 6.
   status: promulgado
   upstream:
-  - agent-orchestrator
+  - agent-nexus-prime-ultimate
   downstream:
   - agent-pm
   - agent-po
@@ -430,6 +625,22 @@ agents:
   - agent-docer-specialist
   - agent-reviewer
   - agent-gatekeeper
+- file: .opencode/agents/agent-six-sigma-specialist.md
+  name: agent-six-sigma-specialist
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: COGME Six Sigma custody. DMAIC/DMADV methodology, process variation reduction, defect prevention,
+    and quality improvement.
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+
+  - agent-project-analyst
+  downstream:
+  - agent-project-auditor
+  - agent-gatekeeper
+  - agent-pm
 - file: .opencode/agents/agent-skill-master.md
   name: agent-skill-master
   version: 0.1.0
@@ -440,9 +651,27 @@ agents:
     Skills never weaken agent guards; local-only, injection-screened, ledger-registered.'
   status: promulgado
   upstream:
-  - agent-orchestrator
+  - agent-nexus-prime-ultimate
   - agent-docer-specialist
   downstream: []
+- file: .opencode/agents/agent-sldc-process-specialist.md
+  name: agent-sldc-process-specialist
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: COGME SDLC process custody. Software development lifecycle phases, gates, entry/exit criteria,
+    process compliance, and improvement.
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+  - agent-pm
+  - agent-pm
+  downstream:
+  - agent-backend-dev
+  - agent-frontend-dev
+  - agent-qa-sdet
+  - agent-devops
+  - agent-project-auditor
 - file: .opencode/agents/agent-ui-ux-advisor.md
   name: agent-ui-ux-advisor
   version: 0.1.0
@@ -452,19 +681,10 @@ agents:
     baseline for the currency-sim and invoice flows prior to implementation. Advisory only, no code merges.
   status: promulgado
   upstream:
-  - agent-orchestrator
+  - agent-nexus-prime-ultimate
   - agent-pm
   - agent-api-specialist
   downstream:
   - agent-frontend-dev
   - agent-qa-sdet
   - agent-reviewer
-deprecated:
-  archived_at: 2026-10-22
-  path: .opencode/agents/archive/
-  agents:
-  - agent-factory-architect-neutro
-  - agent-factory-architect-liberal
-interim_fallback:
-- name: agent-factory-architect
-  reason: v2.2 operacional apenas como contingência (AFA-ULTIMATE indisponível).
