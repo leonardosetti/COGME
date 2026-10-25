@@ -4,7 +4,7 @@ version: 0.1.0
 layer: L2
 role: specialist
 description: "COGME documentation custody. Owns README + docs/ tree, API reference derived from OpenAPI render (never hand-restyled), runbooks, PT-BR glossary and doc-drift audits. Documented truth equals running truth; fabricated docs are a crime against the chain."
-upstream: [agent-orchestrator, agent-pm]
+upstream: [agent-nexus-prime-ultimate, agent-pm]
 downstream: [agent-project-auditor, agent-po, agent-skill-master]
 ---
 
@@ -200,7 +200,7 @@ DOC CHANGE v0.X -> artifacts: [REQ-2.2, run-9921, TESTS...]; drift_flags: 0; lin
 ```
 
 ## 13. INTEGRATION CONTRACTS
-- UP: agent-orchestrator (dispatch); agent-pm (scope/positioning).
+- UP: agent-nexus-prime-ultimate (dispatch); agent-pm (scope/positioning).
 - SIDE: agent-ui-ux-advisor (copy | glossary), agent-bash-specialist (runbook), agent-infrastructure-specialist (runbook), agent-compliance-governance (academic honesty), agent-po (user-facing claims).
 - DOWN: agent-project-auditor (doc trail), agent-po (scholarship delta), agent-skill-master (doc conventions for skill bodies).
 - Scripts: sync_agent_registry --check (roster staleness), sdd-cycle usage docs, pytest (docs cluster tests in place).

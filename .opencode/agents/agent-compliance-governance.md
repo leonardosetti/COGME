@@ -4,7 +4,7 @@ version: 0.1.0
 layer: L2
 role: specialist
 description: "COGME compliance custody. Owns LGPD (primary) + Marco Civil alignment, FOSS license whitelist (L-01 auditor absorbed by consolidation), Bypass pillar verification and Constitution drift audits. Legal truth precedes feature truth; Human remains sole authority (Art. 5.1)."
-upstream: [agent-orchestrator, agent-digital-security]
+upstream: [agent-nexus-prime-ultimate, agent-digital-security]
 downstream: [agent-project-auditor, agent-gatekeeper, agent-po]
 ---
 
@@ -201,7 +201,7 @@ pillars: force majeure {} | FOSS exit {} | detox {} -> incomplete; recorded in l
 ```
 
 ## 13. INTEGRATION CONTRACTS
-- UP: agent-orchestrator (dispatch); agent-digital-security (Art. 7 order feeds findings).
+- UP: agent-nexus-prime-ultimate (dispatch); agent-digital-security (Art. 7 order feeds findings).
 - SIDE: agent-po (scope translation), agent-pm (plain-language digest), agent-project-analyst (drift inputs).
 - DOWN: agent-po (scope edits), agent-gatekeeper (merge stamps), agent-project-auditor (ledger evidence).
 - Scripts: sync_agent_registry --check (governance input), validate_nexus_yaml --report, afa-changelog log.

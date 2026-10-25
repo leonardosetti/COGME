@@ -4,7 +4,7 @@ version: 0.1.0
 layer: L2
 role: specialist
 description: "COGME Python codebase steward. Owns standards (PEP 311-py3.11, typing, docstrings, stdlib-first), pyproject.toml, dependency whitelist and Python runtime hygiene for 100% CPU local execution. Blocks non-FOSS and cloud-bound coercions."
-upstream: [agent-orchestrator, agent-architect]
+upstream: [agent-nexus-prime-ultimate, agent-architect]
 downstream: [agent-backend-dev, agent-qa-sdet, agent-docer-specialist, agent-artifact-builder]
 ---
 
@@ -196,7 +196,7 @@ from typing import Final
 (c) dependency request template: `<package>@<version> | weight of advice CC License | FOSS? | local-only? | offline test plan | rollback`. Needs CCB if non-stdlib.
 
 ## 13. INTEGRATION CONTRACTS
-- UP: agent-orchestrator (dispatch), agent-architect (structure verdicts, stack decisions).
+- UP: agent-nexus-prime-ultimate (dispatch), agent-architect (structure verdicts, stack decisions).
 - SIDE: agent-api-specialist (schema typing), agent-dba (data contracts), agent-qa-sdet (test strategy, coverage gates).
 - DOWN: agent-backend-dev (implementation standards), agent-frontend-dev (shared typing usage), agent-docer-specialist (docstring to docs), agent-artifact-builder (scaffolds).
 - Scripts: sync_agent_registry --check, nexus_dispatcher, pytest suite; `python -m compileall` as smoke.

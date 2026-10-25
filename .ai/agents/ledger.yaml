@@ -1,0 +1,7 @@
+task_id: TA-0001
+sender: nexus-prime-ultimate
+receiver: agent-registry-validator
+action: validate
+status: completed
+notes: Resolved downstream slug violations, cleaned git objects, and updated legacy-forge agents
+kill_switch: inherited

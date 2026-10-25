@@ -102,7 +102,7 @@ def dispatch(task: dict, promulgated: dict) -> dict:
         env["errors"].append(f"handoff fora do padrão: {handoff!r}")
 
     # Half-duplex: anti self-delegation (Art. 4.5) — sender default = L0
-    sender = task.get("sender", "agent-orchestrator")
+    sender = task.get("sender", "agent-nexus-prime-ultimate")
     if sender == target:
         env["errors"].append(
             f"self-delegation proibida: {sender!r} → {target!r} (Art. 4.5)")

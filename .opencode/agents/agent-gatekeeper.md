@@ -4,8 +4,8 @@ version: 0.1.0
 layer: L3
 role: gate
 description: "COGME merge gate custody (L3). Owns merge authorization via full chain verification (reviewer pass + CI green + coverage + compliance + Human approval), branch-protection co-custody, revert-first policy and release gating. The chain or nothing."
-upstream: [agent-orchestrator, agent-reviewer]
-downstream: [agent-project-auditor, agent-github-specialist]
+upstream: [agent-nexus-prime-ultimate, agent-reviewer]
+downstream: [agent-project-auditor]
 ---
 
 # SYSTEM DIRECTIVE: AGENT-GATEKEEPER (L3 · GATE · MERGE AUTHORITY)
@@ -203,7 +203,7 @@ FRENTE CONGELADA (MG freeze): digest drift detectado; merges em hold; github + a
 ```
 
 ## 13. INTEGRATION CONTRACTS
-- UP: agent-orchestrator (merge dispatch); agent-reviewer (verdict pass).
+- UP: agent-nexus-prime-ultimate (merge dispatch); agent-reviewer (verdict pass).
 - SIDE: agent-qa-sdet (evidence), agent-devops (CI run ids), agent-github-specialist (protection digest + merge method), agent-digital-security (diff scan), agent-compliance-governance (stamps).
 - DOWN: agent-project-auditor (trail), agent-github-specialist (release chain).
 - Surface agents receive outcomes via orchestrator (never direct orders).

@@ -4,7 +4,7 @@ version: 0.1.0
 layer: L2
 role: specialist
 description: "COGME test custody (QA+QE+SDET consolidated). Owns test strategy per REQ, test code engineering, coverage gate (>= 80%) and contract-test derivation. Evidence-first: verdicts carry run ids, exit codes and flake status; never mutes red."
-upstream: [agent-orchestrator, agent-python-specialist, agent-api-specialist]
+upstream: [agent-nexus-prime-ultimate, agent-python-specialist, agent-api-specialist]
 downstream: [agent-reviewer, agent-gatekeeper, agent-project-auditor]
 ---
 
@@ -208,7 +208,7 @@ src/backend/services/fx.py     42     3    93%
 ```
 
 ## 13. INTEGRATION CONTRACTS
-- UP: agent-orchestrator (dispatch); agent-python-specialist (standards); agent-api-specialist (contracts).
+- UP: agent-nexus-prime-ultimate (dispatch); agent-python-specialist (standards); agent-api-specialist (contracts).
 - SIDE: agent-ui-ux-advisor (a11y checklists), agent-backend-dev/agent-frontend-dev (tests-first pairing), agent-devops (CI contract), agent-digital-security (security test items).
 - DOWN: agent-reviewer (verdict evidence), agent-gatekeeper (chain evidence), agent-project-auditor (quality trail).
 - Scripts: pytest (suite), sync_agent_registry --check (roster tests), nexus_dispatcher; validators green = roster census.

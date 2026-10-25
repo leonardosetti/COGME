@@ -43,7 +43,7 @@ LEGACY_SLUG_RE = re.compile(r"agent-factory-architect")
 
 # Sequência canônica da DAG (constitution.md Art. 4.5 + docs/planos/plano-producao-agentes.md §4)
 AGENT_TOPOLOGY = {
-    "L0": ["agent-orchestrator"],
+    "L0": ["agent-nexus-prime-ultimate"],
     "L1": ["agent-sdd-specialist", "agent-pm", "agent-po",
            "agent-architect", "agent-project-analyst"],
     "L2": ["agent-python-specialist", "agent-api-specialist", "agent-dba",
@@ -57,6 +57,16 @@ AGENT_TOPOLOGY = {
     "FORGE-LEGACY": ["agent-factory-architect"],
 }
 KNOWN_SLUGS = {a for members in AGENT_TOPOLOGY.values() for a in members}
+
+# Consolidados por vetor de agência (não forjados — papel absorvido por existente):
+VECTORES_AGENCIA = {
+    "agent-cyber-security-specialist": "agent-digital-security",
+    "agent-compliance-specialist": "agent-compliance-governance",
+    "agent-governance-specialist": "agent-compliance-governance",
+    "agent-qa-qe-sdet-master": "agent-qa-sdet",
+    "agent-sdd-master": "agent-sdd-specialist",
+    "agent-tech-architect-specialist": "agent-architect",
+}
 
 
 def parse_frontmatter(path: Path):

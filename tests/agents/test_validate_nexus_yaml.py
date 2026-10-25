@@ -40,7 +40,7 @@ layer: L2
 role: specialist
 description: "Agente de teste sintético do pipeline."
 upstream: []
-downstream: [agent-orchestrator]
+downstream: []
 ---
 # CORPO
 
@@ -120,12 +120,17 @@ class TestRealScaffold:
     def test_current_roster_validates_against_project(self, tmp_path):
         rc, payload = run_validator(tmp_path, {})
         assert rc == 0, json.dumps(payload, ensure_ascii=False)[:400]
+        # Verificar roster contra o projeto
+        import validate_nexus_yaml as v
+        known = v.KNOWN_SLUGS
+        assert "agent-nexus-prime-ultimate" in known
+        assert len(known) >= 24  # 24 agentes do plano consolidado
 
     def test_topology_is_complete(self):
         sys.path.insert(0, str(ROOT / "scripts"))
         import validate_nexus_yaml as v
         known = v.KNOWN_SLUGS
-        assert "agent-orchestrator" in known
+
         assert len(known) >= 25  # 25 agentes do plano consolidado + forjador
 
 

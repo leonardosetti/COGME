@@ -1,0 +1,36 @@
+registry:
+  version: '1.0'
+  project: COGME
+  slug_rule: kebab-case com prefixo agent- (constitution.md Art. 4)
+agents:
+- file: .opencode/agents/agent-pm.md
+  name: null
+  status: promulgado
+  errors: []
+- file: .opencode/agents/agent-ai-llm-rag-dag-mcp-roster-master-specialist.md
+  name: agent-ai-llm-rag-dag-mcp-roster-master-specialist
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: COGME AI/LLM/RAG/DAG/MCP/Roster master. Local AI engineering, RAG pipeline design, DAG orchestration, MCP bridge, and agent roster mastery.
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+  - agent-infrastructure-specialist
+  - agent-skill-master
+  downstream:
+  - agent-project-auditor
+  - agent-skill-master
+  - agent-compliance-governance
+- file: .opencode/agents/agent-api-specialist.md
+  name: agent-api-specialist
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: 'COGME API specialist with RAG/DAG/MCP capabilities'
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+  - agent-ai-llm-rag-dag-mcp-roster-master-specialist
+  downstream:
+  - agent-skill-master

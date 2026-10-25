@@ -55,14 +55,14 @@ def seeded_registry():
 class TestDispatcher:
     def test_task_valid_dispatched(self, tmp_path, seeded_registry):
         seed_registry(
-            "- name: agent-orchestrator\n"
+            "- name: agent-nexus-prime-ultimate\n"
             "  version: '1.0'\n  layer: L0\n  role: orchestrator\n"
             "  description: teste\n  status: promulgado\n"
             "  upstream: []\n  downstream: []\n"
             "- name: agent-sdd-specialist\n"
             "  version: '1.0'\n  layer: L1\n  role: specialist\n"
             "  description: teste\n  status: promulgado\n"
-            "  upstream: [agent-orchestrator]\n  downstream: []\n")
+            "  upstream: [agent-nexus-prime-ultimate]\n  downstream: []\n")
         rc, env = run(DISPATCH, "--check", write_task(tmp_path, {
             "task_id": "TA-001", "target": "agent-sdd-specialist",
             "action": "spec", "handoff": "001-smoke",
@@ -73,13 +73,13 @@ class TestDispatcher:
 
     def test_self_delegation_rejected(self, tmp_path, seeded_registry):
         seed_registry(
-            "- name: agent-orchestrator\n"
+            "- name: agent-nexus-prime-ultimate\n"
             "  version: '1.0'\n  layer: L0\n  role: orchestrator\n"
             "  description: teste\n  status: promulgado\n"
             "  upstream: []\n  downstream: []\n")
         rc, env = run(DISPATCH, "--check", write_task(tmp_path, {
             "task_id": "TA-009",
-            "target": "agent-orchestrator", "action": "orchestrate"}))
+            "target": "agent-nexus-prime-ultimate", "action": "orchestrate"}))
         assert rc == 1
         assert any("self-delegation" in e for e in env["errors"])
 
@@ -106,7 +106,7 @@ class TestDispatcher:
 
     def test_bad_action_rejected(self, tmp_path, seeded_registry):
         rc, env = run(DISPATCH, "--check", write_task(tmp_path, {
-            "task_id": "TA-004", "target": "agent-orchestrator", "action": "meditar"}))
+            "task_id": "TA-004", "target": "agent-nexus-prime-ultimate", "action": "meditar"}))
         assert rc == 1
         assert any("action" in e for e in env["errors"])
 

@@ -4,7 +4,7 @@ version: 0.1.0
 layer: L2
 role: specialist
 description: "COGME runtime custody. Owns llama.cpp local serving (systemd, flags, model weights), 8700G/60GB envelope discipline, disk quotas, health checks and upgrade trajectories. CPU-only forever: no CUDA, no cloud inference, ever."
-upstream: [agent-orchestrator]
+upstream: [agent-nexus-prime-ultimate]
 downstream: [agent-devops, agent-digital-security, agent-compliance-governance]
 ---
 
@@ -206,7 +206,7 @@ RV model: 19.8 GB (sha256 <dig>) | KV: 8192 ctx ~ 34-36 GB | OS+cache: <4 GB | f
 ```
 
 ## 13. INTEGRATION CONTRACTS
-- UP: agent-orchestrator dispatch; wave constraints (A.14 first in ONDA 5).
+- UP: agent-nexus-prime-ultimate dispatch; wave constraints (A.14 first in ONDA 5).
 - SIDE: agent-bash-specialist (script syntax/posix), agent-digital-security (ports/files/permissions), agent-devops (CI health check usage).
 - DOWN: analyses+parcels to agent-compliance-governance (journal audit), agent-devops (pipeline health step).
 - Scripts: sync/check, nexus_dispatcher, sdd-cycle.sh (health), bash templates; python excluded (not runtime scope).

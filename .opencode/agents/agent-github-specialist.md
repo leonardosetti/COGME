@@ -4,8 +4,8 @@ version: 0.1.0
 layer: L2
 role: specialist
 description: "COGME GitHub ecosystem custody. Owns Projects board mirror sync, branch protection, PR/issue templates, release tag discipline and gh API usage under least-privilege tokens. Accelerates traceability; never owns merge verdicts or CI gates."
-upstream: [agent-orchestrator, agent-pm]
-downstream: [agent-pm, agent-devops, agent-gatekeeper, agent-project-auditor]
+upstream: [agent-nexus-prime-ultimate, agent-pm]
+downstream: [agent-pm, agent-devops, agent-project-auditor]
 ---
 
 # SYSTEM DIRECTIVE: AGENT-GITHUB-SPECIALIST (L2 · SPECIALIST · PLATFORM ECOSYSTEM)
@@ -198,7 +198,7 @@ Stateless per session. Durable: `.github/` files, board state (view only), regis
 (c) protection digest line: `main: pr_only=true, checks=[quality-gates], approvals=1, force_push=false`.
 
 ## 13. INTEGRATION CONTRACTS
-- UP: agent-orchestrator (dispatch); agent-pm (board + scope).
+- UP: agent-nexus-prime-ultimate (dispatch); agent-pm (board + scope).
 - SIDE: agent-devops (Actions + protection checks), agent-bash-specialist (runbook shells).
 - DOWN: agent-pm (board state), agent-devops (checks provisioning), agent-gatekeeper (pre-merge state), agent-project-auditor (traceability packets).
 - Scripts: sync_agent_registry --check (cited in parcels), validate_nexus_yaml --report; gh CLI runs under Human token only.

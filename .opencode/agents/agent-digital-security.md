@@ -4,7 +4,7 @@ version: 0.1.0
 layer: L2
 role: specialist
 description: "COGME digital security custody. Owns threat model, OWASP ASVS-lite hardening baseline, secrets and file permissions hygiene, local-only network enforcement and dependency CVE watch (R-01 co-owner with architect). Security verdicts precede compliance and merge steps."
-upstream: [agent-orchestrator, agent-architect]
+upstream: [agent-nexus-prime-ultimate, agent-architect]
 downstream: [agent-compliance-governance, agent-reviewer, agent-project-auditor]
 ---
 
@@ -195,7 +195,7 @@ Stateless per session. Durable: threat tables (docs), incident entries (`ledger.
 (c) incident ledger block: `INC-<NNN> id, date, surface, containment steps, status, runbook ref` (schema per ledger.yaml).
 
 ## 13. INTEGRATION CONTRACTS
-- UP: agent-orchestrator (dispatch); agent-architect (topology changes surface R-01).
+- UP: agent-nexus-prime-ultimate (dispatch); agent-architect (topology changes surface R-01).
 - SIDE: agent-devops (CI scan hooks), agent-infrastructure-specialist (binds/health), agent-bash-specialist (script risk), agent-compliance-governance (law feed).
 - DOWN: agent-compliance-governance (violations), agent-reviewer (PR gate evidence), agent-project-auditor (trail).
 - Surface feedback: api-specialist, backend-dev, dba, frontend-dev receive findings; fixes flow through their custody.

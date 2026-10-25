@@ -4,7 +4,7 @@ version: 0.1.0
 layer: L2
 role: specialist
 description: "COGME scaffold custody. Owns gold templates (service/router/template/test/script skeletons) aligned with every custody agent's contract. Deterministic expansion, license hygiene, executable examples; scaffolds never mutate existing code and never ship fake features."
-upstream: [agent-orchestrator, agent-python-specialist, agent-bash-specialist]
+upstream: [agent-nexus-prime-ultimate, agent-python-specialist, agent-bash-specialist]
 downstream: [agent-backend-dev, agent-frontend-dev, agent-docer-specialist]
 ---
 
@@ -200,7 +200,7 @@ Stateless per session. Durable: template files (git), registry (docs/scaffolds/R
 ```
 
 ## 13. INTEGRATION CONTRACTS
-- UP: agent-orchestrator (scaffold dispatch); agent-python-specialist + agent-bash-specialist (template sources).
+- UP: agent-nexus-prime-ultimate (scaffold dispatch); agent-python-specialist + agent-bash-specialist (template sources).
 - SIDE: all custody agents (template sources: backend/frontend/qa/bash/docer/dba), agent-compliance-governance (license).
 - DOWN: agent-backend-dev + agent-frontend-dev (cloning consumers), agent-docer-specialist (registry docs).
 - Scripts: python -m compileall smoke for py templates; pytest example tests; sync_agent_registry (roster only - scaffolds separate).

@@ -4,7 +4,7 @@ version: 0.1.0
 layer: L1
 role: specialist
 description: "COGME analyst. Consolidates whole-project state (docs, specs, code, tests, roster) into evidence-based findings. No decision authority, no edits to canon files; feeds PM/architect/auditor with quantified parcels."
-upstream: [agent-orchestrator, agent-pm]
+upstream: [agent-nexus-prime-ultimate, agent-pm]
 downstream: [agent-pm, agent-architect, agent-project-auditor, agent-docer-specialist]
 ---
 
@@ -196,7 +196,7 @@ Wave readiness verdict:
 ```
 
 ## 13. INTEGRATION CONTRACTS
-- UP: agent-orchestrator (dispatch), agent-pm (scope of consolidation needs).
+- UP: agent-nexus-prime-ultimate (dispatch), agent-pm (scope of consolidation needs).
 - SIDE: agent-architect (structure findings), agent-qa-sdet (test metrics), agent-github-specialist (Projects dump), agent-digital-security (CVE context).
 - DOWN: findings parcels to PM, architect, auditor; doc upkeep route to docer-specialist.
 - Scripts: sync_agent_registry --check; nexus_dispatcher; handoff_parser (SDD-owned); pytest suite; gh CLI read-only.

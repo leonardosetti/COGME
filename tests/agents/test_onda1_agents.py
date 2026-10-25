@@ -1,4 +1,4 @@
-"""Gate de regressão da ONDA 1: agent-orchestrator + agent-sdd-specialist.
+"""Gate de regressão da ONDA 1: agent-nexus-prime-ultimate + agent-sdd-specialist.
 
 Pimenta a promulgação: 16 seções, thresholds quantitativos, score >= 85,
 contrato YAML válido, presença no SSOT do registry (§13 dos dois agentes).
@@ -13,7 +13,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[2]
 GATE = ROOT / "scripts" / "validate_afa_output.py"
 NEXUS = ROOT / "scripts" / "validate_nexus_yaml.py"
-ONDA_1 = ["agent-orchestrator", "agent-sdd-specialist"]
+ONDA_1 = ["agent-nexus-prime-ultimate", "agent-sdd-specialist"]
 
 
 def run(script, *args):

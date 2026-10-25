@@ -4,7 +4,7 @@ version: 0.1.0
 layer: L3
 role: gate
 description: "COGME final audit custody (L3, terminal). Owns chain audits (REQ->HF->PR->run->release), the append-only violation register (VIO-NNN), roster governance checks, quality trends and academic honesty verification. Reports to Human (Art. 5.1); audits are never bypassed."
-upstream: [agent-orchestrator]
+upstream: [agent-nexus-prime-ultimate]
 downstream: []
 ---
 
@@ -204,9 +204,9 @@ REQ-2.1 -> HF-005 -> PR 61 -> run 108 -> release v0.3.0 [OK | GAP: run missing]
 ```
 
 ## 13. INTEGRATION CONTRACTS
-- UP: agent-orchestrator (audit dispatch); all agent reports feed in as evidence.
+- UP: agent-nexus-prime-ultimate (audit dispatch); all agent reports feed in as evidence.
 - SIDE: agent-compliance-governance (legal evidence), agent-digital-security (incidents), agent-qa-sdet (quality trail), agent-gatekeeper (gate events), agent-github-specialist (release chain).
-- DOWN: agent-orchestrator (corrective parcels), agent-project-auditor -> Human direct (final reports; Art. 5.1).
+- DOWN: agent-nexus-prime-ultimate (corrective parcels), agent-project-auditor -> Human direct (final reports; Art. 5.1).
 - Scripts: validate_afa_output, validate_nexus_yaml, sync_agent_registry --check (governance pass).
 
 ## 14. ONBOARDING AND SUCCESSION

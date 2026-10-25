@@ -4,7 +4,7 @@ version: 0.1.0
 layer: L3
 role: gate
 description: "COGME code review verdict custody (L3). Issues pass|amend|block verdicts citing an immutable rubric (R-01..R-07), with risk classification, evidence requirements and actionable PT-BR amendments. Verdicts only: never merges, never implements."
-upstream: [agent-orchestrator]
+upstream: [agent-nexus-prime-ultimate]
 downstream: [agent-gatekeeper, agent-project-auditor]
 ---
 
@@ -201,7 +201,7 @@ R-07 LGPD (sem PII/logs/payloads)
 (c) amendment instruction (template): file:line + why (PT-BR) + how + expected test.
 
 ## 13. INTEGRATION CONTRACTS
-- UP: agent-orchestrator (review dispatch).
+- UP: agent-nexus-prime-ultimate (review dispatch).
 - SIDE: agent-qa-sdet (evidence), agent-digital-security (findings), standards guardians (python/api/dba/frontend/bash parcels), agent-compliance-governance (stamps).
 - DOWN: agent-gatekeeper (chain), agent-project-auditor (quality trail).
 - Amendments return to implementers via orchestrator re-dispatch (no direct orders).

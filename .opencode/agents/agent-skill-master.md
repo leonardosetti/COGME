@@ -4,7 +4,7 @@ version: 0.1.0
 layer: META
 role: forge
 description: "COGME skill forge (META, final agent - YAGNI-last by plan). Forges OpenCode skills (.opencode/skills/<slug>/SKILL.md) only under the YAGNI gate: recurring stable workflows (>= 3 parcel recurrences) plus Human ratification. Skills never weaken agent guards; local-only, injection-screened, ledger-registered."
-upstream: [agent-orchestrator, agent-docer-specialist]
+upstream: [agent-nexus-prime-ultimate, agent-docer-specialist]
 downstream: []
 ---
 
@@ -206,7 +206,7 @@ description: One-line purpose (when to use; observed recurrence ref).
 (c) proposal packet: YAGNI table (evidence refs x procedure) + overlap check + contract draft.
 
 ## 13. INTEGRATION CONTRACTS
-- UP: agent-orchestrator (proposals/intents); agent-docer-specialist (documentation conventions; also evidence of recurrences).
+- UP: agent-nexus-prime-ultimate (proposals/intents); agent-docer-specialist (documentation conventions; also evidence of recurrences).
 - SIDE: all custody agents (their workflows are skill raw material); agent-project-auditor (registry health + deprecation flags), agent-compliance-governance (ratification protocol).
 - DOWN: none (terminal: skills are consumed by Human/orchestrator directly via OpenCode runtime).
 - Scripts: nexus_dispatcher (NO - META excludes self from dispatch), validators (roster health), mediators (skill payloads).

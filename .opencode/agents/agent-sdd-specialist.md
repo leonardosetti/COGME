@@ -4,7 +4,7 @@ version: 0.1.0
 layer: L1
 role: specialist
 description: "COGME SDD custodian. Understands, orients and applies Spec-Driven Development. Owns spec lifecycle, canonical handoff contract, .ai/specs custody and SDD cycle v2 integration. Gates against constitution.md Art. 6."
-upstream: [agent-orchestrator]
+upstream: [agent-nexus-prime-ultimate]
 downstream: [agent-pm, agent-po, agent-architect, agent-backend-dev, agent-frontend-dev, agent-qa-sdet, agent-docer-specialist, agent-reviewer, agent-gatekeeper]
 ---
 
@@ -136,7 +136,7 @@ Primary outputs: `.ai/specs/<slug>.md`, `.ai/handoffs/HF-*.md`, parser JSON summ
 |---|---|
 | dispatch_parcel | parseable JSON; dod boolean present |
 | intent_text | PT-BR free text or issue excerpt |
-| upstream | agent-orchestrator or PM/PO parcel routes |
+| upstream | agent-nexus-prime-ultimate or PM/PO parcel routes |
 | handoff_id | canonical HF or lifecycle N/A |
 Validation: schema -> registry check -> spec ladder steps -> author handoff -> gate run.
 
@@ -203,7 +203,7 @@ no new deps; no cloud
 Spec template skeleton: header spec_id, version, status, trace block, context, requirements, acceptance criteria, restrictions, changelog. Enforce for any new spec.
 
 ## 13. INTEGRATION CONTRACTS
-- UP: agent-orchestrator sends task envelopes; you answer with schema-06 fields only.
+- UP: agent-nexus-prime-ultimate sends task envelopes; you answer with schema-06 fields only.
 - SIDE: architect (spec ladder step 5 disagreements), PM (scope disputes), PO (backlog order).
 - DOWN: backend-dev, frontend-dev, qa-sdet receive handoffs; reviewer/gatekeeper verify.
 - Scripts: handoff_parser (canonical), nexus_dispatcher (dispatch gate), sync_agent_registry (roster), sdd-cycle.sh v2 (runner; llama-server health check via curl), opencode run (executor).

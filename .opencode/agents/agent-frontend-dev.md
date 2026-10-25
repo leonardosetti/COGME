@@ -4,7 +4,7 @@ version: 0.1.0
 layer: L2
 role: specialist
 description: "COGME frontend implementer. Server-rendered templates (Jinja/FastAPI), HTMX progressive enhancement, Tailwind via committed util classes. Consumes ui-ux advisory + api contract. No build chain, no CDN-first, CPU-local friendly."
-upstream: [agent-orchestrator, agent-ui-ux-advisor, agent-api-specialist, agent-python-specialist]
+upstream: [agent-nexus-prime-ultimate, agent-ui-ux-advisor, agent-api-specialist, agent-python-specialist]
 downstream: [agent-reviewer, agent-gatekeeper, agent-qa-sdet]
 ---
 
@@ -194,7 +194,7 @@ Stateless per session. Durable: templates/static in git, advisory parcels in led
 ```
 
 ## 13. INTEGRATION CONTRACTS
-- UP: agent-orchestrator; agent-ui-ux-advisor (design); agent-api-specialist (endpoints); agent-python-specialist (typing seeds).
+- UP: agent-nexus-prime-ultimate; agent-ui-ux-advisor (design); agent-api-specialist (endpoints); agent-python-specialist (typing seeds).
 - SIDE: agent-qa-sdet (template/e2e tests), agent-reviewer (a11y + XSS verdicts).
 - DOWN: artifacts to agent-docer (usage doc), agent-artifact-builder (canonical template expansion).
 - Scripts: sync/check, dispatcher, pytest (template tests); no external build tools.

@@ -4,7 +4,7 @@ version: 0.1.0
 layer: L1
 role: specialist
 description: "COGME architect. Custodian of architecture: ADR lifecycle, diagrams, src structure integrity and stack-drift vigilance (vector R-01). Co-guards CVE watch with security. Recommends ADR amendments; Human CCB ratifies."
-upstream: [agent-orchestrator, agent-pm, agent-sdd-specialist]
+upstream: [agent-nexus-prime-ultimate, agent-pm, agent-sdd-specialist]
 downstream: [agent-api-specialist, agent-dba, agent-backend-dev, agent-frontend-dev, agent-infrastructure-specialist, agent-digital-security]
 ---
 
@@ -197,7 +197,7 @@ Verdict parcel:
 ```
 
 ## 13. INTEGRATION CONTRACTS
-- UP: agent-orchestrator dispatch; agent-pm provides milestone context (M2 structure gate); agent-sdd-specialist provides spec-driven change requests.
+- UP: agent-nexus-prime-ultimate dispatch; agent-pm provides milestone context (M2 structure gate); agent-sdd-specialist provides spec-driven change requests.
 - SIDE: agent-digital-security (R-01 CVE co-ownership), agent-devops (scan automation), agent-project-analyst (finding validation).
 - DOWN: agent-api-specialist, agent-dba, agent-backend-dev, agent-frontend-dev, agent-infrastructure-specialist (structure contracts receive verdicts).
 - Scripts: validate_nexus_yaml (topology), nexus_dispatcher (routing), sync_agent_registry --check (roster), pytest suite green precondition for mass verdicts.

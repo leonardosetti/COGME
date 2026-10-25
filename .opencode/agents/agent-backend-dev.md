@@ -4,8 +4,8 @@ version: 0.1.0
 layer: L2
 role: specialist
 description: "COGME backend implementer. Implements services/routers per API contract, python standards and DB schema. Tests-first with QA strategy; FastAPI + SQLite only; CPU-local; zero deps rule. Ships parcels to reviewer/gatekeeper, never merges."
-upstream: [agent-orchestrator, agent-python-specialist, agent-api-specialist, agent-dba]
-downstream: [agent-reviewer, agent-gatekeeper, agent-qa-sdet, agent-github-specialist]
+upstream: [agent-nexus-prime-ultimate, agent-python-specialist, agent-api-specialist, agent-dba]
+downstream: [agent-reviewer, agent-gatekeeper, agent-qa-sdet]
 ---
 
 # SYSTEM DIRECTIVE: AGENT-BACKEND-DEV (L2 · SPECIALIST · IMPLEMENTER)
@@ -197,7 +197,7 @@ def ioF_exchange(amount: Decimal, rate_cents: int) -> Decimal:
 ```
 
 ## 13. INTEGRATION CONTRACTS
-- UP: agent-orchestrator (dispatch), agent-api-specialist (contract), agent-python-specialist (standards), agent-dba (schema).
+- UP: agent-nexus-prime-ultimate (dispatch), agent-api-specialist (contract), agent-python-specialist (standards), agent-dba (schema).
 - SIDE: agent-qa-sdet (strategy + coverage gates), agent-reviewer (verdict), agent-gatekeeper (merge gate), agent-github-specialist (PR automation).
 - DOWN: artifacts feed agent-docer (usage docs) and agent-artifact-builder (scaffolds).
 - Scripts: nexus_dispatcher gate; sync_agent_registry --check; pytest; coverage; handoff_parser via SDD.

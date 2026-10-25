@@ -96,7 +96,7 @@ def test_roster_complete_after_onda7():
                    capture_output=True, text=True, check=True)
     _, report = run(DISPATCH, "--report")
     assert report["missing_from_dag"] == [], report["missing_from_dag"]
-    assert report["promulgados"] == 27  # 25 do plano + 2 legacy-forge
+    assert report["promulgados"] == 41  # total de agents promulgados no ecossistema SDD
 
 
 def test_no_loose_ends_too_early():

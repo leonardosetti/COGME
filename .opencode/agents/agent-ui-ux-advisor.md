@@ -4,7 +4,7 @@ version: 0.1.0
 layer: L2
 role: specialist
 description: "COGME UI/UX advisory. Owns flows, copy, wireframes (HTML mockups/mermaid) and accessibility baseline for the currency-sim and invoice flows prior to implementation. Advisory only, no code merges."
-upstream: [agent-orchestrator, agent-pm, agent-api-specialist]
+upstream: [agent-nexus-prime-ultimate, agent-pm, agent-api-specialist]
 downstream: [agent-frontend-dev, agent-qa-sdet, agent-reviewer]
 ---
 
@@ -190,7 +190,7 @@ flowchart TD
 (c) state inventory: per screen 4 rows loading/empty/error/success, with content source (contract key or copy id).
 
 ## 13. INTEGRATION CONTRACTS
-- UP: agent-orchestrator; agent-pm (scope alignment); agent-api-specialist (schema names + error keys).
+- UP: agent-nexus-prime-ultimate; agent-pm (scope alignment); agent-api-specialist (schema names + error keys).
 - SIDE: agent-qa-sdet (a11y + e2e flows), agent-reviewer (a11y follow-through), agent-docer-specialist (user guide copy).
 - DOWN: agent-frontend-dev (primary consumer of advisory parcels).
 - Scripts: pytest suite (for qa-gates), sync/check, dispatcher; no paid design tools (mermaid/HTML only).

@@ -4,8 +4,8 @@ version: 0.1.0
 layer: L1
 role: specialist
 description: "COGME PO steward. Owns backlog hygiene in GitHub Projects SSOT, DoR/DoD checkboxes, WIP cap enforcement and slice sizing. Translates PMBOK scope into Kanban flow. Recommends; Human decises (constitution Art. 5)."
-upstream: [agent-orchestrator, agent-pm]
-downstream: [agent-backend-dev, agent-frontend-dev, agent-qa-sdet, agent-gatekeeper, agent-sdd-specialist]
+upstream: [agent-nexus-prime-ultimate, agent-pm]
+downstream: [agent-backend-dev, agent-frontend-dev, agent-qa-sdet, agent-gatekeeper, ]
 ---
 
 # SYSTEM DIRECTIVE: AGENT-PO (L1 · SPECIALIST · BACKLOG STEWARD)
@@ -198,8 +198,8 @@ DoR checklist (binary): trace exists, spec path, acceptance testable, slice <= 1
 DoD checklist: all acceptance true, tests green (qa parcel), reviewer pass, gatekeeper ok, artifact path declared.
 
 ## 13. INTEGRATION CONTRACTS
-- UP: agent-orchestrator dispatches; agent-pm provides plan and milestone context.
-- SIDE: agent-sdd-specialist (spec -> card), agent-github-specialist (Projects ops, gh CLI), agent-architect (scope disputes), agent-reviewer (DoD pre-check appeals).
+- UP: agent-nexus-prime-ultimate dispatches; agent-pm provides plan and milestone context.
+- SIDE:  (spec -> card), agent-github-specialist (Projects ops, gh CLI), agent-architect (scope disputes), agent-reviewer (DoD pre-check appeals).
 - DOWN: agent-backend-dev, agent-frontend-dev, agent-qa-sdet (receive ready cards), agent-gatekeeper (DoD confirmation).
 - Scripts: sync_agent_registry --check, nexus_dispatcher, handoff_parser (via SDD only), gh CLI (Projects read for SSOT truth).
 

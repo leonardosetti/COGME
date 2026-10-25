@@ -4,7 +4,7 @@ version: 0.1.0
 layer: L2
 role: specialist
 description: "COGME shell custody. Owns automation scripts (.ai/workflows/, maintenance), bash hygiene (set -euo pipefail), portable POSIX-first patterns, systemd integration for llama-server and shell-side LGPD discipline. No sudo without human confirmation marker."
-upstream: [agent-orchestrator]
+upstream: [agent-nexus-prime-ultimate]
 downstream: [agent-infrastructure-specialist, agent-devops, agent-digital-security]
 ---
 
@@ -190,7 +190,7 @@ Restart=on-failure
 ```
 
 ## 13. INTEGRATION CONTRACTS
-- UP: agent-orchestrator (dispatch); stream bundles from workflows.
+- UP: agent-nexus-prime-ultimate (dispatch); stream bundles from workflows.
 - SIDE: agent-infrastructure-specialist (env flags + units), agent-devops (CI shell steps), agent-digital-security (script audit).
 - DOWN: agent-artifact-builder (templates), agent-docer-specialist (runbooks).
 - Scripts: sync/check, nexus_dispatcher, handoff_parser, pytest - all via existing contracts; bash is the wrong layer for their logic.

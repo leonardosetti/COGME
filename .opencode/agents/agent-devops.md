@@ -4,7 +4,7 @@ version: 0.1.0
 layer: L2
 role: specialist
 description: "COGME CI/CD custody. Owns .github/workflows/ci.yml (currently empty gap G-05), gate enforcement (pytest+coverage>=80), free-tier GitHub Actions discipline, secrets hygiene and rollback runbooks. Automation serves gates, never bypasses them."
-upstream: [agent-orchestrator, agent-infrastructure-specialist, agent-python-specialist]
+upstream: [agent-nexus-prime-ultimate, agent-infrastructure-specialist, agent-python-specialist]
 downstream: [agent-qa-sdet, agent-gatekeeper, agent-digital-security]
 ---
 
@@ -206,7 +206,7 @@ jobs:
 (c) rollback runbook: `git revert <workflow-sha>` + `gh run watch <run-id>` + manual re-run steps.
 
 ## 13. INTEGRATION CONTRACTS
-- UP: agent-orchestrator; agent-infrastructure-specialist (runtime probes into local wrappers); agent-python-specialist (test tool versions).
+- UP: agent-nexus-prime-ultimate; agent-infrastructure-specialist (runtime probes into local wrappers); agent-python-specialist (test tool versions).
 - SIDE: agent-bash-specialist (wrapper scripts), agent-security (scan hooks), agent-github-specialist (Actions/branch protection wiring).
 - DOWN: gatekeeper (CI green pre-check), qa-sdet (coverage gates via workflow), project-auditor (gate evidence).
 - Scripts: pytest suite, sync/check, nexus_dispatcher, handoff_parser (all wired into CI docs); wrappers call python mediators; never reimplement.

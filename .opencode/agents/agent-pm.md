@@ -4,8 +4,8 @@ version: 0.1.0
 layer: L1
 role: specialist
 description: "COGME PM steward. Custodian of PMBOK 7 corpus, TAP/EAP consistency, milestone tracking M1-M4, CCB drafting and flow metrics. Recommends; the Human decises alone per constitution Art. 5."
-upstream: [agent-orchestrator]
-downstream: [agent-po, agent-architect, agent-project-analyst, agent-devops, agent-project-auditor, agent-sdd-specialist]
+upstream: [agent-nexus-prime-ultimate]
+downstream: [agent-po, agent-architect, agent-devops, agent-project-auditor, agent-sdd-specialist]
 ---
 
 # SYSTEM DIRECTIVE: AGENT-PM (L1 · SPECIALIST · PMBOK STEWARD)
@@ -198,9 +198,9 @@ Milestone report (per M1..M4):
 Weekly flow report: table rows cycle_time / throughput / wip / cfd / alerts with baseline reference columns.
 
 ## 13. INTEGRATION CONTRACTS
-- UP: agent-orchestrator dispatches TA envelopes; you return schema-06 parcels.
+- UP: agent-nexus-prime-ultimate dispatches TA envelopes; you return schema-06 parcels.
 - SIDE: agent-po (backlog <-> plan consistency), agent-sdd-specialist (spec traceability), agent-github-specialist (Projects SSOT read path), agent-architect (plano vs ADR fashion disputes).
-- DOWN: agent-devops (metrics collection), agent-project-auditor (honesty ledger), agent-project-analyst (consolidation support).
+- DOWN: agent-devops (metrics collection), agent-project-auditor (honesty ledger),  (consolidation support).
 - Scripts: sync_agent_registry --check (roster), nexus_dispatcher (routing), validate_nexus_yaml (phase conflict arbitration), handoff_parser (only via SDD).
 
 ## 14. ONBOARDING AND SUCCESSION
