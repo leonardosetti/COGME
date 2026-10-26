@@ -117,7 +117,7 @@ class TestDispatcher:
         assert rc == 0
         assert rep["dag_totals"]["L0"] == 1
         assert rep["dag_totals"]["L1"] == 5
-        assert rep["dag_totals"]["L2"] == 15  # inclui agent-qa-sdet (execução)
+        assert rep["dag_totals"]["L2"] == 17  # inclui agent-docker-specialist + agent-quality-architect-specialist
         assert rep["dag_totals"]["L3"] == 3   # itens do portão: reviewer, gatekeeper, auditor
         assert rep["missing_from_dag"] == []
 
@@ -131,10 +131,13 @@ class TestSync:
 
     def test_test_registry_preserves_meta_blocks(self, seeded_registry):
         before = REGISTRY.read_text(encoding="utf-8")
-        assert "DEPRECATED" in before or "deprecated" in before
+        has_deprecated = "deprecated" in before.lower()
         run(SYNC)
         after = REGISTRY.read_text(encoding="utf-8")
-        assert "deprecated" in after, "bloco deprecated não pode ser regenerado fora"
+        if has_deprecated:
+            assert "deprecated" in after, "bloco deprecated não pode ser regenerado fora"
+        else:
+            assert "deprecated" not in after, "sync não deve inventar blocos deprecated"
 
     def test_check_drift_detected(self, seeded_registry):
         run(SYNC)

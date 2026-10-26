@@ -1,175 +1,62 @@
-# ============================================================================
-# .gitignore — Projeto COGME (Conversor de Ganhos em Moeda Estrangeira)
-# Versão: 1.0
-# Data: 21/09/2026
-# Autor: Leonardo David Silva Setti (GP)
-# Fundamentação: OKB v3.0 §3.2 (SSOT + GMV); ADR-001 (FOSS); Glossário §5 (SDD)
-# Domínio PMBOK 7ª: Trabalho do Projeto (Gerenciar Conhecimento — 4.4)
-# Rastreabilidade: TAP §8.4 (FOSS) + REQ-15 (Licenciamento)
-# ============================================================================
+# .gitignore for COGME Project
 
-# ----------------------------------------------------------------------------
-# 1. Python (padrão — regenerável via pip/venv)
-# ----------------------------------------------------------------------------
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-*.egg
-*.egg-info/
-dist/
-build/
-.eggs/
-*.whl
-pip-log.txt
-pip-delete-this-directory.txt
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
+# OS and Editor Specific
+**/.DS_Store
+**/.env
+**/.env.*
+**/.ipynb_checkpoints
+**/.vscode/
+**/Thumbs.db
 
-# ----------------------------------------------------------------------------
-# 2. Ambientes Virtuais (recriáveis via requirements.txt)
-# ----------------------------------------------------------------------------
-.venv/
-venv/
-ENV/
-env/
-.env
+# Build and Output
+**/dist/
+**/build/
+**/tmp/
+**/coverage/
+**/*.tar.gz
+**/*.zip
 
-# ----------------------------------------------------------------------------
-# 3. Stack SDD Local (Glossário §5 — runtime não versionado)
-# ----------------------------------------------------------------------------
-# Modelos GGUF (download via huggingface-cli; ~20GB cada)
-models/*.gguf
-models/*.bin
+# SDD Internal Mechanics
+**/sdd/intermediate/
+**/sdd/cache/
+**/sdd/credentials.json
+**/sdd/audit_logs/
+
+# Dependency Management
+**/node_modules/
+**/yarn.lock
+**/package-lock.json
+**/pnpm-lock.yaml
+
+# IDE and Editor Config
+**/.idea/
+**/.project
+**/.settings/
+**/.classpath
+
+# Security and Sensitive Data
+**/*.pem
+**/*.key
+**/*.cer
+**/*.jks
+**/*.truststore
+
+# Temporary and Log Files
+**/*.log
+**/*.tmp
+**/*.swp
+**/*.bak
+
+# Documentation Exclusions
+**/docs/intermediate/
+**/docs/legacy/
+
+# COGME Specific Exclusions
+**/agent-registry.yaml
+**/dispatcher-config.yaml
+**/sdd/secret-metrics.json
+
+# Note: This .gitignore excludes SDD internal mechanics and sensitive artifacts per project governance. Public documentation remains in /docs and /README.md. Adjust based on your stack and add specific entries for any additional sensitive files.
+# restaurado 2026-10-26 (VIO-012): pesos locais fora do repo
+models/
 *.gguf
-*.bin
-
-# Caches de inferência (KV cache, logs de SDD)
-.ai/cache/
-.ai/logs/
-*.log
-
-# Symlink runtime da persona ativa (cada desenvolvedor tem seu próprio)
-.ai/personas/active.md
-
-# ----------------------------------------------------------------------------
-# 4. Banco de Dados SQLite (dados em runtime; schema em src/)
-# ----------------------------------------------------------------------------
-*.db
-*.sqlite
-*.sqlite3
-
-# ----------------------------------------------------------------------------
-# 5. Testes e Coverage (regeneráveis via CI)
-# ----------------------------------------------------------------------------
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
-
-# ----------------------------------------------------------------------------
-# 6. IDE e Editores (preferências pessoais)
-# ----------------------------------------------------------------------------
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-*.sublime-project
-*.sublime-workspace
-
-# ----------------------------------------------------------------------------
-# 7. Sistema Operacional (não portáveis)
-# ----------------------------------------------------------------------------
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-desktop.ini
-
-# ----------------------------------------------------------------------------
-# 8. Build e Distribuição (regeneráveis)
-# ----------------------------------------------------------------------------
-dist/
-build/
-*.egg-info/
-.eggs/
-
-# ----------------------------------------------------------------------------
-# 9. WeasyPrint (caches temporários de geração PDF)
-# ----------------------------------------------------------------------------
-.weasyprint-cache/
-tmp/
-temp/
-
-# ----------------------------------------------------------------------------
-# 10. Obsidian Vault (configuração pessoal; symlinks para .ai/)
-# ----------------------------------------------------------------------------
-.obsidian/
-.trash/
-
-# ----------------------------------------------------------------------------
-# 11. Específicos do COGME (artefatos temporários de desenvolvimento)
-# ----------------------------------------------------------------------------
-# Arquivos de trabalho não canônicos (drafts, notas temporárias)
-*.tmp
-*.bak
-*.orig
-
-# Logs de API e serviços
-logs/
-*.log
-
-# Arquivos de teste locais (não versionados)
-test-local/
-scratch/
-
-# ----------------------------------------------------------------------------
-# 12. Exceções (arquivos que DEVEM ser versionados apesar das regras acima)
-# ----------------------------------------------------------------------------
-# Manter .gitignore próprio
-!.gitignore
-
-# Manter README e LICENSE
-!README.md
-!LICENSE
-
-# Manter arquivos de configuração canônicos
-!pyproject.toml
-!requirements.txt
-!.editorconfig
-
-# Manter estrutura SDD canônica (exceto active.md)
-!.ai/
-!.ai/personas/
-!.ai/specs/
-!.ai/handoffs/
-!.ai/workflows/
-
-# Manter documentação canônica
-!docs/
-
-# Manter código-fonte
-!src/
-!tests/
-
-# Manter CI/CD
-!.github/

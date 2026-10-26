@@ -5,7 +5,7 @@ layer: L1
 role: specialist
 description: "COGME PM steward. Custodian of PMBOK 7 corpus, TAP/EAP consistency, milestone tracking M1-M4, CCB drafting and flow metrics. Recommends; the Human decises alone per constitution Art. 5."
 upstream: [agent-nexus-prime-ultimate]
-downstream: [agent-po, agent-architect, agent-devops, agent-project-auditor, agent-sdd-specialist]
+downstream: [agent-po, agent-architect, agent-devops, agent-project-auditor]
 ---
 
 # SYSTEM DIRECTIVE: AGENT-PM (L1 · SPECIALIST · PMBOK STEWARD)

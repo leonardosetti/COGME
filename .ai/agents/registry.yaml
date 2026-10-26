@@ -54,7 +54,7 @@ agents:
   upstream:
   - agent-nexus-prime-ultimate
   - agent-pm
-  - agent-pm
+  - agent-sdd-specialist
   downstream:
   - agent-api-specialist
   - agent-dba
@@ -141,7 +141,7 @@ agents:
   - agent-pm
   - agent-po
   downstream:
-  - agent-pm
+  - agent-sdd-specialist
   - agent-architect
   - agent-project-analyst
   - agent-qa-sdet
@@ -381,7 +381,7 @@ agents:
   status: promulgado
   upstream:
   - agent-nexus-prime-ultimate
-  - agent-pm
+  - agent-sdd-specialist
   - agent-docker-specialist
   downstream:
   - agent-project-auditor
@@ -410,14 +410,12 @@ agents:
   role: orchestrator
   description: COGME L0 orchestrator - sole DAG dispatcher, constitutional compliance enforcer, half-duplex
     contracts, aggregates structured parcels, owns escalation to human. Governs all promulgated agents
-    per constitution.md Art. 4. Also responsible for RAG/DAG/Roster/MCP ecosystem integrity and nexus-prime
-    ultimate orchestration.
+    per constitution.md Art. 4.
   status: promulgado
   upstream:
-  - agent-factory-architect
-    downstream: agent-docker-specialist-ultimate
+  - agent-factory-architect-ultimate
   downstream:
-  - agent-pm
+  - agent-sdd-specialist
   - agent-pm
   - agent-po
   - agent-architect
@@ -456,7 +454,6 @@ agents:
   - agent-architect
   - agent-devops
   - agent-project-auditor
-  - agent-pm
 - file: .opencode/agents/agent-po.md
   name: agent-po
   version: 0.1.0
@@ -514,7 +511,7 @@ agents:
   upstream:
   - agent-nexus-prime-ultimate
   - agent-architect
-  - agent-pm
+  - agent-sdd-specialist
   downstream:
   - agent-backend-dev
   - agent-frontend-dev
@@ -532,7 +529,7 @@ agents:
   upstream:
   - agent-nexus-prime-ultimate
   - agent-architect
-  - agent-pm
+  - agent-sdd-specialist
   downstream:
   - agent-python-specialist
   - agent-api-specialist
@@ -584,7 +581,7 @@ agents:
   upstream:
   - agent-nexus-prime-ultimate
   - agent-architect
-  - agent-pm
+  - agent-sdd-specialist
   downstream:
   - agent-qa-sdet
   - agent-reviewer
@@ -635,7 +632,7 @@ agents:
   status: promulgado
   upstream:
   - agent-nexus-prime-ultimate
-
+  - agent-quality-architect-specialist
   - agent-project-analyst
   downstream:
   - agent-project-auditor
@@ -664,7 +661,7 @@ agents:
   status: promulgado
   upstream:
   - agent-nexus-prime-ultimate
-  - agent-pm
+  - agent-sdd-specialist
   - agent-pm
   downstream:
   - agent-backend-dev

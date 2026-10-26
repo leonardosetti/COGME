@@ -1,7 +1,40 @@
-task_id: TA-0001
-sender: nexus-prime-ultimate
-receiver: agent-registry-validator
-action: validate
-status: completed
-notes: Resolved downstream slug violations, cleaned git objects, and updated legacy-forge agents
-kill_switch: inherited
+# LEDGER DE DESPACHOS — NEXUS-PRIME ULTIMATE (append-only, LGPD-safe: sem PII)
+# Histórico: arquivo foi truncado a 7 linhas em 24/10 ~21:21 (VIO-009, docs/auditorias/vio-register.md).
+# Entrada TA-0001 sobrevivente preservada verbatim abaixo; cadeia TA-0002..0017 declarada irrecuperável (KG).
+tasks:
+- task_id: TA-0001
+  sender: nexus-prime-ultimate
+  receiver: agent-registry-validator
+  action: validate
+  status: completed
+  notes: Resolved downstream slug violations, cleaned git objects, and updated legacy-forge agents
+  kill_switch: inherited
+- task_id: TA-0002
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-sdd-specialist
+  action: spec
+  handoff: HF-0001
+  status: completed
+  notes: WS-1 R1 constituicao; artifact .ai/specs/constitution-round-1-proposta.md; 13 gaps; 8 emendas E-01..E-08; 4 KG; dod=true; score 92; veredito L3 aprovado com ressalvas (AUD-2610-04)
+  kill_switch: inherited
+- task_id: TA-0003
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-architect
+  action: analyze
+  status: completed
+  notes: WS-2 ADR audit; artifact docs/auditorias/AUD-2610-03.md; ADRs 001-005 vazios (0B) confirmados; evento destrutivo 24/10 02:53 confirmado; 6 emendas ADR recomendadas; score 55; veredito L3 aprovado com ressalvas (VIO-011 addenda de citacoes)
+  kill_switch: inherited
+- task_id: TA-0004
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-sdd-specialist
+  action: analyze
+  status: completed
+  notes: WS-3 requisitos; artifact .ai/specs/requisitos-review-round-1.md; 15 REQ em 4 espelhos (base 0B); 17 US candidatas; DoR 12 itens; spec drafting em BLOCK ate CCB; score 88; veredito L3 aprovado com ressalvas
+  kill_switch: inherited
+- task_id: TA-0005
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-project-auditor
+  action: audit
+  status: completed
+  notes: Parecer Art. 9.1; artifacts docs/auditorias/AUD-2610-04.md + vio-register.md; VIO-006..VIO-012 abertos; cadeia Art. 9.1 completa; pacote CCB-ready; score 84; leis intocadas por todas as custodias
+  kill_switch: inherited
