@@ -41,7 +41,7 @@ agents:
   - agent-backend-dev
   - agent-frontend-dev
   - agent-qa-sdet
-  - agent-docer-specialist
+  - agent-docker-specialist
 - file: .opencode/agents/agent-architect.md
   name: agent-architect
   version: 0.1.0
@@ -94,7 +94,7 @@ agents:
   downstream:
   - agent-backend-dev
   - agent-frontend-dev
-  - agent-docer-specialist
+  - agent-docker-specialist
 - file: .opencode/agents/agent-backend-dev.md
   name: agent-backend-dev
   version: 0.1.0
@@ -258,22 +258,6 @@ agents:
   - agent-compliance-governance
   - agent-reviewer
   - agent-project-auditor
-- file: .opencode/agents/agent-docer-specialist.md
-  name: agent-docer-specialist
-  version: 0.1.0
-  layer: L2
-  role: specialist
-  description: COGME documentation custody. Owns README + docs/ tree, API reference derived from OpenAPI
-    render (never hand-restyled), runbooks, PT-BR glossary and doc-drift audits. Documented truth equals
-    running truth; fabricated docs are a crime against the chain.
-  status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-pm
-  downstream:
-  - agent-project-auditor
-  - agent-po
-  - agent-skill-master
 - file: .opencode/agents/agent-docker-specialist.md
   name: agent-docker-specialist
   version: 0.1.0
@@ -487,7 +471,7 @@ agents:
   - agent-pm
   - agent-architect
   - agent-project-auditor
-  - agent-docer-specialist
+  - agent-docker-specialist
 - file: .opencode/agents/agent-project-auditor.md
   name: agent-project-auditor
   version: 0.1.0
@@ -551,7 +535,7 @@ agents:
   downstream:
   - agent-backend-dev
   - agent-qa-sdet
-  - agent-docer-specialist
+  - agent-docker-specialist
   - agent-artifact-builder
 - file: .opencode/agents/agent-qa-sdet.md
   name: agent-qa-sdet
@@ -619,7 +603,7 @@ agents:
   - agent-backend-dev
   - agent-frontend-dev
   - agent-qa-sdet
-  - agent-docer-specialist
+  - agent-docker-specialist
   - agent-reviewer
   - agent-gatekeeper
 - file: .opencode/agents/agent-six-sigma-specialist.md
@@ -649,7 +633,7 @@ agents:
   status: promulgado
   upstream:
   - agent-nexus-prime-ultimate
-  - agent-docer-specialist
+  - agent-docker-specialist
   downstream: []
 - file: .opencode/agents/agent-sldc-process-specialist.md
   name: agent-sldc-process-specialist

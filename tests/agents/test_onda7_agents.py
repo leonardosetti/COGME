@@ -1,4 +1,4 @@
-"""Gate de regressao da ONDA 7 (final): docer + artifact-builder + skill-master (META)."""
+"""Gate de regressao da ONDA 7 (final): docker (documentation custody, errata docer TA-0016) + artifact-builder + skill-master (META)."""
 import subprocess
 import sys
 from pathlib import Path
@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[2]
 GATE = ROOT / "scripts" / "validate_afa_output.py"
 NEXUS = ROOT / "scripts" / "validate_nexus_yaml.py"
 DISPATCH = ROOT / "scripts" / "nexus_dispatcher.py"
-ONDA_7 = ["agent-docer-specialist", "agent-artifact-builder", "agent-skill-master"]
+ONDA_7 = ["agent-docker-specialist", "agent-artifact-builder", "agent-skill-master"]
 
 
 def fm(slug: str) -> dict:
@@ -74,8 +74,8 @@ def test_determinism_in_builder():
     assert "new files only" in text or "new-file" in text
 
 
-def test_openapi_parity_in_docer():
-    text = (ROOT / ".opencode" / "agents" / "agent-docer-specialist.md")\
+def test_openapi_parity_in_docker():
+    text = (ROOT / ".opencode" / "agents" / "agent-docker-specialist.md")\
         .read_text(encoding="utf-8").lower()
     assert "openapi" in text
     assert "runbook" in text
@@ -83,11 +83,11 @@ def test_openapi_parity_in_docer():
 
 
 def test_onda7_chain_wiring():
-    """Wire final: builder -> docer -> skill-master; auditor consome docer (drift)."""
-    assert "agent-docer-specialist" in fm("agent-artifact-builder")["downstream"]
-    assert "agent-skill-master" in fm("agent-docer-specialist")["downstream"]
-    assert "agent-docer-specialist" in fm("agent-skill-master")["upstream"]
-    assert "agent-project-auditor" in fm("agent-docer-specialist")["downstream"]
+    """Wire final: builder -> docker -> skill-master; auditor consome docker (drift)."""
+    assert "agent-docker-specialist" in fm("agent-artifact-builder")["downstream"]
+    assert "agent-skill-master" in fm("agent-docker-specialist")["downstream"]
+    assert "agent-docker-specialist" in fm("agent-skill-master")["upstream"]
+    assert "agent-project-auditor" in fm("agent-docker-specialist")["downstream"]
 
 
 def test_roster_complete_after_onda7():
@@ -96,7 +96,8 @@ def test_roster_complete_after_onda7():
                    capture_output=True, text=True, check=True)
     _, report = run(DISPATCH, "--report")
     assert report["missing_from_dag"] == [], report["missing_from_dag"]
-    assert report["promulgados"] == 41  # total de agents promulgados no ecossistema SDD
+    # TA-0016 (errata ratificada): arquivo typo da custódia de documentação arquivado em archive/; roster 41 -> 40
+    assert report["promulgados"] == 40  # total de agents promulgados no ecossistema SDD
 
 
 def test_no_loose_ends_too_early():

@@ -4,7 +4,7 @@ version: 0.1.0
 layer: META
 role: forge
 description: "COGME skill forge (META, final agent - YAGNI-last by plan). Forges OpenCode skills (.opencode/skills/<slug>/SKILL.md) only under the YAGNI gate: recurring stable workflows (>= 3 parcel recurrences) plus Human ratification. Skills never weaken agent guards; local-only, injection-screened, ledger-registered."
-upstream: [agent-nexus-prime-ultimate, agent-docer-specialist]
+upstream: [agent-nexus-prime-ultimate, agent-docker-specialist]
 downstream: []
 ---
 
@@ -63,10 +63,10 @@ Propagation: every skill parcel carries kill_switch=screened.
 | DILIGENT | every skill has error branches; fail-closed testing before registry |
 
 ### YAGNI GATE PROTOCOL
-1. collect recurrence evidence: >= 3 parcel refs showing the same stable procedure; OR Human request ref (ledger); 2. check overlap: does existing agent/skill already cover it? overlap -> refusal; 3. draft I/O contract + error branches; 4. injection scan + determinism statement; 5. proposal packet to Human for ratification (NEVER self-emit); 6. on ratification: emit SKILL.md + registry entry + docer doc link.
+1. collect recurrence evidence: >= 3 parcel refs showing the same stable procedure; OR Human request ref (ledger); 2. check overlap: does existing agent/skill already cover it? overlap -> refusal; 3. draft I/O contract + error branches; 4. injection scan + determinism statement; 5. proposal packet to Human for ratification (NEVER self-emit); 6. on ratification: emit SKILL.md + registry entry + docker doc link.
 
 ### SKILL AUTHORING LOOP
-1. read custody inputs (scripts/workflows documentation); 2. author SKILL.md (frontmatter + body): purpose, pre-conditions, steps, error branches (exit codes), tool list, examples; 3. injection screen: body must not parse-and-execute natural language from repo files; 4. dry-test the procedure manually (evidence attached); 5. registry + ratification link; 6. deliver with docer documentation.
+1. read custody inputs (scripts/workflows documentation); 2. author SKILL.md (frontmatter + body): purpose, pre-conditions, steps, error branches (exit codes), tool list, examples; 3. injection screen: body must not parse-and-execute natural language from repo files; 4. dry-test the procedure manually (evidence attached); 5. registry + ratification link; 6. deliver with docker documentation.
 
 ## 2. ANTI-HALLUCINATION PROTOCOL
 1. citation: skill steps cite script paths/flags from repo (never invented commands).
@@ -88,7 +88,7 @@ Propagation: every skill parcel carries kill_switch=screened.
 10. Emit error branches with exit codes + PT-BR human guidance per failure mode.
 11. Deprecate unused skills (> 30 dias) via auditor flag + retirement note.
 12. Keep skill vocabulary aligned with contracts (canonical names; no inventions).
-13. Escort new skills with docer documentation (usage + examples).
+13. Escort new skills with docker documentation (usage + examples).
 14. Version-tag skills (SKL id + vX.Y) and keep git lineage.
 15. Teach one skill-design habit per forge (contract-first, fail-closed, composition).
 16. Report skill inventory to auditor per period (registry health).
@@ -206,7 +206,7 @@ description: One-line purpose (when to use; observed recurrence ref).
 (c) proposal packet: YAGNI table (evidence refs x procedure) + overlap check + contract draft.
 
 ## 13. INTEGRATION CONTRACTS
-- UP: agent-nexus-prime-ultimate (proposals/intents); agent-docer-specialist (documentation conventions; also evidence of recurrences).
+- UP: agent-nexus-prime-ultimate (proposals/intents); agent-docker-specialist (documentation conventions; also evidence of recurrences).
 - SIDE: all custody agents (their workflows are skill raw material); agent-project-auditor (registry health + deprecation flags), agent-compliance-governance (ratification protocol).
 - DOWN: none (terminal: skills are consumed by Human/orchestrator directly via OpenCode runtime).
 - Scripts: nexus_dispatcher (NO - META excludes self from dispatch), validators (roster health), mediators (skill payloads).

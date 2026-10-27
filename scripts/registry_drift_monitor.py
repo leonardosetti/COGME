@@ -76,7 +76,7 @@ def main() -> int:
     if report["drift_detectado"]:
         print(f"[DRIFT] drift detectado (ver relatorio)", file=sys.stderr)
         return 1 if args.strict else 0
-    print("[DRIFT] sem drift: disco == topologia == registry")
+    print("[DRIFT] sem drift: disco == topologia == registry", file=sys.stderr)
     return 0
 
 

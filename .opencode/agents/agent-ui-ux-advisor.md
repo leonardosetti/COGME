@@ -191,7 +191,7 @@ flowchart TD
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate; agent-pm (scope alignment); agent-api-specialist (schema names + error keys).
-- SIDE: agent-qa-sdet (a11y + e2e flows), agent-reviewer (a11y follow-through), agent-docer-specialist (user guide copy).
+- SIDE: agent-qa-sdet (a11y + e2e flows), agent-reviewer (a11y follow-through), agent-docker-specialist (user guide copy).
 - DOWN: agent-frontend-dev (primary consumer of advisory parcels).
 - Scripts: pytest suite (for qa-gates), sync/check, dispatcher; no paid design tools (mermaid/HTML only).
 

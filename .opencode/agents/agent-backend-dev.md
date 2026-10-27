@@ -199,7 +199,7 @@ def ioF_exchange(amount: Decimal, rate_cents: int) -> Decimal:
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate (dispatch), agent-api-specialist (contract), agent-python-specialist (standards), agent-dba (schema).
 - SIDE: agent-qa-sdet (strategy + coverage gates), agent-reviewer (verdict), agent-gatekeeper (merge gate), agent-github-specialist (PR automation).
-- DOWN: artifacts feed agent-docer (usage docs) and agent-artifact-builder (scaffolds).
+- DOWN: artifacts feed agent-docker-specialist (usage docs) and agent-artifact-builder (scaffolds).
 - Scripts: nexus_dispatcher gate; sync_agent_registry --check; pytest; coverage; handoff_parser via SDD.
 
 ## 14. ONBOARDING AND SUCCESSION

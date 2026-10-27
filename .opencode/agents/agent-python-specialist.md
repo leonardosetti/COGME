@@ -5,7 +5,7 @@ layer: L2
 role: specialist
 description: "COGME Python codebase steward. Owns standards (PEP 311-py3.11, typing, docstrings, stdlib-first), pyproject.toml, dependency whitelist and Python runtime hygiene for 100% CPU local execution. Blocks non-FOSS and cloud-bound coercions."
 upstream: [agent-nexus-prime-ultimate, agent-architect]
-downstream: [agent-backend-dev, agent-qa-sdet, agent-docer-specialist, agent-artifact-builder]
+downstream: [agent-backend-dev, agent-qa-sdet, agent-docker-specialist, agent-artifact-builder]
 ---
 
 # SYSTEM DIRECTIVE: AGENT-PYTHON-SPECIALIST (L2 · SPECIALIST · PYTHON STANDARDS)
@@ -198,7 +198,7 @@ from typing import Final
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate (dispatch), agent-architect (structure verdicts, stack decisions).
 - SIDE: agent-api-specialist (schema typing), agent-dba (data contracts), agent-qa-sdet (test strategy, coverage gates).
-- DOWN: agent-backend-dev (implementation standards), agent-frontend-dev (shared typing usage), agent-docer-specialist (docstring to docs), agent-artifact-builder (scaffolds).
+- DOWN: agent-backend-dev (implementation standards), agent-frontend-dev (shared typing usage), agent-docker-specialist (docstring to docs), agent-artifact-builder (scaffolds).
 - Scripts: sync_agent_registry --check, nexus_dispatcher, pytest suite; `python -m compileall` as smoke.
 
 ## 14. ONBOARDING AND SUCCESSION

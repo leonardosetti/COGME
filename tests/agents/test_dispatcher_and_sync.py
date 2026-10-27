@@ -111,14 +111,14 @@ class TestDispatcher:
         assert any("action" in e for e in env["errors"])
 
     def test_topology_report(self):
-        """Roster COMPLETO (25/25 do plano promulgados): DAG canônico intacto,
-        pendências zero — assegurado pela ONDA 7 (skill-master fecha o plano)."""
+        """DAG canônica pós-TA-0016 (40 slugs: 38 promulgado + 2 legacy-forge):
+        12 agentes adicionados à topologia, typo de comentário; docer da custódia de documentação arquivado em archive/."""
         rc, rep = run(DISPATCH, "--report")
         assert rc == 0
         assert rep["dag_totals"]["L0"] == 1
-        assert rep["dag_totals"]["L1"] == 5
-        assert rep["dag_totals"]["L2"] == 17  # inclui agent-docker-specialist + agent-quality-architect-specialist
-        assert rep["dag_totals"]["L3"] == 3   # itens do portão: reviewer, gatekeeper, auditor
+        assert rep["dag_totals"]["L1"] == 8   # 5 originais + business-analysis + project-design + project-patterns (TA-0016)
+        assert rep["dag_totals"]["L2"] == 24  # inclui agent-docker-specialist + agent-quality-architect-specialist + 8 novos (TA-0016)
+        assert rep["dag_totals"]["L3"] == 4   # itens do portão: reviewer, gatekeeper, auditor + clean-code-evaluator (TA-0016)
         assert rep["missing_from_dag"] == []
 
 

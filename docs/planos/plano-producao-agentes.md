@@ -155,7 +155,7 @@ Fluxo half-duplex: toda delegação retorna parcela estruturada ao chamador; bri
 
 | Ordem | Agente | Camada | Por quê aqui |
 |-------|--------|--------|--------------|
-| **A.23** | `agent-docer-specialist` | L2 | Documentação técnica narrativa (README, ADRs, runbooks) — agora com código real a documentar |
+| **A.23** | `agent-docker-specialist` | L2 | Documentação técnica narrativa (README, ADRs, runbooks) — agora com código real a documentar |
 | **A.24** | `agent-artifact-builder` | L2 | Scaffolding e geração de artefatos estruturais (YAML, JSON, templates, esquemas) |
 | **A.25** | `agent-skill-master` | Meta-adjacente | Destila skills `.opencode/skills/` dos padrões observados nos 24 agentes anteriores (inclui `skill-project-reader` da C-04) |
 
@@ -170,13 +170,13 @@ Cada linha lista os consumidores diretos do agente (quem o invoca via dispatcher
 | Agente | Consumidores diretos | Carga |
 |--------|----------------------|-------|
 | orchestrator | todos (L0, dispatch universal) | ●●●●● |
-| sdd-specialist | PM, PO, backend, frontend, qa, docer | ●●●●● |
+| sdd-specialist | PM, PO, backend, frontend, qa, docker | ●●●●● |
 | pm | orchestrator, po, analyst, devops, auditor | ●●●●○ |
 | po | backend, frontend, qa, gatekeeper | ●●●●○ |
 | architect | api, dba, backend, frontend, infra, security | ●●●●● |
-| project-analyst | pm, architect, auditor, docer | ●●●○○ |
-| python-specialist | backend, qa, docer, artifact-builder | ●●●●○ |
-| api-specialist | backend, frontend, qa, docer | ●●●●○ |
+| project-analyst | pm, architect, auditor, docker | ●●●○○ |
+| python-specialist | backend, qa, docker, artifact-builder | ●●●●○ |
+| api-specialist | backend, frontend, qa, docker | ●●●●○ |
 | dba | backend, qa, security | ●●●○○ |
 | backend-dev | reviewer, gatekeeper, qa, github-specialist | ●●●●● |
 | ui-ux-advisor | frontend, qa, reviewer | ●●●○○ |
@@ -191,8 +191,8 @@ Cada linha lista os consumidores diretos do agente (quem o invoca via dispatcher
 | reviewer | gatekeeper | ●●●○○ |
 | gatekeeper | orchestrator, auditor | ●●●○○ |
 | project-auditor | pm, compliance, orchestrator | ●●●○○ |
-| docer-specialist | github-specialist, auditor | ●●●○○ |
-| artifact-builder | pm, architect, devops, docer | ●●●○○ |
+| docker-specialist | github-specialist, auditor | ●●●○○ |
+| artifact-builder | pm, architect, devops, docker | ●●●○○ |
 | skill-master | todos (via skills destiladas) | ●●●●○ |
 
 Critério anti-subutilização: **ATENDIDO** (nenhuma linha abaixo de 3 consumidores).

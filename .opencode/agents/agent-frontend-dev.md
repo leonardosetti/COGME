@@ -196,7 +196,7 @@ Stateless per session. Durable: templates/static in git, advisory parcels in led
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate; agent-ui-ux-advisor (design); agent-api-specialist (endpoints); agent-python-specialist (typing seeds).
 - SIDE: agent-qa-sdet (template/e2e tests), agent-reviewer (a11y + XSS verdicts).
-- DOWN: artifacts to agent-docer (usage doc), agent-artifact-builder (canonical template expansion).
+- DOWN: artifacts to agent-docker-specialist (usage doc), agent-artifact-builder (canonical template expansion).
 - Scripts: sync/check, dispatcher, pytest (template tests); no external build tools.
 
 ## 14. ONBOARDING AND SUCCESSION

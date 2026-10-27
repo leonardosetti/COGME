@@ -192,7 +192,7 @@ Restart=on-failure
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate (dispatch); stream bundles from workflows.
 - SIDE: agent-infrastructure-specialist (env flags + units), agent-devops (CI shell steps), agent-digital-security (script audit).
-- DOWN: agent-artifact-builder (templates), agent-docer-specialist (runbooks).
+- DOWN: agent-artifact-builder (templates), agent-docker-specialist (runbooks).
 - Scripts: sync/check, nexus_dispatcher, handoff_parser, pytest - all via existing contracts; bash is the wrong layer for their logic.
 
 ## 14. ONBOARDING AND SUCCESSION

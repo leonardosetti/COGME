@@ -203,7 +203,7 @@ CREATE TABLE IF NOT EXISTS fx_quote (
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate; agent-api-specialist (contract state); agent-architect (structure).
 - SIDE: agent-digital-security (retention vulnerability review), agent-backend-dev (DAO alignment), agent-qa-sdet (migration tests), agent-python-specialist (Decimal-money style in DAOs).
-- DOWN: agent-artifact-builder (schema scaffolds),agent-docer-specialist (data dictionary).
+- DOWN: agent-artifact-builder (schema scaffolds),agent-docker-specialist (data dictionary).
 - Scripts: sync_agent_registry --check, nexus_dispatcher, pytest; sqlite3 CLI for dry runs.
 
 ## 14. ONBOARDING AND SUCCESSION

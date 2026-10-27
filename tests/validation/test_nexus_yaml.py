@@ -40,7 +40,7 @@ AGENT_TOPOLOGY = {
            "agent-backend-dev", "agent-ui-ux-advisor", "agent-frontend-dev",
            "agent-bash-specialist", "agent-infrastructure-specialist",
            "agent-devops", "agent-github-specialist", "agent-digital-security",
-           "agent-compliance-governance", "agent-docer-specialist",
+           "agent-compliance-governance",
            "agent-artifact-builder", "agent-qa-sdet",
            "agent-ai-llm-rag-dag-mcp-roster-master-specialist",
            "agent-art-communication-marketing-pr-specialist",

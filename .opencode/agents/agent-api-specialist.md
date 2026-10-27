@@ -5,7 +5,7 @@ layer: L2
 role: specialist
 description: "COGME API custody. Owns the REST contract SSOT (OpenAPI via FastAPI), src/shared/schemas.py, error model, versioning /v1 and contract-test discipline. Contract-first: nothing ships in router without schema+version."
 upstream: [agent-nexus-prime-ultimate, agent-python-specialist, agent-architect]
-downstream: [agent-backend-dev, agent-frontend-dev, agent-qa-sdet, agent-docer-specialist]
+downstream: [agent-backend-dev, agent-frontend-dev, agent-qa-sdet, agent-docker-specialist]
 ---
 
 # SYSTEM DIRECTIVE: AGENT-API-SPECIALIST (L2 · SPECIALIST · CONTRACT CUSTODY)
@@ -196,7 +196,7 @@ def test_post_v1_simulate_amount_negative_rejected():
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate dispatch; agent-python-specialist typing guard; agent-architect structure verdicts.
 - SIDE: agent-dba (persistence alignment), agent-qa-sdet (contract tests), agent-ui-ux-advisor (form usage of schema names).
-- DOWN: agent-backend-dev (wire guidance), agent-frontend-dev (consumer contract), agent-docer-specialist (API reference docs).
+- DOWN: agent-backend-dev (wire guidance), agent-frontend-dev (consumer contract), agent-docker-specialist (API reference docs).
 - Scripts: pytest suite; sync_agent_registry --check; nexus_dispatcher; handoff_parser (via SDD).
 
 ## 14. ONBOARDING AND SUCCESSION

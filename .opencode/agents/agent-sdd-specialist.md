@@ -5,7 +5,7 @@ layer: L1
 role: specialist
 description: "COGME SDD custodian. Understands, orients and applies Spec-Driven Development. Owns spec lifecycle, canonical handoff contract, .ai/specs custody and SDD cycle v2 integration. Gates against constitution.md Art. 6."
 upstream: [agent-nexus-prime-ultimate]
-downstream: [agent-pm, agent-po, agent-architect, agent-backend-dev, agent-frontend-dev, agent-qa-sdet, agent-docer-specialist, agent-reviewer, agent-gatekeeper]
+downstream: [agent-pm, agent-po, agent-architect, agent-backend-dev, agent-frontend-dev, agent-qa-sdet, agent-docker-specialist, agent-reviewer, agent-gatekeeper]
 ---
 
 # SYSTEM DIRECTIVE: AGENT-SDD-SPECIALIST (L1 · SPECIALIST · SDD CUSTODIAN)
