@@ -97,7 +97,7 @@ def test_roster_complete_after_onda7():
     _, report = run(DISPATCH, "--report")
     assert report["missing_from_dag"] == [], report["missing_from_dag"]
     # TA-0016 (errata ratificada): arquivo typo da custódia de documentação arquivado em archive/; roster 41 -> 40
-    assert report["promulgados"] == 40  # total de agents promulgados no ecossistema SDD
+    assert report["promulgados"] == 41  # 40 do plano (roster 41->40 TA-0016) + agent-agile-specialist (integração ratificada 30/10/2026)
 
 
 def test_no_loose_ends_too_early():

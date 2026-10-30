@@ -1,40 +1,17 @@
-# LEDGER DE DESPACHOS — NEXUS-PRIME ULTIMATE (append-only, LGPD-safe: sem PII)
-# Histórico: arquivo foi truncado a 7 linhas em 24/10 ~21:21 (VIO-009, docs/auditorias/vio-register.md).
-# Entrada TA-0001 sobrevivente preservada verbatim abaixo; cadeia TA-0002..0017 declarada irrecuperável (KG).
-tasks:
-- task_id: TA-0001
-  sender: nexus-prime-ultimate
-  receiver: agent-registry-validator
-  action: validate
-  status: completed
-  notes: Resolved downstream slug violations, cleaned git objects, and updated legacy-forge agents
-  kill_switch: inherited
-- task_id: TA-0002
-  sender: agent-nexus-prime-ultimate
-  receiver: agent-sdd-specialist
-  action: spec
-  handoff: HF-0001
-  status: completed
-  notes: WS-1 R1 constituicao; artifact .ai/specs/constitution-round-1-proposta.md; 13 gaps; 8 emendas E-01..E-08; 4 KG; dod=true; score 92; veredito L3 aprovado com ressalvas (AUD-2610-04)
-  kill_switch: inherited
-- task_id: TA-0003
-  sender: agent-nexus-prime-ultimate
-  receiver: agent-architect
-  action: analyze
-  status: completed
-  notes: WS-2 ADR audit; artifact docs/auditorias/AUD-2610-03.md; ADRs 001-005 vazios (0B) confirmados; evento destrutivo 24/10 02:53 confirmado; 6 emendas ADR recomendadas; score 55; veredito L3 aprovado com ressalvas (VIO-011 addenda de citacoes)
-  kill_switch: inherited
-- task_id: TA-0004
-  sender: agent-nexus-prime-ultimate
-  receiver: agent-sdd-specialist
-  action: analyze
-  status: completed
-  notes: WS-3 requisitos; artifact .ai/specs/requisitos-review-round-1.md; 15 REQ em 4 espelhos (base 0B); 17 US candidatas; DoR 12 itens; spec drafting em BLOCK ate CCB; score 88; veredito L3 aprovado com ressalvas
-  kill_switch: inherited
-- task_id: TA-0005
-  sender: agent-nexus-prime-ultimate
-  receiver: agent-project-auditor
-  action: audit
-  status: completed
-  notes: Parecer Art. 9.1; artifacts docs/auditorias/AUD-2610-04.md + vio-register.md; VIO-006..VIO-012 abertos; cadeia Art. 9.1 completa; pacote CCB-ready; score 84; leis intocadas por todas as custodias
-  kill_switch: inherited
+version: 2.0
+current_session: P5
+audit_trail:
+  - timestamp: 2026-10-29T15:00:00Z
+    action: P4 completion
+    status: done
+blocked_tasks: []
+last_updated: 2026-10-29T15:00:00Z
+context_budget_tokens: 24000
+context_used_tokens: 0
+# 2026-10-30 — Rotina de verificação do circuito (flash audit)
+# Diagnóstico: registry.yaml corrompido (doc YAML duplicado, +8 linhas não comitadas) -> nexus_dispatcher/sync/drift/health BLOQUEADOS (FAIL-CLOSED 11.1/11.2)
+# Correções ratificadas: (1) bloco-cabeçalho espúrio removido; (2) sync do custódio promoveu agent-agile-specialist (L2 promulgado, 41 no roster);
+# (3) cânone AGENT_TOPOLOGY L2 24->25 em validate_nexus_yaml.py (camada declarada no contrato do agente);
+# (4) contrato agile: front-matter upstream [nexus-prime-ultimate, sdd-specialist] + downstream [pm, po] (slugs fantasma sprint-planner/backlog-manager/ci-cd-integrator removidos);
+# (5) censos de testes: L2==25, promulgados==41.
+# Suíte de integração: 147 passed, 1 skipped, 0 failed. Dispatcher: ACCEPT e2e em agile/api/auditor. Drift: 0. DAG: 41 slugs acíclico.

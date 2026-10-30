@@ -8,6 +8,19 @@ registry:
   project: COGME
   slug_rule: kebab-case com prefixo agent- (constitution.md Art. 4)
 agents:
+- file: .opencode/agents/agent-agile-specialist.md
+  name: agent-agile-specialist
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: Agile development specialist aligned with Agile Manifesto
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+  - agent-sdd-specialist
+  downstream:
+  - agent-pm
+  - agent-po
 - file: .opencode/agents/agent-ai-llm-rag-dag-mcp-roster-master-specialist.md
   name: agent-ai-llm-rag-dag-mcp-roster-master-specialist
   version: 0.1.0
