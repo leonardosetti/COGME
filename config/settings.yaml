@@ -1,0 +1,7 @@
+system:
+  logging:
+    level: debug
+    file: /var/log/nexus/agent.log
+  metrics:
+    enabled: true
+    endpoint: http://localhost:9090/metrics

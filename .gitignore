@@ -60,3 +60,10 @@
 # restaurado 2026-10-26 (VIO-012): pesos locais fora do repo
 models/
 *.gguf
+
+# --- Higiene anti-bloat (pasta-raiz) — decisão CCB-LOG-2026-10-30-A01 ---
+argparse
+lst.txt
+*.tmp.md
+.~*.docx
+.obsidian/

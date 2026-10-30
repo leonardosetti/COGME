@@ -1,0 +1,9 @@
+models_catalog:
+  primary: Qwen3-30B-A3B Q4_K_M
+  fallback: Qwen 14B Q4_K_M
+  batch: Qwen 72B Q4_K_M
+  deprecated: Qwen3.8-27B Q4_K_M
+  context_configured: 32768
+  context_effective: 24000
+  output_max: 4096
+  performance_target: 12 t/s generation, 25 t/s prompt processing
