@@ -60,7 +60,7 @@ Fonte: Elaborado pelos autores (2026).
 
 Arquitetura em camadas (monólito modular), conforme a estrutura do repositório:
 
-```
+~~~
 src/
 ├── backend/            # FastAPI + SQLite
 │   ├── main.py         # ponto de entrada da aplicação (uvicorn src.backend.main:app)
@@ -74,7 +74,7 @@ src/
 tests/
 ├── unit/               # testes de regras de cálculo
 └── integration/        # testes de endpoints, cache e geração de PDF
-```
+~~~
 
 ![Figura 3.2 — Arquitetura lógica do COGME](../diagramas/desenvolvimento/fig-3-2-arquitetura-logica.png)
 

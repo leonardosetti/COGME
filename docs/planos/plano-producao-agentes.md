@@ -52,13 +52,13 @@ Aplicação de Pareto (§0.6.3) + YAGNI. Papéis dominados foram **incorporados 
 
 ## 3. TOPOLOGIA EM CAMADAS (DAG, anti-recursão)
 
-```
+~~~
 L0  Orquestração            → 1 agente
 L1  Comando/Estratégia      → 5 agentes
 L2  Execução/Técnica        → 13 agentes
 L3  Qualidade/Portões       → 4 agentes
 META AFA-ULTIMATE           → já operante (forjador)
-```
+~~~
 
 Fluxo half-duplex: toda delegação retorna parcela estruturada ao chamador; brigas de rota são `status: escalated_to_orchestrator`.
 

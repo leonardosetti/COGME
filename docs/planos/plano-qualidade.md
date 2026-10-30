@@ -111,7 +111,7 @@ Dada a inaplicabilidade de EVM (ADR-003, Integração §1.6.2), o controle de qu
 
 Conforme N7.1 da EAP e REQ-11, o pipeline CI executa automaticamente a cada push:
 
-```yaml
+~~~yaml
 # .github/workflows/ci.yml (resumo)
 name: CI Pipeline
 on: [push, pull_request]
@@ -132,7 +132,7 @@ jobs:
         run: pytest --cov=cogme --cov-report=xml --cov-fail-under=80
       - name: Upload coverage
         uses: codecov/codecov-action@v3
-```
+~~~
 
 **Critérios de qualidade do pipeline:**
 
@@ -370,7 +370,7 @@ A definição operacional de Cycle Time aqui vigente é `In Progress` → `Done`
 Este plano consolida 12 ciclos PDCA (N1-N12), conforme baseline do TAP §4 (12 fases + 37 pacotes). O Glossário v3.1 pode registrar "13 fases + 48 pacotes" — esta contagem é volátil e não canônica. O TAP e Planos de Integração/Escopo são as fontes canônicas. O TAP não integra ciclos PDCA (Premissa P9).
 
 **NC-Q5 — Grafia do Stakeholder (E1):**
-A seção 5 utiliza a grafia "Prof. Dr. Nivaldo Carleto" conforme TAP v3. O Glossário v3.1 registra "Carletto" (grafia incorreta). Esta inconsistência é registrada para saneamento na próxima revisão do Glossário (pós-M1).
+A seção 5 utiliza a grafia "Prof. Dr. Nivaldo Carleto" conforme TAP v3. O Glossário v3.1 registra "Carleto" (grafia incorreta). Esta inconsistência é registrada para saneamento na próxima revisão do Glossário (pós-M1).
 
 **Registro de saneamento — artefatos vivos (não bloqueante):**
 
@@ -379,7 +379,7 @@ A seção 5 utiliza a grafia "Prof. Dr. Nivaldo Carleto" conforme TAP v3. O Glos
 | Numeração de processos 8.1-8.3                    | Glossário §3 | Próxima revisão do Glossário |
 | Contagem EAP "13/48" → 12/37                       | Glossário §1 | Próxima revisão do Glossário |
 | Cycle Time "To Do → Done" → "In Progress → Done" | Glossário     | Próxima revisão do Glossário |
-| Grafia "Carletto" → "Carleto"                      | Glossário     | Próxima revisão do Glossário |
+| Grafia "Carleto" → "Carleto"                      | Glossário     | Próxima revisão do Glossário |
 
 ## 5.10 DECLARAÇÃO DE RASTREABILIDADE
 

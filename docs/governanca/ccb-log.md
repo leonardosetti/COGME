@@ -74,10 +74,19 @@ pmbok: R24 | togaf: Security Architecture | itil: standard.
 
 | ID | Item | Ação | Bloqueia ratificação |
 |-----|------|-----------------------|--------------|
-| P01 | constitution.md v1.2.0 E-09..E-19 (VIGENTE-INTERINA) | co-assinatura humana Art. 5.4 | LEI SUPREMA |
+| P01 | constitution.md v1.2.0 E-09..E-19 (~~VIGENTE-INTERINA~~) | ✅ **CLOSED 30/10** — A05: PLENA, co-assinatura expressa, commit `7cff886` | LEI SUPREMA (resolvido) |
 | P02 | `.ai/personas/_base.md` trim 68→11 (delta perdido em I01) | re-aplicar se ratificado | personas |
 | P03 | `.opencode/opencode.json` budget+deny-list | revisão SP-01 | Modelo runtime |
 | P04 | Normalização nomenclatura/estrutura (proposta §4 plano) | onda pós-P01 | SSOT qualquer |
+
+### CCB-LOG-2026-10-30-A05 — RATIFICAÇÃO + PROMULGAÇÃO da Constituição v1.2.0 (fechamento P01)
+contexto: constitution.md v1.2.0 (emendas E-09..E-19) aguardava co-assinatura humana (Art. 5.4) — pêndulo VIGENTE-INTERINA desde 29/10.
+opções: [A] co-assinatura expressa e promulgação | [B] revisar por rodada dedicada | [C] reverter emenda
+decisão: **A** — prompt expresso do CCB (membro único) de 30/10/2026: "Aplique co-assinatura, ratifique e promulgue". Status → VIGENTE-PLENA.
+evidência: SHA-256 normativo `b3f296c6…1851db4`; commit de conteúdo `7cff886`; bloco de co-assinatura fechado ao pé (derivado, não-normativo).
+impacto: lei supma revalidada; P01 CLOSED; habilita P04 (normalização estrutural) como próxima onda.
+rollback: `git revert <fechamento>` (mantém histórico de explicação em vio-register).
+pmbok-gate: Área de Conformidade | togaf-gate: ADM — Architecture Board Ratification | itil-gate: change record closed.
 
 ### I01 — Incidente de processo (auto-registro NEXUS, transparência auditável nº. 2026-10-30-I01)
 fluxo: `git checkout -- .ai` executado antes do commit de higiene reverteu deltas

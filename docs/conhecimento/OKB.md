@@ -749,7 +749,7 @@ A sub-seção 10.2 ("Cards que Receberão Tasklist") está **tecnicamente corret
 
 **Exemplo prático (Card M1-05 — Plano de Qualidade):**
 
-```markdown
+~~~markdown
 ## Tasklist (ADR-004)
 
 - [ ] Estrutura do Plano de Qualidade redigida (seções 1-8)
@@ -758,7 +758,7 @@ A sub-seção 10.2 ("Cards que Receberão Tasklist") está **tecnicamente corret
 - [ ] Critérios de aceite vinculados a REQ-08, REQ-09, REQ-10
 - [ ] Revisão em pares solicitada (Fabricio ou Leonardo)
 - [ ] Validação final
-```
+~~~
 
 **Regras operacionais:**
 
@@ -923,13 +923,13 @@ Uma **ADR tardia** é aquela emitida **após** a decisão já ter sido implement
 
 Além dos campos padrão (Contexto, Opções, Decisão, Consequências, Trade-offs), a ADR tardia **deve** incluir:
 
-```markdown
+~~~markdown
 **Tipo:** Regularização tardia
 **Data da decisão efetiva:** [data em que foi aplicada]
 **Data da formalização:** [data de emissão da ADR]
 **Motivo da tardança:** [ex: "priorização de entrega do M1 sobre documentação"]
 **Lição aprendida:** [ação preventiva para evitar recorrência]
-```
+~~~
 
 **Trade-off declarado:** Aceita-se a ADR tardia como mal menor em relação à ausência total de registro, mas desincentiva-se sua recorrência. Se > 30% das ADRs do projeto forem tardias, o GP deve revisar o fluxo de trabalho na Retrospectiva.
 
@@ -945,7 +945,7 @@ Este princípio deriva do GMV e do Domínio de Trabalho do Projeto (PMBOK 7ª): 
 
 ### 3.2 Estrutura de Diretórios no Repositório
 
-```
+~~~
 /docs/
 ├── planos/
 │   ├── plano-integracao.md        ← Coordenador (referencia todos os demais)
@@ -973,7 +973,7 @@ Este princípio deriva do GMV e do Domínio de Trabalho do Projeto (PMBOK 7ª): 
 │   └── baseline.md                ← Pós-calibração (03/10)
 └── requisitos/
     └── requisitos.md              ← REQ-01 a REQ-15 (consolidados)
-```
+~~~
 
 ### 3.3 Estratégia de Integração: Cross-Reference vs. Anexo vs. Seção
 
@@ -998,7 +998,7 @@ Este princípio deriva do GMV e do Domínio de Trabalho do Projeto (PMBOK 7ª): 
 
 Em qualquer plano de área, quando for necessário referenciar um documento externo, usa-se o seguinte formato:
 
-```markdown
+~~~markdown
 Conforme [ADR-003 — Métricas de Fluxo](/docs/decisoes/ADR-003-metricas.md), 
 as métricas EVM são declaradas LEGADO.
 
@@ -1007,13 +1007,13 @@ o M1 contempla 5 planos.
 
 Conforme [Glossário — Termo "CFD"](/docs/conhecimento/glossario.md#4-metodologia-ágil--kanban), 
 o Cumulative Flow Diagram é a visualização gráfica do fluxo acumulado.
-```
+~~~
 
 ### 3.6 Tabela-Resumo no Plano de Integração (Seção 1.1 — Adendo Proposto)
 
 Para que o Prof. Dr. Nivaldo Carleto tenha visibilidade integral sem abrir cada documento, o Plano de Integração deve conter uma **tabela-índice** na seção 1.1 ou como adendo à seção 1.4:
 
-```markdown
+~~~markdown
 ### 1.4.1 Índice de Documentos de Governança Transversal
 
 | Documento | Localização | Função | Última Versão |
@@ -1026,7 +1026,7 @@ Para que o Prof. Dr. Nivaldo Carleto tenha visibilidade integral sem abrir cada 
 | ADR-004 | /docs/decisoes/ADR-004-tasklists.md | Tasklists Markdown | Aprovada |
 | Baseline | /docs/metricas/baseline.md | Dados empíricos de fluxo | ⏳ Pós 03/10 |
 | Lições MF1 | /docs/conhecimento/licoes-aprendidas/MF1.md | Aprendizados da Fundação | ⏳ 30/09 |
-```
+~~~
 
 ---
 

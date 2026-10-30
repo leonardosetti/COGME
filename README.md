@@ -50,7 +50,7 @@ O COGME preenche essa lacuna: uma solução única, gratuita e de código aberto
 
 O projeto adota um **modelo híbrido trifásico** declarado no [Termo de Abertura do Projeto](docs/tap/TAP.md):
 
-```
+~~~
 ┌─────────────────────────────────────────────────┐
 │  PMBOK® 7ª Edição                               │  ← Governança primária
 │  12 Princípios + 8 Domínios de Desempenho       │     (por que / para quê)
@@ -62,7 +62,7 @@ O projeto adota um **modelo híbrido trifásico** declarado no [Termo de Abertur
 │  Manifesto Ágil + Kanban (GitHub Projects)      │  ← Método de execução
 │  Fluxo contínuo, WIP limits, métricas de fluxo  │     (como o trabalho flui)
 └─────────────────────────────────────────────────┘
-```
+~~~
 
 ### Método de Execução
 
@@ -110,11 +110,11 @@ Roster em consolidação: 25 agentes (`agent-*`) em 8 ondas de produção.
 
 ### Macro-Fases da EAP
 
-```
+~~~
 MF1: Fundação (01/09 – 30/09)     → N1, N2, N3, N4, N8, N9
 MF2: Construção (01/10 – 15/11)   → N5, N6, N7, N10
 MF3: Consolidação (16/11 – 15/12) → N11, N12
-```
+~~~
 
 **EAP:** 12 fases de Nível 1 + 37 pacotes de Nível 2 — [ver diagrama](docs/diagramas/eap/fig-01-eap-executiva.svg)
 
@@ -168,7 +168,7 @@ Todas as dependências passam por auditoria de licenciamento ([EAP N4.4](docs/de
 
 ## Estrutura do Repositório
 
-```
+~~~
 COGME/
 ├── .ai/                          # Contexto SDD (lido pela IA)
 │   ├── personas/                 # PM, Coder, Reviewer, Tester + active.md
@@ -221,7 +221,7 @@ COGME/
 ├── LICENSE
 ├── pyproject.toml
 └── requirements.txt
-```
+~~~
 
 ---
 
@@ -234,7 +234,7 @@ COGME/
 
 ### Setup
 
-```bash
+~~~bash
 # Clonar o repositório
 git clone https://github.com/Leonardo-Setti/COGME.git
 cd COGME
@@ -246,27 +246,27 @@ source .venv/bin/activate  # Linux/macOS
 
 # Instalar dependências
 pip install -r requirements.txt
-```
+~~~
 
 ### Executar o Backend
 
-```bash
+~~~bash
 uvicorn src.backend.main:app --reload --port 8000
-```
+~~~
 
 ### Executar Testes
 
-```bash
+~~~bash
 pytest --cov=src --cov-report=term-missing --cov-fail-under=80
-```
+~~~
 
 ### Pipeline CI
 
 O pipeline roda automaticamente a cada push via GitHub Actions:
 
-```
+~~~
 lint (flake8 + mypy) → testes (pytest + coverage ≥ 80%) → relatório
-```
+~~~
 
 ---
 

@@ -13,7 +13,7 @@ lgpd-class: n/a
 caveats:
   - "UNKNOWN-GAP: handoffs HF-* desta onda pendentes de back-link pela orchestrator (spec da taxonomia)"
   - "Cobertura parcial: licoes/diagramas/drafts remanescentes ainda não frontmatter-classificados constam da Seção 'Cobertura declarada'"
-  - "grafia 'Carletto' residual em artefatos NÃO editados nesta onda: docs/slides_apresentacao/capa.svg (SVG = texto, porém fora da lista autorizada TA-0017) e PDFs binários (COGME.pdf e exportados) — PDF (binário) não é editável na onda; pendente CCB/onda futura"
+  - "grafia 'Carleto' residual em artefatos NÃO editados nesta onda: docs/slides_apresentacao/capa.svg (SVG = texto, porém fora da lista autorizada TA-0017) e PDFs binários (COGME.pdf e exportados) — PDF (binário) não é editável na onda; pendente CCB/onda futura"
 ---
 
 # KB-INDEX — Índice do SSOT COGME
@@ -76,7 +76,7 @@ caveats:
 | Item CCB | Tema | Status |
 |---|---|---|
 | C1 | Planos de área riscos/recursos/comunicações preenchidos | ✅ RESOLVIDO (plan → active 1.0.0, ledger TA-0013) |
-| C2 | Grafia "Carletto" → "Carleto" (glossário) | ✅ RESOLVIDA (glossário v3.2.0, TA-0017); resíduos capa.svg/PDFs pendentes (caveats acima) |
+| C2 | Grafia "Carleto" → "Carleto" (glossário) | ✅ RESOLVIDA (glossário v3.2.0, TA-0017); resíduos capa.svg/PDFs pendentes (caveats acima) |
 | C3 | Roster registry ratificado (v1.0) | ✅ RESOLVIDO (ledger TA-0013) |
 | C4 | ADR-001..004 preenchidas + ratified 1.1.0 | ✅ RESOLVIDO (ledger TA-0013) |
 | C5 | Dedupe OKB: 3 corpora → 1 | ✅ RESOLVIDO (OKB v4.0.0 único, TA-0017; v3.1 draft movido para archive com proveniência) |
@@ -87,7 +87,7 @@ caveats:
 1. **docx Plano-de-Projeto v1.1 canônico vs v1.0; mover docx para archive:** versão mais recente prevalece (KB-TAX-001 §4.6), mas o HUMANO AINDA NÃO DECIDIU a movimentação do docx — manter PENDENTE (não mover nesta onda).
 2. **Back-link HF-*:** UNKNOWN-GAP da spec da taxonomia: handoffs desta onda ainda não numerados; back-link pendente pelo primeiro dispatch downstream.
 3. **SVG EAP sem fonte:** figuras EAP do plano-integral são placeholders; fonte svg/mermaid exigida (classe diagrama, custódia architect).
-4. **Grafia "Carletto" residual:** `docs/slides_apresentacao/capa.svg` (SVG textual, fora da lista autorizada desta onda) e PDFs binários — pendente onda futura/CCB.
+4. **Grafia "Carleto" residual:** `docs/slides_apresentacao/capa.svg` (SVG textual, fora da lista autorizada desta onda) e PDFs binários — pendente onda futura/CCB.
 5. **Merge remanescente de drafts (22 arquivos):** execução downstream (okb/glossario) — pendente de decisão/dispatch.
 6. **Saneamento Glossário:** Cycle Time "To Do → Done", contagem EAP "13/48", "Processo 6.4 Estimar Custos" → 7.2 — canônico já vigente (ADR-003/TAP §4), correção textual pendente.
 

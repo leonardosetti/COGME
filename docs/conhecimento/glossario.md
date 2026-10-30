@@ -3,7 +3,7 @@
 **Versão:** 3.1  
 **Data:** 20/09/2026  
 **Status:** Atualizado conforme OKB v3.1 e análise de auditoria v2.0  
-**Stakeholder-Avaliador:** Prof. Dr. Nivaldo Carletto  
+**Stakeholder-Avaliador:** Prof. Dr. Nivaldo Carleto  
 **Referências:** `OKB_COGME_v3.1.md`, `analise_arquitetural.md` v2.0, `Canon_Stack_SDD.md` v1.0, `TAP v3` (18/09/2026)  
 **Hierarquia de autoridade:** TAP > OKB > Glossário > ADRs
 
@@ -48,7 +48,7 @@
 | Domínio de Medição | Métricas de desempenho | Cycle time, throughput, CFD (substitui EVM) |
 | Domínio de Incerteza | Gestão de riscos e ambiguidade | Risk backlog + matriz prob./impacto |
 | Domínio de Integração | Coordenação de todos os domínios | TAP como documento de autorização (não gerenciado) |
-| Stakeholder | Pessoa/grupo afetado pelo projeto | Prof. Dr. Nivaldo Carletto (único formal) |
+| Stakeholder | Pessoa/grupo afetado pelo projeto | Prof. Dr. Nivaldo Carleto (único formal) |
 | Valor Entregue | Benefício tangível gerado | Princípio orientador: Valor > Satisfação > Conformidade |
 | Princípio P6 | Especialização via prompt, não via modelo | 1 modelo (Qwen 32B) + N prompts = N especialistas SDD |
 | Princípio P9 | Separação ontológica TAP ≠ EAP ≠ PDCA | TAP autoriza o projeto, não é gerenciado por ele |
@@ -201,11 +201,11 @@
 | --- | --- | --- |
 | Fatec Taquaritinga | Instituição de ensino | Faculdade de Tecnologia |
 | ADS | Análise e Desenvolvimento de Sistemas | Curso técnico |
-| Prof. Dr. Nivaldo Carletto | Stakeholder-avaliador | Patrocinador + avaliador contínuo |
+| Prof. Dr. Nivaldo Carleto | Stakeholder-avaliador | Patrocinador + avaliador contínuo |
 | Disciplina de Gerência de Projetos | Contexto acadêmico | PMBOK 6ª como bibliografia base |
 | Simplificação Pedagógica | Restrição didática | Exclusão de Aquisições e Partes Interessadas |
 | Obsolescência Assumida | Declaração de maturidade | PMBOK 6ª (2017) vs. 7ª (2021) |
-| Banca Acadêmica | Avaliadores | Apenas Prof. Dr. Nivaldo Carletto no COGME |
+| Banca Acadêmica | Avaliadores | Apenas Prof. Dr. Nivaldo Carleto no COGME |
 | Entrega Parcial | Marco intermediário | Consolidação documental (22/09/2026) |
 | Entrega Final | Marco de conclusão | MVP + documentação (Nov/Dez 2026) |
 | Rastreabilidade de Prompts | Auditoria de LLM | Prompts catalogados em `.ai/handoffs/` |
@@ -244,7 +244,7 @@
 | P5 | ACID e Clean Code | Padrão inegociável |
 | P6 | Especialização via prompt, não via modelo | 1 modelo (Qwen 32B) + N prompts = N especialistas (NOVO v3.1) |
 | P7 | Entrega incremental via fluxo contínuo | Kanban sem sprints fixas |
-| P8 | Stakeholder único formal | Prof. Dr. Nivaldo Carletto como patrocinador-avaliador |
+| P8 | Stakeholder único formal | Prof. Dr. Nivaldo Carleto como patrocinador-avaliador |
 | P9 | Separação ontológica TAP ≠ EAP ≠ PDCA | TAP autoriza, não é gerenciado (NOVO v3.1) |
 
 ---
@@ -264,13 +264,13 @@
 ## 12. Hierarquia de Resolução de Conflitos (OKB v3.1 §3.1)
 
 1. Valor entregue ao usuário final (PMBOK 7ª — Domínio de Entrega)
-2. Ementa da disciplina + orientação do Prof. Dr. Nivaldo Carletto
+2. Ementa da disciplina + orientação do Prof. Dr. Nivaldo Carleto
 3. PMBOK 7ª (12 princípios + 8 domínios de desempenho)
 4. Manifesto Ágil + Kanban (método de execução)
 5. PMBOK 6ª (apenas como dicionário de processos quando necessário)
 6. Literatura técnica complementar
 
-**Adendo v3.1:** Em caso de conflito entre velocidade de entrega e completude documental, a entrega de valor prevalece, desde que justificada via ADR e comunicada ao Prof. Dr. Nivaldo Carletto em até 48h.
+**Adendo v3.1:** Em caso de conflito entre velocidade de entrega e completude documental, a entrega de valor prevalece, desde que justificada via ADR e comunicada ao Prof. Dr. Nivaldo Carleto em até 48h.
 
 ---
 
@@ -280,7 +280,7 @@ Todo artefato de governança deve passar pelo teste GMV antes de ser produzido:
 
 | Pergunta | Se SIM | Se NÃO |
 | --- | --- | --- |
-| O Prof. Dr. Nivaldo Carletto exigirá este artefato na avaliação? | Produzir completo | Simplificar ou eliminar |
+| O Prof. Dr. Nivaldo Carleto exigirá este artefato na avaliação? | Produzir completo | Simplificar ou eliminar |
 | Este artefato evita retrabalho futuro? | Produzir | Avaliar custo-benefício |
 | Este artefato é exigido pelo PMBOK 7ª como evidência de domínio? | Produzir | Documentar em 1 parágrafo no TAP |
 | Este artefato é útil para a equipe (não apenas para o professor)? | Produzir | Eliminar |
@@ -291,7 +291,7 @@ Todo artefato de governança deve passar pelo teste GMV antes de ser produzido:
 
 ## 14. Estrutura Documental (OKB v3.1 §7)
 
-```
+~~~
 PROJETO COGME
  ├── 00. TAP (Termo de Abertura)                          [GMV: OBRIGATÓRIO — NÃO integra EAP/PDCA]
  ├── 01. Plano de Integração                               [GMV: OBRIGATÓRIO]
@@ -309,7 +309,7 @@ PROJETO COGME
  │   └── 09.4. Runbooks [DESCARTADO — YAGNI]
  ├── 10. Plano de Gestão de Mudanças (CCB)                 [GMV: SIMPLIFICAR*]
  └── 11. Código-Fonte (MVP) + DER + Diagramas + .ai/       [GMV: OBRIGATÓRIO]
-```
+~~~
 
 *SIMPLIFICAR = 1-2 páginas no máximo, foco em premissas e restrições, sem planilhas complexas ou simulações de EVM.
 

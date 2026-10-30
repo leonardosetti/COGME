@@ -174,7 +174,7 @@ Fonte: Elaborado pelos autores (2026). TOTAL: 12 fases Nível 1 + 37 pacotes Ní
 
 **Lista Hierárquica Aninhada**
 
-```
+~~~
 N0: COGME — Conversor de Ganhos em Moeda Estrangeira
  │
  ├── N1: 1. Iniciação e Planejamento [MF1]
@@ -237,7 +237,7 @@ N0: COGME — Conversor de Ganhos em Moeda Estrangeira
      ├── N12.1: Lições Aprendidas Finais
      ├── N12.2: Verificação SMART
      └── N12.3: Apresentação Final + Aceite
-```
+~~~
 
 **Declaração de Rastreabilidade (TAP → EAP)**
 
@@ -1612,7 +1612,7 @@ Nota (I6): mypy é ferramenta complementar de análise estática de tipos, não 
 
 Conforme N7.1 da EAP e REQ-11, o pipeline CI executa automaticamente a cada push:
 
-```yaml
+~~~yaml
 # .github/workflows/ci.yml (resumo)
 name: CI Pipeline
 on: [push, pull_request]
@@ -1633,7 +1633,7 @@ jobs:
         run: pytest --cov=cogme --cov-report=xml --cov-fail-under=80
       - name: Upload coverage
         uses: codecov/codecov-action@v3
-```
+~~~
 
 Critérios de qualidade do pipeline:
 

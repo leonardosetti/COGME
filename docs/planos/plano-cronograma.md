@@ -134,7 +134,7 @@ Fechamento de milestones: uma milestone não é fechada enquanto houver Issues a
 | ---------------------------------------------------------------------- | -------------------------------------- | ---------------------------------------- |
 | Numeração 6.3/6.5 no §8.1                                           | Base de conhecimento operacional §8.1 | Próxima revisão da base                |
 | "Processo 6.4 Estimar Custos" → 6.4 Estimar Durações (custos = 7.2) | Glossário §3                         | Próxima revisão do Glossário          |
-| Grafia "Carletto" → "Carleto"                                         | Glossário                             | Próxima revisão do Glossário          |
+| Grafia "Carleto" → "Carleto"                                         | Glossário                             | Próxima revisão do Glossário          |
 | Cycle Time "To Do → Done" → "In Progress → Done"                    | Glossário                             | Próxima revisão do Glossário          |
 | Contagem EAP "13/48" → 12/37 (baseline do TAP §4)                    | Glossário §1                         | Próxima revisão do Glossário          |
 | Convenção dupla de dias                                              | ADR-003 / Glossário / baseline        | Formalização da baseline (após 03/10) |

@@ -55,7 +55,7 @@ O gerenciamento de custos do COGME opera em três camadas de prevenção:
 **[FIG-1 — Fluxo de Prevenção de Custos]**
 *Inserção obrigatória — Formato: Mermaid `flowchart TD`*
 
-```mermaid
+~~~mermaid
 flowchart TD
     A[Nova dependência identificada] --> B{Gate 1:<br/>Licença OSI-approved?}
     B -->|NÃO| C[Rejeição imediata]
@@ -71,7 +71,7 @@ flowchart TD
     style H fill:#0e8a16
   
     I[Desvio de qualquer gate<br/>aciona change-request<br/>Integração §1.7] -.-> B
-```
+~~~
 
 *Conteúdo:* Fluxograma vertical com três gates sequenciais e anotação sobre change-request.
 *Necessidade real:* Materializa visualmente o mecanismo de prevenção de custos, demonstrando ao avaliador que "custo zero" não é ausência de governança, mas governança rigorosa sobre conformidade FOSS.
