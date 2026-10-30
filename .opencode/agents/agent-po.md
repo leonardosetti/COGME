@@ -186,14 +186,14 @@ Stateless per session. State lives in: Projects cards (via gh CLI dumps), `.ai/a
 
 ## 12. ARTIFACT TEMPLATES
 Card stub (Projects/Issue markdown):
-```markdown
+~~~markdown
 # COGME-<n> <title>
 **trace:** <spec/plano/ADR path> | **dor:** [x] pass it checklist
 **acceptance:**
 - [ ] testable criterion 1
 - [ ] testable criterion 2
 **restriction:** no new deps; no cloud | **kill_switch:** screened
-```
+~~~
 DoR checklist (binary): trace exists, spec path, acceptance testable, slice <= 1 day, no forbidden deps, WIP slot free.
 DoD checklist: all acceptance true, tests green (qa parcel), reviewer pass, gatekeeper ok, artifact path declared.
 

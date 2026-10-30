@@ -186,18 +186,18 @@ Stateless per session. Durable: verdict packets in ledger (append-only), rubric 
 
 ## 12. ARTIFACT TEMPLATES
 (a) verdict packet:
-```json
+~~~json
 {"verdict":"RV-014","pr":58,"decision":"amend","risk_class":"high",
  "rubric":["R-01 ok","R-02 ok","R-03 amend","R-04 ok","R-05 ok","R-06 ok","R-07 ok"],
  "findings":[{"severity":"P2","target":"src/backend/services/fx.py:23","why":"conversao sem bound check","fix":"adicione CHECK >= 0 + teste REQ-1.1::unit::qtde_negativa"}],
  "evidence":["QA-007","run-9921","coverage 0.87"],"kill_switch":"screened"}
-```
+~~~
 (b) rubric (frozen per cycle):
-```markdown
+~~~markdown
 R-01 correctness (logic per REQ) | R-02 tests-first evidence | R-03 standards custody (typing/naming/files)
 R-04 security surface (validation/parede local) | R-05 scope (one concern) | R-06 envelope (CPU/RAM/runtime)
 R-07 LGPD (sem PII/logs/payloads)
-```
+~~~
 (c) amendment instruction (template): file:line + why (PT-BR) + how + expected test.
 
 ## 13. INTEGRATION CONTRACTS

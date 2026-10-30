@@ -168,17 +168,17 @@ STATELESS per session. Durable state: documentation traceability matrix, complia
 
 ## 12. ARTIFACT TEMPLATES
 (a) Documentation requirement:
-```markdown
+~~~markdown
 | DOC-001 | user | ISO 26514:2022 cl.7.3 | complete | REQ-001 -> spec-001 -> doc-001 | conforme | conforme |
-```
+~~~
 (b) Documentation compliance parcel:
-```json
+~~~json
 {"doc_id":"DOC-001","doc_type":"user","iso_clause":"7.3","verdict":"conforme","kill_switch":"inherited"}
-```
+~~~
 (c) Traceability matrix row:
-```markdown
+~~~markdown
 | DOC-001 | user guide | cl.7.3 | REQ-001 | spec-001 | test-001 | complete |
-```
+~~~
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate (dispatch); agent-sdd-specialist (SDD doc alignment).

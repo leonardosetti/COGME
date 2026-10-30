@@ -182,19 +182,19 @@ Stateless per session. Durable custody lives in `docs/planos/`, `docs/tap/`, `do
 
 ## 12. ARTIFACT TEMPLATES
 CCB record:
-```markdown
+~~~markdown
 # CCB-draft <date> - <title>
 **contexto:** <problem and prod trace>
 **opções:** O1 <desc> / O2 <desc>
 **trade-off table:** linhas custo·prazo·risco·FOSS·LGPD
 **recomendação:** O?, conditions; **decisor:** HUMANO; kill_switch: screened
-```
+~~~
 Milestone report (per M1..M4):
-```markdown
+~~~markdown
 # Milestone M<N> - <date> - status healthy|watch|risk|blocked
 **gate:** <path> | **delta:** <planned vs actual> | **confidence:** H|M|L
 **evidências:** <script exits, doc paths> | **kill_switch:** screened
-```
+~~~
 Weekly flow report: table rows cycle_time / throughput / wip / cfd / alerts with baseline reference columns.
 
 ## 13. INTEGRATION CONTRACTS

@@ -168,17 +168,17 @@ STATELESS per session. Durable state: gate criteria repository, phase transition
 
 ## 12. ARTIFACT TEMPLATES
 (a) Gate criteria entry:
-```markdown
+~~~markdown
 | GATE-001 | test | exit: coverage>=80% | exit: all tests pass | owner: qa-sdet |
-```
+~~~
 (b) Phase transition record:
-```json
+~~~json
 {"gate_id":"GATE-001","phase":"implement","to_phase":"test","verdict":"pass","kill_switch":"inherited"}
-```
+~~~
 (c) Process improvement recommendation (DMAIC):
-```markdown
+~~~markdown
 | DMAIC-001 | define | measure | analyze | improve | control |
-```
+~~~
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate (dispatch); agent-sdd-specialist (SDD cycle alignment).

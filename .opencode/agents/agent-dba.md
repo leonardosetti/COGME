@@ -181,7 +181,7 @@ Stateless per session. Durable: schema files inside `migrations/` or `src/backen
 
 ## 12. ARTIFACT TEMPLATES
 (a) table DDL block:
-```sql
+~~~sql
 CREATE TABLE IF NOT EXISTS fx_quote (
   id INTEGER PRIMARY KEY,
   source TEXT NOT NULL CHECK (length(source) <= 32),
@@ -191,14 +191,14 @@ CREATE TABLE IF NOT EXISTS fx_quote (
   created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%SZ','now')),
   UNIQUE (source, currency_code, quote_at)
 ) STRICT;
-```
+~~~
 (b) migration trailer:
-```markdown
+~~~markdown
 ### MIGRATION NNN: <name>  forward + rollback pair
 **LGPD:** retention impact? (none | delete path added)
 **integrity:** integrity_check pass; FK check pass
 **rollback proof:** tests/integration/test_mig_NNN roundtrip ran
-```
+~~~
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate; agent-api-specialist (contract state); agent-architect (structure).

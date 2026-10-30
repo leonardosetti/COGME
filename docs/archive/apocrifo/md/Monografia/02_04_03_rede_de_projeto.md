@@ -8,7 +8,7 @@ A rede do projeto COGME representa as dependências entre as entregas necessári
 
 O diagrama utiliza os pacotes da EAP citados na tabela de precedência da monografia. Trata-se de uma rede de planejamento em nível de entregas; sua decomposição completa em atividades e a estimativa de durações serão necessárias para calcular o cronograma e o caminho crítico. As macro-fases agrupam os nós visualmente e não acrescentam dependências além das setas representadas.
 
-```mermaid
+~~~mermaid
 flowchart TB
     INI(["Início da rede do MVP"])
     subgraph MF1["MF1 — Fundação"]
@@ -92,7 +92,7 @@ flowchart TB
     classDef pendencia fill:#fff7ed,stroke:#c2410c,color:#7c2d12;
     class INI,FIM marco;
     class PTAX,N124 pendencia;
-```
+~~~
 
 Fonte: elaboração a partir da seção 2.4.4 e do Quadro 10 do Modelo-Projeto-COGME, com complementações propostas para conectar os ramos da rede.
 

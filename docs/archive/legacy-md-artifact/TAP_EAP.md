@@ -76,7 +76,7 @@
 
 ### 5.2.2. Lista Hierárquica Aninhada (formato para parse XML → draw.io)
 
-```
+~~~
 N0: Projeto COGME — Conversor de Ganhos em Moeda Estrangeira
 ├── N1: 1. Iniciação e Planejamento [MF1]
 │   ├── N1.1: 1.1. Termo de Abertura do Projeto (TAP)
@@ -140,7 +140,7 @@ N0: Projeto COGME — Conversor de Ganhos em Moeda Estrangeira
     ├── N13.2: 13.2. Verificação SMART
     ├── N13.3: 13.3. Apresentação Final + Aceite
     └── N13.4: 13.4. Auditoria FOSS Final
-```
+~~~
 
 ---
 
@@ -171,7 +171,7 @@ N0: Projeto COGME — Conversor de Ganhos em Moeda Estrangeira
 
 ### 5.3.2. Lista Hierárquica Aninhada (formato para parse XML → draw.io)
 
-```
+~~~
 N14: 14. Segurança e Privacidade [PÓS-ENTREGA] ⚠️
 ├── N14.1: 14.1. Análise OWASP Top 10
 ├── N14.2: 14.2. Conformidade LGPD
@@ -190,7 +190,7 @@ N17: 17. Internacionalização (i18n) [PÓS-ENTREGA] ⚠️
 ├── N17.1: 17.1. Múltiplas moedas (USD, EUR, GBP, BRL)
 ├── N17.2: 17.2. Formatação por locale
 └── N17.3: 17.3. Preparação para tradução de UI
-```
+~~~
 
 ---
 
@@ -233,7 +233,7 @@ N17: 17. Internacionalização (i18n) [PÓS-ENTREGA] ⚠️
 
 Cada nó XML deve conter os seguintes atributos customizados:
 
-```xml
+~~~xml
 <mxCell id="N5.2" value="5.2. Backend — API de Câmbio + Cache Redis"
         style="rounded=1;whiteSpace=wrap;fillColor=#fff2cc;strokeColor=#d6b656;"
         custom:id="N5.2"
@@ -243,7 +243,7 @@ Cada nó XML deve conter os seguintes atributos customizados:
         custom:dominioPMBOK7="Entrega"
         custom:kanbanEpico="Epic-5.2"
         custom:status="pendente" />
-```
+~~~
 
 ---
 

@@ -62,7 +62,7 @@ A revisão do relatório v1.0 introduziu **7 notas de ajuste** que alteram signi
 
 **Modelo de PDCA recomendado (KISS):**
 
-```markdown
+~~~markdown
 ## §X.X PDCA do [Nome do Plano]
 
 | Fase | Ação | Evidência |
@@ -75,7 +75,7 @@ A revisão do relatório v1.0 introduziu **7 notas de ajuste** que alteram signi
 **Mudanças relevantes vs. PDCAs anteriores:**
 - v0.1 → v0.2: Adição de dicionário EAP (crítica da revisão anterior)
 - v0.2 → v1.0: Alinhamento com macro-fases MF1/MF2/MF3 (OKB v3.0 §4.6)
-```
+~~~
 
 **Domínio PMBOK 7ª associado:** Domínio de Medição (Check/Act) + Domínio de Entrega (Plan/Do).
 
@@ -138,14 +138,14 @@ A revisão do relatório v1.0 introduziu **7 notas de ajuste** que alteram signi
 
 #### ADER-001 — "Architecture Decision Enhancement Record" -> Descartar: Isso foi typo - Considere ADR-001 
 
-~~**Hipótese:** A sigla "ADER" sugere um ADR expandido, possivelmente com seção de "Enhancement" (melhoria contínua).~~
+~~~**Hipótese:** A sigla "ADER" sugere um ADR expandido, possivelmente com seção de "Enhancement" (melhoria contínua).~~~
 
-**~~Aderência ao COGME:~~**
+**~~~Aderência ao COGME:~~~**
 
-- ~~✅ Alinha ao P1 (valor sobre documentação) se o "Enhancement" for acionável~~
-- ~~⚠️ Risco de burocratização se exigir seções extras não previstas no OKB v3.0 §4.5~~
-- ~~**Decisão:** **NÃO ADERENTE** no formato atual. O COGME já possui critério claro de ADR (OKB v3.0 §4.5). Criar "ADER" duplica nomenclatura sem valor adicional.~~
-- ~~**Recomendação:** Manter ADR padrão (Contexto → Decisão → Consequências). Se houver necessidade de registrar "enhancements", usar **label `enhancement` no GitHub Issues** + link no ADR original.~~
+- ~~~✅ Alinha ao P1 (valor sobre documentação) se o "Enhancement" for acionável~~~
+- ~~~⚠️ Risco de burocratização se exigir seções extras não previstas no OKB v3.0 §4.5~~~
+- ~~~**Decisão:** **NÃO ADERENTE** no formato atual. O COGME já possui critério claro de ADR (OKB v3.0 §4.5). Criar "ADER" duplica nomenclatura sem valor adicional.~~~
+- ~~~**Recomendação:** Manter ADR padrão (Contexto → Decisão → Consequências). Se houver necessidade de registrar "enhancements", usar **label `enhancement` no GitHub Issues** + link no ADR original.~~~
 
 #### ADR-003 — "Métricas de Fluxo com Baseline"
 
@@ -172,7 +172,7 @@ A revisão do relatório v1.0 introduziu **7 notas de ajuste** que alteram signi
 
 ### 2.1. Roadmap Consolidado (ADR-003 draft)
 
-```
+~~~
 ┌─────────────────────────────────────────────────────────────────┐
 │  MARCO 1 — ENTREGA PARCIAL (19/09/2026)                       │
 │  Escopo: Documentação Áreas 1-5 do PMBOK 6ª                   │
@@ -195,7 +195,7 @@ A revisão do relatório v1.0 introduziu **7 notas de ajuste** que alteram signi
 │  └─ Auditoria FOSS final                                       │
 │  Critério de aceite: MVP funcional + ≥ 80% coverage + UAT      │
 └─────────────────────────────────────────────────────────────────┘
-```
+~~~
 
 ### 2.2. Macro-Fases Ajustadas
 
@@ -238,7 +238,7 @@ A revisão do relatório v1.0 introduziu **7 notas de ajuste** que alteram signi
 
 Para cada plano, incluir seção PDCA conforme modelo da Seção 1.2. Exemplo para o **Plano de Escopo**:
 
-```markdown
+~~~markdown
 ## §6.6 PDCA do Plano de Escopo
 
 | Fase | Ação | Evidência |
@@ -251,7 +251,7 @@ Para cada plano, incluir seção PDCA conforme modelo da Seção 1.2. Exemplo pa
 **Mudanças relevantes vs. PDCAs anteriores:**
 - v0.1 → v1.0: Adição de dicionário EAP (crítica da revisão do relatório v1.0)
 - v0.1 → v1.0: Alinhamento com macro-fases MF1/MF2/MF3 ajustadas (M1 = 19/09)
-```
+~~~
 
 ---
 
@@ -380,9 +380,9 @@ Você identificou uma **contradição arquitetural** no relatório original. Vam
 
 O relatório propõe:
 
-```
+~~~
 .ai/ (no Git, por projeto) + Obsidian (vault global)
-```
+~~~
 
 **Problema:** Isso cria uma **separação artificial** entre:
 
@@ -422,7 +422,7 @@ Isso viola o princípio de **single source of truth**. Se a IA precisa de contex
 
 ### 8.2.3. O Custo Real de Vault Global
 
-```
+~~~
 Vault Global/
 ├── COGME/
 │   ├── specs/
@@ -432,7 +432,7 @@ Vault Global/
 │   └── handoffs/
 ├── hardware-profile.md  ← compartilhado
 └── preferences.md       ← compartilhado
-```
+~~~
 
 **Problemas:**
 
@@ -451,7 +451,7 @@ Vault Global/
 
 ### 8.3.2. Estrutura por Projeto (Vault Dedicado)
 
-```
+~~~
 COGME/                          # Repositório Git
 ├── .git/
 ├── src/
@@ -468,16 +468,16 @@ COGME/                          # Repositório Git
 │
 └── .obsidian/                  # Configuração do vault (opcional)
     └── workspace.json
-```
+~~~
 
 **Vault do Obsidian:**
 
-```
+~~~
 ~/Obsidian/COGME/              # Vault dedicado ao projeto
 ├── .ai/ → /path/to/COGME/.ai/  # Symlink para o repositório Git
 ├── docs/ → /path/to/COGME/docs/ # Symlink para documentação humana
 └── .obsidian/                  # Configuração do vault
-```
+~~~
 
 ### 8.3.3. Benefícios Desta Abordagem
 
@@ -493,13 +493,13 @@ COGME/                          # Repositório Git
 
 **Resposta:** Em `docs/`, **fora** do contexto da IA.
 
-```
+~~~
 docs/
 ├── project-plan.md          # Plano do projeto (humano)
 ├── roadmap.md               # Roadmap (humano)
 ├── meeting-notes/           # Atas de reunião (humano)
 └── decisions/               # ADRs (Architecture Decision Records)
-```
+~~~
 
 **Por que não em `.ai/`?**
 
@@ -531,7 +531,7 @@ docs/
 
 ### 5.1. Adotar Vault Por Projeto
 
-```bash
+~~~bash
 # Criar vault dedicado para cada projeto
 mkdir -p ~/Obsidian/COGME
 cd ~/Obsidian/COGME
@@ -542,11 +542,11 @@ ln -s /path/to/COGME/docs docs
 
 # Abrir no Obsidian
 obsidian .
-```
+~~~
 
 ### 8.5.2. Estrutura de Diretórios Refinada
 
-```
+~~~
 PROJETO/
 ├── .git/
 ├── src/                          # Código-fonte
@@ -583,7 +583,7 @@ PROJETO/
 │
 └── .obsidian/                    # Configuração do vault (opcional)
     └── workspace.json
-```
+~~~
 
 ### 8.5.3. Regras de Ouro
 

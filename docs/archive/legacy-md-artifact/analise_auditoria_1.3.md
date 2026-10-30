@@ -131,7 +131,7 @@ A reestruturação v1.2 introduz **5 mudanças estruturais** que alteram signifi
 
 **Estrutura do Plano de Qualidade v1.2 (revisada):**
 
-```
+~~~
 05. Plano de Qualidade v1.0
 ├── §5.1. Objetivos de Qualidade (≥ 80% coverage, zero defeitos críticos)
 ├── §5.2. Definition of Ready (DoR) e Definition of Done (DoD)
@@ -149,7 +149,7 @@ A reestruturação v1.2 introduz **5 mudanças estruturais** que alteram signifi
     ├── §5.6.5. PDCA do Plano de Custos (04)
     ├── §5.6.6. PDCA do Plano de Qualidade (05)
     └── §5.6.7. Síntese de Mudanças Relevantes vs. PDCAs Anteriores
-```
+~~~
 
 **Domínio PMBOK 7ª associado:** Domínio de Qualidade (entrega com excelência) + Domínio de Medição (melhoria contínua via PDCA).
 
@@ -213,7 +213,7 @@ O Diagrama de Ishikawa (também conhecido como Espinha de Peixe ou 6M) é uma fe
 
 ### 2.1. Roadmap Consolidado v1.2
 
-```
+~~~
 ┌─────────────────────────────────────────────────────────────────┐
 │  MARCO 1 — ENTREGA PARCIAL (22/09/2026, 09:00)                │
 │  Escopo: Documentação Áreas 1-5 do PMBOK 6ª                   │
@@ -236,7 +236,7 @@ O Diagrama de Ishikawa (também conhecido como Espinha de Peixe ou 6M) é uma fe
 │  └─ Auditoria FOSS final                                       │
 │  Critério de aceite: MVP funcional + ≥ 80% coverage + UAT      │
 └─────────────────────────────────────────────────────────────────┘
-```
+~~~
 
 ### 2.2. Macro-Fases Ajustadas
 
@@ -252,7 +252,7 @@ O Diagrama de Ishikawa (também conhecido como Espinha de Peixe ou 6M) é uma fe
 
 ### 3.1. Seção §5.5 — Diagrama de Ishikawa (Causa e Efeito)
 
-```
+~~~
                     CAUSAS RAIZ DO PROBLEMA CENTRAL
                             ↓
     ┌─────────────────────────────────────────────────────────────┐
@@ -271,7 +271,7 @@ O Diagrama de Ishikawa (também conhecido como Espinha de Peixe ou 6M) é uma fe
     │• Revisão │• ADRs    │• Stack   │• Railway │  aspirac.│• Orçam.  │
     │  humana  │  burocr. │  indef.  │• Frankfur│          │  zero    │
     └──────────┴──────────┴──────────┴──────────┴──────────┴──────────┘
-```
+~~~
 
 **Ações corretivas prioritárias (derivadas do Ishikawa):**
 
@@ -286,7 +286,7 @@ O Diagrama de Ishikawa (também conhecido como Espinha de Peixe ou 6M) é uma fe
 
 **Modelo de PDCA padronizado (KISS):**
 
-```markdown
+~~~markdown
 ## §5.6.X PDCA do [Nome da Atividade]
 
 | Fase | Ação | Evidência |
@@ -298,7 +298,7 @@ O Diagrama de Ishikawa (também conhecido como Espinha de Peixe ou 6M) é uma fe
 
 **Mudanças relevantes vs. PDCAs anteriores:**
 - v0.1 → v1.0: [descrição da mudança]
-```
+~~~
 
 **Lista de PDCAs obrigatórios (13 fases da EAP):**
 
@@ -351,7 +351,7 @@ O Diagrama de Ishikawa (também conhecido como Espinha de Peixe ou 6M) é uma fe
 
 **Exemplo para o Plano de Escopo:**
 
-```markdown
+~~~markdown
 ## §5.6.3 PDCA do Plano de Escopo
 
 | Fase | Ação | Evidência |
@@ -365,7 +365,7 @@ O Diagrama de Ishikawa (também conhecido como Espinha de Peixe ou 6M) é uma fe
 - v0.1 → v1.0: Adição de dicionário EAP (crítica da revisão v1.0)
 - v0.1 → v1.0: Alinhamento com macro-fases MF1/MF2/MF3 ajustadas (M1 = 22/09)
 - v0.1 → v1.0: Remoção das fases 14-17 (nota de revisão 6)
-```
+~~~
 
 ---
 
@@ -650,27 +650,27 @@ Com 58GB total e 50GB consumidos, restam 8GB. O KV cache para 4k tokens em 72B c
 
 ## 10.4. Localização no Filesystem
 
-```
+~~~
 /var/lib/llama.cpp/models/
 ├── qwen-32b-instruct-q4_k_m.gguf    # P0: baixar primeiro
 ├── qwen-14b-instruct-q4_k_m.gguf    # P1: baixar segundo
 ├── qwen-14b-instruct-q5_k_m.gguf    # P2: baixar terceiro (opcional)
 └── qwen-72b-instruct-q4_k_m.gguf    # P3: NÃO baixar ainda
-```
+~~~
 
 **Backup correspondente:**
 
-```
+~~~
 /extra/backup/llama-models/           # Cópia resiliente
 ├── qwen-32b-instruct-q4_k_m.gguf
 └── qwen-14b-instruct-q4_k_m.gguf
-```
+~~~
 
 ---
 
 ## 10.5. Comandos de Download (Quando Fase 2 Iniciar)
 
-```bash
+~~~bash
 # P0: Modelo principal (obrigatório)
 huggingface-cli download \
   Qwen/Qwen2.5-32B-Instruct-GGUF \
@@ -688,7 +688,7 @@ huggingface-cli download \
   Qwen/Qwen2.5-14B-Instruct-GGUF \
   qwen2.5-14b-instruct-q5_k_m.gguf \
   --local-dir /var/lib/llama.cpp/models/
-```
+~~~
 
 > **Nota:** Os nomes exatos do repositório HuggingFace dependem da versão da família Qwen disponível. Ajustar `Qwen2.5` para `Qwen3` conforme o repositório oficial vigente. O padrão de nomenclatura GGUF é consistente entre versões.
 
@@ -698,7 +698,7 @@ huggingface-cli download \
 
 Cada modelo deve passar por este checklist antes de ser considerado operacional:
 
-```bash
+~~~bash
 # Teste de carga (32B exemplo)
 llama-server \
   -m /var/lib/llama.cpp/models/qwen-32b-instruct-q4_k_m.gguf \
@@ -712,7 +712,7 @@ llama-server \
 # [ ] RAM pico ≤ 28GB (htop)                       → dentro do budget
 # [ ] Resposta a prompt teste em <2s (TTFT)        → latência OK
 # [ ] tg ≥ 6 t/s (medir com 200 tokens output)     → throughput OK
-```
+~~~
 
 ---
 
@@ -785,11 +785,11 @@ Antes de listar, preciso apontar uma **tensão conceitual** com a arquitetura j�
 
 **Troca de persona = troca de symlink, não de modelo:**
 
-```bash
+~~~bash
 ln -sf pm.md       .ai/prompts/active.md   # continua no mesmo llama-server
 ln -sf coder.md    .ai/prompts/active.md   # zero overhead
 ln -sf reviewer.md .ai/prompts/active.md   # instantâneo
-```
+~~~
 
 ### 11.3.2. Exceções Legítimas (Quebra Controlada do Princípio)
 
@@ -875,11 +875,11 @@ Critérios first-principles para hardware específico (Ryzen 8700G + Radeon 780M
 
 ### 5.1. Configuração Ótima (Conservadora)
 
-```
+~~~
 Modelo único: Qwen 32B Instruct Q4_K_M
 Personas: 4 (PM, Coder, Reviewer, Tester)
 Troca: via symlink em .ai/prompts/active.md
-```
+~~~
 
 **Justificativa:** Atende 95% dos casos com zero complexidade adicional.
 

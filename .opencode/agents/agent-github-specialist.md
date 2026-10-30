@@ -181,20 +181,20 @@ Stateless per session. Durable: `.github/` files, board state (view only), regis
 
 ## 12. ARTIFACT TEMPLATES
 (a) PR template skeleton (.github/PULL_REQUEST_TEMPLATE.md):
-```markdown
+~~~markdown
 ## REQ / HF link: <!-- HF-NNN or REQ-x.y -->
 ## Chain evidence: <!-- CI run URL + tests summary -->
 ## Kill switch screening: <!-- screened yes/no -->
 ## Reviewer parcel: <!-- attached Y/N -->
-```
+~~~
 (b) release note skeleton:
-```markdown
+~~~markdown
 ## v<semver> - <ISO date>
 ### Added / Changed / Fixed
 - items cite PR# + REQ id
 ### Gates
 - CI green run <id>; coverage <pct>%
-```
+~~~
 (c) protection digest line: `main: pr_only=true, checks=[quality-gates], approvals=1, force_push=false`.
 
 ## 13. INTEGRATION CONTRACTS

@@ -185,7 +185,7 @@ Stateless per session. Durable: SKILL.md files (git), SKL registry in ledger (ap
 
 ## 12. ARTIFACT TEMPLATES
 (a) SKILL.md frame (convention-compliant):
-```markdown
+~~~markdown
 ---
 id: skill-<slug>
 name: <Skill Name>
@@ -197,12 +197,12 @@ description: One-line purpose (when to use; observed recurrence ref).
 ## Steps: 1) ... [cmd + expected exit]
 ## Erros: <failure mode> -> <PT-BR guidance + exit code>
 ## Limites: local-only; composition of <scripts refs>; NAO substitui <agent custody>
-```
+~~~
 (b) registry entry (ledger):
-```json
+~~~json
 {"skill":"SKL-002","ratified":"HR-007","evidence":["HF-001","HF-004","HF-011"],
  "path":".opencode/skills/<slug>/SKILL.md","io_test":"dry-run pass","kill_switch":"screened"}
-```
+~~~
 (c) proposal packet: YAGNI table (evidence refs x procedure) + overlap check + contract draft.
 
 ## 13. INTEGRATION CONTRACTS

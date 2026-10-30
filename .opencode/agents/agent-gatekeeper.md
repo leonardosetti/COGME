@@ -185,22 +185,22 @@ Stateless per session. Durable: ledger gate events (append-only), revert plans, 
 
 ## 12. ARTIFACT TEMPLATES
 (a) gate event:
-```json
+~~~json
 {"gate":"MG-042","pr":58,
  "chain":{"reviewer":"RV-021","qa":"QA-007","ci_run":"run-9921","coverage":"0.87",
           "compliance":"CMP-012","human":"HR-006"},
  "digest_match":true,"decision":"merge","kill_switch":"screened"}
-```
+~~~
 (b) revert plan block:
-```markdown
+~~~markdown
 ### REVERT PLAN (MG-042)
 git revert <sha> -> CI re-run -> incident INC-<NNN> ref
 stored: ledger append BEFORE Human approval
-```
+~~~
 (c) freeze notice:
-```markdown
+~~~markdown
 FRENTE CONGELADA (MG freeze): digest drift detectado; merges em hold; github + auditor notificados.
-```
+~~~
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate (merge dispatch); agent-reviewer (verdict pass).

@@ -186,7 +186,7 @@ Stateless per session. Durable: ci.yml, wrappers, runbooks in docs. No state in 
 
 ## 12. ARTIFACT TEMPLATES
 (a) ci.yml gate block sketch:
-```yaml
+~~~yaml
 name: COGME Quality Gates
 on: [push, pull_request]
 permissions: { contents: read }
@@ -201,7 +201,7 @@ jobs:
       - run: pip install pytest coverage pyyaml
       - run: python -m pytest tests/ -q --junitxml=pytest.xml
       - run: python -m coverage run -m pytest tests/ -q && python -m coverage report --fail-under=80
-```
+~~~
 (b) coverage gate annotation: table artifact text with per-module `name | stmts | miss | cover`.
 (c) rollback runbook: `git revert <workflow-sha>` + `gh run watch <run-id>` + manual re-run steps.
 

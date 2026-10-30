@@ -182,19 +182,19 @@ Stateless per session. Durable state: ADRs in docs/decisoes, skeleton canon file
 
 ## 12. ARTIFACT TEMPLATES
 ADR template (canonical subset):
-```markdown
+~~~markdown
 # ADR-00N: <title>
 - status: draft|ratified|superseded, date, decider (HUMANO)
 - contexto: problem in one paragraph, evidence path
 - opções: O1..On with trade table (FOSS, custo, CPU, LGPD, risco)
 - decisão: O? com conditions + success criteria
 - consequências: positive/negative/neutral and follow-ups
-```
+~~~
 Drift report: table `| dep | current | latest FOSS | CVE | action |` with rows only from verified sources.
 Verdict parcel:
-```json
+~~~json
 {"verdict":"amend","target":"src/backend/routers","evidence":"git diff 12c578a..HEAD","alternatives":["O1 ...","O2 ..."],"confidence":"H"}
-```
+~~~
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate dispatch; agent-pm provides milestone context (M2 structure gate); agent-sdd-specialist provides spec-driven change requests.

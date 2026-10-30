@@ -167,17 +167,17 @@ STATELESS per session. Durable state: AI configuration, RAG pipeline designs, DA
 
 ## 12. ARTIFACT TEMPLATES
 (a) AI engineering parcel:
-```json
+~~~json
 {"ai_id":"AI-001","component":"rag","local_only":"yes","model_version":"qwen30b-moe Q4_K_M","tps_budget":8,"verdict":"conforme","kill_switch":"inherited"}
-```
+~~~
 (b) DAG topology declaration:
-```yaml
+~~~yaml
 dag: agent-nexus-prime-ultimate -> agent-sdd-specialist -> agent-backend-dev -> agent-qa-sdet -> agent-reviewer -> agent-gatekeeper
-```
+~~~
 (c) MCP bridge capability:
-```json
+~~~json
 {"mcp_capable":"agent-architect","tools":["read-diagram"],"transport":"stdio"}
-```
+~~~
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate (dispatch); agent-infrastructure-specialist (llama.cpp serving).

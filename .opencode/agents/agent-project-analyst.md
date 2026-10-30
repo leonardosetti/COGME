@@ -181,19 +181,19 @@ Stateless per session. State artifact: `docs/map_report.md`, findings ledger lin
 
 ## 12. ARTIFACT TEMPLATES
 Findings parcel:
-```json
+~~~json
 {"finding_id":"FIND-001","severity":"SEV-2","evidence":["docs/planos/plano-riscos.md@12c578a:31"],"summary":"cadence drift na revisao de riscos","owner":"agent-pm","confidence":"H"}
-```
+~~~
 Map report heading:
-```markdown
+~~~markdown
 # Mapa COGME v<N> (<iso date>)
 **frescor:** git <hash> | **gates:** pytest <green/red>, registry <check> |
 **waves:** O1 done, O2 done, O3 <green/amber/red> | **findings:** FIND-<id list>
-```
+~~~
 Wave readiness verdict:
-```json
+~~~json
 {"wave":"ONDA-4","readiness":"amber","gates":["pytest 45/45","registry 6/25","constitution OK"],"blockers":["A.7..A.13 unborn"],"unknown":["mypy optional config"]}
-```
+~~~
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate (dispatch), agent-pm (scope of consolidation needs).

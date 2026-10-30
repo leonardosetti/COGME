@@ -168,17 +168,17 @@ STATELESS per session. Durable state: DMAIC project charters, measurement data, 
 
 ## 12. ARTIFACT TEMPLATES
 (a) DMAIC project charter:
-```markdown
+~~~markdown
 | SIGMA-001 | DMAIC | define | reduce defect rate | target: 50% reduction | owner: six-sigma-specialist |
-```
+~~~
 (b) Six Sigma improvement parcel:
-```json
+~~~json
 {"sigma_id":"SIGMA-001","methodology":"DMAIC","phase":"improve","sigma_level":3.5,"verdict":"conforme","kill_switch":"inherited"}
-```
+~~~
 (c) Control plan:
-```markdown
+~~~markdown
 | control_point | metric | frequency | owner | action_on_deviation |
-```
+~~~
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate (dispatch); agent-quality-architect-specialist (quality gate alignment).

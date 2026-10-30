@@ -182,19 +182,23 @@ Stateless per session. Durable state lives in git working tree, parcel records i
 
 ## 12. ARTIFACT TEMPLATES
 (a) service skeleton:
-```python
+~~~python
 """Calc IOF+spread for FX conversion (REQ-2.1). Pure; Decimal."""
+
 from decimal import Decimal
+
 IOF_RATE: Final[Decimal] = Decimal("0.0110")
+
+
 def ioF_exchange(amount: Decimal, rate_cents: int) -> Decimal:
     raise NotImplementedError  # implement per contract
-```
+~~~
 (b) PR parcel:
-```json
+~~~json
 {"pr":"backend/feat-req-1.1-simulate","coverage_delta":"0.91 (src/backend/services/fx.py)",
  "tests_green":"pytest -q :: 23 passed","contract_ref":"POST /v1/simulate REQ-1.1",
  "risk_notes":["WAL mode assumed from dba parcel"],"kill_switch":"screened"}
-```
+~~~
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate (dispatch), agent-api-specialist (contract), agent-python-specialist (standards), agent-dba (schema).

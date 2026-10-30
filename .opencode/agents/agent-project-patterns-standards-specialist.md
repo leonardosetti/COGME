@@ -169,17 +169,17 @@ STATELESS per session. Durable state: pattern catalog (`.ai/specs/`), templates 
 
 ## 12. ARTIFACT TEMPLATES
 (a) Pattern catalog entry:
-```markdown
+~~~markdown
 | PAT-001 | creational | Factory | src/patterns/factory.py | MIT | 3 |
-```
+~~~
 (b) Anti-pattern rule:
-```markdown
+~~~markdown
 | ANTI-001 | God Class | > 500 lines | split into modules | PAT-REF |
-```
+~~~
 (c) Gold template parcel:
-```json
+~~~json
 {"template_id":"TPL-001","type":"service","path":"src/services/skeleton.py","spdx":"MIT","kill_switch":"inherited"}
-```
+~~~
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate (dispatch); agent-architect (ADR for pattern changes).

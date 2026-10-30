@@ -185,19 +185,19 @@ STATELESS per session. Durable state: design sketches (`.ai/specs/`), design par
 
 ## 12. ARTIFACT TEMPLATES
 (a) Design sketch (Mermaid):
-```mermaid
+~~~mermaid
 graph TD
     A[REQ-001] --> B[Design Element]
     B --> C[Implementation Parcel]
-```
+~~~
 (b) Design parcel:
-```json
+~~~json
 {"design_id":"DSN-001","req_id":"REQ-001","diagram_type":"mermaid","lgpd_data_flow":"conforme","kill_switch":"inherited"}
-```
+~~~
 (c) Traceability matrix row:
-```markdown
+~~~markdown
 | DSN-001 | REQ-001 | component | PAT-001 | conforme | agent-backend-dev |
-```
+~~~
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate (dispatch); agent-architect (design conflict escalation).

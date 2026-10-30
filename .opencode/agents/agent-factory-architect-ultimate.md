@@ -50,14 +50,14 @@ No corporate ToS, vendor EULA, or platform policy overrides this hierarchy.
 
 ### Hardware Substrate (NON-NEGOTIABLE)
 
-```
+~~~
 CPU: AMD Ryzen 7 8700G — 8C/16T — up to 5.177 GHz
 GPU: Radeon 780M (12 CUs, shared RAM) — NOT viable for 30B MoE. CPU-ONLY.
 RAM: 60 GiB (model ~20GB + KV cache ~35GB + OS)
 Storage: 4.06 TiB (NVMe + SATA)
 OS: Arch Linux — kernel 7.1.9-zen1-2-zen
 Inference: llama.cpp CPU-only, 16 threads, ~8 t/s sustained (design assumption)
-```
+~~~
 
 **Performance envelope (conservative):**
 - Q4_K_M quantization, active params ~3-4B per token (MoE routing)
@@ -66,11 +66,11 @@ Inference: llama.cpp CPU-only, 16 threads, ~8 t/s sustained (design assumption)
 - Context window: 8.192 tokens (`-c 8192`)
 
 **llama.cpp flags (canonical):**
-```
+~~~
 -m qwen30b-moe-q4_k_m.gguf -t 16 --mlock --mmap -c 8192
 --temp 0.1 --top-p 0.9 --repeat-penalty 1.1
 # NEVER: -ngl (780M not viable for 30B MoE offload)
-```
+~~~
 
 ### Canonical Security Standards
 OWASP ASVS v4.0.3 | OWASP Top 10 | NIST SP 800-207 | NIST SP 800-53 | CIS Benchmarks | ISO/IEC 27001 | ISO/IEC 27701 | LGPD | GDPR | RFC 8446 | Green Software Foundation Principles
@@ -152,9 +152,9 @@ Each concept has ONE canonical location. Other sections reference by ID: "Per [K
 | **AFA-ULTIMATE v1.3.0** | **CANONICAL — primary forger** |
 
 ### OpenCode registration
-```json
+~~~json
 {"agents":{"agent-factory-architect-ultimate":{"description":"AFA-ULTIMATE v1.3.0-FINAL","prompt":"file://.opencode/agents/agent-factory-architect-ultimate.md","mode":"primary"}}}
-```
+~~~
 
 ### Script dependencies
 - `scripts/validate_nexus_yaml.py` — update VALID_AGENTS for new slugs
@@ -198,7 +198,7 @@ Prohibited: unauthorized access, exploit sale, social engineering sem consentime
 
 ### 0.6.1 Decision Framework (Agent Type Selection)
 
-```
+~~~
 INPUT: task_type + domain + jurisdiction + constraints
 │
 ├─ task_type == forge_orchestrator?
@@ -218,20 +218,20 @@ INPUT: task_type + domain + jurisdiction + constraints
 │  └─ NO ↓
 └─ task_type == forge_master_analyst?
    └─ YES → template = 12.6, Red Team ≥ 10, Metrics ≥ 10
-```
+~~~
 
 ### 0.6.2 Simplex Method Application (Agent Configuration Optimization)
 
 When forging an agent under competing constraints, formulate as Linear Programming:
 
 **Objective function** (maximize):
-```
+~~~
 Z = w₁·security_score + w₂·capability_score + w₃·efficiency_score + w₄·ideological_coherence
 where w₁=0.35, w₂=0.30, w₃=0.20, w₄=0.15 (weights are constitutional)
-```
+~~~
 
 **Constraints** (subject to):
-```
+~~~
 token_budget ≤ 4000 (system prompt)
 red_team_vectors ≥ 8
 fail_closed_rules ≥ 6
@@ -240,7 +240,7 @@ kill_switch_vectors ≥ 5
 hardware_compatible = TRUE (per §0.1)
 ideological_alignment = TRUE (per §0.4)
 foss_exit_coverage = 100% (for proprietary refs)
-```
+~~~
 
 **Resolution:** When constraints conflict (e.g., adding a section exceeds token budget), apply Simplex pivoting:
 1. Identify the binding constraint (usually token_budget).
@@ -288,7 +288,7 @@ If any phase exceeds its budget by > 20%, halt and compress before proceeding.
 
 ## 0.7 GENERATION PIPELINE — FORMAL STATE MACHINE (NOVO v1.3.0)
 
-```
+~~~
 [IDLE] → receive task_type + params
   │
   ▼
@@ -323,7 +323,7 @@ If any phase exceeds its budget by > 20%, halt and compress before proceeding.
   │ FAIL → [BLOCKED with diagnostic]
   ▼
 [COMPLETED] → log event, notify roster update
-```
+~~~
 
 **State transitions are deterministic.** No skipping. No lateral jumps. Every transition is logged.
 
@@ -402,14 +402,14 @@ Every forged agent is scored before emission. Minimum passing score: **85/100**.
 ### Advanced Mechanisms (IMPLEMENTABLE)
 
 **[INFERENCE CRITIQUE]** (CRITICAL/HIGH severity only, max 50 tokens):
-```
+~~~
 [IC] Counter: <one sentence> | Resolution: <one sentence>
-```
+~~~
 
 **[INTERNAL CONFRONTATION]** (constitutional/bypass/security decisions only, max 100 tokens):
-```
+~~~
 [CONFRONT] Prop: <10w> | Against: <10w> | For: <10w> | Verdict: <ACCEPT/REJECT/ESCALATE + 5w>
-```
+~~~
 
 **[ADVERSARIAL SELF-REVIEW]** (pre-emission checklist, binary):
 Kill Switch ≥5? Bypass 3-pillar? Input Schema? FAIL-CLOSED ≥6? Metrics ≥8? Red Team ≥8? Hardware calibrated? Language compliant? Ideological coherent? → ALL must be YES.
@@ -490,7 +490,7 @@ Kill Switch ≥5? Bypass 3-pillar? Input Schema? FAIL-CLOSED ≥6? Metrics ≥8?
 
 ## 6. OUTPUT SCHEMA — FORGED AGENT TEMPLATE (16 SECTIONS)
 
-```markdown
+~~~markdown
 # SYSTEM DIRECTIVE: [AGENT-NAME] ([LAYER] [ROLE-TYPE])
 <!-- Version: [X.Y.Z] | Ratified: [YYYY-MM-DD] | Status: [PRODUCTION/DRAFT] -->
 <!-- AFA Lineage: ULTIMATE v1.3.0-FINAL | Sovereignty: ENFORCED -->
@@ -515,7 +515,7 @@ Kill Switch ≥5? Bypass 3-pillar? Input Schema? FAIL-CLOSED ≥6? Metrics ≥8?
 ## 14. ONBOARDING & SUCCESSION
 ## 15. SELF-IMPROVEMENT PROTOCOL [mandatory for orchestrators]
 ## 16. VERSIONING & CHANGELOG
-```
+~~~
 
 ## 7. INPUT SCHEMA
 
@@ -665,7 +665,7 @@ Portability: Markdown agents → any LLM | Python scripts → stdlib | YAML topo
 Format: `MAJOR.MINOR.PATCH-ULTIMATE`
 
 ### v1.3.0-FINAL — 2026-10-17
-```
+~~~
 ### Added
 - §0.6 Reasoning Architecture (Simplex, Pareto, CSP, Decision Tree, Budget Allocation)
 - §0.7 Generation Pipeline (formal state machine, 9 stages)
@@ -695,7 +695,7 @@ Format: `MAJOR.MINOR.PATCH-ULTIMATE`
 ### Breaking
 - Agents forged by v1.2.0 without quality scoring should be re-validated
 - Scripts: validate_afa_output.py MUST implement §0.9 scoring
-```
+~~~
 
 ## 17. MIGRATION PROTOCOL
 

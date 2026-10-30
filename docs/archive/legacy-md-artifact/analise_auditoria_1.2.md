@@ -97,7 +97,7 @@ A revisão do relatório v1.0 introduziu **24 notas de ajuste** que consolidam o
 
 **Modelo de PDCA recomendado (KISS):**
 
-```markdown
+~~~markdown
 ## §X.X PDCA do [Nome do Plano]
 
 | Fase | Ação | Evidência |
@@ -110,7 +110,7 @@ A revisão do relatório v1.0 introduziu **24 notas de ajuste** que consolidam o
 **Mudanças relevantes vs. PDCAs anteriores:**
 - v0.1 → v0.2: Adição de dicionário EAP (crítica da revisão anterior)
 - v0.2 → v1.0: Alinhamento com macro-fases MF1/MF2/MF3 (OKB v3.0 §4.6)
-```
+~~~
 
 **Domínio PMBOK 7ª associado:** Domínio de Medição (Check/Act) + Domínio de Entrega (Plan/Do).
 
@@ -197,7 +197,7 @@ A revisão do relatório v1.0 introduziu **24 notas de ajuste** que consolidam o
 
 **Estrutura consolidada da Base de Conhecimento (ref. §9):**
 
-```
+~~~
 10. Base de Conhecimento
 ├── 10.1. ADRs (decisões arquiteturais)
 │   └── Domínio: Governança Técnica
@@ -206,7 +206,7 @@ A revisão do relatório v1.0 introduziu **24 notas de ajuste** que consolidam o
 ├── 10.3. Catálogo de Prompts SDD
 │   └── Domínio: SDD / Contexto IA (ref. .ai/prompts/)
 └── 10.4. Runbooks Operacionais [DESCARTADO - YAGNI]
-```
+~~~
 
 **Justificativa:** Os três domínios são **ortogonais** (governança, processo, SDD) e mapeiam para estruturas distintas no repositório (`.ai/prompts/`, `docs/adr/`, `docs/retros/`). Fusão completa perderia rastreabilidade.
 
@@ -267,7 +267,7 @@ A revisão do relatório v1.0 introduziu **24 notas de ajuste** que consolidam o
 
 ### 2.1. Roadmap Consolidado (ADR-003 draft)
 
-```
+~~~
 ┌─────────────────────────────────────────────────────────────────┐
 │  MARCO 1 — ENTREGA PARCIAL (19/09/2026)                         │
 │  Escopo: Documentação Áreas 1-5 do PMBOK 6ª                     │
@@ -289,7 +289,7 @@ A revisão do relatório v1.0 introduziu **24 notas de ajuste** que consolidam o
 │  └─ Auditoria FOSS final                                        │
 │  Critério de aceite: MVP funcional + ≥ 80% coverage + UAT       │
 └─────────────────────────────────────────────────────────────────┘
-```
+~~~
 
 ### 2.2. Macro-Fases Ajustadas
 
@@ -368,7 +368,7 @@ A revisão do relatório v1.0 introduziu **24 notas de ajuste** que consolidam o
 
 Para cada plano, incluir seção PDCA conforme modelo da Seção 1.2. Exemplo para o **Plano de Escopo**:
 
-```markdown
+~~~markdown
 ## §6.6 PDCA do Plano de Escopo
 
 | Fase | Ação | Evidência |
@@ -382,7 +382,7 @@ Para cada plano, incluir seção PDCA conforme modelo da Seção 1.2. Exemplo pa
 - v0.1 → v1.0: Adição de dicionário EAP (crítica da revisão do relatório v1.0)
 - v0.1 → v1.0: Alinhamento com macro-fases MF1/MF2/MF3 ajustadas (M1 = 19/09)
 - v0.1 → v1.0: Remoção das fases 14-17 (nota de revisão 6)
-```
+~~~
 
 ---
 

@@ -101,7 +101,7 @@ Em conflito, prevalece nesta ordem decrescente:
 
 **Ação proposta (commit único, rastreável, reversível):**
 
-```
+~~~
 criar:  _archive/            # camada histórica normativa (v3.1)
         _archive/brain-md/   # docs v1.0–v2.1 com stack antiga
         docs/                # SSOT v3.2 + README corrigido
@@ -115,7 +115,7 @@ manter ativo na raiz/docs: macro_report.md, REQUISITOS.md, CASOSDEUSO.md, CAMADA
         prj_docs/, excalidraw_baixa/, COBECO_prtp_high_v2.0.html, COBECO_prtp_low_v1.0.*, uc.drawio, der.drawio
 regenerar: uc.drawio.png / der.drawio.png a partir das fontes .drawio (marcar como derivados no header do README de docs)
 docx 20MB: extrair mídia, reduzir, ou migrar p/ GitHub Release; avaliar Git LFS
-```
+~~~
 
 **Monitorar/validizar (não arquivar):** `pre_DOCUMENTO.md` (fonte da monografia), `COBECO_Monografia_new.docx` (entregável acadêmico P0 vencido em 18/09 — verificar se foi entregue fora do repo), protótipo v2.0 (validar aderência aos 29 UCs antes do frontend).
 
@@ -169,7 +169,7 @@ docx 20MB: extrair mídia, reduzir, ou migrar p/ GitHub Release; avaliar Git LFS
 - C7. Scaffold mínimo: `.gitignore` (node_modules? não — Python: `__pycache__`, `data/`, `.env`), `.env.example`, `CODEOWNERS`, `SECURITY` não aplicável (acadêmico — YAGNI).
 
 **Lote C — Infraestrutura (Sprint 1, dias 1–6):**
-- C8. `docker-compose.yml` (FastAPI uvicorn + MySQL 8 utf8mb4) + healthchecks; schema.sql das 8 tabelas PT-BR com FKs CASCADE/RESTRICT e `deletado_em`; `seed.py` (11 cat + 10 forn + N:N + 50 prod + ~300 preços, <10s).
+- C8. `docker-compose.yml` (FastAPI uvicorn + MySQL 8 utf8mb4) + healthchecks; schema.sql das 8 tabelas PT-BR com FKs CASCADE/RESTRICT e `deletado_em`; `seed.py` (11 \cat + 10 forn + N:N + 50 prod + ~300 preços, <10s).
 - C9. `.github/workflows/ci.yml`: job backend (lint ruff + pytest --cov-fail-under=80) e job docker-build, alvo <5min (RNF07). Sem job de frontend (Vanilla = YAGNI).
 
 **Lote D — Desenvolvimento por valor (Sprints 2–5):** seguir estritamente o backlog de `board_roadmap.md`, ordem P0→P1, OpenAPI primeiro (RNF02), nada além do contrato.

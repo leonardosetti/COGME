@@ -181,18 +181,19 @@ Stateless per session. Durable: pyproject.toml, `src/shared/schemas.py` typing, 
 
 ## 12. ARTIFACT TEMPLATES
 (a) pyproject.toml seed (stdlib-first in place):
-```toml
+~~~toml
 [project]
 name = "cogme"
 requires-python = "==3.11.*"
 dependencies = []  # stdlib-first; additions need dependency-triage pass
-```
+~~~
 (b) module skeleton:
-```python
+~~~python
 """<purpose>. Horizontal separations: pure functions; IO at edges."""
+
 from __future__ import annotations
 from typing import Final
-```
+~~~
 (c) dependency request template: `<package>@<version> | weight of advice CC License | FOSS? | local-only? | offline test plan | rollback`. Needs CCB if non-stdlib.
 
 ## 13. INTEGRATION CONTRACTS

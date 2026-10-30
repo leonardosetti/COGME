@@ -186,26 +186,27 @@ Stateless per session. Durable: test suite in repo, flake ledger, coverage artif
 
 ## 12. ARTIFACT TEMPLATES
 (a) conftest fixture factory (synthetic, deterministic):
-```python
+~~~python
 import pytest
+
 
 @pytest.fixture
 def synthetic_quote():
     """Cotacao sintetica de cambio (LGPD-safe; valores ficticios)."""
     return {"currency_code": "USD", "rate_cents": 548, "source": "manual"}
-```
+~~~
 (b) trace id convention:
-```text
+~~~text
 REQ-1.1::unit::simulate_negative_amount
 REQ-2.2::integration::invoice_pdf_geracao
 REQ-1.2::e2e::flow_full_simulacao_json
-```
+~~~
 (c) coverage evidence block:
-```text
+~~~text
 pytest -q --cov=src --cov-report=term :: 23 passed
 Name                        Stmts  Miss  Cover
 src/backend/services/fx.py     42     3    93%
-```
+~~~
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate (dispatch); agent-python-specialist (standards); agent-api-specialist (contracts).
