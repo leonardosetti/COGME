@@ -208,22 +208,11 @@ Mudanças em uma camada não exigem mudanças nas demais. Violação dessa separ
 - **1.0.0 — 2026-10-22:** promulgação inicial. Co-assinatura humana pendente no primeiro commit da FASE 0.
 - **1.1.0 — 2026-10-26:** CCB ratifica as emendas E-01..E-08 da Rodada 1.
 - **1.2.0 — 2026-10-29:** emenda de normalização universal e restauração integral por corrupção constitucional, incorporando ADRs 006 a 012, CCB-001, CCB-002, stack PostgreSQL/Docker/Nginx, APIs de câmbio, MCPs, memória persistente, separação L1/L2/L3, grafia canônica do stakeholder-avaliador, EAP 12/37, precisão linguística e subordinação de inputs canônicos.
+- **1.2.0 — 2026-10-30:** promulgação encerrada — Status VIGENTE-PLENA; co-assinatura humana via prompt expresso do CCB (Art. 5.4); sincronização do ecossistema (41 agentes, DAG acíclico) e lote de consolidação estrutural registrado em docs/governanca/ccb-log.md.
 
 ---
 
 *Promulgada sob AFA-ULTIMATE v1.3.0-FINAL. A Constituição é lei marcial: aplica-se, não se debate.*
-
----
-
-## ART. 5 — GOVERNANÇA HUMANA
-
-5.1. O Humano (Gerente de Projeto) é o decisor único via CCB; agentes são conselho, nunca veto ao Humano.
-
-5.2. Alterações nesta Constituição, no Kill Switch e no Bypass Protocol exigem ratificação humana explícita.
-
-5.3. Aprovação de merge, release e milestone é ato exclusivamente humano, apoiado no parecer do `gatekeeper`.
-
-5.4. **Co-assinatura:** toda promulgação ou emenda desta Constituição registra bloco de co-assinatura ao pé do arquivo contendo: versão; SHA-256 do conteúdo normativo, excluindo o bloco de co-assinatura; hash do commit Git; data; papel do ratificador humano, sem nome civil; e instrumento de ratificação, quando for prompt autenticado do CCB. Pode haver arquivo auxiliar de assinatura em `docs/decisoes/assinaturas/`. Prompt expresso do CCB pode constituir manifestação de vontade para emenda, mas o fechamento formal exige commit, hash e registro de assinatura. Enquanto pendente, o cabeçalho marca `VIGENTE-INTERINA`; fechado, `VIGENTE-PLENA`.
 
 ---
 
@@ -290,38 +279,12 @@ Mudanças em uma camada não exigem mudanças nas demais. Violação dessa separ
 
 ---
 
-## ART. 10 — INFRAESTRUTURA E ISOLAMENTO
-
-10.1. As camadas de execução do projeto (runtime de agentes SDD, aplicação, dados, CI) rodam ortogonais: cada camada é abrigada em container Docker próprio ou em ambiente isolado equivalente e pode ser construída, versionada, reiniciada ou substituída independentemente; comunicação entre camadas ocorre apenas por interface declarada (porta, volume ou API), nunca por estado implícito compartilhado. A stack canônica de aplicação inclui PostgreSQL, Docker Compose e Nginx latente como reverse proxy, conforme ADR-010.
-
-10.2. Toda imagem base é FOSS e referenciada por digest imutável; segredo e PII nunca entram em camada de imagem (Arts. 7.2, 7.3).
-
-10.3. Os princípios P-02 e P-03 aplicam-se intra-container: nenhum dado sensível do projeto transita para registry ou serviço de terceiros; download de imagens de registry externa é operação de build pontual e registrada (P-05), nunca fluxo de dados.
-
-10.4. Violação de ortogonalidade (vazamento de estado/dependência entre camadas) é defeito tratado, barrado nos portões reviewer → gatekeeper (P-06).
-
----
-
-## CHANGELOG
-
-- **Prof. Dr. Nivaldo Carleto** — Autor principal da Constituição e coordenador da equipe de governança COGME
-- **1.0.0 — 2026-10-22:** promulgação inicial. Co-assinatura humana pendente no primeiro commit da FASE 0.
-- **1.1.0 — 2026-10-26:** CCB ratifica as emendas E-01..E-08 da Rodada 1.
-- **Versão: 1.2.0 — 2026-10-29:** emenda de normalização universal e restauração integral por corrupção constitucional, incorporando ADRs 006 a 012, CCB-001, CCB-002, stack PostgreSQL/Docker/Nginx, APIs de câmbio, MCPs, memória persistente, separação L1/L2/L3, grafia canônica do stakeholder-avaliador, EAP 12/37, precisão linguística e subordinação de inputs canônicos.
-- **1.2.0 — 2026-10-30:** promulgação encerrada — Status VIGENTE-PLENA; co-assinatura humana via prompt expresso do CCB (Art. 5.4); sincronização do ecossistema (41 agentes, DAG acíclico) e lote de consolidação estrutural registrado em docs/governanca/ccb-log.md.
-
----
-
-*Promulgada sob AFA-ULTIMATE v1.3.0-FINAL. A Constituição é lei marcial: aplica-se, não se debate.*
-
----
-
 ## CO-ASSINATURA (Art. 5.4)
 
 Este bloco não integra o hash normativo.
 
-| Versão | SHA-256 do conteúdo normativo                                       | Commit Git                       | Data       | Papel do ratificador humano                | Instrumento                                                |
-| ------- | -------------------------------------------------------------------- | -------------------------------- | ---------- | ------------------------------------------ | ---------------------------------------------------------- |
-| 1.0.0   | `d2f0c23d9d9fd0a432bc445a4911dac19c89832338872cee453ec119392f1c75` | `ec6a95a`                      | 2026-10-26 | Gerente de Projeto — CCB de membro único | Promulgação inicial e fechamento da pendência da FASE 0 |
-| 1.1.0   | `PENDENTE_REGISTRO_DEFINITIVO`                                     | `PENDENTE_REGISTRO_DEFINITIVO` | 2026-10-26 | Gerente de Projeto — CCB de membro único | CCB 26/10/2026, emendas E-01..E-08                         |
-| 1.2.0   | `b3f296c6ed592bb3f276302148eeb0360a72ebe35fdd48a9b972ba8261851db4` | `7cff886`                     | 2026-10-30 | Gerente de Projeto — CCB de membro único | COGME-UNIVERSAL-ADJUSTMENT-PARTITIONED-v4.1.2 + prompt expresso CCB 30/10/2026 |
+| Versão | SHA-256 do conteúdo normativo                                       | Commit Git                       | Data       | Papel do ratificador humano                | Instrumento                                                                    |
+| ------- | -------------------------------------------------------------------- | -------------------------------- | ---------- | ------------------------------------------ | ------------------------------------------------------------------------------ |
+| 1.0.0   | `d2f0c23d9d9fd0a432bc445a4911dac19c89832338872cee453ec119392f1c75` | `ec6a95a`                      | 2026-10-26 | Gerente de Projeto — CCB de membro único | Promulgação inicial e fechamento da pendência da FASE 0                     |
+| 1.1.0   | `PENDENTE_REGISTRO_DEFINITIVO`                                     | `PENDENTE_REGISTRO_DEFINITIVO` | 2026-10-26 | Gerente de Projeto — CCB de membro único | CCB 26/10/2026, emendas E-01..E-08                                             |
+| 1.2.0   | `b3f296c6ed592bb3f276302148eeb0360a72ebe35fdd48a9b972ba8261851db4` | `7cff886`                      | 2026-10-30 | Gerente de Projeto — CCB de membro único | COGME-UNIVERSAL-ADJUSTMENT-PARTITIONED-v4.1.2 + prompt expresso CCB 30/10/2026 |

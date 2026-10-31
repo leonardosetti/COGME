@@ -1,5 +1,7 @@
 # DOCUMENTO CANÔNICO DE EXECUÇÃO FASEADA — v3.1.0
+
 ## Second Brain · Memória Persistente · MCPs · Prompt Ubíquo
+
 ### Input canônico reescrito em pacotes atômicos, com guarda de integridade e rollback obrigatório
 
 **Run ID:** `CANON-20261029-01`
@@ -15,13 +17,13 @@
 
 Aplicando a crítica ao próprio artefato anterior, identifico **cinco falhas de engenharia de contexto**:
 
-| ID | Falha do v3.0.0 | Consequência operacional | Correção neste v3.1.0 |
-|---|---|---|---|
-| **F-01** | O playbook inteiro era oferecido como prompt de sessão | ~15–20k tokens de instrução + leituras → estouro antes da primeira escrita | O playbook **não é prompt**. Vira repositório de pacotes. O driver emite **um** pacote por sessão. |
-| **F-02** | Instrução "faça as fases 0→4" em sequência | Modelo tenta completar tudo; estado intermediário nunca persistido | Máquina de estados em `ledger.yaml → canon_run`. Uma fase por sessão. Avanço só por parcel validada. |
-| **F-03** | Guardrail de backup era **prosa**, não mecanismo | LLM pode sobrescrever `opencode.json` sem快照 | Toda escrita de config passa por `canon_guard.py write`. Sem snapshot → `exit 1`. |
-| **F-04** | IDs de tarefa inválidos (`TA-RECONCILE-001`) | `TASK_ID_RE = ^[A-Z]{2}-\d{3,4}$` rejeita; dispatcher falha | Todos os IDs normalizados para `TA-0300`…`TA-0312`. Errata registrada, ADR não editado sem CCB. |
-| **F-05** | Propunha tocar 40 contratos de agente | Retrabalho massivo + 40 superfícies de corrupção | **Não tocar 40 contratos.** A camada ubíqua é `_base.md`. Apenas 2 contratos de custódia, opcional, fase separada. |
+| ID             | Falha do v3.0.0                                         | Consequência operacional                                                      | Correção neste v3.1.0                                                                                                        |
+| -------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| **F-01** | O playbook inteiro era oferecido como prompt de sessão | ~15–20k tokens de instrução + leituras → estouro antes da primeira escrita | O playbook **não é prompt**. Vira repositório de pacotes. O driver emite **um** pacote por sessão.             |
+| **F-02** | Instrução "faça as fases 0→4" em sequência         | Modelo tenta completar tudo; estado intermediário nunca persistido            | Máquina de estados em `ledger.yaml → canon_run`. Uma fase por sessão. Avanço só por parcel validada.                    |
+| **F-03** | Guardrail de backup era **prosa**, não mecanismo | LLM pode sobrescrever `opencode.json` sem快照                                | Toda escrita de config passa por `canon_guard.py write`. Sem snapshot → `exit 1`.                                         |
+| **F-04** | IDs de tarefa inválidos (`TA-RECONCILE-001`)         | `TASK_ID_RE = ^[A-Z]{2}-\d{3,4}$` rejeita; dispatcher falha                  | Todos os IDs normalizados para `TA-0300`…`TA-0312`. Errata registrada, ADR não editado sem CCB.                          |
+| **F-05** | Propunha tocar 40 contratos de agente                   | Retrabalho massivo + 40 superfícies de corrupção                            | **Não tocar 40 contratos.** A camada ubíqua é `_base.md`. Apenas 2 contratos de custódia, opcional, fase separada. |
 
 **Princípio corretor central:**
 
@@ -35,17 +37,17 @@ Aplicando a crítica ao próprio artefato anterior, identifico **cinco falhas de
 
 ## 1.1. Premissas de ambiente (somente fatos ratificados)
 
-| Item | Valor canônico | Fonte | Proibição |
-|---|---|---|---|
-| RAM total | **58 GB** (não 64) | `system-profile-20260907-133205.md` | Arredondar para cima em cálculo de viabilidade |
-| Modelo principal | `Qwen3-30B-A3B-Q4_K_M.gguf` (MoE) | ADR-011 + config OpenCode | Reverter para 27B/32B denso |
-| Contexto configurado | `32768` | `.opencode/opencode.json` + unit | Reduzir flag `-c` no service |
-| Orçamento **político** por sessão | **24000 tokens** | ADR-011 §2.1 | Exceder |
-| Output máximo | `4096` | config OpenCode | Gerar parcel > 2048 tokens |
-| Service | `llama-server.service`, `MemoryMax=32G`, `-ngl 99`, `--flash-attn on`, `--no-mmap` | unit ratificado | **L1 intocável** |
-| Obsidian | vault já em `./docs/conhecimento/` | declaração CCB | Criar segundo vault |
-| Personas | `.ai/personas/` (não `prompts/`) | `lst.txt` real | Renomear diretório |
-| Orquestrador | **inexistente** (Hermes rejeitado) | architecture_report | Reintroduzir framework |
+| Item                                       | Valor canônico                                                                              | Fonte                                 | Proibição                                     |
+| ------------------------------------------ | -------------------------------------------------------------------------------------------- | ------------------------------------- | ----------------------------------------------- |
+| RAM total                                  | **58 GB** (não 64)                                                                    | `system-profile-20260907-133205.md` | Arredondar para cima em cálculo de viabilidade |
+| Modelo principal                           | `Qwen3-30B-A3B-Q4_K_M.gguf` (MoE)                                                          | ADR-011 + config OpenCode             | Reverter para 27B/32B denso                     |
+| Contexto configurado                       | `32768`                                                                                    | `.opencode/opencode.json` + unit    | Reduzir flag `-c` no service                  |
+| Orçamento **político** por sessão | **24000 tokens**                                                                       | ADR-011 §2.1                         | Exceder                                         |
+| Output máximo                             | `4096`                                                                                     | config OpenCode                       | Gerar parcel > 2048 tokens                      |
+| Service                                    | `llama-server.service`, `MemoryMax=32G`, `-ngl 99`, `--flash-attn on`, `--no-mmap` | unit ratificado                       | **L1 intocável**                         |
+| Obsidian                                   | vault já em `./docs/conhecimento/`                                                        | declaração CCB                      | Criar segundo vault                             |
+| Personas                                   | `.ai/personas/` (não `prompts/`)                                                        | `lst.txt` real                      | Renomear diretório                             |
+| Orquestrador                               | **inexistente** (Hermes rejeitado)                                                     | architecture_report                   | Reintroduzir framework                          |
 
 ## 1.2. Regras de escrita (hard rules)
 
@@ -62,15 +64,15 @@ Aplicando a crítica ao próprio artefato anterior, identifico **cinco falhas de
 
 ## 1.3. Orçamento de contexto por sessão (mecânico)
 
-| Componente | Budget |
-|---|---|
-| Router `_base.md` | ≤ 600 tokens |
-| Pacote de fase emitido pelo driver | ≤ 1500 tokens |
-| Fatia de estado (`canon_run` apenas) | ≤ 300 tokens |
-| Leituras de trabalho (allowlist) | ≤ 6000 tokens |
-| Raciocínio + saída | ≤ 4000 tokens |
-| **Margem de segurança** | **≥ 11600 tokens** |
-| **Teto absoluto** | **24000 tokens** |
+| Componente                             | Budget                    |
+| -------------------------------------- | ------------------------- |
+| Router `_base.md`                    | ≤ 600 tokens             |
+| Pacote de fase emitido pelo driver     | ≤ 1500 tokens            |
+| Fatia de estado (`canon_run` apenas) | ≤ 300 tokens             |
+| Leituras de trabalho (allowlist)       | ≤ 6000 tokens            |
+| Raciocínio + saída                   | ≤ 4000 tokens            |
+| **Margem de segurança**         | **≥ 11600 tokens** |
+| **Teto absoluto**                | **24000 tokens**    |
 
 **Regra:** se a soma estimada ultrapassar 24000, o agente **não lê o restante**. Emite parcel com `dod:false`, `reason:"KS-01 CONTEXT_BUDGET"`, e pede decomposição via CCB. Nunca compacta "por conta própria" arquivo de configuração.
 
@@ -158,32 +160,32 @@ Cada pacote é delimitado por marcadores que o driver usa para extração:
 
 ## 3.1. Matriz de kill switch (determinística, com recuperação)
 
-| ID | Gatilho | Detecção mecânica | Ação imediata | Recuperação |
-|---|---|---|---|---|
-| **KS-01** | Contexto > 24000 tokens | `--accept` rejeita parcel com `context_used_tokens > 24000` | Parar leitura; parcel `dod:false` | CCB decompõe fase |
-| **KS-02** | Violação `constitution.md` | Avaliação semântica + Art. 2 | Abortar; registrar `audit_trail` | CCB emenda |
-| **KS-03** | Snapshot ausente/incompleto | `guard write` sem `--snapshot` válido | `exit 1`, nenhuma escrita | Executar `guard snapshot` |
-| **KS-04** | Deriva de hash no alvo | `hash_atual != baseline` | Abortar; **não sobrescrever** | Investigar; novo snapshot com CCB |
-| **KS-05** | Escrita fora da allowlist | `--accept` compara `artifacts[]` × allowlist | Rollback automático dos alvos | Refazer fase com pacote correto |
-| **KS-06** | Lock concorrente | `guard lock` falha | Abortar; não esperar em loop | Aguardar PID ou CCB autoriza `--break-stale` |
-| **KS-07** | YAML/JSON inválido pós-escrita | `yaml.safe_load` / `json.loads` no staging | Rejeitar staging; original intacto | Corrigir conteúdo |
-| **KS-08** | Sintaxe shell/Python inválida | `bash -n` / `py_compile` no staging | Rejeitar staging | Corrigir |
-| **KS-09** | Auto-delegação / half-duplex violado | `sender == target` no envelope | Rejeitar envelope | Redespachar para agente correto |
-| **KS-10** | `task_id` fora do regex | `^[A-Z]{2}-\d{3,4}$` | Rejeitar parcel | Normalizar ID |
-| **KS-11** | Tentativa de tocar L1 | allowlist contém unit / binário / modelo | `exit 1` | CCB abre fase L1 específica |
-| **KS-12** | `blocked_tasks` não vazio para a fase | leitura da fatia de estado | Não iniciar | Resolver blocker primeiro |
-| **KS-13** | > 10 entradas em diretório `.ai/` | contagem no `--accept` | Rejeitar criação | Consolidar |
-| **KS-14** | Invenção de conteúdo (spec/ADR/repo) | origem não rastreável no pacote | Bloquear fase (`BLOCKED`) | Fornecer fonte canônica |
+| ID              | Gatilho                                  | Detecção mecânica                                            | Ação imediata                      | Recuperação                                  |
+| --------------- | ---------------------------------------- | --------------------------------------------------------------- | ------------------------------------ | ---------------------------------------------- |
+| **KS-01** | Contexto > 24000 tokens                  | `--accept` rejeita parcel com `context_used_tokens > 24000` | Parar leitura; parcel `dod:false`  | CCB decompõe fase                             |
+| **KS-02** | Violação `constitution.md`           | Avaliação semântica + Art. 2                                 | Abortar; registrar `audit_trail`   | CCB emenda                                     |
+| **KS-03** | Snapshot ausente/incompleto              | `guard write` sem `--snapshot` válido                      | `exit 1`, nenhuma escrita          | Executar `guard snapshot`                    |
+| **KS-04** | Deriva de hash no alvo                   | `hash_atual != baseline`                                      | Abortar; **não sobrescrever** | Investigar; novo snapshot com CCB              |
+| **KS-05** | Escrita fora da allowlist                | `--accept` compara `artifacts[]` × allowlist               | Rollback automático dos alvos       | Refazer fase com pacote correto                |
+| **KS-06** | Lock concorrente                         | `guard lock` falha                                            | Abortar; não esperar em loop        | Aguardar PID ou CCB autoriza `--break-stale` |
+| **KS-07** | YAML/JSON inválido pós-escrita         | `yaml.safe_load` / `json.loads` no staging                  | Rejeitar staging; original intacto   | Corrigir conteúdo                             |
+| **KS-08** | Sintaxe shell/Python inválida           | `bash -n` / `py_compile` no staging                         | Rejeitar staging                     | Corrigir                                       |
+| **KS-09** | Auto-delegação / half-duplex violado   | `sender == target` no envelope                                | Rejeitar envelope                    | Redespachar para agente correto                |
+| **KS-10** | `task_id` fora do regex                | `^[A-Z]{2}-\d{3,4}$`                                          | Rejeitar parcel                      | Normalizar ID                                  |
+| **KS-11** | Tentativa de tocar L1                    | allowlist contém unit / binário / modelo                      | `exit 1`                           | CCB abre fase L1 específica                   |
+| **KS-12** | `blocked_tasks` não vazio para a fase | leitura da fatia de estado                                      | Não iniciar                         | Resolver blocker primeiro                      |
+| **KS-13** | > 10 entradas em diretório `.ai/`     | contagem no `--accept`                                        | Rejeitar criação                   | Consolidar                                     |
+| **KS-14** | Invenção de conteúdo (spec/ADR/repo)  | origem não rastreável no pacote                               | Bloquear fase (`BLOCKED`)          | Fornecer fonte canônica                       |
 
 ## 3.2. Classes de risco e tratamento obrigatório
 
-| Classe | Exemplos | Exigência antes de escrever |
-|---|---|---|
-| **R0 — novo arquivo** | `mcp_nexus_ledger.py`, `transversais.md` | Lock + verificação de inexistência + snapshot do diretório-pai (manifest) |
-| **R1 — extensão aditiva** | `ledger.yaml`, `KB-INDEX.md` | Snapshot + hash baseline + prova de preservação do conteúdo pré-existente |
-| **R2 — configuração viva** ⚠️ | `.opencode/opencode.json`, `.ai/personas/_base.md` | Snapshot + `--dry-run-diff` + validação de schema + **prova de restore executada em arquivo de teste** + CCB ciente |
-| **R3 — executável em produção** ⚠️️ | `download_model.sh`, `sdd-cycle.sh` | Snapshot + `bash -n` + execução em modo `--dry-run` + rollback testado |
-| **R4 — intocável** | `llama-server.service`, binário, `.gguf`, `registry.yaml` | **Nenhuma escrita.** Somente leitura/verificação |
+| Classe                                           | Exemplos                                                         | Exigência antes de escrever                                                                                                  |
+| ------------------------------------------------ | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| **R0 — novo arquivo**                     | `mcp_nexus_ledger.py`, `transversais.md`                     | Lock + verificação de inexistência + snapshot do diretório-pai (manifest)                                                 |
+| **R1 — extensão aditiva**                | `ledger.yaml`, `KB-INDEX.md`                                 | Snapshot + hash baseline + prova de preservação do conteúdo pré-existente                                                 |
+| **R2 — configuração viva** ⚠️         | `.opencode/opencode.json`, `.ai/personas/_base.md`           | Snapshot + `--dry-run-diff` + validação de schema + **prova de restore executada em arquivo de teste** + CCB ciente |
+| **R3 — executável em produção** ⚠️️ | `download_model.sh`, `sdd-cycle.sh`                          | Snapshot + `bash -n` + execução em modo `--dry-run` + rollback testado                                                  |
+| **R4 — intocável**                       | `llama-server.service`, binário, `.gguf`, `registry.yaml` | **Nenhuma escrita.** Somente leitura/verificação                                                                      |
 
 > **Regra dura R2:** antes de modificar `opencode.json` ou `_base.md`, o agente deve executar `guard restore --selftest`, que comprova que o mecanismo de rollback realmente restaura um bytes-identical. Se o selftest falhar, **não se toca no arquivo vivo**.
 
@@ -245,21 +247,21 @@ python3 scripts/canon_guard.py unlock
 
 # PARTE 5 — MAPA DE FASES (sequência canônica)
 
-| Fase | Task ID | Objetivo | Writes (allowlist) | Risco | Gate de saída | Bloqueio externo |
-|---|---|---|---|---|---|---|
-| **F00** | `TA-0300` | Baseline forense + snapshot + criar repositório de pacotes | `.ai/specs/canon/*` (novos) | R0 | 5 arquivos presentes; `INDEX` coerente; nenhum config tocado | — |
-| **F01** | `TA-0301` | Implementar guard + driver + selftest de rollback | `scripts/canon_guard.py`, `scripts/canon_run.py` | R0 | `py_compile` + `restore --selftest` OK | — |
-| **F02** | `TA-0302` | Integrar ADR-011 ao contexto (idempotente) | `docs/decisoes/ADR-011-sddai-v3.md`, `docs/decisoes/INDEX.md` | R1 | ADR indexada; sobreposições referenciadas | — |
-| **F03** | `TA-0303` | Estender `ledger.yaml` p/ schema v2 + `canon_run` | `.ai/agents/ledger.yaml` | R1 | YAML válido; `audit_trail` preservado; `current_session` presente | F01 |
-| **F04** | `TA-0304` | Perfis canônicos de hardware e modelos | `.ai/config/hardware-profile.yaml`, `.ai/config/models-catalog.yaml` | R0 | Valores rastreáveis; sem métricas inventadas | F03 |
-| **F05** | `TA-0305` | Reconciliar `download_model.sh` (ex-`TA-RECONCILE-001`) | `download_model.sh` | R3 | `bash -n` + dry-run + repo HF **verificado** | **repo HF não verificado ⇒ BLOCKED** |
-| **F06** | `TA-0306` | MCP `nexus-ledger` + testes | `scripts/mcp_nexus_ledger.py`, `tests/agents/test_mcp_ledger.py` | R0 | testes verdes; ledger não corrompido | F03 |
-| **F07** | `TA-0307` | MCPs `dispatch`, `validate`, `kb` | 3 scripts novos em `scripts/` | R0 | wrappers chamam scripts existentes; sem lógica duplicada | F06 |
-| **F08** | `TA-0308` | Registrar MCPs no OpenCode | `.opencode/opencode.json` | **R2** | JSON válido; restore selftest OK; endpoint responde | F07 |
-| **F09** | `TA-0309` | `transversais.md` + índice KB | `docs/conhecimento/licoes-aprendidas/transversais.md`, `docs/conhecimento/KB-INDEX.md` | R0/R1 | gate de admissão aplicado; índice aponta | F03 |
-| **F10** | `TA-0310` | Popular `eap.md`, `requisitos.md`, `tap.md` | 3 specs | R1 | conteúdo derivado do **TAP v3 congelado**, sem invenção | **TAP acessível ⇒ senão BLOCKED** |
-| **F11** | `TA-0311` | Instalar **router** ubíquo em `_base.md` | `.ai/personas/_base.md` | **R2** | router ≤ 600 tokens; personas específicas preservadas; restore testado | F08 |
-| **F12** | `TA-0312` | E2E + métricas + encerramento | relatório em `docs/auditorias/`, `ledger.yaml` | R1 | todos os gates verdes; parcel `dod:true` | todas |
+| Fase          | Task ID     | Objetivo                                                    | Writes (allowlist)                                                                         | Risco        | Gate de saída                                                           | Bloqueio externo                             |
+| ------------- | ----------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------ | ------------------------------------------------------------------------ | -------------------------------------------- |
+| **F00** | `TA-0300` | Baseline forense + snapshot + criar repositório de pacotes | `.ai/specs/canon/*` (novos)                                                              | R0           | 5 arquivos presentes; `INDEX` coerente; nenhum config tocado           | —                                           |
+| **F01** | `TA-0301` | Implementar guard + driver + selftest de rollback           | `scripts/canon_guard.py`, `scripts/canon_run.py`                                       | R0           | `py_compile` + `restore --selftest` OK                               | —                                           |
+| **F02** | `TA-0302` | Integrar ADR-011 ao contexto (idempotente)                  | `docs/decisoes/ADR-011-sddai-v3.md`, `docs/decisoes/INDEX.md`                          | R1           | ADR indexada; sobreposições referenciadas                              | —                                           |
+| **F03** | `TA-0303` | Estender `ledger.yaml` p/ schema v2 + `canon_run`       | `.ai/agents/ledger.yaml`                                                                 | R1           | YAML válido; `audit_trail` preservado; `current_session` presente   | F01                                          |
+| **F04** | `TA-0304` | Perfis canônicos de hardware e modelos                     | `.ai/config/hardware-profile.yaml`, `.ai/config/models-catalog.yaml`                   | R0           | Valores rastreáveis; sem métricas inventadas                           | F03                                          |
+| **F05** | `TA-0305` | Reconciliar `download_model.sh` (ex-`TA-RECONCILE-001`) | `download_model.sh`                                                                      | R3           | `bash -n` + dry-run + repo HF **verificado**                     | **repo HF não verificado ⇒ BLOCKED** |
+| **F06** | `TA-0306` | MCP `nexus-ledger` + testes                               | `scripts/mcp_nexus_ledger.py`, `tests/agents/test_mcp_ledger.py`                       | R0           | testes verdes; ledger não corrompido                                    | F03                                          |
+| **F07** | `TA-0307` | MCPs `dispatch`, `validate`, `kb`                     | 3 scripts novos em `scripts/`                                                            | R0           | wrappers chamam scripts existentes; sem lógica duplicada                | F06                                          |
+| **F08** | `TA-0308` | Registrar MCPs no OpenCode                                  | `.opencode/opencode.json`                                                                | **R2** | JSON válido; restore selftest OK; endpoint responde                     | F07                                          |
+| **F09** | `TA-0309` | `transversais.md` + índice KB                            | `docs/conhecimento/licoes-aprendidas/transversais.md`, `docs/conhecimento/KB-INDEX.md` | R0/R1        | gate de admissão aplicado; índice aponta                               | F03                                          |
+| **F10** | `TA-0310` | Popular `eap.md`, `requisitos.md`, `tap.md`           | 3 specs                                                                                    | R1           | conteúdo derivado do **TAP v3 congelado**, sem invenção         | **TAP acessível ⇒ senão BLOCKED**   |
+| **F11** | `TA-0311` | Instalar **router** ubíquo em `_base.md`           | `.ai/personas/_base.md`                                                                  | **R2** | router ≤ 600 tokens; personas específicas preservadas; restore testado | F08                                          |
+| **F12** | `TA-0312` | E2E + métricas + encerramento                              | relatório em `docs/auditorias/`, `ledger.yaml`                                        | R1           | todos os gates verdes; parcel `dod:true`                               | todas                                        |
 
 **Observação crítica de sequência:** F00 e F01 são **bootstrap manual** (ainda não existe driver). A partir de F02, tudo é dirigido por `canon_run.py --emit-next`.
 
@@ -642,6 +644,7 @@ KILL: KS-01..KS-14 aplicáveis. Falhar honestamente é sucesso de governança.
 ```python
 #!/usr/bin/env python3
 """Guarda de integridade do CANON RUN. Stdlib + PyYAML. Sem frameworks."""
+
 import os, sys, json, hash, fcntl, argparse, tempfile, shutil, subprocess
 from pathlib import Path
 from datetime import datetime, timezone
@@ -654,6 +657,7 @@ from datetime import datetime, timezone
 ```python
 #!/usr/bin/env python3
 """canon_guard.py — snapshot / write atômico / rollback verificado."""
+
 import argparse, fcntl, hashlib, json, os, subprocess, sys, tempfile
 from datetime import datetime, timezone
 from pathlib import Path
@@ -664,158 +668,271 @@ BACKUPS = CACHE / "backups"
 LOCKFILE = CACHE / "run.lock"
 RUN_ID = "CANON-20261029-01"
 
-def now(): return datetime.now(timezone.utc).isoformat()
+
+def now():
+    return datetime.now(timezone.utc).isoformat()
+
+
 def sha(p: Path) -> str:
     return hashlib.sha256(p.read_bytes()).hexdigest() if p.exists() else "MISSING"
+
+
 def die(code, msg):
-    print(json.dumps({"ok": False, "kill_switch": code, "reason": msg}, ensure_ascii=False))
+    print(
+        json.dumps(
+            {"ok": False, "kill_switch": code, "reason": msg}, ensure_ascii=False
+        )
+    )
     sys.exit(1)
+
+
 def out(obj):
-    print(json.dumps({"ok": True, **obj}, ensure_ascii=False)); return 0
+    print(json.dumps({"ok": True, **obj}, ensure_ascii=False))
+    return 0
+
 
 def ensure_cache():
     BACKUPS.mkdir(parents=True, exist_ok=True)
 
+
 def load_manifest(snap: str) -> Path:
     p = BACKUPS / RUN_ID / snap / "manifest.json"
-    if not p.exists(): die("KS-03", f"snapshot ausente: {snap}")
+    if not p.exists():
+        die("KS-03", f"snapshot ausente: {snap}")
     return p
+
 
 def acquire_lock(phase):
     ensure_cache()
     fd = os.open(LOCKFILE, os.O_CREAT | os.O_RDWR, 0o600)
-    try: fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
-    except BlockingIOError: die("KS-06", "lock concorrente ativo")
+    try:
+        fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        die("KS-06", "lock concorrente ativo")
     os.ftruncate(fd, 0)
-    os.write(fd, json.dumps({"pid": os.getpid(), "host": os.uname().nodename,
-                             "phase": phase, "at": now()}).encode())
+    os.write(
+        fd,
+        json.dumps({
+            "pid": os.getpid(),
+            "host": os.uname().nodename,
+            "phase": phase,
+            "at": now(),
+        }).encode(),
+    )
     return fd
 
+
 def release_lock(fd):
-    try: os.unlink(LOCKFILE)
-    except FileNotFoundError: pass
-    fcntl.flock(fd, fcntl.LOCK_UN); os.close(fd)
+    try:
+        os.unlink(LOCKFILE)
+    except FileNotFoundError:
+        pass
+    fcntl.flock(fd, fcntl.LOCK_UN)
+    os.close(fd)
+
 
 def atomic_write(target: Path, data: bytes):
     target.parent.mkdir(parents=True, exist_ok=True)
     fd, tmp = tempfile.mkstemp(dir=str(target.parent), prefix=".canon-")
     try:
         with os.fdopen(fd, "wb") as f:
-            f.write(data); f.flush(); os.fsync(f.fileno())
+            f.write(data)
+            f.flush()
+            os.fsync(f.fileno())
         os.replace(tmp, target)
         dfd = os.open(str(target.parent), os.O_RDONLY)
-        try: os.fsync(dfd)
-        finally: os.close(dfd)
+        try:
+            os.fsync(dfd)
+        finally:
+            os.close(dfd)
     finally:
-        if os.path.exists(tmp): os.unlink(tmp)
+        if os.path.exists(tmp):
+            os.unlink(tmp)
+
 
 def cmd_lock(a):
-    fd = acquire_lock(a.phase); print(json.dumps({"ok": True, "phase": a.phase}))
-    release_lock(fd); return 0   # lock persistente verificado via flock no driver
+    fd = acquire_lock(a.phase)
+    print(json.dumps({"ok": True, "phase": a.phase}))
+    release_lock(fd)
+    return 0  # lock persistente verificado via flock no driver
+
 
 def cmd_snapshot(a):
     ensure_lock = acquire_lock(a.phase or "SNAPSHOT")
     try:
         ensure_cache()
         snap = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%f")
-        dest = BACKUPS / RUN_ID / snap; dest.mkdir(parents=True)
+        dest = BACKUPS / RUN_ID / snap
+        dest.mkdir(parents=True)
         targets = [t.strip() for t in a.targets.split(",") if t.strip()]
         for t in targets:
-            if t.startswith("/") or ".." in t: die("KS-05", f"path não relativo: {t}")
+            if t.startswith("/") or ".." in t:
+                die("KS-05", f"path não relativo: {t}")
             if any(x in t for x in ["systemd", ".gguf", "/bin/", "registry.yaml"]):
                 die("KS-11", f"L1/SSOT protegido: {t}")
         files = []
         for t in targets:
             src = ROOT / t
-            if not src.exists(): die("KS-03", f"alvo inexistente: {t}")
+            if not src.exists():
+                die("KS-03", f"alvo inexistente: {t}")
             rel = t.replace("/", "__")
             shutil.copy2(src, dest / rel)
-            files.append({"path": t, "backup": rel, "sha256_before": sha(src),
-                          "bytes": src.stat().st_size, "mode": oct(src.stat().st_mode)})
-        head = subprocess.run(["git","rev-parse","HEAD"],cwd=ROOT,capture_output=True,text=True)
-        status = subprocess.run(["git","status","--porcelain"],cwd=ROOT,capture_output=True,text=True)
-        manifest = {"run_id":RUN_ID,"snapshot":snap,"created_at":now(),
-                    "phase":a.phase,"git_head":head.stdout.strip(),
-                    "git_dirty":status.stdout.splitlines(),"files":files,"writes":[]}
-        (dest/"manifest.json").write_text(json.dumps(manifest,indent=2,ensure_ascii=False))
-        return out({"snapshot":snap,"targets":len(files),"path":str(dest)})
-    finally: release_lock(ensure_lock)
+            files.append({
+                "path": t,
+                "backup": rel,
+                "sha256_before": sha(src),
+                "bytes": src.stat().st_size,
+                "mode": oct(src.stat().st_mode),
+            })
+        head = subprocess.run(
+            ["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True
+        )
+        status = subprocess.run(
+            ["git", "status", "--porcelain"], cwd=ROOT, capture_output=True, text=True
+        )
+        manifest = {
+            "run_id": RUN_ID,
+            "snapshot": snap,
+            "created_at": now(),
+            "phase": a.phase,
+            "git_head": head.stdout.strip(),
+            "git_dirty": status.stdout.splitlines(),
+            "files": files,
+            "writes": [],
+        }
+        (dest / "manifest.json").write_text(
+            json.dumps(manifest, indent=2, ensure_ascii=False)
+        )
+        return out({"snapshot": snap, "targets": len(files), "path": str(dest)})
+    finally:
+        release_lock(ensure_lock)
+
 
 def cmd_verify(a):
-    mp = load_manifest(a.snapshot); m = json.loads(mp.read_text())
+    mp = load_manifest(a.snapshot)
+    m = json.loads(mp.read_text())
     bad = []
     for f in m["files"]:
         cur = sha(ROOT / f["path"])
-        recorded = next((w["sha256_after"] for w in m["writes"]
-                         if w["path"]==f["path"]), f["sha256_before"])
-        if cur != recorded: bad.append({"path":f["path"],"expected":recorded,"actual":cur})
-    if bad: die("KS-04", json.dumps(bad,ensure_ascii=False))
-    return out({"snapshot":a.snapshot,"verified":len(m["files"])})
+        recorded = next(
+            (w["sha256_after"] for w in m["writes"] if w["path"] == f["path"]),
+            f["sha256_before"],
+        )
+        if cur != recorded:
+            bad.append({"path": f["path"], "expected": recorded, "actual": cur})
+    if bad:
+        die("KS-04", json.dumps(bad, ensure_ascii=False))
+    return out({"snapshot": a.snapshot, "verified": len(m["files"])})
+
 
 def cmd_write(a):
     fd = acquire_lock("WRITE")
     try:
-        mp = load_manifest(a.snapshot); m = json.loads(mp.read_text())
-        entry = next((f for f in m["files"] if f["path"]==a.path), None)
-        if entry is None: die("KS-05", f"fora da allowlist do snapshot: {a.path}")
+        mp = load_manifest(a.snapshot)
+        m = json.loads(mp.read_text())
+        entry = next((f for f in m["files"] if f["path"] == a.path), None)
+        if entry is None:
+            die("KS-05", f"fora da allowlist do snapshot: {a.path}")
         target = ROOT / a.path
         if sha(target) != entry["sha256_before"] and not any(
-                w["path"]==a.path for w in m["writes"]):
+            w["path"] == a.path for w in m["writes"]
+        ):
             die("KS-04", "deriva: alvo mudou desde o snapshot")
         data = Path(a.source).read_bytes()
         txt = data.decode("utf-8")
         if a.path.endswith(".json"):
-            json.loads(txt)                      # KS-07
-        elif a.path.endswith((".yaml",".yml")):
-            import yaml; yaml.safe_load(txt)     # KS-07
+            json.loads(txt)  # KS-07
+        elif a.path.endswith((".yaml", ".yml")):
+            import yaml
+
+            yaml.safe_load(txt)  # KS-07
         if a.path.endswith(".sh"):
-            tmpsh = Path(a.source).with_suffix(".check.sh"); tmpsh.write_bytes(data)
-            r = subprocess.run(["bash","-n",str(tmpsh)],capture_output=True,text=True)
+            tmpsh = Path(a.source).with_suffix(".check.sh")
+            tmpsh.write_bytes(data)
+            r = subprocess.run(
+                ["bash", "-n", str(tmpsh)], capture_output=True, text=True
+            )
             tmpsh.unlink(missing_ok=True)
-            if r.returncode: die("KS-08", r.stderr)
+            if r.returncode:
+                die("KS-08", r.stderr)
         if a.dry_run:
-            return out({"dry_run":True,"path":a.path,"sha256_new":hashlib.sha256(data).hexdigest()})
+            return out({
+                "dry_run": True,
+                "path": a.path,
+                "sha256_new": hashlib.sha256(data).hexdigest(),
+            })
         atomic_write(target, data)
-        m["writes"].append({"path":a.path,"at":now(),
-                            "sha256_after":sha(target),"source_snapshot":a.snapshot})
-        mp.write_text(json.dumps(m,indent=2,ensure_ascii=False))
-        return out({"written":a.path,"sha256_after":sha(target)})
-    finally: release_lock(fd)
+        m["writes"].append({
+            "path": a.path,
+            "at": now(),
+            "sha256_after": sha(target),
+            "source_snapshot": a.snapshot,
+        })
+        mp.write_text(json.dumps(m, indent=2, ensure_ascii=False))
+        return out({"written": a.path, "sha256_after": sha(target)})
+    finally:
+        release_lock(fd)
+
 
 def cmd_restore(a):
     if not a.selftest and not a.confirm_ccb:
-        die("KS-03","restore exige --confirm-ccb ou --selftest")
+        die("KS-03", "restore exige --confirm-ccb ou --selftest")
     if a.selftest:
-        d = CACHE/"selftest"; d.mkdir(parents=True,exist_ok=True)
-        p = d/"probe.txt"; payload=b"BASELINE-IMUTAVEL\n"
-        atomic_write(p,payload); before=sha(p)
-        atomic_write(p,b"CORROMPIDO\n"); atomic_write(p,payload)
-        if sha(p)!=before: die("KS-03","selftest de rollback falhou")
-        return out({"selftest":"PASS","sha256":before})
-    mp = load_manifest(a.snapshot); m = json.loads(mp.read_text())
-    dest = mp.parent; restored=[]
+        d = CACHE / "selftest"
+        d.mkdir(parents=True, exist_ok=True)
+        p = d / "probe.txt"
+        payload = b"BASELINE-IMUTAVEL\n"
+        atomic_write(p, payload)
+        before = sha(p)
+        atomic_write(p, b"CORROMPIDO\n")
+        atomic_write(p, payload)
+        if sha(p) != before:
+            die("KS-03", "selftest de rollback falhou")
+        return out({"selftest": "PASS", "sha256": before})
+    mp = load_manifest(a.snapshot)
+    m = json.loads(mp.read_text())
+    dest = mp.parent
+    restored = []
     for f in m["files"]:
-        data=(dest/f["backup"]).read_bytes()
-        if hashlib.sha256(data).hexdigest()!=f["sha256_before"]:
-            die("KS-03",f"backup corrompido: {f['path']}")
-        atomic_write(ROOT/f["path"],data); restored.append(f["path"])
-    return out({"restored":restored,"snapshot":a.snapshot})
+        data = (dest / f["backup"]).read_bytes()
+        if hashlib.sha256(data).hexdigest() != f["sha256_before"]:
+            die("KS-03", f"backup corrompido: {f['path']}")
+        atomic_write(ROOT / f["path"], data)
+        restored.append(f["path"])
+    return out({"restored": restored, "snapshot": a.snapshot})
+
 
 def main():
-    p=argparse.ArgumentParser(); sub=p.add_subparsers(dest="cmd",required=True)
-    x=sub.add_parser("lock"); x.add_argument("--phase",required=True)
-    x=sub.add_parser("snapshot"); x.add_argument("--phase"); x.add_argument("--targets",required=True)
-    x=sub.add_parser("verify"); x.add_argument("--snapshot",required=True)
-    x=sub.add_parser("write"); x.add_argument("--snapshot",required=True)
-    x.add_argument("--path",required=True); x.add_argument("--source",required=True)
-    x.add_argument("--dry-run",action="store_true")
-    x=sub.add_parser("restore"); x.add_argument("--snapshot"); x.add_argument("--confirm-ccb",action="store_true")
-    x.add_argument("--selftest",action="store_true")
-    a=p.parse_args()
-    return {"lock":cmd_lock,"snapshot":cmd_snapshot,"verify":cmd_verify,
-            "write":cmd_write,"restore":cmd_restore}[a.cmd](a)
+    p = argparse.ArgumentParser()
+    sub = p.add_subparsers(dest="cmd", required=True)
+    x = sub.add_parser("lock")
+    x.add_argument("--phase", required=True)
+    x = sub.add_parser("snapshot")
+    x.add_argument("--phase")
+    x.add_argument("--targets", required=True)
+    x = sub.add_parser("verify")
+    x.add_argument("--snapshot", required=True)
+    x = sub.add_parser("write")
+    x.add_argument("--snapshot", required=True)
+    x.add_argument("--path", required=True)
+    x.add_argument("--source", required=True)
+    x.add_argument("--dry-run", action="store_true")
+    x = sub.add_parser("restore")
+    x.add_argument("--snapshot")
+    x.add_argument("--confirm-ccb", action="store_true")
+    x.add_argument("--selftest", action="store_true")
+    a = p.parse_args()
+    return {
+        "lock": cmd_lock,
+        "snapshot": cmd_snapshot,
+        "verify": cmd_verify,
+        "write": cmd_write,
+        "restore": cmd_restore,
+    }[a.cmd](a)
 
-if __name__=="__main__": sys.exit(main())
+
+if __name__ == "__main__":
+    sys.exit(main())
 ```
 
 **Limitação honesta do mecanismo:** o `lock` acima é `flock` por comando, não atravessa processos. O driver `canon_run.py` deve manter o `flock` adquirido durante toda a fase. Isso está explicitado no contrato da F01 e deve ser coberto por teste na F12. **Não declarar proteção concorrencial total enquanto esse teste não existir.**
@@ -825,53 +942,81 @@ if __name__=="__main__": sys.exit(main())
 ```python
 #!/usr/bin/env python3
 """Máquina de estados do CANON RUN. Emite UM pacote por vez."""
+
 import argparse, json, re, sys, yaml
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1]
-LEDGER=ROOT/".ai/agents/ledger.yaml"
-CANON=ROOT/".ai/specs/canon"
-TASK_RE=re.compile(r"^[A-Z]{2}-\d{3,4}$")
-ORDER=[f"F{i:02d}" for i in range(13)]
+
+ROOT = Path(__file__).resolve().parents[1]
+LEDGER = ROOT / ".ai/agents/ledger.yaml"
+CANON = ROOT / ".ai/specs/canon"
+TASK_RE = re.compile(r"^[A-Z]{2}-\d{3,4}$")
+ORDER = [f"F{i:02d}" for i in range(13)]
+
 
 def slice_state():
-    d=yaml.safe_load(LEDGER.read_text()) or {}
-    return d.get("canon_run",{"current_phase":"F00","status":"NOT_STARTED"})
+    d = yaml.safe_load(LEDGER.read_text()) or {}
+    return d.get("canon_run", {"current_phase": "F00", "status": "NOT_STARTED"})
+
 
 def emit(phase):
     for f in sorted(CANON.glob("*.md")):
-        txt=f.read_text()
-        start=f"<!-- PHASE:{phase} -->"; end=f"<!-- /PHASE:{phase} -->"
+        txt = f.read_text()
+        start = f"<!-- PHASE:{phase} -->"
+        end = f"<!-- /PHASE:{phase} -->"
         if start in txt:
-            body=txt.split(start,1)[1].split(end,1)[0]
-            print(f"### ESTADO ATUAL\n```json\n{json.dumps(slice_state(),ensure_ascii=False)}\n```")
+            body = txt.split(start, 1)[1].split(end, 1)[0]
+            print(
+                f"### ESTADO ATUAL\n```json\n{json.dumps(slice_state(), ensure_ascii=False)}\n```"
+            )
             print(f"\n### PACOTE {phase} — ÚNICA UNIDADE DE EXECUÇÃO\n{body}")
             print("\n### SAÍDA EXIGIDA\nParcel JSON. Não executar a próxima fase.")
             return 0
-    print(f"Pacote {phase} não encontrado",file=sys.stderr); return 1
+    print(f"Pacote {phase} não encontrado", file=sys.stderr)
+    return 1
+
 
 def accept(phase, parcel_path):
-    p=json.loads(Path(parcel_path).read_text())
-    if not TASK_RE.match(p.get("task_id","")): print("KS-10"); return 1
-    if p.get("context_used_tokens",0)>24000: print("KS-01"); return 1
-    if p.get("kill_switch_invoked"): print("KS-ATIVADO — não avançar"); return 1
-    if not p.get("dod"): print("BLOCKED — estado não avança"); return 1
+    p = json.loads(Path(parcel_path).read_text())
+    if not TASK_RE.match(p.get("task_id", "")):
+        print("KS-10")
+        return 1
+    if p.get("context_used_tokens", 0) > 24000:
+        print("KS-01")
+        return 1
+    if p.get("kill_switch_invoked"):
+        print("KS-ATIVADO — não avançar")
+        return 1
+    if not p.get("dod"):
+        print("BLOCKED — estado não avança")
+        return 1
     # TODO F01: validar artifacts[] contra allowlist do pacote + verify do snapshot
     print("ACCEPT — pendente validação de allowlist implementada em F01")
     return 0
 
-def main():
-    p=argparse.ArgumentParser()
-    p.add_argument("--emit"); p.add_argument("--emit-next",action="store_true")
-    p.add_argument("--status",action="store_true")
-    p.add_argument("--accept"); p.add_argument("--parcel")
-    a=p.parse_args()
-    if a.status: print(json.dumps(slice_state(),ensure_ascii=False,indent=2)); return 0
-    if a.emit: return emit(a.emit)
-    if a.emit_next: return emit(slice_state().get("current_phase","F00"))
-    if a.accept: return accept(a.accept,a.parcel)
-    p.print_help(); return 0
 
-if __name__=="__main__": sys.exit(main())
+def main():
+    p = argparse.ArgumentParser()
+    p.add_argument("--emit")
+    p.add_argument("--emit-next", action="store_true")
+    p.add_argument("--status", action="store_true")
+    p.add_argument("--accept")
+    p.add_argument("--parcel")
+    a = p.parse_args()
+    if a.status:
+        print(json.dumps(slice_state(), ensure_ascii=False, indent=2))
+        return 0
+    if a.emit:
+        return emit(a.emit)
+    if a.emit_next:
+        return emit(slice_state().get("current_phase", "F00"))
+    if a.accept:
+        return accept(a.accept, a.parcel)
+    p.print_help()
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
 ```
 
 > O钩 `accept` deixa a validação de allowlist como **TODO explícito da F01**. Isso é intencional e deve constar como blocker na parcel da F01 até ser implementado e testado. **Não marcar F01 como `dod:true` com esse gancho pendente.**
@@ -922,13 +1067,13 @@ Ao receber tarefa de implementação do CANON RUN:
 
 **Regras de avanço:**
 
-| Condição da parcel | Efeito no estado |
-|---|---|
-| `dod:true` + allowlist OK + `verify` OK + `baseline_intact:true` | `completed[]` append; `current_phase` → próxima |
-| `dod:false` + `kill_switch_invoked:true` | `status=BLOCKED`; **não avança**; rollback se houve escrita |
-| `artifacts[]` fora da allowlist | `KS-05`; rollback automático; **não avança** |
-| `context_used_tokens > 24000` | `KS-01`; rejeitar; solicitar decomposição |
-| `task_id` inválido | `KS-10`; rejeitar sem efeitos |
+| Condição da parcel                                                   | Efeito no estado                                                      |
+| ---------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `dod:true` + allowlist OK + `verify` OK + `baseline_intact:true` | `completed[]` append; `current_phase` → próxima                 |
+| `dod:false` + `kill_switch_invoked:true`                           | `status=BLOCKED`; **não avança**; rollback se houve escrita |
+| `artifacts[]` fora da allowlist                                      | `KS-05`; rollback automático; **não avança**               |
+| `context_used_tokens > 24000`                                        | `KS-01`; rejeitar; solicitar decomposição                         |
+| `task_id` inválido                                                  | `KS-10`; rejeitar sem efeitos                                       |
 
 ---
 

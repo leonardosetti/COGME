@@ -108,3 +108,4 @@ Ao disparar, o sistema entra em estado `BLOCKED_CONSTITUTIONAL_INTEGRITY`, exigi
 - **Validação Técnica:** Script `validate_constitution_integrity.py` roda em CI e pré-commit.
 - **Auditoria:** `project-auditor` gera relatório mensal de conformidade constitucional.
 - **Sucessão:** Em caso de indisponibilidade do Guardião, a posse da chave privada de assinatura ou acesso ao repositório protegido determina a legitimidade das emendas futuras. Atualmente, apenas o CCB Único possui essa prerrogativa.
+  ---
