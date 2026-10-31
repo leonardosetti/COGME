@@ -48,3 +48,19 @@ evidencia: Commits efetuados para cada artefato; SHA-256 e hash do commit regist
 impacto: Todos os artefatos componentes passam a ter status promulgado/ratificado; ecossistema de agentes com 46 promulgados; B0 fechado; B1-B8 liberados.
 rollback: Reverter commits individuais por artefato (não recomendado; uso apenas em caso de impugnação formal).
 pmbok-gate: Integração (4.6) | Qualidade (8.3) | Conformidade (P-05, P-06)
+
+### RAT-2026-10-31-A10 — Ratificação da Governança CI/CD e DevSecOps
+contexto: Rodada de validação, refatoração e promulgação dos pipelines CI/CD do projeto COGME, com princípios first-principles, YAGNI e DevOps/DevSecOps. Autoridade plena concedida pelo GP/CCB para esta iniciativa de governança.
+artefatos ratificados:
+  - CI-CD-GOV-001: docs/governanca/ci-cd-governance.md (Política de Governança CI/CD)
+  - DEVSECOPS-001: docs/governanca/devsecops-policy.md (Política DevSecOps)
+  - .github/workflows/ci.yml: COGME CI/CD Pipeline refatorado (Kill Switch, FOSS, SDD/DAG, Agent Health, Testes, Status)
+  - .github/workflows/sddai-verify.yml: SDDAI Verify Pipeline refatorado (7 passos, fail-closed, strict)
+  - scripts/agent_health_check.py: corrigido para aceitar agentes legacy-forge (Art. 4.8)
+decisao: A — Promulgar todos os artefatos acima; todos os pipelines green sem bypassing.
+ratificacao: Humana (GP Leonardo, CCB de membro único, autoridade plena concedida nesta iniciativa)
+instrumento: Prompt expresso do CCB 31/10/2026 — iniciativa de governança CI/CD e DevSecOps
+evidencia: Todos os 181 testes passam (1 skipped); sddai_verify_pipeline 7/7 passos aprovados; validate_nexus_yaml 46 promulgados/0 rejeitados; dag_validator 45 slugs acíclicos; agent_health_check 45/45 saudáveis.
+impacto: Ecossistema de CI/CD totalmente governado, fail-closed, sem bypass; B0-B8 liberados; próximo marco: execução dos blocos de normalização documental.
+rollback: Reverter commits individuais por artefato (não recomendado; uso apenas em caso de impugnação formal).
+pmbok-gate: Integração (4.6) | Qualidade (8.3) | Conformidade (P-05, P-06, P-07)
