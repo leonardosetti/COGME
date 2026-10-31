@@ -111,3 +111,18 @@ evidencia: 181 testes passando (1 skipped); security_scan.py --strict exit 0 (46
 impacto: Ecossistema de CI/CD sem falsos positivos de legacy-forge; todos os pipelines green; B1-B8 liberados para execucao subsequente.
 rollback: Reverter commit individual (nao recomendado).
 pmbok-gate: Integracao (4.6) | Qualidade (8.3) | Conformidade (P-01, P-02, P-04, P-06, P-07, Art. 4.8)
+
+### RAT-2026-10-31-A13 — Correção de Falsos Positivos de Credenciais no CI/CD
+contexto: Alerta "Real credential detected in repository!" no pipeline CI/CD investigado e confirmado como falso positivo. Causa raiz: (1) ci.yml varria scripts/security_scan.py (contem padrao regex AKIA[0-9A-Z]{16} usado para detectar credenciais AWS) e .venv/ (dependencias com variaveis password em codigo de bibliotecas terceiras).
+artefatos corrigidos:
+  - .github/workflows/ci.yml: busca credenciais apenas em diretorios do projeto (.ai, .opencode, docs, scripts, src, test, tests, .github), nao em .venv/; exclui scripts/security_scan.py (padroes de deteccao, nao credenciais); exclui .github/workflows/ci.yml (proprio padrao regex)
+artefatos documentados:
+  - docs/governanca/relatorio-analitico-falso-positivo-credenciais-ci.md (REL-FP-CRED-001)
+  - docs/auditorias/AUD-2610-11-AUDITORIA-EXTRAORDINARIA-FALSO-POSITIVO-CREDENCIAIS.md (AUD-2610-11)
+decisao: A — Corrigir falsos positivos de credenciais; validar que todos os pipelines estejam green sem bypassing.
+ratificacao: Humana (GP Leonardo, CCB de membro unico, autoridade plena concedida nesta iniciativa)
+instrumento: Prompt expresso do CCB 31/10/2026 — correcao de falsos positivos CI/CD credenciais
+evidencia: 181 testes passando (1 skipped); security_scan.py --strict exit 0 (46 aprovados, 0 falhas, 0 avisos); sddai_verify_pipeline 7/7 aprovados; grep de credenciais em diretorios do projeto: nenhuma ocorrencia
+impacto: Ecossistema de CI/CD sem falsos positivos de credenciais; todos os pipelines green; B1-B8 liberados para execucao subsequente.
+rollback: Reverter commit individual (nao recomendado).
+pmbok-gate: Integracao (4.6) | Qualidade (8.3) | Conformidade (P-01, P-02, P-04, P-06, P-07, Art. 7.2)
