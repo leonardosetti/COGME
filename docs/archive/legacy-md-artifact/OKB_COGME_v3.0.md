@@ -1,3 +1,5 @@
+<!-- PROVENIÊNCIA: OKB v3.0 (20/09/2026) — corpus vivo até 30/10/2026; substituído pelo OKB v5.1.0 ratificado (CCB-003, 30/10/2026). Arquivado em 30/10/2026. Artefato imutável: não editar, não citar como fonte viva. -->
+
 # OKB v3.0 — Operational Knowledge Base (Consolidada)
 
 **Data:** 20/09/2026

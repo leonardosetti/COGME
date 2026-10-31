@@ -24,7 +24,7 @@
 
 ### Linha do tempo sintética
 
-```
+~~~
 19/09/2026
   ├── OKB v2.2 vigente
   ├── Backlog M1 original (10 cards)
@@ -53,7 +53,7 @@
 
 22/09/2026
   └── LA-001: Incidente de reestruturação paralela
-```
+~~~
 
 ---
 
@@ -117,7 +117,7 @@
 
 #### FIG-EAP-01: `fig-eap-nivel-0-macro.svg`
 
-```svg
+~~~svg
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" font-family="Arial, Helvetica, sans-serif">
    <rect x="0" y="0" width="1200" height="500" fill="#FFFFFF"/>
    <text x="600" y="42" text-anchor="middle" font-size="23" font-weight="bold" fill="#111111">Estrutura Analítica do Projeto (EAP) — Visão Macro</text>
@@ -155,11 +155,11 @@
    <text x="1000" y="280" text-anchor="middle" font-size="14" fill="#111111">N11. Documentação do Projeto</text>
    <text x="1000" y="305" text-anchor="middle" font-size="14" fill="#111111">N12. Encerramento</text>
  </svg>
-```
+~~~
 
 #### FIG-EAP-02: `fig-eap-mf1-fundacao.svg`
 
-```svg
+~~~svg
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="Arial, Helvetica, sans-serif">
    <rect x="0" y="0" width="1600" height="900" fill="#FFFFFF"/>
    <text x="800" y="42" text-anchor="middle" font-size="23" font-weight="bold" fill="#111111">EAP — Macro-Fase 1: Fundação (MF1)</text>
@@ -240,11 +240,11 @@
      <text x="110" y="205" text-anchor="middle" font-size="12" fill="#222222">N9.3 Catálogo de Prompts SDD</text>
    </g>
  </svg>
-```
+~~~
 
 #### FIG-EAP-03: `fig-eap-mf2-construcao.svg`
 
-```svg
+~~~svg
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" font-family="Arial, Helvetica, sans-serif">
    <rect x="0" y="0" width="1200" height="700" fill="#FFFFFF"/>
    <text x="600" y="42" text-anchor="middle" font-size="23" font-weight="bold" fill="#111111">EAP — Macro-Fase 2: Construção (MF2)</text>
@@ -297,11 +297,11 @@
      <text x="120" y="205" text-anchor="middle" font-size="12" fill="#222222">N10.3 Aprovação e Versionamento</text>
    </g>
  </svg>
-```
+~~~
 
 #### FIG-EAP-04: `fig-eap-mf3-consolidacao.svg`
 
-```svg
+~~~svg
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="Arial, Helvetica, sans-serif">
    <rect x="0" y="0" width="800" height="500" fill="#FFFFFF"/>
    <text x="400" y="42" text-anchor="middle" font-size="23" font-weight="bold" fill="#111111">EAP — Macro-Fase 3: Consolidação (MF3)</text>
@@ -328,13 +328,13 @@
      <text x="130" y="205" text-anchor="middle" font-size="12" fill="#222222">N12.3 Apresentação Final + Aceite</text>
    </g>
  </svg>
-```
+~~~
 
 ### 3.2 Rodada 2 — Governança e Mudanças (2 SVGs) — 21/09/2026
 
 #### FIG-GOV-01: `fig-1-governanca-hibrida.svg`
 
-```svg
+~~~svg
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" font-family="Arial, Helvetica, sans-serif">
    <defs>
      <marker id="ar" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
@@ -366,11 +366,11 @@
    <text x="735" y="275" font-size="12" font-weight="bold" fill="#2E7D32" text-anchor="start">Lições Aprendidas</text>
    <text x="735" y="290" font-size="12" font-weight="bold" fill="#2E7D32" text-anchor="start">e Realimentação</text>
  </svg>
-```
+~~~
 
 #### FIG-MUD-01: `fig-4-controle-mudancas.svg`
 
-```svg
+~~~svg
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 650" font-family="Arial, Helvetica, sans-serif">
    <defs>
      <marker id="ar-flow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
@@ -420,13 +420,13 @@
    <text x="680" y="525" text-anchor="middle" font-size="12" fill="#333333">Registro formal via ADR +</text>
    <text x="680" y="540" text-anchor="middle" font-size="12" fill="#333333">Comunicação no marco subsequente</text>
  </svg>
-```
+~~~
 
 ### 3.3 Rodada 3 — CFD e Sequenciamento (2 SVGs) — 21/09/2026
 
 #### FIG-CFD-01: `fig-3-cfd-saudavel-vs-gargalo.svg`
 
-```svg
+~~~svg
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 700" font-family="Arial, Helvetica, sans-serif">
    <rect x="0" y="0" width="1400" height="700" fill="#FFFFFF"/>
    <text x="700" y="40" text-anchor="middle" font-size="22" font-weight="bold" fill="#111111">Cumulative Flow Diagram (CFD) — Padrão Saudável vs. Gargalo</text>
@@ -481,7 +481,7 @@
      </marker>
    </defs>
  </svg>
-```
+~~~
 
 #### FIG-SEQ-01: `fig-1-sequenciamento-macro-caminho-critico.svg` (v1 — SUPERSEDED pela v2 na Correção 3.5)
 
@@ -493,7 +493,7 @@
 
 #### FIG-SEQ-01 v2 (CANÔNICA): `fig-1-sequenciamento-macro-caminho-critico.svg`
 
-```svg
+~~~svg
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" font-family="Arial, Helvetica, sans-serif">
    <defs>
      <marker id="ar-flow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
@@ -555,13 +555,13 @@
    <text x="600" y="585" text-anchor="middle" font-size="12" fill="#333333">Caminho crítico identificado empiricamente — sem rede CPM preditiva. Substitui o Gantt/EVM por</text>
    <text x="600" y="600" text-anchor="middle" font-size="12" fill="#333333">métricas de fluxo Kanban, conforme ADR-003 e OKB §8.1.</text>
  </svg>
-```
+~~~
 
 ### 3.5 Rodada 4 — Fluxo Kanban (1 SVG) — 21/09/2026
 
 #### FIG-KAN-01: `fig-2-fluxo-kanban-oficial.svg`
 
-```svg
+~~~svg
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 500" font-family="Arial, Helvetica, sans-serif">
    <defs>
      <marker id="ar-flow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
@@ -617,13 +617,13 @@
    <text x="700" y="465" text-anchor="middle" font-size="11" fill="#333333">Se WIP limit for violado ou tasklist não estiver 100% concluída, o card não migra para a coluna seguinte.</text>
    <text x="700" y="478" text-anchor="middle" font-size="11" fill="#333333">Gargalos persistentes acionam Retrospectiva extraordinária (Integração §1.6.1).</text>
  </svg>
-```
+~~~
 
 ### 3.6 Rodada 5 — Custos (2 SVGs) — 21/09/2026
 
 #### FIG-CUST-01: `fig-5-fluxo-prevencao-custos.svg`
 
-```svg
+~~~svg
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900" font-family="Arial, Helvetica, sans-serif">
    <defs>
      <marker id="ar-flow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L9,3 L0,6 Z" fill="#1F3A5F"/></marker>
@@ -683,11 +683,11 @@
    <text x="400" y="805" text-anchor="middle" font-size="12" font-weight="bold" fill="#111111">Linha de Base de Custos: R$ 0,00 (imutável sem CCB)</text>
    <text x="400" y="820" text-anchor="middle" font-size="11" fill="#555555">TAP §11 + Premissa P2 (FOSS absoluto)</text>
  </svg>
-```
+~~~
 
 #### FIG-CUST-02: `fig-6-matriz-rastreabilidade-dependencias.svg`
 
-```svg
+~~~svg
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" font-family="Arial, Helvetica, sans-serif">
    <rect x="0" y="0" width="1200" height="500" fill="#FFFFFF"/>
    <text x="600" y="40" text-anchor="middle" font-size="22" font-weight="bold" fill="#111111">Matriz de Rastreabilidade de Dependências — Stack FOSS Canônica</text>
@@ -750,13 +750,13 @@
    <rect x="50" y="450" width="1100" height="40" rx="4" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
    <text x="600" y="475" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">100% das dependências auditadas e conformantes — Linha de base R$ 0,00 preservada</text>
  </svg>
-```
+~~~
 
 ### 3.7 Rodada 6 — Escopo (2 SVGs) — 21/09/2026
 
 #### FIG-ESC-01: `fig-eap-visao-executiva.svg`
 
-```svg
+~~~svg
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 850" font-family="Arial, Helvetica, sans-serif">
    <defs><marker id="ar-flow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L9,3 L0,6 Z" fill="#1F3A5F"/></marker></defs>
    <rect x="0" y="0" width="1200" height="850" fill="#FFFFFF"/>
@@ -830,11 +830,11 @@
    <rect x="200" y="820" width="800" height="25" rx="4" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1"/>
    <text x="600" y="837" text-anchor="middle" font-size="11" fill="#333333">Total: 12 fases de Nível 1 + 37 pacotes de Nível 2 (baseline canônica do TAP §4)</text>
  </svg>
-```
+~~~
 
 #### FIG-ESC-02: `fig-2-cadeia-decomposicao-escopo.svg`
 
-```svg
+~~~svg
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 650" font-family="Arial, Helvetica, sans-serif">
    <defs><marker id="ar-flow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L9,3 L0,6 Z" fill="#1F3A5F"/></marker></defs>
    <rect x="0" y="0" width="1400" height="650" fill="#FFFFFF"/>
@@ -903,7 +903,7 @@
    <text x="700" y="600" text-anchor="middle" font-size="11" fill="#333333">No COGME, atividades são materializadas como tasklist Markdown (3 a 7 itens; último item "Validação final"),</text>
    <text x="700" y="615" text-anchor="middle" font-size="11" fill="#333333">rejeitando-se formalmente subissues para preservar a unidade atômica de métrica (card pai) e evitar fragmentação do backlog.</text>
  </svg>
-```
+~~~
 
 ---
 
@@ -971,7 +971,7 @@ Fonte: Elaborado pelos autores (2026).
 
 ### 5.1 Estrutura Canônica Proposta
 
-```
+~~~
 COGME/
  ├── .ai/
  │   ├── personas/ (_base.md, pm.md, coder.md, reviewer.md, tester.md, active.md)
@@ -996,11 +996,11 @@ COGME/
  ├── pyproject.toml
  ├── requirements.txt
  └── .gitignore
-```
+~~~
 
 ### 5.2 Estrutura Atual Real (Mapeamento 22/09/2026)
 
-```
+~~~
 .
  ├── docs/
  │   ├── archive/
@@ -1036,7 +1036,7 @@ COGME/
  ├── src/ (backend/, frontend/, shared/)
  └── tests/ (unit/, integration/)
  48 directories, 142 files
-```
+~~~
 
 ### 5.3 Anomalias Detectadas
 
@@ -1083,11 +1083,11 @@ Reestruturação formal do repositório executada em paralelo com produção ati
 - Commit único de reestruturação com mensagem descritiva + tag de rollback
 
 ### Comandos de recuperação
-```bash
+~~~bash
 git log --since="2026-09-20" --oneline --all
 git reflog --since="2026-09-20"
 git log --diff-filter=D --summary --since="2026-09-20" --name-only
-```
+~~~
 
 ---
 
@@ -1123,7 +1123,7 @@ git log --diff-filter=D --summary --since="2026-09-20" --name-only
 | I4 | Fronteira M1 ambígua (5 vs 8 planos) | Resolvida: Entrega Faseada (M1=5, M2=3) |
 | I5 | Contagem EAP divergente (12/37 vs 13/48) | TAP §4 canônico (12/37); Glossário volátil |
 | I6 | Cycle Time "To Do → Done" vs "In Progress → Done" | ADR-003 canônica: In Progress → Done |
-| I7 | Grafia "Carletto" vs "Carleto" | TAP v3 canônico: "Carleto" |
+| I7 | Grafia "Carleto" vs "Carleto" | TAP v3 canônico: "Carleto" |
 | I8 | Estrutura de diretórios proposta vs atual divergente | Ambas documentadas; mapeamento fornecido |
 
 ---

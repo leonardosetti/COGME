@@ -1,0 +1,10 @@
+sddai_validation:
+  workflows:
+    - name: data_optimization
+      status: pending
+      steps:
+        - data_ingestion
+        - preprocessing
+        - model_training
+  requirements:
+    tools: ['data_loader', 'feature_engineer', 'model_trainer']

@@ -1,0 +1,6 @@
+{
+  "model_artifacts": "/lab/FATEC/202602/ger_proj/COGME/artifacts",
+  "memory_limit": "58GB",
+  "token_budget": 24000,
+  "checkpoint_dir": "/lab/FATEC/202602/ger_proj/COGME/checkpoints"
+}

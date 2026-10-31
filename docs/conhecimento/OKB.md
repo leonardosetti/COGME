@@ -1,9 +1,9 @@
 ---
 id: OKB-001
-title: "Base de Conhecimento Operacional do COGME — corpus único (v5.0.0)"
-version: 5.0.0
+title: "Base de Conhecimento Operacional do COGME — corpus único (v5.1.0)"
+version: 5.1.0
 class: okb
-status: draft
+status: ratified
 owner: agent-architect
 derived-from:
   - constitution.md v1.2.0 (Arts. 2, 4, 5, 6, 9, 10; P-01..P-13)
@@ -21,9 +21,9 @@ derived-from:
   - docs/decisoes/ADR-011-Ecossistema-SDDAI.md v1.0.0
   - docs/decisoes/ADR-012-constituicao-como-artefato-de-governanca.md v1.0.1
   - docs/planos/plano-integracao.md v2.0.0 / plano-escopo.md v1.1.0 / plano-cronograma.md v1.2.0 / plano-custos.md v1.2.0 / plano-qualidade.md v1.1.0 / plano-recursos.md v1.0.0 / plano-comunicacoes.md v1.0.0 / plano-riscos.md v1.0.0
-  - docs/conhecimento/glossario.md v3.1 (declarado; divergência com KB-INDEX — §9 OKB-C-07)
+  - docs/conhecimento/glossario.md v3.1 (declarado; divergência com KB-INDEX — §10 OKB-C-07)
   - .ai/specs/kb-taxonomy.md v1.1.0 (KB-TAX-001)
-  - docs/conhecimento/KB-INDEX.md v1.1.0
+  - docs/conhecimento/KB-INDEX.md v1.2.0 (atualizado nesta promoção)
   - docs/auditorias/AUD-2610-02.md, AUD-2610-03.md, AUD-2610-04.md; docs/auditorias/vio-register.md v1.1.0
   - docs/change-requests/CR-001-m2-replanejamento.md (sem versão declarada)
   - docs/archive/legacy-md-artifact/OKB_COGME_v3.1-draft-aplicado-em-v4.md (v3.1; imutável, proveniência)
@@ -32,21 +32,22 @@ lgpd-class: n/a
 caveats:
   - "UNKNOWN-GAP: OKB v4.0.0 (23/10/2026, 594 linhas, corpus único) perdida no evento destrutivo VIO-006 (24/10 02:53:32); reemissão parte do corpo v3.0 sobrevivente + fontes citadas, nunca do texto perdido (KG-01/KG-04)."
   - "UNKNOWN-GAP: owner — KB-INDEX.md:48 registra divergência CCB (agent-docker-specialist) fundada em 'OKB §10.2 C-10', seção inexistente no corpus sobrevivente; adotado o default da taxonomia (agent-architect) até confirmação do CCB."
-  - "UNKNOWN-GAP: frontend canônico — ADR-001 v1.0.0 fixa HTML5/CSS3/JS vanilla; registry.yaml (agent frontend) e VIO-001 registram Jinja/HTMX/Tailwind; sem ADR de emenda (§9 OKB-C-10)."
-  - "UNKNOWN-GAP: fechamento de M2 sem evidência em FS (MF2-licoes 0 B; baseline 0 B); CR-001 repactua M2 para 15/11/2026 sem ADR e colide com M3 (§9 OKB-C-06)."
-  - "UNKNOWN-GAP: glossário — cabeçalho v3.1 (20/09) contra 3.2.0 declarado no KB-INDEX; corpo ainda afirma 13 fases/48 pacotes, Qwen 32B e SQLite (§9 OKB-C-07)."
+  - "UNKNOWN-GAP: frontend canônico — ADR-001 v1.0.0 fixa HTML5/CSS3/JS vanilla; registry.yaml (agent frontend) e VIO-001 registram Jinja/HTMX/Tailwind; sem ADR de emenda (§10 OKB-C-10)."
+  - "UNKNOWN-GAP: fechamento de M2 sem evidência em FS (MF2-licoes 0 B; baseline 0 B); CR-001 repactua M2 para 15/11/2026 sem ADR e colide com M3 (§10 OKB-C-06)."
+  - "UNKNOWN-GAP: glossário — cabeçalho v3.1 (20/09) contra 3.2.0 declarado no KB-INDEX; corpo ainda afirma 13 fases/48 pacotes, Qwen 32B e SQLite (§10 OKB-C-07)."
   - "UNKNOWN-GAP: baseline de métricas 0 B — metas da ADR-003 permanecem provisórias (não calibradas) até popular docs/metricas/baseline.md."
-  - "DEFEITO CRÍTICO (OKB-C-21): constitution.md v1.2.0 apresenta os Arts. 5–10 em duplicidade (duas redações no mesmo arquivo); consolidação é ato exclusivo do Humano (Art. 5.2) e não foi executada por agente."
+  - "DEFEITO CRÍTICO (OKB-C-21): constitution.md v1.2.0 (VIGENTE-PLENA) apresenta os Arts. 5–10 em duplicidade (`:119-217` × `:218-331`, duas redações no mesmo arquivo); consolidação é ato exclusivo do Humano (Art. 5.2) e não foi executada por agente."
   - "UNKNOWN-GAP: docs/tap/TAP.md, docs/requisitos/requisitos.md e .ai/specs/{tap,eap,requisitos}.md em 0 B; TAP canônico vive no plano-integral (docx = export derivado)."
-  - "Documento CANDIDATO: somente substitui o corpus vivo após ratificação CCB (Art. 5.1). Não altera ADRs, o TAP congelado (ADR-005) nem a Constituição."
+  - "RATIFICADO (CCB-003, 30/10/2026): substitui o corpus v3.0 como documento de conhecimento canônico único. Não altera ADRs, o TAP congelado (ADR-005) nem a Constituição; promulgação não sana os achados abertos de §10."
+  - "Cobertura metodológica (§9) com lacunas materiais declaradas: DER (TOGAF C1), arquitetura de transição SQLite→PostgreSQL (TOGAF F / OKB-C-22), baseline de medição e catálogo de serviços. Nenhuma foi convertida em artefato por este documento (YAGNI + separação de custódias)."
 ---
 
-# OKB v5.0.0 — Base de Conhecimento Operacional (corpus único)
+# OKB v5.1.0 — Base de Conhecimento Operacional (corpus único, ratificado)
 
 | Campo | Valor |
 |---|---|
-| Versão | 5.0.0 |
-| Status | draft — candidato canônico; ratificação CCB pendente |
+| Versão | 5.1.0 |
+| Status | **ratified** — promulgada por CCB-003 (GP) em 30/10/2026; bloco de ratificação ao final |
 | Data-base (as-of) | 30/10/2026 |
 | Decisor da ratificação | GP Leonardo (CCB único — TAP v3 §1.c, Premissa P7) |
 | Substitui | OKB v3.0 (20/09/2026, corpus vivo) e a linhagem v3.1 (22/09) / v4.0.0 (23/10, perdida em VIO-006) |
@@ -65,11 +66,11 @@ O OKB é a **base de conhecimento técnico-aplicada** do COGME (classe `okb`, KB
 ### 0.2 Regras de leitura
 
 1. **Toda afirmação normativa cita fonte e versão pinada** — `ADR-NNN vX.Y.Z`, `plano-X vX.Y`, `TAP §N`. Alegação sem fonte é `UNKNOWN-GAP` (P-08).
-2. **Metadado honesto:** a seção §4 registra a versão *real* encontrada no arquivo, não a versão *declarada* pelo índice. Divergência é defeito rastreado (§9), nunca silenciada.
+2. **Metadado honesto:** a seção §4 registra a versão *real* encontrada no arquivo, não a versão *declarada* pelo índice. Divergência é defeito rastreado (§10), nunca silenciada.
 3. **Hierarquia absoluta:** em conflito, vale o Art. 2 da Constituição v1.2.0, não a ordem interna de versões anteriores do OKB (§1.1 corrige a ordem praticada até 20/09).
 4. **Congelamento:** este documento não edita o TAP (ADR-005). Divergências do TAP são lidas via Notas de Contexto do Plano de Cronograma §3.8, nunca "corrigidas".
 
-### 0.3 O que mudou nesta versão (v3.0 → v5.0.0)
+### 0.3 O que mudou nesta versão (v3.0 → v5.1.0)
 
 | # | Mudança | Motivo |
 |---|---|---|
@@ -79,10 +80,21 @@ O OKB é a **base de conhecimento técnico-aplicada** do COGME (classe `okb`, KB
 | 4 | Estado canônico as-of 30/10 (stack ADR-010, LLM ADR-006, agentes ADR-011) | v3.0 refletia 20/09 |
 | 5 | Inventário de artefatos com versão real vs declarada | consolidação realista de metadados |
 | 6 | 27 labels (corrige "23" interno) | §2 de v3.0:51 contradizia §9.1:466 |
-| 7 | Registro de inconsistências e pendências (§9) | auditorias AUD-2610-02/03/04 + VIO-006 |
+| 7 | Registro de inconsistências e pendências (§10) | auditorias AUD-2610-02/03/04 + VIO-006 |
 | 8 | Padrão de citação com versão + lista de patch | versionamento das menções internas |
 | 9 | P9 incluída nas premissas (era P1–P8) | TAP §9 tem 9 premissas |
 | 10 | "Próximos passos pré-M1" substituído por estado as-of | cronograma de 21/09 estava obsoleto |
+
+### 0.4 Emendas aplicadas na ratificação (5.0.0-draft → 5.1.0)
+
+| # | Emenda | Lente | Efeito |
+|---|---|---|---|
+| 1 | Nova §9 — cobertura metodológica (PMBOK 7ª, TOGAF ADM, ITIL 4) com estado por domínio/fase/prática | cobertura integral | 8 domínios, 10 fases ADM + requisitos e 11 práticas deixam de ser implícitos |
+| 2 | Achados novos: OKB-C-22 (ADR-010 não propagada), C-23 (tipos de mudança), C-24 (partes interessadas) | crítica | lacunas materiais passam a ter dono e evidência |
+| 3 | §8.2 (árvore de diretórios) comprimida; §4.2 reduzida ao essencial | YAGNI | −20 linhas; KB-INDEX e o CSV passam a ser a fonte do inventário |
+| 4 | Hierarquia declarada uma única vez (§1.1); §0.2 e §8.1 passam a referenciar | YAGNI | "1 fato = 1 local" aplicado ao próprio OKB |
+| 5 | Bloco de ratificação com SHA-256 (Art. 5.4), hash excluindo o próprio bloco | rastreabilidade ITIL/PMBOK | verificável por `sha256sum` |
+| 6 | Promoção executada: v3.0 arquivado, KB-INDEX atualizado, ledger registrado | governança | uma única corpora viva |
 
 ---
 
@@ -117,7 +129,8 @@ O OKB é a **base de conhecimento técnico-aplicada** do COGME (classe `okb`, KB
 |---|---|---|
 | CCB | GP Leonardo (membro único) | TAP v3 §1.c; Premissa P7 |
 | Stakeholder-avaliador | **Prof. Dr. Nivaldo Carleto** (grafia imutável) | ADR-008 v1.1.0 |
-| Instrumentos de ratificação | CCB-001 (ADRs 006–011 + 007/008/009/010) e CCB-002 (ADR-012), 29/10/2026 | cabeçalhos das ADRs |
+| Instrumentos de ratificação | CCB-001 (ADRs 006–011), CCB-002 (ADR-012), 29/10/2026; CCB-003 (Constituição PLENA + este OKB), 30/10/2026 | cabeçalhos das ADRs; `docs/governanca/ccb-log.md` |
+| Registro vivo de decisões | CCB-LOG-NNN (`docs/governanca/ccb-log.md` v0.1.0, append-only) — modelo CAB, gates PMBOK/TOGAF/ITIL por entrada | ccb-log.md |
 | Emenda constitucional | proposta → parecer de auditoria → CCB → bump + changelog + co-assinatura | Art. 9.1; Art. 5.4 |
 | Emenda de ADR | CR + CCB + ADR (MAJOR se alterar marco oficial) | OKB §2.4; plano-custos §4.5/§4.6 |
 
@@ -290,7 +303,8 @@ Legenda: **real** = extraído do cabeçalho/frontmatter do arquivo em 30/10/2026
 
 | ID / classe | Caminho | Versão real | Status real | Índice declara | Divergência |
 |---|---|---|---|---|---|
-| Lei | `constitution.md` | 1.2.0 | VIGENTE-INTERINA | não indexada | co-assinatura pendente (OKB-C-15) + **Arts. 5–10 duplicados** (OKB-C-21) |
+| Lei | `constitution.md` | 1.2.0 | **VIGENTE-PLENA** | não indexada | co-assinatura fechada (commit `7cff886`); **Arts. 5–10 duplicados** (OKB-C-21) |
+| CCB-LOG | `docs/governanca/ccb-log.md` | 0.1.0 | active | não indexado | classe `register-decision` fora do enum KB-TAX (C-13); cita plano inexistente (C-25) |
 | TAP (export) | `docs/tap/TAP.docx` | 18/09/2026 | congelado | — | `TAP.md` = 0 B e declarado "não-0B" no índice (OKB-C-09) |
 | plano-integral | `docs/planos/plano-integral-tap-1-2-3-4-5.md` | 1.0.0¹ | ativo | 1.0.0 active | sem carimbo de versão no corpo |
 | Plano de Projeto | `docs/planos/Plano-de-Projeto-COGME_v1.0.md` | 1.0.0¹ | ativo | 1.0.0 active | docx v1.1 concorrente — decisão CCB pendente |
@@ -311,9 +325,9 @@ Legenda: **real** = extraído do cabeçalho/frontmatter do arquivo em 30/10/2026
 | ADR-010 | `docs/decisoes/ADR-010-Stack-Infraestrutura.md` | 1.0.0 | Aprovado (CCB-001) | ausente | — |
 | ADR-011 | `docs/decisoes/ADR-011-Ecossistema-SDDAI.md` | 1.0.0 | Aprovado (CCB-001) | ausente | — |
 | ADR-012 | `docs/decisoes/ADR-012-constituicao-...md` | 1.0.1 | Aprovado (CCB-002) | ausente | — |
-| OKB | `docs/conhecimento/OKB.md` | **3.0** | Ativa (20/09) | **4.0.0 active** | OKB-C-02 (este candidato = 5.0.0) |
+| OKB | `docs/conhecimento/OKB.md` | **5.1.0** | ratified | 5.1.0 | ✅ sanado (este documento); v3.0 arquivado |
 | Glossário | `docs/conhecimento/glossario.md` | **3.1** | Atualizado (20/09) | **3.2.0 active** | OKB-C-07/OKB-C-17 |
-| KB-INDEX | `docs/conhecimento/KB-INDEX.md` | 1.1.0 | active | 1.1.0 | coerente, porém desatualizado em 9 linhas |
+| KB-INDEX | `docs/conhecimento/KB-INDEX.md` | 1.2.0 | active | 1.2.0 | coerente; atualizado na promoção |
 | Taxonomia | `.ai/specs/kb-taxonomy.md` | 1.1.0 | ratified | 1.1.0 | coerente |
 | Requisitos | `docs/requisitos/requisitos.md` | 0 B | — | 1.0.0 draft (ponteiro) | 0 B (OKB-C-08) |
 | Baseline | `docs/metricas/baseline.md` | 0 B | — | 1.0.0 draft | 0 B (OKB-C-08) |
@@ -334,7 +348,8 @@ Legenda: **real** = extraído do cabeçalho/frontmatter do arquivo em 30/10/2026
 | `docs/decisoes/_consolidado-adrs.tmp.md` | artefato temporário de análise (ADR-001..012) | descartar após uso (autorizado) |
 | `docs/planos/.~ano-de-Projeto-COGME_v2.0.1-ONGOING.docx` | lock temporário de editor | remover |
 | `docs/planos/Plano-de-Projeto-COGME_v2.0{,.1}-ONGOING.docx` | export/docx concorrente sem `.md` canônico | decisão CCB (R-03) |
-| `argparse` (raiz, 16 MB) | binário de 30/10 sem relação com o escopo | avaliar remoção (drift) |
+
+> Demais anomalias de higiene do repositório (binários soltos, locks, duplicatas) não são registradas aqui por YAGNI: o inventário vivo e a coluna `divergencia` estão em `docs/conhecimento/drafts/artefatos-metadados.csv`.
 
 ### 4.3 Classes sem artefato vivo completo
 
@@ -468,24 +483,21 @@ Documentos de governança são **standalone**; planos de área são **coordenado
 
 ```text
 docs/
-├── tap/               TAP.docx (export; TAP.md = stub 0 B)
-├── planos/            plano-integral (TAP+áreas 1-5), 8 planos de área, Plano de Projeto v1.0
-├── decisoes/          ADR-001..ADR-012 (+2 duplicatas de ADR-006; consolidado temporário)
-├── conhecimento/      OKB.md, glossario.md, KB-INDEX.md, licoes-aprendidas/, drafts/
-├── auditorias/        AUD-2610-02/03/04, vio-register.md
-├── change-requests/   CR-001
-├── diagramas/         eap/, escopo/, cronograma/, custos/, qualidade/, integracao/, comunicacoes/
-├── especificacoes/    analise-viabilidade-onda-8.md
-├── metricas/          baseline.md (0 B)
-├── dependencias/      registro.md (0 B)
-├── requisitos/        requisitos.md (0 B — ponteiro)
-├── slides_apresentacao/
-└── archive/           legado imutável (não é fonte viva)
+├── tap/ planos/         TAP.docx (export; TAP.md = stub 0 B) + plano-integral + 8 planos + Plano de Projeto v1.0
+├── decisoes/            ADR-001..ADR-012 (+2 duplicatas de ADR-006; consolidado temporário)
+├── conhecimento/        OKB.md (v5.1.0), glossario.md, KB-INDEX.md, licoes-aprendidas/, drafts/
+├── auditorias/          AUD-2610-02/03/04; vio-register.md
+├── change-requests/     CR-001
+├── governanca/          ccb-log.md (registro vivo CCB-LOG, append-only)
+├── diagramas/           7 áreas (PNG+SVG); EAP sem fonte vetorial
+├── metricas|dependencias|requisitos/   stubs 0 B (baseline, registro, requisitos)
+├── especificacoes|slides_apresentacao/
+└── archive/             legado imutável — nunca fonte viva
 ```
 
 > **Correção:** a árvore do OKB v3.0 (Aditivo §3.2) listava apenas `planos/ decisoes/ conhecimento/ metricas/ requisitos/` e ADR-001..005 — desatualizada.
 
-### 8.3 Formato canônico de citação (obrigatório a partir de v5.0.0)
+### 8.3 Formato canônico de citação (obrigatório a partir de v5.1.0)
 
 ```text
 [ADR-010 v1.0.0](docs/decisoes/ADR-010-Stack-Infraestrutura.md)
@@ -499,14 +511,14 @@ Regras: (i) sempre pinar `vX.Y.Z` (ADR) ou `vX.Y` (plano); (ii) citar seção/NC
 
 | Arquivo:linha | Menção atual | Substituir por |
 |---|---|---|
-| `.ai/personas/pm.md:22` | `OKB v3.1` | `OKB v5.0.0` (após ratificação) |
-| `.ai/personas/all.md:149` | `OKB v3.1` | `OKB v5.0.0` (após ratificação) |
-| `.ai/personas/all.md:365` | `OKB v3.1 §10` | `OKB v5.0.0 §9/§10` |
-| `docs/planos/plano-integral-tap-1-2-3-4-5.md:207` | `OKB v3.1; Glossário v3.1; ADRs 001–004` | `OKB v5.0.0; Glossário v3.2.0; ADRs 001–012` |
-| `plano-integral:660,668,681,685,707` | `OKB v3.1 §X` | `OKB v5.0.0 §X` (remapear seção) |
-| `docs/decisoes/ADR-012-...md:84` | `OKB v3.3+` | `OKB v5.0.0` |
-| `docs/conhecimento/glossario.md:1,5,7,27,…` | `OKB v3.1` / `OKB_COGME_v3.1.md` | `OKB v5.0.0` / `docs/conhecimento/OKB.md` |
-| `docs/conhecimento/KB-INDEX.md:48` | `4.0.0`, owner `agent-docker-specialist` | `5.0.0`, owner a confirmar |
+| `.ai/personas/pm.md:22` | `OKB v3.1` | `OKB v5.1.0` |
+| `.ai/personas/all.md:149` | `OKB v3.1` | `OKB v5.1.0` |
+| `.ai/personas/all.md:365` | `OKB v3.1 §10` | `OKB v5.1.0 §10/§11` |
+| `docs/planos/plano-integral-tap-1-2-3-4-5.md:207` | `OKB v3.1; Glossário v3.1; ADRs 001–004` | `OKB v5.1.0; Glossário v3.2.0; ADRs 001–012` |
+| `plano-integral:660,668,681,685,707` | `OKB v3.1 §X` | `OKB v5.1.0 §X` (remapear seção) |
+| `docs/decisoes/ADR-012-...md:84` | `OKB v3.3+` | `OKB v5.1.0` |
+| `docs/conhecimento/glossario.md:1,5,7,27,…` | `OKB v3.1` / `OKB_COGME_v3.1.md` | `OKB v5.1.0` / `docs/conhecimento/OKB.md` |
+| `docs/conhecimento/KB-INDEX.md:48` | `4.0.0`, owner `agent-docker-specialist` | ✅ **aplicado em 30/10/2026** → `5.1.0 ratified`, owner `agent-architect` |
 | `docs/conhecimento/KB-INDEX.md:39-43` | ADR-001..004 `1.1.0 ratified` | versões reais (§4.1) |
 | `docs/conhecimento/KB-INDEX.md:49` | Glossário `3.2.0` | `3.1` até saneamento, ou 3.2.0 após |
 | `docs/archive/**` | referências históricas | **não alterar** (imutável) |
@@ -515,48 +527,127 @@ Regras: (i) sempre pinar `vX.Y.Z` (ADR) ou `vX.Y` (plano); (ii) citar seção/NC
 
 ---
 
-## 9. INCONSISTÊNCIAS, LACUNAS E PENDÊNCIAS
+## 9. COBERTURA METODOLÓGICA — PMBOK 7ª · TOGAF ADM · ITIL 4
 
-### 9.1 Registro de consistência (OKB-C)
+**Por que esta seção existe.** O COGME é *gerido* por PMBOK 7ª, *arquitetado* com a lógica TOGAF (adaptada a produto único) e *operado* com disciplina de serviços ITIL 4 — sendo o "serviço" o circuito documental e o próprio produto. Esta seção é um **mapa de aderência**: cada linha nomeia o artefato que já descarrega a obrigação metodológica. `GAP` = nenhum artefato a descarrega (registrado em §10). `✅` = coberto · `⚠️` = parcial · `❌` = lacuna · `⛔` = fora de escopo.
+
+**Regra anti-cerimônia (YAGNI).** Nenhuma prática é "adotada" por constar aqui. Constar significa apenas que o projeto já a exerce por outro meio; o que não se aplica está declarado em §9.4 e **não gera artefato**.
+
+### 9.1 PMBOK 7ª — 8 domínios de desempenho
+
+| Domínio | Como o COGME exerce | Evidência | Estado |
+|---|---|---|---|
+| Partes interessadas | Stakeholder-avaliador único, CCB de membro único, equipe de 3 | ADR-008 v1.1.0; TAP §1.c e P7 | ⚠️ sem registro/matriz de partes interessadas (OKB-C-24) |
+| Equipe | Plano de recursos; WIP ≤ 3 por pessoa; 20 h/semana por membro | plano-recursos v1.0; Art. 6.2; TAP P5 | ✅ |
+| Abordagem de desenvolvimento e ciclo de vida | Híbrido: entrega documental faseada (M1/M2) + fluxo contínuo Kanban; SDD com LLM local | ADR-001, ADR-002, ADR-006, ADR-007 | ✅ |
+| Planejamento | TAP congelado + 8 planos de área + marcos; trabalho puxado por capacidade | ADR-005; plano-integral; plano-cronograma | ✅ (CR-001 pendente — C-06) |
+| Trabalho do projeto | GitHub Projects como SSOT; tasklists; handoffs SDD | ADR-002, ADR-004; §7 | ✅ |
+| Entrega | EAP 12 fases/37 pacotes; marcos M1–M4; MVP full-stack | ADR-009; §3.1–3.2 | ⚠️ M2 vencido sem fechamento; 0 cards de construção (plano-riscos Q-02:117) |
+| Medição | Cycle Time, Throughput, CFD, WIP, coverage ≥ 80% | ADR-003; §6 | ⚠️ metas não calibradas (baseline 0 B — C-16) |
+| Incerteza | plano-riscos (R1–R5, Q-01..Q-0n); ADR tardia; kill switch; auditorias | plano-riscos v1.0; §2.4; vio-register | ⚠️ registro de riscos não tem resumo canônico no OKB |
+
+**Tailoring declarado (domínio Abordagem de Desenvolvimento).** Três adaptações, todas com ADR ou registro formal: (i) EVM/SPI/CPI abandonados em favor de métricas de fluxo (ADR-003); (ii) 3 dos 8 planos de área diferidos de M1 para M2, −30% de carga documental (§1.5); (iii) subissues rejeitadas em favor de tasklists Markdown, com o card pai como unidade atômica de métrica (ADR-004).
+
+**Princípios × Constituição.** Os 12 princípios do PMBOK 7ª não são replicados: a Constituição já os converte em deveres executáveis (*stewardship* → P-05; *quality* → P-06; *tailoring* → P-11; *risk* → P-07; *change* → Art. 9). Duplicar criaria duas fontes de dever para o mesmo fato.
+
+### 9.2 TOGAF ADM — fases aplicáveis
+
+| Fase ADM | Tradução no COGME | Artefato | Estado |
+|---|---|---|---|
+| Preliminar | Lei, taxonomia, roster e princípios de arquitetura | constitution.md v1.2.0; KB-TAX-001; registry.yaml | ✅ |
+| A — Visão de arquitetura | Por que o sistema existe, escopo, restrições, avaliador | TAP v3 congelado; §1 e §3 deste OKB | ✅ |
+| B — Arquitetura de negócio | Processos (simulação, 5 regimes, invoice), RF/RNF | plano-escopo v1.1; REQ-01..REQ-15 (plano-integral:71+) | ⚠️ repositório de requisitos 0 B (C-08) |
+| C1 — Arquitetura de dados | Modelo de dados, entidades, ciclo de vida da cotação | **DER — entregável de M2** | ❌ DER não existe em FS |
+| C2 — Arquitetura de aplicação | Backend, frontend, integrações, catálogo de aplicações | §3.3; ADR-010 | ⚠️ conflito de frontend (C-10) |
+| D — Arquitetura de tecnologia | Runtime, banco, containers, hardware, LLM | ADR-010 v1.0.0; ADR-006 v2.0.0; §3.3–3.4 | ✅ |
+| E — Oportunidades e soluções | Backlog, work packages, build vs. reuse | GitHub Projects (§7); ADRs | ⚠️ sem gap analysis formal |
+| F — Planejamento de migração | Arquitetura de transição (SQLite → PostgreSQL) | **nenhum** | ❌ ADR-010 sem reflexo em cronograma/custos/recursos; REQ-07 ainda pede SQLite (OKB-C-22) |
+| G — Governança de implementação | CCB, gates reviewer → gatekeeper, auditorias | Art. 4/5; AUD-2610-0x | ✅ |
+| H — Gestão de mudança de arquitetura | ADR, CR, VIO, emenda constitucional | §2.3–2.4; Art. 9 | ⚠️ CR-001 sem ADR (C-06) |
+| Requisitos (função central) | REQ-01..15 rastreados a TAP/EAP/cards | plano-integral (34 referências) | ⚠️ parcial (C-08) |
+
+**Peças de governança TOGAF já existentes:** repositório de arquitetura = `KB-INDEX` + `docs/archive/`; conselho de arquitetura = CCB (GP único); princípios = Art. 3 (P-01..P-13); conformidade = AUD-2610-0x + VIO register; contratos = ADRs. **Fora de escopo (YAGNI):** modelo de maturidade de arquitetura e roadmap plurianual de portfolio — o COGME é produto único com prazo letivo.
+
+### 9.3 ITIL 4 — cadeia de valor e práticas
+
+**Cadeia de valor (6 atividades):** *Plan* → §1/§3 · *Improve* → retrospectivas, lições por MF, SIR de agentes, §10 · *Engage* → CCB, marcos, plano de comunicações · *Design & Transition* → ADRs, specs SDD, handoffs, CI · *Obtain/Build* → código, testes, coverage · *Deliver & Support* → MVP, invoice, API de câmbio.
+
+| Prática ITIL 4 | Mecanismo no COGME | Evidência | Estado |
+|---|---|---|---|
+| Gestão do conhecimento | OKB + KB-INDEX + glossário + lições | este documento; KB-TAX-001 | ✅ |
+| Habilitação de mudança | CR → ADR → CCB → bump + changelog; entradas no CCB-LOG com gate `itil-gate: SEV/normal` | §1.2, §2.3–2.4; Art. 9; ccb-log.md | ⚠️ classes usadas na prática, não definidas em norma (C-23) |
+| Gestão de incidentes | Falha operacional que para o circuito (registry corrompido 30/10; ledger truncado 25/10) | ledger.yaml (bloco 30/10); VIO-009 | ⚠️ incidente e violação usam o mesmo registro (VIO) |
+| Gestão de problemas | Auditoria de causa-raiz + lições aprendidas | AUD-2610-02/03/04; licoes-aprendidas/ | ⚠️ MF2/MF3 em 0 B |
+| Gestão de configuração (CMDB) | Roster de agentes + inventário de artefatos | §4.1; `drafts/artefatos-metadados.csv` | ⚠️ sem CMDB canônico de artefatos (CSV é semente) |
+| Gestão de nível de serviço | Marcos M1–M4 como SLA acadêmico; coverage ≥ 80% | TAP §6; ADR-003 | ✅ (informal, sem OLA) |
+| Gestão de fornecedores | Whitelist FOSS; APIs de câmbio com fallback; cloud free tier restrito | ADR-010; P-01/P-02; registro-dependências (0 B) | ⚠️ registro de dependências vazio (C-08) |
+| Segurança da informação | LGPD primária, OWASP baseline, fail-closed | Art. 7; P-04/P-07 | ✅ |
+| Melhoria contínua (CSI) | Retrospectiva quinzenal; lições por macro-fase; SIR | §7.1; plano-qualidade | ✅ |
+| Implantação e liberação | GitHub Actions + Docker Compose; gate de coverage | ADR-010; §3.3 | ⚠️ sem runbook de release |
+| Catálogo de serviços | **nenhum** | — | ❌ o "serviço" (conversor + API + documentação) não está catalogado |
+| Service desk 24×7 | — | — | ⛔ não aplicável (projeto acadêmico, sem operação contínua) |
+
+### 9.4 Síntese, exclusões declaradas e leitura crítica
+
+| Lente | ✅ | ⚠️ | ❌ | ⛔ excluído por YAGNI |
+|---|---|---|---|---|
+| PMBOK 7ª (8 domínios) | 4 | 4 | 0 | — |
+| TOGAF ADM (10 fases + requisitos) | 4 | 5 | 2 | maturidade de arquitetura; roadmap plurianual |
+| ITIL 4 (11 práticas) | 4 | 6 | 1 | service desk 24×7; OLA formal |
+
+**Leitura crítica.** A cobertura é adequada a um projeto de um semestre com equipe de 3 pessoas, mas três lacunas são materiais, não cosméticas: (i) **arquitetura de dados inexistente** (DER é entregável de M2, marco vencido) — sem ela, TOGAF C1 e a rastreabilidade REQ → schema ficam em aberto; (ii) **arquitetura de transição ausente** — a ADR-010 trocou SQLite por PostgreSQL em 29/10 sem uma linha de cronograma, custo ou recurso correspondente, e o REQ-07 ainda especifica SQLite; (iii) **medição sem baseline** — as metas de fluxo são aspiracionais, o que impede qualquer afirmação de desempenho verificável em M3/M4.
+
+**Contrapeso de honestidade.** As três lacunas acima **não** foram convertidas em novos artefatos nesta ratificação: criar DER, plano de migração e baseline é trabalho de M2/M3 sob custódia própria (`agent-backend-dev`, `agent-pm`), não de um documento de conhecimento. Registrá-las é o máximo que este OKB pode fazer sem violar YAGNI nem a separação de custódias.
+
+---
+
+## 10. INCONSISTÊNCIAS, LACUNAS E PENDÊNCIAS
+
+### 10.1 Registro de consistência (OKB-C)
 
 | ID | Sev. | Achado | Evidência | Status / ação |
 |---|---|---|---|---|
 | OKB-C-01 | Alta | Hierarquia praticada ("TAP > OKB > Glossário > ADRs") contradizia a Constituição | OKB v3.0:5; constitution.md Art. 2.1 | ✅ **corrigido em v5.0.0 §1.1** (F-04) |
 | OKB-C-02 | Alta | Metadado divergente: índice declara OKB 4.0.0/594 l; arquivo vivo é v3.0 (1.080 l) | KB-INDEX:48; OKB.md:1-2; AUD-2610-04:30 | ⏳ resolvido por este candidato; índice a atualizar |
 | OKB-C-03 | Crítica | VIO-006: evento destrutivo 24/10 02:53:32 reverteu leis sem trilha git; conteúdo v4.0.0 irrecuperável | vio-register:29; AUD-2610-04:48 | ❌ aberto — só o Humano encerra (KS) |
-| OKB-C-04 | Média | ADR-006 triplicada (`-chunk-1.md`, `-chunk-aa` sem extensão, canônica) | md5 idêntico `91e91ef1…` | ⏳ remover duplicatas na normalização |
+| OKB-C-04 | Baixa | ADR-006 triplicada (`-chunk-1.md`, `-chunk-aa`, canônica) | md5 idêntico `91e91ef1…` | ✅ **resolvido** — `docs/decisoes/` hoje contém apenas a canônica |
 | OKB-C-05 | Alta | Teto GMV de ADRs (≤ 10) excedido: 12 emitidas | Aditivo §4.2; §2.1 | ❌ aberto — decisão CCB |
 | OKB-C-06 | Crítica | CR-001 repactua M2 → 15/11/2026, colide com M3, sem ADR e sem reflexo nos planos; aprovação "neste prompt" não registrada formalmente | CR-001; plano-cronograma:80; plano-integracao:131 | ❌ aberto — CR + ADR + CCB |
 | OKB-C-07 | Alta | Glossário v3.1 contradiz canon: 13 fases/48 pacotes, Qwen 32B, SQLite, hierarquia invertida | glossario:8,18,23,161 | ❌ aberto — saneamento (próxima rodada) |
 | OKB-C-08 | Alta | Artefatos 0 B: `TAP.md`, `requisitos.md`, `baseline.md`, `registro.md`, `.ai/specs/{tap,eap,requisitos}.md` | `wc -c` = 0 | ❌ aberto (P-05/P-08) |
 | OKB-C-09 | Alta | TAP canônico só existe como `.docx` + bloco integral no plano-integral; `.md` é stub — e o índice o declara "não-0B" | docs/tap/TAP.md 0 B; KB-INDEX:27 (`não-0B`); plano-integral:49 | ❌ aberto |
 | OKB-C-10 | Alta | Frontend: ADR-001 fixa vanilla JS; roster/infra assumem Jinja+HTMX+Tailwind | ADR-001:31; registry frontend; VIO-001 | ❌ aberto — ADR de emenda |
-| OKB-C-11 | Média | Custódia do OKB diverge (architect × docker-specialist) sem registro recuperável | KB-INDEX:48 (`§10.2 C-10` inexistente) | ❌ aberto — CCB |
+| OKB-C-11 | Baixa | Custódia do OKB divergia (architect × docker-specialist) sem registro recuperável | KB-INDEX:48 (`§10.2 C-10` inexistente) | ✅ **resolvido** — CCB-003 ratificou owner `agent-architect` |
 | OKB-C-12 | Média | ADR-005 em "regularização tardia" com ratificação pendente desde 28/10 | ADR-005:6,56 | ❌ aberto |
-| OKB-C-13 | Baixa | Classes `relatorio-auditoria`/`register-vio` fora do enum de 10 classes | kb-taxonomy §2; AUD-2610-03:5; vio-register:5 | ⏳ próxima rodada |
+| OKB-C-13 | Baixa | Classes `relatorio-auditoria`, `register-vio` e `register-decision` fora do enum de 10 classes | kb-taxonomy §2; AUD-2610-03:5; vio-register:5; ccb-log:11 | ⏳ próxima rodada |
 | OKB-C-14 | Baixa | Colisão de ID `CR-001` (replanejamento M2 × CR de EAP removida) | CR-001; plano-escopo:178 | ⏳ renumerar CRs |
-| OKB-C-15 | Média | Constituição v1.2.0 em `VIGENTE-INTERINA` (co-assinatura pendente) | constitution.md:3 | ❌ aberto |
+| OKB-C-15 | Baixa | Constituição v1.2.0 estava em `VIGENTE-INTERINA` (co-assinatura pendente) | constitution.md:3 | ✅ **resolvido** — `VIGENTE-PLENA`, commit `7cff886`, 30/10/2026 |
 | OKB-C-16 | Baixa | Metas de fluxo sem baseline; período de calibração encerrado sem registro | baseline.md 0 B; ADR-003 | ❌ aberto |
 | OKB-C-17 | Média | Glossário: cabeçalho 3.1 × índice 3.2.0; saneamento "pendente" citado em planos | glossario:1; KB-INDEX:49 | ❌ aberto |
 | OKB-C-18 | Baixa | ADR-001 cita ADR-005/006 como "Draft" e mantém "QwenStudio" | ADR-001:11,32 | ⏳ emenda editorial ADR-001 |
 | OKB-C-19 | Média | Colisão de rótulos P# (TAP P1–P9 × C-P-01..13) | §5.1/§5.2 | ⏳ namespace na normalização |
 | OKB-C-20 | Baixa | Sem índice de ADRs nem cadeia de supersede em `docs/decisoes/` | `ls docs/decisoes` | ⏳ criar README/INDEX |
-| OKB-C-21 | **Crítica** | Constituição v1.2.0 contém **Arts. 5–10 duplicados**: duas redações coexistem no mesmo arquivo (1ª sem bloco de co-assinatura; 2ª com bloco e pequenas divergências de pontuação). O corpo normativo tem dois textos válidos da mesma matéria — ambiguidade direta contra P-13 | `constitution.md:131-221` (cópia 1) × `:222-331` (cópia 2); Arts. 1–4 aparecem uma única vez (`:14-130`) | ❌ aberto — **só o Humano consolida** (lei suprema; Art. 5.2). Ação: escolher o texto definitivo, remover a cópia e re-hashear |
+| OKB-C-21 | **Crítica** | Constituição v1.2.0 contém **Arts. 5–10 duplicados**: duas redações coexistem no mesmo arquivo (1ª sem bloco de co-assinatura; 2ª com bloco e pequenas divergências de pontuação). O corpo normativo tem dois textos válidos da mesma matéria — ambiguidade direta contra P-13 | `constitution.md:119-217` (cópia 1) × `:218-331` (cópia 2); Arts. 1–4 aparecem uma única vez (`:14-118`) | ❌ aberto — **só o Humano consolida** (lei suprema; Art. 5.2). Ação: escolher o texto definitivo, remover a cópia e re-hashear |
+| OKB-C-22 | **Alta** | **ADR-010 não propagada:** o REQ-07 ainda especifica "cache de cotações (SQLite)" e nenhum item de Docker, PostgreSQL ou container aparece em cronograma, custos ou recursos. Arquitetura de transição (TOGAF F) inexistente | plano-integral:77 (REQ-07); busca por `docker`, `postgres` e `container` em plano-cronograma, plano-custos e plano-recursos = 0 ocorrências | ❌ aberto — plano de transição + estimativa (custeio zero, mas esforço real) |
+| OKB-C-23 | Média | **Tipos de mudança não definidos normativamente** (change enablement): o CCB-LOG já usa `normal`/`standard`/`SEV` por entrada, mas nenhum artefato define as classes — e o CR-001 tramitou sem ADR nem portão proporcional | ccb-log (entradas A01–A05); CR-001; §2.3 | ⏳ formalizar 3 classes em §2 na normalização |
+| OKB-C-24 | Média | **Sem registro/matriz de partes interessadas** (PMBOK, domínio Partes interessadas): o aceite de M4 depende de um stakeholder sem artefato de gestão | TAP §1.c/P7; ADR-008; ausência em `docs/` | ❌ aberto — matriz mínima (avaliador, GP, equipe, banca) |
+| OKB-C-25 | Média | **Citação quebrada em artefato de governança:** o CCB-LOG declara derivar de `docs/governanca/plano-consolidacao-estrutural.md` e referencia seu §2, mas o arquivo não existe | ccb-log.md:6 e entrada A02; `ls docs/governanca/` = apenas ccb-log.md | ❌ aberto — criar o plano ou corrigir a citação |
 
-### 9.2 Decisões humanas requeridas (não executadas por agente)
+### 10.2 Decisões humanas requeridas (não executadas por agente)
 
-1. **OKB-C-05** — rever teto de ADRs ou reclassificar 006–012.
+1. **OKB-C-21** — consolidar a Constituição v1.2.0 (remover a cópia duplicada dos Arts. 5–10 e re-hashear) — **bloqueia qualquer emenda constitucional**.
 2. **OKB-C-06** — ratificar/ajustar CR-001 e emitir ADR de marco (M2 × M3).
-3. **OKB-C-11** — confirmar custódia do OKB.
-4. **OKB-C-12** — ratificar ADR-005 (ou manter pendência declarada).
-5. **OKB-C-15** — fechar co-assinatura da Constituição v1.2.0.
-6. **OKB-C-03** — encerrar VIO-006 (kill switch só o Humano encerra).
-7. **OKB-C-21** — consolidar a Constituição v1.2.0 (remover a cópia duplicada dos Arts. 5–10 e re-hashear) antes de qualquer emenda.
-8. **Ratificação deste OKB v5.0.0** (Art. 5.1).
+3. **OKB-C-22** — decidir a arquitetura de transição SQLite → PostgreSQL (ADR-010): plano, estimativa e reflexo no cronograma/custos antes de qualquer card de dados.
+4. **OKB-C-05** — rever o teto de ADRs ou reclassificar 006–012 como emendas derivadas.
+5. **OKB-C-03** — encerrar VIO-006 (kill switch: só o Humano encerra).
+6. **OKB-C-12** — ratificar ADR-005 (ou manter a pendência declarada).
+7. **OKB-C-24** — nomear a matriz de partes interessadas do aceite de M4 (quem assina, quem avalia, quem é informado).
+8. **OKB-C-25** — criar `docs/governanca/plano-consolidacao-estrutural.md` ou corrigir a citação no CCB-LOG.
+9. **Ratificação deste OKB v5.1.0** — ✅ **CUMPRIDA** nesta emissão (CCB-003, 30/10/2026; bloco de ratificação ao final).
 
 ---
 
-## 10. HISTÓRICO E PROVENIÊNCIA
+## 11. HISTÓRICO E PROVENIÊNCIA
 
 | Versão | Data | Base | Mudança |
 |---|---|---|---|
@@ -564,18 +655,44 @@ Regras: (i) sempre pinar `vX.Y.Z` (ADR) ou `vX.Y` (plano); (ii) citar seção/NC
 | v3.0 | 20/09/2026 | TAP v3 | consolidação pré-M1; 4 ADRs; 27 labels; backlog M1 |
 | v3.1 | 22/09/2026 | v3.0 | pós-M1; freeze; ADR-005 "encaminhada"; política de ADRs (arquivado) |
 | v4.0.0 | 23/10/2026 | v3.1 + dedupe | corpus único (594 l) — **perdido em VIO-006** (nunca commitado) |
-| **v5.0.0** | **30/10/2026** | v3.0 sobrevivente + ADRs 001–012 + Constitution 1.2.0 | reemissão canônica: frontmatter, hierarquia corrigida, catálogo ADR 001–012, estado as-of, inventário de metadados, registro de inconsistências, padrão de citação |
+| **v5.0.0** | 30/10/2026 | v3.0 sobrevivente + ADRs 001–012 + Constitution 1.2.0 | reemissão: frontmatter, hierarquia corrigida, catálogo ADR 001–012, estado as-of, inventário de metadados, registro de inconsistências, padrão de citação — **não ratificada** (draft) |
+| **v5.1.0** | **30/10/2026** | v5.0.0-draft + análise YAGNI/PMBOK/TOGAF/ITIL | **primeira versão ratificada**: §9 cobertura metodológica; achados C-22..C-24; poda YAGNI; promoção a corpus canônico único (CCB-003) |
 
-**Proveniência e limites:** esta versão é uma **reemissão**, não uma recuperação. Tudo o que existia apenas na v4.0.0 (ex.: seção §10.2 C-10 citada pelo KB-INDEX) permanece `UNKNOWN-GAP`. Fontes usadas estão listadas em `derived-from` e cada afirmação normativa cita a fonte no corpo.
+**Proveniência e limites:** esta versão é uma **reemissão**, não uma recuperação. Tudo o que existia apenas na v4.0.0 (ex.: a seção "§10.2 C-10" citada pelo KB-INDEX) permanece `UNKNOWN-GAP`. Fontes usadas estão em `derived-from`; cada afirmação normativa cita a fonte no corpo.
 
-**Procedimento de promoção (quando o CCB ratificar):**
+**Registro de promoção (executado em 30/10/2026, CCB-003):**
 
-1. CCB aprecia este candidato e registra a decisão no ledger.
-2. `docs/conhecimento/OKB.md` v3.0 → `docs/archive/legacy-md-artifact/OKB_COGME_v3.0.md` (imutável, com linha de proveniência).
-3. Candidato promovido a `docs/conhecimento/OKB.md`, `status: active`, bump para `5.0.0`.
-4. `KB-INDEX.md:48` atualizado (versão, owner, caveats); auditoria registra addendum em `vio-register` (nunca reescrita).
-5. Patch list §8.4 aplicado junto ao bump de cada artefato-alvo (rodada de normalização/board).
+1. ✅ CCB (GP Leonardo) ratificou esta versão; assinatura no bloco ao final deste arquivo.
+2. ✅ `docs/conhecimento/OKB.md` v3.0 movido para `docs/archive/legacy-md-artifact/OKB_COGME_v3.0.md` com linha de proveniência (imutável).
+3. ✅ Este arquivo promovido a `docs/conhecimento/OKB.md`, `status: ratified`, versão `5.1.0`; o draft 5.0.0 foi absorvido e removido para não criar segunda corpora (regra VIO-004).
+4. ✅ `KB-INDEX.md` atualizado (linha OKB-001: versão, owner, caveats) e bump `1.1.0 → 1.2.0`.
+5. ✅ Registro da decisão no `.ai/agents/ledger.yaml` (bloco datado 30/10/2026).
+6. ⏳ Patch list §8.4 das menções externas — permanece na rodada de normalização/board (cada alvo exige bump e changelog próprios).
 
 ---
 
-*Fim do documento — OKB v5.0.0 (candidato canônico) | COGME | Fatec Taquaritinga | 30/10/2026*
+---
+
+## BLOCO DE RATIFICAÇÃO (Art. 5.4 da Constituição v1.2.0)
+
+Este bloco não integra o hash normativo.
+
+| Campo | Valor |
+|---|---|
+| Documento | OKB-001 — Base de Conhecimento Operacional do COGME |
+| Versão ratificada | 5.1.0 |
+| Status | ratified |
+| Instrumento | CCB-003 (membro único) |
+| Ratificador | Gerente de Projeto — CCB de membro único (Art. 5.4: papel, sem nome civil) |
+| Data da ratificação | 2026-10-30 |
+| Assinatura | `/s/ CCB de membro único` — aceite registrado em prompt expresso do CCB em 30/10/2026 |
+| SHA-256 do conteúdo normativo | `ac27f0c17efcd563fac4043f4223fbecdaf92796a96a74e36ea6d52bbb709547` |
+| Método de verificação | `sha256sum` sobre os bytes do início do arquivo até a linha imediatamente anterior a este cabeçalho |
+| Hash do commit Git | `PENDENTE_APÓS_COMMIT` (preenchido no commit de promulgação) |
+| Escopo | promulga o OKB como documento de conhecimento canônico do COGME (classe `okb`, KB-TAX-001) |
+| Efeito | substitui o OKB v3.0 (arquivado); não altera a Constituição, o TAP congelado (ADR-005) nem as ADRs |
+| Ressalvas | OKB-C-03, C-05, C-06, C-11, C-12, C-15, C-21, C-22 e C-24 seguem **abertos**; a ratificação não os sana |
+| Revogação | apenas por CCB com emenda registrada e novo bump de versão |
+
+*Fim do documento — OKB v5.1.0 (ratificado) | COGME | Fatec Taquaritinga | 30/10/2026*
+

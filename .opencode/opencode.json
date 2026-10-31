@@ -19,14 +19,27 @@
             "output": ["text"]
           },
           "limit": {
-            "context": 32768,
+            "context": 45700,
             "output": 4096
           },
           "body": {
-            "reasoning_effort": "low"
+            "reasoning_effort": "default"
           }
         }
       }
     }
+  },
+  "permissions": {
+    "allow": ["Read", "Write", "Edit", "Bash", "Shell"],
+    "deny": [
+      "Bash(python *)",
+      "Bash(pip *)",
+      "Bash(pacman *)",
+      "Bash(yay *)",
+      "Bash(systemctl *)",
+      "Bash(sudo *)",
+      "Bash(curl * | sh)",
+      "Bash(wget * -O- | sh)"
+    ]
   }
 }

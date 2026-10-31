@@ -1,0 +1,47 @@
+id,path,classe,versao_real,versao_declarada_indice,status_real,status_indice,owner,divergencia,severidade,acao
+CONST-001,constitution.md,lei,1.2.0,nao_indexada,VIGENTE-PLENA,nao_indexada,GP / CCB,Arts. 5-10 duplicados persistem; co-assinatura fechada (commit 7cff886),critica,consolidar texto unico + re-hash (Humano)
+TAP-DOCX,docs/tap/TAP.docx,plan (export),18/09/2026,nao_indexado,congelado,nao_indexado,agent-pm,export derivado sem .md canonico,alta,gerar TAP.md a partir do docx
+TAP-001,docs/tap/TAP.md,plan,0B,1.0.0,0B,draft,agent-pm,stub 0B declarado como nao-0B no indice,critica,popular ou manter gap declarado
+PLANO-INTEGRAL,docs/planos/plano-integral-tap-1-2-3-4-5.md,plan,1.0.0 (inferida),1.0.0,ativo,active,agent-pm,sem carimbo de versao no corpo,baixa,carimbar frontmatter
+PLANO-PROJETO,docs/planos/Plano-de-Projeto-COGME_v1.0.md,plan,1.0.0 (inferida),1.0.0,ativo,active,agent-pm,docx v1.1 concorrente,media,decisao CCB (v1.0 vs v1.1)
+INTEGRACAO,docs/planos/plano-integracao.md,plan,2.0,2.0.0,ativo,active,agent-pm,notacao 2.0 x 2.0.0,baixa,normalizar MAJOR.MINOR.PATCH
+ESCOPO,docs/planos/plano-escopo.md,plan,1.1,1.1.0,ativo,active,agent-pm,notacao 1.1 x 1.1.0,baixa,normalizar
+CRONOGRAMA,docs/planos/plano-cronograma.md,plan,1.2,1.2.0,ativo,active,agent-pm,notacao + M2 desatualizado vs CR-001,alta,normalizar + refletir CR-001 apos CCB
+CUSTOS,docs/planos/plano-custos.md,plan,1.2,1.2.0,ativo,active,agent-pm,notacao,baixa,normalizar
+QUALIDADE,docs/planos/plano-qualidade.md,plan,1.1,1.1.0,ativo,active,agent-pm,NC-Q5 com grafia auto-contraditoria,baixa,corrigir NC-Q5
+RECURSOS,docs/planos/plano-recursos.md,plan,1.0 (inferida),1.0.0,ativo,active,agent-pm,sem carimbo,baixa,carimbar
+COMUNICACOES,docs/planos/plano-comunicacoes.md,plan,1.0 (inferida),1.0.0,ativo,active,agent-pm,sem carimbo,baixa,carimbar
+RISCOS,docs/planos/plano-riscos.md,plan,1.0 (inferida),1.0.0,ativo,active,agent-pm,sem carimbo; Q-02 critico,baixa,carimbar
+ADR-001,docs/decisoes/ADR-001-stack.md,doc-decisao,1.0.0,1.1.0,Finalizado,ratified,agent-architect,indice desatualizado; SQLite/QwenStudio superados por ADR-010/006,alta,indexar versao real + emenda editorial
+ADR-002,docs/decisoes/ADR-002-kanban.md,doc-decisao,1.0.0,1.1.0,Finalizado,ratified,agent-pm + agent-architect,indice desatualizado,media,indexar versao real
+ADR-003,docs/decisoes/ADR-003-metricas.md,doc-decisao,1.0.0,1.1.0,Finalizado,ratified,agent-pm + agent-architect,indice desatualizado,media,indexar versao real
+ADR-004,docs/decisoes/ADR-004-tasklists.md,doc-decisao,1.0.0,1.1.0,Finalizado,ratified,nao_declarada,indice desatualizado,media,indexar versao real
+ADR-005,docs/decisoes/ADR-005-freeze.md,doc-decisao,1.0.0,1.0.0,ratificacao_pendente,ratified,agent-architect,status divergente,media,ratificar (CCB)
+ADR-006,docs/decisoes/ADR-006-inteligencia-sdd.md,doc-decisao,2.0.0,ausente,Finalizado CCB-001,ausente,agent-nexus-prime-ultimate,nao indexada; duplicatas removidas do FS,media,indexar
+ADR-007,docs/decisoes/ADR-007-redes-de-projeto.md,doc-decisao,1.1.0,ausente,Aprovado CCB-001,ausente,agent-scheduler,nao indexada,media,indexar
+ADR-008,docs/decisoes/ADR-008.md,doc-decisao,1.1.0,ausente,Aprovado CCB-001,ausente,agent-comms,nao indexada,media,indexar
+ADR-009,docs/decisoes/ADR-009.md,doc-decisao,1.0.0,ausente,Aprovado CCB-001,ausente,agent-scope-manager,nao indexada,media,indexar
+ADR-010,docs/decisoes/ADR-010-Stack-Infraestrutura.md,doc-decisao,1.0.0,ausente,Aprovado CCB-001,ausente,agent-backend-dev,nao indexada,media,indexar
+ADR-011,docs/decisoes/ADR-011-Ecossistema-SDDAI.md,doc-decisao,1.0.0,ausente,Aprovado CCB-001,ausente,agent-nexus-prime-ultimate,nao indexada,media,indexar
+ADR-012,docs/decisoes/ADR-012-constituicao-como-artefato-de-governanca.md,doc-decisao,1.0.1,ausente,Aprovado CCB-002,ausente,GP Leonardo,nao indexada,media,indexar
+ADR-TMP,docs/decisoes/_consolidado-adrs.tmp.md,temporario,nao_aplicavel,nao_indexado,temporario,nao_indexado,nexus-prime,regerado 30/10 apos remocao acidental; manter por ordem do GP,baixa,manter
+OKB-001,docs/conhecimento/OKB.md,okb,5.1.0,5.1.0,ratified,ratified,agent-architect,nenhuma — ratificado por CCB-003 em 30/10/2026,baixa,manter (corpus canonico unico)
+OKB-ARCH-V30,docs/archive/legacy-md-artifact/OKB_COGME_v3.0.md,archived,3.0.0,nao_indexado,arquivado,archived,agent-architect,substituido pelo v5.1.0; imutavel,baixa,nao reativar (gate F-11)
+GLOSSARIO,docs/conhecimento/glossario.md,glossario,3.1,3.2.0,Atualizado (20/09),active,agent-sdd-specialist,corpo contradiz canon (13/48; Qwen 32B; SQLite; hierarquia),alta,sanear e bump 3.2.0
+KB-INDEX,docs/conhecimento/KB-INDEX.md,spec,1.1.0,1.1.0,active,active,agent-docker-specialist,desatualizado em 9 linhas,media,atualizar pos-ratificacao
+KB-TAX,.ai/specs/kb-taxonomy.md,spec,1.1.0,1.1.0,ratified,ratified,agent-sdd-specialist,enum de classes nao cobre relatorios/registros,baixa,propor emenda ao enum
+REQ-DOC,docs/requisitos/requisitos.md,requisito,0B,1.0.0,0B,draft,agent-po,stub 0B,alta,popular a partir de .ai/specs/requisitos.md
+REQ-SPEC,.ai/specs/requisitos.md,spec,0B,1.0.0,0B,draft,agent-sdd-specialist,0B apesar de declarada preenchida,critica,popular
+TAP-SPEC,.ai/specs/tap.md,spec,0B,1.0.0,0B,draft,agent-sdd-specialist,0B apesar de declarada preenchida,critica,popular (ponteiro)
+EAP-SPEC,.ai/specs/eap.md,spec,0B,1.0.0,0B,draft,agent-sdd-specialist,0B apesar de declarada preenchida,critica,popular
+BASELINE,docs/metricas/baseline.md,log-baseline,0B,1.0.0,0B,draft,agent-pm,calibracao encerrada sem baseline,alta,popular
+REGISTRO-DEP,docs/dependencias/registro.md,log-baseline,0B,1.0.0,0B,draft,agent-pm,0B,media,popular
+LICOES-MF1,docs/conhecimento/licoes-aprendidas/MF1-licoes.md,licoes,1.9KB,nao_indexada,ativo,nao_indexada,agent-pm,sem frontmatter,baixa,classificar
+LICOES-MF2,docs/conhecimento/licoes-aprendidas/MF2-licoes.md,licoes,0B,nao_indexada,0B,nao_indexada,agent-pm,MF2 sem licoes,media,popular
+LICOES-MF3,docs/conhecimento/licoes-aprendidas/MF3-licoes.md,licoes,0B,nao_indexada,0B,nao_indexada,agent-pm,MF3 futuro,baixa,manter
+CR-001,docs/change-requests/CR-001-m2-replanejamento.md,change-request,sem versao,nao_indexado,aprovado informal,nao_indexado,agent-pm,sem frontmatter; colide com M3; sem ADR,critica,formalizar + ADR
+VIO-REG,docs/auditorias/vio-register.md,register-vio,1.1.0,nao_indexado,active,nao_indexado,agent-project-auditor,classe fora do enum,baixa,manter (append-only)
+AUD-02,docs/auditorias/AUD-2610-02.md,relatorio-auditoria,1.0.0,nao_indexado,active,nao_indexado,agent-project-auditor,classe fora do enum; atestado superado por VIO-006,baixa,addendum
+AUD-03,docs/auditorias/AUD-2610-03.md,relatorio-auditoria,1.0.0,nao_indexado,active,nao_indexado,agent-architect,VIO-011 (citacao),media,addendum
+AUD-04,docs/auditorias/AUD-2610-04.md,relatorio-auditoria,1.0.0,nao_indexado,active,nao_indexado,agent-project-auditor,classe fora do enum,baixa,manter
+CCB-LOG,docs/governanca/ccb-log.md,register-decision,0.1.0,nao_indexado,active,nao_indexado,CCB,classe fora do enum; cita plano inexistente,media,criar plano ou corrigir citacao

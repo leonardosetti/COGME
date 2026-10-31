@@ -1,18 +1,20 @@
 ---
 id: KB-INDEX-001
 title: Índice SSOT da base de conhecimento COGME (mapa único da taxonomia KB-TAX-001)
-version: 1.1.0
+version: 1.2.0
 class: spec
 status: active
 owner: agent-docker-specialist
 derived-from:
   - .ai/specs/kb-taxonomy.md (KB-TAX-001 v1.1.0 — ratified, CCB C1–C5 23/10/2026, ledger TA-0013)
   - TA-0012/TA-0013/TA-0016/TA-0017 via .ai/agents/ledger.yaml; handoff HF-0017
-last-revised: 2026-10-23
+  - CCB-003 (30/10/2026, GP Leonardo) — ratificação do OKB v5.1.0 e promoção a corpus canônico único
+last-revised: 2026-10-30
 lgpd-class: n/a
 caveats:
   - "UNKNOWN-GAP: handoffs HF-* desta onda pendentes de back-link pela orchestrator (spec da taxonomia)"
   - "Cobertura parcial: licoes/diagramas/drafts remanescentes ainda não frontmatter-classificados constam da Seção 'Cobertura declarada'"
+  - "OKB v5.1.0 ratificado (CCB-003, 30/10/2026): índice aponta para o corpus novo; achados ainda ABERTOS no OKB: C-03, C-05, C-06, C-12, C-21, C-22, C-24, C-25; fechados nesta rodada: C-04 (duplicatas ADR-006), C-11 (custódia), C-15 (Constituição PLENA)"
   - "grafia 'Carleto' residual em artefatos NÃO editados nesta onda: docs/slides_apresentacao/capa.svg (SVG = texto, porém fora da lista autorizada TA-0017) e PDFs binários (COGME.pdf e exportados) — PDF (binário) não é editável na onda; pendente CCB/onda futura"
 ---
 
@@ -20,7 +22,7 @@ caveats:
 
 Índice único da base de conhecimento, conforme `KB-TAX-001 v1.1.0` (ratified 23/10/2026). Toda alegação documental consulta este índice antes do corpo; artefato ausente da tabela = fora do canon vivo. Ciclo de vida: draft → active → ratified → archived. Status `draft` com caveat "stub 0B/stub-ponteiro" satisfaz o gate G3 (não-0B ou gap declarado).
 
-## Artefatos classificados (atualização TA-0017, 2026-10-23)
+## Artefatos classificados (atualização TA-0017 23/10/2026; CCB-003 30/10/2026)
 
 | id | caminho | classe | status | versão | owner | caveats |
 |---|---|---|---|---|---|---|
@@ -45,12 +47,14 @@ caveats:
 | EAP-001 | .ai/specs/eap.md | spec | draft | 1.0.0 | agent-sdd-specialist | "UNKNOWN-GAP: SVGs da EAP são placeholders; fonte svg/mermaid exigida pelo DoR da classe diagrama" |
 | REQ-SPEC-001 | .ai/specs/requisitos.md | spec | draft | 1.0.0 | agent-sdd-specialist | SSOT RF/RNF declarado; docs/requisitos/requisitos.md é ponteiro |
 | requisitos-cogme | docs/requisitos/requisitos.md | requisito | draft | 1.0.0 | agent-po | "ponteiro (CCB F-06 TA-0016): lista canônica RF/RNF reside em .ai/specs/requisitos.md" |
-| OKB-001 | docs/conhecimento/OKB.md | okb | active | 4.0.0 | agent-docker-specialist | corpora única v4.0.0 (dedupe CCB C5 23/10 executado, TA-0017); variantes v2.1/v3.1 arquivadas; owner divergente do default okb=architect por CCB (registrado no OKB §10.2 C-10) |
+| OKB-001 | docs/conhecimento/OKB.md | okb | ratified | 5.1.0 | agent-architect | ratificado por CCB-003 (GP, 30/10/2026); corpus único; v3.0 arquivado; cobertura metodológica PMBOK/TOGAF/ITIL em §9; achados abertos C-03/C-05/C-06/C-11/C-12/C-15/C-21/C-22/C-24 |
 | glossario-cogme | docs/conhecimento/glossario.md | glossario | active | 3.2.0 | agent-sdd-specialist | "grafia sanitizada por CCB C2 23/10/2026"; link termo↔OKB + saneamento Cycle Time/EAP pendente |
 | registro-dependencias | docs/dependencias/registro.md | log-baseline | draft | 1.0.0 | agent-pm | "stub 0B, gap declarado (DoR)"; popular no início da codificação |
 | baseline-metricas | docs/metricas/baseline.md | log-baseline | draft | 1.0.0 | agent-pm | "stub 0B, gap declarado (DoR)"; correção = nova entrada, nunca reescrita |
 | estrutura-de-diretorios | estrutura-de-diretorios.md (raiz) | spec | active | 0.2.1 | agent-sdd-specialist | [] |
-| KB-INDEX (autorreferencial) | docs/conhecimento/KB-INDEX.md | spec | active | 1.1.0 | agent-docker-specialist | [] (este índice) |
+| ccb-log | docs/governanca/ccb-log.md | register-decision | active | 0.1.0 | CCB | registro vivo CCB-LOG-NNN (append-only); classe fora do enum KB-TAX-001; cita plano-consolidacao-estrutural.md inexistente (OKB-C-25) |
+| KB-INDEX (autorreferencial) | docs/conhecimento/KB-INDEX.md | spec | active | 1.2.0 | agent-docker-specialist | atualizado na promoção do OKB v5.1.0 (CCB-003, 30/10/2026) |
+| — | docs/archive/legacy-md-artifact/OKB_COGME_v3.0.md | archived | archived | 3.0.0 | agent-architect | corpus vivo até 30/10/2026; substituído pelo v5.1.0 (CCB-003); movido via git mv + linha de proveniência; imutável |
 | — | docs/archive/legacy-md-artifact/OKB_COGME_v3.1-draft-aplicado-em-v4.md | archived | archived | 3.1.0 | agent-docker-specialist | v3.1 draft aplicado pelo OKB v4.0.0; movido via git mv (conteúdo intacto + linha de proveniência); imutável |
 | — | docs/archive/legacy-md-artifact/OKB_COGME_v2.1.md | archived | archived | 2.1.0 | agent-docker-specialist | guardrail original; imutável |
 | — | docs/archive/legacy-md-artifact/map_report-COBECO-artefato-estranho.md | archived | archived | — | agent-sdd-specialist | registrado como arquivado desde TA-0012 (linha migrada do registro vivo para comprovação); artefato COBECO legacy, stack divergente (TA-0009); imutável |
@@ -81,6 +85,7 @@ caveats:
 | C4 | ADR-001..004 preenchidas + ratified 1.1.0 | ✅ RESOLVIDO (ledger TA-0013) |
 | C5 | Dedupe OKB: 3 corpora → 1 | ✅ RESOLVIDO (OKB v4.0.0 único, TA-0017; v3.1 draft movido para archive com proveniência) |
 | F-06 | requisitos/TAP ponteiros; specs tap/eap/requisitos preenchidas | ✅ RESOLVIDO (TA-0016) |
+| C6 | OKB v5.1.0 ratificado como documento de conhecimento canônico (corpus único) | ✅ RESOLVIDO (CCB-003, 30/10/2026; v3.0 arquivado; índice 1.2.0) |
 
 ## PENDENTE CCB (decisões humanas; NADA executado nesta onda)
 

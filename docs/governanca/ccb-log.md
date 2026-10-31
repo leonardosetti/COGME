@@ -98,3 +98,43 @@ Mitigação de recorrência: proibição de `git checkout -- <dir>` em sessões 
 /tmp/opencode/ antes de descartar qualquer divergência de worktree.
 lobby: LGPD inaplicável (sem PII state); risco arquitetural baixo—alto.
 pmbok: LIA (logical artifacts) | togaf: Architecture Governance | itil: incident (P3).
+
+### CCB-LOG-2026-10-30-A06 — Ratificação e promulgação do OKB v5.1.0 (documento de conhecimento canônico)
+contexto: OKB vivo em v3.0 (20/09/2026) com metadados divergentes do índice (declarava 4.0.0),
+catálogo de apenas 4 das 12 ADRs emitidas e hierarquia invertida contra o Art. 2.
+opções: [A] ratificar v5.1.0 como corpus único | [B] manter v3.0 e corrigir só o índice | [C] adiar para a onda de normalização
+decisão: **A** — v5.0.0-draft submetido a análise YAGNI / PMBOK 7ª / TOGAF ADM / ITIL 4, emendado
+para v5.1.0 (nova §9 de cobertura metodológica, achados C-22..C-25, poda YAGNI) e ratificado.
+ratificação: humana (prompt expresso do CCB, 30/10/2026 — instrumento CCB-003).
+evidência: SHA-256 normativo `78c1f270d0a913be54284d63b8d4bd149ac033bf93808d61761dfadf1fe4bcdd`;
+v3.0 arquivado em `docs/archive/legacy-md-artifact/OKB_COGME_v3.0.md` (git mv + proveniência);
+KB-INDEX 1.1.0 → 1.2.0 (OKB-001 = 5.1.0 ratified).
+impacto: corpus único; +§9 cobertura metodológica (8 domínios PMBOK, 10 fases ADM + requisitos, 11 práticas ITIL);
+nenhuma alteração de Constituição, TAP congelado (ADR-005) ou ADRs.
+rollback: `git revert <commit>` e `git mv` do arquivo arquivado de volta ao path vivo.
+pmbok-gate: Trabalho do Projeto + Medição | togaf-gate: ADM-G/H (repositório e governança de arquitetura) | itil-gate: change record closed (normal)
+
+### CCB-LOG-2026-10-30-A07 — Ratificação da normalização do .gitignore (CCB-004)
+contexto: o .gitignore não reconhecia o ambiente Python. venv/, .venv/ e .pytest_cache/
+apareciam como ignorados apenas por arquivos .gitignore internos gerados pelas ferramentas
+(conteúdo: "*"); com a remoção desses arquivos, 25.796 entradas entrariam no índice de uma vez.
+Diagnóstico completo em GITIGNORE-DIAGNOSTIC.md (fora do repo, snapshot COGME-20261030T162922).
+opções: [A] 7 lacunas + remover guardas SDD órfãs | [B] manter e apenas documentar | [C] normalização mínima (só venv)
+decisão: **A**, com três decisões do GP sobre os itens controversos:
+  C.1 = (b) manter *.tmp.md ignorado; o consolidado de ADRs permanece artefato local, nunca versionado;
+  C.2 = (b) remover as guardas SDD órfãs (nenhum dos alvos existe no repositório) por YAGNI;
+  C.3 = (b) versionar nexus/data/persistent_storage.db (entra na rodada de commit do runtime nexus).
+ratificação: humana (prompt expresso do CCB, 30/10/2026 — instrumento CCB-004).
+evidência: .gitignore SHA-256 `f5375db809e7b4dc7a25f635025f231b5a8155a35ea322374fc1a0691f0602d3`;
+`git add -A --dry-run` = 41 entradas (antes: 25.796 em risco); `git ls-files -ci` = 25, todos .pyc.
+DEFEITO ENCONTRADO NA APLICAÇÃO (não estava no diagnóstico): a regra `models/` (restaurada em 26/10
+por VIO-012) não era ancorada e mascarava o pacote Python `src/backend/models/` — qualquer arquivo
+novo ali nascia invisível ao git status. Corrigido para `/models/` (ancorada na raiz). Sem evidência
+de perda: o diretório não recebe arquivo desde 22/10, anterior à regra.
+impacto: índice protegido contra 25.796 entradas acidentais; bytecode sai do controle de versão;
+pacote src/backend/models/ deixa de ser armadilha; 5 regras mortas removidas.
+rollback: `git checkout HEAD -- .gitignore` (o arquivo é versionado e a mudança é atômica).
+risco residual declarado: `**/sdd/credentials.json` deixou de existir como guarda; compensada pela
+guarda genérica `**/credentials.json`. Permanecem como guardas mortas (fora do escopo desta pergunta)
+`**/docs/intermediate/` e `**/docs/legacy/`.
+pmbok-gate: Trabalho do Projeto (qualidade do artefato de configuração) | togaf-gate: ADM-Preliminar (princípios de repositório) | itil-gate: change record closed (normal)

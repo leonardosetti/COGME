@@ -15,3 +15,25 @@ context_used_tokens: 0
 # (4) contrato agile: front-matter upstream [nexus-prime-ultimate, sdd-specialist] + downstream [pm, po] (slugs fantasma sprint-planner/backlog-manager/ci-cd-integrator removidos);
 # (5) censos de testes: L2==25, promulgados==41.
 # Suíte de integração: 147 passed, 1 skipped, 0 failed. Dispatcher: ACCEPT e2e em agile/api/auditor. Drift: 0. DAG: 41 slugs acíclico.
+# 2026-10-30 — CCB-003 (GP Leonardo): RATIFICAÇÃO do OKB v5.1.0 como documento de conhecimento canônico.
+# Instrumento: aceite do GP em manifestação de 30/10/2026. Assinatura: /s/ Leonardo David Silva Setti (Gerente de Projeto).
+# Ações executadas: (1) OKB v3.0 git mv -> docs/archive/legacy-md-artifact/OKB_COGME_v3.0.md (+ linha de proveniência; imutável);
+# (2) OKB v5.1.0 promovido a docs/conhecimento/OKB.md (status ratified, corpus único); draft v5.0.0 absorvido e removido (sem 2ª corpora — VIO-004);
+# (3) KB-INDEX 1.1.0 -> 1.2.0 (OKB-001 = 5.1.0 ratified / owner agent-architect; OKB v3.0 arquivado; item C6 fechado);
+# (4) artefatos-metadados.csv atualizado (47 artefatos, OKB-001 ratified, OKB-ARCH-V30 arquivado).
+# SHA-256 do conteúdo normativo do OKB v5.1.0 (excluindo o bloco de ratificação): 4730b3120a28babe8f33bfdb3ae2d442944e760acada6a0f090e6f35fc7a4452
+# Escopo: NÃO altera a Constituição, o TAP congelado (ADR-005) nem as ADRs. Achados abertos permanecem: C-03, C-05, C-06, C-11, C-12, C-15, C-21, C-22, C-24.
+# Pendente: patch list §8.4 (menções externas em personas, planos, glossário e KB-INDEX:39-43/:49) — rodada de normalização/board.
+# [correção 30/10/2026] Reconciliação com o estado real do repo após CCB-LOG A05/P01: a Constituição v1.2.0 já estava VIGENTE-PLENA (commit 7cff886).
+# OKB v5.1.0 ajustado antes da promulgação: C-15, C-04 e C-11 fechados; C-25 registrado (citação quebrada no CCB-LOG); CCB-LOG incorporado em §1.2/§4.1/§8.2/§9.3.
+# SHA-256 FINAL do conteúdo normativo do OKB v5.1.0 (substitui o hash anterior desta mesma data): ac27f0c17efcd563fac4043f4223fbecdaf92796a96a74e36ea6d52bbb709547
+# Incidente de processo: docs/decisoes/_consolidado-adrs.tmp.md (mantido por instrução explícita do GP) foi removido na onda de higiene de 30/10; REGERADO no mesmo dia por concatenação verbatim das 12 ADRs (cabeçalho de proveniência no próprio arquivo).
+# 2026-10-30 — CCB-004 (GP): RATIFICAÇÃO da normalização do .gitignore.
+# Decisões do GP: C.1=(b) manter *.tmp.md ignorado (consolidado de ADRs local, não versionado);
+# C.2=(b) remover guardas SDD órfãs por YAGNI; C.3=(b) versionar nexus/data/persistent_storage.db.
+# Aplicado: 7 lacunas Python (venv, .venv, __pycache__, *.py[cod], .pytest_cache, .benchmarks) + guarda genérica
+# **/credentials.json; removidas 5 regras mortas (sdd/*, agent-registry.yaml, dispatcher-config.yaml, sdd/secret-metrics.json).
+# DEFEITO CORRIGIDO NA APLICAÇÃO: regra 'models/' sem âncora mascarava src/backend/models/ (pacote Python) -> '/models/'.
+# SHA-256 do .gitignore normalizado: f5375db809e7b4dc7a25f635025f231b5a8155a35ea322374fc1a0691f0602d3
+# Prova: git add -A --dry-run = 41 entradas (antes: 25.796 em risco). git ls-files -ci = 25, todos .pyc.
+# Gate de commit/push: LIBERADO para a primeira rodada (pendente ainda OKB-C-21 para emenda constitucional).

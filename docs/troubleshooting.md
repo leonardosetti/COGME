@@ -24,36 +24,36 @@
 ### Configurações Específicas por Plataforma
 
 **Linux**:
-```bash
+~~~bash
 # Instalação de Dependências
 sudo apt-get install -y build-essential libssl-dev
 
 # Variáveis de Ambiente
 export MCP_SERVER="mcp.example.com"
-```
+~~~
 
 **Windows**:
-```powershell
+~~~powershell
 # Instalação de Dependências
 Install-WindowsFeature -Name Web-Server
 
 # Variáveis de Ambiente
 [Environment]::SetEnvironmentVariable("MCP_SERVER", "mcp.example.com", [EnvironmentVariableTarget]::Machine)
-```
+~~~
 
 **macOS**:
-```bash
+~~~bash
 # Instalação de Dependências
 brew install openssl
 
 # Variáveis de Ambiente
 export MCP_SERVER="mcp.example.com"
-```
+~~~
 
 ### Exemplos de Calibração RAG/DAG (Português)
 
 **RAG Calibration**:
-```yaml
+~~~yaml
 pipeline:
   - name: "rag_pipeline"
     steps:
@@ -63,10 +63,10 @@ pipeline:
       - type: "rank"
         config:
           model: "bm25"
-```
+~~~
 
 **DAG Calibration**:
-```yaml
+~~~yaml
 graph:
   nodes:
     - id: "data_source"
@@ -76,4 +76,4 @@ graph:
   edges:
     - from: "data_source"
       to: "process"
-```
+~~~

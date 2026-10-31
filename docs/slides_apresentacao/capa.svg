@@ -32,5 +32,5 @@
   <!-- Rodapé -->
   <rect x="0" y="640" width="1280" height="80" fill="#F4F6F8"/>
   <text x="640" y="670" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3A5F">Compromisso Fundante: 100% FOSS — Free and Open Source Software</text>
-  <text x="640" y="695" text-anchor="middle" font-size="12" fill="#555555">Orientador: Prof. Dr. Nivaldo Carletto | Disciplina de Gerência de Projetos</text>
+  <text x="640" y="695" text-anchor="middle" font-size="12" fill="#555555">Orientador: Prof. Dr. Nivaldo Carleto | Disciplina de Gerência de Projetos</text>
 </svg>

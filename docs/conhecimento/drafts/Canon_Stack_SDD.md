@@ -109,7 +109,7 @@ A análise crítica identificou que um vault global do Obsidian viola o princíp
 
 ### 4.2. Estrutura no Repositório Git
 
-```
+~~~
 PROJETO/                          # Repositório Git (single source of truth)
 ├── .git/
 ├── .gitignore
@@ -150,16 +150,16 @@ PROJETO/                          # Repositório Git (single source of truth)
 │
 └── .obsidian/                    # Configuração do vault (opcional)
     └── workspace.json
-```
+~~~
 
 ### 4.3. Estrutura do Vault Obsidian (Interface)
 
-```
+~~~
 ~/Obsidian/PROJETO/               # Vault dedicado
 ├── .ai → /path/to/PROJETO/.ai    # Symlink (single source of truth)
 ├── docs → /path/to/PROJETO/docs  # Symlink
 └── .obsidian/                    # Configuração do vault
-```
+~~~
 
 ### 4.4. Regras de Separação de Escopo
 
@@ -200,7 +200,7 @@ PROJETO/                          # Repositório Git (single source of truth)
 
 ### 5.3. Localização
 
-```
+~~~
 /var/lib/llama.cpp/models/
 ├── qwen-32b-instruct-q4_k_m.gguf     # P0
 ├── qwen-14b-instruct-q4_k_m.gguf     # P1
@@ -209,7 +209,7 @@ PROJETO/                          # Repositório Git (single source of truth)
 └── qwen-72b-instruct-q4_k_m.gguf     # P5 (NÃO baixar)
 
 /extra/backup/llama-models/            # Backup resiliente (P0 + P1)
-```
+~~~
 
 **Total imediato (P0+P1+P2):** 40 GB de 420 GB disponíveis → 9.5% do `/var`.
 
@@ -258,7 +258,7 @@ PROJETO/                          # Repositório Git (single source of truth)
 
 ### 7.1. Ciclo de uma Feature
 
-```bash
+~~~bash
 # 1. PM escreve especificação
 vim .ai/handoffs/001-feature-x-spec.md
 
@@ -277,17 +277,17 @@ ln -sf tester.md .ai/prompts/active.md
 # 5. Commit atômico por fase
 git add .ai/handoffs/001-feature-x-* src/ tests/
 git commit -m "SDD: feature-x (spec→code→review→test)"
-```
+~~~
 
 ### 7.2. Troca de Modelo (Quando Necessário)
 
-```bash
+~~~bash
 # Trocar para 14B (testes rápidos)
 systemctl restart llama-server@14b
 
 # Trocar para 32B (produção)
 systemctl restart llama-server@32b
-```
+~~~
 
 ---
 

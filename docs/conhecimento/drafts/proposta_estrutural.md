@@ -20,7 +20,7 @@
 
 ## 2. Estrutura Proposta (Monorepo Full-Stack)
 
-```
+~~~
 COGME/
 │
 ├── 📄 README.md                          # Fonte de verdade do projeto
@@ -169,7 +169,7 @@ COGME/
     └── xml/
         ├── EAP_monochrome.xml
         └── ...
-```
+~~~
 
 ---
 

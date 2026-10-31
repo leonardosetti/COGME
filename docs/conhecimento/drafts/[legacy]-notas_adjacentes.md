@@ -49,7 +49,7 @@ Abaixo estão os scripts SVG prontos para salvamento em `/docs/diagrams/`.
 
 **Arquivo:** `fig-eap-nivel-0-macro.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" font-family="Arial, Helvetica, sans-serif">
   <rect x="0" y="0" width="1200" height="500" fill="#FFFFFF"/>
   <text x="600" y="42" text-anchor="middle" font-size="23" font-weight="bold" fill="#111111">Estrutura Analítica do Projeto (EAP) — Visão Macro</text>
@@ -92,7 +92,7 @@ Abaixo estão os scripts SVG prontos para salvamento em `/docs/diagrams/`.
   <text x="1000" y="280" text-anchor="middle" font-size="14" fill="#111111">N11. Documentação do Projeto</text>
   <text x="1000" y="305" text-anchor="middle" font-size="14" fill="#111111">N12. Encerramento</text>
 </svg>
-```
+~~~
 
 ---
 
@@ -100,7 +100,7 @@ Abaixo estão os scripts SVG prontos para salvamento em `/docs/diagrams/`.
 
 **Arquivo:** `fig-eap-mf1-fundacao.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="Arial, Helvetica, sans-serif">
   <rect x="0" y="0" width="1600" height="900" fill="#FFFFFF"/>
   <text x="800" y="42" text-anchor="middle" font-size="23" font-weight="bold" fill="#111111">EAP — Macro-Fase 1: Fundação (MF1)</text>
@@ -187,7 +187,7 @@ Abaixo estão os scripts SVG prontos para salvamento em `/docs/diagrams/`.
     <text x="110" y="205" text-anchor="middle" font-size="12" fill="#222222">N9.3 Catálogo de Prompts SDD</text>
   </g>
 </svg>
-```
+~~~
 
 ---
 
@@ -195,7 +195,7 @@ Abaixo estão os scripts SVG prontos para salvamento em `/docs/diagrams/`.
 
 **Arquivo:** `fig-eap-mf2-construcao.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" font-family="Arial, Helvetica, sans-serif">
   <rect x="0" y="0" width="1200" height="700" fill="#FFFFFF"/>
   <text x="600" y="42" text-anchor="middle" font-size="23" font-weight="bold" fill="#111111">EAP — Macro-Fase 2: Construção (MF2)</text>
@@ -252,7 +252,7 @@ Abaixo estão os scripts SVG prontos para salvamento em `/docs/diagrams/`.
     <text x="120" y="205" text-anchor="middle" font-size="12" fill="#222222">N10.3 Aprovação e Versionamento</text>
   </g>
 </svg>
-```
+~~~
 
 ---
 
@@ -260,7 +260,7 @@ Abaixo estão os scripts SVG prontos para salvamento em `/docs/diagrams/`.
 
 **Arquivo:** `fig-eap-mf3-consolidacao.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="Arial, Helvetica, sans-serif">
   <rect x="0" y="0" width="800" height="500" fill="#FFFFFF"/>
   <text x="400" y="42" text-anchor="middle" font-size="23" font-weight="bold" fill="#111111">EAP — Macro-Fase 3: Consolidação (MF3)</text>
@@ -289,7 +289,7 @@ Abaixo estão os scripts SVG prontos para salvamento em `/docs/diagrams/`.
     <text x="130" y="205" text-anchor="middle" font-size="12" fill="#222222">N12.3 Apresentação Final + Aceite</text>
   </g>
 </svg>
-```
+~~~
 
 ---
 
@@ -325,7 +325,7 @@ Abaixo estão os scripts SVG da **Segunda Rodada Candidata**.
 
 **Arquivo:** `fig-1-governanca-hibrida.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" font-family="Arial, Helvetica, sans-serif">
   <defs>
     <marker id="ar" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
@@ -371,7 +371,7 @@ Abaixo estão os scripts SVG da **Segunda Rodada Candidata**.
   <text x="735" y="275" font-size="12" font-weight="bold" fill="#2E7D32" text-anchor="start">Lições Aprendidas</text>
   <text x="735" y="290" font-size="12" font-weight="bold" fill="#2E7D32" text-anchor="start">e Realimentação</text>
 </svg>
-```
+~~~
 
 ---
 
@@ -379,7 +379,7 @@ Abaixo estão os scripts SVG da **Segunda Rodada Candidata**.
 
 **Arquivo:** `fig-4-controle-mudancas.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 650" font-family="Arial, Helvetica, sans-serif">
   <defs>
     <marker id="ar-flow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
@@ -452,7 +452,7 @@ Abaixo estão os scripts SVG da **Segunda Rodada Candidata**.
   <text x="680" y="525" text-anchor="middle" font-size="12" fill="#333333">Registro formal via ADR +</text>
   <text x="680" y="540" text-anchor="middle" font-size="12" fill="#333333">Comunicação no marco subsequente</text>
 </svg>
-```
+~~~
 
 ---
 
@@ -484,7 +484,7 @@ Como GP Sênior e PMO, prossigo com a **Terceira Rodada Candidata** de diagramas
 
 **Arquivo:** `fig-3-cfd-saudavel-vs-gargalo.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 700" font-family="Arial, Helvetica, sans-serif">
   <rect x="0" y="0" width="1400" height="700" fill="#FFFFFF"/>
   <text x="700" y="40" text-anchor="middle" font-size="22" font-weight="bold" fill="#111111">Cumulative Flow Diagram (CFD) — Padrão Saudável vs. Gargalo</text>
@@ -577,7 +577,7 @@ Como GP Sênior e PMO, prossigo com a **Terceira Rodada Candidata** de diagramas
     </marker>
   </defs>
 </svg>
-```
+~~~
 
 ---
 
@@ -585,7 +585,7 @@ Como GP Sênior e PMO, prossigo com a **Terceira Rodada Candidata** de diagramas
 
 **Arquivo:** `fig-1-sequenciamento-macro-caminho-critico.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 650" font-family="Arial, Helvetica, sans-serif">
   <defs>
     <marker id="ar-flow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
@@ -702,7 +702,7 @@ Como GP Sênior e PMO, prossigo com a **Terceira Rodada Candidata** de diagramas
   <rect x="200" y="600" width="1000" height="40" rx="4" fill="#F4F6F8" stroke="#1F3A5F" stroke-width="1"/>
   <text x="700" y="625" text-anchor="middle" font-size="12" fill="#333333">Caminho crítico identificado empiricamente — sem rede CPM preditiva (ADR-003, OKB §8.1)</text>
 </svg>
-```
+~~~
 
 ---
 
@@ -745,7 +745,7 @@ Abaixo segue o artefato corrigido e, separadamente, a nota técnica formatada co
 
 **Arquivo:** `fig-1-sequenciamento-macro-caminho-critico.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" font-family="Arial, Helvetica, sans-serif">
   <defs>
     <marker id="ar-flow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
@@ -896,7 +896,7 @@ Abaixo segue o artefato corrigido e, separadamente, a nota técnica formatada co
   <text x="600" y="585" text-anchor="middle" font-size="12" fill="#333333">Caminho crítico identificado empiricamente — sem rede CPM preditiva. Substitui o Gantt/EVM por</text>
   <text x="600" y="600" text-anchor="middle" font-size="12" fill="#333333">métricas de fluxo Kanban, conforme ADR-003 e OKB §8.1.</text>
 </svg>
-```
+~~~
 
 ---
 
@@ -977,7 +977,7 @@ Como GP Sênior e PMO, prossigo com a **Quarta Rodada Candidata** de diagramas, 
 
 **Arquivo:** `fig-2-fluxo-kanban-oficial.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 500" font-family="Arial, Helvetica, sans-serif">
   <defs>
     <marker id="ar-flow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
@@ -1074,7 +1074,7 @@ Como GP Sênior e PMO, prossigo com a **Quarta Rodada Candidata** de diagramas, 
   <text x="700" y="465" text-anchor="middle" font-size="11" fill="#333333">Se WIP limit for violado ou tasklist não estiver 100% concluída, o card não migra para a coluna seguinte.</text>
   <text x="700" y="478" text-anchor="middle" font-size="11" fill="#333333">Gargalos persistentes acionam Retrospectiva extraordinária (Integração §1.6.1).</text>
 </svg>
-```
+~~~
 
 ---
 
@@ -1118,7 +1118,7 @@ Como GP Sênior e PMO, prossigo com a **Quinta Rodada Candidata** de diagramas, 
 
 **Arquivo:** `fig-5-fluxo-prevencao-custos.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900" font-family="Arial, Helvetica, sans-serif">
   <defs>
     <marker id="ar-flow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
@@ -1217,7 +1217,7 @@ Como GP Sênior e PMO, prossigo com a **Quinta Rodada Candidata** de diagramas, 
   <text x="400" y="805" text-anchor="middle" font-size="12" font-weight="bold" fill="#111111">Linha de Base de Custos: R$ 0,00 (imutável sem CCB)</text>
   <text x="400" y="820" text-anchor="middle" font-size="11" fill="#555555">TAP §11 + Premissa P2 (FOSS absoluto)</text>
 </svg>
-```
+~~~
 
 ---
 
@@ -1225,7 +1225,7 @@ Como GP Sênior e PMO, prossigo com a **Quinta Rodada Candidata** de diagramas, 
 
 **Arquivo:** `fig-6-matriz-rastreabilidade-dependencias.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" font-family="Arial, Helvetica, sans-serif">
   <rect x="0" y="0" width="1200" height="500" fill="#FFFFFF"/>
   <text x="600" y="40" text-anchor="middle" font-size="22" font-weight="bold" fill="#111111">Matriz de Rastreabilidade de Dependências — Stack FOSS Canônica</text>
@@ -1304,7 +1304,7 @@ Como GP Sênior e PMO, prossigo com a **Quinta Rodada Candidata** de diagramas, 
   <rect x="50" y="450" width="1100" height="40" rx="4" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
   <text x="600" y="475" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">100% das dependências auditadas e conformantes — Linha de base R$ 0,00 preservada</text>
 </svg>
-```
+~~~
 
 ---
 
@@ -1356,7 +1356,7 @@ Como GP Sênior e PMO, prossigo com a **Sexta Rodada Candidata** de diagramas, c
 
 **Arquivo:** `fig-eap-visao-executiva.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 850" font-family="Arial, Helvetica, sans-serif">
   <defs>
     <marker id="ar-flow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
@@ -1471,7 +1471,7 @@ Como GP Sênior e PMO, prossigo com a **Sexta Rodada Candidata** de diagramas, c
   <rect x="200" y="820" width="800" height="25" rx="4" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1"/>
   <text x="600" y="837" text-anchor="middle" font-size="11" fill="#333333">Total: 12 fases de Nível 1 + 37 pacotes de Nível 2 (baseline canônica do TAP §4)</text>
 </svg>
-```
+~~~
 
 ---
 
@@ -1479,7 +1479,7 @@ Como GP Sênior e PMO, prossigo com a **Sexta Rodada Candidata** de diagramas, c
 
 **Arquivo:** `fig-2-cadeia-decomposicao-escopo.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 650" font-family="Arial, Helvetica, sans-serif">
   <defs>
     <marker id="ar-flow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
@@ -1579,7 +1579,7 @@ Como GP Sênior e PMO, prossigo com a **Sexta Rodada Candidata** de diagramas, c
   <text x="700" y="600" text-anchor="middle" font-size="11" fill="#333333">No COGME, atividades são materializadas como tasklist Markdown (3 a 7 itens; último item "Validação final"),</text>
   <text x="700" y="615" text-anchor="middle" font-size="11" fill="#333333">rejeitando-se formalmente subissues para preservar a unidade atômica de métrica (card pai) e evitar fragmentação do backlog.</text>
 </svg>
-```
+~~~
 
 ---
 
@@ -1690,7 +1690,7 @@ Com base no `git status` anterior e na estrutura atual, identifico as seguintes 
 
 ### 3.1 Recuperação via Git (Arquivos Versionados)
 
-```bash
+~~~bash
 # 1. Verificar histórico recente (últimas 48h)
 git log --since="2026-09-20" --oneline --all
 
@@ -1705,11 +1705,11 @@ git log --diff-filter=D --summary --since="2026-09-20" --name-only
 
 # 5. Recuperar um arquivo específico de um commit anterior
 # git checkout <hash> -- <caminho-do-arquivo>
-```
+~~~
 
 ### 3.2 Verificação de Integridade dos Arquivos Movidos
 
-```bash
+~~~bash
 # Comparar arquivos em archive com os canônicos (para detectar se versões recentes foram sobrescritas)
 
 # Diagramas: comparar deprecated com canônicos
@@ -1719,11 +1719,11 @@ diff docs/archive/diagramas-deprecated/fig-4-controle-mudancas.svg docs/diagrama
 # Textos: verificar se drafts contêm trabalho recente
 wc -l docs/archive/drafts/*.md
 # Arquivos com muitas linhas provavelmente contêm trabalho substancial
-```
+~~~
 
 ### 3.3 Verificação de Arquivos Não Versionados (Perdidos)
 
-```bash
+~~~bash
 # Procurar por arquivos .svg órfãos no sistema de arquivos
 find . -name "*.svg" -newer docs/planos/plano-integracao.md 2>/dev/null
 
@@ -1732,7 +1732,7 @@ find . -name "*.mmd" -o -name "*.mmd.png" 2>/dev/null
 
 # Verificar lixeira do sistema (macOS)
 ls ~/.Trash/*.svg 2>/dev/null || echo "Nada na lixeira"
-```
+~~~
 
 ---
 
@@ -1755,7 +1755,7 @@ ls ~/.Trash/*.svg 2>/dev/null || echo "Nada na lixeira"
 
 Este incidente deve ser registrado como lição aprendida da MF1:
 
-```markdown
+~~~markdown
 ## Lição Aprendida — LA-001: Reestruturação de Repositório em Paralelo com Produção
 
 **Data**: 22/09/2026
@@ -1792,7 +1792,7 @@ A reestruturação formal do repositório (aderência à stack SDD canônica) fo
 - Commits: `7121d12`, `1aa1515`
 - OKB v3.0 §3.2 (SSOT documental)
 - Glossário §5 (Stack SDD)
-```
+~~~
 
 **Localização canônica**: `docs/conhecimento/licoes-aprendidas/MF1-licoes.md`
 
@@ -1857,7 +1857,7 @@ O CFD deve aparecer em **três artefatos**, com funções distintas:
 
 ## 2. Template de Seção Técnica (Plano de Integração §1.6.1)
 
-```markdown
+~~~markdown
 ### 1.6.1 Cumulative Flow Diagram (CFD) — Definição Formal
 
 **Domínio PMBOK 7ª**: Medição  
@@ -1896,14 +1896,14 @@ O CFD substitui integralmente o Diagrama de Gantt e métricas EVM (SPI/CPI) para
 monitoramento de progresso, conforme ADR-003. Esta decisão privilegia métricas de fluxo 
 nativas do método Kanban em detrimento de ferramentas preditivas, alinhada ao Domínio de 
 Medição do PMBOK 7ª e à restrição de orçamento zero (TAP §11).
-```
+~~~
 
 ---
 
 ## 3. Interpretação Visual (Como Explicar ao Orientador)
 
 ### 3.1 Cenário Ideal (Fluxo Saudável)
-```
+~~~
 Cards
   ↑
   │         ╭───────────────────────────── Done (verde)
@@ -1916,11 +1916,11 @@ Cards
   ││  │  │  │
   ││  │  │  │ Backlog (cinza)
   └┴──┴──┴──┴──────────────────────────→ Tempo
-```
+~~~
 **Leitura**: Bandas paralelas = fluxo equilibrado. Throughput estável.
 
 ### 3.2 Cenário com Gargalo (Ação Necessária)
-```
+~~~
 Cards
   ↑
   │         ╭───────────────────────────── Done (verde)
@@ -1933,7 +1933,7 @@ Cards
   ││  │  │  │
   ││  │  │  │ Backlog (cinza)
   └┴──┴──┴──┴──────────────────────────→ Tempo
-```
+~~~
 **Leitura**: Banda de Code Review se alarga = cards acumulando nessa etapa.  
 **Ação**: Reduzir WIP em Code Review, redistribuir revisores, ou ajustar DoD.
 
@@ -1964,7 +1964,7 @@ Cards
 
 ## 5. Exemplo de Redação para o Plano de Cronograma
 
-```markdown
+~~~markdown
 ## 2.3 Monitoramento Temporal via CFD
 
 **Domínio PMBOK 7ª**: Medição + Abordagem de Desenvolvimento  
@@ -1993,7 +1993,7 @@ Os marcos M1–M4 (TAP §6) são monitorados como pontos de verificação fixos:
 O CFD fornece visibilidade sobre o progresso em direção a esses marcos, mas não 
 calcula datas preditivas. A estimativa de cumprimento é empírica, baseada no 
 Throughput observado no período de calibração (23/09 a 03/10/2026).
-```
+~~~
 
 ---
 
@@ -2046,7 +2046,7 @@ Para o Marco M1, como o período de calibração ainda não começou (início em
 ## 📋 CARDS — COLUNA BACKLOG (Todos os entregáveis M1)
 
 ### **CARD 01** — Finalização Plano de Escopo v1.0
-```yaml
+~~~yaml
 ID: M1-01
 Título: "N1.2 — Plano de Escopo v1.0 (ABNT)"
 Fase EAP: N1.2
@@ -2062,10 +2062,10 @@ DoD:
 Rastreabilidade: TAP §3 + §8 + EAP N1.2
 Label: planejamento
 Prioridade: MUST
-```
+~~~
 
 ### **CARD 02** — Plano de Cronograma v1.0
-```yaml
+~~~yaml
 ID: M1-02
 Título: "N1.2 — Plano de Cronograma v1.0"
 Fase EAP: N1.2
@@ -2082,10 +2082,10 @@ DoD:
 Rastreabilidade: TAP §3 (Cronograma) + EAP N1.2
 Label: planejamento
 Prioridade: MUST
-```
+~~~
 
 ### **CARD 03** — Plano de Custos v1.0
-```yaml
+~~~yaml
 ID: M1-03
 Título: "N1.2 — Plano de Custos v1.0 (Orçamento Zero)"
 Fase EAP: N1.2
@@ -2101,10 +2101,10 @@ DoD:
 Rastreabilidade: TAP §11 + EAP N1.2
 Label: planejamento
 Prioridade: MUST
-```
+~~~
 
 ### **CARD 04** — Plano de Qualidade v1.0 + 12 PDCAs + Ishikawa
-```yaml
+~~~yaml
 ID: M1-04
 Título: "N1.3 — Plano de Qualidade v1.0 + 12 PDCAs + Ishikawa 6M"
 Fase EAP: N1.3
@@ -2121,10 +2121,10 @@ DoD:
 Rastreabilidade: TAP §3 (Qualidade) + EAP N1.3
 Label: qualidade
 Prioridade: MUST
-```
+~~~
 
 ### **CARD 05** — Plano de Recursos v1.0
-```yaml
+~~~yaml
 ID: M1-05
 Título: "N1.2 — Plano de Recursos v1.0 (Simplificado)"
 Fase EAP: N1.2
@@ -2141,10 +2141,10 @@ DoD:
 Rastreabilidade: TAP §8 + EAP N1.2
 Label: planejamento
 Prioridade: MUST
-```
+~~~
 
 ### **CARD 06** — Plano de Comunicações v1.0
-```yaml
+~~~yaml
 ID: M1-06
 Título: "N1.2 — Plano de Comunicações v1.0"
 Fase EAP: N1.2
@@ -2161,10 +2161,10 @@ DoD:
 Rastreabilidade: TAP §7 + EAP N1.2
 Label: planejamento
 Prioridade: MUST
-```
+~~~
 
 ### **CARD 07** — Plano de Riscos v1.0
-```yaml
+~~~yaml
 ID: M1-07
 Título: "N1.2 — Plano de Riscos v1.0 (R1-R5)"
 Fase EAP: N1.2
@@ -2181,10 +2181,10 @@ DoD:
 Rastreabilidade: TAP §10 + EAP N1.2
 Label: incerteza
 Prioridade: MUST
-```
+~~~
 
 ### **CARD 08** — Configurar GitHub Projects (SSOT)
-```yaml
+~~~yaml
 ID: M1-08
 Título: "N4.2 — Configurar GitHub Projects (Kanban SSOT)"
 Fase EAP: N4.2
@@ -2201,10 +2201,10 @@ DoD:
 Rastreabilidade: ADR-002 + EAP N4.2
 Label: devops
 Prioridade: MUST
-```
+~~~
 
 ### **CARD 09** — Submeter M1 via GitHub
-```yaml
+~~~yaml
 ID: M1-09
 Título: "N11.2 — Submeter M1 (Entrega Parcial Documental)"
 Fase EAP: N11.2
@@ -2220,10 +2220,10 @@ DoD:
 Rastreabilidade: TAP §6 (M1) + EAP N11.2
 Label: entrega
 Prioridade: MUST
-```
+~~~
 
 ### **CARD 10** — Validação Acadêmica M1 (Aguardando)
-```yaml
+~~~yaml
 ID: M1-10
 Título: "N12.3 — Validação Acadêmica M1 (Prof. Nivaldo)"
 Fase EAP: N12.3
@@ -2238,7 +2238,7 @@ DoD:
 Rastreabilidade: TAP §6 (M1) + EAP N12.3
 Label: stakeholder
 Prioridade: MUST
-```
+~~~
 
 ---
 
@@ -3407,7 +3407,7 @@ A sub-seção 10.2 ("Cards que Receberão Tasklist") está **tecnicamente corret
 
 **Exemplo prático (Card M1-05 — Plano de Qualidade):**
 
-```markdown
+~~~markdown
 ## Tasklist (ADR-004)
 
 - [ ] Estrutura do Plano de Qualidade redigida (seções 1-8)
@@ -3416,7 +3416,7 @@ A sub-seção 10.2 ("Cards que Receberão Tasklist") está **tecnicamente corret
 - [ ] Critérios de aceite vinculados a REQ-08, REQ-09, REQ-10
 - [ ] Revisão em pares solicitada (Fabricio ou Leonardo)
 - [ ] Validação final
-```
+~~~
 
 **Regras operacionais:**
 1. A tasklist é criada **no momento da abertura do card** (antes de migrar para `In Progress`).
@@ -3543,13 +3543,13 @@ Uma **ADR tardia** é aquela emitida **após** a decisão já ter sido implement
 
 Além dos campos padrão (Contexto, Opções, Decisão, Consequências, Trade-offs), a ADR tardia **deve** incluir:
 
-```markdown
+~~~markdown
 **Tipo:** Regularização tardia
 **Data da decisão efetiva:** [data em que foi aplicada]
 **Data da formalização:** [data de emissão da ADR]
 **Motivo da tardança:** [ex: "priorização de entrega do M1 sobre documentação"]
 **Lição aprendida:** [ação preventiva para evitar recorrência]
-```
+~~~
 
 **Trade-off declarado:** Aceita-se a ADR tardia como mal menor em relação à ausência total de registro, mas desincentiva-se sua recorrência. Se > 30% das ADRs do projeto forem tardias, o GP deve revisar o fluxo de trabalho na Retrospectiva.
 
@@ -3565,7 +3565,7 @@ Este princípio deriva do GMV e do Domínio de Trabalho do Projeto (PMBOK 7ª): 
 
 ### 3.2 Estrutura de Diretórios no Repositório
 
-```
+~~~
 /docs/
 ├── planos/
 │   ├── plano-integracao.md        ← Coordenador (referencia todos os demais)
@@ -3593,7 +3593,7 @@ Este princípio deriva do GMV e do Domínio de Trabalho do Projeto (PMBOK 7ª): 
 │   └── baseline.md                ← Pós-calibração (03/10)
 └── requisitos/
     └── requisitos.md              ← REQ-01 a REQ-15 (consolidados)
-```
+~~~
 
 ### 3.3 Estratégia de Integração: Cross-Reference vs. Anexo vs. Seção
 
@@ -3618,7 +3618,7 @@ Este princípio deriva do GMV e do Domínio de Trabalho do Projeto (PMBOK 7ª): 
 
 Em qualquer plano de área, quando for necessário referenciar um documento externo, usa-se o seguinte formato:
 
-```markdown
+~~~markdown
 Conforme [ADR-003 — Métricas de Fluxo](/docs/decisoes/ADR-003-metricas.md), 
 as métricas EVM são declaradas LEGADO.
 
@@ -3627,13 +3627,13 @@ o M1 contempla 5 planos.
 
 Conforme [Glossário — Termo "CFD"](/docs/conhecimento/glossario.md#4-metodologia-ágil--kanban), 
 o Cumulative Flow Diagram é a visualização gráfica do fluxo acumulado.
-```
+~~~
 
 ### 3.6 Tabela-Resumo no Plano de Integração (Seção 1.1 — Adendo Proposto)
 
 Para que o Prof. Dr. Nivaldo Carleto tenha visibilidade integral sem abrir cada documento, o Plano de Integração deve conter uma **tabela-índice** na seção 1.1 ou como adendo à seção 1.4:
 
-```markdown
+~~~markdown
 ### 1.4.1 Índice de Documentos de Governança Transversal
 
 | Documento | Localização | Função | Última Versão |
@@ -3646,7 +3646,7 @@ Para que o Prof. Dr. Nivaldo Carleto tenha visibilidade integral sem abrir cada 
 | ADR-004 | /docs/decisoes/ADR-004-tasklists.md | Tasklists Markdown | Aprovada |
 | Baseline | /docs/metricas/baseline.md | Dados empíricos de fluxo | ⏳ Pós 03/10 |
 | Lições MF1 | /docs/conhecimento/licoes-aprendidas/MF1.md | Aprendizados da Fundação | ⏳ 30/09 |
-```
+~~~
 
 ---
 
@@ -3784,7 +3784,7 @@ Diagramas deliberadamente EXCLUÍDOS da Seção 1 (anti-invasão de escopo): Roa
 | C2 (stack SDD) | Stack em avaliação; ADR-001 poderá sofrer atualizações de impacto relevante. Agregar a stack canônica local (em vez de exclusivamente QwenStudio). Inclusão/exclusão/troca de ferramentas exigirá ADRs específicas | §2.3.4 reescrito: stack local canônica nomeada (llama.cpp + Qwen 32B + OpenCode); ADR-001 declarada em avaliação; regra de ADR específica para mudanças de stack vinculada à política de ADRs |
 | C3 (DoD/Padrões) | Correção pertence ao Plano de Escopo §2.6 (Integração v2.0 confirmada coerente) | §2.6: item 8 do DoD mantido e reforçado com nota de canonicidade + Padrões A/B (OKB §9.3); Tabela 2 expandida com as duas linhas de rastreabilidade cruzada propostas |
 
-Achados externos remanescentes (reporte ao GP, não bloqueiam): grafia do stakeholder no Glossário ("Carletto" → corrigir para "Carleto", grafia do TAP); Cycle Time "To Do → Done" no Glossário (alinhar a "In Progress → Done", ADR-003); cabeçalho "Fases EAP v2.0" na matriz do TAP §5 (find & replace); item 10 da estrutura documental do Glossário (Plano de Gestão de Mudanças atendido pela Integração §1.7 — GMV).
+Achados externos remanescentes (reporte ao GP, não bloqueiam): grafia do stakeholder no Glossário ("Carleto" → corrigir para "Carleto", grafia do TAP); Cycle Time "To Do → Done" no Glossário (alinhar a "In Progress → Done", ADR-003); cabeçalho "Fases EAP v2.0" na matriz do TAP §5 (find & replace); item 10 da estrutura documental do Glossário (Plano de Gestão de Mudanças atendido pela Integração §1.7 — GMV).
 
 Micro-ajuste opcional na Integração §1.3.2 (reforço de rastreabilidade do DoD): permanece aguardando aprovação do GP, fora do escopo desta redação.
 
@@ -4006,7 +4006,7 @@ Diagramas deliberadamente EXCLUÍDOS (anti-invasão de escopo + GMV):
 | --- | --- | --- |
 | Numeração 6.3/6.5 no §8.1 | Base de conhecimento operacional §8.1 | Próxima revisão da base |
 | "Processo 6.4 Estimar Custos" → 6.4 Estimar Durações (custos = 7.2) | Glossário §3 | Próxima revisão do Glossário |
-| Grafia "Carletto" → "Carleto" | Glossário | Próxima revisão do Glossário |
+| Grafia "Carleto" → "Carleto" | Glossário | Próxima revisão do Glossário |
 | Cycle Time "To Do → Done" → "In Progress → Done" | Glossário | Próxima revisão do Glossário |
 | Contagem EAP "13/48" → 12/37 (baseline do TAP §4) | Glossário §1 | Próxima revisão do Glossário |
 | Convenção dupla de dias | ADR-003 / Glossário / baseline | Formalização da baseline (após 03/10) |
@@ -4110,7 +4110,7 @@ O projeto justifica-se pela lacuna prática existente no ecossistema de software
 
 #### Lista Hierárquica Aninhada da EAP
 
-```
+~~~
 N0: COGME — Conversor de Ganhos em Moeda Estrangeira
 │
 ├── N1: 1. Iniciação e Planejamento [MF1]
@@ -4173,7 +4173,7 @@ N0: COGME — Conversor de Ganhos em Moeda Estrangeira
     ├── N12.1: 12.1. Lições Aprendidas Finais
     ├── N12.2: 12.2. Verificação SMART
     └── N12.3: 12.3. Apresentação Final + Aceite
-```
+~~~
 
 > **[PLACEHOLDER — DIAGRAMA: Fig. 0.1 — EAP Visão Executiva (N0 + 12 fases × 3 macro-fases) | Seção 0.4 | Formato: Mermaid flowchart TB ou PlantUML WBS]**
 
@@ -4879,7 +4879,7 @@ Fechamento de milestones: uma milestone não é fechada enquanto houver Issues a
 | --- | --- | --- |
 | Numeração 6.3/6.5 no §8.1 | Base de conhecimento operacional §8.1 | Próxima revisão da base |
 | "Processo 6.4 Estimar Custos" → 6.4 Estimar Durações (custos = 7.2) | Glossário §3 | Próxima revisão do Glossário |
-| Grafia "Carletto" → "Carleto" | Glossário | Próxima revisão do Glossário |
+| Grafia "Carleto" → "Carleto" | Glossário | Próxima revisão do Glossário |
 | Cycle Time "To Do → Done" → "In Progress → Done" | Glossário | Próxima revisão do Glossário |
 | Contagem EAP "13/48" → 12/37 (baseline do TAP §4) | Glossário §1 | Próxima revisão do Glossário |
 | Convenção dupla de dias | ADR-003 / Glossário / baseline | Formalização da baseline (após 03/10) |
@@ -5244,7 +5244,7 @@ Nota (I6): mypy é ferramenta complementar de análise estática de tipos, não 
 
 Conforme N7.1 da EAP e REQ-11, o pipeline CI executa automaticamente a cada push:
 
-```yaml
+~~~yaml
 # .github/workflows/ci.yml (resumo)
 name: CI Pipeline
 on: [push, pull_request]
@@ -5265,7 +5265,7 @@ jobs:
         run: pytest --cov=cogme --cov-report=xml --cov-fail-under=80
       - name: Upload coverage
         uses: codecov/codecov-action@v3
-```
+~~~
 
 Critérios de qualidade do pipeline:
 
@@ -5485,7 +5485,7 @@ A definição operacional de Cycle Time aqui vigente é `In Progress` → `Done`
 Este plano consolida 12 ciclos PDCA (N1-N12), conforme baseline do TAP §4 (12 fases + 37 pacotes). O Glossário v3.1 pode registrar "13 fases + 48 pacotes" — esta contagem é volátil e não canônica. O TAP e Planos de Integração/Escopo são as fontes canônicas. O TAP não integra ciclos PDCA (Premissa P9).
 
 **NC-Q5 — Grafia do Stakeholder (E1):**
-A seção 5 utiliza a grafia "Prof. Dr. Nivaldo Carleto" conforme TAP v3. O Glossário v3.1 registra "Carletto" (grafia incorreta). Esta inconsistência é registrada para saneamento na próxima revisão do Glossário (pós-M1).
+A seção 5 utiliza a grafia "Prof. Dr. Nivaldo Carleto" conforme TAP v3. O Glossário v3.1 registra "Carleto" (grafia incorreta). Esta inconsistência é registrada para saneamento na próxima revisão do Glossário (pós-M1).
 
 **Registro de saneamento — artefatos vivos (não bloqueante):**
 
@@ -5494,7 +5494,7 @@ A seção 5 utiliza a grafia "Prof. Dr. Nivaldo Carleto" conforme TAP v3. O Glos
 | Numeração de processos 8.1-8.3 | Glossário §3 | Próxima revisão do Glossário |
 | Contagem EAP "13/48" → 12/37 | Glossário §1 | Próxima revisão do Glossário |
 | Cycle Time "To Do → Done" → "In Progress → Done" | Glossário | Próxima revisão do Glossário |
-| Grafia "Carletto" → "Carleto" | Glossário | Próxima revisão do Glossário |
+| Grafia "Carleto" → "Carleto" | Glossário | Próxima revisão do Glossário |
 
 ### 5.10 Declaração de Rastreabilidade
 
@@ -5607,7 +5607,7 @@ A estrutura atual (106 arquivos em 23 diretórios) apresenta **fragmentação po
 
 A estrutura abaixo deriva diretamente do **OKB v3.0 §3.3** (arquitetura de integração documental), **Glossário v3.1 §5** (stack SDD local) e **§14** (estrutura documental completa), respeitando a **Premissa P9** (separação ontológica TAP ≠ EAP ≠ PDCA).
 
-```
+~~~
 COGME/
 ├── .ai/                              # Contexto SDD (lido pela IA — Glossário §5)
 │   ├── personas/                     # Personas SDD (symlinks → active.md)
@@ -5805,7 +5805,7 @@ COGME/
 ├── .editorconfig                     # Padronização de formatação
 ├── requirements.txt                  # Dependências Python
 └── pyproject.toml                    # Configuração do projeto
-```
+~~~
 
 ---
 
@@ -6150,7 +6150,7 @@ estrutura atual real:
 
 **Linha do tempo sintética:**
 
-```
+~~~
 19/09/2026
   ├── OKB v2.2 vigente
   ├── Backlog M1 original (10 cards)
@@ -6179,7 +6179,7 @@ estrutura atual real:
 
 22/09/2026
   └── LA-001: Incidente de reestruturação paralela
-```
+~~~
 
 ---
 
@@ -6276,7 +6276,7 @@ O Cumulative Flow Diagram (CFD) é a visualização gráfica do fluxo de trabalh
 **Interpretação visual (como explicar ao orientador):**
 
 Cenário ideal (fluxo saudável):
-```
+~~~
 Cards
   ↑
   │         ╭───────────────────────────── Done (verde)
@@ -6289,11 +6289,11 @@ Cards
   ││  │  │  │
   ││  │  │  │ Backlog (cinza)
   └┴──┴──┴──┴──────────────────────────→ Tempo
-```
+~~~
 Leitura: Bandas paralelas = fluxo equilibrado. Throughput estável.
 
 Cenário com gargalo:
-```
+~~~
 Cards
   ↑
   │         ╭───────────────────────────── Done (verde)
@@ -6306,7 +6306,7 @@ Cards
   ││  │  │  │
   ││  │  │  │ Backlog (cinza)
   └┴──┴──┴──┴──────────────────────────→ Tempo
-```
+~~~
 Leitura: Banda de Code Review se alarga = cards acumulando nessa etapa. Ação: Reduzir WIP em Code Review, redistribuir revisores, ou ajustar DoD.
 
 **Blindagem acadêmica (defesa técnica):**
@@ -6580,7 +6580,7 @@ Status normativo: Padrão definido nesta data, com aplicação efetiva a partir 
 
 **Exemplo prático (Card M1-05 — Plano de Qualidade):**
 
-```markdown
+~~~markdown
 ## Tasklist (ADR-004)
 - [ ] Estrutura do Plano de Qualidade redigida (seções 1-8)
 - [ ] 12 ciclos PDCA consolidados (um por fase da EAP)
@@ -6588,7 +6588,7 @@ Status normativo: Padrão definido nesta data, com aplicação efetiva a partir 
 - [ ] Critérios de aceite vinculados a REQ-08, REQ-09, REQ-10
 - [ ] Revisão em pares solicitada (Fabricio ou Leonardo)
 - [ ] Validação final
-```
+~~~
 
 **Regras operacionais:**
 1. A tasklist é criada no momento da abertura do card (antes de migrar para `In Progress`).
@@ -6679,13 +6679,13 @@ Uma decisão exige ADR se atender a pelo menos 2 dos 4 critérios abaixo. Se ate
 
 Além dos campos padrão (Contexto, Opções, Decisão, Consequências, Trade-offs), a ADR tardia deve incluir:
 
-```
+~~~
 **Tipo:** Regularização tardia
 **Data da decisão efetiva:** [data em que foi aplicada]
 **Data da formalização:** [data de emissão da ADR]
 **Motivo da tardança:** [ex: "priorização de entrega do M1 sobre documentação"]
 **Lição aprendida:** [ação preventiva para evitar recorrência]
-```
+~~~
 
 **Trade-off declarado:** Aceita-se a ADR tardia como mal menor em relação à ausência total de registro, mas desincentiva-se sua recorrência. Se > 30% das ADRs do projeto forem tardias, o GP deve revisar o fluxo de trabalho na Retrospectiva.
 
@@ -6695,7 +6695,7 @@ Além dos campos padrão (Contexto, Opções, Decisão, Consequências, Trade-of
 
 **Estrutura de Diretórios Canônica no Repositório:**
 
-```
+~~~
 /docs/
  ├── planos/
  │   ├── plano-integracao.md        ← Coordenador (referencia todos os demais)
@@ -6723,7 +6723,7 @@ Além dos campos padrão (Contexto, Opções, Decisão, Consequências, Trade-of
  │   └── baseline.md                ← Pós-calibração (03/10)
  └── requisitos/
      └── requisitos.md              ← REQ-01 a REQ-15 (consolidados)
-```
+~~~
 
 **Estratégia de Integração:**
 
@@ -6746,13 +6746,13 @@ Além dos campos padrão (Contexto, Opções, Decisão, Consequências, Trade-of
 
 **Mecanismo de Cross-Reference (Padrão Canônico):**
 
-```markdown
+~~~markdown
 Conforme [ADR-003 — Métricas de Fluxo](/docs/decisoes/ADR-003-metricas.md), 
 as métricas EVM são declaradas LEGADO.
 
 Conforme [OKB v3.0 §1.4 — Estratégia de Entrega Faseada](/docs/conhecimento/OKB.md#14), 
 o M1 contempla 5 planos.
-```
+~~~
 
 **Tabela-Resumo no Plano de Integração (Seção 1.4.1 — Índice de Documentos):**
 
@@ -6913,7 +6913,7 @@ Fonte: Elaborado pelos autores (2026).
 
 ### 7.1 Estrutura Canônica Proposta
 
-```
+~~~
 COGME/
  ├── .ai/                              # Contexto SDD (lido pela IA — Glossário §5)
  │   ├── personas/                     # Personas SDD (symlinks → active.md)
@@ -7005,11 +7005,11 @@ COGME/
  ├── pyproject.toml
  ├── requirements.txt
  └── .gitignore
-```
+~~~
 
 ### 7.2 Estrutura Atual Real do Repositório (Mapeamento)
 
-```
+~~~
 .
 ├── docs
 │   ├── archive
@@ -7135,7 +7135,7 @@ COGME/
     └── unit/__init__.py
 
 48 directories, 142 files
-```
+~~~
 
 ### 7.3 Mapeamento: Arquivo Atual → Novo Local (Principais)
 
@@ -7206,7 +7206,7 @@ Recebo sua comunicação. A decisão de executar a reestruturação em paralelo 
 
 ### 8.3 Estratégia de Recuperação
 
-```bash
+~~~bash
 # 1. Verificar histórico recente (últimas 48h)
 git log --since="2026-09-20" --oneline --all
 
@@ -7221,7 +7221,7 @@ git log --diff-filter=D --summary --since="2026-09-20" --name-only
 
 # 5. Recuperar um arquivo específico de um commit anterior
 # git checkout <hash> -- <caminho-do-arquivo>
-```
+~~~
 
 ### 8.4 Priorização do Retrabalho
 
