@@ -61,15 +61,16 @@ def check_slug(slug: str, registry: dict) -> dict:
     # 2) frontmatter + contrato
     contract, fm_err = parse_frontmatter(path)
     check = validate_agent(path)
-    if not check["ok"]:
+
+    # Agentes legacy-forge (Art. 4.8) nao exigem frontmatter; sao aceitos por design
+    # (nao geram nem erro nem aviso - sao depreciados propositalmente)
+    if LEGACY_SLUG_RE.search(slug) and fm_err:
+        pass
+    elif not check["ok"]:
         rep["ok"] = False
         rep["errors"].extend(check["errors"])
-    if fm_err:
-        # Agentes legacy-forge (Art. 4.8) nao exigem frontmatter; sao aceitos por design
-        if LEGACY_SLUG_RE.search(slug):
-            rep["warnings"].append(f"{fm_err} (aceito: agente legacy-forge, Art. 4.8)")
-        else:
-            rep["warnings"].append(fm_err)
+    elif fm_err:
+        rep["warnings"].append(fm_err)
 
     # 3) registry
     entry = registry.get(slug)
