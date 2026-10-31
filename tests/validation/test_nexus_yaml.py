@@ -11,6 +11,7 @@ Suíte de testes para validar:
   8. Scripts de validação (nexus_dispatcher, dag_validator, sync_agent_registry)
   9. Consistência entre registry.yaml e frontmatter dos .md
 """
+
 import json
 import subprocess
 import sys
@@ -31,27 +32,53 @@ VALID_ROLES = {"orchestrator", "specialist", "gate", "forge"}
 # Sequência canônica da DAG (constitution.md Art. 4.5 + registry.yaml SSOT)
 AGENT_TOPOLOGY = {
     "L0": ["agent-nexus-prime-ultimate"],
-    "L1": ["agent-sdd-specialist", "agent-pm", "agent-po",
-           "agent-architect", "agent-project-analyst",
-           "agent-business-analysis-specialist",
-           "agent-project-design-specialist",
-           "agent-project-patterns-standards-specialist"],
-    "L2": ["agent-python-specialist", "agent-api-specialist", "agent-dba",
-           "agent-backend-dev", "agent-ui-ux-advisor", "agent-frontend-dev",
-           "agent-bash-specialist", "agent-infrastructure-specialist",
-           "agent-devops", "agent-github-specialist", "agent-digital-security",
-           "agent-compliance-governance",
-           "agent-artifact-builder", "agent-qa-sdet",
-           "agent-ai-llm-rag-dag-mcp-roster-master-specialist",
-           "agent-art-communication-marketing-pr-specialist",
-           "agent-cobit-specialist", "agent-copyright-specialist",
-           "agent-docker-specialist", "agent-iso-26514-specialist",
-           "agent-itil-specialist", "agent-quality-architect-specialist",
-           "agent-six-sigma-specialist", "agent-sldc-process-specialist",
-           "agent-sddai-loader", "agent-sddai-engineer", "agent-sddai-trainer",
-           "agent-sddai-memory", "agent-sddai-cli"],
-    "L3": ["agent-reviewer", "agent-gatekeeper", "agent-project-auditor",
-           "agent-clean-code-evaluator"],
+    "L1": [
+        "agent-sdd-specialist",
+        "agent-pm",
+        "agent-po",
+        "agent-architect",
+        "agent-project-analyst",
+        "agent-business-analysis-specialist",
+        "agent-project-design-specialist",
+        "agent-project-patterns-standards-specialist",
+    ],
+    "L2": [
+        "agent-python-specialist",
+        "agent-api-specialist",
+        "agent-dba",
+        "agent-backend-dev",
+        "agent-ui-ux-advisor",
+        "agent-frontend-dev",
+        "agent-bash-specialist",
+        "agent-infrastructure-specialist",
+        "agent-devops",
+        "agent-github-specialist",
+        "agent-digital-security",
+        "agent-compliance-governance",
+        "agent-artifact-builder",
+        "agent-qa-sdet",
+        "agent-ai-llm-rag-dag-mcp-roster-master-specialist",
+        "agent-art-communication-marketing-pr-specialist",
+        "agent-cobit-specialist",
+        "agent-copyright-specialist",
+        "agent-docker-specialist",
+        "agent-iso-26514-specialist",
+        "agent-itil-specialist",
+        "agent-quality-architect-specialist",
+        "agent-six-sigma-specialist",
+        "agent-sldc-process-specialist",
+        "agent-sddai-loader",
+        "agent-sddai-engineer",
+        "agent-sddai-trainer",
+        "agent-sddai-memory",
+        "agent-sddai-cli",
+    ],
+    "L3": [
+        "agent-reviewer",
+        "agent-gatekeeper",
+        "agent-project-auditor",
+        "agent-clean-code-evaluator",
+    ],
     "META": ["agent-skill-master", "agent-factory-architect-ultimate"],
     "FORGE-LEGACY": ["agent-factory-architect"],
 }
@@ -61,6 +88,7 @@ KNOWN_SLUGS = {a for members in AGENT_TOPOLOGY.values() for a in members}
 # ---------------------------------------------------------------------------
 # Fixtures
 # ---------------------------------------------------------------------------
+
 
 @pytest.fixture
 def registry_data():
@@ -78,6 +106,7 @@ def agents_list(registry_data):
 # ---------------------------------------------------------------------------
 # 1. registry.yaml SSOT — estrutura e parsing
 # ---------------------------------------------------------------------------
+
 
 def test_registry_yaml_parses(registry_data):
     """registry.yaml deve ser YAML válido e parseável (fail-closed se corrompo)."""
@@ -105,6 +134,7 @@ def test_registry_slug_rule(registry_data):
 # 2. Slugs — existência, naming, substituição legacy
 # ---------------------------------------------------------------------------
 
+
 def test_agent_nexus_prime_ultimate_slug_exists(agents_list):
     """agent-nexus-prime-ultimate deve existir no registry (substitui agent-orchestrator)."""
     slugs = [a["name"] for a in agents_list]
@@ -124,6 +154,7 @@ def test_agent_orchestrator_slug_removed(agents_list):
 def test_all_slugs_kebab_case(agents_list):
     """Todos os nomes de agente devem seguir kebab-case com prefixo agent-."""
     import re
+
     slug_re = re.compile(r"^agent-[a-z0-9]+(-[a-z0-9]+)*$")
     for a in agents_list:
         name = a["name"]
@@ -154,10 +185,13 @@ def test_all_agents_have_required_keys(agents_list):
 # 3. Camadas e papéis — validade
 # ---------------------------------------------------------------------------
 
+
 def test_layers_valid(agents_list):
     """Todas as camadas devem ser válidas: L0|L1|L2|L3|META."""
     for a in agents_list:
-        assert a["layer"] in VALID_LAYERS, f"layer inválida em {a['name']}: {a['layer']!r}"
+        assert a["layer"] in VALID_LAYERS, (
+            f"layer inválida em {a['name']}: {a['layer']!r}"
+        )
 
 
 def test_roles_valid(agents_list):
@@ -176,19 +210,22 @@ def test_l0_exactly_one_orchestrator(agents_list):
 
 def test_layer_distribution_matches_topology(agents_list):
     """Todos os slugs do AGENT_TOPOLOGY devem existir no registry (subset check)."""
-    registry_layers = Counter(a["layer"] for a in agents_list if a["status"] != "legacy-forge")
+    registry_layers = Counter(
+        a["layer"] for a in agents_list if a["status"] != "legacy-forge"
+    )
     for layer, members in AGENT_TOPOLOGY.items():
         if layer == "FORGE-LEGACY":
             continue
         for slug in members:
-            assert any(a["name"] == slug and a["layer"] == layer for a in agents_list), (
-                f"slug {slug} (camada {layer}) do AGENT_TOPOLOGY ausente no registry"
-            )
+            assert any(
+                a["name"] == slug and a["layer"] == layer for a in agents_list
+            ), f"slug {slug} (camada {layer}) do AGENT_TOPOLOGY ausente no registry"
 
 
 # ---------------------------------------------------------------------------
 # 4. DAG — aciclicidade, sem auto-referência, referências conhecidas
 # ---------------------------------------------------------------------------
+
 
 def test_no_self_references(agents_list):
     """Nenhum agente deve referenciar a si mesmo em upstream ou downstream."""
@@ -218,7 +255,7 @@ def test_all_references_point_to_known_slugs(agents_list):
     for a in agents_list:
         name = a["name"]
         for ref_key in ("upstream", "downstream"):
-            for ref in (a.get(ref_key) or []):
+            for ref in a.get(ref_key) or []:
                 assert ref in known, (
                     f"{name}: {ref_key} referencia slug desconhecido: {ref}"
                 )
@@ -255,6 +292,7 @@ def test_dag_has_no_cycles(agents_list):
 # 5. Ordenação de camadas — upstream não deve estar em camada posterior
 # ---------------------------------------------------------------------------
 
+
 def test_layer_upstream_ordering(agents_list):
     """Upstream de um agente não deve estar em camada posterior (recomendação, não bloqueio).
     Same-layer ou anterior é aceitável; camada posterior gera warning."""
@@ -266,7 +304,7 @@ def test_layer_upstream_ordering(agents_list):
         layer = a["layer"]
         if layer == "L0":
             continue
-        for upstream in (a.get("upstream") or []):
+        for upstream in a.get("upstream") or []:
             up_layer = layer_of.get(upstream)
             if up_layer is None:
                 continue
@@ -282,6 +320,7 @@ def test_layer_upstream_ordering(agents_list):
 # ---------------------------------------------------------------------------
 # 6. Scripts de validação — saída verde
 # ---------------------------------------------------------------------------
+
 
 def _parse_json_from_output(stdout: str) -> dict:
     """Extrai o objeto JSON de uma saída que pode conter texto após o JSON."""
@@ -302,12 +341,12 @@ def test_dag_validator_green():
     """dag_validator.py deve reportar topologia válida (sem erros)."""
     result = subprocess.run(
         [sys.executable, "scripts/dag_validator.py"],
-        cwd=REPO_ROOT, capture_output=True, text=True,
+        cwd=REPO_ROOT,
+        capture_output=True,
+        text=True,
     )
     report = _parse_json_from_output(result.stdout)
-    assert report["topologia_valida"] is True, (
-        f"DAG inválida: {report['erros']}"
-    )
+    assert report["topologia_valida"] is True, f"DAG inválida: {report['erros']}"
     assert report["erros"] == [], f"Erros na DAG: {report['erros']}"
 
 
@@ -315,7 +354,9 @@ def test_validate_nexus_yaml_green():
     """validate_nexus_yaml.py deve validar todos os agentes sem erro."""
     result = subprocess.run(
         [sys.executable, "scripts/validate_nexus_yaml.py"],
-        cwd=REPO_ROOT, capture_output=True, text=True,
+        cwd=REPO_ROOT,
+        capture_output=True,
+        text=True,
     )
     report = _parse_json_from_output(result.stdout)
     assert report["rejeitados"] == 0, (
@@ -327,6 +368,7 @@ def test_validate_nexus_yaml_green():
 # ---------------------------------------------------------------------------
 # 7. Conformidade constitucional — FOSS-first, LGPD, CPU-only
 # ---------------------------------------------------------------------------
+
 
 def test_constitutional_no_cuda_cloud_inference(agents_list):
     """Nenhum agente deve promover CUDA ou cloud inference (Art. P-02 — CPU-only forever)."""
@@ -346,8 +388,9 @@ def test_constitutional_no_cuda_cloud_inference(agents_list):
 
 def test_infrastructure_agents_cpu_only(agents_list):
     """Agentes de infraestrutura (llama.cpp, runtime) não devem promover CUDA/cloud sem restrição local."""
-    infra = [a for a in agents_list
-             if "infrastructure" in a["name"] or "bash" in a["name"]]
+    infra = [
+        a for a in agents_list if "infrastructure" in a["name"] or "bash" in a["name"]
+    ]
     for a in infra:
         desc = (a.get("description") or "").lower()
         # Se menciona CUDA ou cloud, deve ter restrição CPU-only/local
@@ -360,6 +403,7 @@ def test_infrastructure_agents_cpu_only(agents_list):
 # ---------------------------------------------------------------------------
 # 8. Handoff e dispatcher — schemas e existência de scripts
 # ---------------------------------------------------------------------------
+
 
 def test_dispatcher_script_exists():
     """scripts/nexus_dispatcher.py deve existir como gate de despacho."""
@@ -385,6 +429,7 @@ def test_validate_nexus_yaml_script_exists():
 # 9. Status — apenas promulgado ou legacy-forge aceitos
 # ---------------------------------------------------------------------------
 
+
 def test_agent_statuses_valid(agents_list):
     """Status deve ser 'promulgado', 'legacy-forge' ou 'rejeitado'."""
     for a in agents_list:
@@ -406,6 +451,7 @@ def test_legacy_forge_only_factory_architects(agents_list):
 # 10. Consistência registry.yaml ↔ frontmatter dos .md
 # ---------------------------------------------------------------------------
 
+
 def test_registry_matches_agent_frontmatter():
     """registry.yaml deve estar sincronizado com o frontmatter dos .opencode/agents/*.md.
     Agentes legacy-forge (sem frontmatter) são tolerados."""
@@ -414,7 +460,9 @@ def test_registry_matches_agent_frontmatter():
 
     registry_data = yaml.safe_load(open(REGISTRY_PATH))
     registry_names = {a["name"] for a in registry_data["agents"]}
-    registry_legacy = {a["name"] for a in registry_data["agents"] if a.get("status") == "legacy-forge"}
+    registry_legacy = {
+        a["name"] for a in registry_data["agents"] if a.get("status") == "legacy-forge"
+    }
 
     md_names = set()
     for f in md_files:
@@ -435,7 +483,9 @@ def test_registry_matches_agent_frontmatter():
 
     # Todo agente promulgado no registry deve ter arquivo .md correspondente
     missing_md = (registry_names - registry_legacy) - md_names
-    assert not missing_md, f"Agentes promulgados no registry sem arquivo .md: {missing_md}"
+    assert not missing_md, (
+        f"Agentes promulgados no registry sem arquivo .md: {missing_md}"
+    )
 
     # Todo arquivo .md com frontmatter deve estar no registry
     missing_registry = md_names - registry_names
