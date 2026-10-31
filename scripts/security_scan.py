@@ -80,7 +80,8 @@ def scan_file(path: Path) -> dict:
         # else: agente fora da topologia - nao avaliar
 
     # fail-closed: apenas agentes na topologia caninca sao obrigados a declarar
-    if not FAIL_CLOSED_RE.search(lower) and in_topology:
+    # Agentes legacy-forge (Art. 4.8) estao fora do escopo do gate
+    if not FAIL_CLOSED_RE.search(lower) and in_topology and not LEGACY_SLUG_RE.search(path.stem):
         rep["warnings"].append("FAIL-CLOSED não encontrado explicitamente")
 
     # frontmatter valido
