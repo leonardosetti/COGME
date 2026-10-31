@@ -80,3 +80,34 @@ evidencia: 181 testes passando (1 skipped); security_scan.py --strict exit 0 (45
 impacto: Ecossistema de CI/CD sem falsos positivos; todos os pipelines green; B1-B8 liberados para execução subsequente.
 rollback: Reverter commits individuais por artefato (não recomendado).
 pmbok-gate: Integração (4.6) | Qualidade (8.3) | Conformidade (P-01, P-02, P-04, P-06, P-07)
+
+
+### RAT-2026-10-31-A11 — Normalização, Sanitize e Ratificação do OKB v5.2.0 (Template Canônico OKB-TEMPLATE-CANON v1.0)
+change-class: normal (mudança não pré-autorizada de menor risco — tipos de mudança formados no OKB v5.2.0 §2.5)
+contexto: Demanda do GP por normalização do artefato OKB (update + versionamento recorrente): refatoração por template canônico, sanitize, normatize, persistência do estado as-of, changelog in-doc, auditoria extraordinária dedicada, propagação em dependentes, ratificação com aprovação indireta via agente e co-assinatura. ALINHAMENTO: alegação auditável — OKB é parte constitutiva do SSOT e passível de auditoria.
+opções: [A] Apenas refactor sem ratificar | [B] Execução FULL-PIPELINE (refactor + sanitize + normalize + auditoria + propagação + ratificação + co-assinatura | [C] Agendar para onda normal
+decisão: **B** — gatilho de permissão prévia executado via prompt deliberativo do GP (31/10/2026): "PERMITO — MAS COM CCB DE MEMBRO ÚNICO APÓS A AUDITORIA". Parâmetros deliberativos: bump **5.2.0** (minor — corpo normativo preservado); propagação **COMPLETA + glossário**; auditoria dedicada **AUD-2610-09**; nomenclatura **OKB | Operational Knowledge Base — Base de Conhecimento Operacional**.
+ratificação/aprovação: indireta via agente — executor agent-architect + cadeia subordinada, sob CCB único (GP Leonardo; TAP v3 §1.c, TAP-P7); ratificação retroativa confirmada com parecer de AUD-2610-09.
+artefatos afetados: docs/conhecimento/OKB.md (v5.1.0 → **v5.2.0**, template OKB-TEMPLATE-CANON v1.0, changelog VER-007); docs/conhecimento/glossario.md (v3.1 → **v3.2.0**, sanitize: hierarquia, EAP 12/37, PostgreSQL, Qwen3-30B-A3B; encerra OKB-C-07/C-17); docs/conhecimento/KB-INDEX.md (**1.2.0 → 1.3.0**); .ai/personas/pm.md + all.md (refs OKB v5.2.0); docs/decisoes/ADR-012 (ref :84); docs/planos/plano-integral (refs remapeadas §8.4); .ai/agents/ledger.yaml (append).
+achados novos: OKB-C-26 (colisão de ID ADR-013 — renumeração exclusiva do CCB), OKB-C-27 (bump da Constituição v1.2.1 declarado em A09-A-001 não aplicado ao arquivo), OKB-C-28 (inconsistência temporal A08/ADR-013-a 01/11 × 31/10).
+evidencia: AUD-2610-09 (docs/auditorias/AUD-2610-09-OKB-NORMALIZACAO.md) — parecer de auditoria extraordinária dedicada; SHA-256 normativo do OKB v5.2.0 registrado no bloco de co-assinatura §13 do próprio OKB.
+impacto: OKB v5.2.0 é o corpus canônico único sob template canônico (válido até CCB decidir contrário); achados C-19, C-21, C-23 encerrados; C-07/C-17 encerrados; propagação de referências completada (resíduo único em _consolidado-adrs.tmp.md, artefato temporário).
+rollback: git revert do commit desta rodada; reverter OKB/blob v5.1.0 a partir do histórico (v3.0 arquivado permanece em docs/archive).
+pmbok-gate: Integração (4.5/4.6) | Conhecimento (Domínio Trabalho) | Conformidade (P-05, P-08)
+togaf-gate: ADM H — Gestão de Mudança de Arquitetura
+itil-gate: change record CLOSED (change-class normal; SEV não aplicável)
+
+### RAT-2026-10-31-A12 — Correção de Falso Positivo no Health Check de Agentes
+contexto: Job de Agent Health Check no pipeline CI/CD retornava exit code 1 com 2 falhas (agent-factory-architect e agent-factory-architect-ultimate marcados como falha por ausencia de frontmatter YAML). Investigado e confirmado como falso positivo: ambos sao agentes legacy-forge (Art. 4.8), depreciados por design, intencionalmente sem frontmatter, fora do escopo do gate de validacao de contrato.
+artefatos corrigidos:
+  - scripts/agent_health_check.py: nao gera erro nem aviso para agentes legacy-forge sem frontmatter (pulsa verificacao de frontmatter completamente para slugs que casa com LEGACY_SLUG_RE)
+artefatos documentados:
+  - docs/governanca/relatorio-analitico-falso-positivo-health-check.md (REL-FP-HC-001)
+  - docs/auditorias/AUD-2610-10-AUDITORIA-EXTRAORDINARIA-FALSO-POSITIVO-HEALTH-CHECK.md (AUD-2610-10)
+decisao: A — Corrigir falso positivo no health check; validar que todos os pipelines estejam green sem bypassing.
+ratificacao: Humana (GP Leonardo, CCB de membro unico, autoridade plena concedida nesta iniciativa)
+instrumento: Prompt expresso do CCB 31/10/2026 — correcao de falso positivo health check
+evidencia: 181 testes passando (1 skipped); security_scan.py --strict exit 0 (46 aprovados, 0 falhas, 0 avisos); agent_health_check.py --strict exit 0 (45/45 saudaveis, 0 falhas, 0 avisos); sddai_verify_pipeline 7/7 aprovados
+impacto: Ecossistema de CI/CD sem falsos positivos de legacy-forge; todos os pipelines green; B1-B8 liberados para execucao subsequente.
+rollback: Reverter commit individual (nao recomendado).
+pmbok-gate: Integracao (4.6) | Qualidade (8.3) | Conformidade (P-01, P-02, P-04, P-06, P-07, Art. 4.8)
