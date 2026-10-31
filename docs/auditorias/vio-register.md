@@ -37,3 +37,21 @@ caveats:
 **Nota de custódia (append-only conforme método):** primeira materialização do registro em FS em 2026-10-23 (AUD-2610-02). Entradas anteriores viviam somente no ledger (TA-0010). Nada é reescrito; correções futuras = linhas novas.
 
 **Addenda de materialização (2026-10-25, AUD-2610-04 / TA-0005):** VIO-006..VIO-012 registrados na auditoria de fechamento Art. 9.1 da onda WS-1/WS-2/WS-3 (parecer `docs/auditorias/AUD-2610-04.md`). NENHUM VIO fechado nesta operação — casos de kill switch (VIO-006, VIO-009) só o Humano encerra (persona §0.2; Art. 5.1). Atribuições de autoria dos eventos destrutivos permanecem "não-atribuído" enquanto o ledger truncado (VIO-009) não for reconstruído; se a reconstrução mudar alguma atribuição, registrar em linha nova (nunca editar as existentes).
+
+**Addenda de ratificação (2026-10-31, AUD-2610-07 / TA-900):** Novas violações detectadas na rodada de ratificação e promulgação de artefatos. Scripts do ecossistema não retornam JSON estruturado, quebrando contratos de teste e half-duplex.
+
+| VIO-013 | 2026-10-31 | scripts/nexus_dispatcher.py | P-05 (traces) — output não é JSON estruturado | `tests/agents/test_onda5_agents.py` JSONDecodeError em `test_nexus_contract` (5 agentes L2: infrastructure-specialist, devops, github-specialist, digital-security, compliance-governance) | ABERTO |
+| VIO-014 | 2026-10-31 | scripts/nexus_dispatcher.py | P-05 (traces) — output não é JSON estruturado | `tests/agents/test_onda6_agents.py` JSONDecodeError em `test_nexus_contract` (4 agentes L3: qa-sdet, reviewer, gatekeeper, project-auditor) | ABERTO |
+| VIO-015 | 2026-10-31 | scripts/nexus_dispatcher.py | P-05 (traces) — output não é JSON estruturado | `tests/agents/test_onda7_agents.py` JSONDecodeError em `test_nexus_contract` (3 agentes: docker-specialist, artifact-builder, skill-master) | ABERTO |
+| VIO-016 | 2026-10-31 | scripts/validate_nexus_yaml.py | P-05 (traces) — não imprime JSON report | `tests/validation/test_nexus_yaml.py` KeyError: 'reports' em 7 testes de contrato | ABERTO |
+| VIO-017 | 2026-10-31 | tests/agents/test_validate_nexus_yaml.py | P-06 (qualidade) — teste falha por módulo não encontrado | `ModuleNotFoundError: No module named 'validate_nexus_yaml'` (teste de scaffold real) | ABERTO |
+| VIO-018 | 2026-10-31 | scripts/nexus_dispatcher.py | P-06 (qualidade) — cobertura de contrato não verificável | Nenhuma saída JSON para validação de envelopes half-duplex | ABERTO |
+| VIO-019 | 2026-10-31 | Ecossistema L1/L2/L3 | Art. 4.7 (gate de forja) — score não verificado | Agentes SDDAI e demais L2 sem score `validate_afa_output.py` ≥ 85/100 | ABERTO |
+| VIO-020 | 2026-10-31 | tests/agents/test_onda5_agents.py | P-06 — contrato half-duplex não implementado | 5 agentes L2 não retornam parcela estruturada com `dod` | ABERTO |
+| VIO-021 | 2026-10-31 | tests/agents/test_onda6_agents.py | P-06 — contrato half-duplex não implementado | 4 agentes L3 não retornam parcela estruturada com `dod` | ABERTO |
+| VIO-022 | 2026-10-31 | tests/agents/test_onda7_agents.py | P-06 — contrato half-duplex não implementado | 3 agentes L2/META não retornam parcela estruturada com `dod` | ABERTO |
+| VIO-023 | 2026-10-31 | scripts/dag_validator.py | P-05 — saída JSON pode não conter campo `reports` | Saída JSON válida mas sem campo esperado por testes de validação | ABERTO |
+| VIO-024 | 2026-10-31 | scripts/agent_health_check.py | P-05 — não verificado nesta rodada | Não executado; status de saúde dos agentes não registrado | ABERTO |
+| VIO-025 | 2026-10-31 | scripts/handoff_parser.py | P-05 — não verificado nesta rodada | Não executado; parsing de handoffs não validado | ABERTO |
+
+**Nota de custódia:** Entradas adicionadas em 31/10/2026 por NEXUS-PRIME ULTIMATE (L0) sob autoridade plena do GP/CCB. Nada é reescrito; correções futuras = linhas novas.

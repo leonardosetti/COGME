@@ -20,3 +20,31 @@ evidência: Criação de `docs/decisoes/ADR-013-regime-emenda-tap.md` e autoriza
 impacto: TAP torna-se baseline vivo com núcleo blindado; eliminação de 8h de retrabalho de bifurcação.
 rollback: Reverter commit da ADR-013 e restaurar freeze absoluto da ADR-005 (não recomendado).
 pmbok-gate: Integração (4.6) | togaf-gate: ADM-H (Change Management) | itil-gate: normal change.
+
+### RAT-2026-10-31-A09 — Ratificação e Promulgação de Artefatos COGME (Rodada de Governança)
+contexto: Rodada de validação, auditoria, ratificação e promulgação de artefatos componentes do projeto COGME, conforme Constitution v1.2.1 (Art. 5.1, 5.2, 5.4) e Art. 9.1. Autoridade plena concedida pelo GP/CCB para execução do circuito de governança.
+artefatos ratificados:
+  - A-001: constitution.md v1.2.1 (lei suprema, sanitizada, co-assinatura atualizada)
+  - A-002: docs/decisoes/ADR-013-regime-emenda-tap.md (Regime de Emenda Controlada do TAP)
+  - A-003: docs/decisoes/ADR-013-SDDAI-Promulgacao.md (Promulgação agentes SDDAI + gaps G-01/G-02/G-03)
+  - A-004: docs/governanca/ccb-log.md (registro CCB, esta entrada inclusiva)
+  - A-005: docs/governanca/ratificacao-promulgacao.md (registro de ratificação v1.2.0)
+  - A-006: docs/metricas/baseline.md (baseline seed SIMULADO, OKB-C-08/16)
+  - A-007: docs/conhecimento/Canon_Stack_SDD.md (Canon Stack SDD v2.0.0)
+  - A-009: docs/analise/RELATORIO_MEMORIA_PERSISTENTE_SDDAI.md
+  - A-010: docs/evidencias/RELATORIO_TESTES_SDDAI.md
+  - A-011: docs/governance/council-notification.md
+  - A-012: docs/operacao/SDDAI_VERIFY_PIPELINE.md
+  - A-013: docs/verification/cycle-2026-10-30-archive.md
+  - A-014: ledger.yaml (SSOT operacional, Art. 4.10)
+  - A-015: scripts/sddai_verify_pipeline.py
+  - A-016: tests/agents/test_sddai_components.py
+artefato em draft (não promulgado):
+  - A-008: docs/conhecimento/drafts/extracao-modular+normalizacao-documental-do-plano-de-projeto-COGME.md (rascunho fonte PED-003)
+decisao: A — Promulgar todos os artefatos listados acima; manter A-008 em draft.
+ratificacao: Humana (GP Leonardo, CCB de membro único, autoridade plena concedida nesta rodada)
+instrumento: Prompt expresso do CCB 31/10/2026 — rodadas de ratificação e promulgação
+evidencia: Commits efetuados para cada artefato; SHA-256 e hash do commit registrados no bloco CO-ASSINATURA da constitution.md para A-001; commits individuais para A-002 a A-016.
+impacto: Todos os artefatos componentes passam a ter status promulgado/ratificado; ecossistema de agentes com 46 promulgados; B0 fechado; B1-B8 liberados.
+rollback: Reverter commits individuais por artefato (não recomendado; uso apenas em caso de impugnação formal).
+pmbok-gate: Integração (4.6) | Qualidade (8.3) | Conformidade (P-05, P-06)

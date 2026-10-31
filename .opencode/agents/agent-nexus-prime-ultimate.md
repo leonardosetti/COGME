@@ -236,4 +236,3 @@ Format MAJOR.MINOR.PATCH.
 Next: 1.4.0 after first production wave audit by agent-project-auditor.
 
 ---
- <!-- @bypass SPEC-COGME-001: Initial ultimatesetup | exit: registry_integration | deadline: 2026-12-31 -->
