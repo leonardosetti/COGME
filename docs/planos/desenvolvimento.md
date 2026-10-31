@@ -224,4 +224,4 @@ Fonte: Elaborado pelos autores (2026), com base no TAP (Tabela 2).
 
 | Versão | Data | Alteração | Responsável |
 | --- | --- | --- | --- |
-| 1.0 | 25/10/2026 | Emissão inicial | [A CONFIRMAR] |
+| 1.0 | 25/10/2026 | Emissão inicial | Edson Luis Silva |

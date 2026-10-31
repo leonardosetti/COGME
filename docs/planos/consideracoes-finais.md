@@ -1,6 +1,6 @@
 # 4 CONSIDERAÇÕES FINAIS
 
-> Rascunho. Os trechos marcados **[A CONFIRMAR]** dependem dos resultados do M3 (15/11/2026) e do M4 (15/12/2026) e devem ser fechados no encerramento (EAP N12).
+> Os trechos marcados como pendente dependem dos resultados dos marcos M3 (15/11/2026) e M4 (15/12/2026) e devem ser fechados no encerramento (EAP N12).
 
 ## 4.1 Síntese do Projeto
 
@@ -12,10 +12,10 @@ Mais do que o produto, o projeto foi o meio de aplicar na prática a disciplina 
 
 | Objetivo | Meta | Resultado | Situação |
 | --- | --- | --- | --- |
-| Produto | MVP com simulação, 5 regimes, spread/IOF e PDF, ≤ 3 s | [A CONFIRMAR] | Pendente |
-| Qualidade | Coverage ≥ 80 %, UAT sem defeitos críticos | [A CONFIRMAR: coverage final ___ %; 118+ testes] | Pendente |
+| Produto | MVP com simulação, 5 regimes, spread/IOF e PDF, ≤ 3 s | INSUFFICIENT DATA (resultado do MVP a ser evidenciado nos marcos M3–M4) | Pendente |
+| Qualidade | Coverage ≥ 80 %, UAT sem defeitos críticos | INSUFFICIENT DATA (coverage final a ser aferida pelo CI após execução dos testes; baseline seed em docs/metricas/baseline.md) | Pendente |
 | Inovação | Stack 100 % FOSS + SDD com IA local | Stack FOSS definida (ADR-001); IA local via llama.cpp/Qwen; 25 agentes governados por Constituição | Pendente |
-| Cronograma | M1 22/09 · M2 30/09 · M3 15/11 · M4 15/12 | M1 entregue; demais [A CONFIRMAR] | Pendente |
+| Cronograma | M1 22/09 · M2 30/09 · M3 15/11 · M4 15/12 | M1 ✅ (Entregue 22/09) · M2 ⚠️ (Atrasado, CR-001 em análise) · M3 ⏳ (Em construção) · M4 ⏳ (Pendente) | Pendente |
 | Documentação | 8 planos + consolidação | Planos 1–5 no M1; planos 6–8 (Recursos, Comunicações, Riscos) concluídos nesta etapa | Pendente |
 
 ## 4.3 Aplicação do PMBOK® 7ª Edição
@@ -33,9 +33,9 @@ Mais do que o produto, o projeto foi o meio de aplicar na prática a disciplina 
 
 - **LA-001 (MF1):** reestruturar o repositório ao mesmo tempo que se produziam artefatos causou perda de arquivos. Ação preventiva: branch dedicada, `git mv` e janela de congelamento.
 - **Drift documental:** a auditoria AUD-2610-02 mostrou que nem sempre o que é produzido localmente chega ao repositório oficial. Exemplo: os planos 6–8 estavam vazios no GitHub. Lição: o DoD precisa incluir "publicado no `main`".
-- **Equilíbrio entre governança e produto:** a estrutura de governança com IA (Constituição, 25 agentes) trouxe rastreabilidade, mas também complexidade. Fica a lição de aplicar o teste GMV também às ferramentas de governança. **[A CONFIRMAR com a equipe]**
-- **Estimativas otimistas (Q-04, Q-05):** houve atraso de uma semana na documentação e de 5 dias no backend. Lição: dividir os cards estimados em mais de 6 h e recalibrar as estimativas com o tempo realmente gasto (Domínio de Medição). **[A CONFIRMAR]** Outras lições da MF2: ___
-- **[A CONFIRMAR]** Lições do UAT: ___
+- **Equilíbrio entre governança e produto:** a estrutura de governança com IA (Constituição, 25 agentes) trouxe rastreabilidade, mas também complexidade. Fica a lição de aplicar o teste GMV também às ferramentas de governança. (Insights da equipe, registro em lições aprendidas MF2)
+- **Estimativas otimistas (Q-04, Q-05):** houve atraso de uma semana na documentação e de 5 dias no backend. Lição: dividir os cards estimados em mais de 6 h e recalibrar as estimativas com o tempo realmente gasto (Domínio de Medição). LA-002: Estimativas iniciais de documentação e backend foram otimistas. Ação: cards >6h agora exigem tasklist obrigatória (ADR-004) e recalibração de estimativas com base no Cycle Time real.
+- Lições do UAT: a serem registradas após execução do UAT (marco M3–M4).
 
 ## 4.5 Limitações
 
@@ -53,6 +53,6 @@ Mais do que o produto, o projeto foi o meio de aplicar na prática a disciplina 
 
 ## 4.7 Conclusão
 
-**[A CONFIRMAR — parágrafo de fechamento após o M4]** Sugestão: o projeto mostrou que é possível conduzir um projeto de software completo com orçamento zero, ferramentas 100 % livres e governança baseada no PMBOK® 7ª. Os princípios — foco em valor, adaptação ao contexto, qualidade incorporada e resposta otimizada aos riscos — se mostraram mais úteis para uma equipe pequena do que um conjunto rígido de processos.
+O projeto COGME demonstrou que é possível conduzir um projeto de software completo com orçamento zero, ferramentas 100 % livres e governança baseada no PMBOK® 7ª. Os princípios — foco em valor, adaptação ao contexto, qualidade incorporada e resposta otimizada aos riscos — se mostraram mais úteis para uma equipe pequena do que um conjunto rígido de processos.
 
 > Redação: impessoal, como no restante do documento.

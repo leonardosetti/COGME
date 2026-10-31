@@ -54,7 +54,7 @@ Fonte: Elaborado pelos autores (2026).
 **Divisão das áreas 6–8:** Edson Luis Silva gerencia os **Recursos** do projeto Fabricio de Lima Cabral registra as **Comunicações** e Leonardo David Silva Setti (GP) é responsável pelos **Riscos**.
 
 **Capacidade da equipe:** 3 membros × 20 h = **60 h/semana** no máximo. WIP máximo em fluxo = 3 cards × 3 pessoas = **9 cards**.
-**[A CONFIRMAR]** Baseline real da calibração (03/10/2026): Cycle Time médio = ___ dias; Throughput médio = ___ cards/semana; horas médias declaradas = ___ h/pessoa.
+INSUFFICIENT DATA (OKB-C-08/16). Baseline estabelecido via seed simulado (ver docs/metricas/baseline.md). Recalibração empírica prevista para 08/11/2026.
 
 ### 2.6.1.4 Recursos Tecnológicos e Físicos (Plano de Recursos Tecnológicos — Premissas P2 e P6)
 

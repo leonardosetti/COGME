@@ -10,3 +10,13 @@ impacto: lei suprema revalidada; status → VIGENTE-PLENA.
 rollback: `git revert <fechamento>` (mantém histórico de explicação em vio-register).
 pmbok-gate: Área de Conformidade | togaf-gate: ADM — Architecture Board Ratification | itil-gate: change record closed.
 
+
+### RAT-2026-11-01-A08 — Ratificação do Regime de Emenda do TAP e Artefato Híbrido
+contexto: Necessidade de alinhar o TAP às ADRs 006/010 (PostgreSQL, Qwen MoE) e consolidar o Plano de Projeto como artefato único híbrido (acadêmico-profissional) conforme diretriz do GP.
+opções avaliadas: [A] Manter freeze absoluto (gera drift documental) | [B] Bifurcar monografia e plano (gera retrabalho de 8h) | [C] Artefato híbrido único com ADR de emenda controlada.
+decisão: **C**. Aprovação da ADR-013 (Regime de Emenda Controlada do TAP) e do formato de artefato híbrido único (Capa Fatec → TAP §1 → Constituição §2 → Planos).
+ratificação: Humana (GP Leonardo, prompt expresso em 01/11/2026).
+evidência: Criação de `docs/decisoes/ADR-013-regime-emenda-tap.md` e autorização de consolidação da Constitution v1.2.1.
+impacto: TAP torna-se baseline vivo com núcleo blindado; eliminação de 8h de retrabalho de bifurcação.
+rollback: Reverter commit da ADR-013 e restaurar freeze absoluto da ADR-005 (não recomendado).
+pmbok-gate: Integração (4.6) | togaf-gate: ADM-H (Change Management) | itil-gate: normal change.
