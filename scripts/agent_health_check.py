@@ -5,15 +5,15 @@ Verifica:
   - Presenca de arquivo .opencode/agents/<slug>.md para cada slug do AGENT_TOPOLOGY
   - Frontmatter YAML valido (5 chaves) via validate_nexus_yaml
   - Promulgacao no .ai/agents/registry.yaml (status promulgado/legacy-forge)
-  - Score de forja >= 85 via validate_afa_output (quando aplicavel)
   - Drift entre topologia, disco e registry
 
 Fail-closed: qualquer slug ausente na topologia ou arquivo inexistente -> exit 1.
+Agentes legacy-forge (Art. 4.8) sao aceitos sem frontmatter (status legado, fora do escopo do gate).
 FOSS/stdlib apenas. 100% CPU-local, zero rede.
 
 Uso:
   python3 scripts/agent_health_check.py              # relatorio completo
-  python3 scripts/agent_health_check.py --strict     # exit 1 se qualquer falha
+  python3 scripts/agent_health_check.py --strict     # exit 1 se qualquer falha real
   python3 scripts/agent_health_check.py --report f.json
 """
 import argparse
@@ -24,6 +24,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from validate_nexus_yaml import (
     AGENT_TOPOLOGY, KNOWN_SLUGS, VECTORES_AGENCIA, parse_frontmatter, validate_agent,
+    LEGACY_SLUG_RE,
 )
 from sync_agent_registry import REGISTRY
 
@@ -64,7 +65,11 @@ def check_slug(slug: str, registry: dict) -> dict:
         rep["ok"] = False
         rep["errors"].extend(check["errors"])
     if fm_err:
-        rep["warnings"].append(fm_err)
+        # Agentes legacy-forge (Art. 4.8) nao exigem frontmatter; sao aceitos por design
+        if LEGACY_SLUG_RE.search(slug):
+            rep["warnings"].append(f"{fm_err} (aceito: agente legacy-forge, Art. 4.8)")
+        else:
+            rep["warnings"].append(fm_err)
 
     # 3) registry
     entry = registry.get(slug)
@@ -85,7 +90,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(
         description="Health check do ecossistema de agentes COGME")
     parser.add_argument("--strict", action="store_true",
-                        help="exit 1 se qualquer falha (civil para CI)")
+                        help="exit 1 se qualquer falha real (civil para CI)")
     parser.add_argument("--report", default=None, help="salva JSON do report")
     args = parser.parse_args()
 
