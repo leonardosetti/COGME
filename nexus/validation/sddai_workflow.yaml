@@ -7,4 +7,6 @@ sddai_validation:
         - preprocessing
         - model_training
   requirements:
-    tools: ['data_loader', 'feature_engineer', 'model_trainer']
+    tools: ['cogme-sddai-loader', 'cogme-sddai-engineer', 'cogme-sddai-trainer']
+    memory_tool: 'cogme-sddai-memory'
+    cli_entry: '.ai/sddai/sddai'

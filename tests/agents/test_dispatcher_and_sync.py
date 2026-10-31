@@ -117,7 +117,7 @@ class TestDispatcher:
         assert rc == 0
         assert rep["dag_totals"]["L0"] == 1
         assert rep["dag_totals"]["L1"] == 8   # 5 originais + business-analysis + project-design + project-patterns (TA-0016)
-        assert rep["dag_totals"]["L2"] == 25  # 24 + agent-agile-specialist (integração 30/10/2026, ratificada: contract L2 promulgado)
+        assert rep["dag_totals"]["L2"] == 29  # 24 + agent-agile-specialist + 5 SDDAI (loader, memory, engineer, trainer, cli)
         assert rep["dag_totals"]["L3"] == 4   # itens do portão: reviewer, gatekeeper, auditor + clean-code-evaluator (TA-0016)
         assert rep["missing_from_dag"] == []
 

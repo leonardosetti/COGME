@@ -436,6 +436,11 @@ agents:
   - agent-gatekeeper
   - agent-project-auditor
   - agent-skill-master
+  - agent-sddai-loader
+  - agent-sddai-engineer
+  - agent-sddai-trainer
+  - agent-sddai-memory
+  - agent-sddai-cli
 - file: .opencode/agents/agent-pm.md
   name: agent-pm
   version: 0.1.0
@@ -619,6 +624,77 @@ agents:
   - agent-docker-specialist
   - agent-reviewer
   - agent-gatekeeper
+- file: .opencode/agents/agent-sddai-cli.md
+  name: agent-sddai-cli
+  version: 1.0.0
+  layer: L2
+  role: specialist
+  description: COGME SDDAI CLI orchestrator specialist. Custom from zero, stdlib-only. Orchestrates loader
+    -> memory -> engineer -> trainer pipeline via subprocess. Zero external deps.
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+  - agent-sddai-loader
+  - agent-sddai-engineer
+  - agent-sddai-trainer
+  - agent-sddai-memory
+  downstream: []
+- file: .opencode/agents/agent-sddai-engineer.md
+  name: agent-sddai-engineer
+  version: 1.0.0
+  layer: L2
+  role: specialist
+  description: COGME SDDAI feature engineer specialist. Custom from zero, stdlib-only. Transforms ingested
+    data into structured features (word_count, char_count, unique_words, lexical_diversity). Zero external
+    deps.
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+  - agent-sddai-loader
+  - agent-sddai-memory
+  downstream:
+  - agent-sddai-trainer
+- file: .opencode/agents/agent-sddai-loader.md
+  name: agent-sddai-loader
+  version: 1.0.0
+  layer: L2
+  role: specialist
+  description: COGME SDDAI data loader specialist. Custom from zero, stdlib-only. Ingests input files,
+    computes sha256 checksum, returns structured metadata for downstream pipeline stages. Zero external
+    deps.
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+  - agent-sdd-specialist
+  downstream:
+  - agent-sddai-engineer
+  - agent-sddai-memory
+- file: .opencode/agents/agent-sddai-memory.md
+  name: agent-sddai-memory
+  version: 1.0.0
+  layer: L2
+  role: specialist
+  description: COGME SDDAI memory optimizer specialist. Custom from zero, stdlib-only. Monitors system
+    memory via /proc/meminfo, applies gc collection, recommends allocation. Zero external deps.
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+  - agent-sddai-loader
+  downstream:
+  - agent-sddai-engineer
+- file: .opencode/agents/agent-sddai-trainer.md
+  name: agent-sddai-trainer
+  version: 1.0.0
+  layer: L2
+  role: specialist
+  description: COGME SDDAI model trainer specialist. Custom from zero, stdlib-only. Trains deterministic
+    model on engineered features, returns model_id, final_loss, accuracy, artifact checksum. Zero external
+    deps.
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+  - agent-sddai-engineer
+  downstream: []
 - file: .opencode/agents/agent-six-sigma-specialist.md
   name: agent-six-sigma-specialist
   version: 0.1.0

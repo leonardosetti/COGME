@@ -97,7 +97,7 @@ def test_roster_complete_after_onda7():
     _, report = run(DISPATCH, "--report")
     assert report["missing_from_dag"] == [], report["missing_from_dag"]
     # TA-0016 (errata ratificada): arquivo typo da custódia de documentação arquivado em archive/; roster 41 -> 40
-    assert report["promulgados"] == 41  # 40 do plano (roster 41->40 TA-0016) + agent-agile-specialist (integração ratificada 30/10/2026)
+    assert report["promulgados"] == 46  # 41 do plano + 5 SDDAI (loader, memory, engineer, trainer, cli)
 
 
 def test_no_loose_ends_too_early():
@@ -111,7 +111,8 @@ def test_no_loose_ends_too_early():
     consumidores de suas entregas (downstream não-vazio). Terminais declarados
     (auditor, skill-master) e legacy-forge são isenções documentadas."""
     terminal = {"agent-project-auditor", "agent-skill-master",
-                "agent-factory-architect", "agent-factory-architect-ultimate"}
+                "agent-factory-architect", "agent-factory-architect-ultimate",
+                "agent-sddai-trainer", "agent-sddai-cli"}
     reg = yaml.safe_load((ROOT / ".ai" / "agents" / "registry.yaml")
                          .read_text(encoding="utf-8"))
     names = {a["name"] for a in reg["agents"]
