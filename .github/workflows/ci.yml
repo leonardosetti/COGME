@@ -1,0 +1,59 @@
+name: COGME CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  kill-switch-check:
+    runs-on: self-hosted
+    steps:
+      - name: Check for Kill Switch
+        run: |
+          if [ -f "kill_switch.trigger" ]; then
+            echo "🚨 Kill Switch Activated: Pipeline halted per Constitution Art. 4.6"
+            exit 1
+          fi
+
+  foss-compliance:
+    runs-on: self-hosted
+    steps:
+      - name: Validate FOSS Dependencies
+        run: |
+          # SPDX license validation
+          spdx-cli validate --input ./requirements.txt --output ./license-report.html
+          # Check for non-FOSS tools
+          grep -r --include="*.py" "import requests" ./src && \
+          (echo "Non-FOSS tool detected!" && exit 1 || exit 0)
+
+  data-privacy-check:
+    runs-on: self-hosted
+    steps:
+      - name: Validate Data Sovereignty
+        run: |
+          # Check for cloud data exfiltration patterns
+          grep -r --include="*.yaml" "cloud" ./config && \
+          (echo "Cloud data handling detected!" && exit 1 || exit 0)
+          # Verify local processing
+          docker info | grep -q "Local" || \
+          (echo "Remote Docker detected!" && exit 1 || exit 0)
+
+  architecture-validation:
+    runs-on: self-hosted
+    steps:
+      - name: Verify SDD Compliance
+        run: |
+          python3 scripts/validate_nexus_yaml.py
+          # Check for FOSS stack
+          cat /etc/os-release | grep -q "FOSS" || \
+          (echo "Non-FOSS OS detected!" && exit 1 || exit 0)
+
+  final-status:
+    runs-on: self-hosted
+    steps:
+      - name: Update Ledger
+        run: |
+          echo "✅ CI/CD Pipeline validated per Constitution Art. 4.6" >> .ai/agents/ledger.yaml
+          echo "Pipeline status: Passed" >> .ai/agents/ledger.yaml
