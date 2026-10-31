@@ -1,9 +1,9 @@
-# ADR-013 — Promulgação dos Agentes SDDAI e Resolução de Gaps de Compliance (Art. 4.1, 4.7, P-06)
+# ADR-014 — Promulgação dos Agentes SDDAI e Resolução de Gaps de Compliance (Art. 4.1, 4.7, P-06)
 
 | Campo | Valor |
 |---|---|
-| **Versão** | 1.0.0 |
-| **Status** | Ratificado (CCB 31/10/2026 — prompt expresso do GP) |
+| **Versão** | 1.0.1 |
+| **Status** | Ratificado (CCB 31/10/2026 — prompt expresso do GP) · Renumerado ADR-013 → ADR-014 (OKB-C-26 — RAT-2026-10-31-A12) |
 | **Data da decisão** | 31/10/2026 |
 | **Data de formalização do documento** | 31/10/2026 |
 | **Decisor** | GP Leonardo (CCB único — TAP v3 §1.c, Premissa P7) + NEXUS-PRIME ULTIMATE (L0 Orquestrador) |
@@ -37,7 +37,7 @@ Porém, a auditoria AUD-2610-05 identificou 3 gaps de compliance:
 |---|---|---|---|
 | O1 | Manter agentes como estão (sem gate, sem testes, sem ratificação) | Zero esforço adicional | Não conformes com Art. 4.7 e P-06; não podem ser considerados promulgados formalmente; risco de rejeição em auditoria subsequente |
 | O2 | Submeter todos os 5 agentes para re-forja por AFA-ULTIMATE canônico | Conformidade estrita com Art. 4.1 | AFA-ULTIMATE não está disponível como executável autônomo neste ecossistema; atrasa a entrega; contradiz autorização do Humano de autonomia total |
-| O3 | Criar ADR-013 ratificando o forjamento L0 sob autorização Humana, reescrever agentes com 16 seções canônicas para passar o gate, criar testes dedicados, executar gate e co-assinar | Resolve os 3 gaps; mantém autonomia autorizada; conformidade total com Constituição; rastreabilidade completa | Esforço de reescrita dos agentes e criação de testes |
+| O3 | Criar o ADR (numerado **ADR-014** nesta formalização; lançado como "ADR-013" na redação original de 31/10) ratificando o forjamento L0 sob autorização Humana, reescrever agentes com 16 seções canônicas para passar o gate, criar testes dedicados, executar gate e co-assinar | Resolve os 3 gaps; mantém autonomia autorizada; conformidade total com Constituição; rastreabilidade completa | Esforço de reescrita dos agentes e criação de testes |
 
 ## Decisão
 
@@ -84,7 +84,7 @@ Os testes serão integrados ao `sddai_verify_pipeline.py` (Passo 7).
 
 | Aspecto | Ganho | Perda/Risco | Mitigação |
 |-------|-------|-------------|-----------|
-| ADR-013 + co-assinatura | Conformidade formal com Art. 4.1; ratificação humana | Dependência de decisão Humana | Documentação clara da autorização prévia ("autonomia total de ação") |
+| ADR-014 + co-assinatura | Conformidade formal com Art. 4.1; ratificação humana | Dependência de decisão Humana | Documentação clara da autorização prévia ("autonomia total de ação") |
 | Reescrita dos agentes | Passagem no gate de forja (score ≥ 85) | Esforço de reescrita; risco de erro na reescrita | Execução de `validate_afa_output.py` após cada alteração |
 | Testes dedicados | Cobertura mensurada (P-06) | Manutenção contínua de testes | Integração ao pipeline de verificação existente |
 
@@ -103,7 +103,9 @@ Ao abortar: registrar em `audit_trail` do ledger e marcar `ccb_action_required: 
 - **Custódia:** `agent-nexus-prime-ultimate` (L0 orquestrador) + `agent-architect` (guardião da separação L1/L2/L3)
 - **Emenda:** mudança nos agentes SDDAI exige re-execução do gate de forja + atualização do ADR + CCB humano
 - **Auditoria:** `project-auditor` verifica conformidade dos agentes SDDAI a cada milestone
-- **Sucessão:** `registry.yaml` + `constitution.md` + ADR-013 bastam para reconstruir contexto
+- **Sucessão:** `registry.yaml` + `constitution.md` + ADR-014 bastam para reconstruir contexto
+
+**Nota de renumeração (OKB-C-26 — RAT-2026-10-31-A12):** este artefato foi emitido com o identificador "ADR-013" (colisão com a ADR de Regime de Emenda do TAP); renumerado para **ADR-014** por decisão do CCB de 31/10/2026. Versão 1.0.0 preservada como histórico; conteúdo normativo re-hasheado na linha 1.0.1 da tabela de co-assinatura.
 
 ---
 
@@ -112,6 +114,7 @@ Ao abortar: registrar em `audit_trail` do ledger e marcar `ccb_action_required: 
 | Versão | SHA-256 do conteúdo normativo | Commit Git | Data | Papel do ratificador humano | Instrumento |
 |--------|------------------------------|------------|------|----------------------------|-------------|
 | 1.0.0 | `48f3968897edd89d7441a200c765c7e3cf1fda6816de3018231b4183bd473e24` | `f6066829fcc3e63803ef5e213d87368c9c40c206` | 31/10/2026 | Gerente de Projeto — CCB de membro único | Promulgação dos agentes SDDAI via ADR-013 + prompt expresso CCB 31/10/2026 |
+| 1.0.1 | `ef53e1a6e30a313aba3f441c93181ba1c369acf486aa900e6ad049fc9beddec9` | commit A12 | 31/10/2026 | Gerente de Projeto — CCB de membro único | **Renumeração ADR-013 → ADR-014 (OKB-C-26, RAT-2026-10-31-A12)** — título, Versão 1.0.1, Status, O3, Governança e nota de renumeração atualizados; hash normativo recalculado (método: sha256 dos bytes do início do arquivo até a linha imediatamente anterior a este bloco `## CO-ASSINATURA`; o hash histórico 1.0.0 `48f39688…` foi gerado com fronteira não documentada e não é reproduzível por este método — preservado como registro histórico) |
 
 ---
 

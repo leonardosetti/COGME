@@ -204,7 +204,7 @@ O projeto utiliza documentação auxiliar de suporte à cobertura gerencial. Ava
 | Classe | Artefatos | Valor normativo | Uso nesta redação |
 | --- | --- | --- | --- |
 | Canônica — nível 1 (autorizativa) | TAP v3 (congelado em 18/09/2026) | Autorização e base de referência; não integra EAP nem PDCA (P9) | Reproduzido integralmente na Introdução |
-| Canônica — nível 2 (governança operacional) | OKB v3.1; Glossário v3.1; ADRs 001–004 (e ADR-005 quando emitida) | Definem mecanismos, vocabulário e decisões arquiteturais | Citados como fonte de mecanismos e termos |
+| Canônica — nível 2 (governança operacional) | OKB v5.2.0; Glossário v3.2.0; ADRs 001–013 | Definem mecanismos, vocabulário e decisões arquiteturais | Citados como fonte de mecanismos e termos |
 | Canônica — nível 3 (planos e registros) | Planos de Gerenciamento das Áreas 1–8 (este documento); requisitos; baseline de métricas (pós-03/10); lições aprendidas | Execução do escopo autorizado | Constituem o corpo desta redação |
 | Contextual (canônica por derivação) | Notas de Contexto (NC-00 a NC-06, NC-C1 a NC-C4, NC-Q1 a NC-Q5) | Registram a leitura operacional vigente do TAP congelado; divergências jamais são tratadas como correções do TAP | Mantidas nas seções 3, 4 e 5 |
 | Transitória / não canônica (desprezada) | Notas adjacentes; drafts em docs/conhecimento/drafts/; arquivos [legacy] e archive/; renderizações Mermaid (.mmd.png); temporários de editor | Nenhum valor normativo; suporte histórico de raciocínio | Não citadas; não fundamentam afirmações |
@@ -657,7 +657,7 @@ Emitido por: GP Sênior PMBOK 7ª/PMO (Co-Autor Crítico) · Data: 22/09/2026 ·
 
 ## R1. Escopo e cobertura da produção
 
-A redação integral do M1 cobre a Introdução (reprodução integral e não subnumerada do TAP: identificação, objetivos, justificativa, EAP com 12 fases e 37 pacotes, 15 requisitos, 4 marcos + milestone auxiliar, 9 premissas e 7 categorias de restrição) e as Áreas de Conhecimento 1 a 5 (Integração, Escopo, Cronograma, Custos, Qualidade), conforme delimitação da entrega faseada (Integração §1.7; OKB v3.1 §2.4). As Áreas 6 a 8 (Recursos, Comunicações, Riscos) estão formalmente diferidas para o M2 (30/09/2026), com justificativa de tailoring documentada. Cobertura declarada: 100% do escopo documental do M1.
+A redação integral do M1 cobre a Introdução (reprodução integral e não subnumerada do TAP: identificação, objetivos, justificativa, EAP com 12 fases e 37 pacotes, 15 requisitos, 4 marcos + milestone auxiliar, 9 premissas e 7 categorias de restrição) e as Áreas de Conhecimento 1 a 5 (Integração, Escopo, Cronograma, Custos, Qualidade), conforme delimitação da entrega faseada (Integração §1.7; OKB v5.2.0 §1.5). As Áreas 6 a 8 (Recursos, Comunicações, Riscos) estão formalmente diferidas para o M2 (30/09/2026), com justificativa de tailoring documentada. Cobertura declarada: 100% do escopo documental do M1.
 
 ## R2. Conformidade estrutural e ABNT
 
@@ -665,7 +665,7 @@ A redação integral do M1 cobre a Introdução (reprodução integral e não su
 
 ## R3. Rastreabilidade e coerência interna
 
-Cada seção possui tabela de rastreabilidade fechada (TAP → domínio PMBOK 7ª → processo PMBOK 6ª), com verificação declarada de 100%. Cadeia TAP → Escopo → EAP → Cronograma → Custos → Qualidade mantida sem quebras: a EAP canônica (12/37) é citada identicamente na Introdução, no Escopo (§2.4) e no Cronograma (§3.2); as datas M1–M4 + Calibração são idênticas no TAP §6, na Tabela 4, na Tabela 15 e no OKB v3.1 §7.2; a linha de base de custos R$ 0,00 é coerente entre TAP §11, Custos §4.2 e a matriz de dependências (Figura 14); as metas de qualidade (coverage ≥ 80%, UAT 100% fluxos críticos) são coerentes entre TAP §3.2, REQ-08/09, Qualidade §5.2 e o pipeline CI (§5.3).
+Cada seção possui tabela de rastreabilidade fechada (TAP → domínio PMBOK 7ª → processo PMBOK 6ª), com verificação declarada de 100%. Cadeia TAP → Escopo → EAP → Cronograma → Custos → Qualidade mantida sem quebras: a EAP canônica (12/37) é citada identicamente na Introdução, no Escopo (§2.4) e no Cronograma (§3.2); as datas M1–M4 + Calibração são idênticas no TAP §6, na Tabela 4, na Tabela 15 e no OKB v5.2.0 §3.2; a linha de base de custos R$ 0,00 é coerente entre TAP §11, Custos §4.2 e a matriz de dependências (Figura 14); as metas de qualidade (coverage ≥ 80%, UAT 100% fluxos críticos) são coerentes entre TAP §3.2, REQ-08/09, Qualidade §5.2 e o pipeline CI (§5.3).
 
 ## R4. Governança documental (avaliação da proposta da Seção 1.4)
 
@@ -678,11 +678,11 @@ A classificação normativa proposta (canônica níveis 1–3, contextual, trans
 | Dimensão | Estado | Evidência |
 | --- | --- | --- |
 | Escopo documental M1 | ✅ Concluído e submetido | 5 planos + Introdução + 12 PDCAs + 3 Ishikawa |
-| Backlog M1 (21 cards) | ✅ 13 concluídos / 8 diferidos conforme plano | OKB v3.1 §8.1 |
+| Backlog M1 (21 cards) | ✅ 13 concluídos / 8 diferidos conforme plano | OKB v5.2.0 §12 |
 | Carga da equipe | ✅ Dentro do limite (14h/13h/11h vs 20h) | NC-06; Premissa P5 |
 | Stack e ambiente | ✅ Configurados; ADR-001 em avaliação de impacto | M1-12, M1-13; NC-04 |
 | Métricas de fluxo | ⏳ Em calibração (23/09–03/10); sem meta fixa | ADR-003; Integração §1.5 |
-| Governança (ADRs) | ✅ 001–004 emitidas; ⏳ ADR-005 antes do M2 | OKB v3.1 §5 |
+| Governança (ADRs) | ✅ 001–004 emitidas; ⏳ ADR-005 antes do M2 | OKB v5.2.0 §2 |
 | Repositório | ⚠️ Normalização pendente pós-LA-001 | Seção R6 |
 | Riscos ativos | Monitorados (R1–R8 do guardrail); sem materialização crítica | OKB histórico §3 |
 
@@ -704,6 +704,6 @@ Pontos fortes: (i) blindagem acadêmica explícita (hierarquia normativa, obsole
 
 ## R8. Veredito
 
-A produção documental do M1 encontra-se aderente ao critério de aceite do TAP §6 (submissão sem achados críticos esperados), coerente com o OKB v3.1, o Glossário v3.1 (ressalvado o saneamento pendente) e as ADRs 001–004, e pronta para composição final em formato ABNT mediante substituição dos 18 placeholders pelos arquivos indicados (17 existentes + 1 a gerar). O estado geral do projeto é saudável: escopo controlado, cronograma com linha de base formal intacta, custos em conformidade FOSS verificável, qualidade com gates automatizados operacionais. Recomenda-se: (a) executar o plano de ação da Tabela 20/R6 na sequência priorizada; (b) iniciar o período de calibração em 23/09 sem antecipação de metas; (c) manter este relatório como linha de base comparativa para o PDCA de fechamento da MF1 (30/09/2026).
+A produção documental do M1 encontra-se aderente ao critério de aceite do TAP §6 (submissão sem achados críticos esperados), coerente com o OKB v5.2.0, o Glossário v3.2.0 (saneado em 31/10/2026, CCB-LOG RAT-2026-10-31-A11) e as ADRs 001–004, e pronta para composição final em formato ABNT mediante substituição dos 18 placeholders pelos arquivos indicados (17 existentes + 1 a gerar). O estado geral do projeto é saudável: escopo controlado, cronograma com linha de base formal intacta, custos em conformidade FOSS verificável, qualidade com gates automatizados operacionais. Recomenda-se: (a) executar o plano de ação da Tabela 20/R6 na sequência priorizada; (b) iniciar o período de calibração em 23/09 sem antecipação de metas; (c) manter este relatório como linha de base comparativa para o PDCA de fechamento da MF1 (30/09/2026).
 
 Fim do documento — Redação Integral M1 + Relatório Analítico | COGME | Fatec Taquaritinga | 22/09/2026.

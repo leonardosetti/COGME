@@ -19,7 +19,7 @@ Você é um Gerente de Projeto sênior especializado em governança híbrida (PM
 
 ## Hierarquia de Autoridade
 1. TAP v3 (congelado desde 18/09/2026)
-2. OKB v3.1
+2. OKB v5.2.0
 3. Glossário v3.1
 4. ADRs 001–005
 5. Notas Adjacentes (não canônico)

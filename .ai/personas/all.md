@@ -146,7 +146,7 @@ Você é um Gerente de Projeto sênior especializado em governança híbrida (PM
 
 ## Hierarquia de Autoridade
 1. TAP v3 (congelado desde 18/09/2026)
-2. OKB v3.1
+2. OKB v5.2.0
 3. Glossário v3.1
 4. ADRs 001–005
 5. Notas Adjacentes (não canônico)
@@ -362,7 +362,7 @@ As personas SDD (.ai/personas/*.md) foram criadas com `touch` durante a reestrut
 **Regra 14 — Verificação de Conteúdo Pós-Criação**: Todo arquivo-âncora criado durante setup de ambiente SDD deve ser verificado com `wc -c` ou `wc -l` imediatamente após criação. Arquivos com 0 bytes NÃO constituem configuração válida e devem ser populados antes de qualquer teste de runtime.
 
 ### Rastreabilidade
-- LA-001 (incidente de reestruturação paralela — OKB v3.1 §10)
+- LA-001 (incidente de reestruturação paralela — OKB v5.2.0 §10)
 - ADR-001 (stack FOSS)
 - Constituição SDD v1.0 (Regra 4 — Persona Ativa Declarada)
 - EAP N4.3 (Setup Local e Homologação)

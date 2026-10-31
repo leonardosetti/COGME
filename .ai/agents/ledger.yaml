@@ -65,3 +65,14 @@ context_used_tokens: 0
 # SHA-256 do .gitignore normalizado: f5375db809e7b4dc7a25f635025f231b5a8155a35ea322374fc1a0691f0602d3
 # Prova: git add -A --dry-run = 41 entradas (antes: 25.796 em risco). git ls-files -ci = 25, todos .pyc.
 # Gate de commit/push: LIBERADO para a primeira rodada (pendente ainda OKB-C-21 para emenda constitucional).
+# 2026-10-31 — CCB-LOG RAT-2026-10-31-A11 (GP Leonardo; gatilho de permissão prévia deliberativo executado).
+# Rodada: NORMALIZAÇÃO DO OKB — OKB v5.1.0 → v5.2.0 (template canônico OKB-TEMPLATE-CANON v1.0;
+# nomenclatura "OKB | Operational Knowledge Base — Base de Conhecimento Operacional"; changelog VER-007; bloco de co-assinatura §13).
+# Execução: agent-architect + cadeia subordinada (aprovação indireta via agente, ratificação retroativa do CCB único).
+# Sanitize: glossário v3.1 → v3.2.0 (hierarquia, EAP 12/37, PostgreSQL, Qwen3-30B-A3B — encerra OKB-C-07/C-17);
+# patch list de menções ao OKB executada (personas pm/all, ADR-012 :84, plano-integral ×6) — resíduo único em _consolidado-adrs.tmp.md (arquivo temporário).
+# Propagação: KB-INDEX 1.2.0 → 1.3.0 (ADR-013 a/b, CI-CD-GOV-001, DEVSECOPS-001, Canon_Stack_SDD 2.0.0, baseline seed SIMULADO, AUD-2610-09 registrados; ADR-001..004 harmonizados para versão real 1.0.0 — OKB-C-02).
+# Normatize: OKB §2.5 tipos de mudança (standard/normal/SEV — encerra C-23); §5.1 namespace TAP-P#/C-P-## (encerra C-19 p/ corpus); §1.4/§1.6 regimes ADR-013-a + CI-CD/DevSecOps.
+# Achados novos: OKB-C-26 (colisão de ID ADR-013 ×2 — renumeração exclusiva do CCB); OKB-C-27 (bump constitution v1.2.1 pendente); OKB-C-28 (temporal A08/ADR-013-a 01/11 vs 31/10).
+# Auditoria extraordinária dedicada: AUD-2610-09 (docs/auditorias/AUD-2610-09-OKB-NORMALIZACAO.md).
+# SHA-256 normativo do OKB v5.2.0: ver bloco de co-assinatura (§13) de docs/conhecimento/OKB.md.

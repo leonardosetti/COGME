@@ -1,15 +1,17 @@
 # CONSTITUIÇÃO DO PROJETO COGME
 
-<!-- Versão: 1.2.0 | Ratificação: 2026-10-29 | Status: VIGENTE-PLENA (co-assinatura humana registrada em CCB 30/10/2026 — Art. 5.4, prompt expresso) |
+<!-- Versão: 1.2.1 | Ratificação: 2026-10-29/31 | Status: VIGENTE-PLENA (consolidação de duplicata Arts. 5–10 autorizada em CCB-LOG A08; co-assinatura humana registrada via RAT-2026-10-31-A12 — Art. 5.4, gatilho deliberativo expresso do GP) |
 
-## ART. 5.4 — CO-ASSINATURA (Atualizado 2026-10-30)
+## ART. 5.4 — CO-ASSINATURA (Atualizado 2026-10-31 — RAT-2026-10-31-A12)
 
-- **Hash normativo:** `b3f296c6ed592bb3f276302148eeb0360a72ebe35fdd48a9b972ba8261851db4`
-- **Commit:** `7cff886`
-- **Data:** 2026-10-30
+- **Versão:** 1.2.1 — Status: VIGENTE-PLENA
+- **Hash normativo:** `02e5b69520f8c3bb81c6ef2536a042f0b46786a00581a111612e4baab3af4043` *(método: sha256 dos bytes de `## PREÂMBULO` até a linha imediatamente anterior ao bloco final `## CO-ASSINATURA` — região sem auto-referência de hash; valor idêntico ao registrado na tabela CO-ASSINATURA ao pé, único registrador)*
+- **Hash anterior (v1.2.0, 30/10/2026):** `b3f296c6ed592bb3f276302148eeb0360a72ebe35fdd48a9b972ba8261851db4` — commit `7cff886`
+- **Commit:** `PENDENTE_COMMIT_A12`
+- **Data da co-assinatura vigente:** 2026-10-31
 - **Papel:** Gerente de Projeto — CCB de membro único
-- **Instrumento:** Prompt expresso CCB 30/10/2026
-- **Status:** VIGENTE-PLENA
+- **Instrumento:** promulgação CCB 30/10/2026 + gatilho de permissão prévia deliberativo expresso do GP em 31/10/2026 (CCB-LOG RAT-2026-10-31-A12) — dupla manifestação humana registrada
+- **Histórico:** consolidação da duplicata Arts. 5–10 autorizada em A08 e executada; bump v1.2.0 → v1.2.1 aplicado por agente sob autoridade plena do CCB (parecer AUD-2610-09, fresco C-27)
      Método: PMBOK 7ª + Kanban + SDD + MCPs | Jurisdição: LGPD | Stack: FOSS com Bypass registrados -->
 
 ## PREÂMBULO
@@ -218,6 +220,7 @@ Mudanças em uma camada não exigem mudanças nas demais. Violação dessa separ
 - **1.1.0 — 2026-10-26:** CCB ratifica as emendas E-01..E-08 da Rodada 1.
 - **1.2.0 — 2026-10-29:** emenda de normalização universal e restauração integral por corrupção constitucional, incorporando ADRs 006 a 012, CCB-001, CCB-002, stack PostgreSQL/Docker/Nginx, APIs de câmbio, MCPs, memória persistente, separação L1/L2/L3, grafia canônica do stakeholder-avaliador, EAP 12/37, precisão linguística e subordinação de inputs canônicos.
 - **1.2.0 — 2026-10-30:** promulgação encerrada — Status VIGENTE-PLENA; co-assinatura humana via prompt expresso do CCB (Art. 5.4); sincronização do ecossistema (41 agentes, DAG acíclico) e lote de consolidação estrutural registrado em docs/governanca/ccb-log.md.
+- **1.2.1 — 2026-10-31:** consolidação da duplicata Arts. 5–10 (autorização CCB-LOG A08/A09-A-001); bump do header e do bloco Art. 5.4 do topo (antes inconsistentes); re-hash com método de fronteira explícito e replicável — substitui o hash `a29c61ff…` da linha v1.2.1 anterior (fronteira não documentada); instrumento: RAT-2026-10-31-A12 (gatilho deliberativo expresso do GP); parecer AUD-2610-09 encerra OKB-C-27.
 
 ---
 
@@ -235,4 +238,4 @@ Este bloco não integra o hash normativo.
 | 1.0.0   | `d2f0c23d9d9fd0a432bc445a4911dac19c89832338872cee453ec119392f1c75` | `ec6a95a`                      | 2026-10-26 | Gerente de Projeto — CCB de membro único | Promulgação inicial e fechamento da pendência da FASE 0 |
 | 1.1.0   | `4eb5244ffb4d2f5973b03c96f8523f36d095d1c954eb731543a0fb9e44a1fb13` | `1e206fe4b5c174c5da3133d5c66cc4c6d57808b6` | 2026-10-26 | Gerente de Projeto — CCB de membro único | CCB 26/10/2026, emendas E-01..E-08                         |
 | 1.2.0   | `b3f296c6ed592bb3f276302148eeb0360a72ebe35fdd48a9b972ba8261851db4` | `7cff886`                     | 2026-10-30 | Gerente de Projeto — CCB de membro único | COGME-UNIVERSAL-ADJUSTMENT-PARTITIONED-v4.1.2 + prompt expresso CCB 30/10/2026 |
-| 1.2.1   | `a29c61ffce008008ab6784f55fb0105905bf3baba18312699a418244eb098d47` | `bec6c1a778c96489b039eb649d3c02e7c7aac7af` | 31/10/2026 | Gerente de Projeto — CCB de membro único | Consolidação v1.2.1 (remoção de duplicata Arts. 6-10) + prompt expresso CCB 31/10/2026 |
+| 1.2.1   | `02e5b69520f8c3bb81c6ef2536a042f0b46786a00581a111612e4baab3af4043` | `bec6c1a778c96489b039eb649d3c02e7c7aac7af` + commit A12 | 31/10/2026 | Gerente de Projeto — CCB de membro único | Consolidação v1.2.1 (remoção de duplicata Arts. 6-10) + prompt expresso CCB 31/10/2026; **re-hash RAT-2026-10-31-A12** (método: bytes de `## PREÂMBULO` até antes do bloco `## CO-ASSINATURA`; substitui `a29c61ff…` de fronteira indocumentada) |

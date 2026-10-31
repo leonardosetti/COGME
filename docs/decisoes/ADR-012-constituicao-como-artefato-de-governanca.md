@@ -81,7 +81,7 @@ Diante do histórico de degradação do arquivo, institui-se o **Protocolo de In
 | ------------------------------------ | --------------------------------------- | --------------------------------------------- | ------------------------------------------------------------------------------ |
 | Supremacia Absoluta                  | Segurança jurídica e técnica máxima | Rigidez percebida                             | Cláusulas de exceção claras (Bypass Protocol) já previstas nos Arts. 3 e 7 |
 | Restauração Integral vs. Patch     | Coerência total pós-recuperação     | Perda de nuances de edições intermediárias | Backups forenses detalhados preservam histórico completo                      |
-| Separação Hierarquia Projeto/Forja | Clareza epistemológica                 | Complexidade cognitiva inicial                | Diagramas de fluxo e exemplos práticos no OKB v3.3+                           |
+| Separação Hierarquia Projeto/Forja | Clareza epistemológica                 | Complexidade cognitiva inicial                | Diagramas de fluxo e exemplos práticos no OKB v5.2.0                           |
 
 ## Sobreposição de Decisões
 
