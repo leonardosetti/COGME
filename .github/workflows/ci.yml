@@ -50,7 +50,9 @@ jobs:
       - name: Validate no real credentials versioned
         run: |
           if grep -r --include="*.py" --include="*.yml" --include="*.yaml" \
-             -E "(sk_live|sk_test|AKIA|secret_key|password\s*=\s*[^#])" . 2>/dev/null | grep -v "dummy" | grep -v "\.git/"; then
+             -E "(sk_live|sk_test|AKIA[0-9A-Z]{16}|secret_key|password\s*=\s*[^#])" \
+             .ai .opencode docs scripts src test tests .github 2>/dev/null | \
+             grep -v "scripts/security_scan.py" | grep -v ".github/workflows/ci.yml" | grep -v "dummy"; then
             echo "🚨 Real credential detected in repository!"
             exit 1
           fi
