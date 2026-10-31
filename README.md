@@ -118,8 +118,8 @@ A criação, promulgação, roteamento e operação de agentes são regidos pela
 ## 6. Stack e ambiente (caracterização técnica não sensível)
 
 - Linguagem: Python 3.11
-- Framework web: FastAPI
-- Banco de dados: SQLite
+- Stack: FastAPI + PostgreSQL 15+ (Docker Compose) + Nginx (reverse proxy latente)
+- Banco de dados: PostgreSQL 15+ (containerizado via Docker Compose)
 - Interface: templates server-side (Jinja), HTMX, Tailwind (classes utilitárias comitadas, sem build chain, sem CDN-first)
 - Testes: pytest, meta de cobertura ≥ 80%
 - CI/CD: GitHub Actions Free Tier (bypass registrado, dados não sensíveis)
