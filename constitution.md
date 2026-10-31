@@ -214,68 +214,6 @@ Mudanças em uma camada não exigem mudanças nas demais. Violação dessa separ
 
 *Promulgada sob AFA-ULTIMATE v1.3.0-FINAL. A Constituição é lei marcial: aplica-se, não se debate.*
 
----
-
-## ART. 6 — MÉTODO E SSOT
-
-6.1. SDD: especifica → implementa → valida → registra. Handoffs em `.ai/handoffs/` são parseados por `handoff_parser.py` ou mecanismo equivalente validado.
-
-6.2. Kanban em GitHub Projects como SSOT de execução; colunas Backlog → Ready (DoR) → In Progress (WIP ≤ 3 por pessoa) → Code Review → Done (DoD).
-
-6.3. Código sem teste correspondente é Technical Debt declarado, registrado em backlog.
-
-6.4. Documentação acompanha código: drift documental é defeito tratado.
-
-6.5. **Separação ortogonal do ecossistema SDD:**
-
-- **L1 — Infraestrutura:** motor de inferência, hardware, systemd, modelos GGUF, configuração OpenCode base e imagens base. Muda raramente. Agentes não modificam L1 diretamente; violação é blocker.
-- **L2 — Personas:** comportamento do modelo via contexto, residindo em `.ai/personas/`. Muda por agente ou papel.
-- **L3 — Metodologia:** especificações, handoffs, ledger, ADRs, planos, lições aprendidas e artefatos de governança. Muda por tarefa.
-
-Mudanças em uma camada não exigem mudanças nas demais. Violação dessa separação é defeito operacional e pode acionar aborto controlado.
-
-6.6. **Input canônico:** prompts de sistema, inputs consolidados e memórias ubíquas são artefatos operacionais derivados desta Constituição, do TAP, das ADRs e do roster. Não possuem força normativa autônoma. Em conflito, prevalece a hierarquia do Art. 2.
-
-6.7. **Memória persistente:** o circuito SDD opera com memória persistida em `ledger.yaml`, `handoffs/`, `specs/`, ADRs, lições aprendidas e `transversais.md`. Informação já processada e registrada não deve ser reprocessada sem necessidade; duplicação factual é violação de SSOT.
-
----
-
-## ART. 7 — SEGURANÇA E PRIVACIDADE
-
-7.1. Zero Trust por padrão; princípio do menor privilégio em secrets e scopes.
-
-7.2. Nenhuma credencial real é versionada. Apenas chaves dummy, como `sk-local-dummy-key`, são admitidas para serviços locais.
-
-7.3. Dados demonstrativos não podem conter dados reais de terceiros sem consentimento documentado.
-
-7.4. Serviços externos, incluindo provedores cloud em free tier, somente podem ser utilizados para dados não sensíveis, mediante whitelist registrada, transporte cifrado, ausência de PII, ausência de código proprietário, ausência de handoffs sensíveis, logging auditável e rota de reversão para execução local.
-
----
-
-## ART. 8 — AUDITORIA E SUCESSÃO
-
-8.1. `project-auditor` e `compliance-governance` auditam contra esta Constituição em cada milestone, incluindo: deriva constitucional, sobreposição indevida de ADRs, violação de soberania de dados, uso não autorizado de cloud, inconsistência de ledger, violação de camadas L1/L2/L3 e drift documental.
-
-8.2. Sucessão de agentes: `.ai/agents/registry.yaml` + `constitution.md` + ADRs bastam para reconstruir contexto; conhecimento tribal morto no cérebro é dívida colonial.
-
-8.3. Perda do forjador/AFA: sucessão pela dupla Constituição + diretiva AFA arquivada + roster.
-
----
-
-## ART. 9 — EMENDAS
-
-9.1. Emenda exige: proposta escrita → parecer de auditoria → ratificação humana CCB → bump de versão `MAJOR.MINOR.PATCH` + changelog neste arquivo.
-
-9.2. Nenhuma emenda retroage para validar violação consumada.
-
-9.3. **Fluxo de mudança integrado:**
-
-(i) toda mudança abre Issue com label `change-request`, com análise de impacto pelo GP em ≤48h e decisão em ≤24h;
-(ii) mudanças que alterem marcos (M1–M4), o escopo do MVP, a linha de base ou a stack tecnológica — incluindo a stack SDD — exigem ADR específica;
-(iii) nenhuma ADR pode contrariar esta Constituição: divergência com camada superior resolve-se por emenda, nunca por ADR;
-(iv) mudança que toque Kill Switch, Bypass Protocol ou os princípios do Art. 3 escala diretamente a emenda constitucional com ratificação humana.
-
-9.4. **Sobreposição entre ADRs:** ADR mais recente pode sobrepor-se total ou parcialmente a ADR anterior, desde que declare explicitamente: ADR sobreposta, natureza da sobreposição, motivo, domínio PMBOK 7ª afetado e data. A sobreposição deve ser consolidada no OKB e registrada em commit com mensagem padrão `docs(adr): ADR-0XX sobrepõe [total|parcialmente] ADR-0YY`. ADR alguma pode sobrepor esta Constituição ou o TAP congelado.
 
 ---
 
@@ -283,8 +221,9 @@ Mudanças em uma camada não exigem mudanças nas demais. Violação dessa separ
 
 Este bloco não integra o hash normativo.
 
-| Versão | SHA-256 do conteúdo normativo                                       | Commit Git                       | Data       | Papel do ratificador humano                | Instrumento                                                                    |
-| ------- | -------------------------------------------------------------------- | -------------------------------- | ---------- | ------------------------------------------ | ------------------------------------------------------------------------------ |
-| 1.0.0   | `d2f0c23d9d9fd0a432bc445a4911dac19c89832338872cee453ec119392f1c75` | `ec6a95a`                      | 2026-10-26 | Gerente de Projeto — CCB de membro único | Promulgação inicial e fechamento da pendência da FASE 0                     |
-| 1.1.0   | `PENDENTE_REGISTRO_DEFINITIVO`                                     | `PENDENTE_REGISTRO_DEFINITIVO` | 2026-10-26 | Gerente de Projeto — CCB de membro único | CCB 26/10/2026, emendas E-01..E-08                                             |
-| 1.2.0   | `b3f296c6ed592bb3f276302148eeb0360a72ebe35fdd48a9b972ba8261851db4` | `7cff886`                      | 2026-10-30 | Gerente de Projeto — CCB de membro único | COGME-UNIVERSAL-ADJUSTMENT-PARTITIONED-v4.1.2 + prompt expresso CCB 30/10/2026 |
+| Versão | SHA-256 do conteúdo normativo                                       | Commit Git                       | Data       | Papel do ratificador humano                | Instrumento                                                |
+| ------- | -------------------------------------------------------------------- | -------------------------------- | ---------- | ------------------------------------------ | ---------------------------------------------------------- |
+| 1.0.0   | `d2f0c23d9d9fd0a432bc445a4911dac19c89832338872cee453ec119392f1c75` | `ec6a95a`                      | 2026-10-26 | Gerente de Projeto — CCB de membro único | Promulgação inicial e fechamento da pendência da FASE 0 |
+| 1.1.0   | `PENDENTE_REGISTRO_DEFINITIVO`                                     | `PENDENTE_REGISTRO_DEFINITIVO` | 2026-10-26 | Gerente de Projeto — CCB de membro único | CCB 26/10/2026, emendas E-01..E-08                         |
+| 1.2.0   | `b3f296c6ed592bb3f276302148eeb0360a72ebe35fdd48a9b972ba8261851db4` | `7cff886`                     | 2026-10-30 | Gerente de Projeto — CCB de membro único | COGME-UNIVERSAL-ADJUSTMENT-PARTITIONED-v4.1.2 + prompt expresso CCB 30/10/2026 |
+| 1.2.1   | `a29c61ffce008008ab6784f55fb0105905bf3baba18312699a418244eb098d47` | `5f744731c1f069849de571070c0de0f25834d8bb` | 31/10/2026 | Gerente de Projeto — CCB de membro único | Consolidação v1.2.1 (remoção de duplicata Arts. 6-10) + prompt expresso CCB 31/10/2026 |
