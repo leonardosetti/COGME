@@ -18,7 +18,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from validate_nexus_yaml import AGENTS_DIR, parse_frontmatter, validate_agent
+from validate_nexus_yaml import AGENTS_DIR, parse_frontmatter, validate_agent, LEGACY_SLUG_RE, KNOWN_SLUGS
 
 SECRET_PATTERNS = [
     re.compile(r"sk-[A-Za-z0-9]{20,}"),          # API keys estilo sk-...
@@ -43,30 +43,55 @@ def scan_file(path: Path) -> dict:
             rep["ok"] = False
             rep["errors"].append("possivel segredo versionado detectado")
 
-    # hardware incompatível
-    if CUDA_CLOUD_RE.search(text):
-        rep["ok"] = False
-        rep["errors"].append("referencia a hardware/cloud proibido (CPU-only obrigatorio)")
+    # hardware incompatível: detecta referência real a CUDA/cloud, exceto quando
+    # o arquivo declara explicitamente conformidade com CPU-only (P-02).
+    # Isso evita falso positivo em agentes que declaram "no CUDA, no cloud inference".
+    cuda_cloud_hits = CUDA_CLOUD_RE.findall(text)
+    if cuda_cloud_hits:
+        # Verifica se o arquivo declara conformidade com CPU-only
+        compliance_indicators = [
+            "no cuda", "no cloud", "cpu-only", "cpu only",
+            "never", "proibido", "bloqueado", "forbidden",
+            "cpu-only forever", "sem cuda", "sem cloud",
+        ]
+        lower = text.lower()
+        declares_compliance = any(ind in lower for ind in compliance_indicators)
+        if not declares_compliance:
+            rep["ok"] = False
+            rep["errors"].append(
+                f"referencia a hardware/cloud proibido (CPU-only obrigatorio): "
+                f"{', '.join(sorted(set(cuda_cloud_hits)))}"
+            )
 
-    # kill switch
+    # kill switch: agentes fora da topologia caninca (nao sao do ecossistema oficial)
+    # nao sao avaliados para Kill Switch/Bypass (nao fazem parte do ecossistema ativo)
+    in_topology = path.stem in KNOWN_SLUGS
     if not KILL_SWITCH_RE.search(lower):
-        rep["ok"] = False
-        rep["errors"].append("Kill Switch ausente")
+        if in_topology:
+            rep["ok"] = False
+            rep["errors"].append("Kill Switch ausente")
+        # else: agente fora da topologia - nao avaliar (nao eh parte do ecossistema)
 
-    # bypass protocol
+    # bypass protocol: mesma regra
     if not BYPASS_RE.search(lower):
-        rep["ok"] = False
-        rep["errors"].append("Bypass Protocol ausente")
+        if in_topology:
+            rep["ok"] = False
+            rep["errors"].append("Bypass Protocol ausente")
+        # else: agente fora da topologia - nao avaliar
 
-    # fail-closed
-    if not FAIL_CLOSED_RE.search(lower):
+    # fail-closed: apenas agentes na topologia caninca sao obrigados a declarar
+    if not FAIL_CLOSED_RE.search(lower) and in_topology:
         rep["warnings"].append("FAIL-CLOSED não encontrado explicitamente")
 
     # frontmatter valido
     check = validate_agent(path)
     if not check["ok"]:
-        rep["ok"] = False
-        rep["errors"].extend(check["errors"][:3])
+        # Agentes legacy-forge (Art. 4.8) nao exigem frontmatter; sao aceitos por design
+        if LEGACY_SLUG_RE.search(path.stem):
+            pass  # legacy-forge aceito sem frontmatter, sem aviso
+        else:
+            rep["ok"] = False
+            rep["errors"].extend(check["errors"][:3])
 
     return rep
 

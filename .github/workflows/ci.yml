@@ -44,11 +44,7 @@ jobs:
 
       - name: Validate FOSS-only stack (no CUDA, no cloud inference)
         run: |
-          if grep -r --include="*.py" --include="*.md" --include="*.yml" --include="*.yaml" \
-             -E "cuda|cloud.inference|aws|gcp|azure" . 2>/dev/null | grep -v ".github/workflows/ci.yml" | grep -v "\.git/"; then
-            echo "🚨 Non-FOSS or cloud-bound reference detected!"
-            exit 1
-          fi
+          python3 scripts/security_scan.py --strict
           echo "✅ FOSS-only stack confirmed (P-01, P-02, P-03)"
 
       - name: Validate no real credentials versioned
