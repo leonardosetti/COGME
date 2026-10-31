@@ -1,56 +1,28 @@
-## COGME Project README
+# COGME
 
-### Project Overview
-COGME (Cognitive Governance and Machine Ethics) is a framework for implementing ethical AI governance systems. The project combines machine learning model management with compliance artifacts to ensure transparent, auditable AI development practices.
+## 1. Visão Geral do Projeto com Estrutura de Governança
+O COGME (Centro de Otimização e Gestão de Modelos de Engajamento) é um projeto voltado para a implementação de frameworks de governança de modelos de IA, com foco em transparência, conformidade e melhores práticas de desenvolvimento. A estrutura de governança inclui diretrizes de uso responsável, políticas de segurança de dados e processos de revisão técnica por equipes multidisciplinares.
 
-### Setup Instructions
-1. **Environment Preparation**
-   - Create a virtual environment: `python -m venv .venv`
-   - Install dependencies: `pip install -r requirements.txt`
-   - Set up database: `python scripts/setup_db.py`
+## 2. Documentação do Processo de Desenvolvimento
+O processo de desenvolvimento segue as práticas de DevOps e Agile, com ciclos de entrega contínua. As etapas incluem:
+- Revisão de requisitos com stakeholders
+- Desenvolvimento modular com testes automatizados
+- Integração contínua (CI) com validação de código
+- Liberação controlada com versionamento semântico
 
-2. **Configuration**
-   - Copy `.env.example` to `.env` and populate with service credentials
-   - Verify `config.yaml` matches your deployment environment
+## 3. Detalhes dos Artefatos de Conformidade
+Os artefatos de conformidade incluem:
+- Relatórios de auditoria de modelos
+- Documentos de políticas de privacidade (LGPD)
+- Registros de treinamento e validação de dados
+- Certificações de segurança cibernética
 
-3. **Validation**
-   - Run initial checks: `pytest --check-environment`
+## 4. Diretrizes de Contribuição
+Para contribuir:
+1. Fork o repositório
+2. Crie um branch com nome "feature/..." ou "bugfix/..."
+3. Faça commits com mensagens claras
+4. Abra um PR para revisão
+5. Participe de reviews técnicas
 
-### Directory Structure
-```
-/.gitignore           - Normalized exclusion patterns (2026-10-30)
-/ai/                  - Machine learning models and agents
-/config/              - Configuration files
-/docs/               - Public documentation
-/license/            - Compliance artifacts
-  ├── LICENSE          - Project license
-  └── constitution.md  - Governance framework
-/nexus/               - Integration points with other systems
-/scripts/            - Utility scripts
-/src/                - Core application code
-/test/               - Test suite
-/venv/               - Virtual environment
-```
-
-### Compliance Notes
-- **.gitignore Normalization**: Current pattern set ratified on 2026-10-30. Includes:
-  - Python environment isolation (`/venv/`, `*.py[cod]`)
-  - Sensitive data exclusion (credentials.json, .env*)
-  - Documentation hygiene (excludes intermediate/legacy docs)
-
-- **Governance Artifacts**:
-  - LICENSE: [Insert license type]
-  - constitution.md: [Link to governance framework]
-  - Compliance status: [Insert OKB ratification status here]
-
-### Contribution Guidelines
-1. Submit changes through pull requests with:
-   - Clear documentation updates
-   - Test coverage for new features
-   - Compliance with CODE_OF_CONDUCT.md
-
-2. Follow the project's [contribution workflow](docs/CONTRIBUTING.md)
-
-3. For security disclosures, contact [security@project.org]
-
-> Note: Replace placeholder content with actual project-specific information before finalizing.
+Todos os contribuidores devem seguir o código de conduta do projeto.

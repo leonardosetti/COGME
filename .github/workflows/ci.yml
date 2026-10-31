@@ -8,7 +8,7 @@ on:
 
 jobs:
   kill-switch-check:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Check for Kill Switch
         run: |
@@ -18,7 +18,7 @@ jobs:
           fi
 
   foss-compliance:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Validate FOSS Dependencies
         run: |
@@ -29,7 +29,7 @@ jobs:
           (echo "Non-FOSS tool detected!" && exit 1 || exit 0)
 
   data-privacy-check:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Validate Data Sovereignty
         run: |
@@ -41,7 +41,7 @@ jobs:
           (echo "Remote Docker detected!" && exit 1 || exit 0)
 
   architecture-validation:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Verify SDD Compliance
         run: |
@@ -51,7 +51,7 @@ jobs:
           (echo "Non-FOSS OS detected!" && exit 1 || exit 0)
 
   final-status:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Update Ledger
         run: |
