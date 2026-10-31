@@ -131,7 +131,7 @@ def main() -> int:
     if avisos and args.strict:
         print(f"[SECURITY] AVISOS: {len(avisos)}/{len(results)}", file=sys.stderr)
         return 1
-    print(f"[SECURITY] OK: {len(results) - len(falhas)}/{len(results)} arquivos verificados")
+    print(f"[SECURITY] OK: {len(results) - len(falhas)}/{len(results)} arquivos verificados", file=sys.stderr)
     return 0
 
 
