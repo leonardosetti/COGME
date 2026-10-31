@@ -64,3 +64,19 @@ evidencia: Todos os 181 testes passam (1 skipped); sddai_verify_pipeline 7/7 pas
 impacto: Ecossistema de CI/CD totalmente governado, fail-closed, sem bypass; B0-B8 liberados; próximo marco: execução dos blocos de normalização documental.
 rollback: Reverter commits individuais por artefato (não recomendado; uso apenas em caso de impugnação formal).
 pmbok-gate: Integração (4.6) | Qualidade (8.3) | Conformidade (P-05, P-06, P-07)
+
+### RAT-2026-10-31-A11 — Correção de Falsos Positivos no CI/CD e Security Scan
+contexto: Alerta "Non-FOSS or cloud-bound reference detected!" no pipeline CI/CD investigado e confirmado como falso positivo. Causa raiz: (1) ci.yml varria .venv/ (dependências cuda-python, torch, fsspec com referências a CUDA/AWS/GCP/Azure) e (2) security_scan.py marcava como falha agentes que declaram explicitamente "No cloud, no CUDA. Ever." (conformidade P-02).
+artefatos corrigidos:
+  - scripts/security_scan.py: lógica de detecção CUDA/cloud distinguindo uso real vs. declaração de conformidade; aceitar legacy-forge (Art. 4.8); agentes fora da topologia não exigidos; resumo para stderr
+  - .github/workflows/ci.yml: usar security_scan.py --strict em vez de grep -r ingênuo
+artefatos documentados:
+  - docs/governanca/relatorio-analitico-falso-positivo-cicd.md (REL-FP-CICD-001)
+  - docs/auditorias/AUD-2610-09-AUDITORIA-EXTRAORDINARIA-FALSO-POSITIVO-CICD.md (AUD-2610-09)
+decisao: A — Corrigir falsos positivos; validar que todos os pipelines estejam green sem bypassing.
+ratificacao: Humana (GP Leonardo, CCB de membro único, autoridade plena concedida nesta iniciativa)
+instrumento: Prompt expresso do CCB 31/10/2026 — correção de falsos positivos CI/CD
+evidencia: 181 testes passando (1 skipped); security_scan.py --strict exit 0 (45 aprovados, 0 falhas); sddai_verify_pipeline 7/7 aprovados; ci.yml não gera mais falso positivo de .venv/
+impacto: Ecossistema de CI/CD sem falsos positivos; todos os pipelines green; B1-B8 liberados para execução subsequente.
+rollback: Reverter commits individuais por artefato (não recomendado).
+pmbok-gate: Integração (4.6) | Qualidade (8.3) | Conformidade (P-01, P-02, P-04, P-06, P-07)
