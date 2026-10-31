@@ -1,6 +1,15 @@
 # CONSTITUIÇÃO DO PROJETO COGME
 
 <!-- Versão: 1.2.0 | Ratificação: 2026-10-29 | Status: VIGENTE-PLENA (co-assinatura humana registrada em CCB 30/10/2026 — Art. 5.4, prompt expresso) |
+
+## ART. 5.4 — CO-ASSINATURA (Atualizado 2026-10-30)
+
+- **Hash normativo:** `b3f296c6ed592bb3f276302148eeb0360a72ebe35fdd48a9b972ba8261851db4`
+- **Commit:** `7cff886`
+- **Data:** 2026-10-30
+- **Papel:** Gerente de Projeto — CCB de membro único
+- **Instrumento:** Prompt expresso CCB 30/10/2026
+- **Status:** VIGENTE-PLENA
      Método: PMBOK 7ª + Kanban + SDD + MCPs | Jurisdição: LGPD | Stack: FOSS com Bypass registrados -->
 
 ## PREÂMBULO
@@ -224,6 +233,6 @@ Este bloco não integra o hash normativo.
 | Versão | SHA-256 do conteúdo normativo                                       | Commit Git                       | Data       | Papel do ratificador humano                | Instrumento                                                |
 | ------- | -------------------------------------------------------------------- | -------------------------------- | ---------- | ------------------------------------------ | ---------------------------------------------------------- |
 | 1.0.0   | `d2f0c23d9d9fd0a432bc445a4911dac19c89832338872cee453ec119392f1c75` | `ec6a95a`                      | 2026-10-26 | Gerente de Projeto — CCB de membro único | Promulgação inicial e fechamento da pendência da FASE 0 |
-| 1.1.0   | `PENDENTE_REGISTRO_DEFINITIVO`                                     | `PENDENTE_REGISTRO_DEFINITIVO` | 2026-10-26 | Gerente de Projeto — CCB de membro único | CCB 26/10/2026, emendas E-01..E-08                         |
+| 1.1.0   | `4eb5244ffb4d2f5973b03c96f8523f36d095d1c954eb731543a0fb9e44a1fb13` | `1e206fe4b5c174c5da3133d5c66cc4c6d57808b6` | 2026-10-26 | Gerente de Projeto — CCB de membro único | CCB 26/10/2026, emendas E-01..E-08                         |
 | 1.2.0   | `b3f296c6ed592bb3f276302148eeb0360a72ebe35fdd48a9b972ba8261851db4` | `7cff886`                     | 2026-10-30 | Gerente de Projeto — CCB de membro único | COGME-UNIVERSAL-ADJUSTMENT-PARTITIONED-v4.1.2 + prompt expresso CCB 30/10/2026 |
 | 1.2.1   | `a29c61ffce008008ab6784f55fb0105905bf3baba18312699a418244eb098d47` | `bec6c1a778c96489b039eb649d3c02e7c7aac7af` | 31/10/2026 | Gerente de Projeto — CCB de membro único | Consolidação v1.2.1 (remoção de duplicata Arts. 6-10) + prompt expresso CCB 31/10/2026 |
