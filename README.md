@@ -1,5 +1,8 @@
 # COGME — Conversor de Ganhos em Moeda Estrangeira
 
+[![COGME CI/CD Pipeline](https://github.com/leonardosetti/COGME/actions/workflows/ci.yml/badge.svg)](https://github.com/leonardosetti/COGME/actions/workflows/ci.yml)
+[![SDDAI Verify Pipeline](https://github.com/leonardosetti/COGME/actions/workflows/sddai-verify.yml/badge.svg)](https://github.com/leonardosetti/COGME/actions/workflows/sddai-verify.yml)
+
 Projeto acadêmico FOSS de conversão cambial, desenvolvido na disciplina de Gerência de Projetos da Fatec Taquaritinga, com entrega final prevista em 15/12/2026 e marcos M1–M4.
 
 ---
