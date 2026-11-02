@@ -4,6 +4,7 @@
 **/.DS_Store
 **/.env
 **/.env.*
+!**/.env.example
 **/.ipynb_checkpoints
 **/.vscode/
 **/Thumbs.db
@@ -67,3 +68,7 @@ lst.txt
 *.tmp.md
 .~*.docx
 .obsidian/
+
+# Artefatos de cobertura e tipagem
+.coverage
+.mypy_cache/

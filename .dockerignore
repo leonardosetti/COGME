@@ -1,0 +1,56 @@
+# Contexto de build enxuto: só entram src/, migrations/, alembic.ini e
+# requirements.txt. Nada de segredo, histórico ou documentação na imagem.
+
+# Segredos e ambiente local
+.env
+.env.*
+**/.env
+**/.env.*
+*.pem
+*.key
+
+# Controle de versão e editor
+.git
+.gitignore
+.github
+.vscode
+.idea
+
+# Ambientes virtuais e caches
+.venv
+venv
+**/__pycache__
+*.py[cod]
+.pytest_cache
+.mypy_cache
+.ruff_cache
+.benchmarks
+.coverage
+htmlcov
+coverage
+
+# Documentação, testes e artefatos do processo de desenvolvimento
+docs
+tests
+test
+.ai
+.opencode
+nexus
+scripts
+config
+*.md
+ledger.yaml
+config.json
+config.yaml
+task-*.json
+rollback_script.sh
+bootstrap.py
+train.py
+*.gguf
+*.log
+
+# O próprio build
+Dockerfile
+.dockerignore
+docker-compose*.yml
+infra

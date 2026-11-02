@@ -10,17 +10,20 @@ O código segue o **Specification-Driven Development (SDD)**: especificar → im
 
 ---
 
+> **Atualização de 31/10/2026.** Esta seção foi corrigida pela branch `feat/backend-mvp`, que ainda não está na `main`. Onde versões anteriores descreviam SQLite como banco, PTAX como fonte primária ou `src/` vazio, vale o texto atual, alinhado à ADR-010 e à spec `.ai/specs/backend-mvp-v1.spec.md`. As decisões de cálculo e de contrato do backend estão na ADR-016, em status proposta.
+
 ## 3.1 Tecnologias / Plataformas / Códigos
 
 ### 3.1.1 Tecnologias (Stack do Produto — ADR-001)
 
 | Camada | Tecnologia | Versão | Licença | Função no COGME | Justificativa |
 | --- | --- | --- | --- | --- | --- |
-| Linguagem | Python | 3.11 | PSF | Lógica de negócio e API | Ecossistema maduro, domínio da equipe |
+| Linguagem | Python | 3.11+ (imagem e CI: 3.12) | PSF | Lógica de negócio e API | Ecossistema maduro, domínio da equipe |
 | Backend / API | FastAPI | ≥ 0.100 (projeto) · 0.162.0 (estável) | MIT | Endpoints assíncronos de simulação, cotação e PDF | Assíncrono nativo, documentação OpenAPI automática (REQ-14) |
 | Servidor ASGI | Uvicorn | 0.54.0 (estável) | BSD-3 | Executa a aplicação FastAPI | Padrão do FastAPI |
-| Banco de dados | SQLite | 3.x | Domínio público | Cache de cotações e persistência local (REQ-07) | Zero configuração, ACID, suficiente para o MVP |
-| Fonte de cotações | API PTAX do Banco Central do Brasil (Olinda, OData/JSON) | v1 | Dados abertos governamentais | Cotações oficiais de compra e venda de USD/EUR → BRL (REQ-01) | Pública, gratuita, sem chave; taxa de referência oficial |
+| Banco de dados | PostgreSQL | 15+ (imagem `postgres:15-alpine`) | PostgreSQL License | Cache de cotações (REQ-07); é a única tabela de dados persistidos | Tipagem estrita, concorrência MVCC e paridade de ambiente (ADR-010). Só cotações são gravadas (ADR-016) |
+| Fonte primária de cotações | Frankfurter (taxas de referência do BCE) | v1 | MIT | Cotação de USD/EUR → BRL (REQ-01) | Pública, gratuita, sem chave (ADR-010 §4) |
+| Fonte de reserva de cotações | API PTAX do Banco Central do Brasil (Olinda, OData/JSON) | v1 | Dados abertos governamentais | Fallback obrigatório quando a fonte primária falha; usa `cotacaoCompra` (REQ-01) | Oficial brasileira, pública, sem chave (ADR-010 §4) |
 | Geração de PDF | WeasyPrint | ≥ 59.0 (projeto) · 70.0 (estável) | BSD-3 | Invoice em PDF a partir de HTML/CSS (REQ-04) | FOSS, aproveita templates HTML |
 | Frontend | HTML5 + HTMX + Tailwind CSS | HTMX 2.0.11 · Tailwind 4.3.3 (estáveis) | HTMX: 0BSD · Tailwind: MIT | Interface responsiva com atualização parcial sem SPA (REQ-06) | Leve, sem framework JS pesado (KISS) |
 | Templates | Jinja2 | 3.1.6 (estável) | BSD-3 | Renderização de páginas e do HTML da invoice | Integração nativa com FastAPI |
@@ -31,7 +34,7 @@ Fonte: Elaborado pelos autores (2026), com base na ADR-001.
 
 **Nota sobre as versões:**
 - **"(projeto)"** é a versão mínima declarada na documentação do COGME: README, Plano de Custos e ADR-001. Por exemplo, FastAPI ≥ 0.100, WeasyPrint ≥ 59.0, pytest ≥ 7.0 e llama.cpp 0.4.0-dev.
-- **"(estável)"** é a versão estável mais recente na documentação oficial de cada projeto (PyPI e npm), consultada em 25/10/2026. Ela serve de referência de compatibilidade e não indica o que foi instalado: o `requirements.txt` e o `pyproject.toml` estão vazios no repositório.
+- **"(estável)"** é a versão estável mais recente na documentação oficial de cada projeto (PyPI e npm), consultada em 25/10/2026. Ela serve de referência de compatibilidade e não indica o que foi instalado: na branch `feat/backend-mvp`, o `requirements.txt` traz versões exatas e o `pyproject.toml` traz os limites de versão.
 - O Uvicorn aparece no README como servidor de execução (`uvicorn src.backend.main:app`). O Jinja2 é o mecanismo de templates usado em conjunto com o FastAPI.
 - Todas as licenças estão na whitelist FOSS do Plano de Custos. O 0BSD do HTMX é uma licença permissiva aprovada pela OSI.
 
@@ -51,7 +54,7 @@ Fonte: Repositório COGME, `docs/slides_apresentacao/stack.svg` (2026).
 | VS Code | IDE da equipe | Gratuito (MIT, núcleo Code-OSS) |
 | llama.cpp + Qwen (execução local em CPU) + OpenCode | IA generativa local para SDD; 25 agentes especializados governados pela `constitution.md` | FOSS / licença autorizada |
 | draw.io / Mermaid | Diagramas (EAP, fluxos, CFD) | FOSS |
-| API PTAX — Banco Central do Brasil | Fonte oficial das cotações USD/EUR → BRL | Gratuito (dados abertos) |
+| Frankfurter (primária) e API PTAX — Banco Central do Brasil (reserva) | Fontes de cotação USD/EUR → BRL | Gratuito |
 | Wise Platform API (sandbox) | **Em avaliação:** cotação e comparação de plataformas de pagamento internacional | Exige conta e token |
 
 Fonte: Elaborado pelos autores (2026).
@@ -62,15 +65,17 @@ Arquitetura em camadas (monólito modular), conforme a estrutura do repositório
 
 ~~~
 src/
-├── backend/            # FastAPI + SQLite
+├── backend/            # FastAPI + PostgreSQL
 │   ├── main.py         # ponto de entrada da aplicação (uvicorn src.backend.main:app)
 │   ├── routers/        # camada de apresentação da API (endpoints HTTP)
 │   ├── services/       # regras de negócio: conversão, regimes, spread/IOF, PDF, adapter da API de câmbio
-│   └── models/         # entidades e acesso a dados (SQLite / cache)
+│   └── models/         # entidades e acesso a dados (PostgreSQL / cache)
 ├── frontend/           # HTMX + Tailwind
 │   ├── templates/      # páginas e template HTML da invoice
 │   └── static/         # CSS/JS estáticos
 └── shared/             # schemas compartilhados (validação de entrada/saída)
+migrations/         # migrações Alembic (tabela fx_quotes)
+infra/              # configuração de infraestrutura (proxy Nginx latente)
 tests/
 ├── unit/               # testes de regras de cálculo
 └── integration/        # testes de endpoints, cache e geração de PDF
@@ -83,7 +88,7 @@ Fonte: Elaborado pelos autores (2026).
 
 **Padrões e práticas de código:**
 - **Adapter pattern** na integração com a API de câmbio, para trocar de provedor sem mexer na regra de negócio (mitiga RE-01).
-- **Cache com TTL** no SQLite para reduzir ≥ 50 % das chamadas externas (REQ-07).
+- **Cache com TTL** no PostgreSQL para reduzir ≥ 50 % das chamadas externas (REQ-07).
 - **Conventional Commits** (`feat`, `fix`, `docs`, `test`, `ci`, `chore`) e coautoria declarada em commits feitos com IA.
 - **TDD** nos fluxos críticos (cálculo cambial, regimes, PDF).
 - **Clean Code / KISS**, slugs e código em inglês, mensagens ao usuário em PT-BR (Constituição P-10).
@@ -107,7 +112,7 @@ Fonte: https://github.com/users/leonardosetti/projects/2, capturado em 25/10/202
 Figura 3.5 — Pacotes de trabalho da Macro-Fase 2 (Construção): desenvolvimento, qualidade, DevOps e gestão de mudanças.
 Fonte: Repositório COGME, `docs/diagramas/eap/fig-eap-mf2-construcao.png` (2026).
 
-**Situação do código-fonte no repositório (25/10/2026):** o esqueleto do produto foi criado no commit `9a0e13e` (21/09/2026, "estrutura inicial de código, testes e CI/CD"), mas todos os arquivos de `src/` estão **vazios** no `main` (`main.py`, `models/`, `routers/`, `services/`, `schemas.py`, `index.html`). A branch `stage` não tem `src/`. Ainda não há código publicado de cálculo de spread/IOF nem do adapter PTAX. O que existe de código executável hoje é a **infraestrutura de governança e agentes** (`scripts/`) e sua suíte de testes (`tests/agents/`, 20 arquivos). Isso confirma a questão Q-05 (atraso no backend) do Plano de Riscos.
+**Situação do código-fonte (atualizada em 31/10/2026):** na branch `feat/backend-mvp`, ainda não integrada à `main` e sem commit próprio nesta data, o backend do MVP está implementado: `src/backend/` (FastAPI, PostgreSQL, cálculo de spread e IOF, adapters Frankfurter e PTAX), `src/shared/` (schemas do contrato) e `src/frontend/templates/` (template da invoice), com `migrations/` e `infra/` na estrutura. O esqueleto criado no commit `9a0e13e` (21/09/2026, "estrutura inicial de código, testes e CI/CD") continua com os arquivos de `src/` **vazios** na `main` (`main.py`, `models/`, `routers/`, `services/`, `schemas.py`, `index.html`), e a branch `stage` não tem `src/`. Na `main`, o código executável é a **infraestrutura de governança e agentes** (`scripts/`) e sua suíte de testes (`tests/agents/`, 20 arquivos). A questão Q-05 (atraso no backend) do Plano de Riscos refere-se a esse estado, de 25/10/2026.
 
 **Exemplo de teste automatizado (pytest):** os testes do projeto seguem o padrão pytest com classes de teste e asserções objetivas. A Figura 3.7 mostra uma suíte real, que verifica se a topologia dos agentes forma um grafo acíclico (DAG) com um único orquestrador na camada L0.
 
@@ -116,11 +121,23 @@ Fonte: Repositório COGME, `docs/diagramas/eap/fig-eap-mf2-construcao.png` (2026
 Figura 3.7 — Suíte de testes pytest do validador da topologia de agentes (`tests/agents/test_dag_validator.py`).
 Fonte: Repositório COGME (2026).
 
-> **Pendente:** as figuras do cálculo de spread/IOF (N5.1) e do adapter PTAX (N5.2) entram quando esse código for publicado no repositório (responsável: Fabricio de Lima Cabral).
+> **Pendente:** as figuras do cálculo de spread/IOF (N5.1) e do adapter PTAX (N5.2) entram quando esse código for integrado à `main` (responsável: Fabricio de Lima Cabral).
 
 ### 3.1.4 Integração com APIs Externas
 
-**a) API PTAX — Banco Central do Brasil (adotada)**
+**a) Frankfurter — fonte primária (adotada, ADR-010 §4)**
+
+| Item | Descrição |
+| --- | --- |
+| Serviço | `https://api.frankfurter.dev/v1/latest`, taxas de referência do Banco Central Europeu (dados ECB), resposta JSON |
+| Parâmetros | `base` (USD ou EUR) e `symbols=BRL` |
+| Autenticação | Nenhuma: acesso público e gratuito |
+| Campo usado | `rates.BRL`, taxa de referência, sem boletim. `date` define `quoted_at`, à meia-noite UTC |
+| Tratamento no COGME | Adapter `FrankfurterProvider`, primeira fonte da cadeia. Timeout de 0,9 s (`COGME_PROVIDER_TIMEOUT_SECONDS`). Falha, status fora de 2xx ou taxa fora do aceite (`0 < taxa < 1000`) passa para a PTAX |
+
+Diferença entre as fontes: na medição de 30/10/2026, o dólar a R$ 5,4325 pela Frankfurter e a R$ 5,4206 pela PTAX (`cotacaoCompra`), diferença de cerca de 0,22 %. Por isso a resposta do sistema informa a fonte usada (ADR-016).
+
+**b) API PTAX — Banco Central do Brasil (fonte de reserva, fallback obrigatório, ADR-010 §4)**
 
 | Item | Descrição |
 | --- | --- |
@@ -130,14 +147,14 @@ Fonte: Repositório COGME (2026).
 | Campos retornados | `cotacaoCompra`, `cotacaoVenda`, `paridadeCompra`, `paridadeVenda`, `dataHoraCotacao`, `tipoBoletim` |
 | Periodicidade | Boletins de **Abertura** (≈ 10h), **Intermediários** (de hora em hora) e **Fechamento** (depois das 13h), só em **dias úteis** |
 | Exemplo real (23/10/2026, USD) | Abertura 10h06: compra R$ 5,03780 / venda R$ 5,03840 |
-| Tratamento no COGME | Adapter `PTAX` + cache SQLite. Fora dos dias úteis, usa o último boletim disponível e informa o tipo de boletim e a data/hora (ver RE-14) |
+| Tratamento no COGME | Adapter `PtaxProvider`, usado quando a Frankfurter falha ou está com circuito aberto. Consulta os últimos 7 dias e usa a linha mais recente, com `cotacaoCompra`. Fora dos dias úteis, usa o último boletim da janela e informa o tipo de boletim e a data/hora (ver RE-14) |
 
 ![Figura 3.6 — Resposta real da API PTAX](../diagramas/desenvolvimento/fig-3-6-resposta-api-ptax.png)
 
 Figura 3.6 — Resposta real da API PTAX do Banco Central para o dólar (USD) em 23/10/2026: boletins de abertura, intermediários e fechamento.
 Fonte: Banco Central do Brasil, serviço Olinda (consulta em 25/10/2026). Elaborado pelos autores.
 
-**b) Wise Platform API (em avaliação para evolução)**
+**c) Wise Platform API (em avaliação para evolução)**
 
 A intenção da equipe é integrar APIs de empresas de pagamento internacional, começando pela Wise, para comparar quanto o profissional recebe em cada plataforma. A documentação consultada (docs.wise.com, versão 2026Q4) mostra:
 
@@ -158,7 +175,7 @@ A intenção da equipe é integrar APIs de empresas de pagamento internacional, 
 | Execução | `uvicorn src.backend.main:app --reload --port 8000` |
 | Testes | `pytest --cov=src --cov-report=term-missing --cov-fail-under=80` |
 | Homologação | Ambiente local (sem nuvem paga — Plano de Custos) |
-| Estado atual dos testes | 118 testes passando, 1 ignorado (auditoria AUD-2610-02, 23/10/2026). Esses testes cobrem a **infraestrutura de agentes e scripts** (`tests/agents/`). As pastas `tests/unit/` e `tests/integration/` do produto ainda estão vazias. A cobertura ≥ 80 % (REQ-08) do código do produto será medida depois da publicação do backend |
+| Estado atual dos testes | 118 testes passando, 1 ignorado (auditoria AUD-2610-02, 23/10/2026). Esses testes cobrem a **infraestrutura de agentes e scripts** (`tests/agents/`). As pastas `tests/unit/` e `tests/integration/` do produto estão na branch `feat/backend-mvp`, ainda não na `main`. A medição de cobertura do produto (REQ-08, ≥ 80 %) não está registrada neste plano |
 
 Fonte: Elaborado pelos autores (2026).
 
@@ -170,13 +187,13 @@ Fonte: Elaborado pelos autores (2026).
 
 | REQ | Funcionalidade | Descrição para o usuário | Critério de aceite | Status |
 | --- | --- | --- | --- | --- |
-| REQ-01 | Simulação cambial com cotação oficial | O usuário informa um valor em USD ou EUR e recebe o equivalente em BRL pela cotação PTAX mais recente (boletim do dia ou último dia útil) | Cotação via API PTAX/BCB com latência ≤ 2 s | Em desenvolvimento |
-| REQ-02 | 5 regimes de contratação | Cálculo dos ganhos por **hora, dia, semana, mês ou valor fixo** (ex.: US$ 30/h × 160 h/mês) | 100 % dos regimes operacionais no UAT | Em desenvolvimento |
-| REQ-03 | Encargos financeiros (spread + IOF) | Mostra o valor bruto, o spread da instituição, o IOF e o **valor líquido** que chega em reais | Cálculo auditável com 2 casas decimais | Em desenvolvimento |
-| REQ-04 | Emissão de invoice em PDF | Gera uma invoice (fatura de prestação de serviço ao exterior) com os dados da simulação | Geração em ≤ 3 s via WeasyPrint | Em desenvolvimento |
-| REQ-05 | Desempenho | Resposta rápida em qualquer simulação | ≤ 3 s em 95 % das requisições | Em desenvolvimento |
-| REQ-06 | Interface responsiva | Funciona em desktop e celular | Chrome, Firefox e Edge (últimas 2 versões) | Em desenvolvimento |
-| REQ-07 | Cache de cotações | Reaproveita cotações recentes e continua funcionando se a API falhar | Redução ≥ 50 % das chamadas à API | Em desenvolvimento |
+| REQ-01 | Simulação cambial com cotação oficial | O usuário informa um valor em USD ou EUR e recebe o equivalente em BRL pela cotação de referência mais recente (Frankfurter; PTAX/BCB como fonte de reserva) | Cotação via Frankfurter, com PTAX/BCB como reserva, com latência ≤ 2 s | Implementado em branch, pendente de merge |
+| REQ-02 | 5 regimes de contratação | Cálculo dos ganhos por **hora, dia, semana, mês ou valor fixo** (ex.: US$ 30/h × 160 h/mês) | 100 % dos regimes operacionais no UAT | Implementado em branch, pendente de merge |
+| REQ-03 | Encargos financeiros (spread + IOF) | Mostra o valor bruto, o spread da instituição, o IOF e o **valor líquido** que chega em reais | Cálculo auditável com 2 casas decimais | Implementado em branch, pendente de merge |
+| REQ-04 | Emissão de invoice em PDF | Gera uma invoice (fatura de prestação de serviço ao exterior) com os dados da simulação | Geração em ≤ 3 s via WeasyPrint | Implementado em branch, pendente de merge |
+| REQ-05 | Desempenho | Resposta rápida em qualquer simulação | ≤ 3 s em 95 % das requisições | Em desenvolvimento; sem medição formal |
+| REQ-06 | Interface responsiva | Funciona em desktop e celular | Chrome, Firefox e Edge (últimas 2 versões) | Fora deste escopo (frontend) |
+| REQ-07 | Cache de cotações | Reaproveita cotações recentes e continua funcionando se a API falhar | Redução ≥ 50 % das chamadas à API | Implementado em branch, pendente de merge |
 
 Fonte: Elaborado pelos autores (2026), com base no TAP (Tabela 2).
 
@@ -198,8 +215,8 @@ Fonte: Elaborado pelos autores (2026), com base no TAP (Tabela 2).
 1. O usuário acessa a página inicial do COGME.
 2. Escolhe a moeda de origem (USD ou EUR) e o regime de contratação (hora/dia/semana/mês/fixo).
 3. Informa o valor e a quantidade (ex.: horas trabalhadas no mês).
-4. Informa ou escolhe o spread da instituição e a alíquota de IOF aplicável. **[A CONFIRMAR: o usuário informa ou o sistema sugere?]**
-5. O sistema obtém a cotação PTAX (do cache, se estiver válida; senão, da API do Banco Central) e mostra: valor bruto em moeda estrangeira, cotação usada (com data/hora), spread, IOF e valor líquido em BRL.
+4. Informa o spread da instituição e a alíquota de IOF aplicável. **Spread e IOF: o usuário informa (proposta ADR-016).**
+5. O sistema obtém a cotação (do cache, se estiver dentro do TTL; senão, da Frankfurter e, na falha, da PTAX do Banco Central) e mostra: valor bruto em moeda estrangeira, cotação usada (com fonte, data/hora e, na PTAX, boletim), spread, IOF e valor líquido em BRL.
 6. Opcionalmente, o usuário preenche os dados da invoice (prestador, tomador, descrição do serviço) e gera o PDF.
 7. O sistema gera e baixa o PDF em até 3 s.
 
@@ -225,3 +242,4 @@ Fonte: Elaborado pelos autores (2026), com base no TAP (Tabela 2).
 | Versão | Data | Alteração | Responsável |
 | --- | --- | --- | --- |
 | 1.0 | 25/10/2026 | Emissão inicial | Edson Luis Silva |
+| 1.1 | 31/10/2026 | Correção de drift: PostgreSQL no lugar de SQLite (ADR-010); Frankfurter como fonte primária e PTAX como reserva (ADR-010 §4); situação de `src/` na branch `feat/backend-mvp`, ainda não na `main`; status de REQ-01 a REQ-07; `[A CONFIRMAR]` de §3.2.3 substituído pela referência à ADR-016 (proposta, não ratificada) | agent-architect (T10); revisão humana pendente |

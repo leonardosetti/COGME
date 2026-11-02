@@ -115,18 +115,93 @@ A criação, promulgação, roteamento e operação de agentes são regidos pela
 | `.ai/personas/` | Personas do modelo (camada L2) |
 | `scripts/` | Scripts mediadores de governança (dispatcher, validação, sincronização, parser de handoffs, validação de saída AFA, etc.) |
 | `tests/agents/` | Suites de teste dos scripts de governança |
+| `src/` | Backend do MVP: `backend/` (FastAPI, rotas `/v1`, cálculo, cotações, PDF), `shared/` (schemas do contrato) e `frontend/templates/` (template da invoice) |
+| `migrations/` | Migrações Alembic do banco (tabela `fx_quotes`, cache de cotações) |
+| `infra/` | Configuração de infraestrutura; hoje, `infra/nginx/`, do proxy reverso latente |
+| `Dockerfile` | Imagem do backend: Python 3.12 slim, usuário sem privilégios, bibliotecas nativas do WeasyPrint |
+| `docker-compose.yml` | Stack local: `db` (PostgreSQL 15), `migrate`, `web` e `proxy` opcional (`--profile proxy`) |
 
 ---
 
 ## 6. Stack e ambiente (caracterização técnica não sensível)
 
-- Linguagem: Python 3.11
+- Linguagem: Python 3.11+ (imagem e CI usam 3.12)
 - Stack: FastAPI + PostgreSQL 15+ (Docker Compose) + Nginx (reverse proxy latente)
 - Banco de dados: PostgreSQL 15+ (containerizado via Docker Compose)
 - Interface: templates server-side (Jinja), HTMX, Tailwind (classes utilitárias comitadas, sem build chain, sem CDN-first)
 - Testes: pytest, meta de cobertura ≥ 80%
 - CI/CD: GitHub Actions Free Tier (bypass registrado, dados não sensíveis)
 - Inferência de IA: local, CPU-only, `llama.cpp`, sem CUDA, sem nuvem
+
+### 6.1 Como executar o backend
+
+**Com Docker Compose (caminho recomendado).** Pré-requisito: Docker com o plugin Compose.
+
+1. Copie o exemplo de configuração e troque os valores dummy:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   No PowerShell: `Copy-Item .env.example .env`.
+
+   Troque `POSTGRES_PASSWORD` e use a mesma senha em `COGME_DATABASE_URL`. Se a senha tiver caracteres especiais, codifique-os na URL (percent-encoding). O `.env` é ignorado pelo Git e não deve ser versionado.
+
+2. Suba a stack:
+
+   ```bash
+   docker compose up --build
+   ```
+
+   O serviço `migrate` aplica as migrações (`alembic upgrade head`) e termina antes de `web` iniciar. A API fica em `http://127.0.0.1:8000`. As portas são publicadas só em `127.0.0.1`, e o banco não tem porta no host.
+
+   Para incluir o proxy reverso (Nginx, desativado por padrão): `docker compose --profile proxy up --build`. Ele expõe `http://127.0.0.1:8080`.
+
+**Rotas (`/v1`).**
+
+| Método | Rota | Descrição |
+|---|---|---|
+| GET | `/v1/health` | Estado do serviço |
+| GET | `/v1/rates/{currency}` | Cotação em BRL (`USD` ou `EUR`) |
+| POST | `/v1/simulate` | Simulação de recebimento |
+| POST | `/v1/invoice` | Invoice em PDF, como anexo |
+
+Todo erro segue o mesmo modelo: `{"error": {"key": "...", "message": "...", "details": [...]}}`.
+
+**Exemplo com dados sintéticos** (bash):
+
+```bash
+curl -s http://127.0.0.1:8000/v1/rates/USD
+
+curl -s -X POST http://127.0.0.1:8000/v1/simulate \
+  -H "Content-Type: application/json" \
+  -d '{"currency":"USD","regime":"hourly","amount":"30.00","quantity":"160","spread_pct":"2.00","iof_pct":"0.38"}'
+```
+
+No PowerShell, use `curl.exe` (o alias `curl` chama `Invoke-WebRequest`) e escape as aspas do JSON.
+
+Spread e IOF são informados por quem faz a simulação; o backend não tem alíquota. A cotação vem da fonte no momento da chamada. A resposta traz `quote.source` (`frankfurter` ou `ptax`) e, na PTAX, `quote.bulletin`. Se `quote.stale` for `true`, a cotação veio de cache vencido, obtido em consulta anterior; `quote.quoted_at` indica a data da cotação.
+
+**Migrações.** Pelo Compose, são automáticas. Fora dele, com o banco acessível (troque pelos seus valores):
+
+```bash
+COGME_DATABASE_URL='postgresql+asyncpg://usuario:senha@127.0.0.1:5432/cogme' alembic upgrade head
+```
+
+`alembic downgrade -1` desfaz a última revisão. A revisão `0001` remove a tabela de cotações em cache, que é reobtida das fontes.
+
+**Testes.**
+
+```bash
+python -m pip install -r requirements-dev.txt
+python -m pytest tests/unit tests/integration --cov=src --cov-fail-under=80
+```
+
+- Os testes de integração com PostgreSQL (marcador `postgres`) são pulados sem `COGME_TEST_DATABASE_URL`. Aponte essa variável para um banco descartável, nunca para dados reais.
+- Em Windows, defina `PYTHONUTF8=1` antes de rodar `tests/agents`, que não está no comando acima. No PowerShell: `$env:PYTHONUTF8 = "1"`.
+- A CI roda `pytest tests/` com um PostgreSQL efêmero (ver `.github/workflows/ci.yml`).
+
+**WeasyPrint e Pango.** A invoice é gerada com WeasyPrint, que depende das bibliotecas nativas Pango e HarfBuzz. Sem elas, a API sobe normalmente, mas `POST /v1/invoice` responde 503 `pdf_unavailable`. Por isso a geração real do PDF roda no container, que instala essas bibliotecas; o CI também as instala. No Windows, sem GTK/Pango instalado, a rota de invoice não gera PDF localmente.
 
 ---
 
