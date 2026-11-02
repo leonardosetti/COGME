@@ -27,6 +27,8 @@ Este log é o **instrumento único de ratificação** de mudanças de ADRs. Nenh
 | ADR-LOG-004 | ADR-012 | 1.0.0 | 1.1.0 | 29/10/2026 | Promulgação da `constitution.md` como Lei Suprema com co-assinatura humana; estabelecimento de hierarquia de forja e governança de agentes; protocolo de detecção e restauração de corrupção constitucional. | CCB-002 (29/10/2026) | **APLICADA** |
 | ADR-LOG-005 | ADR-013 | 1.0.0 | — | 01/11/2026 | **Não aplicada como emenda sobre ADR existente.** ADR-013 é instrumento próprio (Regime de Emenda Controlada do TAP) que supersede parcialmente ADR-005. Não gera emenda sobre ADR-005; estabelece regime próprio com delta log em `docs/tap/delta-v3.1.md`. | RAT-2026-11-01-A08 | **NAO APLICADA (ADR própria)** |
 | ADR-LOG-006 | ADR-015 | 1.0.0 | — | 31/10/2026 | **Não aplicada como emenda sobre ADR existente.** ADR-015 é instrumento próprio (Emenda de Marco M2: 30/09/2026 → 15/11/2026) sob regime ADR-013-a. Não gera emenda sobre ADR-013; estabelece delta log em `docs/tap/delta-v3.1.md`. | RAT-2026-10-31-A12 | **NAO APLICADA (ADR própria)** |
+| ADR-LOG-007 | ADR-013 | 1.0.0 | Supersedida por ADR-005 v1.1.0 | 31/10/2026 | Regime de Emenda Controlada do TAP (Regime de Emenda Controlada do TAP (Baseline Vivo)) incorporado integralmente na ADR-005 v1.1.0. ADR-013 permanece como artefato histórico. | RAT-2026-11-01-A08 | **APLICADA (supersedida por ADR-005 v1.1.0)** |
+| ADR-LOG-008 | ADR-014 | 1.0.1 | Supersedida por ADR-006 v2.1.0 | 31/10/2026 | Promulgação dos Agentes SDDAI incorporada integralmente na ADR-006 v2.1.0 (Ecossistema SDDAI: Modelo, Agentes, MCPs e Separação L1/L2/L3). ADR-014 permanece como artefato histórico. | RAT-2026-10-31-A12 | **APLICADA (supersedida por ADR-006 v2.1.0)** |
 
 ---
 
@@ -48,17 +50,17 @@ Este log é o **instrumento único de ratificação** de mudanças de ADRs. Nenh
 | ADR-002 | 1.0.0 | — | Vigente |
 | ADR-003 | 1.0.0 | — | Vigente |
 | ADR-004 | 1.0.0 | — | Vigente |
-| ADR-005 | 1.1.0 | ADR-LOG-002 | Supersedida parcialmente por ADR-013 |
-| ADR-006 | 2.0.0 | — | Vigente |
+| ADR-005 | 1.1.0 | ADR-LOG-002 | Vigente (incorpora ADR-013 e ADR-015) |
+| ADR-006 | 2.1.0 | ADR-LOG-001 | Vigente (incorpora ADR-014) |
 | ADR-007 | 1.0.0 | — | Vigente |
 | ADR-008 | 1.1.0 | ADR-LOG-003 | Vigente |
 | ADR-009 | 1.0.0 | — | Vigente |
 | ADR-010 | 1.0.0 | — | **Supersedida por ADR-001 v1.1.0** (conteúdo absorvido) |
-| ADR-011 | 1.0.0 | — | Vigente |
+| ADR-011 | 1.0.0 | — | Vigente (incorporada em ADR-006 v2.1.0) |
 | ADR-012 | 1.1.0 | ADR-LOG-004 | Vigente |
-| ADR-013 | 1.0.0 | — | Vigente (instrumento próprio) |
-| ADR-014 | 1.0.1 | — | Vigente (renumerada de ADR-013 via OKB-C-26) |
-| ADR-015 | 1.0.0 | — | Vigente (instrumento próprio) |
+| ADR-013 | 1.0.0 | — | **Supersedida por ADR-005 v1.1.0** (conteúdo absorvido) |
+| ADR-014 | 1.0.1 | — | **Supersedida por ADR-006 v2.1.0** (conteúdo absorvido) |
+| ADR-015 | 1.0.0 | — | **Incorporada em ADR-005 v1.1.0** (emenda de marco M2, registro de delta log em `docs/tap/delta-v3.1.md`) |
 
 ---
 

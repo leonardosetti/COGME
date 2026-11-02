@@ -1,8 +1,14 @@
 ---
 id: ADR-013
+title: Regime de Emenda Controlada do TAP (Baseline Vivo) — SUPERSSEDIDA
+---
+**Esta ADR está SUPERSSEDIDA.** Foi incorporada integralmente na **ADR-005 v1.1.0** (Regime do TAP: Freeze + Emenda Controlada) conforme decisão do GP em 31/10/2026 (RAT-2026-10-31-A12). Não deve ser usada como referência normativa vigente. Consulte `docs/decisoes/ADR-005-regime-tap.md` (versão 1.1.0) para o conteúdo vigente.
+
+---
+id: ADR-013
 title: Regime de Emenda Controlada do TAP (Baseline Vivo)
 version: 1.0.0
-status: ratified
+status: superseded by ADR-005 v1.1.0
 date: 2026-11-01
 decisor: GP Leonardo (CCB único)
 supersedes: ADR-005 (parcialmente)

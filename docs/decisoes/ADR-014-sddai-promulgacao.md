@@ -1,12 +1,22 @@
+# ADR-014 — Promulgação dos Agentes SDDAI e Resolução de Gaps de Compliance (Art. 4.1, 4.7, P-06) — SUPERSSEDIDA
+
+**Esta ADR está SUPERSSEDIDA.** Foi incorporada integralmente na **ADR-006 v2.1.0** (Ecossistema SDDAI: Modelo, Agentes, MCPs e Separação L1/L2/L3) conforme decisão do GP em 31/10/2026 (RAT-2026-10-31-A12). Não deve ser usada como referência normativa vigente. Consulte `docs/decisoes/ADR-006-ecossistema-sddai.md` (versão 2.1.0) para o conteúdo vigente.
+
+---
 # ADR-014 — Promulgação dos Agentes SDDAI e Resolução de Gaps de Compliance (Art. 4.1, 4.7, P-06)
 
 | Campo | Valor |
 |---|---|
 | **Versão** | 1.0.1 |
-| **Status** | Ratificado (CCB 31/10/2026 — prompt expresso do GP) · Renumerado ADR-013 → ADR-014 (OKB-C-26 — RAT-2026-10-31-A12) |
+| **Status** | Supersedida por ADR-006 v2.1.0 |
 | **Data da decisão** | 31/10/2026 |
 | **Data de formalização do documento** | 31/10/2026 |
 | **Decisor** | GP Leonardo (CCB único — TAP v3 §1.c, Premissa P7) + NEXUS-PRIME ULTIMATE (L0 Orquestrador) |
+| **Gatilhos G1–G4** | G1 (impacto transversal — todos os agentes SDDAI, pipeline data_optimization, CI workflow), G2 (irreversibilidade prática — agentes promovidos ao roster SSOT alteram topologia de despacho), G3 (questionabilidade acadêmica — "por que forjar agentes SDDAI via L0 ao invés de AFA-ULTIMATE canônico?"), G4 (trade-off não óbvio — autonomia do ecossistema autorizada pelo Humano vs. rigidez do forjador único canônico) |
+| **Rastreabilidade** | TAP §3 (Inovação) + §9 (Premissa P3 — stack local auditável); EAP N1.4, N4.4; REQ-13 (prompts catalogados); ADRs correlatas: ADR-001 (stack FOSS), ADR-006 (modelo primário/fallback), ADR-011 (Ecossistema SDD: MCPs, memória persistente, separação L1/L2/L3); constitution.md v1.2.0 Art. 4.1, 4.3, 4.6, 4.7, 4.10, 6.5, 6.7, P-01..P-12 |
+| **Domínio PMBOK 7ª** | Trabalho do Projeto + Abordagem de Desenvolvimento + Incerteza |
+| **Processo PMBOK 6ª (dicionário)** | 4.3 Orientar e Gerenciar o Trabalho do Projeto; 4.6 Integrar Mudanças |
+---
 | **Gatilhos G1–G4** | G1 (impacto transversal — 5 novos agentes L2 no roster, pipeline data_optimization, CI workflow), G2 (irreversibilidade prática — agentes promovidos ao roster SSOT alteram topologia de despacho), G3 (questionabilidade acadêmica — "por que forjar agentes SDDAI via L0 ao invés de AFA-ULTIMATE canônico?"), G4 (trade-off não óbvio — autonomia do ecossistema autorizada pelo Humano vs. rigidez do forjador único canônico) |
 | **Rastreabilidade** | TAP §3 (Inovação) + §9 (Premissa P3 — stack local auditável); EAP N1.4, N4.4; REQ-13 (prompts catalogados); ADRs correlatas: ADR-001 (stack FOSS), ADR-006 (modelo primário/fallback), ADR-011 (Ecossistema SDD: MCPs, memória persistente, separação L1/L2/L3); constitution.md v1.2.0 Art. 4.1, 4.3, 4.6, 4.7, 4.10, 6.5, 6.7, P-01..P-12 |
 | **Domínio PMBOK 7ª** | Trabalho do Projeto + Abordagem de Desenvolvimento + Incerteza |
