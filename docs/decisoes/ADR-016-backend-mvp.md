@@ -15,9 +15,9 @@ domain: Desenvolvimento e Qualidade (PMBOK 7ª: Abordagem de Desenvolvimento; Qu
 
 ## Contexto
 
-O backend do MVP está especificado em `.ai/specs/backend-mvp-v1.spec.md` e implementado na branch `feat/backend-mvp`. Em 01/11/2026, o código está em commits locais da branch, a partir de `0f0b686`, sem push. Nada foi integrado à `main`.
+O backend do MVP está especificado em `.ai/specs/backend-mvp-v1.spec.md` e implementado na branch `feat/backend-mvp`. Em 02/11/2026, a branch foi rebaseada sobre `d2ca1ff` (`main` com a consolidação de ADRs) e publicada no fork `FabricioLima-C/COGME`, para pull request. Nada foi integrado à `main`.
 
-A spec e a ADR-010 fixam o essencial: PostgreSQL, Docker Compose e a cadeia de cotações com Frankfurter primária e PTAX de reserva. Restam decisões que nenhum documento anterior registra e que afetam o resultado, os dados guardados e a resposta da API:
+A spec e a ADR-001 v1.1.0 fixam o essencial: PostgreSQL, Docker Compose e a cadeia de cotações com Frankfurter primária e PTAX de reserva. Restam decisões que nenhum documento anterior registra e que afetam o resultado, os dados guardados e a resposta da API:
 
 1. **Spread e IOF.** O plano de desenvolvimento deixou em aberto se o usuário informa ou se o sistema sugere (`[A CONFIRMAR]` em `docs/planos/desenvolvimento.md` §3.2.3). O Plano de Riscos (RE-04) trata a mudança de alíquota de IOF como risco externo.
 2. **Ordem e arredondamento.** A spec define a sequência do cálculo e o arredondamento, mas não os registra como decisão.
@@ -25,7 +25,7 @@ A spec e a ADR-010 fixam o essencial: PostgreSQL, Docker Compose e a cadeia de c
 4. **Cotação vencida.** A spec manda usar o último cache quando as fontes falham, mas não define idade máxima.
 5. **Erros.** A spec define 400, 404, 503 e 500. Não trata 405 nem diz onde ficam as peças compartilhadas dos routers.
 
-A resolução do conflito com a ADR-001 (SQLite, PTAX como primária) está na ADR-010. Esta ADR a pressupõe e não a reabre.
+A stack (PostgreSQL 15+, Docker Compose, Nginx latente e hierarquia de fontes de câmbio) está na ADR-001 v1.1.0, que absorveu a ADR-010 pela emenda ADR-LOG-001. A ADR-010 ficou como registro histórico. Esta ADR pressupõe a ADR-001 v1.1.0 e não a reabre. Pela regra do ADR-LOG, nenhuma decisão desta ADR altera regra de ADR vigente; o que divergir fica como pendência para o CCB.
 
 ## Decisões
 
@@ -46,7 +46,7 @@ Em toda resposta vale `gross_brl − spread_brl − iof_brl == net_brl`. O `Simu
 
 **D4. Somente cotações são persistidas.** A tabela `fx_quotes` guarda cotações públicas. Simulações e invoices não são gravadas. Nomes, documentos e endereços existem só durante a requisição e não vão para log. Os logs trazem o nome da fonte e o tipo da falha, nunca valor, URL ou corpo da requisição (LGPD, P-04).
 
-**D5. Fontes e identificação.** Frankfurter é a fonte primária e PTAX é a reserva obrigatória (ADR-010 §4).
+**D5. Fontes e identificação.** Frankfurter é a fonte primária e PTAX é a reserva obrigatória (ADR-001 v1.1.0).
 
 - Frankfurter devolve a taxa de referência do BCE. `quoted_at` é a meia-noite UTC da data informada, e não há boletim.
 - PTAX devolve `cotacaoCompra`, a taxa de compra que o banco paga ao profissional que vende a moeda estrangeira. Traz o tipo do boletim, e `dataHoraCotacao` é convertido de Brasília para UTC.
@@ -69,7 +69,7 @@ Em toda resposta vale `gross_brl − spread_brl − iof_brl == net_brl`. O `Simu
 
 **D10. `routers/common.py`.** Concentra as peças usadas por mais de um router: a dependência `RateServiceDep` (o serviço é montado no lifespan e guardado em `app.state`), as respostas de erro para o OpenAPI e `DecimalJsonRoute`. Essa rota lê o corpo com `Decimal`, recusa `NaN` e `Infinity` e limita o corpo a 64 KiB.
 
-**D11. Versões.** `requires-python >= 3.11` no `pyproject.toml`. Imagem e CI usam Python 3.12. Dependências de runtime com versões exatas em `requirements.txt`; os limites ficam em `pyproject.toml`. Lock com hashes: pendente (P1).
+**D11. Versões.** `requires-python >= 3.11` no `pyproject.toml`, conforme a ADR-001 v1.1.0 (Python 3.11). Imagem e CI usam Python 3.12; o CI já usava 3.12 antes do backend. Esta ADR não altera a versão definida na ADR-001: a divergência fica como pendência (P8). Dependências de runtime com versões exatas em `requirements.txt`; os limites ficam em `pyproject.toml`. Lock com hashes: pendente (P1).
 
 **D12. Rede e exposição.** O banco fica em rede interna, sem rota para a internet. Só o serviço `web` publica porta, em `127.0.0.1`. Não há CORS: o frontend é servido na mesma origem.
 
@@ -81,7 +81,7 @@ Em toda resposta vale `gross_brl − spread_brl − iof_brl == net_brl`. O `Simu
 | Ordem do IOF (D2) | IOF sobre o bruto em BRL; IOF sobre o valor após o spread | Após o spread, como define a spec §2. É regra de produto; o projeto não a valida juridicamente. |
 | Arredondamento (D3) | `ROUND_HALF_UP`; `ROUND_HALF_EVEN` | `ROUND_HALF_EVEN`, por ser determinístico e sem viés. `ROUND_HALF_UP` é o mais difundido em documentos comerciais; um extrato que o use pode diferir em 0,01. |
 | Persistência (D4) | Gravar simulações e invoices; gravar só cotações | Só cotações. Simulação e invoice trazem dados de pessoas e de negócio (LGPD). Histórico de simulações está fora do MVP. |
-| Fontes (D5) | Só Frankfurter; só PTAX; média entre as duas | Cadeia com reserva (ADR-010 §4), sem média, com a fonte informada na resposta. |
+| Fontes (D5) | Só Frankfurter; só PTAX; média entre as duas | Cadeia com reserva (ADR-001 v1.1.0), sem média, com a fonte informada na resposta. |
 | Cache vencido (D6) | Idade máxima, com 503 após o limite; sem limite e sempre `stale=true` | Sem limite, com `stale=true`. A API continua respondendo. O custo é informar cotação antiga; `stale` e `quoted_at` expõem isso. |
 | Erro 405 (D9) | `validation_error`; `not_found` com `Allow` | `not_found` com `Allow`. A spec não define 405, e `validation_error` descreveria um erro na requisição que não existe. |
 | Peças compartilhadas (D10) | Repetir em cada router; módulo comum | Módulo comum (`routers/common.py`), para que as rotas não divirjam em erros e na leitura do corpo. |
@@ -102,7 +102,7 @@ Negativas e riscos:
 - O cálculo depende do que o usuário digita. Spread ou IOF errados geram valor errado, e o sistema não tem como detectar.
 - `ROUND_HALF_EVEN` pode diferir em 0,01 de cálculos feitos com `ROUND_HALF_UP`.
 - O RE-04 do Plano de Riscos descreve como mitigação alíquotas configuráveis, com fonte e vigência. Esta ADR adota outra forma (entrada pelo usuário). Atualizar o RE-04 é decisão humana (P7).
-- O TAP, congelado, ainda cita PTAX como fonte de REQ-01. Esta ADR não edita o TAP; a divergência fica para o CCB (P7).
+- O TAP e o Plano de Gerenciamento v2.1.0 citam PTAX como fonte de REQ-01, e a ADR-001 v1.1.0 põe a Frankfurter como primária. Esta ADR não edita o TAP nem o plano (P7).
 - Não há medição formal de desempenho (REQ-05) nem de UAT (REQ-09). A cobertura do produto (REQ-08) também não tem medição registrada no plano.
 
 ## Pendências para decisão humana
@@ -115,7 +115,8 @@ Nenhuma destas pendências está aceita nem resolvida por esta ADR.
 - **P4. Atributo privado do WeasyPrint.** O `url_fetcher` que recusa recursos externos depende de `_fail_on_errors`, atributo não documentado da versão 70.0 (versão fixada). Uma atualização pode mudar esse comportamento sem aviso. Opções: alternativa pública ou teste de regressão dedicado. **Verificação de 01/11/2026:** dependência confirmada em `weasyprint/urls.py:428`, mas o risco é baixo. O template não referencia URL, e dado do usuário escapado gerou 0 chamadas ao fetcher. Sem o atributo, uma busca gera `AttributeError`, que a API converte em 503. A alternativa pública existe e passou no teste: subclasse de `weasyprint.urls.URLFetcher` com `fetch` próprio.
 - **P5. Agentes em provedor externo.** Na execução do backend, os agentes de `.opencode/agents/` foram usados como papéis em modelos Claude (Sonnet, Opus e Haiku 5.5), por provedor externo, conforme `.ai/handoffs/HF-0500-backend-mvp.md`. Não foi usada a inferência local Qwen3 do P-02. O P-02 admite provedor cloud apenas para tarefas não sensíveis e veda o envio de código-fonte, especificações e handoffs. O P-03 classifica código e especificações como sensíveis. Esse uso precisa de avaliação do CCB. Esta ADR não o classifica como conforme.
 - **P6. Retenção de `fx_quotes`.** A spec prevê manutenção futura, sem prazo definido. **Verificação de 01/11/2026:** risco baixo. Com 175.200 linhas, equivalentes a 10 anos com 2 moedas renovadas a cada hora, a tabela ocupa 23 MB e a consulta da última cotação leva 0,04 ms. Só há dados públicos.
-- **P7. Divergências com documentos existentes.** (a) Atualizar o RE-04 do Plano de Riscos para a forma adotada em D1. (b) O TAP, congelado pela ADR-005, ainda cita PTAX como fonte de REQ-01. (c) O `[A CONFIRMAR]` de `desenvolvimento.md` §3.2.3 foi substituído pela referência a esta proposta; a decisão segue sujeita ao CCB.
+- **P7. Divergências com documentos existentes.** (a) Atualizar o RE-04 do Plano de Riscos para a forma adotada em D1. (b) O TAP e o Plano de Gerenciamento v2.1.0 citam PTAX como fonte de REQ-01. Por orientação da equipe (02/11/2026), essa redação permanece. Alinhá-la à ADR-001 v1.1.0, se o CCB quiser, segue o regime de emenda controlada da ADR-005 v1.1.0 (delta em `docs/tap/delta-v3.1.md`). (c) O `[A CONFIRMAR]` de `desenvolvimento.md` §3.2.3 foi substituído pela referência a esta proposta; a decisão segue sujeita ao CCB.
+- **P8. Versão do Python.** A ADR-001 v1.1.0 define Python 3.11; a imagem e o CI usam 3.12 (D11). Pela regra do ADR-LOG, cabe ao CCB escolher entre emendar a ADR-001 (ADR-LOG) ou passar imagem e CI para 3.11.
 
 ## Ratificação
 
@@ -124,7 +125,10 @@ Não ratificada. Status `proposta`. A ratificação é ato humano do CCB (Consti
 ## Referências
 
 - `.ai/specs/backend-mvp-v1.spec.md` (§§1 a 8)
-- `docs/decisoes/ADR-010-Stack-Infraestrutura.md` (§4 fontes; §6 dependências; resolução do conflito com a ADR-001)
+- `docs/decisoes/ADR-001-stack.md` (v1.1.0: stack, banco e fontes de câmbio)
+- `docs/decisoes/ADR-LOG.md` (ADR-LOG-001; regra de não sobreposição)
+- `docs/decisoes/ADR-005-regime-tap.md` (v1.1.0: emenda controlada do TAP)
+- `docs/decisoes/ADR-010-Stack-Infraestrutura.md` (histórico; supersedida pela ADR-001 v1.1.0)
 - `docs/planos/desenvolvimento.md` (§3.2.3)
 - `docs/planos/plano-riscos.md` (RE-04)
 - `docs/dependencias/registro.md`
