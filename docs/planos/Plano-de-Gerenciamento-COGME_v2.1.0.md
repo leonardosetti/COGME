@@ -602,7 +602,166 @@ No nível macro, o sequenciamento é finish-to-start entre macro-fases, com gate
 *Conteúdo:* faixa superior com as três macro-fases encadeadas por gates (MF1 → gate M2/Calibração → MF2 → gate M3 → MF3 → gate M4); faixa inferior com a camada operacional mostrando os quatro detectores do caminho crítico empírico (cards P0, label `blocked`, bandas do CFD, desvio de Cycle Time) alimentando a decisão de replanejamento no Refinement. Formato sugerido: Mermaid `flowchart LR`, versionado em `/docs/diagrams/`.  
 *Necessidade real:* substitui visualmente a rede CPM rejeitada, demonstrando ao Prof. Dr. Nivaldo Carleto como o sequenciamento é controlado sem preditividade artificial.
 
-## 4.5 Estimativa de Esforço e Duração (processo 6.4)
+## 4.5 Redes de Projeto, Tabelas de Precedência e Caminho Crítico (processos 6.3 e 6.5)
+
+Conforme o PMBOK® 6ª edição (dicionário, obsolescência procedural declarada), os processos **6.3 Sequenciar as Atividades** e **6.5 Desenvolver o Cronograma** regem a construção da rede de precedência, o cálculo do caminho crítico e o controle do cronograma. No COGME, a abordagem segue o princípio de *tailoring* da PMBOK 7ª e da ADR-002: a execução é Kanban (fluxo contínuo, sem sprints time-boxed), portanto **não se constrói rede de precedências CPM no nível operacional** — uma rede de atividades em nível de tarefas ficaria obsoleta em dias, violando o princípio GMV. Contudo, o **marco M4 (15/12/2026)** é um prazo irrevogável e o escopo é emergente, de modo que o **caminho crítico em nível de macro-fases e marcos** é obrigatório para o avaliador acadêmico e para o controle de marcos.
+
+A rede de precedência do COGME é estruturada em nível de **marcos e macro-fases** (não de atividades individuais), com as seguintes dependências lógicas:
+
+### 4.5.1 Tabela de Precedência do Projeto (Nível Macro)
+
+**[TABELA 40 — Tabela de Precedência do Projeto (Nível Macro)]**  
+*Inserção obrigatória — Formato: Tabela Markdown*
+
+| ID | Nome da Entrega | Macro-Fase | Depende de | Duração (dias úteis) | Início Mais Cedo | Término Mais Cedo | Slack | Crítico? |
+|----|-----------------|------------|------------|----------------------|------------------|-------------------|-------|----------|
+| M1 | Marco M1 — Entrega Parcial Documental | MF1 | — | 0 dias | 01/09/2026 | 22/09/2026 | 0 dias | Sim |
+| N1 | Macro-Fase 1 — Fundação | MF1 | M1 | 30 dias | 01/09/2026 | 30/09/2026 | 0 dias | Sim |
+| M2 | Marco M2 — Ambiente e Modelagem | MF2 | N1 | 0 dias | 30/09/2026 | 30/09/2026 | 25 dias (esgotados)* | Não* |
+| N2 | Desenvolvimento do Sistema (MF2) | MF2 | N1, M2 | 46 dias | 01/10/2026 | 15/11/2026 | 0 dias | Sim |
+| M3 | Marco M3 — MVP Funcional (Beta) | MF2 | N2 | 0 dias | 15/11/2026 | 15/11/2026 | 0 dias | Sim |
+| N3 | Consolidação (MF3) | MF3 | N2, M3 | 30 dias | 16/11/2026 | 15/12/2026 | 0 dias | Sim |
+| M4 | Marco M4 — Encerramento | MF3 | N3 | 0 dias | 15/12/2026 | 15/12/2026 | 0 dias | Sim |
+
+*Nota: O atraso de 25 dias úteis em M2 (Q-01) foi absorvido pelo slack de 16 dias entre B1 e B2, deixando o projeto sem folga restante. Qualquer atraso adicional em N2 impacta diretamente M3 e M4.*
+
+**Regras de leitura da tabela:**
+- **Slack (folga):** número de dias úteis disponíveis antes de impactar o marco seguinte.
+- **Crítico (Sim/Não):** indica se a entidade está no caminho crítico (qualquer atraso atrasa o marco seguinte).
+- A tabela acima é o **SSOT da rede de precedência** do projeto. Qualquer alteração deve ser registrada via `change-request` e atualizada nesta tabela.
+
+**[FIG-4 — Rede de Precedência do Projeto COGME (Nível Macro)]**  
+*Inserção obrigatória — Formato: SVG / diagrama (NÃO Mermaid)*  
+*Conteúdo obrigatório:* grafo direcionado com nós representando os marcos M1–M4 e as macro-fases MF1–MF3, setas direcionadas indicando dependências finish-to-start, cores destacando o caminho crítico (M1 → N2 → M3 → N3 → M4), anotações de duração em cada nó e slack nas arestas não-críticas.  
+*Formato:* SVG gerado por script (veja §11.6 para instruções de script).  
+*Necessidade real:* Atende à exigência acadêmica do Prof. Dr. Nivaldo Carleto de visualizar a rede de precedência do projeto, sem reintroduzir a preditividade operacional rejeitada pela ADR-003.  
+*Instruções para script SVG:*  
+1. Criar arquivo SVG `docs/diagrams/cronograma/fig-rede-precedencia.svg`  
+2. Usar apenas elementos SVG nativos (`<rect>`, `<line>`, `<circle>`, `<text>`, `<path>`)  
+3. Cada nó deve ser um retângulo arredondado com o nome do marco/fase e a data  
+4. Cada seta deve ser uma linha com ponta de seta (`marker-end`) indicando dependência  
+5. O caminho crítico (M1 → N2 → M3 → N3 → M4) deve ser destacado em vermelho (#C0392B)  
+6. Arestas não-críticas devem ser em cinza claro (#BDC3C7)  
+7. Cada nó deve incluir o slack (ex.: "Slack: 0 dias" ou "Slack: 25 dias (esgotado)")  
+8. Incluir legenda explicando o significado das cores e setas  
+9. Dimensões recomendadas: 1400 × 700 pixels  
+10. Todo texto deve ser elemento `<text>` SVG para acessibilidade e busca  
+
+### 4.5.1 Caminho Crítico do Projeto
+
+O caminho crítico do COGME é definido como a sequência de entregas (ou entregas de macro-fase) cuja duração total determina o prazo final do projeto (M4 — 15/12/2026). Qualquer atraso em uma entrega do caminho crítico atrasa diretamente o marco final.
+
+**[TABELA 41 — Caminho Crítico do Projeto COGME]**  
+*Inserção obrigatória — Formato: Tabela Markdown*
+
+| Posição | Entidade | Tipo | Duração (dias úteis) | Acumula (dias úteis) | Início Mais Cedo | Término Mais Cedo | Folga (dias úteis) |
+|---------|----------|------|----------------------|----------------------|------------------|-------------------|-------|
+| 1 | N1 — Macro-Fase 1 (Fundação) | Macro-fase | 30 | 30 | 01/09/2026 | 30/09/2026 | 0 |
+| 2 | N2 — Macro-Fase 2 (Construção) | Macro-fase | 46 | 76 | 01/10/2026 | 15/11/2026 | 0 |
+| 3 | N3 — Macro-Fase 3 (Consolidação) | Macro-fase | 30 | 106 | 16/11/2026 | 15/12/2026 | 0 |
+
+**Duração total do caminho crítico:** 106 dias corridos (01/09/2026 a 15/12/2026)  
+**Prazo letivo disponível:** 106 dias corridos (01/09/2026 a 15/12/2026)  
+**Margem de segurança:** 0 dias (o prazo é irrevogável)
+
+**Interpretação:** O caminho crítico é rígido. Qualquer atraso em N1, N2 ou N3 atrasa diretamente o marco final (M4 — 15/12/2026). O atraso já consumido em M2 (Q-01) foi absorvido pelo slack de 16 dias entre B1 e B2, mas não há mais folga disponível para atrasos adicionais sem impacto direto no prazo final.
+
+**[FIG-5 — Caminho Crítico do Projeto COGME]**  
+*Inserção obrigatória — Formato: SVG / diagrama (NÃO Mermaid)*  
+*Conteúdo obrigatório:* linha do tempo horizontal com os marcos M1–M4 e as macro-fases MF1–MF3, barras horizontais representando a duração de cada entrega, setas indicando dependências finish-to-start, destaque em vermelho do caminho crítico (N1 → N2 → N3 → N4), linha vertical marcando o dia atual (31/10/2026) e anotação do slack restante.  
+*Formato:* SVG gerado por script (veja instruções em §11.6).  
+*Necessidade real:* Demonstra ao avaliador acadêmico o entendimento do caminho crítico e do controle do prazo, sem reintroduzir a preditividade operacional rejeitada pela ADR-003.  
+*Instruções para script SVG:*  
+1. Criar arquivo SVG `docs/diagrams/cronograma/fig-caminho-critico.svg`  
+2. Usar apenas elementos SVG nativos (`<rect>`, `<line>`, `<circle>`, `<text>`, `<path>`, `<rect>` com `rx` para barras arredondadas)  
+3. Linha do tempo horizontal com eixo X representando o tempo (01/09/2026 a 15/12/2026)  
+4. Cada barra representa uma entidade do caminho crítico (N1, N2, N3) com duração proporcional  
+5. Marcas verticais para os marcos M1, M2, M3, M4 com rótulos de data  
+6. Linha vertical pontilhada para o dia atual (31/10/2026) com rótulo "Hoje"  
+7. O caminho crítico (N1 → N2 → N3 → N3) deve ser destacado em vermelho (#C0392B)  
+8. Barras não-críticas (marcos isolados) devem ser em cinza claro (#BDC3C7)  
+9. Cada barra deve incluir a duração em dias (ex.: "30 dias")  
+11. Incluir legenda explicando o significado das cores e setas  
+12. Dimensões recomendadas: 1400 × 400 pixels  
+13. Todo texto deve ser elemento `<text>` SVG para acessibilidade e busca  
+
+## 4.6 Controle do Cronograma (processo 6.6)
+
+O monitoramento temporal é contínuo e nativo do SSOT (Domínio de Medição): o CFD exerce, neste plano, a função de monitoramento temporal substituto do Gantt/EVM (função atribuída pela base de conhecimento operacional, §8.2; definição formal, cadência semanal e regra corretiva de banda 2× canonicamente na Integração §1.6.1, aqui apenas referenciadas); Cycle Time e Throughput são publicados semanalmente via GitHub Insights; o WIP em fluxo é verificado continuamente (≤ 9 cards).
+
+**Gatilhos de ação corretiva com recorte temporal (derivados da Integração §1.9):**
+
+| Gatilho | Ação corretiva | Base temporal |
+|---------|---------------|---------------|
+| Desvio > 3 dias úteis em qualquer marco M1–M4 | Issue `change-request` + proposta de replanejamento + ADR | Dias úteis |
+| Throughput < 3 cards/semana por 2 semanas consecutivas | Revisão de WIP limits (fallback ADR-002) + reavaliação do escopo do MVP (fallback ADR-003) | Semanas |
+| Banda do CFD > 2× a largura média por 2 semanas | Retrospectiva extraordinária + replanejamento do gargalo (caminho crítico empírico, §4.5) | Semanas |
+| Card P0 com label `blocked` por > 48h | Intervenção direta do GP + resolução ou substituição da dependência | Horas corridas (NC-05) |
+
+Fechamento de milestones: uma milestone não é fechada enquanto houver Issues abertas com label `change-request` ou `blocked`; o fechamento exige critérios atendidos, registro de lições aprendidas e comunicação ao Prof. Dr. Nivaldo Carleto quando aplicável (M1, M3, M4), conforme regras da base de conhecimento operacional (§9.2). Alteração de data de marco oficial exige change-request + aprovação do CCB (GP, membro único) + ADR + comunicação no marco subsequente (Integração §1.7.3); a milestone auxiliar Calibração pode ser reajustada pelo GP com registro em commit.
+
+## 4.9 Notas de Contexto e Registro de Saneamento dos Artefatos Vivos
+
+**[NC-00 — Regime de freeze do TAP e precedência intra-TAP]** (decisão do GP, 21/09/2026). O TAP encontra-se congelado desde o início do planejamento (última versão datada de 18/09/2026, anterior a este plano): não é revisado, reversionado ou corrigido ao longo do ciclo, em conformidade com seu status ontológico (Premissa P9; Glossário §11; PMBOK® 6ª §4.1 como dicionário). Duas regras derivam: (i) precedência intra-TAP — em divergência entre seções do TAP, a seção §6 Marcos é canônica para matéria temporal e de marcos; (ii) locus de contexto — este documento de Planejamento (8 Áreas) detém, com precedência, as Notas de Contexto que registram a leitura operacional vigente do TAP congelado; divergências jamais são tratadas como correções do TAP. Trade-off declarado: aceita-se divergência textual entre o termo autorizativo imutável e a leitura operacional, em favor da imutabilidade da referência de autorização e da trilha auditável de interpretações. A decisão atende aos gatilhos G1 (impacto transversal — todos os 8 planos), G3 (questionabilidade acadêmica) e G4 (trade-off não óbvio) da Política de ADRs (Aditivo da base de conhecimento, §1.2) → ADR-005 encaminhada para emissão antes do M2, com incorporação da cláusula na próxima revisão do Plano de Integração (§1.4).
+
+**[NC-01 — Assimilação do SMART de Cronograma à seção §4.6].** Registro e resolução da divergência entre TAP §3 (item ii) e TAP §6/§4.6 quanto à "documentação consolidada": prevalece a leitura do §6 — MVP funcional no M3 (novembro/2026) e consolidação documental acadêmica no M4 (15/12/2026). Aplicada em §4.6. Nenhuma revisão do TAP é prevista ou citada (regime de freeze).
+
+**[NC-02 — Numeração canônica dos processos de cronograma].** Este plano adota a numeração oficial do PMBOK® 6ª edição (6.1–6.6). Divergências registradas na base de conhecimento operacional (§8.1) e no Glossário (§3) — artefatos vivos — não são replicadas aqui e constam do registro de saneamento.
+
+**[NC-03 — Convenção dupla de dias e definição operacional de Cycle Time].** Métricas de fluxo em dias corridos (nativo GitHub Insights); marcos, desvios e capacidade em dias úteis. A definição operacional de Cycle Time aqui vigente é `In Progress` → `Done` (ADR-003), prevalecendo sobre redações divergentes em artefatos de origem; a leitura do TAP congelado é registrada por esta nota, e o saneamento aplica-se apenas aos artefatos vivos (ADR-003, Glossário, baseline).
+
+**[NC-04 — Redação do critério M2 (stack)].** A expressão "Stack FOSS validada (ADR-001)" foi substituída por "definida e validada por protótipo (TAP §10, R2; fase N4.1)", com ressalva de que a formalização na ADR-001 está em avaliação e mudanças de stack exigem ADR específica (Escopo §3.3.4). Aplicada na Tabela 3.
+
+**[NC-05 — Base temporal do gatilho de bloqueio P0].** O limiar de 48h para cards P0 `blocked` é medido em horas corridas (evento de fluxo), distinguindo-se da base de dias úteis aplicada a desvios de marco. Aplicada em §4.7.
+
+**[NC-06 — Verificação de capacidade do marco corrente].** Registrada como evidência verificável a distribuição de carga do backlog M1 (base de conhecimento operacional, §10.3), com todos os membros dentro do limite de 20h semanais (Premissa P5). Aplicada em §4.5.
+
+**Entendimentos sobre o TAP congelado (notas de contexto — sem saneamento):**
+
+| Matéria | Seção do TAP (congelado) | Entendimento adotado neste plano |
+|---------|--------------------------|----------------------------------|
+| SMART ii × consolidação no M4 | §3 × §6 | NC-01: §6 prevalece; MVP funcional no M3, consolidação no M4 |
+| Cabeçalho "Fases EAP v2.0" | §5 | EAP citada sem versão interna (regra já aplicada neste plano) |
+| Subnumeração das restrições | §8 | Restrições citadas por categoria nominal + §11 (orçamento); subnumeração não presumida |
+| Cycle Time "To Do → Done" | §3 (Métricas) | Definição operacional `In Progress` → `Done` (ADR-003), via NC-03 |
+
+**Registro de saneamento — artefatos vivos (não bloqueante):**
+
+| Pendência | Artefato vivo | Momento previsto |
+|-----------|---------------|------------------|
+| Numeração 6.3/6.5 no §8.1 | Base de conhecimento operacional §8.1 | Próxima revisão da base |
+| "Processo 6.4 Estimar Custos" → 6.4 Estimar Durações (custos = 7.2) | Glossário §3 | Próxima revisão do Glossário |
+| Grafia "Carleto" → "Carleto" | Glossário | Próxima revisão do Glossário |
+| Cycle Time "To Do → Done" → "In Progress → Done" | Glossário | Próxima revisão do Glossário |
+| Contagem EAP "13/48" → 12/37 (baseline do TAP §4) | Glossário §1 | Próxima revisão do Glossário |
+| Convenção dupla de dias | ADR-003 / Glossário / baseline | Formalização da baseline (após 03/10) |
+| Cláusula NC-00 na hierarquia formal + ADR-005 | Integração §1.4 / ADR-005 | Antes do M2 |
+
+## 4.11 Declaração de Rastreabilidade
+
+**[TABELA 42 — Rastreabilidade interna do Plano de Cronograma]**  
+*Inserção obrigatória — Formato: Tabela Markdown*
+
+| Seção | Origem | Domínio PMBOK 7ª | Processo PMBOK 6ª |
+|-------|--------|------------------|-------------------|
+| 4.2 (Abordagem em 3 camadas) | TAP §1.c + §6 + Premissa P1 | Abordagem de Desenvolvimento + Planejamento | 6.1 |
+| 4.3 (Definição de atividades) | TAP §4 + Escopo §3.5 + ADR-004 | Planejamento + Trabalho do Projeto | 6.2 |
+| 4.4 (Sequenciamento e caminho crítico empírico) | TAP §6 (premissa 2) + OKB §8.1 + ADR-002 | Planejamento + Entrega | 6.3 |
+| 4.5 (Estimativa; verificação de capacidade NC-06) | Premissa P5 + TAP §8 + OKB §10.3 + ADR-003 | Planejamento + Medição | 6.4 |
+| 4.6 (Redes de Projeto, Tabelas de Precedência e Caminho Crítico) | TAP §6 (premissa 2) + OKB §8.1 + ADR-002 | Planejamento + Medição | 6.3, 6.5 |
+| 4.7 (Controle e gates) | TAP §3.3 + §3 (Métricas) + Integração §1.9 | Medição + Incerteza | 6.6 |
+| 4.8 (Notas de Contexto; regime de freeze) | Decisão do GP (21/09/2026) + Premissa P9 + Glossário §11 + Aditivo OKB §1.2 | Trabalho do Projeto + Incerteza | 4.6 (dicionário) |
+
+Verificação: 100% das seções possuem rastreabilidade a ao menos um objetivo SMART, premissa, restrição do TAP ou decisão formal do GP; referências cruzadas apontam exclusivamente para locais canônicos (Integração §2.7.1 para CFD; Escopo §3.5/§3.6 para decomposição e gates; OKB §9.2 para regras de milestone).
+
+## 4.12 Premissas e Restrições Aplicáveis
+
+Premissas do TAP: P1 (governança híbrida), fundamenta §4.2; P5 (20h/semana), fundamenta §4.5; P7 (avaliador nos marcos), fundamenta §4.7; P9 (separação ontológica TAP ≠ EAP ≠ PDCA), fundamenta o regime de freeze da §4.8.
+
+Premissas específicas deste plano: PA-1 — datas de abertura e fechamento de milestones no GitHub são marcadores administrativos do SSOT, não dias trabalhados (sana a leitura de abertura do M3 em 04/10/2026 frente ao início da MF2 em 01/10/2026); PA-2 — convenção dupla de dias (NC-03); PA-3 — overhead de rituais ≤ 1h/semana por membro, absorvido pela capacidade nominal; PA-4 — GitHub Insights disponível e gratuito durante todo o ciclo (TAP §11).
+
+Restrições: prazo letivo inegociável e curso noturno (TAP §8 — Restrições de Cronograma e de Recursos), fundamentam §4.5 e §4.7; orçamento zero (TAP §11), veta ferramentas pagas de cronograma e fundamenta a rejeição de Gantt/CPM operacionais (ADR-003); equipe de 3 pessoas com múltiplos papéis (TAP §8 — Recursos), fundamenta o WIP limit como regulador de capacidade.
+
 
 Esforço é estimado em horas pelo responsável técnico (julgamento de especialista), com classificação relativa T-shirt (PP ≤ 2h, P ≤ 4h, M ≤ 6h, G = 8h) como verificação cruzada, conforme vocabulário do Glossário (§3, processo 6.4). As faixas são binárias quanto à governança: cards ≤ 4h são atômicos e não portam tasklist; cards ≥ 6h portam tasklist obrigatória; o teto absoluto é 8h (ADR-004; Escopo §3.5).
 
