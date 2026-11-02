@@ -67,6 +67,12 @@ Inputs canônicos, prompts ubíquos, system prompts, memórias de sessão e arte
 
 ADR mais recente pode sobrepor-se total ou parcialmente a ADR anterior, desde que declare explicitamente: ADR sobreposta, natureza da sobreposição, motivo, domínio PMBOK 7ª afetado e data. Essa sobreposição deve ser consolidada no OKB e registrada em commit com mensagem padrão. ADR alguma pode sobrepor esta Constituição ou o TAP congelado.
 
+### 2.4.1. Consolidação de ADRs
+
+Para evitar inflação de documentos de decisão, o número máximo de ADRs ativas simultâneas é **dez (10)**. Quando uma nova decisão impacta o conteúdo de uma ADR existente, ela deve ser aplicada como **emenda de versão** da própria ADR existente (incremento semântico `MAJOR.MINOR.PATCH`) e registrada no `docs/decisoes/ADR-LOG.md`. A ADR original permanece como **artefato histórico (read-only)**; a versão atualizada carrega o conteúdo normativo vigente. Duas ADRs ativas não podem tratar do mesmo domínio de decisão. Quando duas ou mais ADRs tratam do mesmo assunto, devem ser consolidadas em uma única ADR através de emenda de versão da ADR mais relevante, com as demais marcadas como supersedidas/arquivadas.
+
+Toda mudança de ADR deve ser registrada no `docs/decisoes/ADR-LOG.md` com a correspondente entrada, incluindo justificativa, data e instrumento de ratificação do CCB. Nenhuma mudança de ADR é considerada válida sem registro neste log.
+
 ### 2.5. Resolução de conflitos
 
 Conflito resolve-se **de cima para baixo**. A camada inferior se adequa; nunca o contrário.

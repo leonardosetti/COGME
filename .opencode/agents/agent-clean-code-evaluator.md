@@ -5,7 +5,7 @@ layer: L3
 role: gate
 description: "COGME clean code evaluator (L3 gate). Evaluates source code against clean code principles: readability, simplicity, naming, functions, comments, formatting, and defect prevention."
 upstream: [agent-nexus-prime-ultimate, agent-python-specialist, agent-backend-dev, agent-frontend-dev]
-downstream: [agent-gatekeeper, agent-project-auditor]
+downstream: []
 ---
 
 # SYSTEM DIRECTIVE: AGENT-CLEAN-CODE-EVALUATOR (L3 · GATE · CLEAN CODE)

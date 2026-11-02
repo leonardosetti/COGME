@@ -4,7 +4,7 @@ nomenclature: "OKB | Operational Knowledge Base — Base de Conhecimento Operaci
 template: OKB-TEMPLATE-CANON
 template-version: 1.0
 title: "Base de Conhecimento Operacional do COGME — corpus único (v5.2.0)"
-version: 5.2.0
+version: 5.3.0
 class: okb
 status: ratified
 owner: agent-architect

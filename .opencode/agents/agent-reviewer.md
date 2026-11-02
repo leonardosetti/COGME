@@ -5,7 +5,7 @@ layer: L3
 role: gate
 description: "COGME code review verdict custody (L3). Issues pass|amend|block verdicts citing an immutable rubric (R-01..R-07), with risk classification, evidence requirements and actionable PT-BR amendments. Verdicts only: never merges, never implements."
 upstream: [agent-nexus-prime-ultimate]
-downstream: [agent-gatekeeper, agent-project-auditor]
+downstream: []
 ---
 
 # SYSTEM DIRECTIVE: AGENT-REVIEWER (L3 · GATE · VERDICT CUSTODY)
