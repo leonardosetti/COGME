@@ -13,7 +13,7 @@ derived-from:
 last-revised: 2026-10-31
 lgpd-class: n/a
 caveats:
-  - "UNKNOWN-GAP: handoffs HF-* desta onda pendentes de back-link pela orchestrator (spec da taxonomia)"
+  - "HANDOFFS HF-*: pendentes de back-link pela orchestrator (spec da taxonomia) - status: EM TRÂNSITO (TA-0018)"
   - "Cobertura parcial: licoes/diagramas/drafts remanescentes ainda não frontmatter-classificados constam da Seção 'Cobertura declarada'"
   - "OKB v5.2.0 ratificado (CCB-LOG A11, 31/10/2026): template canônico OKB-TEMPLATE-CANON v1.0; changelog VER-007; propriamente registro de achados OKB-C no próprio OKB §10. Achados ainda ABERTOS: C-03, C-05, C-06(em regularização), C-08, C-09, C-10, C-12, C-22, C-24, C-25, C-26(colisão ADR-013), C-27(bump constituição v1.2.1), C-28(temporal). Fechados nesta rodada: C-07/C-17 (glossário sanitizado), C-19 (namespace TAP-P#/C-P-##), C-21 (consolidação da Constituição)"
   - "ADR-001..004: KB-INDEX registrou '1.1.0 ratified' desde 23/10, porém os arquivos reais são v1.0.0 (OKB-C-02) — linha harmonizada nesta rodada com a versão real; decidir bump dos ADRs ou nova declaração do índice"
@@ -46,6 +46,8 @@ caveats:
 | ADR-003 | docs/decisoes/ADR-003-metricas.md | doc-decisao | finalizado | **1.0.0** (real) | agent-architect | idem OKB-C-02; "UNKNOWN-GAP: docs/metricas/baseline.md é seed SIMULADO (A09-A-006) e docs/dependencias/registro.md 0B; medição real em M3" |
 | ADR-004 | docs/decisoes/ADR-004-tasklists.md | doc-decisao | finalizado | **1.0.0** (real) | agent-architect | idem OKB-C-02 |
 | ADR-005 | docs/decisoes/ADR-005-freeze.md | doc-decisao | ratified | 1.0.0 | agent-architect | [] |
+| ADR-014 | docs/decisoes/ADR-014-sddai-promulgacao.md | doc-decisao | ratified | 1.0.0 | agent-architect | [] |
+| ADR-015 | docs/decisoes/ADR-015-emenda-marco-m2.md | doc-decisao | ratified | 1.0.0 | agent-architect | [] |
 | TAP-001 | .ai/specs/tap.md | spec | draft | 1.0.0 | agent-sdd-specialist | "UNKNOWN-GAP: docs/tap/TAP.md é stub-ponteiro (CCB F-06 TA-0016); TAP integral vivo reside no plano-integral" |
 | EAP-001 | .ai/specs/eap.md | spec | draft | 1.0.0 | agent-sdd-specialist | "UNKNOWN-GAP: SVGs da EAP são placeholders; fonte svg/mermaid exigida pelo DoR da classe diagrama" |
 | REQ-SPEC-001 | .ai/specs/requisitos.md | spec | draft | 1.0.0 | agent-sdd-specialist | SSOT RF/RNF declarado; docs/requisitos/requisitos.md é ponteiro |
