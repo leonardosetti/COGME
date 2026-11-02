@@ -112,6 +112,35 @@ impacto: Ecossistema de CI/CD sem falsos positivos de legacy-forge; todos os pip
 rollback: Reverter commit individual (nao recomendado).
 pmbok-gate: Integracao (4.6) | Qualidade (8.3) | Conformidade (P-01, P-02, P-04, P-06, P-07, Art. 4.8)
 
+### RAT-2026-10-31-A14 — Correção de Falsos Positivos de Credenciais no CI/CD (ADR-LOG-001)
+contexto: Alerta "Non-FOSS or cloud-bound reference detected!" no pipeline CI/CD investigado e confirmado como falso positivo. Causa raiz: (1) ci.yml varria scripts/security_scan.py (contem padrao regex AKIA[0-9A-Z]{16} usado para detectar credenciais AWS) e .venv/ (dependencias com variaveis password em codigo de bibliotecas terceiras).
+artefatos corrigidos:
+  - .github/workflows/ci.yml: busca credenciais apenas em diretorios do projeto (.ai, .opencode, docs, scripts, src, test, tests, .github), nao em .venv/; exclui scripts/security_scan.py (padroes de deteccao, nao credenciais reais); exclui .github/workflows/ci.yml (proprio padrao regex)
+artefatos documentados:
+  - docs/governanca/relatorio-analitico-falso-positivo-credenciais-ci.md (REL-FP-CRED-001)
+  - docs/auditorias/AUD-2610-11-AUDITORIA-EXTRAORDINARIA-FALSO-POSITIVO-CREDENCIAIS.md (AUD-2610-11)
+decisao: A — Corrigir falsos positivos de credenciais; validar que todos os pipelines estejam green sem bypassing.
+ratificacao: Humana (GP Leonardo, CCB de membro unico, autoridade plena concedida nesta iniciativa)
+instrumento: Prompt expresso do CCB 31/10/2026 — correcao de falsos positivos CI/CD credenciais
+evidencia: 181 testes passando (1 skipped); security_scan.py --strict exit 0 (46 aprovados, 0 falhas, 0 avisos); sddai_verify_pipeline 7/7 aprovados; grep de credenciais em diretorios do projeto: nenhuma ocorrencia
+impacto: Ecossistema de CI/CD sem falsos positivos de credenciais; todos os pipelines green; B1-B8 liberados para execucao subsequente.
+rollback: Reverter commit individual (nao recomendado).
+pmbok-gate: Integracao (4.6) | Qualidade (8.3) | Conformidade (P-01, P-02, P-04, P-06, P-07, Art. 7.2)
+
+### RAT-2026-10-31-A15 — Emenda de ADR-001 v1.0.0 → v1.1.0 (Substituição SQLite → PostgreSQL 15+)
+contexto: ADR-001 (stack tecnologica FOSS) originalmente declarava SQLite como banco canonico. ADR-010 (emitida 29/10/2026) sobrepunha parcialmente a ADR-001, definindo PostgreSQL 15+ como banco canonico, Docker Compose como orquestracao e Nginx como proxy latente. Conforme decisao do GP, em vez de manter ADR-010 como sobreposicao separada, o conteudo da ADR-010 foi absorvido na ADR-001 v1.1.0, que agora e o artefato normativo vigente para a stack de banco de dados e infraestrutura. A ADR-010 permanece como artefato historico de rastreamento.
+artefatos alterados:
+  - docs/decisoes/ADR-001-stack.md: v1.0.0 → v1.1.0; banco mudado de SQLite para PostgreSQL 15+; adicionado Docker Compose + Nginx latente; definicao de hierarquia de APIs de camio (Frankfurter primária, PTAX/BCB fallback); ADR-010 listada como sobreposta parcialmente
+  - docs/decisoes/ADR-010-Stack-Infraestrutura.md: marcada como supersedida por ADR-001 v1.1.0; permanece como artefato historico de rastreamento
+  - docs/decisoes/ADR-LOG.md: entrada ADR-LOG-001 registrada com justificativa, instrument CCB e status APLICADA
+decisao: A — Corrigir sobreposicao de ADRs; consolidar em ADR-001 v1.1.0 com log de mudanca autorizada pelo CCB.
+ratificacao: Humana (GP Leonardo, CCB de membro unico, autoridade plena concedida nesta iniciativa)
+instrumento: Prompt expresso do CCB 31/10/2026 — correcao de sobreposicao de ADRs (ADR-LOG-001)
+evidencia: ADR-001 v1.1.0 com bloco de co-assinatura atualizado; ADR-010 marcada como supersedida; ADR-LOG.md com entrada ADR-LOG-001
+impacto: Unificacao da especificacao de stack em unica ADR (ADR-001 v1.1.0); eliminacao de sobreposicao entre ADR-001 e ADR-010; rastreabilidade mantida via ADR-LOG.md e ccb-log
+rollback: Reverter ADR-001 para v1.0.0 e restaurar ADR-010 como vigente (nao recomendado; uso apenas em caso de impugnacao formal)
+pmbok-gate: Integracao (4.6) | Qualidade (8.3) | Conformidade (P-01, P-02, P-04, P-06, P-07, Art. 7.2)
+
 ### RAT-2026-10-31-A13 — Correção de Falsos Positivos de Credenciais no CI/CD
 contexto: Alerta "Real credential detected in repository!" no pipeline CI/CD investigado e confirmado como falso positivo. Causa raiz: (1) ci.yml varria scripts/security_scan.py (contem padrao regex AKIA[0-9A-Z]{16} usado para detectar credenciais AWS) e .venv/ (dependencias com variaveis password em codigo de bibliotecas terceiras).
 artefatos corrigidos:

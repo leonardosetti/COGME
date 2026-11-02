@@ -1,9 +1,11 @@
 # ADR-010 — Stack de Infraestrutura: PostgreSQL, Docker Compose, Nginx Latente e Hierarquia de APIs de Câmbio
 
+**⚠️ NOTA DE SOBREPOSIÇÃO:** Esta ADR (v1.0.0, 29/10/2026) foi **supersedida** pela **ADR-001 v1.1.0** (31/10/2026), que incorpora o conteúdo desta ADR sob o regime de emenda controlada (ADR-LOG-001). A ADR-010 permanece como **artefato histórico de rastreamento** e não deve ser usada como referência normativa vigente. Consulte `docs/decisoes/ADR-001-stack.md` (versão 1.1.0) para o conteúdo vigente da stack.
+
 | Campo | Valor |
 |---|---|
 | **Versão** | 1.0.0 |
-| **Status** | Aprovado (ratificado pelo CCB-001 em 29/10/2026) |
+| **Status** | Supersedida por ADR-001 v1.1.0 (ADR-LOG-001, 31/10/2026) |
 | **Data da decisão** | 29/10/2026 |
 | **Data de formalização do documento** | 29/10/2026 |
 | **Decisor** | GP Leonardo (CCB único — TAP v3 §1.c, Premissa P7) |
