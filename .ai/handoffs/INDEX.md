@@ -7,3 +7,4 @@
 - HF-005: ops-to-monitor
 - HF-006: monitor-to-ccb
 - HF-007: ccb-to-spec
+- HF-0500: backend-mvp (registro de execução T1–T14, REQ-13)

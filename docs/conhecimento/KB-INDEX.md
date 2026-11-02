@@ -62,6 +62,7 @@ caveats:
 | ADR-013-a ⚠️ | docs/decisoes/ADR-013-regime-emenda-tap.md | doc-decisao | ratified | 1.0.0 | — (não declarada) | Regime de Emenda Controlada do TAP (baseline viva); supersedes ADR-005 parcialmente; frontmatter date 2026-11-01 vs instrumento 31/10 (OKB-C-28) |
 | ADR-013-b ⚠️ | docs/decisoes/ADR-013-SDDAI-Promulgacao.md | doc-decisao | ratified | 1.0.0 | NEXUS-PRIME ULTIMATE (L0) | Promulgação dos agentes SDDAI + gaps G-01/G-02/G-03; **colisão de ID com ADR-013-a (OKB-C-26 — renumeração exclusiva do CCB)** |
 | ADR-007..012 | docs/decisoes/ADR-00{7..12}*.md | doc-decisao | ratified | 1.1.0/1.0.0/1.1.0/1.0.0/1.0.0/1.0.1 | vários (OKB v5.2.0 §2.1) | registrados no índice nesta rodada (eram ausentes desde CCB-001/002) |
+| ADR-016 | docs/decisoes/ADR-016-backend-mvp.md | doc-decisao | proposta | 1.0.0 | agent-architect | NÃO ratificada: aprovação humana do CCB (Art. 5). O status `proposta` não consta do ciclo de vida de KB-TAX-001 (draft → active → ratified → archived). |
 | CI-CD-GOV-001 | docs/governanca/ci-cd-governance.md | doc-norma | ratified | 1.0.0 | agent-devops | promulgado RAT-2026-10-31-A10 |
 | DEVSECOPS-001 | docs/governanca/devsecops-policy.md | doc-norma | ratified | 1.0.0 | agent-devops | promulgado RAT-2026-10-31-A10 |
 | Canon SDD | docs/conhecimento/Canon_Stack_SDD.md | okb-adjacente | promulgado | 2.0.0 | agent-sdd-specialist | promulgado A09-A-007 |

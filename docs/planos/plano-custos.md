@@ -166,7 +166,7 @@ A execução operacional da auditoria de licenças é realizada pela **Fase N4.4
 | Dependência   | Versão   | Licença               | Conformidade | EAP N1.4/N4.4 | ADR-001 |
 | -------------- | --------- | ---------------------- | ------------ | ------------- | ------- |
 | FastAPI        | ≥0.100   | MIT                    | ✅           | N4.4          | ✅      |
-| SQLite         | 3.x       | Public Domain          | ✅           | N4.4          | ✅      |
+| PostgreSQL     | 15+       | PostgreSQL License     | ✅           | N4.4          | ADR-010 |
 | WeasyPrint     | ≥59.0    | BSD-3                  | ✅           | N4.4          | ✅      |
 | pytest         | ≥7.0     | MIT                    | ✅           | N4.4          | ✅      |
 | GitHub Actions | Free Tier | Proprietário gratuito | ✅           | N1.4          | ✅      |
@@ -188,7 +188,7 @@ Qualquer alteração que possa impactar a linha de base de custos (mesmo que o i
 | **Mudança de licença de dependência existente** | Biblioteca X migra de MIT para licença proprietária        | `change-request` + substituição imediata + ADR                      |
 | **Violação acidental de conformidade**           | Dependência com licença não-OSI incorporada sem auditoria | `change-request` + remoção + lição aprendida                      |
 
-**Regra de escalation:** Se uma dependência crítica (ex: FastAPI, SQLite) mudar de licença para não-FOSS durante o projeto, e não houver alternativa viável:
+**Regra de escalation:** Se uma dependência crítica (ex: FastAPI, PostgreSQL) mudar de licença para não-FOSS durante o projeto, e não houver alternativa viável:
 
 1. GP aciona `change-request` imediato
 2. Avalia redução de escopo (remoção da funcionalidade dependente)
