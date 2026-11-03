@@ -3,7 +3,7 @@ id: OKB-001
 nomenclature: "OKB | Operational Knowledge Base — Base de Conhecimento Operacional do Projeto COGME"
 template: OKB-TEMPLATE-CANON
 template-version: 1.0
-title: "Base de Conhecimento Operacional do COGME — corpus único (v5.2.0)"
+title: "Base de Conhecimento Operacional do COGME — corpus único (v5.3.0)"
 version: 5.3.0
 class: okb
 status: ratified
@@ -12,10 +12,13 @@ derived-from:
   - constitution.md (v1.2.0 VIGENTE-PLENA; v1.2.1 declarada ratificada em CCB-LOG A09 — bump de arquivo pendente, OKB-C-27)
   - docs/decisoes/ADR-013-regime-emenda-tap.md v1.0.0 (ratificado; baseline viva do TAP)
   - docs/decisoes/ADR-013-SDDAI-Promulgacao.md v1.0.0 (⚠️ colisão de ID — OKB-C-26)
+  - docs/decisoes/ADR-014-sddai-promulgacao.md v1.0.1 (ratificado; ADR-013-b renumerada)
+  - docs/decisoes/ADR-015-emenda-marco-m2.md v1.0.0 (ratificado)
+  - docs/decisoes/ADR-016-backend-mvp.md v1.0.0 (proposta)
   - docs/governanca/ci-cd-governance.md v1.0.0 (CI-CD-GOV-001)
   - docs/governanca/devsecops-policy.md v1.0.0 (DEVSECOPS-001)
   - docs/planos/plano-integral-tap-1-2-3-4-5.md v1.0.0 (TAP v3 integral: §3, §4, §6, §8, §9, §11)
-  - docs/decisoes/ADR-001-stack.md v1.0.0 … ADR-012 v1.0.1
+  - docs/decisoes/ADR-001-stack.md v1.1.0 … ADR-016 v1.0.0
   - docs/planos/plano-integracao.md v2.0.0 / plano-escopo.md v1.1.0 / plano-cronograma.md v1.2.0 / plano-custos.md v1.2.0 / plano-qualidade.md v1.1.0 / plano-recursos.md v1.0.0 / plano-comunicacoes.md v1.0.0 / plano-riscos.md v1.0.0
   - docs/conhecimento/glossario.md v3.2.0 (sanitizado nesta rodada, 31/10/2026)
   - .ai/specs/kb-taxonomy.md v1.1.0 (KB-TAX-001)
@@ -25,7 +28,7 @@ derived-from:
   - docs/governanca/ratificacao-promulgacao.md; docs/conhecimento/Canon_Stack_SDD.md v2.0.0
   - docs/change-requests/CR-001-m2-replanejamento.md (sem versão declarada)
   - docs/archive/legacy-md-artifact/OKB_COGME_v3.1-draft-aplicado-em-v4.md (v3.1; imutável, proveniência)
-last-revised: 2026-10-31
+last-revised: 2026-11-02
 lgpd-class: n/a
 caveats:
   - "UNKNOWN-GAP: OKB v4.0.0 (23/10/2026, 594 linhas, corpus único) perdida no evento destrutivo VIO-006 (24/10 02:53:32); reemissão parte do corpo v3.0 sobrevivente + fontes citadas, nunca do texto perdido (KG-01/KG-04)."
@@ -38,9 +41,10 @@ caveats:
   - "Artefatos 0 B persistentes: docs/tap/TAP.md, docs/dependencias/registro.md, docs/requisitos/requisitos.md, .ai/specs/{tap,eap,requisitos}.md (OKB-C-08)."
   - "RATIFICADO (CCB-003, 30/10/2026) e NORMALIZADO (CCB-LOG A11, 31/10/2026): este corpus é o documento de conhecimento canônico único, sob template OKB-TEMPLATE-CANON v1.0 (canônico até decisão posterior)."
   - "Cobertura metodológica (§9) com lacunas materiais declaradas: DER (TOGAF C1), arquitetura de transição SQLite→PostgreSQL (TOGAF F / OKB-C-22), matriz de partes interessadas (C-24) e catálogo de serviços. Nenhuma foi convertida em artefato por este documento (YAGNI + separação de custódias)."
+  - "Atualização 02/11/2026: consolidação do _consolidado-adrs.tmp.md com ADRs 013–016; correção de versão frontmatter v5.3.0 (era v5.2.0 no corpo)."
 ---
 
-# OKB v5.2.0 | Operational Knowledge Base — Base de Conhecimento Operacional do Projeto COGME
+# OKB v5.3.0 | Operational Knowledge Base — Base de Conhecimento Operacional do Projeto COGME
 
 **Identidade do template:** este artefato materializa o template **OKB-TEMPLATE-CANON v1.0** (arsenal de seções, ordem e blocos de assinatura). Este template é **CANÔNICO para o OKB até decisão posterior do CCB**; seções são agrupadas em categorias fechadas (I–IV) e todo registro de mudança usa o formato VER-NNN (§12).
 
@@ -48,14 +52,14 @@ caveats:
 |---|---|
 | ID | OKB-001 |
 | Nomenclatura canônica | **OKB \| Operational Knowledge Base — Base de Conhecimento Operacional** |
-| Versão | **5.2.0** |
-| Status | **ratified** — promulgada por CCB-003 (GP) em 30/10/2026; **normalização + ratificação extraordinária em 31/10/2026 (CCB-LOG RAT-2026-10-31-A11, aprovação indireta via agente, autorização expressa do GP)** |
-| Data da última atualização | **2026-10-31** |
+| Versão | **5.3.0** |
+| Status | **ratified** — promulgada por CCB-003 (GP) em 30/10/2026; **normalização + ratificação extraordinária em 31/10/2026 (CCB-LOG RAT-2026-10-31-A11, aprovação indireta via agente, autorização expressa do GP); consolidação ADRs 013–016 em 02/11/2026** |
+| Data da última atualização | **2026-11-02** |
 | Decisor | GP Leonardo (CCB único — TAP v3 §1.c, Premissa P7) |
 | Custódia | agent-architect (default KB-TAX-001; KB-INDEX:48 ajustado) |
 | Substitui | OKB v5.1.0 (30/10/2026) — **normalização estrutural, corpo normativo preservado**; linhagem v3.0 / v3.1 / v4.0.0 (perdida em VIO-006) |
 | Auditoria desta rodada | **AUD-2610-09 — Auditoria Extraordinária dedicada ao OKB** (docs/auditorias/AUD-2610-09-OKB-NORMALIZACAO.md) |
-| Hierarquia vigente | `constitution.md` (VIGENTE-PLENA) > TAP v3 (baseline viva sob ADR-013-a) > ADRs 001–013 > **OKB** > Planos > Glossário > Specs > Código |
+| Hierarquia vigente | `constitution.md` (VIGENTE-PLENA) > TAP v3 (baseline viva sob ADR-013-a) > ADRs 001–016 > **OKB** > Planos > Glossário > Specs > Código |
 | LGPD | n/a (sem PII — C-P-04) |
 | Passível de auditoria | **SIM — o OKB é parte constitutiva do SSOT e encontra-se sujeito a checagem de congruência contínua contra o SSOT (KB-INDEX, ledger, ccb-log, FS)** |
 
@@ -205,26 +209,28 @@ Ambas promulgadas em RAT-2026-10-31-A10 com todos os pipelines **green sem bypas
 
 ## 2. REGIME DE DECISÕES (ADRs)
 
-### 2.1 Catálogo canônico ADR-001 … ADR-013 (as-of 31/10/2026)
+### 2.1 Catálogo canônico ADR-001 … ADR-016 (as-of 02/11/2026)
 
 | ADR | Título | Versão | Status | Decisão | Formalização | Custódia |
 |---|---|---|---|---|---|---|
-| ADR-001 | Stack Tecnológica FOSS | 1.0.0 | Finalizado | 19/09/2026 | 28/10/2026 | agent-architect |
+| ADR-001 | Stack Tecnológica FOSS | 1.1.0 | Finalizado | 19/09/2026 | 28/10/2026 | agent-architect |
 | ADR-002 | Kanban como Método de Execução | 1.0.0 | Finalizado | 19/09/2026 | 28/10/2026 | agent-pm (operação) + agent-architect |
 | ADR-003 | Métricas de Fluxo (substituição de EVM) | 1.0.0 | Finalizado | 19/09/2026 | 28/10/2026 | agent-pm (coleta) + agent-architect (definição) |
 | ADR-004 | Tasklists Markdown (rejeição de subissues) | 1.0.0 | Finalizado | 20/09/2026 | 28/10/2026 | não declarada (autor 1.0.0: agent-architect) |
-| ADR-005 | Freeze do TAP e precedência intra-TAP | 1.0.0 | Regularização tardia — ratificação pendente (C-12); **parcialmente sobreposta por ADR-013-a** | 21/09/2026 (NC-00) | 28/10/2026 | agent-architect + agent-pm (NCs) |
-| ADR-006 | Módulo de Inteligência SDD (modelo, fallback, cloud FREE) | 2.0.0 | Finalizado (CCB-001) | 26/10/2026 | 29/10/2026 | agent-nexus-prime-ultimate |
+| ADR-005 | Freeze do TAP e precedência intra-TAP | 1.1.0 | Regularização tardia — ratificação pendente (C-12); **parcialmente sobreposta por ADR-013-a** | 21/09/2026 (NC-00) | 28/10/2026 | agent-architect + agent-pm (NCs) |
+| ADR-006 | Módulo de Inteligência SDD (modelo, fallback, cloud FREE) | 2.1.0 | Finalizado (CCB-001) | 26/10/2026 | 29/10/2026 | agent-nexus-prime-ultimate |
 | ADR-007 | Redes de Projeto (dualidade CPM × Kanban) | 1.1.0 | Aprovado (CCB-001) | 29/10/2026 | 29/10/2026 | agent-scheduler |
 | ADR-008 | Grafia canônica do stakeholder-avaliador | 1.1.0 | Aprovado (CCB-001) | 29/10/2026 | 29/10/2026 | agent-comms + project-auditor |
 | ADR-009 | Contagem canônica da EAP (12 fases + 37 pacotes) | 1.0.0 | Aprovado (CCB-001) | 29/10/2026 | 29/10/2026 | agent-scope-manager + project-auditor |
-| ADR-010 | Stack de Infraestrutura (PostgreSQL/Docker/Nginx/APIs) | 1.0.0 | Aprovado (CCB-001) | 29/10/2026 | 29/10/2026 | agent-backend-dev + agent-devops |
+| ADR-010 | Stack de Infraestrutura (PostgreSQL/Docker/Nginx/APIs) | 1.0.0 | Supersedida por ADR-001 v1.1.0 | 29/10/2026 | 29/10/2026 | agent-backend-dev + agent-devops |
 | ADR-011 | Ecossistema SDD (MCPs, memória, L1/L2/L3) | 1.0.0 | Aprovado (CCB-001) | 29/10/2026 | 29/10/2026 | agent-nexus-prime-ultimate + agent-architect |
 | ADR-012 | Constituição como artefato normativo supremo | 1.0.1 | Aprovado (CCB-002) | 29/10/2026 | 29/10/2026 | GP Leonardo (guardião) |
 | **ADR-013-a** | Regime de Emenda Controlada do TAP (Baseline Vivo) | 1.0.0 | **Ratificado** (CCB-LOG A08; promulgado A09-A-002) | 01/11/2026 ⚠️ C-28 | 31/10/2026 | — (não declarada) |
-| **ADR-013-b** ⚠️ | Promulgação dos Agentes SDDAI e Resolução de Gaps de Compliance | 1.0.0 | **Ratificado** (CCB 31/10; A09-A-003) | 31/10/2026 | 31/10/2026 | NEXUS-PRIME ULTIMATE (L0) |
+| **ADR-014** (ex-013-b) ⚠️ | Promulgação dos Agentes SDDAI e Resolução de Gaps de Compliance | 1.0.1 | **Ratificado** (CCB 31/10; A09-A-003); Supersedida por ADR-006 v2.1.0 | 31/10/2026 | 31/10/2026 | NEXUS-PRIME ULTIMATE (L0) |
+| **ADR-015** | Emenda de Marco — Repactuação Temporal do M2 | 1.0.0 | **Ratificado** (CCB-LOG RAT-2026-10-31-A12) | 31/10/2026 | 31/10/2026 | agent-scheduler |
+| **ADR-016** | Backend do MVP — cálculo, cotações, persistência e contrato de erro | 1.0.0 | **Proposta** (pendente CCB) | 31/10/2026 | 02/11/2026 | agent-architect (T10) |
 
-> ⚠️ **OKB-C-26 (colisão de ID):** `ADR-013-regime-emenda-tap.md` e `ADR-013-SDDAI-Promulgacao.md` usam o mesmo identificador `ADR-013`. A designação a/b é a convenção **deste** OKB para desambiguar; a renumeração (ex.: ADR-014) é decisão do CCB. Catálogo registra ADRs **001–013 com 14 artefatos**.
+> ⚠️ **OKB-C-26 (colisão de ID):** `ADR-013-regime-emenda-tap.md` e `ADR-013-SDDAI-Promulgacao.md` usam o mesmo identificador `ADR-013`. A designação a/b é a convenção **deste** OKB para desambiguar; a renumeração para **ADR-014** foi decidida pelo CCB em 31/10/2026 (RAT-2026-10-31-A12). Catálogo registra ADRs **001–016 com 16 artefatos** (ADR-010 supersedida, ADR-014 supersedida por ADR-006 v2.1.0).
 
 ### 2.2 Cadeia de sobreposição (supersede)
 
@@ -370,6 +376,7 @@ Regra adicional: **qualquer mudança em lei suprema (Constituição) é sempre `
 | 31/10 | A10 — CI-CD-GOV-001 + DEVSECOPS-001 + workflows ratificados (todos green) | ccb-log |
 | 31/10 | VIO-013..VIO-025 registrados (contratos JSON half-duplex, gates Art. 4.7) | vio-register |
 | 31/10 | A11 — **esta rodada**: normalização do OKB v5.2.0 (template canônico, sanitize, patch list, auditoria AUD-2610-09) | ccb-log; §12 |
+| 02/11 | A12 — consolidação _consolidado-adrs.tmp.md com ADRs 013–016; bump OKB para v5.3.0; atualização catálogo ADR e inventário | ccb-log; §12 |
 
 ---
 
@@ -386,7 +393,10 @@ Legenda: **real** = extraído do cabeçalho/frontmatter do arquivo em 31/10/2026
 | Normas técnicas | `docs/governanca/ci-cd-governance.md`; `devsecops-policy.md` | 1.0.0 / 1.0.0 | ratified (A10) | não indexado | registrar no KB-INDEX |
 | TAP (export) | `docs/tap/TAP.docx` | 18/09/2026 | congelado/blindado | — | `TAP.md` = 0 B e declarado "não-0B" no índice (OKB-C-09) |
 | ADR-013-a | `docs/decisoes/ADR-013-regime-emenda-tap.md` | 1.0.0 | ratified | não indexado | frontmatter date 01/11 vs instrumento 31/10 (C-28) |
-| ADR-013-b ⚠️ | `docs/decisoes/ADR-013-SDDAI-Promulgacao.md` | 1.0.0 | ratified | não indexado | **colisão de ID com ADR-013-a (C-26)** |
+| ADR-013-b ⚠️ | `docs/decisoes/ADR-013-SDDAI-Promulgacao.md` | 1.0.0 | ratified; supersedida por ADR-006 v2.1.0 | não indexado | **colisão de ID com ADR-013-a (C-26)** |
+| ADR-014 | `docs/decisoes/ADR-014-sddai-promulgacao.md` | 1.0.1 | ratified; supersedida por ADR-006 v2.1.0 | não indexado | renumeração de ADR-013-b (OKB-C-26) |
+| ADR-015 | `docs/decisoes/ADR-015-emenda-marco-m2.md` | 1.0.0 | ratified | não indexado | — |
+| ADR-016 | `docs/decisoes/ADR-016-backend-mvp.md` | 1.0.0 | proposta | não indexado | pendente CCB |
 | plano-integral | `docs/planos/plano-integral-tap-1-2-3-4-5.md` | 1.0.0¹ | ativo | 1.0.0 active | sem carimbo de versão no corpo; refs atualizadas nesta rodada |
 | Plano de Projeto | `docs/planos/Plano-de-Projeto-COGME_v1.0.md` | 1.0.0¹ | ativo | 1.0.0 active | docx v1.1/v2.0 ONGOING concorrentes — decisão CCB pendente (R-03) |
 | Integração | `docs/planos/plano-integracao.md` | 2.0 | ativo | 2.0.0 active | normalizar 2.0 → 2.0.0 |
@@ -397,11 +407,11 @@ Legenda: **real** = extraído do cabeçalho/frontmatter do arquivo em 31/10/2026
 | Recursos | `docs/planos/plano-recursos.md` | 1.0¹ | ativo | 1.0.0 active | sem carimbo |
 | Comunicações | `docs/planos/plano-comunicacoes.md` | 1.0¹ | ativo | 1.0.0 active | sem carimbo |
 | Riscos | `docs/planos/plano-riscos.md` | 1.0¹ | ativo | 1.0.0 active | sem carimbo |
-| ADR-001..004 | `docs/decisoes/ADR-00{1..4}-*.md` | **1.0.0** | Finalizado | **1.1.0 ratified** | índice ainda desatualizado (OKB-C-02) |
-| ADR-005 | `docs/decisoes/ADR-005-freeze.md` | 1.0.0 | ratificação formal pendente; parcialmente sobreposta | 1.0.0 ratified | OKB-C-12 |
-| ADR-006 | `docs/decisoes/ADR-006-inteligencia-sdd.md` | 2.0.0 | Finalizado (CCB-001) | **ausente** | duplicatas eliminadas (C-04 ✅) |
+| ADR-001..004 | `docs/decisoes/ADR-00{1..4}-*.md` | **1.1.0 (001) / 1.0.0 (002–004)** | Finalizado | **1.1.0 ratified** | índice ainda desatualizado (OKB-C-02) |
+| ADR-005 | `docs/decisoes/ADR-005-freeze.md` | 1.0.0 / 1.1.0 (regime-tap) | ratificação formal pendente; parcialmente sobreposta | 1.0.0 ratified | OKB-C-12 |
+| ADR-006 | `docs/decisoes/ADR-006-inteligencia-sdd.md` | 2.1.0 | Finalizado (CCB-001) | **ausente** | duplicatas eliminadas (C-04 ✅); absorveu ADR-014 |
 | ADR-007..012 | `docs/decisoes/ADR-00{7..12}*.md` | 1.1.0 ✓ / 1.0.0 / 1.1.0 / 1.0.0 / 1.0.0 / 1.0.1 | Aprovados (CCB-001/002) | ausentes | índice a registrar (`KB-INDEX v1.3.0` desta rodada) |
-| OKB | `docs/conhecimento/OKB.md` | **5.2.0** | ratified | 5.2.0 | ✅ sanado (este documento) |
+| OKB | `docs/conhecimento/OKB.md` | **5.3.0** | ratified | 5.2.0 | ✅ sanado (este documento); bump v5.3.0 em 02/11 |
 | Glossário | `docs/conhecimento/glossario.md` | **3.2.0** | Sanitizado (31/10) | 3.2.0 active | ✅ coerente — saneado nesta rodada (C-07) |
 | KB-INDEX | `docs/conhecimento/KB-INDEX.md` | 1.3.0 | active | 1.3.0 | ✅ bump nesta rodada |
 | Taxonomia | `.ai/specs/kb-taxonomy.md` | 1.1.0 | ratified | 1.1.0 | coerente |
@@ -423,7 +433,7 @@ Legenda: **real** = extraído do cabeçalho/frontmatter do arquivo em 31/10/2026
 
 | Caminho | Anomalia | Ação |
 |---|---|---|
-| `docs/decisoes/ADR-013-regime-emenda-tap.md` × `ADR-013-SDDAI-Promulgacao.md` | **colisão de id ADR-013** + frontmatter datado 01/11 | renumerar por decisão do CCB (OKB-C-26/C-28) |
+| `docs/decisoes/ADR-013-regime-emenda-tap.md` × `ADR-013-SDDAI-Promulgacao.md` | **colisão de id ADR-013** + frontmatter datado 01/11 | **RESOLVIDA**: ADR-013-b renumerada para ADR-014 por decisão CCB (RAT-2026-10-31-A12); OKB-C-26/C-28 encerrados |
 | `docs/decisoes/_consolidado-adrs.tmp.md` | artefato temporário de análise | descartar após uso (autorizado) |
 | `docs/planos/.~ano-de-Projeto-COGME_v2.0.1-ONGOING.docx` | lock temporário de editor | remover |
 | `docs/planos/Plano-de-Projeto-COGME_v2.0{,.1}-ONGOING.docx` | export/docx concorrente sem `.md` canônico | decisão CCB (R-03) |
@@ -558,13 +568,13 @@ Fonte única: `plano-escopo v1.1` §2.6 (inclui item 8 — tasklist 100% conclu�
 
 Documentos de governança são **standalone**; planos de área são **coordenados**; **cross-reference substitui duplicação**. Um fato = um local (SSOT informacional, C-P-05/G2).
 
-### 8.2 Estrutura real do repositório (as-of 31/10)
+### 8.2 Estrutura real do repositório (as-of 02/11)
 
 ```text
 docs/
 ├── tap/ planos/            TAP.docx (export; TAP.md = stub 0 B) + plano-integral + 8 planos + Plano de Projeto
-├── decisoes/               ADR-001..ADR-013 (×14 artefatos: colisão ADR-013 — OKB-C-26); consolidado temporário
-├── conhecimento/           OKB.md (v5.2.0), glossario.md (v3.2.0), KB-INDEX.md (v1.3.0), Canon_Stack_SDD.md, licoes-aprendidas/, drafts/
+├── decisoes/               ADR-001..ADR-016 (16 artefatos; ADR-010 supersedida, ADR-014 supersedida por ADR-006 v2.1.0); _consolidado-adrs.tmp.md
+├── conhecimento/           OKB.md (v5.3.0), glossario.md (v3.2.0), KB-INDEX.md (v1.3.0), Canon_Stack_SDD.md, licoes-aprendidas/, drafts/
 ├── governanca/             ccb-log.md, ci-cd-governance.md, devsecops-policy.md, ratificacao-promulgacao.md, ci-cd-devsecops relatório
 ├── governance/             council-notification.md (promulgado A09-A-011)
 ├── auditorias/             AUD-2610-02..09; vio-register.md (VIO-001..025)
