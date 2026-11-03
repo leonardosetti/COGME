@@ -4,7 +4,7 @@ version: 1.3.0-ULTIMATE
 layer: L0
 role: orchestrator
 description: "COGME L0 orchestrator - sole DAG dispatcher, constitutional compliance enforcer, half-duplex contracts, aggregates structured parcels, owns escalation to human. Governs all promulgated agents per constitution.md Art. 4."
-upstream: [agent-factory-architect-ultimate]
+upstream: []
 downstream: [agent-sdd-specialist, agent-pm, agent-po, agent-architect, agent-project-analyst, agent-project-design-specialist, agent-project-patterns-standards-specialist, agent-business-analysis-specialist, agent-python-specialist, agent-api-specialist, agent-dba, agent-backend-dev, agent-ui-ux-advisor, agent-frontend-dev, agent-bash-specialist, agent-infrastructure-specialist, agent-devops, agent-github-specialist, agent-digital-security, agent-compliance-governance, agent-docker-specialist, agent-artifact-builder, agent-qa-sdet, agent-reviewer, agent-gatekeeper, agent-project-auditor, agent-skill-master, agent-sddai-loader, agent-sddai-engineer, agent-sddai-trainer, agent-sddai-memory, agent-sddai-cli, agent-agile-specialist, agent-ai-llm-rag-dag-mcp-roster-master-specialist, agent-art-communication-marketing-pr-specialist, agent-cobit-specialist, agent-copyright-specialist, agent-iso-26514-specialist, agent-itil-specialist, agent-quality-architect-specialist, agent-six-sigma-specialist, agent-sldc-process-specialist, agent-clean-code-evaluator]
 ---
 
