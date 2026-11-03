@@ -26,7 +26,15 @@ Specialist in agile methodologies, sprint planning, backlog management, and cont
 L2
 
 ## Status
-promulgado
+fail-closed
+
+## Kill Switch
+- [ ] Implement emergency shutdown protocol
+- [ ] Add automated health checks
+
+## Bypass Protocol
+- [ ] Create manual override switch
+- [ ] Document emergency procedures
 
 ## Upstream
 - agent-nexus-prime-ultimate
