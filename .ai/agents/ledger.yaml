@@ -14,3 +14,203 @@
     exit_status: 0
     timestamp: 2026-11-02T00:00:00Z
     notes: "Rodada 2 de revisão do Plano de Gerenciamento v2.1.0: 64 achados (18 ALTA / 33 MÉDIA / 13 BAIXA) em docs/analise/REV-PLANO-GERENCIAMENTO-COGME-v2.1.0-rodada2.md; gate humano pendente (G-1..G-7); nenhum ajuste aplicado. kill_switch: inherited"
+  - task_id: TA-0029
+    sender: nexus-prime-ultimate
+    receiver: agent-sdd-specialist
+    action: spec
+    status: accepted
+    exit_status: 0
+    timestamp: 2026-11-02T18:15:00Z
+    notes: "SPEC camadas de containers entregue: .ai/specs/container-layers-v1.spec.md (344 linhas) via HF-0029; 11/11 AC validados forense no filesystem; US-018..021 Padrao B GWT; 8 lacunas UNKNOWN-verify declaradas; suite tests/agents 4 failed/149 passed (falhas preexistentes de report/wiring, single-dispatch admitido por FC#6); drift descricao G-05 detectado (ci.yml=189 linhas, nao vazio) — recomendar auditoria. kill_switch: inherited"
+  - task_id: TA-0030
+    sender: nexus-prime-ultimate
+    receiver: agent-sdd-specialist
+    action: spec
+    status: accepted
+    exit_status: 0
+    timestamp: 2026-11-02T20:20:00Z
+    notes: "Amenda Nginx aceito-e-mantido em container-layers-v1.spec.md (Status 0.2.0): proxy sempre ativo, cadeia usuario->proxy->front->back->db com healthchecks, demo path clone->up->127.0.0.1:8080; ratificacao GP/Humano 2026-11-02 Art. 5.1 registrada (outorga de autoridade de outorga/ratificacao/promulgacao recebida nesta sessao); ADR-010 intocada (follow-up emenda); 8/8 AC HF-0030 verificados. kill_switch: inherited"
+  - task_id: TA-0031
+    sender: nexus-prime-ultimate
+    receiver: agent-sdd-specialist
+    action: spec
+    status: accepted
+    exit_status: 0
+    timestamp: 2026-11-02T20:55:00Z
+    notes: "Normalizacao integral do corpus .ai/specs CONCLUIDA (10/10 AC validados forense): 5 specs renomeadas spec-001..005 com slug spec_id-specname.spec.md e versoes 0.1.0/0.1.0/3.1.0/1.0.0/0.2.0; template canonico a-h + MANIFEST.md (mapa old->new resolve refs em imutables); 0 realocacoes (6 pinned justificados: afa-changelog/requisitos/tap/eap/kb-taxonomy/input-canonico); LISTA-SPECS-PENDENTES emitida em docs/analise/; imutaveis intactos (git diff vazio); sync exit 0; pytest baseline 4F/149P/1S sem falhas novas; amenda TA-0030 preservada. Incidencia de forma: 1a emissao de parcela fora do schema (status 'completed', route string) — re-emissao conformante obtida (re-treino half-duplex, FC#10). kill_switch: inherited"
+  - task_id: TA-0032
+    sender: nexus-prime-ultimate
+    receiver: agent-project-auditor
+    action: audit
+    status: escalated
+    exit_status: 0
+    timestamp: 2026-11-02T22:30:00Z
+    notes: "AUDITORIA REGISTRY+LEDGER EMITIDA: docs/auditorias/AUD-2611-01-AUDITORIA-REGISTRY-LEDGER.md (240 l, 9/9 AC) + VIO-026..029 no registro append-only (vio-register.md:49-52). Top achados: VIO-026 auto-delegacao TA-0028 sender==receiver (Art. 4.5); VIO-027 ledger fora do vocabulario dispatcher/Art. 4.10 (validate_ledger ValueError, mcp_nexus_ledger.py:17); VIO-028 drift registry<->DAG factory-architect-ultimate camada UNKNOWN; VIO-029 3 gates L3 downstream:[] (subutilizacao, root-cause onda6/7, custodia AFA). Root-cause 4 testes vermelhos classificados por custodia; propostas NAO executadas. Escalado ao Humano (Art. 5.1): encerramento TA-0027 stale, ratificacao TA-0028, orcamento Art. 4.7 L0, norma de wiring gates L3. Desvio de forma: notes emitido como array + human_question/burning_reason ausentes (2a divergencia half-duplex — recomendar validador de parcelas de retorno). kill_switch: inherited"
+  - task_id: TA-0033
+    sender: nexus-prime-ultimate
+    receiver: agent-project-analyst
+    action: analyze
+    status: accepted
+    exit_status: 0
+    timestamp: 2026-11-02T22:30:00Z
+    notes: "LEVANTAMENTO DRAFTS CCB EMITIDO: docs/analise/LEVANTAMENTO-DRAFTS-CCB-2026-11-02.md (286 l, 7/7 AC). 49 itens/66 entradas: draft/proposta=6, in_progress=2, ready=8, blocked=1, dispatched=2, escalated=1, 0B/UNKNOWN=27, read-only=22; acoes recomendadas ratificar=13/aprovar=14/remendar=22/rejeitar=0. Top-3 bloqueantes: ADR-016 proposta (trava 5 REQs), E-01..E-08, Plano-Gerenciamento Draft G-1..G-7. kill_switch: inherited"
+  - task_id: TA-0034
+    sender: human-gp
+    receiver: agent-nexus-prime-ultimate
+    action: aggregate
+    status: accepted
+    exit_status: 0
+    timestamp: 2026-11-02T23:00:00Z
+    notes: "Consulta direta do GP: levantamento tabular das SPECs a escrever, agregado da fonte ja emitida docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md (TA-0031) sem regeneracao (YAGNI); 13 itens (3 placeholders A.1-A.3 + 10 dominio B.1-B.10) entregues em tabela na parcela. kill_switch: inherited"
+  - task_id: TA-0035
+    sender: nexus-prime-ultimate
+    receiver: agent-sdd-specialist
+    action: spec
+    status: accepted
+    exit_status: 0
+    timestamp: 2026-11-03T01:00:00Z
+    notes: "Lista de specs pendentes enriquecida (7/7 AC validados forense): coluna 'Resumo proposicional' nas tabelas A e B com 13/13 itens (A.1-A.3 + B.1-B.10) baseados apenas em origens citadas; rodape com data/hora UTC 2026-11-03T00:55Z + TA-0035/HF-0034 + registro Ratificacao CCB GP/Humano 2026-11-02 (Art. 5.1); frontmatter version 1.1.0 + updated; secoes C/D/E/F intactas; imutaveis intocados. kill_switch: inherited"
+  - task_id: TA-0036
+    sender: nexus-prime-ultimate
+    receiver: agent-sdd-specialist
+    action: spec
+    status: accepted
+    exit_status: 0
+    timestamp: 2026-11-02T23:33:42Z
+    notes: "Remover/descartar 5 arquivos vazios (.ai/specs/tap.md, eap.md, requisitos.md; docs/tap/TAP.md, docs/requisitos/requisitos.md) e preencher specs metodológicas canônicas não-0B. kill_switch: inherited"
+  - task_id: TA-0037
+    sender: nexus-prime-ultimate
+    receiver: agent-architect
+    action: design
+    status: accepted
+    exit_status: 0
+    timestamp: 2026-11-02T23:33:42Z
+    notes: "ADR de emenda sobre ADR-001 v1.1.0: anular Frontend HTML5/CSS3/JS vanilla; assumir Jinja/HTMX/Tailwind; atualizar planos granulares e registry agent-frontend-dev. kill_switch: inherited"
+  - task_id: TA-0038
+    sender: nexus-prime-ultimate
+    receiver: agent-pm
+    action: plan
+    status: accepted
+    exit_status: 0
+    timestamp: 2026-11-02T23:33:42Z
+    notes: "Propagar impositivamente PostgreSQL 15+ a planos (OKB-C-22): plano-integral:77, plano-riscos:91, plano-producao-agentes:16. SQLite apenas como fixture de teste isolado. kill_switch: inherited"
+  - task_id: TA-0039
+    sender: nexus-prime-ultimate
+    receiver: agent-pm
+    action: plan
+    status: accepted
+    exit_status: 0
+    timestamp: 2026-11-02T23:33:42Z
+    notes: "Conciliar colisão M2/M3: M2 Concluído (15/11/2026), M3 fechamento 03/11/2026, M4 17/11/2026. Atualizar ADR-015; coassinar e promulgar. kill_switch: inherited"
+  - task_id: TA-0040
+    sender: nexus-prime-ultimate
+    receiver: agent-project-auditor
+    action: audit
+    status: accepted
+    exit_status: 0
+    timestamp: 2026-11-02T23:33:42Z
+    notes: "Sanear TA-0028 auto-delegação (VIO-026); reconstrução ledger (VIO-006, VIO-009) append-only + commit imediato. kill_switch: inherited"
+  - task_id: TA-0041
+    sender: nexus-prime-ultimate
+    receiver: agent-project-auditor
+    action: audit
+    status: accepted
+    exit_status: 0
+    timestamp: 2026-11-02T23:33:42Z
+    notes: "Resolver VIO-013 a VIO-025: mitigações, ratificar e promulgar. Corrigir scripts para JSON half-duplex com dod; validate_afa_output SDDAI (VIO-019); wiring gates L3 (VIO-029). kill_switch: inherited"
+  - task_id: TA-0042
+    sender: nexus-prime-ultimate
+    receiver: agent-architect
+    action: design
+    status: accepted
+    exit_status: 0
+    timestamp: 2026-11-02T23:33:42Z
+    notes: "Aprovar/reativar ADR-016: status proposta->ratified; coassinar; promulgar; aglutinação convergente se possível. kill_switch: inherited"
+  - task_id: TA-0043
+    sender: nexus-prime-ultimate
+    receiver: agent-pm
+    action: plan
+    status: accepted
+    exit_status: 0
+    timestamp: 2026-11-02T23:33:42Z
+    notes: "Nomear matriz partes interessadas M4 (OKB-C-24): Carleto, GP Leonardo, equipe, banca. Registrar no plano-cronograma. kill_switch: inherited"
+  - task_id: TA-0044
+    sender: nexus-prime-ultimate
+    receiver: agent-ai-llm-rag-dag-mcp-roster-master-specialist
+    action: validate
+    status: accepted
+    exit_status: 0
+    timestamp: 2026-11-02T23:33:42Z
+    notes: "Corrigir drift DAG (VIO-028): agent-factory-architect-ultimate fora de AGENT_TOPOLOGY. Corrigir security_scan agent-agile-specialist: Kill Switch, Bypass Protocol, FAIL-CLOSED. kill_switch: inherited"
+  - task_id: TA-0036
+    sender: nexus-prime-ultimate
+    receiver: agent-sdd-specialist
+    action: spec
+    status: dispatched_definitivo
+    exit_status: 0
+    timestamp: 2026-11-02T23:57:39Z
+    notes: "EXECUÇÃO DEFINITIVA: remover 5 artefatos bloat 0B (.ai/specs/tap.md, eap.md, requisitos.md; docs/tap/TAP.md, docs/requisitos/requisitos.md); preencher specs canônicas não-0B (tap/eap/requisitos); alinhar REQ-07 a PostgreSQL 15+. kill_switch: inherited"
+  - task_id: TA-0037
+    sender: nexus-prime-ultimate
+    receiver: agent-architect
+    action: design
+    status: dispatched_definitivo
+    exit_status: 0
+    timestamp: 2026-11-02T23:57:39Z
+    notes: "EXECUÇÃO DEFINITIVA: ADR de emenda ADR-001 v1.1.0; anular Frontend vanilla; assumir Jinja/HTMX/Tailwind; atualizar planos granulares e registry agent-frontend-dev. kill_switch: inherited"
+  - task_id: TA-0038
+    sender: nexus-prime-ultimate
+    receiver: agent-pm
+    action: plan
+    status: dispatched_definitivo
+    exit_status: 0
+    timestamp: 2026-11-02T23:57:39Z
+    notes: "EXECUÇÃO DEFINITIVA: propagar PostgreSQL 15+ impositivo a planos (OKB-C-22): plano-integral:77, plano-riscos:91, plano-producao-agentes:16. SQLite apenas fixture isolado. kill_switch: inherited"
+  - task_id: TA-0039
+    sender: nexus-prime-ultimate
+    receiver: agent-pm
+    action: plan
+    status: dispatched_definitivo
+    exit_status: 0
+    timestamp: 2026-11-02T23:57:39Z
+    notes: "EXECUÇÃO DEFINITIVA: conciliar M2/M3; M2 concluído 15/11, M3 03/11, M4 17/11; atualizar ADR-015; coassinar e promulgar. kill_switch: inherited"
+  - task_id: TA-0040
+    sender: nexus-prime-ultimate
+    receiver: agent-project-auditor
+    action: audit
+    status: dispatched_definitivo
+    exit_status: 0
+    timestamp: 2026-11-02T23:57:39Z
+    notes: "EXECUÇÃO DEFINITIVA: sanear TA-0028 auto-delegação (VIO-026); reconstruir ledger append-only + commit; encerrar VIO-006/VIO-009 kill-switch. kill_switch: inherited"
+  - task_id: TA-0041
+    sender: nexus-prime-ultimate
+    receiver: agent-project-auditor
+    action: audit
+    status: dispatched_definitivo
+    exit_status: 0
+    timestamp: 2026-11-02T23:57:39Z
+    notes: "EXECUÇÃO DEFINITIVA: resolver VIO-013..025; corrigir scripts JSON half-duplex com dod; validate_afa_output SDDAI (VIO-019); wiring gates L3 (VIO-029). kill_switch: inherited"
+  - task_id: TA-0042
+    sender: nexus-prime-ultimate
+    receiver: agent-architect
+    action: design
+    status: dispatched_definitivo
+    exit_status: 0
+    timestamp: 2026-11-02T23:57:39Z
+    notes: "EXECUÇÃO DEFINITIVA: ADR-016 proposta->ratified; coassinar; promulgar; aglutinação convergente se possível. kill_switch: inherited"
+  - task_id: TA-0043
+    sender: nexus-prime-ultimate
+    receiver: agent-pm
+    action: plan
+    status: dispatched_definitivo
+    exit_status: 0
+    timestamp: 2026-11-02T23:57:39Z
+    notes: "EXECUÇÃO DEFINITIVA: nomear matriz partes interessadas M4 (OKB-C-24): Carleto, GP Leonardo, equipe, banca. Registrar plano-cronograma. kill_switch: inherited"
+  - task_id: TA-0044
+    sender: nexus-prime-ultimate
+    receiver: agent-ai-llm-rag-dag-mcp-roster-master-specialist
+    action: validate
+    status: dispatched_definitivo
+    exit_status: 0
+    timestamp: 2026-11-02T23:57:39Z
+    notes: "EXECUÇÃO DEFINITIVA: corrigir drift DAG VIO-028 (agent-factory-architect-ultimate fora AGENT_TOPOLOGY); corrigir security_scan agent-agile-specialist Kill Switch/Bypass/FAIL-CLOSED. kill_switch: inherited"
