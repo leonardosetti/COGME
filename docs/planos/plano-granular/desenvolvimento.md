@@ -10,7 +10,7 @@ O código segue o **Specification-Driven Development (SDD)**: especificar → im
 
 ---
 
-> **Atualização de 31/10/2026.** Esta seção foi corrigida pela branch `feat/backend-mvp`, que ainda não está na `main`. Onde versões anteriores descreviam SQLite como banco, PTAX como fonte primária ou `src/` vazio, vale o texto atual, alinhado à ADR-010 e à spec `.ai/specs/backend-mvp-v1.spec.md`. As decisões de cálculo e de contrato do backend estão na ADR-016, em status proposta.
+> **Atualização de 31/10/2026.** Esta seção foi corrigida pela branch `feat/backend-mvp`, que ainda não está na `main`. Onde versões anteriores descreviam SQLite como banco, PTAX como fonte primária ou `src/` vazio, vale o texto atual, alinhado à ADR-010 e à spec `.ai/specs/spec-004-backend-mvp-v1.spec.md`. As decisões de cálculo e de contrato do backend estão na ADR-016, em status proposta.
 
 ## 3.1 Tecnologias / Plataformas / Códigos
 

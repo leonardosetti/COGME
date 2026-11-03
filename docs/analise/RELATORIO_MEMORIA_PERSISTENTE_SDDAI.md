@@ -10,7 +10,7 @@
 
 ## 1. Sumário Executivo
 
-A implementação dos componentes SDDAI (`cogme-sddai-*`) aproveitou integralmente a arquitetura de memória persistente já estabelecida no COGME (Constitution Art. 6.7, `.ai/specs/000-SDD_CONF-memory.spec.md` v3.1.0). Não houve criação de camadas de memória paralelas, evitando duplicação factual e violação de SSOT. O impacto no orçamento de contexto por sessão foi marginal (< 5% do teto de 24.000 tokens), graças ao princípio "prompt é aconselhamento, filesystem é imposição".
+A implementação dos componentes SDDAI (`cogme-sddai-*`) aproveitou integralmente a arquitetura de memória persistente já estabelecida no COGME (Constitution Art. 6.7, `.ai/specs/spec-003-sdd-conf-memory.spec.md` v3.1.0). Não houve criação de camadas de memória paralelas, evitando duplicação factual e violação de SSOT. O impacto no orçamento de contexto por sessão foi marginal (< 5% do teto de 24.000 tokens), graças ao princípio "prompt é aconselhamento, filesystem é imposição".
 
 Avaliou-se que a memória persistente opera com **eficiência operacional elevada** e **baixo custo de re-hidratação** entre sessões, desde que os gateways de validação (`sync_agent_registry.py --check`, `nexus_dispatcher.py --check`, `handoff_parser.py`) sejam executados antes de cada ciclo.
 
@@ -85,7 +85,7 @@ Isso permite re-hidratação completa do estado em < 2k tokens (Constitution Art
 
 ### 4.1. Orçamento de Contexto por Sessão
 
-Conforme `000-SDD_CONF-memory.spec.md` Parte 1.3:
+Conforme `spec-003-sdd-conf-memory.spec.md` Parte 1.3:
 
 | Componente | Budget (tokens) | Uso SDDAI (estimado) |
 |------------|-----------------|----------------------|
