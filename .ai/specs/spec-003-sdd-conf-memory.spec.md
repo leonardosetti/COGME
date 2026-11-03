@@ -1,3 +1,15 @@
+---
+spec_id: spec-003
+specname: sdd-conf-memory
+version: 3.1.0
+status: draft
+custody: agent-sdd-specialist (.ai/specs/)
+created: 2026-10-30
+updated: 2026-11-02
+origin: run CANON-20261029-01 (ADR-011) + commit 149067f (2026-10-30) | creation_handoff: UNKNOWN - verify
+kill_switch: inherited
+---
+
 # DOCUMENTO CANÔNICO DE EXECUÇÃO FASEADA — v3.1.0
 
 ## Second Brain · Memória Persistente · MCPs · Prompt Ubíquo
@@ -1125,3 +1137,43 @@ python3 scripts/canon_guard.py restore --snapshot "$SNAP" --confirm-ccb
 
 > **Falhar uma fase com `KS-14` e o baseline intacto é um resultado correto.
 > Completar uma fase sobrescrevendo `opencode.json` sem snapshot é um acidente — mesmo que o teste fique verde.**
+
+---
+
+# PARTE 11 — CAMADAS FUNDAMENTAIS E CONTROLE (TA-0031)
+
+> Normalização estrutural de `.ai/specs/` (TA-0031, HF-0031; ratificação GP/Humano 2026-11-02, Art. 5.1). Conteúdo das Partes 0–10 preservado integralmente; lacunas declaradas `UNKNOWN - verify`, nunca inventadas (P-08).
+
+## 11.1. Contexto e origem (camada b)
+
+Documento de execução faseada do run `CANON-20261029-01` (cabeçalho original: `Run ID` e `ADR de cobertura: ADR-011`), commiteado em `149067f` (2026-10-30). Handoff de criação: `UNKNOWN - verify` (nenhum `HF-*` em `.ai/handoffs/` cobre este run). Versão v3.1.0 decorre das cinco correções da Parte 0.
+
+## 11.2. Resolução de conflitos (camada c)
+
+A Parte 0 (diagnóstico das cinco falhas do v3.0.0 e correções adotadas no v3.1.0) é a resolução de conflitos deste documento; conflitos com camadas superiores seguem a hierarquia do Art. 2 declarada no cabeçalho original. Conflitos adicionais: `UNKNOWN - verify`.
+
+## 11.3. Rastreabilidade (camada f)
+
+| Fonte | Onde nesta spec |
+|---|---|
+| ADR-011 v1.0.0 (cobertura) | cabeçalho original (`ADR de cobertura`) + frontmatter `origin` |
+| constitution.md Art. 2 (norma suprema) | cabeçalho original (`Norma suprema`) |
+| Estado `canon_run` no ledger | Parte 2.2 (extensão do `ledger.yaml`, preservando `audit_trail`) |
+| Pacotes F00..F12 | Partes 5 e 6 |
+
+## 11.4. Changelog (camada h)
+
+- 3.1.0 — 2026-11-02 (TA-0031, HF-0031): normalização estrutural — frontmatter canônico (`spec_id: spec-003`), slug `000-SDD_CONF-memory.spec.md` → `spec-003-sdd-conf-memory.spec.md` (mapa em `.ai/specs/MANIFEST.md`), mapa de camadas a–h. Versão mantida 3.1.0 (original: run `CANON-20261029-01`, commit `149067f` de 2026-10-30); conteúdo das Partes 0–10 sem alteração.
+
+## CAMADAS FUNDAMENTAIS — MAPA (TA-0031)
+
+| Camada | Seção nesta spec | Estado |
+|---|---|---|
+| (a) cabeçalho | frontmatter (`spec_id: spec-003`, `version: 3.1.0`) + H1 `v3.1.0` | aplicada |
+| (b) Contexto/origem | §11.1 | aplicada |
+| (c) Resolução de conflitos | §11.2 → Parte 0 | aplicada |
+| (d) Corpo de decisões/contratos | Partes 1–7 e 10 | aplicada |
+| (e) Critérios de aceite/testes | Parte 8 (critério de avanço) + "Critério de sucesso desta rodada" (fim da Parte 10) | aplicada |
+| (f) Rastreabilidade | §11.3 | aplicada |
+| (g) Fora de escopo (YAGNI) | Parte 9 (o que o documento proíbe expressamente) | aplicada |
+| (h) Changelog | §11.4 | aplicada (criada em TA-0031) |

@@ -1,5 +1,5 @@
 ---
-spec_id: requisitos-review-round-1-1
+spec_id: spec-002
 version: 0.1.0
 status: draft
 created: 2026-10-25
@@ -14,7 +14,7 @@ trace:
   - docs/planos/COGME.pdf (texto extraido pdftotext -layout; PDF:N = linha N do dump /tmp/opencode/cogme.txt)
   - LEGADO: docs/archive/legacy-md-artifact/rf_rnf_qwen.md, rf_rnf_deepseek.md, review_rf_rfn.md; docs/archive/tap-sections/req_1.0.md
   - docs/auditorias/AUD-2610-03.md (F-01..F-12; KG-01..KG-04; R-00..R-07; BLOCK)
-  - .ai/specs/constitution-round-1-proposta.md (E-01..E-08 — PENDENTES de CCB, nao sao lei)
+  - .ai/specs/spec-001-constitution-round-1-proposta.spec.md (E-01..E-08 — PENDENTES de CCB, nao sao lei)
   - README.md:151-165 (espelho REQ-01..15)
 lgpd-class: n/a (zero PII neste artefato; P-04)
 ---
@@ -27,12 +27,12 @@ candidatas NAO sao compromisso de escopo — cabem ao backlog Kanban e ao Humano
 ## 0. METODO E CONVENCOES
 
 - Convencao PDF:N = linha N do texto extraido de docs/planos/COGME.pdf via pdftotext -layout
-  (mesmo padrao de AUD-2610-03.md:18 e constitution-round-1-proposta.md:26-29).
+  (mesmo padrao de AUD-2610-03.md:18 e spec-001-constitution-round-1-proposta.spec.md:26-29).
 - Estados de inventario (EN tokens): `canonical-mirror` (linha de base TAP congelada, espelhada),
   `duplicate-mirror`, `legacy-input` (insumo historico valido), `legacy-contradicts` (legado
   contradiz camada superior), `out-of-scope`, `orphan` (sem pai canonico).
 - Estado de governanca no momento desta emissao: camada ADR VAZIA (AUD-2610-03.md:26, F-01);
-  emendas E-01..E-08 PENDENTES (constitution-round-1-proposta.md:190); especificacao formal
+  emendas E-01..E-08 PENDENTES (spec-001-constitution-round-1-proposta.spec.md:190); especificacao formal
   de produto = BLOCK (secao E deste documento).
 
 ## A. INVENTARIO DA BASE DE REQUISITOS
@@ -42,7 +42,7 @@ candidatas NAO sao compromisso de escopo — cabem ao backlog Kanban e ao Humano
 | Artefato (Art. 2) | Estado | Evidencia |
 |---|---|---|
 | docs/requisitos/requisitos.md (camada 4) | VAZIO (0 B) | ls -la nesta sessao (25/10); AUD-2610-03.md:43 (T3, commit 7892561 = 0B) |
-| .ai/specs/requisitos.md (camada 5) | VAZIO (0 B) | ls -la nesta sessao; constitution-round-1-proposta.md:132-141 (G-08) |
+| .ai/specs/requisitos.md (camada 5) | VAZIO (0 B) | ls -la nesta sessao; spec-001-constitution-round-1-proposta.spec.md:132-141 (G-08) |
 | .ai/specs/tap.md / eap.md (camada 5) | VAZIO (0 B) | idem (G-08) |
 | docs/tap/TAP.md (camada 4) | VAZIO (0 B) | ls -la nesta sessao; TAP sobrevive em plano-integral-tap-1-2-3-4-5.md:10 |
 | docs/decisoes/ADR-001..005 (camada 3) | VAZIO (0 B x5) | AUD-2610-03.md:26,59 (F-01) |
@@ -97,7 +97,7 @@ Colisao de IDs: RF-01..10 possuem CONTEUDOS DIFERENTES nos 3 corpora com MESMOS 
 
 | ID | Gap | Evidencia |
 |---|---|---|
-| GAP-01 | Artefato canonico de requisitos nao existe (0 B); camada 5 sem conteudo executavel | secao A.1; constitution-round-1-proposta.md:132-141 |
+| GAP-01 | Artefato canonico de requisitos nao existe (0 B); camada 5 sem conteudo executavel | secao A.1; spec-001-constitution-round-1-proposta.spec.md:132-141 |
 | GAP-02 | Sem registro NFR consolidado; EAP previa fase N2.2 "Requisitos Nao Funcionais" (PDF:645) sem artefato; P-06/P-07/P-04 sem criterio de produto mapeado | req_1.0.md (sem secao NFR); constitution.md:34,36 (P-06/P-08) |
 | GAP-03 | Formula de spread/IOF nao fixada no canonico: REQ-03 exige "calculo auditavel" sem formula; legado diverge (DEDUCAO review:16/qwen:44 vs MULTIPLICACAO deepseek:50) — resultado financeiro distinto | req_1.0.md:13; corpora citados |
 | GAP-04 | Modelo de dados da invoice (campos: dados bancarios, CPF/CNPJ, periodo) nao canonico — legado apenas (deepseek:58; qwen:18) | req_1.0.md:14 (REQ-04 generico) |
@@ -125,7 +125,7 @@ Colisao de IDs: RF-01..10 possuem CONTEUDOS DIFERENTES nos 3 corpora com MESMOS 
 | C-06 | WIP ≤3 total (constitution.md:60) vs 3/pessoa ≤9 (PDF:1677,1817-1818) | Ja registrada: AUD-2610-03.md:66 (F-08); emenda E-08 pendente CCB |
 | C-07 | Latencia cotação ≤2s (REQ-01) vs aplicacao ≤3s P95 (REQ-05) — camadas nao explicitadas | Leitura provavel: 2s=chamada API, 3s=E2E; requer explicitacao na spec (nao contradicao, ambiguidade) |
 | C-08 | Capacidade: legado "equipe de 2 pessoas" (qwen:3; deepseek:5) vs Tabela 32 "3×3 pessoas" (PDF:1817) | Legado desatualizado; capacidade regida por plano vigente |
-| C-09 | Modelo SDD: qwen30b-moe (constitution.md:30) vs "Qwen 32B" (PDF:2156; plano-escopo.md:53) | Constituicao prevalece (G-12, constitution-round-1-proposta.md:168-173) |
+| C-09 | Modelo SDD: qwen30b-moe (constitution.md:30) vs "Qwen 32B" (PDF:2156; plano-escopo.md:53) | Constituicao prevalece (G-12, spec-001-constitution-round-1-proposta.spec.md:168-173) |
 
 ### B.4 Itens fora do escopo congelado — REJEITADOS como OUT-OF-SCOPE (Art. 1.3, constitution.md:14)
 
@@ -138,7 +138,7 @@ Colisao de IDs: RF-01..10 possuem CONTEUDOS DIFERENTES nos 3 corpora com MESMOS 
 | OS-05 | NF-e/NFS-e | Tabela 1 OUT (plano-escopo.md:74) |
 | OS-06 | App mobile nativo | Tabela 1 OUT (plano-escopo.md:75) |
 | OS-07 | Testes de carga/estresse 20 usuarios k6/Locust (qwen:33; review:45) | Tabela 1 OUT (plano-escopo.md:77) |
-| OS-08 | Hospedagem publica + keep-alive /health 14min (deepseek:83; review:48) | Infra = "ambiente local/homologacao (sem cloud paga)" (PDF:~2530 Tabela 44, via constitution-round-1-proposta.md:160-162); P-02 veta nuvem (constitution.md:30) |
+| OS-08 | Hospedagem publica + keep-alive /health 14min (deepseek:83; review:48) | Infra = "ambiente local/homologacao (sem cloud paga)" (PDF:~2530 Tabela 44, via spec-001-constitution-round-1-proposta.spec.md:160-162); P-02 veta nuvem (constitution.md:30) |
 | OS-09 | Graficos de evolucao cambial, export DOCX, comparador de plataformas, painel admin (deepseek:19) | Fora do Art. 1.2; YAGNI (E-04 pendente, mas Tabela 1 OUT por analogia — KG-R-03) |
 | OS-10 | Regime de jornada "por ano" (rejeitado ja no legado qwen:19) | Art. 1.2/REQ-02 enumeram 5 regimes sem "ano" (req_1.0.md:12) |
 
@@ -214,7 +214,7 @@ handoffs para dev, e qualquer codigo) fica **BLOCK** ate que AMBAS as condicoes 
 1. **Re-emissao/ratificacao CCB das ADRs 001-006** — a camada 3 do Art. 2 (constitution.md:20)
    esta oca (F-01); qualquer spec que assuma stack, freeze ou fluxo de mudanca cita camada vazia
    (P-08 violado por referencia circular — F-03). Roteiro: AUD-2610-03.md:85,240 (R-00..R-02).
-2. **Decisao CCB sobre E-01..E-08** — pendentes (constitution-round-1-proposta.md:193-334);
+2. **Decisao CCB sobre E-01..E-08** — pendentes (spec-001-constitution-round-1-proposta.spec.md:193-334);
    criticas para requisitos: E-07 (ancora do freeze do Art. 1.3), E-08 (WIP), E-05 (fluxo
    CR→ADR→CCB), E-04 (YAGNI codificado).
 
@@ -254,7 +254,7 @@ especifica → implementa → valida) ate a fronteira do gate, sem saltar-la (co
   rastreabilidade por item; (ii) auditoria B com gaps/duplicatas/contradicoes/OUT-OF-SCOPE
   justificados; (iii) 17 stories candidatas com GWT e REQ→US; (iv) DoR proposta (D);
   (v) gates explicitos (E); (vi) arquivo ≤400 linhas; (vii) zero escrita fora deste arquivo.
-- **Conformidade:** escrita APENAS em .ai/specs/requisitos-review-round-1.md (kill switch
+- **Conformidade:** escrita APENAS em .ai/specs/spec-002-requisitos-review-round-1.spec.md (kill switch
   herdado); nenhum arquivo de lei/plano/TAP/ADR tocado; 100% local, sem nuvem paga (P-01/P-02);
   sem PII (P-04); slugs/IDs EN + narrativa PT-BR (P-10); YAGNI — nenhuma story sem origem
   citada; self-delegation ausente (escalonamento apenas via orchestrator).
@@ -265,3 +265,18 @@ especifica → implementa → valida) ate a fronteira do gate, sem saltar-la (co
   (4 espelhos) + 70 itens legados mapeados (3 corpora); 8 gaps, 9 contradicoes, 10 OUT-OF-SCOPE;
   17 stories candidatas (14 canonicas + 3 legacy-informadas; cobertura REQ→US 15/15); DoR
   12 itens; 2 condicoes de BLOCK + 4 KGR declarados.
+
+## CAMADAS FUNDAMENTAIS — MAPA (TA-0031)
+
+Normalização estrutural (TA-0031, HF-0031): `spec_id` atualizado de `requisitos-review-round-1-1` para `spec-002` (slug `spec_id-specname.spec.md`); conteúdo das §0–§F e do CHANGELOG preservado; nenhuma linha anterior renumerada (referências `arquivo:linha` históricas permanecem válidas).
+
+| Camada | Seção nesta spec | Estado |
+|---|---|---|
+| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem | frontmatter (`spec_id: spec-002`, `version: 0.1.0`, `status: draft`, `created: 2026-10-25`, `owner`, `task: TA-0004 | handoff: N/A (analyze)`) | aplicada |
+| (b) Contexto/origem | parágrafo "Natureza: auditoria + proposta" + §0 (método e convenções) | aplicada |
+| (c) Resolução de conflitos | §B.3 (contradições entre fontes) + §B.4 (itens OUT-OF-SCOPE rejeitados) | aplicada |
+| (d) Corpo de decisões/requisitos | §A (inventário REQ-01..15 e legado), §B (auditoria), §C (stories), §D (DoR) | aplicada |
+| (e) Critérios de aceite/testes | §E (gates e bloqueios explícitos) + critérios de conformidade do §F (lista i–vii) | aplicada |
+| (f) Rastreabilidade | §C.1 (REQ → US, cobertura 15/15) + frontmatter `trace` | aplicada |
+| (g) Fora de escopo (YAGNI) | §B.4 (10 itens fora do escopo congelado, rejeitados) | aplicada |
+| (h) Changelog | CHANGELOG (0.1.0) | aplicada |

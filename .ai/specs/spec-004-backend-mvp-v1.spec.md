@@ -1,4 +1,17 @@
-# SPEC backend-mvp-v1 — Backend do MVP COGME (REQ-01 a REQ-05, REQ-07, REQ-14)
+---
+spec_id: spec-004
+specname: backend-mvp-v1
+version: 1.0.0
+status: in_progress
+custody: agent-sdd-specialist (.ai/specs/)
+created: 2026-11-01
+updated: 2026-11-02
+origin: commit f6e0455 (2026-11-01, "docs(spec): especificar backend do MVP") + record .ai/handoffs/HF-0500-backend-mvp.md | creation_handoff: UNKNOWN - verify
+task: UNKNOWN - verify | sender: agent-nexus-prime-ultimate
+kill_switch: inherited
+---
+
+# SPEC spec-004 — backend-mvp-v1 — Backend do MVP COGME (REQ-01 a REQ-05, REQ-07, REQ-14)
 
 Status: IMPLEMENTADA EM BRANCH, COM COMMITS LOCAIS, PENDENTE DE PUSH E MERGE | Branch: `feat/backend-mvp` | Orquestrador: agent-nexus-prime-ultimate
 
@@ -205,3 +218,45 @@ Regras adicionadas na T2:
 | T11 | backend-dev | Opus 5.5 | Timeouts do repositório, single-flight, prazo total, circuit breaker do repositório |
 | T12 | devops + backend-dev | Sonnet 5.5 | Desconexão do cliente, endurecimento do compose, lint e Alembic no CI, .gitignore |
 | T13 | qa-sdet | Haiku 5.5 | Teste instável, testes do circuit breaker do repositório e do lifespan |
+
+---
+
+## 10. Contexto e origem (camada b)
+
+Spec de fonte única das decisões do backend, anterior à implementação na branch `feat/backend-mvp`: commit `f6e0455` (2026-11-01, "docs(spec): especificar backend do MVP") e registro de execução das tarefas em `.ai/handoffs/HF-0500-backend-mvp.md` (§9, `status: blocked` — única pendência declarada é a ratificação da ADR-016, ato humano do CCB). Decisão de stack correlata: `docs/decisoes/ADR-016-backend-mvp.md:18`. Handoff de criação da spec: `UNKNOWN - verify` (não há envelope `task-ta-*.json` correspondente em `.ai/handoffs/`).
+
+## 11. Critérios de aceite e testes (camada e)
+
+`UNKNOWN - verify` — esta SPEC não possuía seção própria de critérios de aceite antes da normalização TA-0031; nenhum critério foi inventado. Evidência observável de cobertura (fatos verificáveis, sem novo critério): os testes citam esta spec por seção nos docstrings (ex.: `tests/integration/test_api_contract.py:1` → §2, §3; `tests/unit/test_calculator.py:1` → §2, §3) e as tarefas T5/T8 de §9 definem quem entrega os testes.
+
+## 12. Rastreabilidade consolidada (camada f)
+
+| Fonte | Onde nesta spec |
+|---|---|
+| REQ-01, REQ-07 | §4 Cotações (título da seção) |
+| REQ-02, REQ-03 | §2 Regras de negócio (título) |
+| REQ-04 | §6 Invoice (título) |
+| REQ-05, REQ-14 | declarados no H1 ("REQ-01 a REQ-05, REQ-07, REQ-14"); seção dedicada `UNKNOWN - verify` |
+| ADR-016 | §9, tarefa T10 (proposta de ADR) + `docs/decisoes/ADR-016-backend-mvp.md:18` |
+| Art. 2 (Constituição) | §1 (hierarquia de resolução de conflitos, parágrafo introdutório) |
+
+## 13. Fora de escopo (camada g)
+
+Escopo negativo já declarado em §1 (parágrafo "Fora do escopo: autenticação, cadastro, histórico de simulações, comparador Wise, telas (N5.3)"). Demais exclusões YAGNI: `UNKNOWN - verify` — a normalização TA-0031 não criou nenhuma nova decisão de escopo.
+
+## 14. CHANGELOG (camada h)
+
+- 1.0.0 — 2026-11-02 (TA-0031, HF-0031): versionamento inicial + template canônico (camadas a–h). Conteúdo pré-existente preservado integralmente (origem: commit `f6e0455`, 2026-11-01); slug antigo `backend-mvp-v1.spec.md` → `spec-004-backend-mvp-v1.spec.md` (mapa em `.ai/specs/MANIFEST.md`); nenhuma decisão reescrita; `status: in_progress` mapeado da linha `Status:` original (IMPLEMENTADA EM BRANCH, PENDENTE DE PUSH E MERGE).
+
+## CAMADAS FUNDAMENTAIS — MAPA (TA-0031)
+
+| Camada | Seção nesta spec | Estado |
+|---|---|---|
+| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem | frontmatter (`spec_id: spec-004`, `version: 1.0.0`) | aplicada |
+| (b) Contexto/origem | §10 + frontmatter `origin` + parágrafo introdutório | aplicada |
+| (c) Resolução de conflitos | §1 | aplicada |
+| (d) Corpo de decisões/requisitos/contratos | §§2–9 | aplicada |
+| (e) Critérios de aceite/testes | §11 | `UNKNOWN - verify` (sem seção própria prévia; evidência em `tests/`) |
+| (f) Rastreabilidade | §12 + títulos das §§2–6 | aplicada |
+| (g) Fora de escopo (YAGNI) | §13 + §1 | aplicada |
+| (h) Changelog | §14 | aplicada (criada em TA-0031) |

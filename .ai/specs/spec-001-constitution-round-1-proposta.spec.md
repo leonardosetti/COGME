@@ -1,5 +1,5 @@
 ---
-spec_id: constitution-round-1-proposta-1
+spec_id: spec-001
 version: 0.1.0
 status: draft
 created: 2026-10-25
@@ -383,7 +383,7 @@ artigo alvo → texto atual → texto proposto → justificativa → fonte.
 - **Validação (quem valida e o DoD):** agent-reviewer audita citações
   (linha-a-linha) e testabilidade; agent-project-auditor emite parecer (Art. 9.1);
   CCB humana ratifica (Art. 5.1/5.2). DoD desta spec: artefato criado em
-  `.ai/specs/constitution-round-1-proposta.md`, contendo inventário com evidência
+  `.ai/specs/spec-001-constitution-round-1-proposta.spec.md`, contendo inventário com evidência
   (§1), emendas no rito Art. 9.1 (§2) e matriz de rastreabilidade (§3).
 - Critérios de aceite: [x] gaps com evidência arquivo+linha; [x] 8 hipóteses do
   envelope avaliadas com veredito; [x] emendas com texto atual/proposto/justificativa/
@@ -394,3 +394,20 @@ artigo alvo → texto atual → texto proposto → justificativa → fonte.
 
 - 0.1.0 — 2026-10-25: proposta inicial R1 (WS-1): 13 gaps (G-01..G-13, sendo 3
   vereditos sem emenda), 8 emendas propostas (E-01..E-08), 4 KGs declarados.
+
+## CAMADAS FUNDAMENTAIS — MAPA (TA-0031)
+
+Normalização estrutural (TA-0031, HF-0031): `spec_id` atualizado de `constitution-round-1-proposta-1` para `spec-001` (slug `spec_id-specname.spec.md`); conteúdo das §1–§5 e do CHANGELOG preservado; nenhuma linha anterior renumerada (referências `arquivo:linha` históricas permanecem válidas).
+
+| Camada | Seção nesta spec | Estado |
+|---|---|---|
+| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem | frontmatter (`spec_id: spec-001`, `version: 0.1.0`, `status: draft`, `created: 2026-10-25`, `owner`, `task: TA-0002 | handoff: HF-0001`) | aplicada |
+| (b) Contexto/origem | parágrafo inicial sob o H1 (rito Art. 9.1 e Art. 5.1; WS-1) | aplicada |
+| (c) Resolução de conflitos | §1 (inventário de gaps/drifts/contradições com veredito por item) | aplicada |
+| (d) Corpo de decisões/requisitos | §2 (emendas E-01..E-08 no formato Art. 9.1) | aplicada |
+| (e) Critérios de aceite/testes | §5 ("Critérios de aceite" — lista de checkboxes do DoD desta spec) | aplicada |
+| (f) Rastreabilidade | §3 (matriz fonte → artigo → emenda) + frontmatter `trace` | aplicada |
+| (g) Fora de escopo (YAGNI) | §5 (restrições e conformidade: zero escrita fora deste arquivo; nenhum arquivo de lei/plano/TAP/ADR tocado) | aplicada como restrições; YAGNI de produto: `UNKNOWN - verify` |
+| (h) Changelog | CHANGELOG (0.1.0) | aplicada |
+
+Nota de honestidade (P-08): o DoD da emissão original (TA-0002, §5) fixava "arquivo ≤400 linhas"; após a normalização TA-0031 o arquivo tem 413 linhas — excedido em 13 apenas pelo bloco de camadas desta tarefa (MAPA + esta nota, anexados ao final; zero linha pré-existente renumerada), declarado aqui e não silenciado.
