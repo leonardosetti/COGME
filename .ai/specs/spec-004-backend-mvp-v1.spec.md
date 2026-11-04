@@ -1,11 +1,11 @@
 ---
 spec_id: spec-004
 specname: backend-mvp-v1
-version: 1.0.0
+version: 1.1.0
 status: in_progress
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-11-01
-updated: 2026-11-02
+updated: 2026-11-03
 origin: commit f6e0455 (2026-11-01, "docs(spec): especificar backend do MVP") + record .ai/handoffs/HF-0500-backend-mvp.md | creation_handoff: UNKNOWN - verify
 task: UNKNOWN - verify | sender: agent-nexus-prime-ultimate
 kill_switch: inherited
@@ -26,7 +26,7 @@ Fonte única das decisões do backend. Em conflito, vale a hierarquia do Art. 2 
 | Pydantic | v2 (exigido pelo FastAPI atual) | Código de terceiros | prompt api-specialist ("v1-style") |
 | Dependências | Permitidas via ADR-010 §6, registradas em `docs/dependencias/registro.md` | ADR-010 §6 | prompts "stdlib + FastAPI only" |
 | Python | `>=3.11`; ambiente local e CI usam 3.12 | CI vigente | prompt python-specialist ("pinned 3.11") |
-| Spread/IOF | Informados pelo usuário; nenhuma alíquota no código | Plano de Riscos RE-04 | [A CONFIRMAR] desenvolvimento.md §3.2.3 |
+| Spread/IOF | Informados pelo usuário; nenhuma alíquota no código | Plano de Riscos RE-04 | ADR-016 §D1 |
 
 Fora do escopo: autenticação, cadastro, histórico de simulações, comparador Wise, telas (N5.3).
 
@@ -227,7 +227,28 @@ Spec de fonte única das decisões do backend, anterior à implementação na br
 
 ## 11. Critérios de aceite e testes (camada e)
 
-`UNKNOWN - verify` — esta SPEC não possuía seção própria de critérios de aceite antes da normalização TA-0031; nenhum critério foi inventado. Evidência observável de cobertura (fatos verificáveis, sem novo critério): os testes citam esta spec por seção nos docstrings (ex.: `tests/integration/test_api_contract.py:1` → §2, §3; `tests/unit/test_calculator.py:1` → §2, §3) e as tarefas T5/T8 de §9 definem quem entrega os testes.
+Histórico: esta SPEC não possuía seção própria de critérios de aceite antes da normalização TA-0031 — nada foi inventado então (marcador vigente até a emenda TA-0061, HF-0617); a evidência observável então registrada permanece válida (docstrings dos testes citam esta spec por seção: `tests/integration/test_api_contract.py:1` → §2, §3; `tests/unit/test_calculator.py:1` → §2, §3; T5/T8 de §9 definem quem entrega os testes). Emenda TA-0061 (C.1): os critérios abaixo consolidam, em forma binária verificável, ACs **já existentes no corpo** (§§2–9) — nenhum requisito novo; o que o corpo não fundamenta permanece `UNKNOWN - verify` (P-08).
+
+- [ ] **AC-01** — toda resposta de `POST /v1/simulate` satisfaz `gross_brl − spread_brl − iof_brl == net_brl` (verificação: teste de propriedade sobre `calculate`/`SimulationResponse`). Fonte: §2:53, §8.1:200.
+- [ ] **AC-02** — dinheiro é exclusivamente `Decimal` com `ROUND_HALF_EVEN` (`float` proibido), 2 casas em valores de moeda e 6 casas em taxas; `RateQuote` rejeita taxa com mais de 6 casas (verificação: grep de `float` em `services/calculator.py` = zero matches + teste de quantização). Fonte: §2:35, §8.1:198.
+- [ ] **AC-03** — o exemplo sintético canônico (USD, `hourly`, amount 30, quantity 160, rate 5.000000, spread 2, iof 0.38) produz `net_brl` 23430.62 e `effective_rate` 4.881379 (verificação: caso golden no teste unitário). Fonte: §2:55-56.
+- [ ] **AC-04** — bruto que arredonda para 0.00 rejeita a requisição com `gross_rounds_to_zero` (verificação: teste de validação). Fonte: §8.1:199.
+- [ ] **AC-05** — cotação fora do aceite `Decimal` finito e `0 < rate < 1000` é falha da fonte e nada é gravado (verificação: teste com rate 0, 1000 e NaN). Fonte: §4:103.
+- [ ] **AC-06** — cache vigente (idade ≤ `COGME_RATE_TTL_SECONDS`, padrão 3600) responde sem chamada externa; sem cache e sem fonte → 503 `rates_unavailable`; cache vencido é devolvido com `stale=true` (verificação: teste com relógio injetável). Fonte: §4:107-110.
+- [ ] **AC-07** — circuit breaker de provedor abre após 3 falhas consecutivas por 60 s; breaker do repositório abre após 3 estouros/`RepositoryError` com sonda a cada 5 s; seguidores herdam o desfecho do líder (verificação: testes dos breakers com relógio injetável). Fonte: §4:112,116,118.
+- [ ] **AC-08** — orçamento de cotação: `total_timeout` de 1,9 s por requisição, `repository_timeout` de 0,3 s, cadeia de provedores encerrada em t=1,6 s e timeout por provedor de 0,9 s (verificação: teste de timeout com relógio fake). Fonte: §4:114.
+- [ ] **AC-09** — provedores cumprem o contrato de parsing: Frankfurter (`quoted_at` = meia-noite UTC de `date`, `bulletin=None`) e PTAX (`cotacaoCompra`, `tipoBoletim` em `bulletin`, conversão para UTC; janela sem linhas é falha da fonte), com JSON lido em `parse_float=Decimal` (verificação: testes unitários com as respostas de exemplo de §4). Fonte: §4:99-101, §8.1:201.
+- [ ] **AC-10** — schemas do contrato `/v1` vivem unicamente em `src/shared/schemas.py` com `extra="forbid"`; campo desconhecido → 400 `validation_error` (verificação: teste de contrato). Fonte: §3:69,87.
+- [ ] **AC-11** — toda falha (400/404/503/500) responde no modelo canônico de erro com mensagem PT-BR, sem traceback e sem ecoar o valor enviado; handler de validação usa só `loc` (nunca `input`/`ctx`) (verificação: testes de contrato de erro). Fonte: §3:79-93, §8.1:202.
+- [ ] **AC-12** — `POST /v1/invoice` recalcula a simulação no servidor e não aceita valores prontos do cliente (verificação: teste com corpo adulterado rejeitado). Fonte: §6:130.
+- [ ] **AC-13** — invoice em PDF com `Content-Disposition: attachment; filename="invoice.pdf"`, template com autoescape ativo e `url_fetcher` que recusa todo recurso remoto (verificação: teste de integração). Fonte: §6:130.
+- [ ] **AC-14** — invoice não é persistida; nomes/documentos/endereços não aparecem em logs; logs não trazem valores nem corpo de requisição (verificação: revisão dos logs dos testes de integração; política LGPD de produto é objeto da spec-015, proposta). Fonte: §5:126.
+- [ ] **AC-15** — ausência de `COGME_DATABASE_URL` impede a inicialização da API (fail-closed); compose publica portas só em `127.0.0.1`; sem CORS (verificação: teste de boot sem a variável + leitura do compose). Fonte: §7:134.
+- [ ] **AC-16** — testes sem rede nem relógio real; integração com PostgreSQL via `COGME_TEST_DATABASE_URL` e marcador `postgres`; dados 100% sintéticos; `tests/agents/` não alterado (verificação: convenção de fixtures). Fonte: §8:155.
+- [ ] **AC-17** — migrações Alembic completam o round-trip `upgrade`/`downgrade` (verificação: teste de round-trip; análogo ao F-06 da spec-005 §12). Fonte: §5:124.
+- [ ] **AC-18** — cobertura ≥ 80 % sobre `src/`, fail-closed no CI (`--cov-fail-under=80`, ci.yml:170) (verificação: run do CI). Fonte: §8:155.
+
+`UNKNOWN - verify` (sem base no corpo desta spec — não inventado): medição de latência em ambiente real (o corpo fixa apenas orçamentos nominais, §4:114); quantidade de casos de teste por endpoint; aceite formal destes critérios pelo reviewer (spec em `status: in_progress`, pendente de push/merge).
 
 ## 12. Rastreabilidade consolidada (camada f)
 
@@ -242,11 +263,20 @@ Spec de fonte única das decisões do backend, anterior à implementação na br
 
 ## 13. Fora de escopo (camada g)
 
-Escopo negativo já declarado em §1 (parágrafo "Fora do escopo: autenticação, cadastro, histórico de simulações, comparador Wise, telas (N5.3)"). Demais exclusões YAGNI: `UNKNOWN - verify` — a normalização TA-0031 não criou nenhuma nova decisão de escopo.
+Escopo negativo já declarado em §1 (parágrafo "Fora do escopo: autenticação, cadastro, histórico de simulações, comparador Wise, telas (N5.3)" — telas de front são objeto da spec-008, spec-008:28). Emenda TA-0061 (C.2) — exclusões adicionais derivadas do corpo e do corpus da rodada, por cross-ref, **sem promover decisão nova** (P-11):
+
+- **Persistência de invoice / modelo de dados estendido (condicionante D1)** — invoice nunca é persistida (§5:126); o modelo de dados da invoice é objeto da spec-007 sob a condicionante D1 (spec-007:38,48) e não altera o contrato §3 desta spec.
+- **Política LGPD de produto (B.3)** — objeto da spec-015, emitida como PROPOSTA `draft` condicionada a ratificação CCB/PO (envelope `.ai/handoffs/HF-0616-spec-015-lgpd-produto-proposta-v1.md`); esta spec retém apenas o critério vigente de §5:126.
+- **NFR consolidados (NF-01..NF-10)** — norma da spec-006 (NF-01..NF-04 em spec-006:71-74; NF-05 :80; NF-07 :87; NF-10 :90); esta spec cita apenas os orçamentos que já fixa no corpo (ex.: 1,9 s em §4:114).
+- **UAT de produto (REQ-09, fase N6.2)** e **UAT de camadas** — plano/roteiro normados pela spec-009 (spec-009 §3) e pela spec-005 §12 (F-01..F-07); esta spec não define UAT.
+- **Pipeline CI/CD detalhado (REQ-11)** — norma da spec-011 (spec-011 §3) e da spec-005 §8; esta spec consome apenas o gate de cobertura (§8:155, ci.yml:170).
+- **Documentação técnica (REQ-14)** — doc de arquitetura e revisão formal da OpenAPI são objeto da spec-013 (spec-013:32); a seção dedicada à REQ-14 nesta spec permanece `UNKNOWN - verify` (§12).
+- **Retenção de dados de `fx_quotes`** — §5:122 declara a retenção "em manutenção futura"; política de retenção não é decisão desta spec.
 
 ## 14. CHANGELOG (camada h)
 
 - 1.0.0 — 2026-11-02 (TA-0031, HF-0031): versionamento inicial + template canônico (camadas a–h). Conteúdo pré-existente preservado integralmente (origem: commit `f6e0455`, 2026-11-01); slug antigo `backend-mvp-v1.spec.md` → `spec-004-backend-mvp-v1.spec.md` (mapa em `.ai/specs/MANIFEST.md`); nenhuma decisão reescrita; `status: in_progress` mapeado da linha `Status:` original (IMPLEMENTADA EM BRANCH, PENDENTE DE PUSH E MERGE).
+- 1.1.0 — 2026-11-03 (TA-0061, HF-0617): emendas de conteúdo C.1+C.2 (docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md:49,50). C.1: §11 preenchida com 18 critérios binários (AC-01..AC-18) consolidados exclusivamente do corpo pré-existente (§§2–9) — nenhum requisito novo; itens sem base no corpo permanecem `UNKNOWN - verify` (§11, final). C.2: §13 preenchida com exclusões YAGNI por cross-ref (spec-007/D1, spec-015 proposta via HF-0616, spec-006, spec-009, spec-011, spec-013, retenção `fx_quotes`) — nenhuma decisão nova promovida. Frontmatter: `version` 1.0.0 → 1.1.0; `updated` → 2026-11-03. Mapa de camadas (e) atualizado por coerência. Nenhuma decisão de §§1–9 reescrita. Deslocamento de linhas: §§11/13 expandidas — linhas ≥ 231 do arquivo deslocam (citações externas às linhas ≥ 231, ex.: LISTA item B.9 → `spec-004:239`, resolvem-se pela leitura de §/seção).
 
 ## CAMADAS FUNDAMENTAIS — MAPA (TA-0031)
 
@@ -256,7 +286,7 @@ Escopo negativo já declarado em §1 (parágrafo "Fora do escopo: autenticação
 | (b) Contexto/origem | §10 + frontmatter `origin` + parágrafo introdutório | aplicada |
 | (c) Resolução de conflitos | §1 | aplicada |
 | (d) Corpo de decisões/requisitos/contratos | §§2–9 | aplicada |
-| (e) Critérios de aceite/testes | §11 | `UNKNOWN - verify` (sem seção própria prévia; evidência em `tests/`) |
+| (e) Critérios de aceite/testes | §11 | aplicada (emenda TA-0061: AC-01..AC-18 binários consolidados do corpo §§2–9; sem seção própria pré-TA-0031 — histórico em §11) |
 | (f) Rastreabilidade | §12 + títulos das §§2–6 | aplicada |
 | (g) Fora de escopo (YAGNI) | §13 + §1 | aplicada |
 | (h) Changelog | §14 | aplicada (criada em TA-0031) |

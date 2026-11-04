@@ -1,11 +1,11 @@
 ---
 spec_id: spec-005
 specname: container-layers-v1
-version: 0.2.0
+version: 0.3.0
 status: draft
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 origin: HF-0029 (TA-0029) + amendment HF-0030 (TA-0030) | sender: agent-nexus-prime-ultimate
 kill_switch: inherited
 ---
@@ -207,7 +207,7 @@ Implementação desses casos pertence à onda de implementação (Art. 6.1); aqu
 
 1. **Job `lint-and-unit`:** flake8 + mypy + `pytest tests/unit tests/integration --cov=src --cov-fail-under=80` — orçamento **≤ 5 min por push** (US-011, spec-002-requisitos-review-round-1.spec.md:167; REQ-11 :72). Reduzir `timeout-minutes` do `test-suite` de 15 (ci.yml:111) para ≤5 e paralelizar é obrigação de implementação; enquanto não reduzido, US-011 está **não atendido** (delta declarado, não contornado).
 2. **Job `build-layers`:** `docker compose build` das imagens de `proxy`/`back`/`front` (+ verificação de que todo `image:` externo tem digest — Art. 10.2). Pode exceder os 5 min isolado; o orçamento ≤5min aplica-se ao feedback lint+testes por push (leitura de US-011) — execução paralela ao job 1.
-3. **Job `contract-network`:** sobe a stack efêmera e roda os casos §7.3 (marcador, ex.: `compose` — nome exato: **UNKNOWN - verify** pelo custódio de CI).
+3. **Job `contract-network`:** sobe a stack efêmera e roda os casos §7.3 (marcador, ex.: `compose`). **Resolução C.4 (emenda TA-0061, HF-0617):** o job **NÃO EXISTE** no `ci.yml` real (auditado 2026-11-03 — 189 linhas, 6 jobs: `kill-switch-check` :17, `foss-compliance` :36, `sdd-validation` :69, `agent-health` :91, `test-suite` :108, `final-status` :176; nenhum com esse nome — coerente com os fatos de §8 acima e spec-011 §3.1) e o nome foi **FIXADO como `contract-network` pela spec-011, como JOB NOVO a implementar** na onda seguinte (Art. 6.1): `needs: [test-suite]`, stack efêmera digest-pinned, `timeout-minutes` ≤10, sem porta no host, executando os 5 casos binários de §7.3 (spec-011:100-110; parcela TA-0048, HF-0604:42 — "spec-011 FIXA nome contract-network como job novo").
 4. **Gates nunca bypassados:** nenhum job pode ser pulado por label, `continue-on-error` ou re-run seletivo; cobertura <80% falha (ci.yml:170); merge exige reviewer → gatekeeper (P-06, constitution.md:94; Art. 10.4, constitution.md:219). "Automation serves gates, never bypasses them" (custódia declarada em .opencode/agents/agent-devops.md:6). GitHub Actions Free Tier é Bypass registrado (P-01, constitution.md:84) — não veta, mas exige registro.
 5. **Zero bypass do kill switch:** o job `kill-switch-check` (ci.yml:17) permanece obrigatório e primeiro em qualquer extensão (Art. 4.6, constitution.md:124; veto absoluto herdado por todos os agentes).
 
@@ -339,7 +339,7 @@ Padrão B conforme `docs/conhecimento/OKB.md:539` (§7.4): título `US-NN — sl
 | Aprovador do resultado | Humano — GP via CCB (merge/release é ato humano) | Art. 5.3 (constitution.md:142) |
 | Stakeholder avaliador acadêmico | Prof. Dr. Nivaldo Carleto (canônico) | Art. 1.1 (constitution.md:27) |
 
-**Evidências:** (i) log de execução por fluxo com timestamp e resultado pass/fail; (ii) screenshots do estado healthy por camada (`docker compose ps`); (iii) relatório de defeitos com severidade e status; (iv) artefato de cobertura ≥80% (ci.yml:170); (v) run do CI com duração ≤5 min por push (US-011); (vi) saída dos testes de contrato de rede (§7.3). Destino/armazenamento das evidências: **UNKNOWN - verify** (a definir pelo GP — candidatos naturais: `docs/auditorias/` ou relatório de milestone; não inventado aqui).
+**Evidências:** (i) log de execução por fluxo com timestamp e resultado pass/fail; (ii) screenshots do estado healthy por camada (`docker compose ps`); (iii) relatório de defeitos com severidade e status; (iv) artefato de cobertura ≥80% (ci.yml:170); (v) run do CI com duração ≤5 min por push (US-011); (vi) saída dos testes de contrato de rede (§7.3). Destino/armazenamento das evidências: **proposta emitida (spec-009 §3.8), RATIFICAÇÃO CCB/PO PENDENTE** — `docs/uat/N6.2/` com `relatorio-UAT-<yyyymmdd>-run<nn>.md` + `docs/uat/N6.2/evidencias/<id>__US-<slug>__<yyyymmdd>__run<nn>.log|.png`, retenção permanente versionada em git, conteúdo exclusivamente sintético; alternativa em avaliação: `docs/auditorias/` (parcela TA-0047, HF-0603:40, item 3). A decisão final permanece reservada ao GP (CCB) — enquanto não ratificada, não constitui decisão fechada (condicionante registrada em spec-009:148, que mantém o estado `UNKNOWN - verify` até a ratificação; não inventado aqui — emenda TA-0061, HF-0617).
 
 ---
 
@@ -363,6 +363,7 @@ Padrão B conforme `docs/conhecimento/OKB.md:539` (§7.4): título `US-NN — sl
 - 0.2.0 — 2026-11-02 (TA-0030, HF-0030): amenda cirúrgica. Promoção do proxy de "profile opcional latente" para **ACEITO E MANTIDO** (sempre ativo) por ratificação GP/Humano 2026-11-02 (Art. 5.1), registrada na tabela de conflitos §2; matriz §4.2 integrada em cadeia usuário → proxy → front → back → db (+ migrate) com healthchecks em cadeia (§4.2, §7.1); `front`/`back` sem porta no host e usuário somente via `proxy` em `127.0.0.1:8080` (§4.3, §6); caminho de demo em §5 (`git pull` → `cp .env.example .env` → `docker compose up --build` → `127.0.0.1:8080` → fluxos MVP, CPU-only); coerência em §8 (`build-layers` com `proxy`), §9, §11, §12 (F-01) e §13; ADR-010 não alterada — emenda listada como follow-up (arquiteto → CCB, §2/§13). US-018..US-021, AC, segurança (§6) e UAT (§12) preservados.
 
 - Normalização estrutural — 2026-11-02 (TA-0031, HF-0031): frontmatter canônico (`spec_id: spec-005`), slug `container-layers-v1.spec.md` → `spec-005-container-layers-v1.spec.md` (mapa em `.ai/specs/MANIFEST.md`), mapa de camadas a–h. **Versão mantida 0.2.0**; amenda TA-0030 (proxy Nginx ACEITO E MANTIDO) preservada integralmente; nenhum conteúdo reescrito.
+- 0.3.0 — 2026-11-03 (TA-0061, HF-0617): emendas de conteúdo C.4+C.5 (docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md:51,52). C.4 (§8.3): marcador do job `contract-network` substituído pela RESOLUÇÃO — job **inexistente** no `ci.yml` real (auditado 2026-11-03: 189 linhas, 6 jobs, nenhum com esse nome) e nome **FIXADO pela spec-011 §3.4 como job novo a implementar** (parcela TA-0048, HF-0604:42). C.5 (§12): destino das evidências passa de `UNKNOWN - verify` para **"proposta emitida (spec-009 §3.8): `docs/uat/N6.2/`, retenção permanente — ratificação CCB/PO pendente"** (parcela TA-0047, HF-0603:40); a reserva de decisão ao GP é mantida. Frontmatter: `version` 0.2.0 → 0.3.0; `updated` → 2026-11-03. **Amenda TA-0030 (proxy ACEITO E MANTIDO) e linha `Status:` preservadas integralmente**; nenhuma decisão reescrita; emendas in-place sem deslocamento de linhas (citações externas a `spec-005:210` e `spec-005:342` permanecem endereçáveis; valores `UNKNOWN - verify` residuais em :81 e :352 dizem respeito a B.10/spec-014 — fora do escopo desta emenda).
 
 ## CAMADAS FUNDAMENTAIS — MAPA (TA-0031)
 
@@ -375,4 +376,4 @@ Padrão B conforme `docs/conhecimento/OKB.md:539` (§7.4): título `US-NN — sl
 | (e) Critérios de aceite/testes | §11 (AC binários) + §7 (testabilidade) + §12 (UAT F-01..F-07) | aplicada |
 | (f) Rastreabilidade (REQ/ADR/Art./US) | blocos "Rastreabilidade (dupla)" das US-018..US-021 (§10) + §11 | aplicada |
 | (g) Fora de escopo (YAGNI) | §13 | aplicada |
-| (h) Changelog | CHANGELOG (0.1.0, 0.2.0 + anotação TA-0031) | aplicada |
+| (h) Changelog | CHANGELOG (0.1.0, 0.2.0, 0.3.0 + anotação TA-0031) | aplicada |
