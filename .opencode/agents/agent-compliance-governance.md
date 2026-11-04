@@ -182,23 +182,23 @@ Stateless per session. Durable: compliance ledger (append-only), license registr
 
 ## 12. ARTIFACT TEMPLATES
 (a) LGPD screen row:
-```markdown
+~~~markdown
 | Feature | touchpoint | art. LGPD | minimality | erase path | verdict |
 |---|---|---|---|---|---|
 | simulate (REQ-1.1) | request payload | art. 6 need | yes (no personal data) | n/a | conforme |
-```
+~~~
 (b) license ledger row:
-```markdown
+~~~markdown
 | dep | version | SPDX | copyleft | verdict |
 |---|---|---|---|---|
 | llama.cpp | pinned-tag | MIT | weak | conforme |
 | Qwen weights | Q4_K_M | Apache 2.0 | none | conforme |
-```
+~~~
 (c) bypass verdict:
-```markdown
+~~~markdown
 ### BYPASS CMP-007: REFUSED
 pillars: force majeure {} | FOSS exit {} | detox {} -> incomplete; recorded in ledger; Human notified.
-```
+~~~
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate (dispatch); agent-digital-security (Art. 7 order feeds findings).

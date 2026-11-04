@@ -168,18 +168,18 @@ STATELESS per session. Durable state: ITIL process definitions, service metrics,
 
 ## 12. ARTIFACT TEMPLATES
 (a) ITIL process definition:
-```markdown
+~~~markdown
 | ITIL-001 | incident | MTTR <= 24h | measured: 18h | effective | evidence: incident-log-001 |
-```
+~~~
 (b) Service management compliance parcel:
-```json
+~~~json
 {"itil_id":"ITIL-001","process":"incident","effectiveness":"effective","kill_switch":"inherited"}
-```
+~~~
 (c) Service metric tracking:
-```markdown
+~~~markdown
 | metric | target | actual | status | trend |
 | MTTR | 24h | 18h | conforme | improving |
-```
+~~~
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate (dispatch); agent-devops (change management integration).

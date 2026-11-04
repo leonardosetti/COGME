@@ -175,19 +175,19 @@ Stateless per session. Durable: `.ai/workflows/` + `scripts/*.sh`, systemd units
 
 ## 12. ARTIFACT TEMPLATES
 (a) script header:
-```bash
+~~~bash
 #!/usr/bin/env bash
 # scripts/<name>.sh v1.0 - purpose statement (PT-BR primeiro)
 # bullet | Death Args: flags in getopts list
 set -euo pipefail
 TMP=$(mktemp -d); trap 'rm -rf "$TMP"' EXIT
-```
+~~~
 (b) systemd unit excerpt (constante com ADR-001):
-```ini
+~~~ini
 [Service]
 ExecStart=/usr/local/bin/llama-server -m /var/lib/llama.cpp/models/Qwen3-30B-A3B-Q4_K_M.gguf -t 16 --mlock --mmap -c 8192 --temp 0.1 --top-p 0.9 --repeat-penalty 1.1
 Restart=on-failure
-```
+~~~
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate (dispatch); stream bundles from workflows.

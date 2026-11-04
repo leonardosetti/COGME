@@ -1,0 +1,12 @@
+sddai_validation:
+  workflows:
+    - name: data_optimization
+      status: pending
+      steps:
+        - data_ingestion
+        - preprocessing
+        - model_training
+  requirements:
+    tools: ['cogme-sddai-loader', 'cogme-sddai-engineer', 'cogme-sddai-trainer']
+    memory_tool: 'cogme-sddai-memory'
+    cli_entry: '.ai/sddai/sddai'

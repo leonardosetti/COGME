@@ -53,7 +53,7 @@ O CFD deve aparecer em **três artefatos**, com funções distintas:
 
 ## 2. Template de Seção Técnica (Plano de Integração §1.6.1)
 
-```markdown
+~~~markdown
 ### 1.6.1 Cumulative Flow Diagram (CFD) — Definição Formal
 
 **Domínio PMBOK 7ª**: Medição  
@@ -92,7 +92,7 @@ O CFD substitui integralmente o Diagrama de Gantt e métricas EVM (SPI/CPI) para
 monitoramento de progresso, conforme ADR-003. Esta decisão privilegia métricas de fluxo 
 nativas do método Kanban em detrimento de ferramentas preditivas, alinhada ao Domínio de 
 Medição do PMBOK 7ª e à restrição de orçamento zero (TAP §11).
-```
+~~~
 
 ---
 
@@ -100,7 +100,7 @@ Medição do PMBOK 7ª e à restrição de orçamento zero (TAP §11).
 
 ### 3.1 Cenário Ideal (Fluxo Saudável)
 
-```
+~~~
 Cards
   ↑
   │         ╭───────────────────────────── Done (verde)
@@ -113,13 +113,13 @@ Cards
   ││  │  │  │
   ││  │  │  │ Backlog (cinza)
   └┴──┴──┴──┴──────────────────────────→ Tempo
-```
+~~~
 
 **Leitura**: Bandas paralelas = fluxo equilibrado. Throughput estável.
 
 ### 3.2 Cenário com Gargalo (Ação Necessária)
 
-```
+~~~
 Cards
   ↑
   │         ╭───────────────────────────── Done (verde)
@@ -132,7 +132,7 @@ Cards
   ││  │  │  │
   ││  │  │  │ Backlog (cinza)
   └┴──┴──┴──┴──────────────────────────→ Tempo
-```
+~~~
 
 **Leitura**: Banda de Code Review se alarga = cards acumulando nessa etapa.
 **Ação**: Reduzir WIP em Code Review, redistribuir revisores, ou ajustar DoD.
@@ -165,7 +165,7 @@ Cards
 
 ## 5. Exemplo de Redação para o Plano de Cronograma
 
-```markdown
+~~~markdown
 ## 2.3 Monitoramento Temporal via CFD
 
 **Domínio PMBOK 7ª**: Medição + Abordagem de Desenvolvimento  
@@ -194,7 +194,7 @@ Os marcos M1–M4 (TAP §6) são monitorados como pontos de verificação fixos:
 O CFD fornece visibilidade sobre o progresso em direção a esses marcos, mas não 
 calcula datas preditivas. A estimativa de cumprimento é empírica, baseada no 
 Throughput observado no período de calibração (23/09 a 03/10/2026).
-```
+~~~
 
 ---
 
@@ -865,7 +865,7 @@ As milestones abaixo foram projetadas para espelhar os **Marcos M1–M4 do TAP �
 
 **Description (Markdown GitHub):**
 
-```markdown
+~~~markdown
 ## Marco M1 — Entrega Parcial Documental
 
 **Data alvo:** 22/09/2026 (inegociável — TAP §6)
@@ -903,7 +903,7 @@ Desvio > 3 dias úteis aciona Plano de Integração §1.9 (Issue `change-request
 
 ---
 *Rastreabilidade: TAP §6 M1 · EAP fases N1–N4, N8, N9 · Domínio PMBOK 7ª: Abordagem de Desenvolvimento*
-```
+~~~
 
 ---
 
@@ -922,7 +922,7 @@ Desvio > 3 dias úteis aciona Plano de Integração §1.9 (Issue `change-request
 
 **Description (Markdown GitHub):**
 
-```markdown
+~~~markdown
 ## Marco M2 — Ambiente e Modelagem Concluídos
 
 **Data alvo:** 30/09/2026
@@ -954,7 +954,7 @@ Desvio > 3 dias úteis aciona Plano de Integração §1.9 (Issue `change-request
 
 ---
 *Rastreabilidade: TAP §6 M2 · EAP fases N3, N4, N2.3 · Domínio PMBOK 7ª: Planejamento + Entrega*
-```
+~~~
 
 ---
 
@@ -973,7 +973,7 @@ Desvio > 3 dias úteis aciona Plano de Integração §1.9 (Issue `change-request
 
 **Description (Markdown GitHub):**
 
-```markdown
+~~~markdown
 ## Período de Calibração — Baseline de Métricas de Fluxo
 
 **Data alvo:** 03/10/2026
@@ -1008,7 +1008,7 @@ Se a baseline indicar Throughput < 3 cards/semana → acionar revisão de escopo
 
 ---
 *Rastreabilidade: TAP §3 (Métricas) · ADR-003 · Domínio PMBOK 7ª: Medição*
-```
+~~~
 
 ---
 
@@ -1027,7 +1027,7 @@ Se a baseline indicar Throughput < 3 cards/semana → acionar revisão de escopo
 
 **Description (Markdown GitHub):**
 
-```markdown
+~~~markdown
 ## Marco M3 — MVP Funcional (Beta)
 
 **Data alvo:** 15/11/2026
@@ -1069,7 +1069,7 @@ Se a baseline indicar Throughput < 3 cards/semana → acionar revisão de escopo
 
 ---
 *Rastreabilidade: TAP §6 M3 · EAP fases N5, N6, N7, N10 · Domínio PMBOK 7ª: Entrega + Medição*
-```
+~~~
 
 ---
 
@@ -1088,7 +1088,7 @@ Se a baseline indicar Throughput < 3 cards/semana → acionar revisão de escopo
 
 **Description (Markdown GitHub):**
 
-```markdown
+~~~markdown
 ## Marco M4 — Encerramento e Validação Acadêmica
 
 **Data alvo:** 15/12/2026
@@ -1134,7 +1134,7 @@ Se a baseline indicar Throughput < 3 cards/semana → acionar revisão de escopo
 
 ---
 *Rastreabilidade: TAP §6 M4 · EAP fases N11, N12 · Domínio PMBOK 7ª: Entrega*
-```
+~~~
 
 ---
 
@@ -1245,12 +1245,12 @@ Definem-se **dois padrões distintos**, conforme a natureza do trabalho. A escol
 
 **Modelo de bloco GWT (Given/When/Then):**
 
-```text
+~~~text
 Cenário 1 — [nome do cenário]
   Dado   [estado inicial / pré-condição]
   Quando [ação do usuário ou evento]
   Então  [resultado observável e mensurável]
-```
+~~~
 
 > **Decisão GMV:** O Padrão B não será aplicado aos cards do M1 (todos documentais). Sua formalização antecipada garante que a conversão dos REQ em User Stories (fase N2.3, marco M2) ocorra sem retrabalho de padronização.
 

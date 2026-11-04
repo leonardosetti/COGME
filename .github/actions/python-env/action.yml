@@ -1,0 +1,26 @@
+name: Python environment COGME
+description: >
+  Configura Python 3.12 (SHA-pin) e instala dependências de runtime + dev com cache de pip.
+  Reutilizado por ci.yml e sddai-verify.yml para evitar duplicar a montagem do ambiente.
+branding:
+  icon: package
+  color: green
+inputs: {}
+outputs: {}
+runs:
+  using: composite
+  steps:
+    - name: Set up Python 3.12
+      uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065  # v5.6.0 (SHA-pin)
+      with:
+        python-version: "3.12"
+        cache: "pip"
+        cache-dependency-path: |
+          requirements.txt
+          requirements-dev.txt
+    - name: Install runtime + dev dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install -r requirements.txt
+        python -m pip install -r requirements-dev.txt
+      shell: bash

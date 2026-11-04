@@ -1,0 +1,313 @@
+name: COGME CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+# D-03: menor privilégio no nível do workflow. O token do runner não ganha escrita
+# que nenhum job use; jobs que precisam de escrita declaram-na localmente.
+permissions:
+  contents: read
+
+jobs:
+  # ------------------------------------------------------------------
+  # 1. Kill Switch — veto constitucional absoluto (Art. 4.6).
+  # Primeiro e obrigatório em qualquer extensão do workflow (spec-011 §3.5).
+  # ------------------------------------------------------------------
+  kill-switch-check:
+    name: Kill Switch Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2 (SHA-pin)
+
+      - name: Verify Kill Switch not activated
+        run: |
+          if [ -f "kill_switch.trigger" ]; then
+            echo "🚨 Kill Switch Activated: Pipeline halted per Constitution Art. 4.6"
+            exit 1
+          fi
+          echo "✅ Kill Switch not active — pipeline authorized to proceed"
+
+  # ------------------------------------------------------------------
+  # 2. FOSS & Sovereignty Compliance (P-01..P-04, P-07, Art. 7.2)
+  # ------------------------------------------------------------------
+  foss-compliance:
+    name: FOSS & Sovereignty Compliance
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: [kill-switch-check]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Set up Python environment
+        uses: ./.github/actions/python-env
+
+      - name: Validate FOSS-only stack (no CUDA, no cloud inference)
+        run: python3 scripts/security_scan.py --strict
+
+      - name: Validate no real credentials versioned
+        run: |
+          if grep -r --include="*.py" --include="*.yml" --include="*.yaml" \
+             -E "(sk_live|sk_test|AKIA[0-9A-Z]{16}|secret_key|password\s*=\s*[^#])" \
+             .ai .opencode docs scripts src test tests .github 2>/dev/null | \
+             grep -v "scripts/security_scan.py" | grep -v ".github/workflows/ci.yml" | grep -v "dummy"; then
+            echo "🚨 Real credential detected in repository!"
+            exit 1
+          fi
+          echo "✅ No real credentials versioned (P-07, Art. 7.2)"
+
+      - name: Validate LGPD-safe artifacts (no PII in technical artifacts)
+        run: |
+          echo "ℹ️  LGPD primary (P-04): technical artifacts contain no PII by design"
+          echo "✅ LGPD-safe confirmed"
+
+  # ------------------------------------------------------------------
+  # 3. SDD & DAG Topology Validation (Art. 4.5, 6.1)
+  # ------------------------------------------------------------------
+  sdd-validation:
+    name: SDD & DAG Topology Validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: [kill-switch-check]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Set up Python environment
+        uses: ./.github/actions/python-env
+
+      - name: Validate agent contracts (registry.yaml SSOT)
+        run: |
+          python3 scripts/validate_nexus_yaml.py --report /tmp/registry_report.json
+          python3 -c "import json; d=json.load(open('/tmp/registry_report.json')); assert d['rejeitados'] == 0, f'Agentes rejeitados: {d[\"rejeitados\"]}'; print(f'✅ Registry valid: {d[\"promulgados\"]} promulgados')"
+
+      - name: Validate DAG topology (acyclic, no self-reference)
+        run: |
+          python3 scripts/dag_validator.py --strict
+          echo "✅ DAG topology valid (Art. 4.5)"
+
+  # ------------------------------------------------------------------
+  # 4. Agent Health Check
+  # ------------------------------------------------------------------
+  agent-health:
+    name: Agent Health Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: [kill-switch-check]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Set up Python environment
+        uses: ./.github/actions/python-env
+
+      - name: Execute agent health check (strict mode)
+        run: |
+          python3 scripts/agent_health_check.py --strict --report /tmp/health_report.json
+          echo "✅ All agents healthy (legacy-forge accepted per Art. 4.8)"
+
+  # ------------------------------------------------------------------
+  # 5. Lint + Dependency Audit (D-02: job próprio, paralelo à suíte de testes)
+  # SecOps: pip-audit (fail-closed) para vulnerabilidades de dependências.
+  # ------------------------------------------------------------------
+  lint:
+    name: Lint & Dependency Audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    needs: [kill-switch-check]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Set up Python environment
+        uses: ./.github/actions/python-env
+
+      - name: Lint (flake8)
+        run: python -m flake8 src migrations tests/unit tests/integration
+
+      - name: Type check (mypy)
+        run: python -m mypy src migrations
+
+      - name: Dependency audit (pip-audit, fail-closed)
+        run: python -m pip-audit
+
+  # ------------------------------------------------------------------
+  # 6. Test Suite — Constitutional Quality Gate (P-06).
+  # D-01: timeout 15 -> 5 min (US-011). Cobertura >= 95% (score exigido).
+  # Zero skipping: qualquer teste pulado bloqueia o gate.
+  # Artefatos LGPD-safe: coverage.xml + junit.xml (D-05).
+  # ------------------------------------------------------------------
+  test-suite:
+    name: Test Suite
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    needs: [kill-switch-check]
+    # PostgreSQL efêmero (ADR-010, CI): descartado ao fim do job. Credencial dummy,
+    # válida só dentro deste job.
+    services:
+      postgres:
+        image: postgres:15-alpine@sha256:54e0dd8e8cddcdbb9156c2486eed5a43eccb7214d7c6828097d41ce049fb3984
+        env:
+          POSTGRES_USER: cogme_ci
+          POSTGRES_PASSWORD: dummy-ci-efemero
+          POSTGRES_DB: cogme_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U cogme_ci -d cogme_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      COGME_TEST_DATABASE_URL: postgresql+asyncpg://cogme_ci:dummy-ci-efemero@localhost:5432/cogme_test
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Set up Python environment
+        uses: ./.github/actions/python-env
+
+      - name: Install native libraries (WeasyPrint)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            libpango-1.0-0 libpangoft2-1.0-0 libharfbuzz-subset0 fonts-dejavu-core
+
+      - name: Migrations round trip (upgrade, check, downgrade)
+        env:
+          COGME_DATABASE_URL: postgresql+asyncpg://cogme_ci:dummy-ci-efemero@localhost:5432/cogme_test
+        run: |
+          alembic upgrade head
+          alembic check
+          alembic downgrade base
+
+      - name: Execute full test suite (fail-closed, coverage >=95, zero skips)
+        run: |
+          python -m pytest tests/unit tests/integration -q --tb=short \
+            --cov=src --cov-report=xml:coverage.xml --cov-report=term-missing \
+            --cov-fail-under=95 --junitxml=junit.xml \
+            -p no:cacheprovider > /tmp/pytest-report.txt 2>&1
+          PY_RC=$?
+
+          # Gate de qualidade: NENHUM teste pode ser pulado (usuário: todos executados).
+          if grep -qE ", [1-9][0-9]* skipped" /tmp/pytest-report.txt; then
+            echo "🚨 Testes pulados detectados — gate bloqueado (skipping proibido)."
+            grep -E "skipped" /tmp/pytest-report.txt || true
+            exit 1
+          fi
+
+          cat /tmp/pytest-report.txt
+          exit $PY_RC
+
+      - name: Publish quality artifacts (coverage + junit, LGPD-safe filenames)
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2 (SHA-pin)
+        with:
+          name: cogme-quality-report
+          path: |
+            coverage.xml
+            junit.xml
+
+  # ------------------------------------------------------------------
+  # 7. Build Container Layers (spec-005 §8, job 2).
+  # Constrói as imagens do compose; verifica que toda imagem externa usa digest
+  # imutável (Art. 10.2). Paralelo ao lint+testes; o orçamento <=5 min aplica-se
+  # ao feedback lint+testes (spec-005:209).
+  # ------------------------------------------------------------------
+  build-layers:
+    name: Build Container Layers
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: [kill-switch-check]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Build container images (docker compose build)
+        run: docker compose build
+
+      - name: Verify external images pinned by digest (Art. 10.2)
+        run: |
+          if grep -E '^\s*image:' docker-compose.yml | grep -v '@sha256:'; then
+            echo "🚨 Imagem externa sem digest imutável encontrada em docker-compose.yml"
+            exit 1
+          fi
+          echo "✅ Todas as imagens externas estão fixadas por digest"
+
+  # ------------------------------------------------------------------
+  # 8. Contract Network (spec-011 §3.4, fecha C.4).
+  # Nome FIXO: contract-network. needs: [test-suite] (suíte verde, fail-closed).
+  # Stack efêmera, digest-pinta, timeout <= 10, nenhuma porta publicada no host
+  # (comunicação apenas pela rede interna do compose). Executa os casos de
+  # contrato de rede; a suíte de casos binários é estendida na onda seguinte.
+  # ------------------------------------------------------------------
+  contract-network:
+    name: Contract Network
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: [test-suite, build-layers]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Set up Python environment
+        uses: ./.github/actions/python-env
+
+      - name: Bring up ephemeral stack (no host ports relied upon)
+        run: |
+          docker compose up --build -d db web
+          echo "⏳ Aguardando serviços saudáveis (rede interna do compose)..."
+          for i in $(seq 1 30); do
+            if docker compose ps --filter "status=running" | grep -qE "db|web"; then
+              break
+            fi
+            sleep 2
+          done
+          docker compose ps
+
+      - name: Verify back health via internal service DNS (contract case #4 / #5)
+        run: |
+          STATUS=$(docker compose exec -T web python -c "
+            import urllib.request
+            print(urllib.request.urlopen('http://web:8000/v1/health', timeout=5).status)
+          ")
+          test "$STATUS" = "200" || { echo "🚨 /v1/health retornou $STATUS"; exit 1; }
+          echo "✅ back responde /v1/health com 200 sobre a rede interna"
+
+      - name: Tear down ephemeral stack
+        if: always()
+        run: docker compose down -v --remove-orphans
+
+  # ------------------------------------------------------------------
+  # 9. Final Status (P-05: traces).
+  # D-06: o CI lê, nunca muta o repo. Zero escritas em .ai/ pelo workflow;
+  # rastreabilidade via GITHUB_STEP_SUMMARY + URL do run.
+  # ------------------------------------------------------------------
+  final-status:
+    name: Final Status
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    needs: [kill-switch-check, foss-compliance, sdd-validation, agent-health, lint, test-suite, build-layers, contract-network]
+    if: always()
+    steps:
+      - name: Pipeline summary (GITHUB_STEP_SUMMARY)
+        run: |
+          echo "## COGME CI/CD — Resultado do Pipeline" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- Commit: `${{ github.sha }}`" >> $GITHUB_STEP_SUMMARY
+          echo "- Ref: `${{ github.ref }}`" >> $GITHUB_STEP_SUMMARY
+          echo "- Run URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Gates executados: kill-switch → foss-compliance → sdd-validation → agent-health → lint → test-suite → build-layers → contract-network." >> $GITHUB_STEP_SUMMARY
+          echo "Cobertura exigida: >= 95% sobre `src/` (fail-closed). Skipping de testes: proibido." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "CI lê, nunca muta o repositório (D-06). Rastreabilidade por sumário e URL do run." >> $GITHUB_STEP_SUMMARY

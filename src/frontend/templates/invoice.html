@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Invoice {{ invoice_number }}</title>
+<style>
+  @page {
+    size: A4;
+    margin: 18mm 16mm 20mm 16mm;
+    @bottom-center {
+      content: "Página " counter(page) " de " counter(pages);
+      font: 8pt "DejaVu Sans", Arial, sans-serif;
+      color: #666666;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font: 10pt/1.45 "DejaVu Sans", Arial, sans-serif;
+    color: #1c1c1c;
+  }
+  h1 { font-size: 20pt; margin: 0 0 2mm 0; letter-spacing: 0.5pt; }
+  h2 {
+    font-size: 9pt;
+    margin: 0 0 2mm 0;
+    text-transform: uppercase;
+    letter-spacing: 0.8pt;
+    color: #444444;
+  }
+  .header { border-bottom: 1.5pt solid #1c1c1c; padding-bottom: 4mm; margin-bottom: 6mm; }
+  .meta { color: #444444; }
+  .meta strong { color: #1c1c1c; }
+  .parties { width: 100%; border-collapse: separate; border-spacing: 0; margin-bottom: 6mm; }
+  .parties td { width: 50%; vertical-align: top; padding: 0 4mm 0 0; }
+  .party-name { font-weight: bold; font-size: 11pt; }
+  .pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+  .section { margin-bottom: 6mm; }
+  table.items { width: 100%; border-collapse: collapse; }
+  table.items th, table.items td {
+    padding: 2mm 2.5mm;
+    border-bottom: 0.5pt solid #bbbbbb;
+    text-align: left;
+    vertical-align: top;
+  }
+  table.items th { width: 55%; font-weight: normal; color: #444444; }
+  table.items td { text-align: right; font-variant-numeric: tabular-nums; }
+  table.items tr.total th, table.items tr.total td {
+    font-weight: bold;
+    font-size: 11pt;
+    color: #1c1c1c;
+    border-top: 1.5pt solid #1c1c1c;
+    border-bottom: 1.5pt solid #1c1c1c;
+  }
+  .stale {
+    border: 1pt solid #b45309;
+    background: #fff4e0;
+    color: #7a3a00;
+    padding: 2.5mm 3mm;
+    margin-bottom: 4mm;
+  }
+  .notice {
+    margin-top: 8mm;
+    padding-top: 3mm;
+    border-top: 0.5pt solid #bbbbbb;
+    font-size: 8.5pt;
+    color: #555555;
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <h1>Invoice</h1>
+    <div class="meta">
+      Número: <strong>{{ invoice_number }}</strong>
+      &nbsp;&middot;&nbsp;
+      Data de emissão: <strong>{{ issue_date | date_br }}</strong>
+    </div>
+  </div>
+
+  <table class="parties">
+    <tr>
+      <td>
+        <h2>Emitente</h2>
+        <div class="party-name">{{ issuer.name }}</div>
+        {% if issuer.tax_id %}<div>Documento: {{ issuer.tax_id }}</div>{% endif %}
+        {% if issuer.address %}<div class="pre">{{ issuer.address }}</div>{% endif %}
+      </td>
+      <td>
+        <h2>Cliente</h2>
+        <div class="party-name">{{ client.name }}</div>
+        {% if client.tax_id %}<div>Documento: {{ client.tax_id }}</div>{% endif %}
+        {% if client.address %}<div class="pre">{{ client.address }}</div>{% endif %}
+      </td>
+    </tr>
+  </table>
+
+  <div class="section">
+    <h2>Descrição do serviço</h2>
+    <div class="pre">{{ description }}</div>
+  </div>
+
+  <div class="section">
+    <h2>Valores na moeda original ({{ sim.currency.value }})</h2>
+    <table class="items">
+      <tr><th>Regime de cobrança</th><td>{{ regime_label }}</td></tr>
+      <tr><th>Valor por unidade</th><td>{{ sim.currency.value }} {{ unit_amount | money_br }}</td></tr>
+      {% if quantity is not none %}
+      <tr><th>{{ quantity_label }}</th><td>{{ quantity | money_br }}</td></tr>
+      {% endif %}
+      <tr class="total">
+        <th>Total bruto</th>
+        <td>{{ sim.currency.value }} {{ sim.gross_foreign | money_br }}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Cotação utilizada</h2>
+    {% if stale %}
+    <div class="stale">
+      Atenção: esta cotação está desatualizada. As fontes públicas não responderam e foi
+      usada a última cotação guardada. Confira o valor antes de usar este documento.
+    </div>
+    {% endif %}
+    <table class="items">
+      <tr><th>Cotação ({{ sim.currency.value }} &rarr; BRL)</th><td>R$ {{ quote.rate | rate_br }}</td></tr>
+      <tr><th>Fonte</th><td>{{ source_label }}</td></tr>
+      <tr><th>Data da cotação</th><td>{{ quote.quoted_at | datetime_br }}</td></tr>
+      {% if quote.bulletin %}
+      <tr><th>Boletim</th><td>{{ quote.bulletin }}</td></tr>
+      {% endif %}
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Conversão para reais</h2>
+    <table class="items">
+      <tr><th>Total bruto convertido</th><td>{{ sim.gross_brl | brl }}</td></tr>
+      <tr>
+        <th>Spread ({{ sim.spread_pct | percent_br }})</th>
+        <td>- {{ sim.spread_brl | brl }}</td>
+      </tr>
+      <tr>
+        <th>IOF ({{ sim.iof_pct | percent_br }})</th>
+        <td>- {{ sim.iof_brl | brl }}</td>
+      </tr>
+      <tr class="total"><th>Valor líquido</th><td>{{ sim.net_brl | brl }}</td></tr>
+      <tr>
+        <th>Cotação efetiva (líquido por {{ sim.currency.value }})</th>
+        <td>R$ {{ sim.effective_rate | rate_br }}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="notice">{{ notice }}</div>
+</body>
+</html>

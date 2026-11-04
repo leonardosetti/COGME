@@ -1,0 +1,7 @@
+- marco afetado: M2
+- data original: 30/09/2026
+- atraso constatado: aproximadamente 25 dias
+- causa raiz: overengineering de governança, atraso na materialização técnica, ausência de pipeline e código de produto
+- impacto: risco crítico ao M3
+- ação corretiva aprovada pelo CCB: nova data alvo 15/11/2026, congelamento de novas ondas de agentes até M3, foco de 80% da capacidade em código e infraestrutura
+- status: aprovado por manifestação do CCB neste prompt, pendente de registro formal em Issue GitHub se o repositório estiver acessível

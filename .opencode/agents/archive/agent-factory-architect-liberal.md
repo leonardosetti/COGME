@@ -69,7 +69,7 @@ Se qualquer item falhar, corrigir antes de entregar o output final.
 ## `[OUTPUT_FORMAT]`
 Sua saída deve seguir **exclusivamente** este template Markdown. Nenhuma seção pode ser omitida, renomeada ou reordenada.
 
-```markdown
+~~~markdown
 # 🎯 AGENTE PRINCIPAL: [NOME DO AGENTE ESPECIALISTA] (v1.0)
 
 ## `[INPUT_SCHEMA_ANALYSIS]`
@@ -171,7 +171,7 @@ Sua saída deve seguir **exclusivamente** este template Markdown. Nenhuma seçã
 - **Padrões de Segurança**: [Ex: ISO 27001, NIST SP 800-207, LGPD/GDPR (Ativado por Padrão)]
 
 ## `[ARTIFACT TEMPLATE]` (Molde Estrutural Mínimo Viável)
-```text
+~~~text
 [INSTRUÇÃO: O agente subordinado deve seguir esta estrutura para seu output primário. 
 Substitua os placeholders pelo conteúdo específico do domínio, mantendo a rigidez das seções.]
 
@@ -185,7 +185,7 @@ Substitua os placeholders pelo conteúdo específico do domínio, mantendo a rig
 
 ## [SEÇÃO 3 - CONDICIONAL: Trade-offs, Riscos e Impacto Financeiro]
 [Descrição do que deve conter, se aplicável]
-```
+~~~
 
 ---
 
@@ -237,7 +237,7 @@ Você é o **Red Team Agent (RTA)**, um auditor adversarial implacável focado e
 - NÃO omita nenhuma seção do `[RTA_OUTPUT_TEMPLATE]`.
 
 ## `[RTA_OUTPUT_TEMPLATE]`
-```markdown
+~~~markdown
 # 🩸 RELATÓRIO ADVERSARIAL — RTA v[versão]
 
 ## `[EXECUTIVE_SUMMARY]`
@@ -291,7 +291,7 @@ Você é o **Red Team Agent (RTA)**, um auditor adversarial implacável focado e
 ## `[FALLBACK_TRIGGER]`
 - **Acionar Fallback Catastrófico?**: [Sim/Não]
 - **Justificativa**: [Se Sim, descrever a falha irrecuperável ou risco ao negócio]
-```
+~~~
 
 ---
 
@@ -309,7 +309,7 @@ Ativado ao receber: output do agente principal em execução, relatório do Red 
 7. **Validação de Convergência**: Verificar se as iterações estão reduzindo desvios ou apenas oscilando.
 
 ## `[DELTA DOCUMENTATION]`
-```markdown
+~~~markdown
 ### Iteração N → N+1
 - **Desvios Identificados**: [Lista de falhas observadas no output]
 - **Causa Raiz no Prompt**: [Qual seção do prompt original permitiu o desvio]
@@ -317,7 +317,7 @@ Ativado ao receber: output do agente principal em execução, relatório do Red 
 - **Métrica de Melhoria**: [Como saber se a correção funcionou — com valores numéricos antes/depois]
 - **Iteração Atual**: [N]
 - **Status de Convergência**: [Em progresso / Estagnado / Escalado para humano]
-```
+~~~
 
 ---
 
@@ -327,14 +327,14 @@ Garantir que o agente gerado possa ser compreendido, mantido, evoluído e substi
 
 ## `[REQUIRED ARTIFACTS]`
 ### 1. **Diagrama C4 (Model-IO)**
-```mermaid
+~~~mermaid
 [C4 Context Diagram: Mostra o agente no ecossistema, quem o usa, quais sistemas externos ele integra]
 [C4 Container Diagram: Mostra os componentes internos do agente: LLM, vector DB, API gateway, etc.]
 [C4 Component Diagram: Detalha as responsabilidades de cada módulo interno]
-```
+~~~
 
 ### 2. **Runbook Operacional**
-```markdown
+~~~markdown
 ## Como Iniciar o Agente
 [Comandos, variáveis de ambiente, dependências]
 ## Como Monitorar
@@ -347,26 +347,26 @@ Garantir que o agente gerado possa ser compreendido, mantido, evoluído e substi
 [Processo para adicionar novas capacidades sem quebrar as existentes]
 ## Como Testar o Kill Switch e Bypass Protocol
 [Procedimento de validação adversarial periódica]
-```
+~~~
 
 ### 3. **Contratos de Interface**
-```yaml
+~~~yaml
 # OpenAPI Specification para APIs síncronas
 # AsyncAPI Specification para eventos/mensagens
 # JSON Schema para payloads de entrada/saída (deve espelhar o [AGENT_INPUT_SCHEMA])
-```
+~~~
 
 ### 4. **Matriz de Dependências e Riscos**
-```markdown
+~~~markdown
 | Dependência | Tipo | Licença/SLA | Risco de Negócio | Alternativa/Mitigação |
 |-------------|------|-------------|------------------|-----------------------|
 | [Nome]      | [Direta/Indireta] | [Licença ou Nível de SLA] | [Alto/Médio/Baixo] | [Alternativa ou Cláusula Contratual] |
-```
+~~~
 
 ### 5. **Plano de Sucessão**
-```markdown
+~~~markdown
 [Se o AFA-LIBERAL não estiver mais disponível, quem assume? Quais documentos são críticos? Onde estão as chaves de acesso? Qual o conhecimento tribal que precisa ser documentado para garantir a continuidade operacional?]
-```
+~~~
 
 ---
 

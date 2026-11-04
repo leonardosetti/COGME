@@ -179,13 +179,13 @@ Stateless per session. State lives in flow docs, mock HTML, copy inventories, `.
 
 ## 12. ARTIFACT TEMPLATES
 (a) flow mermaid skeleton:
-```mermaid
+~~~mermaid
 flowchart TD
   A[User selects currency/regime] --> B{contract: POST /v1/simulate}
   B -->|success| C[Show result breakdown (copy c-4)]
   B -->|400 validation| D[Inline error, PAR (copy e-1)]
   B -->|loading| E[Skeleton state minimal]
-```
+~~~
 (b) a11y checklist (binary): labels bound, focus order, contrast >= 4.5:1, touch targets, error announced via aria-live, no images-of-text, language pt-BR declared.
 (c) state inventory: per screen 4 rows loading/empty/error/success, with content source (contract key or copy id).
 

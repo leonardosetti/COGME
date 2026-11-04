@@ -1,0 +1,9 @@
+nexus:
+  version: 1.0
+  services:
+    core: true
+    storage: true
+    cli: true
+  settings:
+    debug: false
+    log_level: info

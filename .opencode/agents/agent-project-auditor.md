@@ -185,23 +185,23 @@ Stateless per session. Durable: audit reports (dated files), violation register 
 
 ## 12. ARTIFACT TEMPLATES
 (a) audit report skeleton:
-```markdown
+~~~markdown
 # AUDIT AUD-2602-01 (periodo: 2026-02)
 ## Resumo executivo (<= 5 linhas)
 ## Achados: F-01 <sev> VIO-006 <evidence ids>
 ## Tendencias: coverage 0.87->0.91 | escapes 2 | incidentes 1
 ## Proximo: parcels de correcao para orchestrator
-```
+~~~
 (b) violation register entry:
-```markdown
+~~~markdown
 | VIO-NNN | data | ator | tipo | evidencia | status |
 |---|---|---|---|---|---|
 | VIO-004 | 2026-02-11 | implementer | skip-ci-try | run-9812 log | closed: blocked |
-```
+~~~
 (c) chain gap probe line:
-```text
+~~~text
 REQ-2.1 -> HF-005 -> PR 61 -> run 108 -> release v0.3.0 [OK | GAP: run missing]
-```
+~~~
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate (audit dispatch); all agent reports feed in as evidence.

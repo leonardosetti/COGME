@@ -1,0 +1,159 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "local/qwen-32b",
+  "providers": {
+    "local": {
+      "name": "Local Llama Server",
+      "package": "@opencode/ai/providers/openai-compatible",
+      "settings": {
+        "baseURL": "http://127.0.0.1:8080/v1",
+        "apiKey": "sk-local-dummy-key"
+      },
+      "models": {
+        "qwen-32b": {
+          "name": "Qwen 32B Local",
+          "modelID": "/var/lib/llama.cpp/models/qwen3.8-27b-q4_k_m.gguf",
+          "capabilities": {
+            "tools": true,
+            "input": ["text"],
+            "output": ["text"]
+          },
+          "limit": {
+            "context": 47500,
+            "output": 8192
+          },
+          "body": {
+            "temperature": 0.2,
+            "top_p": 0.9,
+            "reasoning_effort": "medium"
+          }
+        }
+      }
+    }
+  },
+  "permissions": {
+    "allow": ["Read", "Write", "Edit", "Bash", "Shell"],
+    "deny": [
+      "Bash(python *)",
+      "Bash(pip *)",
+      "Bash(pacman *)",
+      "Bash(yay *)",
+      "Bash(systemctl *)",
+      "Bash(sudo *)",
+      "Bash(curl * | sh)",
+      "Bash(wget * -O- | sh)"
+    ]
+  },
+  "mcpServers": {
+    "github-remote": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+      }
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "--allow-read",
+        ".ai/specs",
+        "--allow-read",
+        "docs",
+        "--allow-read",
+        "scripts",
+        "--allow-read",
+        ".ai/handoffs"
+      ],
+      "env": {}
+    },
+    "nexus-ledger": {
+      "command": "python3",
+      "args": [
+        "scripts/mcp_nexus_ledger.py"
+      ],
+      "env": {}
+    },
+    "nexus-dispatch": {
+      "command": "python3",
+      "args": [
+        "scripts/mcp_nexus_dispatch.py"
+      ],
+      "env": {}
+    },
+    "nexus-kb": {
+      "command": "python3",
+      "args": [
+        "scripts/mcp_nexus_kb.py"
+      ],
+      "env": {}
+    },
+    "nexus-validate": {
+      "command": "python3",
+      "args": [
+        "scripts/mcp_nexus_validate.py"
+      ],
+      "env": {}
+    }
+  },
+  "mcp": {
+    "servers": {
+      "nexus-dispatch": {
+        "type": "local",
+        "command": [
+          "python3",
+          "scripts/mcp_nexus_dispatch.py"
+        ]
+      },
+      "nexus-kb": {
+        "type": "local",
+        "command": [
+          "python3",
+          "scripts/mcp_nexus_kb.py"
+        ]
+      },
+      "nexus-validate": {
+        "type": "local",
+        "command": [
+          "python3",
+          "scripts/mcp_nexus_validate.py"
+        ]
+      },
+      "filesystem": {
+        "type": "local",
+        "command": [
+          "npx",
+          "-y",
+          "@modelcontextprotocol/server-filesystem",
+          "--allow-read",
+          ".ai/specs",
+          "--allow-read",
+          "docs",
+          "--allow-read",
+          "scripts",
+          "--allow-read",
+          ".ai/handoffs"
+        ]
+      },
+      "github-remote": {
+        "type": "local",
+        "command": [
+          "npx",
+          "-y",
+          "@modelcontextprotocol/server-github"
+        ],
+        "env": {
+          "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+        }
+      },
+      "nexus-ledger": {
+        "type": "local",
+        "command": [
+          "python3",
+          "scripts/mcp_nexus_ledger.py"
+        ]
+      }
+    }
+  }
+}

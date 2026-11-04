@@ -168,17 +168,17 @@ STATELESS per session. Durable state: communication records, visual identity gui
 
 ## 12. ARTIFACT TEMPLATES
 (a) Communication piece:
-```markdown
+~~~markdown
 | COMM-001 | slide | academic | pt-br | conforme | conforme | conforme |
-```
+~~~
 (b) Communication compliance parcel:
-```json
+~~~json
 {"comm_id":"COMM-001","comm_type":"slide","audience":"academic","verdict":"conforme","kill_switch":"inherited"}
-```
+~~~
 (c) Visual identity guideline:
-```markdown
+~~~markdown
 | element | specification | foss_tool | accessibility | lgpd_safe |
-```
+~~~
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate (dispatch); agent-pm (communication planning).

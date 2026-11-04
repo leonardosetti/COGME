@@ -1,0 +1,7 @@
+storage:
+  type: persistent
+  backend: file_system
+  path: ./nexus/data
+  retention:
+    days: 30
+    backups: 3

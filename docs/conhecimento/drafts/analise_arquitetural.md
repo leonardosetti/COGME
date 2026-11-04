@@ -131,7 +131,7 @@ A rodada v2.0 introduz **6 correções estruturais críticas** que redefinem a a
 
 **Aplicação ao COGME:**
 
-```
+~~~
 EAP (ENTREGAS / SUBSTANTIVOS)
     N5.1: Backend — Lógica de Negócio
          ↓ decomposição
@@ -140,7 +140,7 @@ ATIVIDADES (AÇÕES / VERBOS)
     A5.1.2: Implementar serviços de cálculo
     A5.1.3: Escrever testes unitários
     A5.1.4: Documentar API (OpenAPI)
-```
+~~~
 
 **Impacto no Plano de Cronograma:**
 - A EAP permanece como **estrutura de decomposição do escopo**.
@@ -271,7 +271,7 @@ O TAP **NÃO responde**:
 
 ### 4.1. Arquitetura em 3 Camadas Ortogonais
 
-```
+~~~
 ┌─────────────────────────────────────────────────────────────┐
 │  CAMADA L1 — INFRAESTRUTURA DE INFERÊNCIA                  │
 │  • llama.cpp 0.4.0-dev (Vulkan + LTO + AVX-512)            │
@@ -291,7 +291,7 @@ O TAP **NÃO responde**:
 │  • .ai/workflows/sdd-cycle.sh (automação bash ~30 linhas)  │
 │  • Obsidian vault por projeto (interface, não repositório) │
 └─────────────────────────────────────────────────────────────┘
-```
+~~~
 
 ### 4.2. Modelos Aprovados (Hierarquia Definitiva)
 
@@ -308,7 +308,7 @@ O TAP **NÃO responde**:
 
 ### 4.3. Localização no Filesystem
 
-```
+~~~
 /var/lib/llama.cpp/models/
 ├── qwen-32b-instruct-q4_k_m.gguf     # P0 — baixar primeiro
 ├── qwen-14b-instruct-q4_k_m.gguf     # P1 — baixar segundo
@@ -317,11 +317,11 @@ O TAP **NÃO responde**:
 └── qwen-72b-instruct-q4_k_m.gguf     # P5 — NÃO baixar
 
 /extra/backup/llama-models/            # Backup resiliente (P0 + P1)
-```
+~~~
 
 ### 4.4. Comandos de Download (Fase 2)
 
-```bash
+~~~bash
 # P0: Modelo principal (obrigatório)
 huggingface-cli download \
   Qwen/Qwen2.5-32B-Instruct-GGUF \
@@ -339,11 +339,11 @@ huggingface-cli download \
   Qwen/Qwen2.5-14B-Instruct-GGUF \
   qwen2.5-14b-instruct-q5_k_m.gguf \
   --local-dir /var/lib/llama.cpp/models/
-```
+~~~
 
 ### 4.5. Critérios de Validação Pós-Download
 
-```bash
+~~~bash
 # Teste de carga (32B exemplo)
 llama-server \
   -m /var/lib/llama.cpp/models/qwen-32b-instruct-q4_k_m.gguf \
@@ -357,7 +357,7 @@ llama-server \
 # [ ] RAM pico ≤ 28GB (htop) → dentro do budget
 # [ ] Resposta a prompt teste em <2s (TTFT) → latência OK
 # [ ] tg ≥ 6 t/s (medir com 200 tokens output) → throughput OK
-```
+~~~
 
 ### 4.6. Anti-Padrões Explícitos (O Que NÃO Fazer)
 
@@ -728,7 +728,7 @@ Todo artefato de governança deve passar pelo teste GMV antes de ser produzido:
 
 ### 4.4. Estrutura de Diretórios Padrão
 
-```
+~~~
 COGME/
 ├── .git/
 ├── src/                          # Código-fonte
@@ -760,13 +760,13 @@ COGME/
 │       └── sdd-cycle.sh
 │
 └── .obsidian/                    # Configuração do vault (opcional)
-```
+~~~
 
 **Regra de ouro:** Se não é lido pelo OpenCode nem pelo script SDD, não pertence em `.ai/`.
 
 ### 4.5. Fluxo SDD Padrão
 
-```bash
+~~~bash
 # 1. PM escreve especificação
 vim .ai/handoffs/001-feature-x-spec.md
 
@@ -785,7 +785,7 @@ ln -sf tester.md .ai/prompts/active.md
 # 5. Commit atômico por fase
 git add .ai/handoffs/001-feature-x-* src/ tests/
 git commit -m "SDD: feature-x (spec→code→review→test)"
-```
+~~~
 
 ### 4.6. Anti-Padrões Explícitos
 
@@ -925,7 +925,7 @@ git commit -m "SDD: feature-x (spec→code→review→test)"
 
 ## 7. ESTRUTURA DOCUMENTAL (v3.1)
 
-```
+~~~
 PROJETO COGME
 ├── 00. TAP (Termo de Abertura)                          [GMV: OBRIGATÓRIO — NÃO integra EAP/PDCA]
 ├── 01. Plano de Integração                               [GMV: OBRIGATÓRIO]
@@ -943,7 +943,7 @@ PROJETO COGME
 │   └── 09.4. Runbooks [DESCARTADO — YAGNI]
 ├── 10. Plano de Gestão de Mudanças (CCB)                 [GMV: SIMPLIFICAR*]
 └── 11. Código-Fonte (MVP) + DER + Diagramas + .ai/       [GMV: OBRIGATÓRIO]
-```
+~~~
 
 *SIMPLIFICAR = 1-2 páginas no máximo, foco em premissas e restrições, sem planilhas complexas ou simulações de EVM.
 

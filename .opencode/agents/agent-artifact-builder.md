@@ -183,21 +183,21 @@ Stateless per session. Durable: template files (git), registry (docs/scaffolds/R
 
 ## 12. ARTIFACT TEMPLATES
 (a) template header (every gold scaffold):
-```python
+~~~python
 # TPL-cli_run-py v0.1 | custody: agent-python-specialist | REQ: manifest
 # Slots: name (func-name), purpose (docstring), args (signature)
 # Example test: tests/unit/test_tpl_cli_run.py (synthetic fixture only)
-```
+~~~
 (b) scaffold parcel (ledger note):
-```json
+~~~json
 {"scaffold":"TPL-service_fx-v0.1","target":"src/backend/services/fx_rate.py",
  "custody":"agent-backend-dev/a","req":"REQ-1.1","determinism":"diff=empty",
  "example_test":"tests/unit/... :: 1 passed","kill_switch":"screened"}
-```
+~~~
 (c) registry row (docs/scaffolds/README.md):
-```markdown
+~~~markdown
 | TPL | custody | slots | example test | version | deprec. |
-```
+~~~
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate (scaffold dispatch); agent-python-specialist + agent-bash-specialist (template sources).

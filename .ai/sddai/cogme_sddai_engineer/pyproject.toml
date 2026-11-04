@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cogme-sddai-engineer"
+version = "1.0.0"
+description = "Engenharia de features e transformação de dados para SDDAI (custom do zero)"
+requires-python = ">=3.9"
+dependencies = []
+
+[project.scripts]
+cogme-sddai-engineer = "cogme_sddai_engineer.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["cogme_sddai_engineer*"]

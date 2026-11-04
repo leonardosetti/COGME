@@ -47,7 +47,7 @@ A auditoria identifica **bloat estrutural moderado** na base de conhecimento (OK
 
 **Modelo de hibridização proposto para o COGME: -> Aprovado**
 
-```
+~~~
 ┌─────────────────────────────────────────────────────┐
 │  CAMADA 1 — ESCOPO (YAGNI governa)                │
 │  • Backlog só contém o que o DoD do MVP exige     │
@@ -65,7 +65,7 @@ A auditoria identifica **bloat estrutural moderado** na base de conhecimento (OK
 │  • Sem "talvez um dia precise" (YAGNI)            │
 │  • Clean Code como padrão inegociável (P5)        │
 └─────────────────────────────────────────────────────┘
-```
+~~~
 
 ### 1.4. Qual Princípio é Mais Adequado ao COGME?
 
@@ -155,7 +155,7 @@ Aplicação do **teste GMV (OKB v3.0 §4.2)** em cada artefato/seção:
 1. **Licença compatível** (MIT, Apache 2.0, BSD, GPL — sem AGPL para evitar viral licensing)
 2. **Curva de aprendizado ≤ 2 semanas** para equipe de 2
 3. **Testabilidade ≥ 80% coverage** (meta do TAP §3)
-4. ~~**Deploy em plataforma gratuita** (Railway/Render/Fly.io)~~ -> Não mandatório (é algo interessante mas descartável uma vez que podemos rodar o projeto localmente (YAGNI))
+4. ~~~**Deploy em plataforma gratuita** (Railway/Render/Fly.io)~~~ -> Não mandatório (é algo interessante mas descartável uma vez que podemos rodar o projeto localmente (YAGNI))
 5. **Compatível com SDD via LLM** (linguagem com bom treinamento em LLMs) -> Verifique a seção 9. Stack SDD Local: Arquitetura e Organização Padrão
 6. **Rodável no hardware local** (Arch Linux, 60GB RAM)
 
@@ -170,7 +170,7 @@ Aplicação do **teste GMV (OKB v3.0 §4.2)** em cada artefato/seção:
 | **Geração PDF**    | **WeasyPrint**                                                                                                       | BSD3                      | Já especificado no TAP; maduro, FOSS, HTML→PDF                           | ReportLab (curva íngreme), wkhtmltopdf (deprecated)            |
 | **Testes**           | **pytest + coverage.py**                                                                                             | MIT                       | Padrão de fato Python, integração CI trivial                            | unittest (verboso)                                              |
 | **CI/CD**            | **GitHub Actions**                                                                                                   | Gratuito (2000 min/mês)  | Já especificado; integrado ao SSOT                                        | GitLab CI (mudança de plataforma)                              |
-| **~~Deploy~~**      | ~~**Railway.app** (tier gratuito)~~                                                                                 | ~~Proprietário (SaaS)~~ | ~~500h/mês grátis, deploy via git push~~                                | ~~Fly.io (complexidade), Render (limitações)~~               |
+| **~~~Deploy~~~**      | ~~~**Railway.app** (tier gratuito)~~~                                                                                 | ~~~Proprietário (SaaS)~~~ | ~~~500h/mês grátis, deploy via git push~~~                                | ~~~Fly.io (complexidade), Render (limitações)~~~               |
 | **LLM Local (SDD)**  | **llama.cpp + Qwen2.5-Coder-7B-Q4**<br />Verifique a seção 9. Stack SDD Local: Arquitetura e Organização Padrão | MIT / Apache 2.0          | Roda no hardware (60GB RAM sobra), offline, FOSS                           | Ollama (wrapper, adiciona camada), modelos cloud (custo)        |
 | **TUI para Prompts** | **OpenCode**                                                                                                         | MIT                       | Já especificado na nova premissa; TUI nativa                              | Aider (Python, mas menos maduro), Continue.dev (VSCode-only)    |
 
@@ -181,7 +181,7 @@ Aplicação do **teste GMV (OKB v3.0 §4.2)** em cada artefato/seção:
 | SQLite em produção multi-usuário | Limitação de escrita concorrente | MVP acadêmico = 1-2 usuários simultâneos; YAGNI escalar                      |
 | HTMX em vez de SPA                  | UX menos "fluida"                  | MVP foca em funcionalidade, não em animações                                 |
 | Qwen-7B quantizado vs GPT-4         | Qualidade de geração inferior    | Revisão humana obrigatória (P4); prompts catalogados                          |
-| ~~Railway (SaaS proprietário)~~   | ~~Não é FOSS puro~~             | ~~Camada de aplicação é 100% FOSS; Railway é apenas runtime (como Linux)~~ |
+| ~~~Railway (SaaS proprietário)~~~   | ~~~Não é FOSS puro~~~             | ~~~Camada de aplicação é 100% FOSS; Railway é apenas runtime (como Linux)~~~ |
 
 ---
 
@@ -206,14 +206,14 @@ Aplicação do **teste GMV (OKB v3.0 §4.2)** em cada artefato/seção:
 
 **Hierarquia consolidada (ADR-001 já registra, ADR-005 formalizará):**
 
-```
+~~~
 1º  Valor entregue (PMBOK 7ª — Domínio de Entrega)
 2º  Ementa + orientação Prof. Nivaldo
 3º  PMBOK 7ª (12 princípios + 8 domínios)
 4º  Manifesto Ágil + Kanban
 5º  PMBOK 6ª (APENAS dicionário de processos)
 6º  Literatura técnica
-```
+~~~
 
 **Refinamento crítico:** PMBOK 6ª **não deve ser citado como fonte primária** em nenhum artefato. Seu uso é restrito a:
 
@@ -255,7 +255,7 @@ Aplicação do **teste GMV (OKB v3.0 §4.2)** em cada artefato/seção:
 
 ### 5.2. Arquitetura SDD Local Proposta (ADR-004 draft)
 
-```
+~~~
 ┌─────────────────────────────────────────────────────────┐
 │  CAMADA 1 — ESPECIFICAÇÃO (Humano)                    │
 │  • User stories no GitHub Issues                      │
@@ -279,7 +279,7 @@ Aplicação do **teste GMV (OKB v3.0 §4.2)** em cada artefato/seção:
 │  • Rastreabilidade TAP → Issue → Commit → Test        │
 │  • Lições aprendidas em Retrospectiva                 │
 └─────────────────────────────────────────────────────────┘
-```
+~~~
 
 ### 5.3. Trade-offs do SDD Local
 
@@ -365,7 +365,7 @@ Aplicação do **teste GMV (OKB v3.0 §4.2)** em cada artefato/seção:
 
 **Fundamento:** As três persistências formam um **sistema coerente e auto-reforçante**:
 
-```
+~~~
 PMBOK 7ª (governança)
     ↓ mapeia domínios
 Kanban (execução)
@@ -373,7 +373,7 @@ Kanban (execução)
 GitHub Projects (ferramenta)
     ↓ gera evidências para
 PMBOK 7ª (medição)
-```
+~~~
 
 **Risco de romper o ciclo:**
 
@@ -488,7 +488,7 @@ Este relatório:
 
 ## 9.2. Estrutura de Diretórios Padrão (Projetos Greenfield)
 
-```
+~~~
 COGME/
 ├── .git/
 ├── .gitignore
@@ -523,7 +523,7 @@ COGME/
 │
 └── .vscode/                      # Configs de editor (opcional)
     └── settings.json
-```
+~~~
 
 ### 9.2.1. Propósito de Cada Diretório
 
@@ -548,12 +548,12 @@ COGME/
 
 **Exemplo:**
 
-```
+~~~
 001-user-auth-spec.md      # Especificação do feature
 001-user-auth-code.md      # Código gerado
 001-user-auth-review.md    # Revisão do código
 001-user-auth-test.md      # Testes gerados
-```
+~~~
 
 ---
 
@@ -596,7 +596,7 @@ COGME/
 
 ## 4. Fluxo de Trabalho SDD Padrão
 
-```bash
+~~~bash
 # 1. PM escreve especificação
 vim .ai/handoffs/001-feature-x-spec.md
 
@@ -615,7 +615,7 @@ ln -sf tester.md .ai/prompts/active.md
 # 5. Commit atômico por fase
 git add .ai/handoffs/001-feature-x-*
 git commit -m "SDD: feature-x (spec→code→review→test)"
-```
+~~~
 
 ---
 

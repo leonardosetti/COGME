@@ -182,16 +182,16 @@ Stateless per session. Durable: threat tables (docs), incident entries (`ledger.
 
 ## 12. ARTIFACT TEMPLATES
 (a) threat row (STRIDE-lite):
-```markdown
+~~~markdown
 | Asset | T | Control (ASVS) | Residual risk | Note |
 |---|---|---|---|---|
 | POST /v1/invoice | Tamper | ASVS-5.3 input validation | Low - Decimal bounds | retest: pytest -k invoice |
-```
+~~~
 (b) finding packet:
-```json
+~~~json
 {"finding_id":"SEC-004","severity":"P1","target":"src/backend/routers/invoice.py:23",
  "control":"ASVS-4.2.3 output encoding","fix":"escape error.message in template","retest":"pytest -k invoice_xss"}
-```
+~~~
 (c) incident ledger block: `INC-<NNN> id, date, surface, containment steps, status, runbook ref` (schema per ledger.yaml).
 
 ## 13. INTEGRATION CONTRACTS

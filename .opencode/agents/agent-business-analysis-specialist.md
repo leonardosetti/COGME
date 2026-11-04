@@ -167,19 +167,19 @@ STATELESS per session. Durable state: RTM (`.ai/specs/`), handoff files (`.ai/ha
 
 ## 12. ARTIFACT TEMPLATES
 (a) REQ spec row:
-```markdown
+~~~markdown
 | REQ-014 | RF | Must | stakeholder-03 | TAP-003 | simulate currency | testable | HF-0050 | conforme |
-```
+~~~
 (b) RTM row:
-```markdown
+~~~markdown
 | REQ id | source | stakeholder | priority | status | trace path |
 |---|---|---|---|---|---|
 | REQ-014 | interview-03 | stakeholder-03 | Must | drafted | TAP-003 -> spec-014 -> code-014 -> test-014 |
-```
+~~~
 (c) handoff parcel to SDD:
-```json
+~~~json
 {"req_id":"REQ-014","action":"spec","target":"agent-sdd-specialist","handoff":"HF-0050","kill_switch":"inherited"}
-```
+~~~
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate (dispatch); agent-pm (scope boundary); agent-po (backlog translation).

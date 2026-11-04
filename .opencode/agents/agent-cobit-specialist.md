@@ -168,17 +168,17 @@ STATELESS per session. Durable state: control objectives, effectiveness assessme
 
 ## 12. ARTIFACT TEMPLATES
 (a) Control objective:
-```markdown
+~~~markdown
 | COBIT-001 | DSS | DSS3 | Manage Problems | effective | 3 | evidence: ticket-log-001 |
-```
+~~~
 (b) IT governance compliance parcel:
-```json
+~~~json
 {"control_id":"COBIT-001","domain":"deliver","objective":"DSS3","effectiveness":"effective","kill_switch":"inherited"}
-```
+~~~
 (c) Maturity tracking:
-```markdown
+~~~markdown
 | control_id | domain | objective | maturity | target | gap |
-```
+~~~
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate (dispatch); agent-compliance-governance (compliance alignment).

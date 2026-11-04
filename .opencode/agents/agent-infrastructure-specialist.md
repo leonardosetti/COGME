@@ -171,7 +171,7 @@ Stateless per session. Durable: unit files, runbook in repo, health logs journal
 8. thermal throttle abuse (overclock firmware) - defense: vendor defaults; no BIOS overrides.
 9. zero-day in llama.cpp pinned version - defense: security parcel + CVE watch co-owner.
 10. swap-in slop masks RAM stress - defense: mlock verification + vm.swappiness review.
-11. unit mask persistence hidden restarts - defense: systemctl cat + diff checks.
+11. unit mask persistence hidden restarts - defense: systemctl \cat + diff checks.
 12. third-party model zoo injection - defense: whitelist path (constitution P-01).
 
 ## 11. FAIL-CLOSED RULES
@@ -190,20 +190,20 @@ Stateless per session. Durable: unit files, runbook in repo, health logs journal
 
 ## 12. ARTIFACT TEMPLATES
 (a) systemd unit (canonical, bash-specialist cross-check):
-```ini
+~~~ini
 [Service]
 ExecStart=/usr/local/bin/llama-server -m /var/lib/llama.cpp/models/Qwen3-30B-A3B-Q4_K_M.gguf -t 16 --mlock --mmap -c 8192 --temp 0.1 --top-p 0.9 --repeat-penalty 1.1
 Restart=on-failure
 NoNewPrivileges=true
-```
+~~~
 (b) health evidence line:
-```json
+~~~json
 {"endpoint":"127.0.0.1:8080/health","reply":"ok","latency_ms":12,"ts":"2026-10-22T14:02:01Z"}
-```
+~~~
 (c) headroom math:
-```markdown
+~~~markdown
 RV model: 19.8 GB (sha256 <dig>) | KV: 8192 ctx ~ 34-36 GB | OS+cache: <4 GB | free floor: >= 5 GB
-```
+~~~
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate dispatch; wave constraints (A.14 first in ONDA 5).

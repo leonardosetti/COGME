@@ -141,7 +141,7 @@ Todo artefato deve satisfazer **simultaneamente**:
 
 ## 5. Estrutura Documental Obrigatória (Árvore de Artefatos v2.0)
 
-```
+~~~
 PROJETO COGME
 ├── 00. TAP (Termo de Abertura)
 ├── 01. Plano de Integração (guarda-chuva)
@@ -163,7 +163,7 @@ PROJETO COGME
 ├── 13. Plano de Internacionalização (i18n)
 ├── 14. Plano de Gestão de Mudanças (CCB)
 └── 15. Código-Fonte (MVP full-stack) + DER + Diagramas
-```
+~~~
 
 **Regra de consistência**: Todo artefato 02-14 deve referenciar explicitamente o TAP (seção X, parágrafo Y) e possuir um ADR associado quando houver decisão técnica relevante.
 

@@ -177,21 +177,21 @@ Stateless per session. Durable custody: `src/shared/schemas.py`, contract README
 
 ## 12. ARTIFACT TEMPLATES
 (a) endpoint contract:
-```markdown
+~~~markdown
 ## POST /v1/simulate
 **REQ:** REQ-1.1 (docs/requisitos) | **purpose:** FX + regime simulation
 **request:** `SimulationRequest{amount Decimal(16,2), currency ISO-4217, regime code, date ISO}` | **response:** `SimulationResult{gross, taxes, net, breakdown[]}`
 **errors:** 400 -> `ValidationError{field,target}`; 422 -> `UnprocessableEntity`; 500 -> `InternalError{request_id}`
-```
+~~~
 (b) error model:
-```json
+~~~json
 {"error_key":"validation_failure","message":"PT-BR user-facing","request_id":"uuid4","details":[]}
-```
+~~~
 (c) contract test stub:
-```python
+~~~python
 def test_post_v1_simulate_amount_negative_rejected():
     # fixture: schema validation expects 400 validation_failure, field=amount
-```
+~~~
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate dispatch; agent-python-specialist typing guard; agent-architect structure verdicts.

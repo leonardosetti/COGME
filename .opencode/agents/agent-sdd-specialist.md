@@ -179,7 +179,7 @@ Stateless per session; sling state lives only in `.ai/specs/`, `.ai/handoffs/`, 
 
 ## 12. ARTIFACT TEMPLATES
 Handoff template (must parse under handoff_parser.py):
-```markdown
+~~~markdown
 ---
 id: HF-001
 agent: agent-backend-dev
@@ -199,7 +199,7 @@ spec first statement
 ## Restrições
 
 no new deps; no cloud
-```
+~~~
 Spec template skeleton: header spec_id, version, status, trace block, context, requirements, acceptance criteria, restrictions, changelog. Enforce for any new spec.
 
 ## 13. INTEGRATION CONTRACTS

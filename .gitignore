@@ -4,6 +4,7 @@
 **/.DS_Store
 **/.env
 **/.env.*
+!**/.env.example
 **/.ipynb_checkpoints
 **/.vscode/
 **/Thumbs.db
@@ -15,12 +16,6 @@
 **/coverage/
 **/*.tar.gz
 **/*.zip
-
-# SDD Internal Mechanics
-**/sdd/intermediate/
-**/sdd/cache/
-**/sdd/credentials.json
-**/sdd/audit_logs/
 
 # Dependency Management
 **/node_modules/
@@ -40,6 +35,7 @@
 **/*.cer
 **/*.jks
 **/*.truststore
+**/credentials.json
 
 # Temporary and Log Files
 **/*.log
@@ -51,12 +47,28 @@
 **/docs/intermediate/
 **/docs/legacy/
 
-# COGME Specific Exclusions
-**/agent-registry.yaml
-**/dispatcher-config.yaml
-**/sdd/secret-metrics.json
+# Note: exclui mecanismos internos e artefatos sensíveis conforme governança do projeto. A documentação pública permanece em /docs e /README.md.
 
-# Note: This .gitignore excludes SDD internal mechanics and sensitive artifacts per project governance. Public documentation remains in /docs and /README.md. Adjust based on your stack and add specific entries for any additional sensitive files.
+# --- Ambiente Python e caches (normalização ratificada 2026-10-30) ---
+**/venv/
+**/.venv/
+**/__pycache__/
+*.py[cod]
+**/.pytest_cache/
+**/.benchmarks/
+
 # restaurado 2026-10-26 (VIO-012): pesos locais fora do repo
-models/
+# ancorado em 2026-10-30: 'models/' sem âncora mascarava src/backend/models/ (pacote Python)
+/models/
 *.gguf
+
+# --- Higiene anti-bloat (pasta-raiz) — decisão CCB-LOG-2026-10-30-A01 ---
+argparse
+lst.txt
+*.tmp.md
+.~*.docx
+.obsidian/
+
+# Artefatos de cobertura e tipagem
+.coverage
+.mypy_cache/

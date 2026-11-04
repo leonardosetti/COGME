@@ -76,7 +76,7 @@ O TAP encontra-se **congelado desde 18/09/2026** (última versão anterior a tod
 | Stack SDD | "QwenStudio" (genérico) | **llama.cpp + Qwen 32B + OpenCode** (stack local canônica) | Trabalho do Projeto |
 | Regime do TAP | Não declarado | **Freeze formal** desde 18/09/2026; NC-00 como mecanismo | Abordagem de Desenvolvimento |
 | Cycle Time | "To Do → Done" (coluna inexistente) | **"In Progress → Done"** (ADR-003 canônica) | Medição |
-| Grafia stakeholder | "Carletto" / "Carleto" inconsistente | **"Prof. Dr. Nivaldo Carleto"** (TAP v3 canônico) | Stakeholders |
+| Grafia stakeholder | "Carleto" / "Carleto" inconsistente | **"Prof. Dr. Nivaldo Carleto"** (TAP v3 canônico) | Stakeholders |
 | ADR-005 | Não emitida | **Encaminhada** para emissão antes do M2 (regime de freeze) | Incerteza |
 | Fronteira M1 | Ambiguidade 5 vs 8 planos | **5 planos no M1** (Áreas 1–5); 3 diferidos para M2 | Abordagem de Desenvolvimento |
 | Tasklists | ADR-004 emitida, DoD não atualizado | **DoD item 8** incorpora tasklist (Plano de Escopo §2.6) | Trabalho do Projeto |
@@ -258,7 +258,7 @@ Uma decisão exige ADR se atender a **pelo menos 2 dos 4 critérios**:
 
 **Princípio diretor:** Documentos de governança são *standalone*; planos de área são coordenados; **cross-references substituem duplicação**.
 
-```
+~~~
 /docs/
  ├── planos/                    ← 8 planos de área (M1: 5 | M2: 3)
  ├── decisoes/                  ← ADRs 001–005
@@ -269,7 +269,7 @@ Uma decisão exige ADR se atender a **pelo menos 2 dos 4 critérios**:
  ├── dependencias/              ← registro.md (auditoria FOSS)
  ├── tap/                       ← TAP.md + TAP.docx
  └── archive/                   ← drafts, legados, deprecados
-```
+~~~
 
 **Anti-padrões proibidos:**
 - ❌ Copiar texto integral de ADR dentro de plano
@@ -278,10 +278,10 @@ Uma decisão exige ADR se atender a **pelo menos 2 dos 4 critérios**:
 - ❌ Criar "Super-Documento" com TAP + planos + ADRs
 
 **Padrão canônico de cross-reference:**
-```
+~~~
 Conforme [ADR-003 — Métricas de Fluxo](/docs/decisoes/ADR-003-metricas.md),
 as métricas EVM são declaradas LEGADO.
-```
+~~~
 
 ---
 
@@ -456,7 +456,7 @@ O CFD aparece em três artefatos com funções distintas:
 |---|---|---|
 | Numeração 6.3/6.5 no §8.1 | OKB §8.1 | Próxima revisão |
 | "Processo 6.4 Estimar Custos" → 7.2 | Glossário §3 | Próxima revisão |
-| Grafia "Carletto" → "Carleto" | Glossário | Próxima revisão |
+| Grafia "Carleto" → "Carleto" | Glossário | Próxima revisão |
 | Cycle Time "To Do → Done" → "In Progress → Done" | Glossário | Próxima revisão |
 | Contagem EAP "13/48" → 12/37 | Glossário §1 | Próxima revisão |
 | Convenção dupla de dias | ADR-003 / Glossário / baseline | Após 03/10 |
@@ -675,14 +675,14 @@ Esta nova rodada não revisita debates encerrados (hibridização, exclusão de 
 
 ### 4.1. Hierarquia de Resolução de Conflitos (Mantida do OKB v2.1 §2.1)
 
-```
+~~~
 1º  Valor entregue ao usuário final (PMBOK 7ª — Domínio de Entrega)
 2º  Ementa da disciplina + orientação do Prof. Nivaldo
 3º  PMBOK 7ª (12 princípios + 8 domínios de desempenho)
 4º  Manifesto Ágil + Kanban (método de execução)
 5º  PMBOK 6ª (dicionário de processos quando necessário)
 6º  Literatura técnica complementar
-```
+~~~
 
 **Adendo v3.0:** Em caso de conflito entre velocidade de entrega e completude documental, **a entrega de valor prevalece**, desde que justificada via ADR e comunicada ao Prof. Nivaldo em até 48h (Domínio de Stakeholders PMBOK 7ª).
 
@@ -763,7 +763,7 @@ Para resolver a crítica de sobrecarga, as 13 fases da EAP são redistribuídas 
 
 ### 4.7. Estrutura Documental (Mantida do OKB v2.1 §5, com anotações GMV)
 
-```
+~~~
 PROJETO COGME
  ├── 00. TAP (Termo de Abertura)                          [GMV: OBRIGATÓRIO]
  ├── 01. Plano de Integração                               [GMV: OBRIGATÓRIO]
@@ -784,7 +784,7 @@ PROJETO COGME
 
 * SIMPLIFICAR = 1-2 páginas no máximo, foco em premissas e restrições,
   sem planilhas complexas ou simulações de EVM.
-```
+~~~
 
 ### 4.8. Declarações Obrigatórias no TAP (Atualizadas v3.0)
 

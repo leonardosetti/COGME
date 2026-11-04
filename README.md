@@ -1,357 +1,216 @@
 # COGME — Conversor de Ganhos em Moeda Estrangeira
 
-> Simulação cambial completa, comparação entre regimes de contratação e emissão de invoices em PDF — 100% FOSS, 100% gratuito.
+[![COGME CI/CD Pipeline](https://github.com/leonardosetti/COGME/actions/workflows/ci.yml/badge.svg)](https://github.com/leonardosetti/COGME/actions/workflows/ci.yml)
+[![SDDAI Verify Pipeline](https://github.com/leonardosetti/COGME/actions/workflows/sddai-verify.yml/badge.svg)](https://github.com/leonardosetti/COGME/actions/workflows/sddai-verify.yml)
 
-[![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
-[![SQLite](https://img.shields.io/badge/SQLite-3.x-003B57?logo=sqlite&logoColor=white)](https://www.sqlite.org/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Coverage](https://img.shields.io/badge/Coverage-≥80%25-brightgreen)](tests/)
-[![CI](https://img.shields.io/badge/CI-GitHub%20Actions-2088FF?logo=githubactions&logoColor=white)](.github/workflows/ci.yml)
-[![Kanban](https://img.shields.io/badge/Método-Kanban-FF6F00)](https://github.com/users/Leonardo-Setti/projects)
-[![PMBOK](https://img.shields.io/badge/Governança-PMBOK%207ª%20+6ª-1565C0)](docs/tap/TAP.md)
-[![Orçamento](https://img.shields.io/badge/Orçamento-R$%200,00-2E7D32)](docs/planos/plano-custos.md)
-[![FOSS](https://img.shields.io/badge/Stack-100%25%20FOSS-0E8A16)](docs/decisoes/ADR-001-stack.md)
+Projeto acadêmico FOSS de conversão cambial, desenvolvido na disciplina de Gerência de Projetos da Fatec Taquaritinga, com entrega final prevista em 15/12/2026 e marcos M1–M4.
 
 ---
 
-## Sobre o Projeto
+## 1. Caracterização do projeto
 
-O **COGME** é um projeto acadêmico desenvolvido na disciplina de **Gerência de Projetos** do curso de **Análise e Desenvolvimento de Sistemas** da **Fatec Taquaritinga**.
+| Item | Dado |
+|------|------|
+| Nome | COGME — Conversor de Ganhos em Moeda Estrangeira |
+| Natureza | Conversor cambial FOSS, gratuito, jurisdição brasileira |
+| Licença | MIT (stack 100% FOSS, custo recorrente zero) |
+| Contexto acadêmico | Gerência de Projetos — Fatec Taquaritinga |
+| Stakeholder-avaliador canônico | Conforme ADR-008 (papel registrado na Constituição) |
+| Escopo canônico | Simulação cambial, comparação de regimes de contratação, spread/IOF, emissão de invoice PDF |
+| EAP canônica | 12 fases e 37 pacotes de trabalho (TAP v3 §4 + ADR-009) |
+| Marcos | M1–M4; entrega final 15/12/2026 |
+| Status da Constituição | v1.2.0 — VIGENTE-PLENA (ratificada 30/10/2026, co-assinatura humana via CCB) |
+| Versão da diretriz de forja de agentes | AFA-ULTIMATE v1.3.0-FINAL |
 
-O cenário: um contingente crescente de profissionais brasileiros atua como PJ ou freelancer para empresas nos EUA, Europa e demais mercados que remuneram em moeda estrangeira (USD/EUR). A gestão financeira desses ganhos exige consultar múltiplos sites, planilhas manuais e calculadoras dispersas — um processo moroso, suscetível a erros e sem visão consolidada.
+---
 
-O COGME preenche essa lacuna: uma solução única, gratuita e de código aberto que reúne simulação cambial completa, comparação entre regimes de contratação e emissão de documentos financeiros associados.
+## 2. Governança aplicada
 
-### Objetivos SMART
+### 2.1 Hierarquia normativa (ordem absoluta)
 
-| Objetivo | Meta | Prazo |
+Em caso de conflito, prevalece a camada superior:
+
+1. `constitution.md` (lei suprema do projeto)
+2. TAP v3, congelado pela ADR-005 (ato autorizativo de escopo, marcos, orçamento e restrições)
+3. ADRs aprovadas (`docs/decisoes/`)
+4. OKB (base consolidada de conhecimento operacional, sem autonomia normativa própria)
+5. Planos de gerenciamento (`docs/planos/`)
+6. Glossário
+7. Especificações SDD e inputs canônicos (`.ai/specs/`)
+8. Código-fonte e testes (`src/`, `tests/`)
+
+### 2.2 Método e princípios
+
+- **Governança primária:** PMBOK® 7ª edição (princípios e domínios de desempenho). O PMBOK® 6ª edição atua apenas como dicionário terminológico.
+- **Execução:** Kanban em GitHub Projects como SSOT de execução (Backlog → Ready → In Progress, WIP ≤ 3 → Code Review → Done).
+- **Metodologia de desenvolvimento:** SDD (Spec-Driven Development): especifica → implementa → valida → registra.
+- **Princípios inalienáveis (Art. 3 da Constituição):** FOSS-zero-custo, soberania computacional local, soberania de dados, LGPD primária, rastreabilidade de decisões (ADR), qualidade fechada (coverage ≥ 80%), segurança OWASP com fail-closed, honestidade intelectual (alegação sem fonte = knowledge gap), anti-subutilização de papéis, linguagem (identificadores em EN, narrativa humana em PT-BR), YAGNI e primeiros princípios.
+
+### 2.3 Privacidade e proteção de dados
+
+- LGPD é a legislação primária (P-04): mínimo necessário, sem PII em artefatos técnicos de agentes, direito ao esquecimento por design.
+- Zero Trust por padrão; princípio do menor privilégio.
+- Nenhuma credencial real é versionada. Apenas chaves dummy para serviços locais.
+- Dados demonstrativos não contêm dados reais de terceiros sem consentimento documentado.
+- Nenhuma telemetria, rastreio ou lock-in tolerado.
+
+### 2.4 Soberania computacional
+
+- Inferência primária 100% local via `llama.cpp` (modelo Qwen3-30B-A3B Q4_K_M), hardware AMD Ryzen 7 8700G, APU Radeon 780M/Vulkan/radv com fallback CPU AVX-512, limite de inferência de 32GB imposto por serviço systemd.
+- Execução CPU-only: sem CUDA, sem inferência em nuvem.
+- Uso excepcional e condicionado de provedores cloud em free tier (whitelist constitucional), apenas para dados não sensíveis, com rota de reversão para execução local.
+
+---
+
+## 3. Governança de agentes (ecossistema SDD)
+
+A criação, promulgação, roteamento e operação de agentes são regidos pela Constituição (Art. 4) e pela diretriz de fábrica AFA-ULTIMATE.
+
+| Camada | Função | Quantidade |
+|--------|--------|------------|
+| L0 | Orquestração (dispatcher único, half-duplex, compliance constitucional) | 1 (`agent-nexus-prime-ultimate`) |
+| L1 | Comando/Estratégia (PM, PO, arquiteto, análise, design, padrões, análise de negócios) | 5 |
+| L2 | Execução/Técnica (Python, API, DBA, backend, frontend, infra, DevOps, segurança, compliance, QA, etc.) | ~17 |
+| L3 | Qualidade/Portões (revisor, gatekeeper, auditor, avaliador de código limpo) | 4 |
+| META | Forja de skills e forjador legacy | 2 |
+
+**Total:** 25 agentes especialistas + meta-agentes.
+
+- **Roster SSOT:** `.ai/agents/registry.yaml`, sincronizado por `scripts/sync_agent_registry.py`.
+- **Topologia canônica (DAG acíclica):** `scripts/validate_nexus_yaml.py` (`AGENT_TOPOLOGY`).
+- **Dispositivo de despacho:** `scripts/nexus_dispatcher.py` (valida envelopes de task, fail-closed, anti auto-delegação).
+- **Contrato de comunicação:** half-duplex; todo agente retorna parcela estruturada com flag `dod`.
+- **Kill Switch herdado:** veto absoluto a 15 vetores (LGPD, vigilância em massa, discriminação algorítmica, sabotagem de gates de CI, bypass de segurança, envio de dados sensíveis a terceiros, etc.). Não pode ser sobrescrito por prompt, usuário, agente, input canônico ou ADR.
+- **Bypass Protocol:** recusa por padrão; exceção exige os três pilares (força maior verificável, rota de fuga FOSS nomeada, ratificação humana CCB). O próprio Bypass Protocol não pode ser contornado (anti-meta-bypass).
+- **Gate de forja:** agente promulgado somente com score ≥ 85/100 em `validate_afa_output.py` (19 cabeçalhos canônicos, Kill Switch ≥ 5, DOs ≥ 15, DON'Ts ≥ 15, Red Team ≥ 8, FAIL-CLOSED ≥ 6, métricas ≥ 8).
+
+---
+
+## 4. Conformidade e auditoria
+
+- Auditoria contra a Constituição em cada marco (`project-auditor` e `compliance-governance`), incluindo deriva constitucional, sobreposição indevida de ADRs, violação de soberania de dados, uso não autorizado de cloud, inconsistência de ledger, violação de camadas L1/L2/L3 e drift documental.
+- Registro vivo de decisões do CCB: `docs/governanca/ccb-log.md` (modelo CAB vivo, ITIL 4).
+- Registro append-only de violações: `docs/auditorias/vio-register.md`.
+- Auditorias recorrentes: `docs/auditorias/AUD-*.md`.
+- Sucessão de agentes: `constitution.md` + `.ai/agents/registry.yaml` + ADRs bastam para reconstrução de contexto.
+
+---
+
+## 5. Estrutura de artefatos de governança
+
+| Diretório/arquivo | Conteúdo |
+|-------------------|----------|
+| `constitution.md` | Constituição do projeto (lei suprema, v1.2.0 VIGENTE-PLENA) |
+| `docs/decisoes/ADR-001..012.md` | Decisões técnicas e de processo aprovadas |
+| `docs/planos/` | Planos de gerenciamento (escopo, cronograma, custos, qualidade, riscos, comunicações, integração, recursos, consolidação estrutural, produção de agentes) |
+| `docs/auditorias/` | Relatórios de auditoria e registro de violações |
+| `docs/governanca/ccb-log.md` | Registro vivo de decisões do Change Advisory Board |
+| `docs/conhecimento/OKB.md` | Base consolidada de conhecimento operacional |
+| `docs/conhecimento/licoes-aprendidas/` | Lições aprendidas por macro-fase (MF1, MF2, MF3) |
+| `docs/conhecimento/glossario.md` | Glossário canônico |
+| `.ai/agents/registry.yaml` | Roster SSOT de agentes |
+| `.ai/agents/ledger.yaml` | Ledger operacional de sessão (append-only, LGPD-safe, sem PII) |
+| `.ai/handoffs/` | Handoffs SDD (parseados por `handoff_parser.py`) |
+| `.ai/specs/` | Especificações SDD e inputs canônicos |
+| `.ai/personas/` | Personas do modelo (camada L2) |
+| `scripts/` | Scripts mediadores de governança (dispatcher, validação, sincronização, parser de handoffs, validação de saída AFA, etc.) |
+| `tests/agents/` | Suites de teste dos scripts de governança |
+| `src/` | Backend do MVP: `backend/` (FastAPI, rotas `/v1`, cálculo, cotações, PDF), `shared/` (schemas do contrato) e `frontend/templates/` (template da invoice) |
+| `migrations/` | Migrações Alembic do banco (tabela `fx_quotes`, cache de cotações) |
+| `infra/` | Configuração de infraestrutura; hoje, `infra/nginx/`, do proxy reverso latente |
+| `Dockerfile` | Imagem do backend: Python 3.12 slim, usuário sem privilégios, bibliotecas nativas do WeasyPrint |
+| `docker-compose.yml` | Stack local: `db` (PostgreSQL 15), `migrate`, `web` e `proxy` opcional (`--profile proxy`) |
+
+---
+
+## 6. Stack e ambiente (caracterização técnica não sensível)
+
+- Linguagem: Python 3.11+ (imagem e CI usam 3.12)
+- Stack: FastAPI + PostgreSQL 15+ (Docker Compose) + Nginx (reverse proxy latente)
+- Banco de dados: PostgreSQL 15+ (containerizado via Docker Compose)
+- Interface: templates server-side (Jinja), HTMX, Tailwind (classes utilitárias comitadas, sem build chain, sem CDN-first)
+- Testes: pytest, meta de cobertura ≥ 80%
+- CI/CD: GitHub Actions Free Tier (bypass registrado, dados não sensíveis)
+- Inferência de IA: local, CPU-only, `llama.cpp`, sem CUDA, sem nuvem
+
+### 6.1 Como executar o backend
+
+**Com Docker Compose (caminho recomendado).** Pré-requisito: Docker com o plugin Compose.
+
+1. Copie o exemplo de configuração e troque os valores dummy:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   No PowerShell: `Copy-Item .env.example .env`.
+
+   Troque `POSTGRES_PASSWORD` e use a mesma senha em `COGME_DATABASE_URL`. Se a senha tiver caracteres especiais, codifique-os na URL (percent-encoding). O `.env` é ignorado pelo Git e não deve ser versionado.
+
+2. Suba a stack:
+
+   ```bash
+   docker compose up --build
+   ```
+
+   O serviço `migrate` aplica as migrações (`alembic upgrade head`) e termina antes de `web` iniciar. A API fica em `http://127.0.0.1:8000`. As portas são publicadas só em `127.0.0.1`, e o banco não tem porta no host.
+
+   Para incluir o proxy reverso (Nginx, desativado por padrão): `docker compose --profile proxy up --build`. Ele expõe `http://127.0.0.1:8080`.
+
+**Rotas (`/v1`).**
+
+| Método | Rota | Descrição |
 |---|---|---|
-| **Produto** | MVP funcional com simulação cambial, 5 regimes, spread/IOF e invoice PDF | M3 (15/11/2026) |
-| **Qualidade** | Cobertura de testes ≥ 80%, UAT sem defeitos críticos | M3 (15/11/2026) |
-| **Inovação** | Stack 100% FOSS + SDD com IA generativa local | M2 (30/09/2026) |
-| **Cronograma** | Entrega dentro do prazo letivo | M4 (15/12/2026) |
-| **Documentação** | Consolidação completa + validação acadêmica | M4 (15/12/2026) |
+| GET | `/v1/health` | Estado do serviço |
+| GET | `/v1/rates/{currency}` | Cotação em BRL (`USD` ou `EUR`) |
+| POST | `/v1/simulate` | Simulação de recebimento |
+| POST | `/v1/invoice` | Invoice em PDF, como anexo |
 
----
+Todo erro segue o mesmo modelo: `{"error": {"key": "...", "message": "...", "details": [...]}}`.
 
-## Equipe
-
-| Papel | Nome | Responsabilidade |
-|---|---|---|
-| **Gerente de Projeto** | Leonardo David Silva Setti | Decisor operacional único, CCB, arquitetura, integração |
-| **Desenvolvedor** | Fabricio de Lima Cabral | Escopo, cronograma, custos, backend |
-| **Desenvolvedor** | Edson Luis Silva | Qualidade, testes, UAT, Ishikawa/PDCA |
-| **Stakeholder-Avaliador** | Prof. Dr. Nivaldo Carleto | Avaliação acadêmica nos marcos M1–M4 |
-
----
-
-## Governança
-
-O projeto adota um **modelo híbrido trifásico** declarado no [Termo de Abertura do Projeto](docs/tap/TAP.md):
-
-```
-┌─────────────────────────────────────────────────┐
-│  PMBOK® 7ª Edição                               │  ← Governança primária
-│  12 Princípios + 8 Domínios de Desempenho       │     (por que / para quê)
-├─────────────────────────────────────────────────┤
-│  PMBOK® 6ª Edição                               │  ← Dicionário complementar
-│  Processos como vocabulário estrutural          │     (obsolescência assumida
-│  EVM/SPI/CPI = LEGADO                           │      para métricas preditivas)
-├─────────────────────────────────────────────────┤
-│  Manifesto Ágil + Kanban (GitHub Projects)      │  ← Método de execução
-│  Fluxo contínuo, WIP limits, métricas de fluxo  │     (como o trabalho flui)
-└─────────────────────────────────────────────────┘
-```
-
-### Método de Execução
-
-- **Ferramenta SSOT:** [GitHub Projects](https://github.com/users/Leonardo-Setti/projects) — Kanban com fluxo contínuo (sem sprints)
-- **Colunas:** `Backlog` → `Ready (DoR)` → `In Progress` → `Code Review` → `Done (DoD)`
-- **WIP Limit:** 3 cards por pessoa em `In Progress`
-- **Métricas:** Cycle Time (≤ 3 dias), Throughput (≥ 5 cards/semana), CFD
-- **Rituais:** Daily assíncrona (15min), Refinement semanal (30min), Retrospectiva quinzenal (30min)
-
-### Decisões Arquiteturais (ADRs)
-
-| ADR | Decisão | Status |
-|---|---|---|
-| [ADR-001](docs/decisoes/ADR-001-stack.md) | Stack tecnológica FOSS | ✅ Aprovada |
-| [ADR-002](docs/decisoes/ADR-002-kanban.md) | Kanban como método de execução | ✅ Aprovada |
-| [ADR-003](docs/decisoes/ADR-003-metricas.md) | Métricas de fluxo (substituição de EVM) | ✅ Aprovada |
-| [ADR-004](docs/decisoes/ADR-004-tasklists.md) | Tasklists Markdown (rejeição de subissues) | ✅ Aprovada |
-| [ADR-005](docs/decisoes/ADR-005-freeze.md) | Regime de freeze do TAP | ⏳ Antes do M2 |
-
-### Tecelagem Constitucional e Agentes
-
-A produção de agentes segue o [Plano Canônico de Produção](docs/planos/plano-producao-agentes.md), governado pela [Constituição do Projeto](constitution.md):
-
-| Gate | Artefato | Validador |
-|---|---|---|
-| Lei suprema | `constitution.md` | auditoria humana (CCB) |
-| Contratos de agentes | `.opencode/agents/*.md` | `scripts/validate_nexus_yaml.py` |
-| Score de forja (≥ 85/100) | 16 seções AFA | `scripts/validate_afa_output.py` |
-| Roster SSOT | `.ai/agents/registry.yaml` | `scripts/sync_agent_registry.py` |
-| Dispatch half-duplex | DAG `AGENT_TOPOLOGY` | `scripts/nexus_dispatcher.py` |
-
-Roster em consolidação: 25 agentes (`agent-*`) em 8 ondas de produção.
-
----
-
-## Roadmap e Marcos
-
-| Marco | Data | Entregável | Status |
-|---|---|---|---|
-| **M1** — Entrega Parcial Documental | 22/09/2026 | TAP + 5 planos (Integração, Escopo, Cronograma, Custos, Qualidade) + 12 PDCAs + Ishikawa | ✅ |
-| **M2** — Ambiente e Modelagem | 30/09/2026 | Stack validada, CI configurado, DER, Protótipo UX/UI, 3 planos restantes | ⏳ |
-| **Calibração** — Baseline de Métricas | 03/10/2026 | Baseline empírica de fluxo Kanban | ⏳ |
-| **M3** — MVP Funcional (Beta) | 15/11/2026 | Código full-stack, coverage ≥ 80%, UAT aprovado | ⏳ |
-| **M4** — Encerramento e Aceite | 15/12/2026 | Documentação consolidada, validação acadêmica, release final | ⏳ |
-
-### Macro-Fases da EAP
-
-```
-MF1: Fundação (01/09 – 30/09)     → N1, N2, N3, N4, N8, N9
-MF2: Construção (01/10 – 15/11)   → N5, N6, N7, N10
-MF3: Consolidação (16/11 – 15/12) → N11, N12
-```
-
-**EAP:** 12 fases de Nível 1 + 37 pacotes de Nível 2 — [ver diagrama](docs/diagramas/eap/fig-01-eap-executiva.svg)
-
----
-
-## Stack Tecnológica (100% FOSS)
-
-Definida na [ADR-001](docs/decisoes/ADR-001-stack.md). Orçamento total: **R$ 0,00**.
-
-| Camada | Tecnologia | Licença | Função |
-|---|---|---|---|
-| **Backend** | Python 3.11 + FastAPI | PSF / MIT | API assíncrona |
-| **Banco de Dados** | SQLite 3.x | Public Domain | Cache de cotações + persistência |
-| **Geração de PDF** | WeasyPrint ≥ 59.0 | BSD-3-Clause | Invoices |
-| **Frontend** | HTML5 + HTMX + Tailwind CSS | MIT | Interface responsiva |
-| **Testes** | pytest + coverage.py | MIT | Coverage ≥ 80% |
-| **CI/CD** | GitHub Actions (Free Tier) | Proprietário gratuito | Pipeline automatizado |
-| **SDD Local** | llama.cpp + Qwen 32B + OpenCode | MIT / Autorizada | IA generativa local |
-| **Análise Estática** | mypy (opcional) | MIT | Type safety |
-
-### Conformidade FOSS
-
-Todas as dependências passam por auditoria de licenciamento ([EAP N4.4](docs/dependencias/registro.md)):
-
-- **Whitelist:** MIT, Apache 2.0, BSD, GPL, LGPL, ISC, PSF, Public Domain
-- **Blacklist:** Proprietárias, Shareware, Creative Commons, Source Available não-OSI
-
----
-
-## Funcionalidades (MVP)
-
-| REQ | Funcionalidade | Critério de Aceite |
-|---|---|---|
-| REQ-01 | Simulação cambial em tempo real (USD/EUR → BRL) | Latência ≤ 2s |
-| REQ-02 | 5 regimes de contratação (hora, dia, semana, mês, valor fixo) | 100% operacionais em UAT |
-| REQ-03 | Encargos financeiros simulados (spread + IOF) | Precisão de 2 casas decimais |
-| REQ-04 | Emissão de invoice em PDF | Geração ≤ 3s via WeasyPrint |
-| REQ-05 | Tempo de resposta | ≤ 3s em 95% das requisições |
-| REQ-06 | Interface web responsiva (FOSS) | Chrome/Firefox/Edge (últimas 2 versões) |
-| REQ-07 | Cache de cotações (SQLite) | Redução ≥ 50% das chamadas à API |
-| REQ-08 | Cobertura de testes | ≥ 80% |
-| REQ-09 | Testes de aceitação (UAT) | Zero defeitos críticos/bloqueantes |
-| REQ-10 | Ferramentas da qualidade | 12 PDCAs + Ishikawa 6M |
-| REQ-11 | Pipeline CI | Lint + testes ≤ 5 min |
-| REQ-12 | ADRs para decisões críticas | Mínimo 3 registradas |
-| REQ-13 | Rastreabilidade de prompts SDD | 100% catalogados em `.ai/handoffs/` |
-| REQ-14 | Documentação técnica | Arquitetura + APIs aprovadas |
-| REQ-15 | Licenciamento 100% FOSS | Todas as dependências OSI-approved |
-
----
-
-## Estrutura do Repositório
-
-```
-COGME/
-├── .ai/                          # Contexto SDD (lido pela IA)
-│   ├── personas/                 # PM, Coder, Reviewer, Tester + active.md
-│   ├── specs/                    # Especificações imutáveis
-│   ├── handoffs/                 # Artefatos entre fases SDD
-│   └── workflows/                # Automação bash (sdd-cycle.sh)
-│
-├── docs/
-│   ├── planos/                   # 8 planos de gerenciamento
-│   │   ├── plano-integracao.md
-│   │   ├── plano-escopo.md
-│   │   ├── plano-cronograma.md
-│   │   ├── plano-custos.md
-│   │   ├── plano-qualidade.md
-│   │   ├── plano-recursos.md     ← M2
-│   │   ├── plano-comunicacoes.md ← M2
-│   │   └── plano-riscos.md       ← M2
-│   ├── decisoes/                 # ADRs 001–005
-│   ├── conhecimento/             # OKB, Glossário, Lições Aprendidas
-│   ├── metricas/                 # Baseline de fluxo (pós-calibração)
-│   ├── requisitos/               # REQ-01 a REQ-15
-│   ├── diagramas/                # SVGs canônicos por área
-│   │   ├── integracao/
-│   │   ├── escopo/
-│   │   ├── cronograma/
-│   │   ├── custos/
-│   │   ├── qualidade/
-│   │   └── eap/
-│   ├── dependencias/             # Registro de auditoria FOSS
-│   ├── tap/                      # TAP.md + TAP.docx
-│   └── archive/                  # Artefatos históricos (não canônicos)
-│
-├── src/
-│   ├── backend/                  # FastAPI + SQLite
-│   │   ├── main.py
-│   │   ├── models/
-│   │   ├── routers/
-│   │   └── services/
-│   ├── frontend/                 # HTMX + Tailwind
-│   │   ├── templates/
-│   │   └── static/
-│   └── shared/                   # Schemas compartilhados
-│
-├── tests/
-│   ├── unit/
-│   └── integration/
-│
-├── .github/workflows/ci.yml      # Pipeline CI
-├── README.md
-├── LICENSE
-├── pyproject.toml
-└── requirements.txt
-```
-
----
-
-## Como Executar
-
-### Pré-requisitos
-
-- Python 3.11+
-- Git
-
-### Setup
+**Exemplo com dados sintéticos** (bash):
 
 ```bash
-# Clonar o repositório
-git clone https://github.com/Leonardo-Setti/COGME.git
-cd COGME
+curl -s http://127.0.0.1:8000/v1/rates/USD
 
-# Criar ambiente virtual
-python -m venv .venv
-source .venv/bin/activate  # Linux/macOS
-# .venv\Scripts\activate   # Windows
-
-# Instalar dependências
-pip install -r requirements.txt
+curl -s -X POST http://127.0.0.1:8000/v1/simulate \
+  -H "Content-Type: application/json" \
+  -d '{"currency":"USD","regime":"hourly","amount":"30.00","quantity":"160","spread_pct":"2.00","iof_pct":"0.38"}'
 ```
 
-### Executar o Backend
+No PowerShell, use `curl.exe` (o alias `curl` chama `Invoke-WebRequest`) e escape as aspas do JSON.
+
+Spread e IOF são informados por quem faz a simulação; o backend não tem alíquota. A cotação vem da fonte no momento da chamada. A resposta traz `quote.source` (`frankfurter` ou `ptax`) e, na PTAX, `quote.bulletin`. Se `quote.stale` for `true`, a cotação veio de cache vencido, obtido em consulta anterior; `quote.quoted_at` indica a data da cotação.
+
+**Migrações.** Pelo Compose, são automáticas. Fora dele, com o banco acessível (troque pelos seus valores):
 
 ```bash
-uvicorn src.backend.main:app --reload --port 8000
+COGME_DATABASE_URL='postgresql+asyncpg://usuario:senha@127.0.0.1:5432/cogme' alembic upgrade head
 ```
 
-### Executar Testes
+`alembic downgrade -1` desfaz a última revisão. A revisão `0001` remove a tabela de cotações em cache, que é reobtida das fontes.
+
+**Testes.**
 
 ```bash
-pytest --cov=src --cov-report=term-missing --cov-fail-under=80
+python -m pip install -r requirements-dev.txt
+python -m pytest tests/unit tests/integration --cov=src --cov-fail-under=80
 ```
 
-### Pipeline CI
+- Os testes de integração com PostgreSQL (marcador `postgres`) são pulados sem `COGME_TEST_DATABASE_URL`. Aponte essa variável para um banco descartável, nunca para dados reais.
+- Em Windows, defina `PYTHONUTF8=1` antes de rodar `tests/agents`, que não está no comando acima. No PowerShell: `$env:PYTHONUTF8 = "1"`.
+- A CI roda `pytest tests/` com um PostgreSQL efêmero (ver `.github/workflows/ci.yml`).
 
-O pipeline roda automaticamente a cada push via GitHub Actions:
-
-```
-lint (flake8 + mypy) → testes (pytest + coverage ≥ 80%) → relatório
-```
+**WeasyPrint e Pango.** A invoice é gerada com WeasyPrint, que depende das bibliotecas nativas Pango e HarfBuzz. Sem elas, a API sobe normalmente, mas `POST /v1/invoice` responde 503 `pdf_unavailable`. Por isso a geração real do PDF roda no container, que instala essas bibliotecas; o CI também as instala. No Windows, sem GTK/Pango instalado, a rota de invoice não gera PDF localmente.
 
 ---
 
-## Qualidade
+## 7. Convenções
 
-| Dimensão | Mecanismo | Meta |
-|---|---|---|
-| **Preventiva** | Code Review + SDD com IA auditável + Clean Code | Zero retrabalho |
-| **Detectiva** | Pipeline CI + pytest + coverage.py | Coverage ≥ 80% |
-| **Corretiva** | 12 ciclos PDCA + 3 diagramas Ishikawa 6M | Melhoria contínua |
-
-### Ferramentas da Qualidade (REQ-10)
-
-- **12 ciclos PDCA:** Um por fase da EAP (N1–N12)
-- **3 diagramas Ishikawa 6M:** Coverage < 80%, Defeitos Críticos em UAT, Cycle Time > 3 dias
-- **Retrospectivas quinzenais:** Pauta fixa (o que funcionou, o que melhorar, ações)
+- Identificadores, slugs, código e contratos: **EN**, kebab-case com prefixo `agent-` para agentes.
+- Narrativa estratégica, documentação humana e mensagens visíveis ao humano: **PT-BR**.
+- Nunca publicar dados sensíveis, credenciais reais, PII ou detalhes estratégicos de execução neste README.
 
 ---
 
-## Premissas e Restrições
-
-### Premissas (TAP §9)
-
-| # | Premissa |
-|---|---|
-| P1 | Governança híbrida: PMBOK 7ª + 6ª dicionário + Kanban |
-| P2 | Projeto 100% FOSS |
-| P3 | SDD com IA generativa autorizado, com rastreabilidade |
-| P4 | Código-fonte funcional é deliverable formal |
-| P5 | ≤ 20h/semana por membro |
-| P6 | Hardware local adequado |
-| P7 | Prof. Dr. Nivaldo Carleto = avaliador único nos marcos |
-| P8 | Aquisições e Partes Interessadas simplificadas |
-| P9 | Separação ontológica: TAP ≠ EAP ≠ PDCA |
-
-### Restrições (TAP §8 + §11)
-
-- MVP acadêmico — desenvolvimento do zero
-- Prazo letivo inegociável (2 bimestres)
-- **Orçamento zero** — proibição de ferramentas pagas
-- Equipe de 3 pessoas com múltiplos papéis
-- Stack 100% FOSS (OSI-approved)
-- Curso noturno — disponibilidade limitada
-
----
-
-## Documentação
-
-| Documento | Localização |
-|---|---|
-| Termo de Abertura do Projeto (TAP) | [`docs/tap/TAP.md`](docs/tap/TAP.md) |
-| Plano de Integração | [`docs/planos/plano-integracao.md`](docs/planos/plano-integracao.md) |
-| Plano de Escopo | [`docs/planos/plano-escopo.md`](docs/planos/plano-escopo.md) |
-| Plano de Cronograma | [`docs/planos/plano-cronograma.md`](docs/planos/plano-cronograma.md) |
-| Plano de Custos | [`docs/planos/plano-custos.md`](docs/planos/plano-custos.md) |
-| Plano de Qualidade | [`docs/planos/plano-qualidade.md`](docs/planos/plano-qualidade.md) |
-| OKB (Base de Conhecimento) | [`docs/conhecimento/OKB.md`](docs/conhecimento/OKB.md) |
-| Glossário | [`docs/conhecimento/glossario.md`](docs/conhecimento/glossario.md) |
-| ADRs | [`docs/decisoes/`](docs/decisoes/) |
-| Diagramas | [`docs/diagramas/`](docs/diagramas/) |
-
----
-
-## Licença
-
-Este projeto é licenciado sob a **MIT License** — veja o arquivo [LICENSE](LICENSE) para detalhes.
-
-Todas as dependências são auditadas para conformidade FOSS. Consulte o [registro de dependências](docs/dependencias/registro.md) para a lista completa.
-
----
-
-## Agradecimentos
-
-- **Fatec Taquaritinga** — Instituição de ensino
-- **Prof. Dr. Nivaldo Carleto** — Orientação e avaliação acadêmica
-- Comunidade FOSS — FastAPI, SQLite, WeasyPrint, HTMX, Tailwind CSS, llama.cpp, Qwen
-
----
-
-<div align="center">
-
-**COGME** — Conversor de Ganhos em Moeda Estrangeira
-
-Fatec Taquaritinga · Análise e Desenvolvimento de Sistemas · Gerência de Projetos
-
-2026
-
-</div>
+*Documento de caracterização e governança. Não contém dados sensíveis nem estratégicos. Regido por `constitution.md` Art. 2 (hierarquia normativa) e Art. 3 (princípios inalienáveis).*

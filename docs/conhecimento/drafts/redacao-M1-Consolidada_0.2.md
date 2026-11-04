@@ -83,7 +83,7 @@ Princípios aplicados: não duplicação; N1.4 + N4.4 como fontes canônicas; wh
 | --- | --- | --- |
 | Numeração 6.3/6.5 no §8.1 | OKB §8.1 | Próxima revisão |
 | "Processo 6.4 Estimar Custos" → 7.2 | Glossário §3 | Próxima revisão |
-| Grafia "Carletto" → "Carleto" | Glossário | Próxima revisão |
+| Grafia "Carleto" → "Carleto" | Glossário | Próxima revisão |
 | Cycle Time "To Do → Done" → "In Progress → Done" | Glossário | Próxima revisão |
 | Contagem EAP "13/48" → 12/37 | Glossário §1 | Próxima revisão |
 | Convenção dupla de dias | ADR-003 / Glossário / baseline | Após 03/10 |
@@ -187,7 +187,7 @@ O projeto justifica-se pela lacuna prática existente no ecossistema de software
 
 #### Lista Hierárquica Aninhada da EAP
 
-```
+~~~
 N0: COGME — Conversor de Ganhos em Moeda Estrangeira
 │
 ├── N1: 1. Iniciação e Planejamento [MF1]
@@ -250,7 +250,7 @@ N0: COGME — Conversor de Ganhos em Moeda Estrangeira
     ├── N12.1: 12.1. Lições Aprendidas Finais
     ├── N12.2: 12.2. Verificação SMART
     └── N12.3: 12.3. Apresentação Final + Aceite
-```
+~~~
 
 #### FIGURA 0.1 — EAP Visão Macro e Macro-Fases
 
@@ -261,7 +261,7 @@ Nota: Representação da linha de base estrutural do escopo, canônica conforme 
 Fonte: Elaborado pelos autores (2026).
 Arquivo de origem: `docs/diagramas/eap/fig-eap-nivel-0-macro.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" font-family="Arial, Helvetica, sans-serif">
    <rect x="0" y="0" width="1200" height="500" fill="#FFFFFF"/>
    <text x="600" y="42" text-anchor="middle" font-size="23" font-weight="bold" fill="#111111">Estrutura Analítica do Projeto (EAP) — Visão Macro</text>
@@ -294,7 +294,7 @@ Arquivo de origem: `docs/diagramas/eap/fig-eap-nivel-0-macro.svg`
    <text x="1000" y="280" text-anchor="middle" font-size="14" fill="#111111">N11. Documentação do Projeto</text>
    <text x="1000" y="305" text-anchor="middle" font-size="14" fill="#111111">N12. Encerramento</text>
  </svg>
-```
+~~~
 
 #### FIGURA 0.2 — Detalhamento MF1: Fundação
 
@@ -305,7 +305,7 @@ Nota: Decomposição dos pacotes de trabalho de Nível 2 referentes à iniciaç�
 Fonte: Elaborado pelos autores (2026).
 Arquivo de origem: `docs/diagramas/eap/fig-eap-mf1-fundacao.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="Arial, Helvetica, sans-serif">
    <rect x="0" y="0" width="1600" height="900" fill="#FFFFFF"/>
    <text x="800" y="42" text-anchor="middle" font-size="23" font-weight="bold" fill="#111111">EAP — Macro-Fase 1: Fundação (MF1)</text>
@@ -380,7 +380,7 @@ Arquivo de origem: `docs/diagramas/eap/fig-eap-mf1-fundacao.svg`
      <text x="110" y="205" text-anchor="middle" font-size="12" fill="#222222">N9.3 Catálogo de Prompts SDD</text>
    </g>
  </svg>
-```
+~~~
 
 #### FIGURA 0.3 — Detalhamento MF2: Construção
 
@@ -391,7 +391,7 @@ Nota: Decomposição dos pacotes de trabalho focados na execução técnica: des
 Fonte: Elaborado pelos autores (2026).
 Arquivo de origem: `docs/diagramas/eap/fig-eap-mf2-construcao.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" font-family="Arial, Helvetica, sans-serif">
    <rect x="0" y="0" width="1200" height="700" fill="#FFFFFF"/>
    <text x="600" y="42" text-anchor="middle" font-size="23" font-weight="bold" fill="#111111">EAP — Macro-Fase 2: Construção (MF2)</text>
@@ -440,7 +440,7 @@ Arquivo de origem: `docs/diagramas/eap/fig-eap-mf2-construcao.svg`
      <text x="120" y="205" text-anchor="middle" font-size="12" fill="#222222">N10.3 Aprovação e Versionamento</text>
    </g>
  </svg>
-```
+~~~
 
 #### FIGURA 0.4 — Detalhamento MF3: Consolidação
 
@@ -451,7 +451,7 @@ Nota: Decomposição dos pacotes de trabalho finais, abrangendo a consolidação
 Fonte: Elaborado pelos autores (2026).
 Arquivo de origem: `docs/diagramas/eap/fig-eap-mf3-consolidacao.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="Arial, Helvetica, sans-serif">
    <rect x="0" y="0" width="800" height="500" fill="#FFFFFF"/>
    <text x="400" y="42" text-anchor="middle" font-size="23" font-weight="bold" fill="#111111">EAP — Macro-Fase 3: Consolidação (MF3)</text>
@@ -476,7 +476,7 @@ Arquivo de origem: `docs/diagramas/eap/fig-eap-mf3-consolidacao.svg`
      <text x="130" y="205" text-anchor="middle" font-size="12" fill="#222222">N12.3 Apresentação Final + Aceite</text>
    </g>
  </svg>
-```
+~~~
 
 #### FIGURA 0.5 — EAP Visão Executiva Consolidada
 
@@ -487,7 +487,7 @@ Nota: A representação visual da EAP em visão executiva materializa o Processo
 Fonte: Elaborado pelos autores (2026).
 Arquivo de origem: `docs/diagramas/eap/fig-01-eap-executiva.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 850" font-family="Arial, Helvetica, sans-serif">
    <defs>
      <marker id="ar-flow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
@@ -565,7 +565,7 @@ Arquivo de origem: `docs/diagramas/eap/fig-01-eap-executiva.svg`
    <rect x="200" y="820" width="800" height="25" rx="4" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1"/>
    <text x="600" y="837" text-anchor="middle" font-size="11" fill="#333333">Total: 12 fases de Nível 1 + 37 pacotes de Nível 2 (baseline canônica do TAP §4)</text>
  </svg>
-```
+~~~
 
 ### 0.5 Requisitos Principais das Entregas (TAP §5)
 
@@ -691,7 +691,7 @@ Nota: Ilustração da hierarquia normativa que rege o projeto COGME. A camada su
 Fonte: Elaborado pelos autores (2026).
 Arquivo de origem: `docs/diagramas/integracao/fig-1-governanca-hibrida.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" font-family="Arial, Helvetica, sans-serif">
    <defs>
      <marker id="ar" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
@@ -723,7 +723,7 @@ Arquivo de origem: `docs/diagramas/integracao/fig-1-governanca-hibrida.svg`
    <text x="735" y="275" font-size="12" font-weight="bold" fill="#2E7D32" text-anchor="start">Lições Aprendidas</text>
    <text x="735" y="290" font-size="12" font-weight="bold" fill="#2E7D32" text-anchor="start">e Realimentação</text>
  </svg>
-```
+~~~
 
 #### 1.2.1 Hierarquia de Resolução de Conflitos
 
@@ -789,7 +789,7 @@ Nota: O diagrama materializa operacionalmente a ADR-002 (Kanban como método de 
 Fonte: Elaborado pelos autores (2026).
 Arquivo de origem: `docs/diagramas/integracao/fig-2-fluxo-kanban-oficial.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 500" font-family="Arial, Helvetica, sans-serif">
    <defs>
      <marker id="ar-flow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
@@ -845,7 +845,7 @@ Arquivo de origem: `docs/diagramas/integracao/fig-2-fluxo-kanban-oficial.svg`
    <text x="700" y="465" text-anchor="middle" font-size="11" fill="#333333">Se WIP limit for violado ou tasklist não estiver 100% concluída, o card não migra para a coluna seguinte.</text>
    <text x="700" y="478" text-anchor="middle" font-size="11" fill="#333333">Gargalos persistentes acionam Retrospectiva extraordinária (Integração §1.6.1).</text>
  </svg>
-```
+~~~
 
 #### 1.3.2 Regras de Fluxo e Rituais
 
@@ -949,7 +949,7 @@ Nota: Ferramenta visual de monitoramento temporal que substitui formalmente o Gr
 Fonte: Elaborado pelos autores (2026).
 Arquivo de origem: `docs/diagramas/integracao/fig-3-cfd-saudavel-vs-gargalo.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 700" font-family="Arial, Helvetica, sans-serif">
    <rect x="0" y="0" width="1400" height="700" fill="#FFFFFF"/>
    <text x="700" y="40" text-anchor="middle" font-size="22" font-weight="bold" fill="#111111">Cumulative Flow Diagram (CFD) — Padrão Saudável vs. Gargalo</text>
@@ -1002,7 +1002,7 @@ Arquivo de origem: `docs/diagramas/integracao/fig-3-cfd-saudavel-vs-gargalo.svg`
      </marker>
    </defs>
  </svg>
-```
+~~~
 
 #### 1.6.2 Métricas Legado (Não Aplicáveis — ADR-003)
 
@@ -1045,7 +1045,7 @@ Nota: Materialização do Processo 4.6 do PMBOK® 6ª (dicionário) adaptado ao 
 Fonte: Elaborado pelos autores (2026).
 Arquivo de origem: `docs/diagramas/integracao/fig-4-controle-mudancas.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 650" font-family="Arial, Helvetica, sans-serif">
    <defs>
      <marker id="ar-flow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
@@ -1095,7 +1095,7 @@ Arquivo de origem: `docs/diagramas/integracao/fig-4-controle-mudancas.svg`
    <text x="680" y="525" text-anchor="middle" font-size="12" fill="#333333">Registro formal via ADR +</text>
    <text x="680" y="540" text-anchor="middle" font-size="12" fill="#333333">Comunicação no marco subsequente</text>
  </svg>
-```
+~~~
 
 #### 1.7.3 Limiar de Formalidade
 
@@ -1194,7 +1194,7 @@ Nota: O diagrama materializa a operacionalização do Processo 6.2 (Definir Ativ
 Fonte: Elaborado pelos autores (2026).
 Arquivo de origem: `docs/diagramas/escopo/fig-2-cadeia-decomposicao-escopo.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 650" font-family="Arial, Helvetica, sans-serif">
    <defs>
      <marker id="ar-flow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
@@ -1267,7 +1267,7 @@ Arquivo de origem: `docs/diagramas/escopo/fig-2-cadeia-decomposicao-escopo.svg`
    <text x="700" y="600" text-anchor="middle" font-size="11" fill="#333333">No COGME, atividades são materializadas como tasklist Markdown (3 a 7 itens; último item "Validação final"),</text>
    <text x="700" y="615" text-anchor="middle" font-size="11" fill="#333333">rejeitando-se formalmente subissues para preservar a unidade atômica de métrica (card pai) e evitar fragmentação do backlog.</text>
  </svg>
-```
+~~~
 
 **Fim da Seção 2 — Escopo | COGME v1.1**
 
@@ -1286,7 +1286,7 @@ Nota: O diagrama ilustra a substituição da rede de precedências preditiva (CP
 Fonte: Elaborado pelos autores (2026).
 Arquivo de origem: `docs/diagramas/cronograma/fig-01-sequenciamento-macro-caminho-critico.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" font-family="Arial, Helvetica, sans-serif">
    <defs>
      <marker id="ar-flow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
@@ -1387,7 +1387,7 @@ Arquivo de origem: `docs/diagramas/cronograma/fig-01-sequenciamento-macro-caminh
    <text x="600" y="585" text-anchor="middle" font-size="12" fill="#333333">Caminho crítico identificado empiricamente — sem rede CPM preditiva. Substitui o Gantt/EVM por</text>
    <text x="600" y="600" text-anchor="middle" font-size="12" fill="#333333">métricas de fluxo Kanban, conforme ADR-003 e OKB §8.1.</text>
  </svg>
-```
+~~~
 
 **Fim da Seção 3 — Cronograma | COGME v1.2**
 
@@ -1406,7 +1406,7 @@ Nota: O diagrama materializa operacionalmente a governança de custo zero (TAP �
 Fonte: Elaborado pelos autores (2026).
 Arquivo de origem: `docs/diagramas/custos/fig-5-fluxo-prevencao-custos.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900" font-family="Arial, Helvetica, sans-serif">
    <defs>
      <marker id="ar-flow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
@@ -1472,7 +1472,7 @@ Arquivo de origem: `docs/diagramas/custos/fig-5-fluxo-prevencao-custos.svg`
    <text x="400" y="805" text-anchor="middle" font-size="12" font-weight="bold" fill="#111111">Linha de Base de Custos: R$ 0,00 (imutável sem CCB)</text>
    <text x="400" y="820" text-anchor="middle" font-size="11" fill="#555555">TAP §11 + Premissa P2 (FOSS absoluto)</text>
  </svg>
-```
+~~~
 
 #### FIGURA 4.3 — Matriz de Rastreabilidade de Dependências
 
@@ -1483,7 +1483,7 @@ Nota: A tabela apresenta seis exemplos reais de dependências da stack canônica
 Fonte: Elaborado pelos autores (2026).
 Arquivo de origem: `docs/diagramas/custos/fig-6-matriz-rastreabilidade-dependencias.svg`
 
-```xml
+~~~xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" font-family="Arial, Helvetica, sans-serif">
    <rect x="0" y="0" width="1200" height="500" fill="#FFFFFF"/>
    <text x="600" y="40" text-anchor="middle" font-size="22" font-weight="bold" fill="#111111">Matriz de Rastreabilidade de Dependências — Stack FOSS Canônica</text>
@@ -1546,7 +1546,7 @@ Arquivo de origem: `docs/diagramas/custos/fig-6-matriz-rastreabilidade-dependenc
    <rect x="50" y="450" width="1100" height="40" rx="4" fill="#E8F5E9" stroke="#2E7D32" stroke-width="2"/>
    <text x="600" y="475" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">100% das dependências auditadas e conformantes — Linha de base R$ 0,00 preservada</text>
  </svg>
-```
+~~~
 
 **Fim da Seção 4 — Custos | COGME v1.2**
 
@@ -1594,7 +1594,7 @@ Arquivo de origem: `docs/diagramas/custos/fig-6-matriz-rastreabilidade-dependenc
 
 > Nota N4: Estrutura com pretensão de imutabilidade. Todo arquivo mapeado ao diretório responsável. Sem arquivos órfãos na raiz exceto README.md, LICENSE, pyproject.toml, requirements.txt.
 
-```
+~~~
 COGME/
  ├── .ai/                              # Contexto SDD (lido pela IA)
  │   ├── personas/
@@ -1685,7 +1685,7 @@ COGME/
  ├── LICENSE
  ├── pyproject.toml
  └── requirements.txt
-```
+~~~
 
 ---
 
@@ -1861,7 +1861,7 @@ Diagramas deliberadamente EXCLUÍDOS da Seção 1 (anti-invasão de escopo): Roa
 | C2 (stack SDD) | Stack em avaliação; ADR-001 poderá sofrer atualizações de impacto relevante. Agregar a stack canônica local (em vez de exclusivamente QwenStudio). Inclusão/exclusão/troca de ferramentas exigirá ADRs específicas | §2.3.4 reescrito: stack local canônica nomeada (llama.cpp + Qwen 32B + OpenCode); ADR-001 declarada em avaliação; regra de ADR específica para mudanças de stack vinculada à política de ADRs |
 | C3 (DoD/Padrões) | Correção pertence ao Plano de Escopo §2.6 (Integração v2.0 confirmada coerente) | §2.6: item 8 do DoD mantido e reforçado com nota de canonicidade + Padrões A/B (OKB §9.3); Tabela 2 expandida com as duas linhas de rastreabilidade cruzada propostas |
 
-Achados externos remanescentes (reporte ao GP, não bloqueiam): grafia do stakeholder no Glossário ("Carletto" → corrigir para "Carleto", grafia do TAP); Cycle Time "To Do → Done" no Glossário (alinhar a "In Progress → Done", ADR-003); cabeçalho "Fases EAP v2.0" na matriz do TAP §5 (find & replace); item 10 da estrutura documental do Glossário (Plano de Gestão de Mudanças atendido pela Integração §1.7 — GMV).
+Achados externos remanescentes (reporte ao GP, não bloqueiam): grafia do stakeholder no Glossário ("Carleto" → corrigir para "Carleto", grafia do TAP); Cycle Time "To Do → Done" no Glossário (alinhar a "In Progress → Done", ADR-003); cabeçalho "Fases EAP v2.0" na matriz do TAP §5 (find & replace); item 10 da estrutura documental do Glossário (Plano de Gestão de Mudanças atendido pela Integração §1.7 — GMV).
 
 Micro-ajuste opcional na Integração §1.3.2 (reforço de rastreabilidade do DoD): permanece aguardando aprovação do GP, fora do escopo desta redação.
 
@@ -2083,7 +2083,7 @@ Diagramas deliberadamente EXCLUÍDOS (anti-invasão de escopo + GMV):
 | --- | --- | --- |
 | Numeração 6.3/6.5 no §8.1 | Base de conhecimento operacional §8.1 | Próxima revisão da base |
 | "Processo 6.4 Estimar Custos" → 6.4 Estimar Durações (custos = 7.2) | Glossário §3 | Próxima revisão do Glossário |
-| Grafia "Carletto" → "Carleto" | Glossário | Próxima revisão do Glossário |
+| Grafia "Carleto" → "Carleto" | Glossário | Próxima revisão do Glossário |
 | Cycle Time "To Do → Done" → "In Progress → Done" | Glossário | Próxima revisão do Glossário |
 | Contagem EAP "13/48" → 12/37 (baseline do TAP §4) | Glossário §1 | Próxima revisão do Glossário |
 | Convenção dupla de dias | ADR-003 / Glossário / baseline | Formalização da baseline (após 03/10) |
@@ -2187,7 +2187,7 @@ O projeto justifica-se pela lacuna prática existente no ecossistema de software
 
 #### Lista Hierárquica Aninhada da EAP
 
-```
+~~~
 N0: COGME — Conversor de Ganhos em Moeda Estrangeira
 │
 ├── N1: 1. Iniciação e Planejamento [MF1]
@@ -2250,7 +2250,7 @@ N0: COGME — Conversor de Ganhos em Moeda Estrangeira
     ├── N12.1: 12.1. Lições Aprendidas Finais
     ├── N12.2: 12.2. Verificação SMART
     └── N12.3: 12.3. Apresentação Final + Aceite
-```
+~~~
 
 > **[PLACEHOLDER — DIAGRAMA: Fig. 0.1 — EAP Visão Executiva (N0 + 12 fases × 3 macro-fases) | Seção 0.4 | Formato: Mermaid flowchart TB ou PlantUML WBS]**
 
@@ -2956,7 +2956,7 @@ Fechamento de milestones: uma milestone não é fechada enquanto houver Issues a
 | --- | --- | --- |
 | Numeração 6.3/6.5 no §8.1 | Base de conhecimento operacional §8.1 | Próxima revisão da base |
 | "Processo 6.4 Estimar Custos" → 6.4 Estimar Durações (custos = 7.2) | Glossário §3 | Próxima revisão do Glossário |
-| Grafia "Carletto" → "Carleto" | Glossário | Próxima revisão do Glossário |
+| Grafia "Carleto" → "Carleto" | Glossário | Próxima revisão do Glossário |
 | Cycle Time "To Do → Done" → "In Progress → Done" | Glossário | Próxima revisão do Glossário |
 | Contagem EAP "13/48" → 12/37 (baseline do TAP §4) | Glossário §1 | Próxima revisão do Glossário |
 | Convenção dupla de dias | ADR-003 / Glossário / baseline | Formalização da baseline (após 03/10) |
@@ -3321,7 +3321,7 @@ Nota (I6): mypy é ferramenta complementar de análise estática de tipos, não 
 
 Conforme N7.1 da EAP e REQ-11, o pipeline CI executa automaticamente a cada push:
 
-```yaml
+~~~yaml
 # .github/workflows/ci.yml (resumo)
 name: CI Pipeline
 on: [push, pull_request]
@@ -3342,7 +3342,7 @@ jobs:
         run: pytest --cov=cogme --cov-report=xml --cov-fail-under=80
       - name: Upload coverage
         uses: codecov/codecov-action@v3
-```
+~~~
 
 Critérios de qualidade do pipeline:
 
@@ -3562,7 +3562,7 @@ A definição operacional de Cycle Time aqui vigente é `In Progress` → `Done`
 Este plano consolida 12 ciclos PDCA (N1-N12), conforme baseline do TAP §4 (12 fases + 37 pacotes). O Glossário v3.1 pode registrar "13 fases + 48 pacotes" — esta contagem é volátil e não canônica. O TAP e Planos de Integração/Escopo são as fontes canônicas. O TAP não integra ciclos PDCA (Premissa P9).
 
 **NC-Q5 — Grafia do Stakeholder (E1):**
-A seção 5 utiliza a grafia "Prof. Dr. Nivaldo Carleto" conforme TAP v3. O Glossário v3.1 registra "Carletto" (grafia incorreta). Esta inconsistência é registrada para saneamento na próxima revisão do Glossário (pós-M1).
+A seção 5 utiliza a grafia "Prof. Dr. Nivaldo Carleto" conforme TAP v3. O Glossário v3.1 registra "Carleto" (grafia incorreta). Esta inconsistência é registrada para saneamento na próxima revisão do Glossário (pós-M1).
 
 **Registro de saneamento — artefatos vivos (não bloqueante):**
 
@@ -3571,7 +3571,7 @@ A seção 5 utiliza a grafia "Prof. Dr. Nivaldo Carleto" conforme TAP v3. O Glos
 | Numeração de processos 8.1-8.3 | Glossário §3 | Próxima revisão do Glossário |
 | Contagem EAP "13/48" → 12/37 | Glossário §1 | Próxima revisão do Glossário |
 | Cycle Time "To Do → Done" → "In Progress → Done" | Glossário | Próxima revisão do Glossário |
-| Grafia "Carletto" → "Carleto" | Glossário | Próxima revisão do Glossário |
+| Grafia "Carleto" → "Carleto" | Glossário | Próxima revisão do Glossário |
 
 ### 5.10 Declaração de Rastreabilidade
 

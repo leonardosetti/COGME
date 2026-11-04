@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cogme-sddai-trainer"
+version = "1.0.0"
+description = "Treinamento de modelos ML para SDDAI (custom do zero)"
+requires-python = ">=3.9"
+dependencies = []
+
+[project.scripts]
+cogme-sddai-trainer = "cogme_sddai_trainer.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["cogme_sddai_trainer*"]

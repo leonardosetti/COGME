@@ -8,6 +8,19 @@ registry:
   project: COGME
   slug_rule: kebab-case com prefixo agent- (constitution.md Art. 4)
 agents:
+- file: .opencode/agents/agent-agile-specialist.md
+  name: agent-agile-specialist
+  version: 0.1.0
+  layer: L2
+  role: specialist
+  description: Agile development specialist aligned with Agile Manifesto
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+  - agent-sdd-specialist
+  downstream:
+  - agent-pm
+  - agent-po
 - file: .opencode/agents/agent-ai-llm-rag-dag-mcp-roster-master-specialist.md
   name: agent-ai-llm-rag-dag-mcp-roster-master-specialist
   version: 0.1.0
@@ -158,9 +171,7 @@ agents:
   - agent-python-specialist
   - agent-backend-dev
   - agent-frontend-dev
-  downstream:
-  - agent-gatekeeper
-  - agent-project-auditor
+  downstream: []
 - file: .opencode/agents/agent-cobit-specialist.md
   name: agent-cobit-specialist
   version: 0.1.0
@@ -274,24 +285,6 @@ agents:
   - agent-project-auditor
   - agent-po
   - agent-skill-master
-- file: .opencode/agents/agent-factory-architect.md
-  name: agent-factory-architect
-  version: null
-  layer: META
-  role: forge
-  description: null
-  status: legacy-forge
-  upstream: []
-  downstream: []
-- file: .opencode/agents/agent-factory-architect-ultimate.md
-  name: agent-factory-architect-ultimate
-  version: null
-  layer: META
-  role: forge
-  description: null
-  status: legacy-forge
-  upstream: []
-  downstream: []
 - file: .opencode/agents/agent-frontend-dev.md
   name: agent-frontend-dev
   version: 0.1.0
@@ -322,8 +315,7 @@ agents:
   upstream:
   - agent-nexus-prime-ultimate
   - agent-reviewer
-  downstream:
-  - agent-project-auditor
+  downstream: []
 - file: .opencode/agents/agent-github-specialist.md
   name: agent-github-specialist
   version: 0.1.0
@@ -393,17 +385,18 @@ agents:
   layer: L0
   role: orchestrator
   description: COGME L0 orchestrator - sole DAG dispatcher, constitutional compliance enforcer, half-duplex
-    contracts, aggregates structured parcels, owns escalation to human. Governs all promulgated agents
-    per constitution.md Art. 4.
+    contracts, aggregates structured parcels, owns escalation to human.
   status: promulgado
-  upstream:
-  - agent-factory-architect-ultimate
+  upstream: []
   downstream:
   - agent-sdd-specialist
   - agent-pm
   - agent-po
   - agent-architect
   - agent-project-analyst
+  - agent-project-design-specialist
+  - agent-project-patterns-standards-specialist
+  - agent-business-analysis-specialist
   - agent-python-specialist
   - agent-api-specialist
   - agent-dba
@@ -423,6 +416,21 @@ agents:
   - agent-gatekeeper
   - agent-project-auditor
   - agent-skill-master
+  - agent-sddai-loader
+  - agent-sddai-engineer
+  - agent-sddai-trainer
+  - agent-sddai-memory
+  - agent-sddai-cli
+  - agent-agile-specialist
+  - agent-ai-llm-rag-dag-mcp-roster-master-specialist
+  - agent-art-communication-marketing-pr-specialist
+  - agent-cobit-specialist
+  - agent-copyright-specialist
+  - agent-iso-26514-specialist
+  - agent-itil-specialist
+  - agent-quality-architect-specialist
+  - agent-six-sigma-specialist
+  - agent-sldc-process-specialist
 - file: .opencode/agents/agent-pm.md
   name: agent-pm
   version: 0.1.0
@@ -582,9 +590,7 @@ agents:
   status: promulgado
   upstream:
   - agent-nexus-prime-ultimate
-  downstream:
-  - agent-gatekeeper
-  - agent-project-auditor
+  downstream: []
 - file: .opencode/agents/agent-sdd-specialist.md
   name: agent-sdd-specialist
   version: 0.1.0
@@ -606,6 +612,77 @@ agents:
   - agent-docker-specialist
   - agent-reviewer
   - agent-gatekeeper
+- file: .opencode/agents/agent-sddai-cli.md
+  name: agent-sddai-cli
+  version: 1.0.0
+  layer: L2
+  role: specialist
+  description: COGME SDDAI CLI orchestrator specialist. Custom from zero, stdlib-only. Orchestrates loader
+    -> memory -> engineer -> trainer pipeline via subprocess. Zero external deps.
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+  - agent-sddai-loader
+  - agent-sddai-engineer
+  - agent-sddai-trainer
+  - agent-sddai-memory
+  downstream: []
+- file: .opencode/agents/agent-sddai-engineer.md
+  name: agent-sddai-engineer
+  version: 1.0.0
+  layer: L2
+  role: specialist
+  description: COGME SDDAI feature engineer specialist. Custom from zero, stdlib-only. Transforms ingested
+    data into structured features (word_count, char_count, unique_words, lexical_diversity). Zero external
+    deps.
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+  - agent-sddai-loader
+  - agent-sddai-memory
+  downstream:
+  - agent-sddai-trainer
+- file: .opencode/agents/agent-sddai-loader.md
+  name: agent-sddai-loader
+  version: 1.0.0
+  layer: L2
+  role: specialist
+  description: COGME SDDAI data loader specialist. Custom from zero, stdlib-only. Ingests input files,
+    computes sha256 checksum, returns structured metadata for downstream pipeline stages. Zero external
+    deps.
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+  - agent-sdd-specialist
+  downstream:
+  - agent-sddai-engineer
+  - agent-sddai-memory
+- file: .opencode/agents/agent-sddai-memory.md
+  name: agent-sddai-memory
+  version: 1.0.0
+  layer: L2
+  role: specialist
+  description: COGME SDDAI memory optimizer specialist. Custom from zero, stdlib-only. Monitors system
+    memory via /proc/meminfo, applies gc collection, recommends allocation. Zero external deps.
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+  - agent-sddai-loader
+  downstream:
+  - agent-sddai-engineer
+- file: .opencode/agents/agent-sddai-trainer.md
+  name: agent-sddai-trainer
+  version: 1.0.0
+  layer: L2
+  role: specialist
+  description: COGME SDDAI model trainer specialist. Custom from zero, stdlib-only. Trains deterministic
+    model on engineered features, returns model_id, final_loss, accuracy, artifact checksum. Zero external
+    deps.
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+  - agent-sddai-engineer
+  downstream: []
 - file: .opencode/agents/agent-six-sigma-specialist.md
   name: agent-six-sigma-specialist
   version: 0.1.0

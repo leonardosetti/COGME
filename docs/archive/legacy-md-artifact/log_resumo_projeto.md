@@ -347,7 +347,7 @@ A seguir, as restrições são detalhadas conforme as categorias fundamentais do
 
 **Nota:** As restrições documentadas são de alto nível, conforme exigido pelo TAP. Os detalhamentos operacionais e as estratégias de mitigação serão desenvolvidos nos planos de gerenciamento específicos (Escopo, Cronograma, Custo, Recursos, Qualidade, Riscos). Alterações nestas restrições ao longo do projeto devem ser formalizadas por meio de solicitação de mudança e aprovadas pelo patrocinador (professor orientador).
 
-```
+~~~
 OK;Retornemos agora para a seção 5 Principais requisitos das principais entregas/produtos.
 Esta é uma seção com nível de criticidade alta, pois definirá de forma objetiva quais serão os requisitos que comporão o MVP.
 Vamos considerar o objetivo do projeto e do produto alvo: COGME - Conversão de Ganhos em Moeda Estrangeira;
@@ -367,7 +367,7 @@ O sistema deverá calcular com base no valor da hora vezes o valor da moeda de o
 A Invoice é um artefato que poderá ser a qualquer momento consultado via sistema, no caso de mais de uma invoice armazenada, deve haver uma lógica de sort, deve existir a opção de editar, clonar, deletar e exportar (arquivos no formato PDF ou DOC, DOCX se form mais conveniente);O usuário deve ser capaz de gerenciar seu perfil dando-lhe a possibilidade de alterar seus dados, manipular seu perfil, alterar modalidade de jornada, simular evento de ganho sem vínculo com sua modalidade e visualizar graficamente a evolução de taxa cambial de moeda.Ex.:
 https://economia.uol.com.br/cotacoes/cambio/ OU
 https://www.bcb.gov.br/estatisticas/detalhamentoGrafico/graficosestatisticas/cambioTodo este escopo acima compreende um contexto inicial global para o MVP. A partir desta informações e de todo o histórico deste projeto, realize uma análise crítica rigorosa e realista, aponte os elementos e pontos de: incongruência, forte complexidade (possível inviabilizador), gaps técnicos/lógicos, considerações relevantes.*** A partir desta análise realizarei uma revisão para seguirmos adiante com as definições e levantamento de requisitos funcionais e não funcionais.
-```
+~~~
 
 ## Análise Crítica Rigorosa do Escopo MVP Proposto
 

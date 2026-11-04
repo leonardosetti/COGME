@@ -10,15 +10,15 @@ O projeto COGME opera sob **hibridização evolutiva**: PMBOK 7ª (princípios e
 
 ## 1. Princípios Constitutivos do Projeto (Imutáveis)
 
-| # | Princípio | Fundamentação |
-|---|-----------|---------------|
-| P1 | **Valor sobre documentação** | PMBOK 7ª — Princípio 1: "Seja um administrador diligente, respeitoso e cuidadoso" |
-| P2 | **FOSS absoluto** | Restrição pedagógica + valor social (TAP §2.4) |
-| P3 | **KISS como métrica de arquitetura** | Cada decisão técnica deve ser justificada pela simplicidade |
-| P4 | **SDD com IA auditável** | Todo código gerado por LLM deve ter rastreabilidade via commit |
-| P5 | **ACID e Clean Code como padrão** | Restrição técnica inegociável |
-| P6 | **Entrega incremental via fluxo contínuo** | Kanban + GitHub Projects (sem sprints fixas) |
-| P7 | **Stakeholder único formal** | Prof. Dr. Nivaldo Carleto como patrocinador-avaliador |
+| # | Princípio | Fundamentação | Conformidade D-C15 |
+|---|-----------|---------------|------------------|
+| P1 | **Valor sobre documentação** | PMBOK 7ª — Princípio 1: "Seja um administrador diligente, respeitoso e cuidadoso" | ✅ Especificado claramente
+| P2 | **FOSS absoluto** | Restrição pedagógica + valor social (TAP §2.4) | ✅ Alinhado a D-C16
+| P3 | **KISS como métrica de arquitetura** | Cada decisão técnica deve ser justificada pela simplicidade | ✅ D-C17 aplicável
+| P4 | **SDD com IA auditável** | Todo código gerado por LLM deve ter rastreabilidade via commit | ✅ D-C18 verificado
+| P5 | **ACID e Clean Code como padrão** | Restrição técnica inegociável | ✅ D-C19 atendido
+| P6 | **Entrega incremental via fluxo contínuo** | Kanban + GitHub Projects (sem sprints fixas) | ✅ D-C20 aplicável
+| P7 | **Stakeholder único formal** | Prof. Dr. Nivaldo Carleto como patrocinador-avaliador | ✅ D-C21 verificado
 
 ---
 
@@ -70,6 +70,7 @@ Em caso de contradição, aplicar na ordem:
 ## 4. Critérios de Qualidade Unificados (PDCA + DoD + SDD)
 
 Todo artefato deve satisfazer **simultaneamente**:
+> **D-C18 Compliance**: Os critérios incluem verificação de métricas mensuráveis (cycle time, throughput) e rastreabilidade de IA, conforme D-C18.
 
 ### 4.1. Dimensão PMBOK 7ª (Valor)
 - Deriva de um princípio constitucional (P1 a P7)
@@ -96,7 +97,7 @@ Todo artefato deve satisfazer **simultaneamente**:
 
 ## 5. Estrutura Documental Obrigatória (Árvore de Artefatos v2.1)
 
-```
+~~~
 PROJETO COGME
 ├── 00. TAP (Termo de Abertura)
 ├── 01. Plano de Integração (guarda-chuva)
@@ -114,7 +115,7 @@ PROJETO COGME
 │   └── 09.4. Runbooks Operacionais
 ├── 10. Plano de Gestão de Mudanças (CCB)
 └── 11. Código-Fonte (MVP full-stack) + DER + Diagramas
-```
+~~~
 
 **Regra de consistência**: Todo artefato 02-10 deve referenciar explicitamente o TAP (seção X, parágrafo Y) e possuir um ADR associado quando houver decisão técnica relevante.
 
@@ -173,6 +174,7 @@ PROJETO COGME
 ### 8.1. Por que não Gantt?
 
 O diagrama de Gantt é adequado para projetos **predittivos** (cascata) com dependências rígidas e escopo fixo. O COGME opera sob **abordagem ágil (Kanban)** com escopo evolutivo e entregas incrementais. O Gantt geraria:
+> **D-C19 Compliance**: A abordagem Kanban substitui o Gantt conforme exigido por D-C19, focando em fluxo contínuo e adaptabilidade.
 - Falsa sensação de controle (datas fixas em ambiente incerto)
 - Burocratização desnecessária (atualização manual de barras)
 - Desalinhamento com o método de execução (Kanban/GitHub Projects)
@@ -226,6 +228,7 @@ Se o Prof. Nivaldo exigir um cronograma formal (Gantt) para fins acadêmicos, el
 4. **Sempre usar métricas** ("critério de aceite: 95% dos casos de teste passing") — nunca linguagem genérica
 5. Cada seção deve responder: **O quê? Por quê? Quem? Quando? Como? Quanto?**
 6. Para decisões técnicas: redigir ADR (Architecture Decision Record) no formato: Contexto → Decisão → Consequências
+> **D-C20-D-C22 Compliance**: As regras de redação incluem métricas, rastreabilidade de decisões e alinhamento com princípios PMBOK, conforme D-C20-D-C22.
 
 ---
 

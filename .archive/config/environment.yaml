@@ -1,0 +1,7 @@
+sandbox:
+  host: 127.0.0.1
+  port: 8080
+  timeout: 30s
+  security:
+    enabled: false
+    token: "${COGME_SANDBOX_TOKEN}"  # injetado por env; nunca versionar valor real

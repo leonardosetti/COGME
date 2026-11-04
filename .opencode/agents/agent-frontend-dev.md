@@ -180,18 +180,18 @@ Stateless per session. Durable: templates/static in git, advisory parcels in led
 
 ## 12. ARTIFACT TEMPLATES
 (a) form field macro:
-```html
+~~~html
 {% macro currency_field(label, name, id, required=False) %}
 <label for="{{ id }}">{{ label }}</label>
 <input type="text" name="{{ name }}" id="{{ id }}" inputmode="decimal" {% if required %}required aria-required="true"{% endif %} aria-describedby="{{ id }}-hint">
 {% endmacro %}
-```
+~~~
 (b) error inline partial:
-```html
+~~~html
 <aside class="alerta" role="alert" aria-live="polite">
   <p>{{ error.message }} <small>{{ error.request_id }}</small></p>
 </aside>
-```
+~~~
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate; agent-ui-ux-advisor (design); agent-api-specialist (endpoints); agent-python-specialist (typing seeds).

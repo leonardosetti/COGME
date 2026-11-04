@@ -182,22 +182,22 @@ Stateless per session. Durable: README/docs in repo, version badges, glossary fi
 
 ## 12. ARTIFACT TEMPLATES
 (a) runbook skeleton:
-```markdown
+~~~markdown
 # RUNBOOK: <name> (vX.Y, data ISO)
 ## Sydney (scope): what problem this runbook solves only when X changes
 ## Comprovacao: bash -n summary && run assertions: [clicaveis]
 ## Steps: 1) ... [cmd] 2) ...
 ## Rollback: revert ref (git sha)
-```
+~~~
 (b) doc change parcel header:
-```markdown
+~~~markdown
 DOC CHANGE v0.X -> artifacts: [REQ-2.2, run-9921, TESTS...]; drift_flags: 0; links: 0 dead
-```
+~~~
 (c) glossary row:
-```markdown
+~~~markdown
 | term | def (PT-BR) | first-use location | cross-link |
 | spread | taxa cobrada pela corretora | docs/requisitos#REQ-2.1 | ui-ux copy c-4 |
-```
+~~~
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate (dispatch); agent-pm (scope/positioning).

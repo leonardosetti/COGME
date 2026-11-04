@@ -415,7 +415,7 @@ Derivado do TAP §3.3 (Condições de Fracasso), os seguintes gatilhos acionam a
 | **C2** (stack SDD)    | Stack em avaliação; ADR-001 poderá sofrer atualizações de impacto relevante. Agregar a**stack canônica local** (em vez de exclusivamente QwenStudio). Inclusão/exclusão/troca de ferramentas exigirá **ADRs específicas**                                                        | §2.3.4 reescrito: stack local canônica nomeada (llama.cpp + Qwen 32B + OpenCode); ADR-001 declarada em avaliação; regra de ADR específica para mudanças de stack vinculada à política de ADRs |
 | **C3** (DoD/Padrões) | Correção pertence ao Plano de Escopo §2.6 (Integração v2.0 confirmada coerente)                                                                                                                                                                                                                   | §2.6: item 8 do DoD mantido e reforçado com nota de canonicidade + Padrões A/B (OKB §9.3); Tabela 2 expandida com as duas linhas de rastreabilidade cruzada propostas                             |
 
-**Achados externos remanescentes (reporte ao GP, não bloqueiam):** grafia do stakeholder no Glossário ("Carletto" → corrigir para "Carleto", grafia do TAP); Cycle Time "To Do → Done" no Glossário (alinhar a "In Progress → Done", ADR-003); cabeçalho "Fases EAP v2.0" na matriz do TAP §5 (find & replace); item 10 da estrutura documental do Glossário (Plano de Gestão de Mudanças atendido pela Integração §1.7 — GMV).
+**Achados externos remanescentes (reporte ao GP, não bloqueiam):** grafia do stakeholder no Glossário ("Carleto" → corrigir para "Carleto", grafia do TAP); Cycle Time "To Do → Done" no Glossário (alinhar a "In Progress → Done", ADR-003); cabeçalho "Fases EAP v2.0" na matriz do TAP §5 (find & replace); item 10 da estrutura documental do Glossário (Plano de Gestão de Mudanças atendido pela Integração §1.7 — GMV).
 
 **Micro-ajuste opcional na Integração §1.3.2** (reforço de rastreabilidade do DoD): permanece **aguardando aprovação do GP**, fora do escopo desta redação.
 
@@ -819,7 +819,7 @@ Fechamento de milestones: uma milestone não é fechada enquanto houver Issues a
 | ---------------------------------------------------------------------- | -------------------------------------- | ---------------------------------------- |
 | Numeração 6.3/6.5 no §8.1                                           | Base de conhecimento operacional §8.1 | Próxima revisão da base                |
 | "Processo 6.4 Estimar Custos" → 6.4 Estimar Durações (custos = 7.2) | Glossário §3                         | Próxima revisão do Glossário          |
-| Grafia "Carletto" → "Carleto"                                         | Glossário                             | Próxima revisão do Glossário          |
+| Grafia "Carleto" → "Carleto"                                         | Glossário                             | Próxima revisão do Glossário          |
 | Cycle Time "To Do → Done" → "In Progress → Done"                    | Glossário                             | Próxima revisão do Glossário          |
 | Contagem EAP "13/48" → 12/37 (baseline do TAP §4)                    | Glossário §1                         | Próxima revisão do Glossário          |
 | Convenção dupla de dias                                              | ADR-003 / Glossário / baseline        | Formalização da baseline (após 03/10) |
@@ -951,7 +951,7 @@ O gerenciamento de custos do COGME opera em três camadas de prevenção:
 **[FIG-1 — Fluxo de Prevenção de Custos]**
 *Inserção obrigatória — Formato: Mermaid `flowchart TD`*
 
-```mermaid
+~~~mermaid
 flowchart TD
     A[Nova dependência identificada] --> B{Gate 1:<br/>Licença OSI-approved?}
     B -->|NÃO| C[Rejeição imediata]
@@ -967,7 +967,7 @@ flowchart TD
     style H fill:#0e8a16
   
     I[Desvio de qualquer gate<br/>aciona change-request<br/>Integração §1.7] -.-> B
-```
+~~~
 
 *Conteúdo:* Fluxograma vertical com três gates sequenciais e anotação sobre change-request.
 *Necessidade real:* Materializa visualmente o mecanismo de prevenção de custos, demonstrando ao avaliador que "custo zero" não é ausência de governança, mas governança rigorosa sobre conformidade FOSS.
@@ -1267,7 +1267,7 @@ Gero os 4 SVGs com estética profissional para documento ABNT A4:
 
 | #  | Achado                                                                                                    | Artefato   | Severidade | Proposta                                           |
 | -- | --------------------------------------------------------------------------------------------------------- | ---------- | ---------- | -------------------------------------------------- |
-| E1 | Glossário v3.1 usa "Carletto" (grafia incorreta); TAP e seção 5 usam "Carleto" (correto)               | Glossário | BAIXA      | Corrigir grafia na próxima revisão do Glossário |
+| E1 | Glossário v3.1 usa "Carleto" (grafia incorreta); TAP e seção 5 usam "Carleto" (correto)               | Glossário | BAIXA      | Corrigir grafia na próxima revisão do Glossário |
 | E2 | NC-Q2 menciona "Processo 6.4 Estimar Custos" no Glossário, mas não especifica numeração correta (7.2) | NC-Q2      | BAIXA      | Adicionar numeração correta na NC-Q2             |
 
 ---
@@ -1387,7 +1387,7 @@ Dada a inaplicabilidade de EVM (ADR-003, Integração §1.6.2), o controle de qu
 
 Conforme N7.1 da EAP e REQ-11, o pipeline CI executa automaticamente a cada push:
 
-```yaml
+~~~yaml
 # .github/workflows/ci.yml (resumo)
 name: CI Pipeline
 on: [push, pull_request]
@@ -1408,7 +1408,7 @@ jobs:
         run: pytest --cov=cogme --cov-report=xml --cov-fail-under=80
       - name: Upload coverage
         uses: codecov/codecov-action@v3
-```
+~~~
 
 **Critérios de qualidade do pipeline:**
 
@@ -1646,7 +1646,7 @@ A definição operacional de Cycle Time aqui vigente é `In Progress` → `Done`
 Este plano consolida 12 ciclos PDCA (N1-N12), conforme baseline do TAP §4 (12 fases + 37 pacotes). O Glossário v3.1 pode registrar "13 fases + 48 pacotes" — esta contagem é volátil e não canônica. O TAP e Planos de Integração/Escopo são as fontes canônicas. O TAP não integra ciclos PDCA (Premissa P9).
 
 **NC-Q5 — Grafia do Stakeholder (E1):**
-A seção 5 utiliza a grafia "Prof. Dr. Nivaldo Carleto" conforme TAP v3. O Glossário v3.1 registra "Carletto" (grafia incorreta). Esta inconsistência é registrada para saneamento na próxima revisão do Glossário (pós-M1).
+A seção 5 utiliza a grafia "Prof. Dr. Nivaldo Carleto" conforme TAP v3. O Glossário v3.1 registra "Carleto" (grafia incorreta). Esta inconsistência é registrada para saneamento na próxima revisão do Glossário (pós-M1).
 
 **Registro de saneamento — artefatos vivos (não bloqueante):**
 
@@ -1655,7 +1655,7 @@ A seção 5 utiliza a grafia "Prof. Dr. Nivaldo Carleto" conforme TAP v3. O Glos
 | Numeração de processos 8.1-8.3                    | Glossário §3 | Próxima revisão do Glossário |
 | Contagem EAP "13/48" → 12/37                       | Glossário §1 | Próxima revisão do Glossário |
 | Cycle Time "To Do → Done" → "In Progress → Done" | Glossário     | Próxima revisão do Glossário |
-| Grafia "Carletto" → "Carleto"                      | Glossário     | Próxima revisão do Glossário |
+| Grafia "Carleto" → "Carleto"                      | Glossário     | Próxima revisão do Glossário |
 
 ## 5.10 DECLARAÇÃO DE RASTREABILIDADE
 

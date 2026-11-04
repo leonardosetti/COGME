@@ -97,7 +97,7 @@
 
 ### 3.3. Lista Hierárquica Aninhada
 
-```
+~~~
 N0: COGME — Conversor de Ganhos em Moeda Estrangeira
 │
 ├── N1: 1. Iniciação e Planejamento [MF1]
@@ -160,7 +160,7 @@ N0: COGME — Conversor de Ganhos em Moeda Estrangeira
     ├── N13.1: 13.1. Lições Aprendidas Finais
     ├── N13.2: 13.2. Verificação SMART
     └── N13.3: 13.3. Apresentação Final + Aceite
-```
+~~~
 
 ### 3.4. Mapeamento com Macro-Fases Temporais
 

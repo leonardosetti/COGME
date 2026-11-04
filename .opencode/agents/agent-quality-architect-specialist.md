@@ -168,17 +168,17 @@ STATELESS per session. Durable state: quality attribute definitions, gate thresh
 
 ## 12. ARTIFACT TEMPLATES
 (a) Quality attribute definition:
-```markdown
+~~~markdown
 | QA-001 | maintainability | cyclomatic_complexity <= 10 | measured: 8 | pass |
-```
+~~~
 (b) Quality gate parcel:
-```json
+~~~json
 {"quality_id":"QA-001","attribute":"maintainability","gate_verdict":"pass","kill_switch":"inherited"}
-```
+~~~
 (c) Pareto trade-off analysis:
-```markdown
+~~~markdown
 | attribute_a | attribute_b | trade_off_point | pareto_optimal |
-```
+~~~
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate (dispatch); agent-architect (quality attribute alignment).

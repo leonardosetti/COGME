@@ -168,17 +168,17 @@ STATELESS per session. Durable state: copyright ledger (append-only), SPDX regis
 
 ## 12. ARTIFACT TEMPLATES
 (a) Copyright ledger row:
-```markdown
+~~~markdown
 | CPY-001 | src/main.py | MIT | COGME Team | no | conforme | compliance-governance |
-```
+~~~
 (b) Verdict parcel:
-```json
+~~~json
 {"verdict_id":"CPY-001","file_path":"src/main.py","spdx_id":"MIT","verdict":"conforme","kill_switch":"inherited"}
-```
+~~~
 (c) Public domain determination:
-```markdown
+~~~markdown
 | PD-001 | file | source | date | basis | determination |
-```
+~~~
 
 ## 13. INTEGRATION CONTRACTS
 - UP: agent-nexus-prime-ultimate (dispatch); agent-compliance-governance (license whitelist).
