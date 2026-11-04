@@ -19,7 +19,7 @@ O backend do MVP está especificado em `.ai/specs/backend-mvp-v1.spec.md` e impl
 
 A spec e a ADR-001 v1.1.0 fixam o essencial: PostgreSQL, Docker Compose e a cadeia de cotações com Frankfurter primária e PTAX de reserva. Restam decisões que nenhum documento anterior registra e que afetam o resultado, os dados guardados e a resposta da API:
 
-1. **Spread e IOF.** O plano de desenvolvimento deixou em aberto se o usuário informa ou se o sistema sugere (`[A CONFIRMAR]` em `docs/planos/desenvolvimento.md` §3.2.3). O Plano de Riscos (RE-04) trata a mudança de alíquota de IOF como risco externo.
+1. **Spread e IOF.** O plano de desenvolvimento deixou em aberto se o usuário informa ou se o sistema sugere (referência a esta proposta (ADR-016 §D1)). O Plano de Riscos (RE-04) trata a mudança de alíquota de IOF como risco externo.
 2. **Ordem e arredondamento.** A spec define a sequência do cálculo e o arredondamento, mas não os registra como decisão.
 3. **Fonte da cotação.** Frankfurter e PTAX não dão o mesmo número. Medição de 30/10/2026 (USD): Frankfurter 5,4325; PTAX (`cotacaoCompra`) 5,4206. A diferença é de cerca de 0,22 % em relação à PTAX. Por isso a resposta precisa informar a fonte usada.
 4. **Cotação vencida.** A spec manda usar o último cache quando as fontes falham, mas não define idade máxima.
@@ -29,7 +29,7 @@ A stack (PostgreSQL 15+, Docker Compose, Nginx latente e hierarquia de fontes de
 
 ## Decisões
 
-**D1. Spread e IOF são informados pelo usuário.** O código não contém alíquota de IOF, percentual de spread nem tabela de alíquotas. `calculator.calculate` recebe `spread_pct` e `iof_pct` como parâmetros. Toda resposta traz o aviso fixo: "Simulação de caráter informativo; spread e IOF foram informados pelo usuário e não substituem a orientação de um profissional habilitado." Esta decisão resolve o `[A CONFIRMAR]` de `docs/planos/desenvolvimento.md` §3.2.3.
+**D1. Spread e IOF são informados pelo usuário.** O código não contém alíquota de IOF, percentual de spread nem tabela de alíquotas. `calculator.calculate` recebe `spread_pct` e `iof_pct` como parâmetros. Toda resposta traz o aviso fixo: "Simulação de caráter informativo; spread e IOF foram informados pelo usuário e não substituem a orientação de um profissional habilitado." Esta decisão resolve a referência a esta proposta (ADR-016 §D1).
 
 **D2. Ordem do cálculo.** Todas as etapas usam `Decimal`:
 
@@ -115,7 +115,7 @@ Nenhuma destas pendências está aceita nem resolvida por esta ADR.
 - **P4. Atributo privado do WeasyPrint.** O `url_fetcher` que recusa recursos externos depende de `_fail_on_errors`, atributo não documentado da versão 70.0 (versão fixada). Uma atualização pode mudar esse comportamento sem aviso. Opções: alternativa pública ou teste de regressão dedicado. **Verificação de 01/11/2026:** dependência confirmada em `weasyprint/urls.py:428`, mas o risco é baixo. O template não referencia URL, e dado do usuário escapado gerou 0 chamadas ao fetcher. Sem o atributo, uma busca gera `AttributeError`, que a API converte em 503. A alternativa pública existe e passou no teste: subclasse de `weasyprint.urls.URLFetcher` com `fetch` próprio.
 - **P5. Agentes em provedor externo.** Na execução do backend, os agentes de `.opencode/agents/` foram usados como papéis em modelos Claude (Sonnet, Opus e Haiku 5.5), por provedor externo, conforme `.ai/handoffs/HF-0500-backend-mvp.md`. Não foi usada a inferência local Qwen3 do P-02. O P-02 admite provedor cloud apenas para tarefas não sensíveis e veda o envio de código-fonte, especificações e handoffs. O P-03 classifica código e especificações como sensíveis. Esse uso precisa de avaliação do CCB. Esta ADR não o classifica como conforme.
 - **P6. Retenção de `fx_quotes`.** A spec prevê manutenção futura, sem prazo definido. **Verificação de 01/11/2026:** risco baixo. Com 175.200 linhas, equivalentes a 10 anos com 2 moedas renovadas a cada hora, a tabela ocupa 23 MB e a consulta da última cotação leva 0,04 ms. Só há dados públicos.
-- **P7. Divergências com documentos existentes.** (a) Atualizar o RE-04 do Plano de Riscos para a forma adotada em D1. (b) O TAP e o Plano de Gerenciamento v2.1.0 citam PTAX como fonte de REQ-01. Por orientação da equipe (02/11/2026), essa redação permanece. Alinhá-la à ADR-001 v1.1.0, se o CCB quiser, segue o regime de emenda controlada da ADR-005 v1.1.0 (delta em `docs/tap/delta-v3.1.md`). (c) O `[A CONFIRMAR]` de `desenvolvimento.md` §3.2.3 foi substituído pela referência a esta proposta; a decisão segue sujeita ao CCB.
+- **P7. Divergências com documentos existentes.** (a) Atualizar o RE-04 do Plano de Riscos para a forma adotada em D1. (b) O TAP e o Plano de Gerenciamento v2.1.0 citam PTAX como fonte de REQ-01. Por orientação da equipe (02/11/2026), essa redação permanece. Alinhá-la à ADR-001 v1.1.0, se o CCB quiser, segue o regime de emenda controlada da ADR-005 v1.1.0 (delta em `docs/tap/delta-v3.1.md`). (c) O OKB-C-05 (A5) de `desenvolvimento.md` §3.2.3 foi substituído pela referência a esta proposta; a decisão segue sujeita ao CCB.
 - **P8. Versão do Python.** A ADR-001 v1.1.0 define Python 3.11; a imagem e o CI usam 3.12 (D11). Pela regra do ADR-LOG, cabe ao CCB escolher entre emendar a ADR-001 (ADR-LOG) ou passar imagem e CI para 3.11.
 
 ## Ratificação

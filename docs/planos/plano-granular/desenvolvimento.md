@@ -242,4 +242,4 @@ Fonte: Elaborado pelos autores (2026), com base no TAP (Tabela 2).
 | Versão | Data | Alteração | Responsável |
 | --- | --- | --- | --- |
 | 1.0 | 25/10/2026 | Emissão inicial | Edson Luis Silva |
-| 1.1 | 31/10/2026 | Correção de drift: PostgreSQL no lugar de SQLite (ADR-010); Frankfurter como fonte primária e PTAX como reserva (ADR-010 §4); situação de `src/` na branch `feat/backend-mvp`, ainda não na `main`; status de REQ-01 a REQ-07; `[A CONFIRMAR]` de §3.2.3 substituído pela referência à ADR-016 (proposta, não ratificada) | agent-architect (T10); revisão humana pendente |
+| 1.1 | 31/10/2026 | Correção de drift: PostgreSQL no lugar de SQLite (ADR-010); Frankfurter como fonte primária e PTAX como reserva (ADR-010 §4); situação de `src/` na branch `feat/backend-mvp`, ainda não na `main`; status de REQ-01 a REQ-07; `ADR-016 §D1` de §3.2.3 substituído pela referência à ADR-016 (proposta, não ratificada) | agent-architect (T10); revisão humana pendente |

@@ -32,7 +32,7 @@ O artefato atual é uma **monografia acadêmica com planos de área embutidos**,
 - D-C04: Grafia inconsistente do stakeholder ("Ms." vs "Dr.")
 - D-C05: Stack drift silencioso (SQLite/Qwen 32B vs ADRs 006/010)
 - D-C06: Frontend desatualizado (HTMX/Tailwind vs ADR-001)
-- D-C07: 6 marcadores `[A CONFIRMAR]` em pontos críticos
+- D-C07: 6 marcadores `OKB-C-XX` em pontos críticos
 
 ## 2. Estratégia de Execução (Compressão 48h)
 
@@ -43,7 +43,7 @@ O report original estimava 31h em 9 blocos. Compressão para 2 dias exige priori
 | **B1** | Bifurcação Monografia × Plano | 8h | 🔴 P0 | **Executar primeiro** — cria dois artefatos limpos |
 | **B2** | Saneamento de ADRs violadas | 6h | 🔴 P0 | **Executar segundo** — find & replace global |
 | **B3** | Remoção do TAP embutido | 2h | 🔴 P0 | **Executar terceiro** — substituir por cross-reference |
-| **B4** | Eliminação de `[A CONFIRMAR]` | 4h | 🔴 P0 | **Executar quarto** — preencher ou declarar INSUFFICIENT DATA |
+| **B4** | Eliminação de `OKB-C-XX` | 4h | 🔴 P0 | **Executar quarto** — preencher ou declarar INSUFFICIENT DATA |
 | **B5** | Saneamento do Glossário v3.2 | 3h | 🟠 P1 | **Adiar** — não bloqueia plano profissional |
 | **B6** | Formalização de CR-001 | 2h | 🟠 P1 | **Adiar** — decisão CCB pendente |
 | **B7** | Reestruturação de Seções Técnicas | 4h | 🟠 P1 | **Adiar** — mover para spec separada |
@@ -98,8 +98,8 @@ derived-from:
 - [ ] Zero páginas de TAP no corpo do plano
 - [ ] Cross-reference ao `docs/tap/TAP.docx` canônico inserida
 
-### Gate B4 — Eliminação de `[A CONFIRMAR]`
-- [ ] Zero ocorrências de `[A CONFIRMAR]`
+### Gate B4 — Eliminação de `OKB-C-XX`
+- [ ] Zero ocorrências de `OKB-C-XX`
 - [ ] Todos os `INSUFFICIENT DATA` com referência OKB-C
 - [ ] Lições aprendidas transpostas para `MF2-licoes.md`
 
@@ -110,7 +110,7 @@ derived-from:
 | 31/10 (hoje) | B1 | Bifurcação Monografia × Plano | Leonardo |
 | 31/10 (noite) | B2 | Saneamento de ADRs (find & replace) | Fabricio + Leonardo |
 | 01/10 (manhã) | B3 | Remoção do TAP embutido | Leonardo |
-| 01/10 (tarde) | B4 | Eliminação de `[A CONFIRMAR]` | Edson + Leonardo |
+| 01/10 (tarde) | B4 | Eliminação de `OKB-C-XX` | Edson + Leonardo |
 | 01/10 (noite) | Revisão | Code Review cruzado (todos) | Equipe |
 | 02/11 (manhã) | Validação | Gates de qualidade + commit final | Leonardo (CCB) |
 
@@ -162,7 +162,7 @@ derived-from:
 | #910-B1-Bifurcacao | Separar monografia e plano profissional | 8h | Leonardo | 🔴 P0 | 31/10 |
 | #911-B2-ADRs | Saneamento de ADRs violadas (find & replace) | 6h | Fabricio + Leonardo | 🔴 P0 | 31/10 |
 | #912-B3-TAP | Remover TAP embutido + cross-reference | 2h | Leonardo | 🔴 P0 | 01/11 |
-| #913-B4-A-CONFIRMAR | Eliminar 6 marcadores `[A CONFIRMAR]` | 4h | Edson + Leonardo | 🔴 P0 | 01/11 |
+| #913-B4-A-CONFIRMAR | Eliminar 6 marcadores `OKB-C-XX` | 4h | Edson + Leonardo | 🔴 P0 | 01/11 |
 | #914-Revisao | Code Review cruzado (todos) | 2h | Equipe | 🔴 P0 | 01/11 |
 | #915-Validacao | Gates de qualidade + commit final | 2h | Leonardo (CCB) | 🔴 P0 | 02/11 |
 
@@ -256,12 +256,12 @@ Precisamos acomodar na documentação de projeto também na área de conheciment
 
 **Decisão técnica:** Nenhuma nova ADR necessária — a ADR-010 já declara Docker + PostgreSQL. Apenas saneamento documental (find & replace) para alinhar tabelas e REQs à ADR-010.
 
-### 1.4 Sobre o Bloco B4 (Marcadores `[A CONFIRMAR]`) — Esclarecimento
+### 1.4 Sobre o Bloco B4 (Marcadores `OKB-C-XX`) — Esclarecimento
 
 **Declaração do CCB:** *"Bloco 4 sobre marcadores não está claro."*
 
 **Esclarecimento técnico:**
-O Bloco B4 visa eliminar 6 marcadores `[A CONFIRMAR]` no plano v2.0.1:
+O Bloco B4 visa eliminar 6 marcadores `OKB-C-XX` no plano v2.0.1:
 
 | # | Localização | Marcador | Ação proposta |
 |---|-------------|----------|---------------|
@@ -328,7 +328,7 @@ Cross-references ao OKB substituem duplicação de conteúdo (princípio "1 fato
 
 **Ação prévia:** Emitir **Ata CCB-005** revogando o freeze do TAP (ADR-005).
 
-### Bloco B4 — Eliminação de `[A CONFIRMAR]` (P0 · 4h)
+### Bloco B4 — Eliminação de `OKB-C-XX` (P0 · 4h)
 **Mantido com esclarecimento:** Ver tabela em 1.4 acima.
 
 ### Bloco B5 — Saneamento do Glossário v3.2 (P0 · 3h)
@@ -365,7 +365,7 @@ Cross-references ao OKB substituem duplicação de conteúdo (princípio "1 fato
 | B1 (Bifurcação) | 🔴 P0 | 8h | Leonardo | 31/10–01/11 |
 | B2 (ADRs) | 🔴 P0 | 6h | Fabricio + Leonardo | 01/11 |
 | B3 (TAP integrado) | 🔴 P0 | 4h | Leonardo | 01/11 |
-| B4 ([A CONFIRMAR]) | 🔴 P0 | 4h | Edson + Leonardo | 01/11 |
+| B4 (OKB-C-XX) | 🔴 P0 | 4h | Edson + Leonardo | 01/11 |
 | B5 (Glossário) | 🔴 P0 | 3h | Edson + Leonardo | 01/11 |
 | B10 (User Stories + Apêndice) | 🟠 P1 | 3h | Fabricio | 02/11 |
 | B7 (Seção 3 → spec) | 🟠 P1 | 4h | Fabricio | 02/11 |
@@ -420,7 +420,7 @@ Processos PMBOK 6ª (dicionário): 4.6 (Controle Integrado de Mudanças), 5.2 (C
 | #910-B1-Bifurcacao | Separar monografia e plano profissional | 8h | Leonardo | 🔴 P0 | 31/10–01/11 |
 | #911-B2-ADRs | Saneamento de ADRs violadas (find & replace) | 6h | Fabricio + Leonardo | 🔴 P0 | 01/11 |
 | **#912-B3-TAP-Integrado** | **Integrar TAP como Seção 1 do plano (após CCB-005)** | 4h | Leonardo | 🔴 P0 | 01/11 |
-| #913-B4-A-CONFIRMAR | Eliminar 6 marcadores `[A CONFIRMAR]` | 4h | Edson + Leonardo | 🔴 P0 | 01/11 |
+| #913-B4-A-CONFIRMAR | Eliminar 6 marcadores `OKB-C-XX` | 4h | Edson + Leonardo | 🔴 P0 | 01/11 |
 | #914-B5-Glossario | Saneamento do Glossário v3.2.0 | 3h | Edson + Leonardo | 🔴 P0 | 01/11 |
 | **#915-B10-UserStories** | **Incluir User Stories, testes e apêndice** | 3h | Fabricio | 🟠 P1 | 02/11 |
 | #916-B7-Secao-3 | Mover Seção 3 para spec técnica | 4h | Fabricio | 🟠 P1 | 02/11 |
@@ -429,7 +429,7 @@ Processos PMBOK 6ª (dicionário): 4.6 (Controle Integrado de Mudanças), 5.2 (C
 **Gate de Qualidade (DoD) por Bloco:**
 - [ ] Ata CCB-005 emitida e registrada em `docs/governanca/ccb-log.md`
 - [ ] TAP integrado como Seção 1 do plano (após CCB-005)
-- [ ] Zero ocorrências de `[A CONFIRMAR]` (verificação via `grep`)
+- [ ] Zero ocorrências de `OKB-C-XX` (verificação via `grep`)
 - [ ] Glossário v3.2.0 com `grep` negativo para "Carletto", "13 fases", "48 pacotes", "Qwen 32B", "To Do → Done"
 - [ ] Tabelas 88, 119 e REQ-07 alinhados à ADR-010 (PostgreSQL)
 - [ ] User Stories (GWT) incluídas no Plano de Escopo §2.3.5
@@ -515,7 +515,7 @@ Camadas ortogonais a declarar (proposta, sujeita à ADR-010): `app` (runtime Pyt
 
 ### 1.6 Bloco 4 — **estava obscuro, sim. Reescrito.**
 
-`[A CONFIRMAR]` são **placeholders de autoria** deixados no docx em 6 pontos (Tabelas 88, 127, 128; Seções 4.4, 4.7; Referências). Não são bugs; são **decisões não tomadas** que travam a redação definitiva. O B4 não é "apagar texto" — é **triagem decisória com 3 saídas possíveis**:
+`OKB-C-XX` são **placeholders de autoria** deixados no docx em 6 pontos (Tabelas 88, 127, 128; Seções 4.4, 4.7; Referências). Não são bugs; são **decisões não tomadas** que travam a redação definitiva. O B4 não é "apagar texto" — é **triagem decisória com 3 saídas possíveis**:
 
 | Saída | Quando | Registro |
 |---|---|---|
@@ -523,7 +523,7 @@ Camadas ortogonais a declarar (proposta, sujeita à ADR-010): `app` (runtime Pyt
 | **INSUFFICIENT DATA + assunção** | Dado inexiste e não é obtível até 02/11 | Assunção explícita + owner + prazo pós-M4 |
 | **SUPRIMIR** | Item obsoleto (ex.: resquício SQLite/EVM) | Remoção + nota no delta log |
 
-**Regra dura:** zero `[A CONFIRMAR]` no artefato final. Um placeholder em documento "definitivo" é confissão de incompletude — pior que uma assunção declarada.
+**Regra dura:** zero `OKB-C-XX` no artefato final. Um placeholder em documento "definitivo" é confissão de incompletude — pior que uma assunção declarada.
 **INSUFFICIENT DATA:** o **conteúdo** das Tabelas 88/127/128 não veio nos excertos. Não inventarei o que falta. Triagem item-a-item no B4 com o docx aberto.
 
 ### 1.7 OKB como SSOT de acesso rápido — **aceito, com distinção ontológica obrigatória**
@@ -576,7 +576,7 @@ A rodada 1 continha erro material: datas **"01/10"** onde deveria constar **01/1
 | **B1-R** | Front-matter híbrido (capa/rosto/sumário) + §2 subordinação constitucional | 3 | ↓ de 8h (bifurcação cancelada) |
 | **B2-R** | Saneamento editorial: grafia **Prof. Dr. Nivaldo Carletto** (docx traz "Ms." **e** "Carleto" — duplo defeito, ADR-008) · SQLite→PostgreSQL · remoção HTMX/Tailwind/Jinja2 · frase ADR-007 | 4 | ↓ de 6h |
 | **B3-R** | **TAP como §1**, emendas pontuais sob ADR-013 + tabela delta + versionamento | 4 | **INVERTIDO** (era remoção) |
-| **B4-R** | Triagem dos 6 `[A CONFIRMAR]` (protocolo §1.6) | 3 | Esclarecido |
+| **B4-R** | Triagem dos 6 `OKB-C-XX` (protocolo §1.6) | 3 | Esclarecido |
 | **B5-N** | User Stories em Escopo (12 Epics / 37 Issues) | 3 | **NOVO** |
 | **B6-N** | Testes + Métricas (Qualidade/Medição) + baseline seed | 3 | **NOVO** |
 | **B7-N** | Apêndice ADR/TA/CR + absorção OKB v5.2.0 | 2 | **NOVO** |
@@ -635,7 +635,7 @@ A rodada 1 continha erro material: datas **"01/10"** onde deveria constar **01/1
 | #912 | B1-R — Front-matter híbrido + §2 subordinação constitucional | `prio:P0` `area:integracao` | 3 | Leonardo | 31/10 |
 | #913 | B2-R — Saneamento grafia ADR-008 + stack ADRs 001/006/010 | `prio:P0` `area:qualidade` | 4 | Fabricio | 31/10 |
 | #914 | B3-R — TAP §1 + emendas pontuais + tabela delta | `prio:P0` `area:integracao` | 4 | Leonardo | 01/11 |
-| #915 | B4-R — Triagem 6 `[A CONFIRMAR]` | `prio:P0` `area:escopo` | 3 | Edson | 01/11 |
+| #915 | B4-R — Triagem 6 `OKB-C-XX` | `prio:P0` `area:escopo` | 3 | Edson | 01/11 |
 | #916 | B5-N — User Stories: 12 Epics / 37 Issues + DoD | `prio:P1` `area:escopo` | 3 | Edson + Leonardo | 01/11 |
 | #917 | B6-N — Testes + Métricas + baseline seed SIMULADO | `prio:P1` `area:qualidade` | 3 | Fabricio | 02/11 |
 | #918 | B7-N — Apêndice ADR/TA/CR + OKB v5.2.0 | `prio:P2` `area:comunicacoes` | 2 | Leonardo | 02/11 |
@@ -719,12 +719,12 @@ Análise 2:
 
 **Decisão técnica:** Nenhuma nova ADR necessária — a ADR-010 já declara Docker + PostgreSQL. Apenas saneamento documental (find & replace) para alinhar tabelas e REQs à ADR-010.
 
-### 1.4 Sobre o Bloco B4 (Marcadores `[A CONFIRMAR]`) — Esclarecimento
+### 1.4 Sobre o Bloco B4 (Marcadores `OKB-C-XX`) — Esclarecimento
 
 **Declaração do CCB:** *"Bloco 4 sobre marcadores não está claro."*
 
 **Esclarecimento técnico:**
-O Bloco B4 visa eliminar 6 marcadores `[A CONFIRMAR]` no plano v2.0.1:
+O Bloco B4 visa eliminar 6 marcadores `OKB-C-XX` no plano v2.0.1:
 
 | # | Localização | Marcador | Ação proposta |
 |---|-------------|----------|---------------|
@@ -791,7 +791,7 @@ Cross-references ao OKB substituem duplicação de conteúdo (princípio "1 fato
 
 **Ação prévia:** Emitir **Ata CCB-005** revogando o freeze do TAP (ADR-005).
 
-### Bloco B4 — Eliminação de `[A CONFIRMAR]` (P0 · 4h)
+### Bloco B4 — Eliminação de `OKB-C-XX` (P0 · 4h)
 **Mantido com esclarecimento:** Ver tabela em 1.4 acima.
 
 ### Bloco B5 — Saneamento do Glossário v3.2 (P0 · 3h)
@@ -828,7 +828,7 @@ Cross-references ao OKB substituem duplicação de conteúdo (princípio "1 fato
 | B1 (Bifurcação) | 🔴 P0 | 8h | Leonardo | 31/10–01/11 |
 | B2 (ADRs) | 🔴 P0 | 6h | Fabricio + Leonardo | 01/11 |
 | B3 (TAP integrado) | 🔴 P0 | 4h | Leonardo | 01/11 |
-| B4 ([A CONFIRMAR]) | 🔴 P0 | 4h | Edson + Leonardo | 01/11 |
+| B4 (OKB-C-XX) | 🔴 P0 | 4h | Edson + Leonardo | 01/11 |
 | B5 (Glossário) | 🔴 P0 | 3h | Edson + Leonardo | 01/11 |
 | B10 (User Stories + Apêndice) | 🟠 P1 | 3h | Fabricio | 02/11 |
 | B7 (Seção 3 → spec) | 🟠 P1 | 4h | Fabricio | 02/11 |
@@ -883,7 +883,7 @@ Processos PMBOK 6ª (dicionário): 4.6 (Controle Integrado de Mudanças), 5.2 (C
 | #910-B1-Bifurcacao | Separar monografia e plano profissional | 8h | Leonardo | 🔴 P0 | 31/10–01/11 |
 | #911-B2-ADRs | Saneamento de ADRs violadas (find & replace) | 6h | Fabricio + Leonardo | 🔴 P0 | 01/11 |
 | **#912-B3-TAP-Integrado** | **Integrar TAP como Seção 1 do plano (após CCB-005)** | 4h | Leonardo | 🔴 P0 | 01/11 |
-| #913-B4-A-CONFIRMAR | Eliminar 6 marcadores `[A CONFIRMAR]` | 4h | Edson + Leonardo | 🔴 P0 | 01/11 |
+| #913-B4-A-CONFIRMAR | Eliminar 6 marcadores `OKB-C-XX` | 4h | Edson + Leonardo | 🔴 P0 | 01/11 |
 | #914-B5-Glossario | Saneamento do Glossário v3.2.0 | 3h | Edson + Leonardo | 🔴 P0 | 01/11 |
 | **#915-B10-UserStories** | **Incluir User Stories, testes e apêndice** | 3h | Fabricio | 🟠 P1 | 02/11 |
 | #916-B7-Secao-3 | Mover Seção 3 para spec técnica | 4h | Fabricio | 🟠 P1 | 02/11 |
@@ -892,7 +892,7 @@ Processos PMBOK 6ª (dicionário): 4.6 (Controle Integrado de Mudanças), 5.2 (C
 **Gate de Qualidade (DoD) por Bloco:**
 - [ ] Ata CCB-005 emitida e registrada em `docs/governanca/ccb-log.md`
 - [ ] TAP integrado como Seção 1 do plano (após CCB-005)
-- [ ] Zero ocorrências de `[A CONFIRMAR]` (verificação via `grep`)
+- [ ] Zero ocorrências de `OKB-C-XX` (verificação via `grep`)
 - [ ] Glossário v3.2.0 com `grep` negativo para "Carletto", "13 fases", "48 pacotes", "Qwen 32B", "To Do → Done"
 - [ ] Tabelas 88, 119 e REQ-07 alinhados à ADR-010 (PostgreSQL)
 - [ ] User Stories (GWT) incluídas no Plano de Escopo §2.3.5
@@ -957,7 +957,7 @@ Adicionalmente temos anexo a cosntitution vigente
 **Acertos (mantidos):**
 - ✅ Drift documental persiste mesmo sem drift técnico
 - ✅ ADR-010 já cobre Docker + PostgreSQL
-- ✅ Tabela de `[A CONFIRMAR]` com triagem item-a-item
+- ✅ Tabela de `OKB-C-XX` com triagem item-a-item
 - ✅ OKB como SSOT de consulta (com distinção ontológica)
 
 **Erros (corrigidos):**
@@ -1086,7 +1086,7 @@ Adicionalmente temos anexo a cosntitution vigente
 - [ ] Delta log com todas as emendas
 - [ ] Marcos M1–M4 inalterados
 
-### B4 — Triagem dos 6 `[A CONFIRMAR]` (3h)
+### B4 — Triagem dos 6 `OKB-C-XX` (3h)
 
 **Ações imperativas (triagem item-a-item):**
 
@@ -1169,7 +1169,7 @@ US-01 (N5.1): Como PJ, quero simular ganhos em USD, para saber quanto receberei 
 
 **Gate B8:**
 - [ ] Todos os gates B0–B7 fechados
-- [ ] Zero `[A CONFIRMAR]`
+- [ ] Zero `OKB-C-XX`
 - [ ] Zero drift de stack
 - [ ] Constitution v1.2.1 referenciada
 - [ ] ADR-013 emitida e registrada
@@ -1180,7 +1180,7 @@ US-01 (N5.1): Como PJ, quero simular ganhos em USD, para saber quanto receberei 
 |---|---|---|---|
 | **01/11 (manhã)** | B0 (Consolidation + ADR-013 + CCB-005) | 4h | Leonardo (Humano) |
 | **01/11 (tarde)** | B1 (Artefato híbrido) + B2 (Saneamento) | 7h | Leonardo + Fabricio |
-| **01/11 (noite)** | B3 (TAP §1) + B4 ([A CONFIRMAR]) | 7h | Leonardo + Edson |
+| **01/11 (noite)** | B3 (TAP §1) + B4 (OKB-C-XX) | 7h | Leonardo + Edson |
 | **02/11 (manhã)** | B5 (User Stories) + B6 (Métricas) | 6h | Edson + Fabricio |
 | **02/11 (tarde)** | B7 (Apêndices) + B8 (Review + commit) | 5h | Equipe |
 | **Buffer** | — | 3h | — |
@@ -1256,7 +1256,7 @@ US-01 (N5.1): Como PJ, quero simular ganhos em USD, para saber quanto receberei 
 | **#934** | B1 — Artefato híbrido único (front-matter + §2 Constituição) | `prio:P0` `area:integracao` | 3 | Leonardo | 01/11 PM |
 | **#935** | B2 — Saneamento editorial (ADRs 001/006/007/008/010/011/012) | `prio:P0` `area:qualidade` | 4 | Fabricio | 01/11 PM |
 | **#936** | B3 — TAP v3.1 como §1 + emendas pontuais + delta log | `prio:P0` `area:integracao` | 4 | Leonardo | 01/11 PM |
-| **#937** | B4 — Triagem 6 `[A CONFIRMAR]` | `prio:P0` `area:escopo` | 3 | Edson | 01/11 PM |
+| **#937** | B4 — Triagem 6 `OKB-C-XX` | `prio:P0` `area:escopo` | 3 | Edson | 01/11 PM |
 | **#938** | B5 — User Stories (12 Épicos / GWT) no Plano de Escopo | `prio:P1` `area:escopo` | 3 | Edson + Leonardo | 02/11 AM |
 | **#939** | B6 — Testes + Métricas + baseline seed SIMULADO | `prio:P1` `area:qualidade` | 3 | Fabricio | 02/11 AM |
 | **#940** | B7 — Apêndice ADR/TA/CR + OKB v5.2.0 | `prio:P2` `area:comunicacoes` | 2 | Leonardo | 02/11 PM |
@@ -1266,7 +1266,7 @@ US-01 (N5.1): Como PJ, quero simular ganhos em USD, para saber quanto receberei 
 - [ ] Constitution v1.2.1 promulgada (SHA-256 novo)
 - [ ] ADR-013 emitida + CCB-005 registrado
 - [ ] TAP v3.1 como §1 com delta log
-- [ ] Zero `[A CONFIRMAR]` (`grep` = 0)
+- [ ] Zero `OKB-C-XX` (`grep` = 0)
 - [ ] Zero drift de stack (`grep` negativo)
 - [ ] User Stories GWT no Plano de Escopo
 - [ ] Baseline seed rotulado `SIMULADO`
@@ -1438,12 +1438,12 @@ derived-from:
 **§7. APÊNDICES** *(A: ADRs, B: TAP Delta Log, C: Change Requests, D: OKB)*  
 ```
 
-### 6. Resolução dos 6 Marcadores `[A CONFIRMAR]` (Find & Replace Direto)
+### 6. Resolução dos 6 Marcadores `OKB-C-XX` (Find & Replace Direto)
 Execute estas substituições exatas no documento:
 1. **Tabela 88 (Baseline):** Substituir por: *"INSUFFICIENT DATA (OKB-C-08/16). Baseline estabelecida via seed simulado (ver docs/metricas/baseline.md). Recalibração empírica prevista para 08/11/2026."*
-2. **Tabela 127 (Responsável Seção 3):** Substituir `[A CONFIRMAR]` por: *"Fabricio de Lima Cabral"*
-3. **Tabela 128 (Atendimento SMART):** Substituir `[A CONFIRMAR]` por: *"M1 ✅ (Entregue 22/09) · M2 ⚠️ (Atrasado, CR-001 em análise) · M3 ⏳ (Em construção) · M4 ⏳ (Pendente)"*
-4. **Seção 4.4 (Lições Aprendidas):** Substituir `[A CONFIRMAR] Outras lições da MF2: ___` por: *"LA-002: Estimativas iniciais de documentação e backend foram otimistas. Ação: cards >6h agora exigem tasklist obrigatória (ADR-004) e recalibração de estimativas com base no Cycle Time real."*
+2. **Tabela 127 (Responsável Seção 3):** Substituir `OKB-C-XX` por: *"Fabricio de Lima Cabral"*
+3. **Tabela 128 (Atendimento SMART):** Substituir `OKB-C-XX` por: *"M1 ✅ (Entregue 22/09) · M2 ⚠️ (Atrasado, CR-001 em análise) · M3 ⏳ (Em construção) · M4 ⏳ (Pendente)"*
+4. **Seção 4.4 (Lições Aprendidas):** Substituir `OKB-C-XX Outras lições da MF2: ___` por: *"LA-002: Estimativas iniciais de documentação e backend foram otimistas. Ação: cards >6h agora exigem tasklist obrigatória (ADR-004) e recalibração de estimativas com base no Cycle Time real."*
 5. **Seção 4.7 (Conclusão):** Remover `[A CONFIRMAR — parágrafo de fechamento após o M4]`. Iniciar o parágrafo diretamente com: *"O projeto COGME demonstrou que é possível conduzir um projeto de software completo com orçamento zero..."*
 6. **Referências (Decreto IOF):** Remover `[A CONFIRMAR: incluir também o decreto...]`. Manter apenas: *"BRASIL. Decreto nº 6.306, de 14 de dezembro de 2007. Regulamenta o Imposto sobre Operações de Crédito, Câmbio e Seguro..."*
 
@@ -1482,7 +1482,7 @@ Execute estas substituições exatas no documento:
 2. [ ] Criar arquivo `docs/decisoes/ADR-013-regime-emenda-tap.md` (conteúdo #1).
 3. [ ] Append no `docs/governanca/ccb-log.md` (conteúdo #2).
 4. [ ] Criar arquivo `docs/metricas/baseline.md` (conteúdo #4).
-5. [ ] Aplicar Find & Replace dos 6 marcadores `[A CONFIRMAR]` (conteúdo #6).
+5. [ ] Aplicar Find & Replace dos 6 marcadores `OKB-C-XX` (conteúdo #6).
 
 **Issues para criação imediata no GitHub Projects (WBS: E10-Normalizacao-Documental-48h):**
 
@@ -1491,7 +1491,7 @@ Execute estas substituições exatas no documento:
 | **#930** | B0.1 — Consolidar Constitution v1.2.0 → v1.2.1 (Arts. 5–10) | `prio:P0` `area:integracao` `blocker` `humano` | 0.2h | Leonardo |
 | **#931** | B0.2 — Criar ADR-013 e atualizar ccb-log (A08) | `prio:P0` `area:integracao` `adr` | 0.3h | Leonardo |
 | **#932** | B2 — Saneamento editorial global (Carleto, Stack, ADRs) | `prio:P0` `area:qualidade` | 2h | Fabricio |
-| **#933** | B4 — Resolver 6 marcadores `[A CONFIRMAR]` | `prio:P0` `area:escopo` | 1h | Edson |
+| **#933** | B4 — Resolver 6 marcadores `OKB-C-XX` | `prio:P0` `area:escopo` | 1h | Edson |
 | **#934** | B5-N — Inserir User Stories GWT no Plano de Escopo (§4.2.5) | `prio:P1` `area:escopo` | 2h | Fabricio |
 | **#935** | B6-N — Inserir Baseline Seed e Métricas no Plano de Qualidade | `prio:P1` `area:qualidade` | 1h | Edson |
 | **#936** | B7-N — Estruturar Apêndices com Cross-References | `prio:P2` `area:comunicacoes` | 1h | Leonardo |
@@ -6311,7 +6311,7 @@ Autoriza prosseguir para a Seção de Desenvolvimento (§3), próxima área? Sim
 | Infraestrutura | Ausente | Docker + Docker Compose + Nginx latente | ADR-010 v1.0.0 | 01/11/2026 |
 | Ecossistema SDD | "25 agentes" | "46 agentes promulgados" + MCPs + L1/L2/L3 | ADR-011 v1.0.0 + RAT-A09 | 01/11/2026 |
 | Cache | "Cache SQLite" | "Cache PostgreSQL 15+" | ADR-010 v1.0.0 | 01/11/2026 |
-| Responsável §3 | "[A CONFIRMAR]" | "Fabricio de Lima Cabral" | Tabela 129 | 01/11/2026 |
+| Responsável §3 | "OKB-C-XX" | "Fabricio de Lima Cabral" | Tabela 129 | 01/11/2026 |
 | Premissas | "P1, P2, P5, P6" | "TAP-P1, TAP-P2, TAP-P5, TAP-P6" | OKB v5.2.0 §5.1 | 01/11/2026 |
 | Catálogo de ADRs | 001–004 | 001–013 | ADRs 005–013 emitidas | 01/11/2026 |
 | OKB | Não referenciado | Cross-reference ao OKB v5.2.0 | CCB-003 + RAT-A11 | 01/11/2026 |
@@ -6736,8 +6736,8 @@ Autoriza prosseguir para as Considerações Finais (§4), próxima área? Sim
 | Premissas | "P1–P9" | "TAP-P1 a TAP-P9" (namespace OKB-C-19) | OKB v5.2.0 §5.1 | 01/11/2026 |
 | Catálogo de ADRs | "001–004" / "005 pendente" | "001–013" | ADRs 005–013 emitidas | 01/11/2026 |
 | OKB | Não referenciado | Cross-reference ao OKB v5.2.0 | CCB-003 + RAT-A11 | 01/11/2026 |
-| Tabela 128 (SMART) | Múltiplos `[A CONFIRMAR]` | Preenchida com status real | OKB §3.2 + Tabela 107 | 01/11/2026 |
-| Seção 4.4 (Lições) | `[A CONFIRMAR]` em múltiplos pontos | Preenchida com LA-001, LA-002, LA-003 | notas_adjacentes.md + Q-04/Q-05 | 01/11/2026 |
+| Tabela 128 (SMART) | Múltiplos `OKB-C-XX` | Preenchida com status real | OKB §3.2 + Tabela 107 | 01/11/2026 |
+| Seção 4.4 (Lições) | `OKB-C-XX` em múltiplos pontos | Preenchida com LA-001, LA-002, LA-003 | notas_adjacentes.md + Q-04/Q-05 | 01/11/2026 |
 | Seção 4.5 (Limitações) | "SQLite e execução local" | "PostgreSQL 15+ (canônico) e execução local" | ADR-010 | 01/11/2026 |
 | Seção 4.7 (Conclusão) | `[A CONFIRMAR — parágrafo de fechamento]` | Redigido parágrafo provisório | Diretriz desta rodada | 01/11/2026 |
 | Referências (Decreto IOF) | `[A CONFIRMAR: incluir também o decreto...]` | Confirmado Decreto 6.306/2007 | Referências já constantes | 01/11/2026 |
@@ -6966,7 +6966,7 @@ Fonte: Elaborado pelos autores (2026).
 | 11 | Constitution v1.2.1 referenciada | ✅ | ADR-012 |
 | 12 | Catálogo ADRs 001–013 completo | ✅ | OKB v5.2.0 §2.1 |
 | 13 | PMBOK 7ª primário; 6ª dicionário | ✅ | TAP-P1 + Art. 1.4 |
-| 14 | Tabela 128 (SMART) preenchida (zero `[A CONFIRMAR]`) | ✅ | OKB §3.2 + Tabela 107 |
+| 14 | Tabela 128 (SMART) preenchida (zero `OKB-C-XX`) | ✅ | OKB §3.2 + Tabela 107 |
 | 15 | Seção 4.4 (Lições) preenchida | ✅ | LA-001, LA-002, LA-003, Q-04, Q-05 |
 | 16 | Seção 4.5 (Limitações) atualizada para PostgreSQL | ✅ | ADR-010 |
 | 17 | Seção 4.7 (Conclusão) redigida (provisória até M4) | ✅ | Diretriz desta rodada |
@@ -7008,8 +7008,8 @@ Fonte: Elaborado pelos autores (2026).
 | Decisão | Ganho | Perda/Risco | Mitigação |
 |---|---|---|---|
 | Emenda controlada (ADR-013) | TAP alinhado à stack real; REQ-07 corrigível | Perda da imutabilidade absoluta | Núcleo blindado + delta log + §6 Marcos intocado |
-| Conclusão redigida como provisória | Seção 4.7 não fica com `[A CONFIRMAR]` | Texto pode precisar atualização pós-M4 | Marcar como "provisório até M4" |
-| Tabela 128 preenchida com status real | Transparência; zero `[A CONFIRMAR]` | M2 atrasado visível | Declaração explícita + CR-001 como pendência |
+| Conclusão redigida como provisória | Seção 4.7 não fica com `OKB-C-XX` | Texto pode precisar atualização pós-M4 | Marcar como "provisório até M4" |
+| Tabela 128 preenchida com status real | Transparência; zero `OKB-C-XX` | M2 atrasado visível | Declaração explícita + CR-001 como pendência |
 | PostgreSQL nas Limitações | Convergência com ADR-010 | Implementação não concluída | Declarar como limitação + Q-05 |
 | Baseline seed SIMULADO declarada | Honestidade (P-08) | Métrica não empírica | Rótulo obrigatório + OKB-C-08 aberto + owner + prazo |
 | Referências atualizadas (PostgreSQL, sem SQLite/HTMX) | Convergência com ADRs | Divergência com versões anteriores | Delta log documenta a transição |
@@ -7255,7 +7255,7 @@ Esta convenção é aplicada em todos os planos de área revisados nesta normali
 | Premissas | P1–P9 → TAP-P1 a TAP-P9 | OKB-C-19 | Todos os planos |
 | Catálogo de ADRs | 001–004 → 001–013 | OKB v5.2.0 §2.1 | Integração, Desenvolvimento, Considerações Finais, Apêndices |
 | Baseline | 0 B → seed SIMULADO | OKB-C-08/16 + RAT-A09 | Recursos, Qualidade, Cronograma, Considerações Finais |
-| `[A CONFIRMAR]` | 6 marcadores → zero | PED-003 B4 | Recursos (Tabela 88), Desenvolvimento (Tabela 127), Considerações Finais (Tabelas 128, §4.4, §4.7, Referências) |
+| `OKB-C-XX` | 6 marcadores → zero | PED-003 B4 | Recursos (Tabela 88), Desenvolvimento (Tabela 127), Considerações Finais (Tabelas 128, §4.4, §4.7, Referências) |
 | Docker/Containerização | Ausente → declarado explicitamente | ADR-010 v1.0.0 | Desenvolvimento, Recursos |
 
 Fonte: Elaborado pelos autores (2026).
@@ -7270,7 +7270,7 @@ Fonte: Elaborado pelos autores (2026).
 |---|---|---|---|
 | 1.0 | 22/09/2026 | Redação Integral do Projeto — Marco M1: Introdução (TAP v3 integral, aderente ao padrão PMO) + Planos das Áreas 1 a 5 (Integração, Escopo, Cronograma, Custos, Qualidade). Otimização para aderência ABNT (figuras com identificação no topo e fonte na base; tabelas numeradas). | Leonardo D. S. Setti |
 | 2.0 | 25/10/2026 | Inclusão das seções 2.6 Gerenciamento dos Recursos, 2.7 Gerenciamento das Comunicações, 2.8 Gerenciamento dos Riscos, 3 Desenvolvimento, 4 Considerações Finais e Referências; Rede do Projeto (diagrama de precedências e caminho crítico) no item 2.4; 14 novas figuras e 50 novas tabelas; correção da grafia do orientador (Carleto); atualização dos rituais (reuniões de terça) e do Resumo; alinhamento dos controles de versão por seção; atualização do Sumário e das listas de figuras, tabelas e siglas. | Fabricio de Lima Cabral |
-| 2.1 | 01/11/2026 | **Normalização Documental 48h (PED-003, ADR-013):** §0 Subordinação Constitucional inserido em todas as seções (ADR-012); regime do TAP atualizado para emenda controlada (ADR-013); grafia do avaliador saneada (ADR-008); stack atualizada para PostgreSQL 15+ / Docker Compose / Nginx latente (ADR-010); frontend atualizado para HTML5/CSS3/JS vanilla (ADR-001); stack SDD atualizada para Qwen3-30B-A3B MoE (ADR-006 v2.0.0); ecossistema SDD atualizado para 46 agentes + MCPs + L1/L2/L3 (ADR-011); premissas com namespace TAP-P# (OKB-C-19); catálogo ADRs 001–013; OKB v5.2.0 como SSOT de consulta; Constitution v1.2.1 referenciada; Tabela 128 (SMART) preenchida; Seção 4.4 (Lições) preenchida; Seção 4.5 (Limitações) atualizada; Seção 4.7 (Conclusão) redigida; Referências atualizadas (PostgreSQL, Decreto IOF confirmado, SQLite/HTMX/Tailwind removidos); Apêndices A–G inseridos; dualidade CPM × Kanban com frase canônica (ADR-007); baseline seed SIMULADO declarada (OKB-C-08/16); CR-001 declarado como pendência (OKB-C-06); zero `[A CONFIRMAR]` no documento final. | Leonardo D. S. Setti (CCB) |
+| 2.1 | 01/11/2026 | **Normalização Documental 48h (PED-003, ADR-013):** §0 Subordinação Constitucional inserido em todas as seções (ADR-012); regime do TAP atualizado para emenda controlada (ADR-013); grafia do avaliador saneada (ADR-008); stack atualizada para PostgreSQL 15+ / Docker Compose / Nginx latente (ADR-010); frontend atualizado para HTML5/CSS3/JS vanilla (ADR-001); stack SDD atualizada para Qwen3-30B-A3B MoE (ADR-006 v2.0.0); ecossistema SDD atualizado para 46 agentes + MCPs + L1/L2/L3 (ADR-011); premissas com namespace TAP-P# (OKB-C-19); catálogo ADRs 001–013; OKB v5.2.0 como SSOT de consulta; Constitution v1.2.1 referenciada; Tabela 128 (SMART) preenchida; Seção 4.4 (Lições) preenchida; Seção 4.5 (Limitações) atualizada; Seção 4.7 (Conclusão) redigida; Referências atualizadas (PostgreSQL, Decreto IOF confirmado, SQLite/HTMX/Tailwind removidos); Apêndices A–G inseridos; dualidade CPM × Kanban com frase canônica (ADR-007); baseline seed SIMULADO declarada (OKB-C-08/16); CR-001 declarado como pendência (OKB-C-06); zero `OKB-C-XX` no documento final. | Leonardo D. S. Setti (CCB) |
 
 Fonte: Elaborado pelos autores (2026).
 
@@ -7293,7 +7293,7 @@ Fonte: Elaborado pelos autores (2026).
 | 11 | Nota de namespace TAP-P# / C-P-## | ✅ | OKB-C-19 |
 | 12 | Registro de saneamento global (Tabela G-1) | ✅ | PED-003 B2 |
 | 13 | Controle de versões geral atualizado para v2.1 | ✅ | Diretriz desta rodada |
-| 14 | Zero `[A CONFIRMAR]` nos apêndices | ✅ | PED-003 B4 |
+| 14 | Zero `OKB-C-XX` nos apêndices | ✅ | PED-003 B4 |
 | 15 | Zero duplicação de conteúdo (apenas cross-references) | ✅ | OKB §8.1 |
 | 16 | PMBOK 7ª primário; 6ª dicionário | ✅ | TAP-P1 + Art. 1.4 |
 | 17 | Grafia "Prof. Dr. Nivaldo Carleto" em todas as ocorrências | ✅ | ADR-008 v1.1.0 |
@@ -7311,7 +7311,7 @@ Fonte: Elaborado pelos autores (2026).
 | **Escopo** | Fronteira de apêndices: apenas cross-references, sem duplicação |
 | **Cronograma** | Marcos M1–M4 referenciados; CR-001 como pendência temporal |
 | **Custos** | Orçamento R$ 0,00; EVM inaplicável (ADR-003) |
-| **Qualidade** | Gates de validação por bloco; zero `[A CONFIRMAR]` |
+| **Qualidade** | Gates de validação por bloco; zero `OKB-C-XX` |
 | **Recursos** | Atribuição de responsáveis por bloco |
 | **Comunicações** | OKB como SSOT de consulta; cross-references em vez de duplicação |
 | **Riscos** | Pendências declaradas (OKB-C-05, C-06, C-10, C-21, C-22, C-24) |
@@ -7351,7 +7351,7 @@ Todos os 12 blocos da sequência de normalização documental foram executados:
 | B1 | Artefato híbrido único (front-matter + §0) | ✅ |
 | B2 | Saneamento editorial global | ✅ |
 | B3 | TAP v3.1 como §1 + emendas pontuais + delta log | ✅ |
-| B4 | Triagem dos 6 `[A CONFIRMAR]` | ✅ |
+| B4 | Triagem dos 6 `OKB-C-XX` | ✅ |
 | B5 | User Stories GWT no Plano de Escopo | ✅ |
 | B6 | Testes + Métricas + baseline seed SIMULADO | ✅ |
 | B7 | Apêndices A–G | ✅ |
@@ -7364,7 +7364,7 @@ Todos os 12 blocos da sequência de normalização documental foram executados:
 - [ ] Constitution v1.2.1 promulgada (SHA-256 novo)
 - [ ] ADR-013 emitida + CCB-005 registrado no ccb-log
 - [ ] TAP v3.1 como §1 com delta log
-- [ ] Zero `[A CONFIRMAR]` (`grep -r "\[A CONFIRMAR\]"` = 0)
+- [ ] Zero `OKB-C-XX` (`grep -r "\[A CONFIRMAR\]"` = 0)
 - [ ] Zero drift de stack (`grep -i "carletto\|ms\. nivaldo\|qwen 32b\|qwenstudio\|htmx\|tailwind\|jinja2"` = 0)
 - [ ] User Stories GWT no Plano de Escopo
 - [ ] Baseline seed rotulado `SIMULADO`

@@ -1,7 +1,0 @@
-# Ferramentas de desenvolvimento e teste, versoes exatas. Instalar apos requirements.txt.
--r requirements.txt
-flake8==7.5.0
-mypy==2.4.1
-pytest==9.2.0
-pytest-asyncio==1.4.1
-pytest-cov==7.1.0

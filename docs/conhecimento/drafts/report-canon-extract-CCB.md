@@ -17,7 +17,7 @@ O artefato `Plano-de-Projeto-COGME_v2.0.1-ONGOING.docx` **não é um Plano de Pr
 
 - **7 defeitos críticos** de forma (monografia vs. plano);
 - **14 violações diretas** de ADRs vigentes (001, 005, 006, 007, 008, 009, 010, 011, 012);
-- **6 marcadores `[A CONFIRMAR]`** em pontos críticos (Tabelas 88, 127, 128; Seções 4.4, 4.7; Referências);
+- **6 marcadores `OKB-C-XX`** em pontos críticos (Tabelas 88, 127, 128; Seções 4.4, 4.7; Referências);
 - **Stack drift silencioso** (SQLite, Qwen 32B, HTMX/Tailwind/Jinja2) em relação às ADRs 006 e 010;
 - **Constituição v1.2.0 totalmente ausente** do corpo do documento;
 - **Glossário v3.1 com 7 violações** que contaminam o plano por cross-reference;
@@ -39,7 +39,7 @@ O artefato `Plano-de-Projeto-COGME_v2.0.1-ONGOING.docx` **não é um Plano de Pr
 | **D-C04** | Grafia inconsistente do stakeholder | Capa: "DR. NIVALDO CARLETO" (correto); corpo: "Prof. Ms. Nivaldo Carleto" (Tabelas 1, 10, 27) | ADR-008 v1.1.0 ("Prof. Dr. Nivaldo Carleto") | Ofensa institucional; inconsistência interna |
 | **D-C05** | Stack desatualizada (SQLite/Qwen 32B) | Tabela 88 (SQLite); Tabela 119 (SQLite + QwenStudio); REQ-07 (cache SQLite) | ADR-006 (Qwen3-30B-A3B MoE) + ADR-010 (PostgreSQL 15+) | Stack drift silencioso; violação de freeze |
 | **D-C06** | Frontend desatualizado | Tabela 119: "HTMX + Tailwind + Jinja2" | ADR-001 v1.0.0 (HTML5/CSS3/JS vanilla) | Conflito aberto com OKB-C-10 |
-| **D-C07** | 6 marcadores `[A CONFIRMAR]` | Tabelas 88, 127, 128; Seções 4.4, 4.7; Referências (Decreto IOF) | P-08 (honestidade) + OKB §0.2 | Plano publicado com lacunas assumidas |
+| **D-C07** | 6 marcadores `OKB-C-XX` | Tabelas 88, 127, 128; Seções 4.4, 4.7; Referências (Decreto IOF) | P-08 (honestidade) + OKB §0.2 | Plano publicado com lacunas assumidas |
 
 ### 2.2 Defeitos P1 — Altos (distorcem o conteúdo)
 
@@ -163,7 +163,7 @@ derived-from:
 
 ---
 
-### Bloco B4 — Eliminação de `[A CONFIRMAR]` (P0 · 4h)
+### Bloco B4 — Eliminação de `OKB-C-XX` (P0 · 4h)
 
 **Escopo:** Preencher ou declarar `INSUFFICIENT DATA` com assunção documentada.
 
@@ -182,7 +182,7 @@ derived-from:
 - Tabela 129 (controle de versões)
 
 **Gate de validação:**
-- [ ] Zero ocorrências de `[A CONFIRMAR]`
+- [ ] Zero ocorrências de `OKB-C-XX`
 - [ ] Todos os `INSUFFICIENT DATA` com referência OKB-C
 - [ ] Lições aprendidas transpostas para `MF2-licoes.md`
 
@@ -330,7 +330,7 @@ derived-from:
 | B1 (Bifurcação) | 🔴 P0 | 8h | Leonardo | 03/11/2026 |
 | B2 (ADRs) | 🔴 P0 | 6h | Fabricio + Leonardo | 04/11/2026 |
 | B3 (TAP) | 🔴 P0 | 2h | Leonardo | 04/11/2026 |
-| B4 (`[A CONFIRMAR]`) | 🔴 P0 | 4h | Edson + Leonardo | 05/11/2026 |
+| B4 (`OKB-C-XX`) | 🔴 P0 | 4h | Edson + Leonardo | 05/11/2026 |
 | B5 (Glossário) | 🔴 P0 | 3h | Edson + Leonardo | 05/11/2026 |
 | B6 (CR-001) | 🔴 P0 | 2h | Leonardo (CCB) | 06/11/2026 |
 | B7 (Seção 3) | 🟠 P1 | 4h | Fabricio | 07/11/2026 |
@@ -382,7 +382,7 @@ derived-from:
 | `#901-B1-Bifurcacao` | Separar monografia e plano profissional | 8h | Leonardo | 🔴 P0 | M3 |
 | `#902-B2-ADRs` | Saneamento de ADRs violadas (006, 008, 010, 011, 012) | 6h | Fabricio + Leonardo | 🔴 P0 | M3 |
 | `#903-B3-TAP` | Remover TAP embutido + cross-reference | 2h | Leonardo | 🔴 P0 | M3 |
-| `#904-B4-A-CONFIRMAR` | Eliminar 6 marcadores `[A CONFIRMAR]` | 4h | Edson + Leonardo | 🔴 P0 | M3 |
+| `#904-B4-A-CONFIRMAR` | Eliminar 6 marcadores `OKB-C-XX` | 4h | Edson + Leonardo | 🔴 P0 | M3 |
 | `#905-B5-Glossario` | Saneamento do Glossário v3.2.0 (7 violações) | 3h | Edson + Leonardo | 🔴 P0 | M3 |
 | `#906-B6-CR-001` | Formalizar CR-001 + ADR de marco | 2h | Leonardo (CCB) | 🔴 P0 | M3 |
 | `#907-B7-Secao-3` | Mover Seção 3 para spec técnica | 4h | Fabricio | 🟠 P1 | M3 |
@@ -392,7 +392,7 @@ derived-from:
 ### Gate de Qualidade (DoD) por Bloco
 
 - [ ] Todos os `INSUFFICIENT DATA` resolvidos ou declarados irrecuperáveis com referência OKB-C
-- [ ] Zero ocorrências de `[A CONFIRMAR]` no `.docx` (verificação via `grep`)
+- [ ] Zero ocorrências de `OKB-C-XX` no `.docx` (verificação via `grep`)
 - [ ] Glossário v3.2.0 com `grep` negativo para "Carletto", "13 fases", "48 pacotes", "Qwen 32B", "To Do → Done"
 - [ ] 8 decisões do CCB formalmente registradas em `docs/change-requests/` ou `docs/decisoes/`
 - [ ] `artefatos-metadados.csv` atualizado com versões reais

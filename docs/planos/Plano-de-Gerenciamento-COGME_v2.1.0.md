@@ -15,6 +15,39 @@
 
 [§1 — Introdução e Escopo](#seção-1-introdução-e-escopo)
 [§2 — Gerenciamento da Integração](#seção-2-gerenciamento-da-integração)
+
+## §3 Artefatos Técnicos Representativos
+
+### Referências Canônicas
+- [GitHub Repository](https://github.com/your-repo)
+- [Canon_Stack_SDD.md v2.0.0](Canon_Stack_SDD.md)
+
+### Subseções Obrigatórias
+
+#### Specs SDD
+- [Exemplo] .ai/specs/requisitos.md
+
+#### Histórias de Usuário (US)
+- [US-01] Exemplo de história de usuário
+
+#### Cenários de Teste
+- [tests/agents/test_dag_validator.py](tests/agents/test_dag_validator.py)
+
+#### Métricas
+- CFD (Cycle Flow Diagram)
+- Tempo de Ciclo
+- Throughput
+
+#### PDCA
+- PDCA-N5
+- PDCA-N6
+
+#### Ecossistema SDD
+- MCPs
+- Níveis L1/L2/L3
+- 46 agentes registrados
+
+> *YAGNI compliance: Apenas elementos alinhados com OKB v5.3.0 foram incluídos.*
 [§3 — Gerenciamento do Escopo](#seção-3-gerenciamento-do-escopo)
 [§4 — Gerenciamento do Cronograma](#seção-4-gerenciamento-do-cronograma)
 [§5 — Gerenciamento dos Custos](#seção-5-gerenciamento-dos-custos)
