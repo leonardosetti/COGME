@@ -1,15 +1,5 @@
 {
   "mcpServers": {
-    "git-local": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-git"
-      ],
-      "env": {
-        "GIT_PATH": "/usr/bin/git"
-      }
-    },
     "github-remote": {
       "command": "npx",
       "args": [
@@ -19,6 +9,22 @@
       "env": {
         "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
       }
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "--allow-read",
+        ".ai/specs",
+        "--allow-read",
+        "docs",
+        "--allow-read",
+        "scripts",
+        "--allow-read",
+        ".ai/handoffs"
+      ],
+      "env": {}
     },
     "docx-editor": {
       "command": "uv",

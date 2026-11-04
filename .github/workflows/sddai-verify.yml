@@ -11,32 +11,29 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
   verify:
     name: SDDAI Verify
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
+      # Kill Switch herdado (Art. 4.6) — primeiro e obrigatório.
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2 (SHA-pin)
 
-      - name: Validate Kill Switch not activated
+      - name: Verify Kill Switch not activated
         run: |
           if [ -f "kill_switch.trigger" ]; then
             echo "🚨 Kill Switch Activated: SDDAI Verify halted per Constitution Art. 4.6"
             exit 1
           fi
+          echo "✅ Kill Switch not active — pipeline authorized to proceed"
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-          cache: "pip"
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install pyyaml pytest
+      - name: Set up Python environment
+        uses: ./.github/actions/python-env
 
       - name: Execute SDDAI Verify Pipeline (fail-closed, strict)
         run: |

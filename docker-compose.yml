@@ -32,7 +32,10 @@ services:
       POSTGRES_DB: ${POSTGRES_DB:?defina POSTGRES_DB no .env}
     volumes:
       - cogme_pgdata:/var/lib/postgresql/data
-    # Sem `ports`: o banco só é alcançável pela rede interna `data`.
+    # Porta 5432 exposta em 127.0.0.1 apenas para testes locais fora do Docker.
+    # Em produção/CI o banco é alcançável apenas pela rede interna `data`.
+    ports:
+      - "127.0.0.1:5432:5432"
     networks: [data]
     # Sem `cap_drop: [ALL]`: o entrypoint do Postgres troca de usuário (chown/su-exec) e
     # precisa de CHOWN, SETUID, SETGID, DAC_OVERRIDE e FOWNER. Fica o padrão do Docker.

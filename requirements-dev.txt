@@ -1,0 +1,8 @@
+# COGME — dependências de dev e CI (lint, tipo, testes, cobertura, auditoria de dependências).
+pyyaml>=6.0,<7
+pytest>=9.2,<10
+pytest-asyncio>=1.4,<2
+pytest-cov>=7.1,<8
+flake8>=7.5,<8
+mypy>=2.4,<3
+pip-audit>=2.7,<3
