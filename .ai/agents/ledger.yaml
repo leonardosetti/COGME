@@ -382,3 +382,12 @@
     exit_status: 0
     timestamp: 2026-11-03T02:20:00Z
     notes: "HF-0618 auditoria rodada specs: 9/9 PASS, veredito ACEITA, zero VIO. 13/13 artefatos (spec-006..015 + tap/eap/requisitos) template MANIFEST e nomenclatura OK; emendas spec-004 1.1.0 / spec-005 0.3.0 com amenda TA-0030 intacta; baseline pytest 4F/149P/1S exata; sync --check exit 0; ledger append-only provado (+160/-0). F-01 (spec-013:19 10 testes vs 9 reais) e F-02 (spec-004:285 MAPA version stale) = parcelas de emenda futura. Relatorio: docs/auditorias/AUD-2026-11-03-rodada-specs.md. kill_switch: inherited"
+
+  - task_id: TA-0063
+    sender: nexus-prime-ultimate
+    receiver: agent-ai-llm-rag-dag-mcp-roster-master-specialist
+    action: implement
+    status: accepted
+    exit_status: 0
+    timestamp: 2026-11-04T00:00:00Z
+    notes: "TA-MCP-001: reescrito scripts/mcp_nexus_ledger.py, scripts/mcp_nexus_dispatch.py, scripts/mcp_nexus_kb.py, scripts/mcp_nexus_validate.py como servidores MCP stdio JSON-RPC reais (stdio, local-only, FOSS, zero custo). Registrados em .mcp-servers.json e .opencode/opencode.jsonc. ADR-017 ratificado. kill_switch: inherited"

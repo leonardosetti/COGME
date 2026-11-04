@@ -68,6 +68,34 @@
       ],
       "env": {}
     },
+    "nexus-ledger": {
+      "command": "python3",
+      "args": [
+        "scripts/mcp_nexus_ledger.py"
+      ],
+      "env": {}
+    },
+    "nexus-dispatch": {
+      "command": "python3",
+      "args": [
+        "scripts/mcp_nexus_dispatch.py"
+      ],
+      "env": {}
+    },
+    "nexus-kb": {
+      "command": "python3",
+      "args": [
+        "scripts/mcp_nexus_kb.py"
+      ],
+      "env": {}
+    },
+    "nexus-validate": {
+      "command": "python3",
+      "args": [
+        "scripts/mcp_nexus_validate.py"
+      ],
+      "env": {}
+    },
     "docx-editor": {
       "command": "uv",
       "args": [
