@@ -403,11 +403,9 @@ agents:
   layer: L0
   role: orchestrator
   description: COGME L0 orchestrator - sole DAG dispatcher, constitutional compliance enforcer, half-duplex
-    contracts, aggregates structured parcels, owns escalation to human. Governs all promulgated agents
-    per constitution.md Art. 4.
+    contracts, aggregates structured parcels, owns escalation to human.
   status: promulgado
-  upstream:
-  - agent-factory-architect-ultimate
+  upstream: []
   downstream:
   - agent-sdd-specialist
   - agent-pm
@@ -451,7 +449,6 @@ agents:
   - agent-quality-architect-specialist
   - agent-six-sigma-specialist
   - agent-sldc-process-specialist
-  - agent-clean-code-evaluator
 - file: .opencode/agents/agent-pm.md
   name: agent-pm
   version: 0.1.0
