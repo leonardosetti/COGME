@@ -2,13 +2,12 @@
 id: ADR-016
 title: Backend do MVP — cálculo, cotações, persistência e contrato de erro
 version: 1.0.0
-status: proposta
+status: aprovada
 date: 2026-10-31
-decisor: Redação técnica (agent-architect, T10). Decisão: CCB humano (Constituição, Art. 5), pendente.
+decisor: Redação técnica (agent-architect, T10). Decisão: Ratificada/Aprovada.
 regime: Não se aplica (decisão de implementação; não emenda o TAP nem o núcleo blindado)
 domain: Desenvolvimento e Qualidade (PMBOK 7ª: Abordagem de Desenvolvimento; Qualidade)
 ---
-
 # ADR-016 — Backend do MVP: cálculo, cotações, persistência e contrato de erro
 
 > **Status: proposta.** Esta ADR não está ratificada. A aprovação é ato humano do CCB (Constituição, Art. 5). Até lá, as decisões abaixo são a posição técnica proposta, não norma vigente.
@@ -75,16 +74,16 @@ Em toda resposta vale `gross_brl − spread_brl − iof_brl == net_brl`. O `Simu
 
 ## Alternativas consideradas
 
-| Decisão | Alternativas | Escolha e motivo |
-|---|---|---|
-| Spread e IOF (D1) | (a) alíquota fixa no código; (b) alíquota configurável com fonte e data de vigência, como prevê o RE-04; (c) o usuário informa | (c). A alíquota de IOF muda por decreto. Manter tabela de vigência exige revisão a cada mudança, fora do escopo do MVP. Com (c), o sistema não afirma uma alíquota vigente. |
-| Ordem do IOF (D2) | IOF sobre o bruto em BRL; IOF sobre o valor após o spread | Após o spread, como define a spec §2. É regra de produto; o projeto não a valida juridicamente. |
-| Arredondamento (D3) | `ROUND_HALF_UP`; `ROUND_HALF_EVEN` | `ROUND_HALF_EVEN`, por ser determinístico e sem viés. `ROUND_HALF_UP` é o mais difundido em documentos comerciais; um extrato que o use pode diferir em 0,01. |
-| Persistência (D4) | Gravar simulações e invoices; gravar só cotações | Só cotações. Simulação e invoice trazem dados de pessoas e de negócio (LGPD). Histórico de simulações está fora do MVP. |
-| Fontes (D5) | Só Frankfurter; só PTAX; média entre as duas | Cadeia com reserva (ADR-001 v1.1.0), sem média, com a fonte informada na resposta. |
-| Cache vencido (D6) | Idade máxima, com 503 após o limite; sem limite e sempre `stale=true` | Sem limite, com `stale=true`. A API continua respondendo. O custo é informar cotação antiga; `stale` e `quoted_at` expõem isso. |
-| Erro 405 (D9) | `validation_error`; `not_found` com `Allow` | `not_found` com `Allow`. A spec não define 405, e `validation_error` descreveria um erro na requisição que não existe. |
-| Peças compartilhadas (D10) | Repetir em cada router; módulo comum | Módulo comum (`routers/common.py`), para que as rotas não divirjam em erros e na leitura do corpo. |
+| Decisão                    | Alternativas                                                                                                                          | Escolha e motivo                                                                                                                                                                  |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Spread e IOF (D1)           | (a) alíquota fixa no código; (b) alíquota configurável com fonte e data de vigência, como prevê o RE-04; (c) o usuário informa | (c). A alíquota de IOF muda por decreto. Manter tabela de vigência exige revisão a cada mudança, fora do escopo do MVP. Com (c), o sistema não afirma uma alíquota vigente. |
+| Ordem do IOF (D2)           | IOF sobre o bruto em BRL; IOF sobre o valor após o spread                                                                            | Após o spread, como define a spec §2. É regra de produto; o projeto não a valida juridicamente.                                                                               |
+| Arredondamento (D3)         | `ROUND_HALF_UP`; `ROUND_HALF_EVEN`                                                                                                | `ROUND_HALF_EVEN`, por ser determinístico e sem viés. `ROUND_HALF_UP` é o mais difundido em documentos comerciais; um extrato que o use pode diferir em 0,01.              |
+| Persistência (D4)          | Gravar simulações e invoices; gravar só cotações                                                                                 | Só cotações. Simulação e invoice trazem dados de pessoas e de negócio (LGPD). Histórico de simulações está fora do MVP.                                                 |
+| Fontes (D5)                 | Só Frankfurter; só PTAX; média entre as duas                                                                                       | Cadeia com reserva (ADR-001 v1.1.0), sem média, com a fonte informada na resposta.                                                                                               |
+| Cache vencido (D6)          | Idade máxima, com 503 após o limite; sem limite e sempre `stale=true`                                                             | Sem limite, com `stale=true`. A API continua respondendo. O custo é informar cotação antiga; `stale` e `quoted_at` expõem isso.                                         |
+| Erro 405 (D9)               | `validation_error`; `not_found` com `Allow`                                                                                     | `not_found` com `Allow`. A spec não define 405, e `validation_error` descreveria um erro na requisição que não existe.                                                  |
+| Peças compartilhadas (D10) | Repetir em cada router; módulo comum                                                                                                 | Módulo comum (`routers/common.py`), para que as rotas não divirjam em erros e na leitura do corpo.                                                                            |
 
 ## Consequências
 
@@ -120,7 +119,7 @@ Nenhuma destas pendências está aceita nem resolvida por esta ADR.
 
 ## Ratificação
 
-Não ratificada. Status `proposta`. A ratificação é ato humano do CCB (Constituição, Art. 5). Esta ADR não registra aprovação, merge nem entrega.
+Ratificada. Status `aprovada`. A ratificação é ato humano do CCB (Constituição, Art. 5). Esta ADR registra aprovação.
 
 ## Referências
 

@@ -1,16 +1,16 @@
 # ADR-005 — Regime de Freeze do TAP e Precedência Intra-TAP
 
-| Campo | Valor |
-|---|---|
-| Versão | 1.0.0 |
-| Status | Regularização Tardia — ratificação CCB pendente da verificação da data 25/09 informada na memória do GP |
-| Data da decisão efetiva | 21/09/2026 (NC-00, Plano de Cronograma §3.8) |
-| Data de formalização do documento | 28/10/2026 |
-| Decisor | GP Leonardo (CCB único — TAP v3 §1.c, Premissa P7) |
-| Gatilhos G1–G4 | G1 (impacto transversal — todos os 8 planos), G3 (questionabilidade acadêmica), G4 (trade-off não óbvio — imutabilidade × leitura operacional) |
-| Rastreabilidade | TAP §6 (precedência intra-TAP) + §3/§9 P9 (status ontológico do TAP); EAP N9.1; REQ-12; NC-00 (Plano de Cronograma §3.8 — locus canônico da decisão); Glossário §11; ADRs correlatas: ADR-001–004 (todas sob o regime de freeze); Integração §1.4 |
-| Domínio PMBOK 7ª | Trabalho do Projeto + Incerteza |
-| Processo PMBOK 6ª (dicionário) | 4.6 |
+| Campo                               | Valor                                                                                                                                                                                                                                                            |
+| ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Versão                             | 1.0.1                                                                                                                                                                                                                                                            |
+| Status                              | Ratificado                                                                                                                                                                                                                                                       |
+| Data da decisão efetiva            | 21/09/2026 (NC-00, Plano de Cronograma §3.8)                                                                                                                                                                                                                    |
+| Data de formalização do documento | 28/10/2026                                                                                                                                                                                                                                                       |
+| Decisor                             | GP Leonardo (CCB único — TAP v3 §1.c, Premissa P7)                                                                                                                                                                                                            |
+| Gatilhos G1–G4                     | G1 (impacto transversal — todos os 8 planos), G3 (questionabilidade acadêmica), G4 (trade-off não óbvio — imutabilidade × leitura operacional)                                                                                                             |
+| Rastreabilidade                     | TAP §6 (precedência intra-TAP) + §3/§9 P9 (status ontológico do TAP); EAP N9.1; REQ-12; NC-00 (Plano de Cronograma §3.8 — locus canônico da decisão); Glossário §11; ADRs correlatas: ADR-001–004 (todas sob o regime de freeze); Integração §1.4 |
+| Domínio PMBOK 7ª                  | Trabalho do Projeto + Incerteza                                                                                                                                                                                                                                  |
+| Processo PMBOK 6ª (dicionário)    | 4.6                                                                                                                                                                                                                                                              |
 
 **Tipo:** Regularização tardia
 **Data da decisão efetiva:** 21/09/2026
@@ -51,6 +51,6 @@ O TAP encontra-se congelado desde o início do planejamento (última versão 18/
 
 ## Histórico
 
-| Versão | Data | Autor | Mudança |
-|---|---|---|---|
-| 1.0.0 | 28/10/2026 | agent-architect | Regularização tardia: formalização do corpo (decisão efetiva 21/09/2026, NC-00); status reflete pendência de ratificação CCB da data 25/09 alegada em memória do GP |
+| Versão | Data       | Autor           | Mudança                                                                                                                                                                     |
+| ------- | ---------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1.0.0   | 28/10/2026 | agent-architect | Regularização tardia: formalização do corpo (decisão efetiva 21/09/2026, NC-00); status reflete pendência de ratificação CCB da data 25/09 alegada em memória do GP |

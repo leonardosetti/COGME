@@ -285,24 +285,6 @@ agents:
   - agent-project-auditor
   - agent-po
   - agent-skill-master
-- file: .opencode/agents/agent-factory-architect.md
-  name: agent-factory-architect
-  version: null
-  layer: META
-  role: forge
-  description: null
-  status: legacy-forge
-  upstream: []
-  downstream: []
-- file: .opencode/agents/agent-factory-architect-ultimate.md
-  name: agent-factory-architect-ultimate
-  version: null
-  layer: META
-  role: forge
-  description: null
-  status: legacy-forge
-  upstream: []
-  downstream: []
 - file: .opencode/agents/agent-frontend-dev.md
   name: agent-frontend-dev
   version: 0.1.0

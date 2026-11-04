@@ -42,7 +42,9 @@ def handle(req):
             elif name == "ledger_append":
                 line = args.get("line", "")
                 data = load_ledger()
-                data.setdefault("audit_trail", []).append({
+                if not isinstance(data, list):
+                    data = []
+                data.append({
                     "timestamp": datetime.now(timezone.utc).isoformat(),
                     "line": line,
                 })

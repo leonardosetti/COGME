@@ -65,9 +65,6 @@ AGENT_TOPOLOGY = {
     "META": [
         "agent-skill-master",
     ],
-    "FORGE-LEGACY": [
-        "agent-factory-architect",
-    ],
 }
 KNOWN_SLUGS = {a for members in AGENT_TOPOLOGY.values() for a in members}
 

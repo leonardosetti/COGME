@@ -95,16 +95,65 @@
         "scripts/mcp_nexus_validate.py"
       ],
       "env": {}
-    },
-    "docx-editor": {
-      "command": "uv",
-      "args": [
-        "run",
-        "--directory",
-        "/home/leonardo/.local/share/mcp-servers/docx-mcp",
-        "python",
-        "server.py"
-      ]
+    }
+  },
+  "mcp": {
+    "servers": {
+      "nexus-dispatch": {
+        "type": "local",
+        "command": [
+          "python3",
+          "scripts/mcp_nexus_dispatch.py"
+        ]
+      },
+      "nexus-kb": {
+        "type": "local",
+        "command": [
+          "python3",
+          "scripts/mcp_nexus_kb.py"
+        ]
+      },
+      "nexus-validate": {
+        "type": "local",
+        "command": [
+          "python3",
+          "scripts/mcp_nexus_validate.py"
+        ]
+      },
+      "filesystem": {
+        "type": "local",
+        "command": [
+          "npx",
+          "-y",
+          "@modelcontextprotocol/server-filesystem",
+          "--allow-read",
+          ".ai/specs",
+          "--allow-read",
+          "docs",
+          "--allow-read",
+          "scripts",
+          "--allow-read",
+          ".ai/handoffs"
+        ]
+      },
+      "github-remote": {
+        "type": "local",
+        "command": [
+          "npx",
+          "-y",
+          "@modelcontextprotocol/server-github"
+        ],
+        "env": {
+          "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+        }
+      },
+      "nexus-ledger": {
+        "type": "local",
+        "command": [
+          "python3",
+          "scripts/mcp_nexus_ledger.py"
+        ]
+      }
     }
   }
 }
