@@ -1,19 +1,21 @@
 ---
 spec_id: spec-003
 specname: sdd-conf-memory
-version: 3.1.0
-status: draft
+version: 3.2.0
+status: ratificada
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-10-30
-updated: 2026-11-02
-origin: run CANON-20261029-01 (ADR-011) + commit 149067f (2026-10-30) | creation_handoff: UNKNOWN - verify
+updated: 2026-11-05
+origin: run CANON-20261029-01 (ADR-011) + commit 149067f (2026-10-30) | handoff: UNKNOWN - verify
 task: TA-0300 | sender: agent-nexus-prime-ultimate
 kill_switch: inherited
+wave: WS-4 | Onda 4 — Execução Técnica (memória persistente SDD)
 lgpd-class: n/a (zero PII neste artefato; P-04, constitution.md:90)
 trace:
   - ADR-011 (v1.0.0, aprovado CCB 29/10/2026)
   - scripts/validate_afa_output.py, scripts/nexus_dispatcher.py
   - .ai/agents/registry.yaml (roster SSOT)
+  - ratificada CCB 05/11/2026 (instrumento RAT-2026-11-05-A16, ADR-LOG-012)
 ---
 
 # DOCUMENTO CANÔNICO DE EXECUÇÃO FASEADA — v3.1.0
@@ -1170,12 +1172,13 @@ A Parte 0 (diagnóstico das cinco falhas do v3.0.0 e correções adotadas no v3.
 ## 11.4. Changelog (camada h)
 
 - 3.1.0 — 2026-11-02 (TA-0031, HF-0031): normalização estrutural — frontmatter canônico (`spec_id: spec-003`), slug `000-SDD_CONF-memory.spec.md` → `spec-003-sdd-conf-memory.spec.md` (mapa em `.ai/specs/MANIFEST.md`), mapa de camadas a–h. Versão mantida 3.1.0 (original: run `CANON-20261029-01`, commit `149067f` de 2026-10-30); conteúdo das Partes 0–10 sem alteração.
+- 3.2.0 — 2026-11-05 (refinamento de ratificação, Grupo B): frontmatter atualizado ao padrão TA-0031 ratificado (adicionado `wave: WS-4`, `handoff` em `origin`; `version` 3.1.0 → 3.2.0). Ratificação CCB 05/11/2026 (instrumento RAT-2026-11-05-A16, ADR-LOG-012). Aderência ao padrão de nomenclatura `spec-NNN-specname.spec.md` confirmada (ADR-018, RAT-2026-11-05-A18). Nenhuma decisão de negócio das Partes 0–10 reescrita.
 
 ## CAMADAS FUNDAMENTAIS — MAPA (TA-0031)
 
 | Camada | Seção nesta spec | Estado |
 |---|---|---|
-| (a) cabeçalho | frontmatter (`spec_id: spec-003`, `version: 3.1.0`) + H1 `v3.1.0` | aplicada |
+| (a) cabeçalho | frontmatter (`spec_id: spec-003`, `version: 3.2.0`, `status: ratificada`) + H1 `v3.1.0` | aplicada |
 | (b) Contexto/origem | §11.1 | aplicada |
 | (c) Resolução de conflitos | §11.2 → Parte 0 | aplicada |
 | (d) Corpo de decisões/contratos | Partes 1–7 e 10 | aplicada |
