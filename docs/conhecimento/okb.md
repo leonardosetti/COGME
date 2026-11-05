@@ -3,7 +3,7 @@ id: OKB-001
 title: OKB v5.3.0 | Operational Knowledge Base — Base de Conhecimento Operacional do Projeto COGME
 version: 5.3.0
 class: conhecimento
-status: obsoleto
+status: ratified
 owner: agent-architect
 derived-from:
 - docs/conhecimento/okb.md (normalizado em 2026-11-05)
@@ -763,4 +763,21 @@ Este bloco não integra o hash normativo.
 | Ressalvas | OKB-C-03, C-05, C-06, C-08, C-09, C-10, C-12, C-22, C-24, C-25, **C-26, C-27, C-28** seguem **abertos**; a ratificação não os sana |
 | Revogação | apenas por CCB com emenda registrada e novo bump de versão |
 
-*Fim do documento — OKB v5.2.0 (ratificado) | template OKB-TEMPLATE-CANON v1.0 | COGME | Fatec Taquaritinga | 31/10/2026*
+## 13.1 BLOCO DE RATIFICAÇÃO v5.3.0 (Art. 5.4 da Constituição)
+
+Este bloco não integra o hash normativo da v5.2.0 (bloco §13). Versão 5.3.0 ratificada por decisão do CCB (opção E1 da inspeção Constitution/OKB).
+
+| Campo | Valor |
+|---|---|
+| Documento | OKB-001 — OKB \| Operational Knowledge Base — Base de Conhecimento Operacional do Projeto COGME |
+| Versão ratificada | 5.3.0 |
+| Status | ratified |
+| Template | OKB-TEMPLATE-CANON v1.0 (canônico até decisão posterior do CCB) |
+| Instrumento | Decisão CCB (opção E1, inspeção Constitution/OKB, 05/11/2026); bump v5.2.0 → v5.3.0 (anunciado em A12, 02/11/2026) |
+| Ratificador | Gerente de Projeto — CCB de membro único (Art. 5.4: papel, sem nome civil) |
+| Data da ratificação | 05/11/2026 |
+| Assinatura | `/s/ CCB de membro único` |
+| Efeito | Bump de versão do OKB de v5.2.0 para v5.3.0; corpus normativo da v5.2.0 preservado; alterações incorporadas nesta inspeção (fechamento de OKB-C-02, C-05, C-06, C-08, C-09, C-10, C-12, C-24, C-25, C-28 e glossário/frontmatter alinhados) |
+| Revogação | apenas por CCB com emenda registrada e novo bump de versão |
+
+*Fim do documento — OKB v5.3.0 (ratificado) | template OKB-TEMPLATE-CANON v1.0 | COGME | Fatec Taquaritinga | 05/11/2026*
