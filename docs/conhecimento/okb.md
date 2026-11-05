@@ -606,6 +606,14 @@ Regras: (i) sempre pinar `vX.Y.Z` (ADR/norma) ou `vX.Y` (plano); (ii) citar seç
 | Medição | Cycle Time, Throughput, CFD, WIP, coverage ≥ 80% | ADR-003; §6 | ⚠️ baseline seed simulado; metas não calibradas (C-16) |
 | Incerteza | plano-riscos (R1–R5, Q-01..Q-0n); ADR tardia; kill switch; auditorias; VIO register 25 registros | plano-riscos v1.0; vio-register v1.1 | ⚠️ VIO-013..025 abertos (contratos half-duplex) |
 
+**9.1.1 Matriz de partes interessadas (aceite M4) — encerra OKB-C-24**
+
+| Parte interessada | Papel | Interesse no COGME | Influência |
+|---|---|---|---|
+| Prof. Dr. Nivaldo Carleto | Stakeholder-avaliador / banca | Aceite de marcos M1–M4 e entrega final (15/12/2026) | Decisor de aceite acadêmico (ADR-008 v1.1.0) |
+| GP Leonardo | CCB de membro único / Gerente de Projeto | Entrega dentro do prazo letivo e orçamento R$ 0,00 | Decisor único via CCB (Constitution Art. 5.1) |
+| Equipe (3 membros, múltiplos papéis) | Execução | Escopo EAP 12 fases / 37 pacotes; MVP funcional | Execução técnica; WIP ≤ 3 por pessoa (Art. 6.2) |
+
 **Tailoring declarado (domínio Abordagem de Desenvolvimento).** Três adaptações, todas com ADR ou registro formal: (i) EVM/SPI/CPI abandonados em favor de métricas de fluxo (ADR-003); (ii) 3 dos 8 planos de área diferidos de M1 para M2, −30% de carga documental (§1.5); (iii) subissues rejeitadas em favor de tasklists Markdown, com o card pai como unidade atômica de métrica (ADR-004).
 
 **Princípios × Constituição.** Os 12 princípios do PMBOK 7ª não são replicados: a Constituição já os converte em deveres executáveis (*stewardship* → C-P-05; *quality* → C-P-06; *tailoring* → C-P-11; *risk* → C-P-07; *change* → Art. 9).
@@ -690,7 +698,7 @@ Regras: (i) sempre pinar `vX.Y.Z` (ADR/norma) ou `vX.Y` (plano); (ii) citar seç
 | OKB-C-21 | Crítica | Constituição continha Arts. 5–10 duplicados (duas redações no mesmo arquivo) | constitution.md | ✅ **resolvido** — corpo consolidado (11 cabeçalhos ART., Art. 6 único); co-assinatura humana registrada 30/10 (A01). Ressalva de bump em C-27 |
 | OKB-C-22 | Alta | ADR-010 não propagada: REQ-07 ainda pede SQLite; sem Docker/PostgreSQL em cronograma/custos/recursos | plano-integral:77; buscas = 0 | ❌ aberto — plano de transição + estimativa |
 | OKB-C-23 | Média | Tipos de mudança não definidos normativamente | ccb-log (A01–A10) | ✅ **resolvido** — formalizado em §2.5 (31/10); sinalização `change-class:` efeito prospectivo |
-| OKB-C-24 | Média | Sem registro/matriz de partes interessadas | TAP §1.c/TAP-P7; ADR-008 | ❌ aberto — matriz mínima (avaliador, GP, equipe, banca) |
+| OKB-C-24 | Média | Sem registro/matriz de partes interessadas | TAP §1.c/TAP-P7; ADR-008 | ✅ encerrado — matriz inserida em §9.1.1 (avaliador, GP/CCB, equipe de 3) |
 | OKB-C-25 | Média | CCB-LOG cita `docs/governanca/plano-consolidacao-estrutural.md` inexistente | ccb-log:6; A02 | ❌ aberto — criar o plano ou corrigir a citação |
 | **OKB-C-26** | **Crítica** | **Colisão de ID: dois artefatos diferentes usavam `ADR-013`** (`adr-013-regime-emenda-tap.md` e `ADR-013-SDDAI-Promulgacao.md`); resolvida por renumeração para ADR-014 | ls docs/decisoes; adr-014-sddai-promulgacao.md:144 (nota de renumeração); RAT-2026-10-31-A12 | ✅ resolvido — ADR-013-b renumerada para ADR-014 por decisão CCB (RAT-2026-10-31-A12); catálogo OKB §2.1 e KB-INDEX atualizados nesta rodada |
 | **OKB-C-27** | **Média** | **Bump da Constituição não aplicado:** A09-A-001 ratifica "constitution.md v1.2.1 (sanitizada)", mas o header do arquivo continuam v1.2.0 e o hash co-assinado `b3f296c6…` não foi re-gerado após consolidação | head constitution.md; ccb-log A09 | ❌ aberto — bump editorial + hash dedicado (Art. 5.4) |
@@ -705,7 +713,7 @@ Regras: (i) sempre pinar `vX.Y.Z` (ADR/norma) ou `vX.Y` (plano); (ii) citar seç
 5. **OKB-C-05** — ✅ encerrado: teto de ADRs revisado para ≤ 20 (decisão CCB). 13 IDs (14 artefatos) dentro do novo teto.
 6. **OKB-C-03** — encerrar VIO-006 (kill switch: só o Humano encerra).
 7. **OKB-C-12** — ✅ encerrada: ADR-005 v1.1.0 ratificada (CCB-LOG A08 + A12); `adr-005-freeze.md` SUPERSSEDIDA.
-8. **OKB-C-24** — nomear a matriz de partes interessadas do aceite de M4.
+8. **OKB-C-24** — ✅ encerrado: matriz de partes interessadas inserida em §9.1.1.
 9. **OKB-C-25** — criar `plano-consolidacao-estrutural.md` ou corrigir a citação no CCB-LOG.
 10. **Ratificação deste OKB v5.2.0** — ✅ **CUMPRIDA** nesta emissão (CCB-LOG RAT-2026-10-31-A11, 31/10/2026; bloco §13).
 
