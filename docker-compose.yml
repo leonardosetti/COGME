@@ -1,8 +1,9 @@
-# Stack do COGME (ADR-010): db + migrate + web, e proxy opcional.
-# Segredos vêm do `.env` (copie de .env.example). Nada sensível neste arquivo.
+# Stack do COGME (ADR-010): db + migrate + back + front + proxy.
+# Camadas ortogonais (Constituição Art. 10.1): cada serviço constrói, versiona
+# e reinicia independentemente; comunicação apenas por interface declarada.
 #
-#   docker compose up --build                  # db + migrate + web
-#   docker compose --profile proxy up --build  # inclui o nginx
+#   docker compose up --build   # todas as camadas (proxy sempre ativo)
+#   docker compose restart back # reinicia só o back, sem tocar front/db
 #
 # Todas as portas do host ficam presas em 127.0.0.1.
 
@@ -12,7 +13,7 @@ x-app: &app
   build:
     context: .
     dockerfile: Dockerfile
-  image: cogme-web:local
+  image: cogme-back:local
   environment: &app-env
     COGME_DATABASE_URL: ${COGME_DATABASE_URL:?defina COGME_DATABASE_URL no .env}
     COGME_RATE_TTL_SECONDS: ${COGME_RATE_TTL_SECONDS:-3600}
@@ -37,8 +38,6 @@ services:
     ports:
       - "127.0.0.1:5432:5432"
     networks: [data]
-    # Sem `cap_drop: [ALL]`: o entrypoint do Postgres troca de usuário (chown/su-exec) e
-    # precisa de CHOWN, SETUID, SETGID, DAC_OVERRIDE e FOWNER. Fica o padrão do Docker.
     security_opt: ["no-new-privileges:true"]
     mem_limit: 512m
     pids_limit: 200
@@ -49,12 +48,12 @@ services:
       retries: 10
       start_period: 10s
 
-  # Migração de esquema: mesma imagem do web, roda e termina antes do web iniciar.
+  # Migração de esquema: mesma imagem do back, roda e termina antes do back iniciar.
   migrate:
     <<: *app
     command: ["alembic", "upgrade", "head"]
     restart: "no"
-    # Só fala com o banco: sem a rede `edge` (herdada do anchor), não tem saída para a internet.
+    # Só fala com o banco: sem a rede `edge`, não tem saída para a internet.
     networks: [data]
     mem_limit: 256m
     pids_limit: 100
@@ -62,7 +61,8 @@ services:
       db:
         condition: service_healthy
 
-  web:
+  # Camada Back: API FastAPI/Uvicorn /v1. Não publica porta no host (acesso só via proxy/front).
+  back:
     <<: *app
     restart: unless-stopped
     depends_on:
@@ -70,8 +70,6 @@ services:
         condition: service_healthy
       migrate:
         condition: service_completed_successfully
-    ports:
-      - "127.0.0.1:8000:8000"
     read_only: true
     tmpfs: [/tmp]
     # WeasyPrint chega a ~250 MB de RSS sob carga; 768m deixa folga sem deixar crescer sem fim.
@@ -88,13 +86,38 @@ services:
       retries: 3
       start_period: 20s
 
-  # Reverse proxy latente: só sobe com `--profile proxy`.
-  proxy:
+  # Camada Front: serve arquivos estáticos de src/frontend/ e encaminha /v1/* para back:8000.
+  front:
     image: nginx:alpine@sha256:785835ea65db4bba6f021acc0f3be91b0fef76a53fe41f8588c6698d2aed0606
-    profiles: ["proxy"]
     restart: unless-stopped
     depends_on:
-      web:
+      back:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8001:80"
+    volumes:
+      - ./src/frontend/templates:/usr/share/nginx/html:ro
+      - ./infra/nginx/front.conf:/etc/nginx/conf.d/default.conf:ro
+    networks: [edge]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: [ALL]
+    mem_limit: 64m
+    pids_limit: 32
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1:80/"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+  # Reverse proxy sempre ativo (não mais profile opcional): entrada única do usuário em 127.0.0.1:8080.
+  proxy:
+    image: nginx:alpine@sha256:785835ea65db4bba6f021acc0f3be91b0fef76a53fe41f8588c6698d2aed0606
+    restart: unless-stopped
+    depends_on:
+      front:
+        condition: service_healthy
+      back:
         condition: service_healthy
     ports:
       - "127.0.0.1:8080:80"
@@ -102,16 +125,19 @@ services:
       - ./infra/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
     networks: [edge]
     security_opt: ["no-new-privileges:true"]
-    # O master do nginx roda como root e troca os workers para o usuário `nginx`:
-    # CHOWN (diretórios temporários), SETUID e SETGID. A porta 80 não exige NET_BIND_SERVICE
-    # (o Docker libera portas baixas no namespace do contêiner).
     cap_drop: [ALL]
     cap_add: [CHOWN, SETUID, SETGID]
     mem_limit: 128m
     pids_limit: 64
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1:80/"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
 
 networks:
-  # Interna: sem rota para a internet. Só db, migrate e web participam.
+  # Interna: sem rota para a internet. Só db, migrate e back participam.
   data:
     internal: true
   # Saída para os provedores de cotação (Frankfurter, PTAX) e entrada do proxy.
