@@ -1,9 +1,9 @@
 ---
 id: decisoes-adr-014-sddai-promulgacao
 title: ADR-014 — Promulgação dos Agentes SDDAI e Resolução de Gaps de Compliance (Art. 4.1, 4.7, P-06) — SUPERSSEDIDA
-version: 2.1.0
+version: 1.0.1
 class: decisao-adr
-status: ratificado
+status: supersedida
 owner: agent-project-analyst
 derived-from:
 - docs/decisoes/adr-014-sddai-promulgacao.md (normalizado em 2026-11-05)
@@ -13,13 +13,23 @@ tags:
 - decisoes
 - docs
 - normalizado
+- self-updated
+- supersedida
+- historico
+data-decisao: '31/10/2026'
+data-formalizacao: '31/10/2026'
+decisor: GP Leonardo (CCB único — TAP v3 §1.c, Premissa P7) + NEXUS-PRIME ULTIMATE (L0 Orquestrador)
+instrumento-ccb: RAT-2026-10-31-A09
+gatilhos: G1, G2, G3, G4
+rastreabilidade: TAP §3 (Inovação) + §9 (Premissa P3 — stack local auditável); EAP N1.4, N4.4; REQ-13 (prompts catalogados); ADRs correlatas: ADR-001 (stack FOSS), ADR-006 (modelo primário/fallback), ADR-011 (Ecossistema SDD: MCPs, memória persistente, separação L1/L2/L3); constitution.md v1.2.0 Art. 4.1, 4.3, 4.6, 4.7, 4.10, 6.5, 6.7, P-01..P-12
+dominio-pmbok: Trabalho do Projeto + Abordagem de Desenvolvimento + Incerteza
+processo-pmbok-6: 4.3, 4.6
+superseded-by: decisoes-adr-006-ecossistema-sddai
+kill-switch: screened
 ---
 # ADR-014 — Promulgação dos Agentes SDDAI e Resolução de Gaps de Compliance (Art. 4.1, 4.7, P-06) — SUPERSSEDIDA
 
 **Esta ADR está SUPERSSEDIDA.** Foi incorporada integralmente na **ADR-006 v2.1.0** (Ecossistema SDDAI: Modelo, Agentes, MCPs e Separação L1/L2/L3) conforme decisão do GP em 31/10/2026 (RAT-2026-10-31-A12). Não deve ser usada como referência normativa vigente. Consulte `docs/decisoes/adr-006-ecossistema-sddai.md` (versão 2.1.0) para o conteúdo vigente.
-
----
-# ADR-014 — Promulgação dos Agentes SDDAI e Resolução de Gaps de Compliance (Art. 4.1, 4.7, P-06)
 
 | Campo | Valor |
 |---|---|

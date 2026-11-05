@@ -171,3 +171,19 @@ evidencia: 181 testes passando (1 skipped); security_scan.py --strict exit 0 (46
 impacto: Ecossistema de CI/CD sem falsos positivos de credenciais; todos os pipelines green; B1-B8 liberados para execucao subsequente.
 rollback: Reverter commit individual (nao recomendado).
 pmbok-gate: Integracao (4.6) | Qualidade (8.3) | Conformidade (P-01, P-02, P-04, P-06, P-07, Art. 7.2)
+
+### RAT-2026-11-05-A19 — Normalizacao de frontmatter de ADRs (template canonico ADR)
+contexto: Demanda do GP por instituir e aplicar norma de template para ADRs e normas de nomenclatura de arquivos (ADR-018 ja ratificada). Nenhuma ADR publicada previamente seguia um template unico; frontmatter divergiam entre si e dos corpos, e havia frontmatter duplos e copias duplicadas.
+opcoes: [A] Manter dispersao de frontmatter | [B] Normalizar todas as ADRs para template canonico (spec-adr-template v1.0.0) sem criar sobreposicao de ADR | [C] Reescrever todos os corpos das ADRs
+decisao: B — Normalizacao apenas de metadados/frontmatter e marcacao de copias duplicadas como historicas/supersedidas. Nenhum corpo normativo alterado; nenhuma nova ADR sobreposta criada (regra ADR-LOG preservada).
+artefatos alterados:
+  - docs/decisoes/adr-001-stack.md, adr-002-kanban.md, adr-003-metricas.md, adr-005-regime-tap.md, adr-005-freeze.md, adr-006-ecossistema-sddai.md, adr-006-inteligencia-sdd.md, adr-007-redes-de-projeto.md, adr-008.md, adr-009.md, adr-011-ecossistema-sddai.md, adr-012-constituicao-como-artefato-de-governanca.md, adr-013-regime-emenda-tap.md, adr-014-sddai-promulgacao.md, adr-015-emenda-marco-m2.md, adr-016-backend-mvp.md
+  - docs/decisoes/adr-log.md (entrada ADR-LOG-014; Tabela de Referencia Cruzada corrigida para ADR-007 e ADR-012; Historico v1.1.0)
+  - .ai/specs/spec-adr-template.spec.md (novo: template canonico de ADR)
+decisao: A — Normalizar e ratificar; promover como norma vigente.
+ratificacao: Humana (GP Leonardo, CCB de membro unico, autoridade plena concedida nesta iniciativa)
+instrumento: RAT-2026-11-05-A19
+evidencia: ADR-LOG-014 em docs/decisoes/adr-log.md; spec-adr-template v1.0.0 em .ai/specs/; 14 ADRs com frontmatter alinhado aos corpos; copias duplicadas marcadas status: supersedida com superseded-by.
+impacto: Todas as ADRs vigentes possuem frontmatter canonico unico e aderente a ADR-018 (nomenclatura) e ao template spec-adr-template. Nenhuma sobreposicao de ADR criada.
+rollback: Reverter commits individuais por artefato (nao recomendado).
+pmbok-gate: Integracao (4.6) | Qualidade (8.3) | Conformidade (P-05, P-08, Art. 5)

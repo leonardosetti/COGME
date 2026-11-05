@@ -50,6 +50,7 @@ Este log é o **instrumento único de ratificação** de mudanças de ADRs. Nenh
 | ADR-LOG-011 | ADR-018 | — | 1.0.0 | 05/11/2026 | Norma de nomenclatura de arquivos de artefato: `tipo_artefato-id_artefato-nome_artefato.{ext}`. As specs existentes já seguem o caso particular `spec-NNN-specname.spec.md`. | RAT-2026-11-05-A18 | **APLICADA** |
 | ADR-LOG-012 | specs Grupo A (004, 005, 006, 008, 009, 011) | — | ratificada | 05/11/2026 | Ratificação CCB das 6 specs do Grupo A (backend MVP, container layers, UAT produto, frontend web, NFR consolidados, CI/CD pipeline). Todas aderentes ao padrão TA-0031 (frontmatter camada a + camadas b-h), nomenclatura spec-NNN-specname.spec.md (ADR-018), campo wave (WS-4). Ambiguidade ≤ 0.20 em todas (gate gsd-spec-phase). Pronto para merge do backend e execução da UAT. | RAT-2026-11-05-A16 | **APLICADA** |
 | ADR-LOG-013 | specs Grupo B (003, 001, 002, 013, 012, 014, 010) | — | ratificada | 05/11/2026 | Ratificação CCB das 7 specs do Grupo B (memória persistente SDD, emenda constitucional R1, requisitos review R1, documentação técnica, rastreabilidade prompts SDD, runtime agentes + camada CI, qualidade PDCA + Ishikawa). Todas aderentes ao padrão TA-0031 (frontmatter camada a + camadas b-h), nomenclatura spec-NNN-specname.spec.md (ADR-018), campo wave (WS-4/WS-6/WS-7). Ambiguidade ≤ 0.20 em todas (gate gsd-spec-phase). Pronto para ratificação do Grupo C. | RAT-2026-11-05-A16 | **APLICADA** |
+| ADR-LOG-014 | ADRs 001, 002, 003, 005, 006, 007, 008, 009, 011, 012, 013, 014, 015, 016 | — | normalizada | 05/11/2026 | Normalização de frontmatter: alinhamento version/status ao corpo das ADRs, campos do template canônico (spec-adr-template v1.0.0: data-decisao, data-formalizacao, decisor, gatilhos, rastreabilidade, dominio-pmbok, processo-pmbok-6, kill-switch), cópias duplicadas marcadas históricas/supersedidas (adr-005-freeze, adr-006-inteligencia-sdd), frontmatter duplos unificados (adr-013, adr-014, adr-015, adr-016), tag self-updated onde derived-from aponta para si mesmo. Nenhuma sobreposição de ADR criada; regra ADR-LOG mantida. | RAT-2026-11-05-A19 | **APLICADA** |
 
 ---
 
@@ -73,12 +74,12 @@ Este log é o **instrumento único de ratificação** de mudanças de ADRs. Nenh
 | ADR-004 | 1.0.0 | — | Vigente |
 | ADR-005 | 1.1.0 | ADR-LOG-002 | Vigente (incorpora ADR-013 e ADR-015) |
 | ADR-006 | 2.1.0 | ADR-LOG-001 | Vigente (incorpora ADR-014) |
-| ADR-007 | 1.0.0 | — | Vigente |
+| ADR-007 | 1.1.0 | ADR-LOG-014 | Vigente |
 | ADR-008 | 1.1.0 | ADR-LOG-003 | Vigente |
 | ADR-009 | 1.0.0 | — | Vigente |
 | ADR-010 | 1.0.0 | — | **Supersedida por ADR-001 v1.1.0** (conteúdo absorvido) |
 | ADR-011 | 1.0.0 | — | Vigente (incorporada em ADR-006 v2.1.0) |
-| ADR-012 | 1.1.0 | ADR-LOG-004 | Vigente |
+| ADR-012 | 1.0.1 | ADR-LOG-014 | Vigente |
 | ADR-013 | 1.0.0 | — | **Supersedida por ADR-005 v1.1.0** (conteúdo absorvido) |
 | ADR-014 | 1.0.1 | — | **Supersedida por ADR-006 v2.1.0** (conteúdo absorvido) |
 | ADR-015 | 1.0.0 | — | **Incorporada em ADR-005 v1.1.0** (emenda de marco M2, registro de delta log em `docs/tap/delta-v3-1.md`) |
@@ -92,6 +93,7 @@ Este log é o **instrumento único de ratificação** de mudanças de ADRs. Nenh
 | Versão | Data | Alteração | Responsável |
 |--------|------|-----------|-------------|
 | 1.0.0 | 31/10/2026 | Emissão inicial: catálogo de 6 mudanças aplicadas (ADR-001, ADR-005, ADR-008, ADR-012) e 2 ADRs próprias não-emenda (ADR-013, ADR-015) | GP Leonardo (CCB) |
+| 1.1.0 | 05/11/2026 | Normalização de frontmatter de 14 ADRs (ADR-LOG-014): alinhamento version/status ao corpo, template canônico (spec-adr-template v1.0.0), cópias duplicadas históricas (adr-005-freeze, adr-006-inteligencia-sdd), frontmatter duplos unificados (adr-013, adr-014, adr-015, adr-016), tag self-updated. | GP Leonardo (CCB) |
 
 ---
 
