@@ -1,7 +1,7 @@
 ---
 spec_id: spec-009
 specname: uat-produto-v1
-version: 0.2.0
+version: 0.3.0
 status: draft
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-11-03
@@ -136,16 +136,15 @@ Enquanto não ratificadas, esses fluxos **não entram na contagem dos 100%** nem
 6. **Veredito binário fail-closed:** 100% PASS e zero defeitos críticos/bloqueantes abertos → UAT **APROVADA**; qualquer FAIL ou defeito crítico/bloqueante aberto → UAT **REPROVADA** (§3.2; spec-005:331; spec-002:70). Defeitos major/minor → backlog com decisão PO (Art. 5.1, constitution.md:53).
 7. **Aprovação humana:** veredito levado ao GP via CCB (Art. 5.3, constitution.md:142) — a aprovação da UAT e a ratificação do destino das evidências (§3.8) são atos humanos; o resultado não se torna release sem esse gate.
 
-### 3.8 Evidências — destino proposto (fecha C.5; condicionante CCB)
+### 3.8 Evidências — destino decidido (fecha C.5)
 
-A lacuna C.5 ("destino/armazenamento das evidências da UAT: `UNKNOWN - verify`", LISTA-SPECS-PENDENTES-2026-11-02.md:52; origem spec-005:342) recebe aqui a **proposta executável da QA** (parcela TA-0047, HF-0603:40, item 3), que **só vige após ratificação CCB/PO** — o destino final é reservado ao GP pela spec-005:342 ("não inventado aqui"):
+O destino das evidências de UAT é **docs/uat/**, classificado por rodada (ex.: `docs/uat/rodada-001/`), com relatório analítico por rodada contendo taxa de aceite, cobertura analizada e ciclo de implementação. Decisão GP/CCB fechada em 05/11/2026 (pendência #6 dos 7 bloqueantes resolvida). Não é mais condicionante.
 
-- **Relatório:** `docs/uat/N6.2/relatorio-UAT-<yyyymmdd>-run<nn>.md` — tabela pass/fail por trace id + registro de defeitos com severidade (§3.9).
-- **Evidências por caso:** `docs/uat/N6.2/evidencias/<id>__US-<slug>__<yyyymmdd>__run<nn>.log|.png` — padrão da parcela (HF-0603:40); para os fluxos de produto, `<id>` = `UAT-nn` (ex.: `UAT-04__US-004__20261103__run01.png`); para os casos de camada, `<id>` = `F-0N`. Nomenclatura/captura = decisão QA-executável (HF-0603:40).
+- **Relatório:** `docs/uat/N6.2/relatorio-UAT-<yyyymmdd>-run<nn>.md` → normalizado para `docs/uat/rodada-NN/relatorio-analitico.md` — tabela pass/fail por trace id + registro de defeitos com severidade (§3.9).
+- **Evidências por caso:** `docs/uat/rodada-NN/evidencias/<id>__US-<slug>__<yyyymmdd>__run<nn>.log\|.png` — para os fluxos de produto, `<id>` = `UAT-nn` (ex.: `UAT-04__US-004__20261103__run01.png`); para os casos de camada, `<id>` = `F-0N`. Padrão da parcela (HF-0603:40).
 - **Evidência mínima por caso:** run id, exit code, timestamp, comando de repro (§3.2, item 5; HF-0603:40, item 1).
-- **Retenção proposta:** PERMANENTE, versionada em git como trilha de auditoria, sem exclusão; conteúdo exclusivamente sintético (P-04, constitution.md:90; HF-0603:40).
-- **Alternativa em avaliação:** `docs/auditorias/` (HF-0603:40, item 3).
-- **Condicionante (não promovida a decisão):** ratificação CCB/PO de (i) destino `docs/uat/` × `docs/auditorias/`, (ii) retenção permanente e (iii) caráter bloqueante do relatório. Até a ratificação, o destino vigente permanece o literal da spec-005:342: **`UNKNOWN - verify`** (MANIFEST.md:58 — lacuna não pode ser fechada por invenção).
+- **Retenção:** PERMANENTE, versionada em git como trilha de auditoria, sem exclusão; conteúdo exclusivamente sintético (P-04, constitution.md:90).
+- **Caráter bloqueante do relatório:** o relatório de UAT aprovado é condição de release/merge (ato humano do GP via CCB, Art. 5.3, constitution.md:142).
 
 ### 3.9 Registro de defeitos e severidade
 
@@ -166,7 +165,7 @@ Semântica de severidade (taxonomia proposta nesta emissão, sem precedente cita
 
 Lista da parcela TA-0047 (HF-0603:40, item 4), completa:
 
-1. **Ratificação do destino/retenção das evidências** (`docs/uat/` × `docs/auditorias/`) e do caráter bloqueante do relatório — condicionante CCB/GP, reserva da spec-005:342 (§2, §3.8).
+1. **Destino das evidências** — decidido = `docs/uat/`, classificado por rodada (`docs/uat/rodada-NN/`), com relatório analítico por rodada (taxa de aceite, cobertura analizada, ciclo de implementação). Decisão GP/CCB fechada em 05/11/2026; não é mais condicionante. Retenção permanente, conteúdo exclusivamente sintético (P-04). | §2, §3.8 |
 2. **Versões exatas dos browsers** na data da execução (REQ-06 "últ. 2 versões" é móvel — spec-002:67).
 3. **Valores de spread/IOF dos casos de teste** (GAP-03, spec-002:102): alíquotas são informadas pelo usuário, nenhuma no código (spec-004:29); fórmula do MVP fixada em spec-004:46-53, ratificada via ADR-016 (RAT-2026-11-05-A16).
 4. **Campos da invoice** além do contrato spec-004 §3: modelo canônico definido em spec-007 §3.1 (tabela `invoices`); GAP-04 fechado por ADR-016 D4 (RAT-2026-11-05-A16-D4).

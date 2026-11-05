@@ -65,7 +65,7 @@ ADRs e gaps conhecidos (G-01..G-13, GAP-01..GAP-08). **Cada item traz origem
 | C.2 | Fora de escopo adicional (YAGNI) da spec backend: `UNKNOWN - verify` | `spec-004-...spec.md:243-245` (§13) |
 | C.3 | Handoff/task de criação das specs 003/004: `UNKNOWN - verify` (sem envelope `task-ta-*.json`) | frontmatter de `spec-003-...spec.md:9` e `spec-004-...spec.md:9-10` |
 | C.4 | Job/marcador `contract-network` do CI: nome exato `UNKNOWN - verify` | `spec-005-...spec.md:210` |
-| C.5 | Destino/armazenamento das evidências da UAT: `UNKNOWN - verify` | `spec-005-...spec.md:342` |
+| C.5 | Destino/armazenamento das evidências da UAT: FECHADO — destino = `docs/uat/`, classificado por rodada (`docs/uat/rodada-NN/`), com relatório analítico por rodada (taxa de aceite, cobertura analizada, ciclo de implementação). Decisão GP/CCB fechada em 05/11/2026 (pendência #6 dos 7 bloqueantes resolvida). | `spec-005-...spec.md` §12 (atualizado); `spec-009-...spec.md` §3.8 (atualizado); `docs/uat/README.md` (criado); `docs/uat/rodada-001/relatorio-analitico.md` (criado) |
 
 ## D. Ondas do plano de produção que exigem specs ainda não criadas
 

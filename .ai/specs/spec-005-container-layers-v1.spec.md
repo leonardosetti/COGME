@@ -1,11 +1,11 @@
 ---
 spec_id: spec-005
 specname: container-layers-v1
-version: 0.3.0
+version: 0.4.0
 status: draft
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-11-02
-updated: 2026-11-03
+updated: 2026-11-05
 origin: HF-0029 (TA-0029) + amendment HF-0030 (TA-0030) | sender: agent-nexus-prime-ultimate
 kill_switch: inherited
 ---
@@ -339,7 +339,7 @@ Padrão B conforme `docs/conhecimento/OKB.md:539` (§7.4): título `US-NN — sl
 | Aprovador do resultado | Humano — GP via CCB (merge/release é ato humano) | Art. 5.3 (constitution.md:142) |
 | Stakeholder avaliador acadêmico | Prof. Dr. Nivaldo Carleto (canônico) | Art. 1.1 (constitution.md:27) |
 
-**Evidências:** (i) log de execução por fluxo com timestamp e resultado pass/fail; (ii) screenshots do estado healthy por camada (`docker compose ps`); (iii) relatório de defeitos com severidade e status; (iv) artefato de cobertura ≥80% (ci.yml:170); (v) run do CI com duração ≤5 min por push (US-011); (vi) saída dos testes de contrato de rede (§7.3). Destino/armazenamento das evidências: **proposta emitida (spec-009 §3.8), RATIFICAÇÃO CCB/PO PENDENTE** — `docs/uat/N6.2/` com `relatorio-UAT-<yyyymmdd>-run<nn>.md` + `docs/uat/N6.2/evidencias/<id>__US-<slug>__<yyyymmdd>__run<nn>.log|.png`, retenção permanente versionada em git, conteúdo exclusivamente sintético; alternativa em avaliação: `docs/auditorias/` (parcela TA-0047, HF-0603:40, item 3). A decisão final permanece reservada ao GP (CCB) — enquanto não ratificada, não constitui decisão fechada (condicionante registrada em spec-009:148, que mantém o estado `UNKNOWN - verify` até a ratificação; não inventado aqui — emenda TA-0061, HF-0617).
+**Evidências:** (i) log de execução por fluxo com timestamp e resultado pass/fail; (ii) screenshots do estado healthy por camada (`docker compose ps`); (iii) relatório de defeitos com severidade e status; (iv) artefato de cobertura ≥80% (ci.yml:170); (v) run do CI com duração ≤5 min por push (US-011); (vi) saída dos testes de contrato de rede (§7.3). Destino/armazenamento das evidências: **decidido = `docs/uat/`, classificado por rodada (`docs/uat/rodada-NN/`), com relatório analítico por rodada (taxa de aceite, cobertura analizada, ciclo de implementação)** — decisão GP/CCB fechada em 05/11/2026 (pendência #6 resolvida). Formato: `relatorio-analitico.md` + `evidencias/<id>__US-<slug>__<yyyymmdd>__run<nn>.log|.png`, retenção permanente versionada em git, conteúdo exclusivamente sintético (P-04, constitution.md:90). Fonte: spec-009 §3.8.
 
 ---
 

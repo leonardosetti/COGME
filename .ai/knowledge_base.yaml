@@ -25,3 +25,12 @@ gap-d4-fatura-persistida: 'GAP-04 / D1 (persistência de invoice) DECIDIDO = PER
   ratificada), spec-004 (LGPD linha 126 atualizada), spec-015 (LGPD produto, v0.2.0,
   D1 resolvido), spec-009 (UAT-04 e UNKNOWNs atualizados), lista-specs-pendentes (B.4
   fechado, E.2 já fechado). KB e ADR-LOG atualizados.'
+destino-evidencias-uat: 'Destino das evidências de UAT DECIDIDO = docs/uat/, classificado
+  por rodada (docs/uat/rodada-NN/), com relatório analítico por rodada (taxa de aceite,
+  cobertura analizada, ciclo de implementação). Decisão GP/CCB fechada em 05/11/2026
+  (pendência #6 dos 7 bloqueantes resolvida). Criado: docs/uat/README.md (índice,
+  princípios P-04, estrutura por rodada, padrão de nomenclatura), docs/uat/rodada-001/relatorio-analitico.md
+  (taxa de aceite 0% não executada, cobertura 0/14 casos, ciclo EM EXECUÇÃO, schema
+  de defeitos DEF-UAT-NNN, rastreabilidade). Propagado para: spec-009 (§3.8 reescrito,
+  v0.3.0), spec-005 (§12 evidências atualizado, v0.4.0), lista-specs-pendentes (C.5
+  fechado). KB registrada.'
