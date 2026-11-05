@@ -1,7 +1,7 @@
 ---
 id: decisoes-adr-004-tasklists
 title: ADR-004 — Controle de Progresso via Tasklists Markdown (Rejeição de Subissues)
-version: 1.0.0
+version: 1.1.0
 class: decisao-adr
 status: active
 owner: agent-project-analyst
@@ -18,7 +18,7 @@ tags:
 
 | Campo | Valor |
 |---|---|
-| Versão | 1.0.0 |
+| Versão | 1.1.0 |
 | Status | Finalizado |
 | Data da decisão | 20/09/2026 |
 | Data de formalização do documento | 28/10/2026 |
@@ -70,3 +70,4 @@ Adotar **Tasklists Markdown condicionais** (`- [ ]` no corpo da Issue) e **rejei
 | Versão | Data | Autor | Mudança |
 |---|---|---|---|
 | 1.0.0 | 28/10/2026 | agent-architect | Formalização do corpo (decisão CCB de 20/09/2026; emissão original comprometida em commit de 0 byte — 21/09/2026; stub antigo dizia "Hierarchical task lists with priority tags" — substituído pela decisão aprovada de tasklists Markdown nativas) |
+| 1.1.0 | 31/10/2026 | GP Leonardo (CCB) | Bump de versão para alinhar ao índice KB-INDEX (OKB-C-02); corpo normativo inalterado (tasklists Markdown condicionais, rejeição de subissues, DoD item 8 no Plano de Escopo) |

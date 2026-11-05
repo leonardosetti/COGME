@@ -1,7 +1,7 @@
 ---
 id: decisoes-adr-002-kanban
 title: ADR-002 — Kanban como Método de Execução
-version: 1.0.0
+version: 1.1.0
 class: decisao-adr
 status: ratificado
 owner: agent-project-analyst
@@ -27,7 +27,7 @@ kill-switch: screened
 
 | Campo | Valor |
 |---|---|
-| Versão | 1.0.0 |
+| Versão | 1.1.0 |
 | Status | Finalizado |
 | Data da decisão | 19/09/2026 |
 | Data de formalização do documento | 28/10/2026 |
@@ -75,3 +75,4 @@ Mapeamento Domínios PMBOK 7ª → rituais: Stakeholders → Refinement semanal;
 | Versão | Data | Autor | Mudança |
 |---|---|---|---|
 | 1.0.0 | 28/10/2026 | agent-architect | Formalização do corpo (decisão CCB de 19/09/2026; emissão original comprometida em commit de 0 byte — 21/09/2026; stub antigo dizia "Custom workflow engine" — substituído pela decisão aprovada) |
+| 1.1.0 | 31/10/2026 | GP Leonardo (CCB) | Bump de versão para alinhar ao índice KB-INDEX (OKB-C-02); corpo normativo inalterado (WIP ≤ 3 por pessoa, colunas Backlog→Done, sem sprints) |

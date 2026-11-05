@@ -1,7 +1,7 @@
 ---
 id: decisoes-adr-003-metricas
 title: ADR-003 — Métricas de Fluxo (Substituição de EVM)
-version: 1.0.0
+version: 1.1.0
 class: decisao-adr
 status: ratificado
 owner: agent-project-analyst
@@ -27,7 +27,7 @@ kill-switch: screened
 
 | Campo | Valor |
 |---|---|
-| Versão | 1.0.0 |
+| Versão | 1.1.0 |
 | Status | Finalizado |
 | Data da decisão | 19/09/2026 |
 | Data de formalização do documento | 28/10/2026 |
@@ -81,3 +81,4 @@ O glossário v2.1 listava SPI/CPI (EVM — PMBOK 6ª) como métricas ativas; o T
 | Versão | Data | Autor | Mudança |
 |---|---|---|---|
 | 1.0.0 | 28/10/2026 | agent-architect | Formalização do corpo (decisão CCB de 19/09/2026; emissão original comprometida em commit de 0 byte — 21/09/2026; stub antigo dizia "Prometheus + Grafana" — substituído pela decisão aprovada de fluxo Kanban/GitHub Insights) |
+| 1.1.0 | 31/10/2026 | GP Leonardo (CCB) | Bump de versão para alinhar ao índice KB-INDEX (OKB-C-02); corpo normativo inalterado (métricas de fluxo: Cycle Time, Throughput, CFD, WIP, Coverage; EVM legado removido) |
