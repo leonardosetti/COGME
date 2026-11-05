@@ -38,33 +38,47 @@ def _layer_of(slug: str) -> str:
     return "UNKNOWN"
 
 
-def validate_envelope(env: dict) -> dict:
-    rep = {
-        "status": "aceito",
-        "envelope_id": env.get("task_id") or env.get("envelope_id"),
+def _canon(env: dict) -> dict:
+    """Mapeia nomes de campo legacy para o canônico do dispatcher (task_id, target, payload, sender)."""
+    return {
         "task_id": env.get("task_id") or env.get("envelope_id"),
-        "sender": env.get("sender"),
-        "receiver": env.get("target") or env.get("receiver"),
         "target": env.get("target") or env.get("receiver"),
+        "payload": env.get("payload") or env.get("payload_ref"),
+        "sender": env.get("sender"),
         "action": env.get("action"),
         "handoff": env.get("handoff"),
-        "payload": env.get("payload") or env.get("payload_ref"),
-        "payload_ref": env.get("payload_ref") or env.get("payload"),
+        "reply_required": env.get("reply_required", True),
+        "raw": env,
+    }
+
+
+def validate_envelope(env: dict) -> dict:
+    c = _canon(env)
+    rep = {
+        "status": "aceito",
+        "task_id": c["task_id"],
+        "sender": c["sender"],
+        "target": c["target"],
+        "receiver": c["target"],
+        "action": c["action"],
+        "handoff": c["handoff"],
+        "payload": c["payload"],
+        "payload_ref": c["payload"],
         "created_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "errors": [],
         "warnings": [],
     }
-    eid = rep["envelope_id"] or ""
+    eid = rep["task_id"] or ""
     sender = rep["sender"] or ""
     receiver = rep["receiver"] or ""
     action = rep["action"] or ""
 
     if not ENV_ID_RE.match(eid):
-        rep["errors"].append(f"envelope_id/task_id fora do padrão ENV-NNN/TA-NNN: {eid!r}")
+        rep["errors"].append(f"task_id/envelope_id fora do padrão ENV-NNN/TA-NNN: {eid!r}")
     if sender not in KNOWN_SLUGS:
         rep["errors"].append(f"sender fora da topologia: {sender!r}")
     if receiver not in KNOWN_SLUGS:
-        rep["errors"].append(f"receiver/target fora da topologia: {receiver!r}")
+        rep["errors"].append(f"target/receiver fora da topologia: {receiver!r}")
     if sender == receiver:
         rep["errors"].append(f"auto-delegacao proibida: {sender!r}")
     if action not in VALID_ACTIONS:
@@ -78,8 +92,7 @@ def validate_envelope(env: dict) -> dict:
             rep["errors"].append(f"handoff .md ausente: {handoff_path}")
 
     # reply_required: deve ser verdadeiro para half-duplex fechar ciclo
-    reply_required = env.get("reply_required", True)
-    if not reply_required:
+    if not c["reply_required"]:
         rep["warnings"].append("reply_required=False: parcela de retorno não esperada")
 
     # camada do receiver deve ser compatível (L3 só recebe de L0/L1/L2, nunca de META para execução)

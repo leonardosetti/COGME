@@ -34,3 +34,12 @@ destino-evidencias-uat: 'Destino das evidências de UAT DECIDIDO = docs/uat/, cl
   de defeitos DEF-UAT-NNN, rastreabilidade). Propagado para: spec-009 (§3.8 reescrito,
   v0.3.0), spec-005 (§12 evidências atualizado, v0.4.0), lista-specs-pendentes (C.5
   fechado). KB registrada.'
+gap-e4-backlog-req-us: 'Gap E.4 (conversao REQ->User Story, backlog inexistente) RESOLVIDO
+  como artefato versionado: docs/analise/BACKLOG-REQ-US-M3-M4.md (criado 05/11/2026).
+  Contem 17 cards (US-001..017) mapeados a REQ-01..15, com prioridade (10 must, 4
+  should, 3 conditional, 1 blocked), macro-fase (MF2-construcao/MF3-consolidacao),
+  status, trace id e spec de origem. Nao foi possivel publicar como Issues no GitHub:
+  o PAT tem apenas leitura (createIssue 403, label create 403). O documento esta pronto
+  para importacao manual via GitHub web pelo PO (agent-po). Marco alvo: M3 ja encerrou
+  (03/11/2026); backlog direcionado a M4 (17/11/2026). Condicionais (US-007, 016,
+  017) dependem de CCB/PO (KG-R-02/KG-R-03); US-012 bloqueada (gate E). KB registrada.'

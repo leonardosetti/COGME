@@ -162,6 +162,10 @@ def validate_task_for_delivery(task: dict) -> tuple[bool, list]:
         errors.append(ERROR_CODES["SELF_DELEGATION"])
     if action not in VALID_ACTIONS:
         errors.append(ERROR_CODES["LAYER_MISMATCH"])
+    # reply_required deve ser booleano quando presente (contrato half-duplex)
+    reply_required = task.get("reply_required", True)
+    if reply_required is not None and not isinstance(reply_required, bool):
+        errors.append("reply_required deve ser booleano (contrato half-duplex)")
     # camada do target deve existir na topologia
     target_layer = None
     for layer, members in AGENT_TOPOLOGY.items():

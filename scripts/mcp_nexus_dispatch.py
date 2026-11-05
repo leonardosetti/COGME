@@ -3,6 +3,10 @@
 import json
 import sys
 import yaml
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
+from mcp_usage_log import log_usage
 
 REGISTRY = ".ai/agents/registry.yaml"
 
@@ -57,6 +61,11 @@ def main():
         except json.JSONDecodeError:
             continue
         resp = handle(req)
+        params = req.get("params") or {}
+        ok = resp.get("error") is None
+        tool = params.get("name") if req.get("method") == "tools/call" else None
+        log_usage("mcp-nexus-dispatch", req.get("method"), tool, ok,
+                  resp.get("error", {}).get("message") if not ok else None)
         if resp is not None and req.get("id") is not None:
             sys.stdout.write(json.dumps(resp, ensure_ascii=False) + "\n")
             sys.stdout.flush()

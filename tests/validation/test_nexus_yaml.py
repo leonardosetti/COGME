@@ -457,7 +457,9 @@ def test_legacy_forge_only_factory_architects(agents_list):
 def test_registry_matches_agent_frontmatter():
     """registry.yaml deve estar sincronizado com o frontmatter dos .opencode/agents/*.md.
     Agentes legacy-forge (sem frontmatter) são tolerados."""
-    md_files = sorted(AGENTS_DIR.glob("*.md"))
+    # Apenas arquivos com prefixo agent- sao agentes COGME; gsd-* sao ferramentas
+    # do framework OpenCode e nao integram o roster SSOT (conforme Art. 4.2).
+    md_files = sorted(f for f in AGENTS_DIR.glob("*.md") if f.stem.startswith("agent-"))
     assert md_files, "Nenhum arquivo de agente encontrado em .opencode/agents/"
 
     registry_data = yaml.safe_load(open(REGISTRY_PATH))

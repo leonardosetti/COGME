@@ -22,6 +22,18 @@ Projeto acadêmico FOSS de conversão cambial, desenvolvido na disciplina de Ger
 | Status da Constituição | v1.2.0 — VIGENTE-PLENA (ratificada 30/10/2026, co-assinatura humana via CCB) |
 | Versão da diretriz de forja de agentes | AFA-ULTIMATE v1.3.0-FINAL |
 
+### 1.1 Objetivos do projeto
+
+**Objetivo geral.** Conversor de ganhos em moeda estrangeira (USD/EUR → BRL), gratuito, FOSS, de jurisdição brasileira (LGPD primária), entregue como disciplina de Gerência de Projetos (Fatec Taquaritinga), com marcos M1–M4 e entrega final em 15/12/2026. Stakeholder-avaliador canônico: Prof. Dr. Nivaldo Carleto (ADR-008).
+
+**Objetivos específicos** (escopo canônico — Constituição Art. 1.2 / TAP v3 §4):
+
+- Simulação cambial de recebimentos, com comparação de regimes de contratação (fixo e por hora, entre os 5 regimes do escopo).
+- Cálculo de spread e IOF informados pelo usuário; nenhuma alíquota embutida no código (aviso fixo em toda resposta de simulação).
+- Emissão de invoice PDF (WeasyPrint), com persistência opcional, download/impressão e rota de erase (LGPD art. 18).
+- Rastreabilidade de decisões via ADR, cobertura de testes ≥ 80%, segurança OWASP com fail-closed.
+- Zero custo recorrente, soberania computacional local (`llama.cpp`, CPU-only, sem CUDA/nuvem) e ausência de telemetria/lock-in.
+
 ---
 
 ## 2. Governança aplicada
@@ -210,6 +222,44 @@ python -m pytest tests/unit tests/integration --cov=src --cov-fail-under=80
 - Identificadores, slugs, código e contratos: **EN**, kebab-case com prefixo `agent-` para agentes.
 - Narrativa estratégica, documentação humana e mensagens visíveis ao humano: **PT-BR**.
 - Nunca publicar dados sensíveis, credenciais reais, PII ou detalhes estratégicos de execução neste README.
+
+## 8. Arquitetura
+
+Separação de camadas Dados / Back / Front (ADR-010), orquestradas via Docker Compose.
+
+| Camada | Tecnologia | Papel |
+| Dados | PostgreSQL 15+ (Docker) | Tabelas `fx_quotes` (cache de cotações) e `invoices`; SQLite só como fixture de teste isolado |
+| Back | FastAPI, Python 3.11+ (imagem 3.12 slim, usuário sem privilégios) | Rotas `/v1` (health, rates/{currency}, simulate, invoice), cálculo em `Decimal`, cotação Frankfurter (primária) + PTAX (fallback), circuit breaker, contrato de erro padronizado |
+| Front | HTML5 + CSS3 + JS vanilla, Jinja, HTMX, Tailwind (sem build chain, sem CDN-first) | Templates `index.html` e `invoice.html`, servidos na mesma origem (sem CORS) |
+| Orquestração | Docker Compose (`db`, `migrate`, `web`, `proxy` opcional) + Nginx reverso latente (porta 8080) | Paridade dev/test/prod; banco sem rota para internet, apenas `web` publica porta em `127.0.0.1` |
+| IA / agentes | `llama.cpp`, Qwen3-30B-A3B Q4_K_M, CPU-only (AMD Ryzen 7 8700G), fallback AVX-512, limite 32 GB | Inferência local para o ecossistema SDD; sem CUDA, sem nuvem |
+
+Diagrama da arquitetura lógica: `docs/diagramas/desenvolvimento/fig-3-2-arquitetura-logica.png`.
+
+Rotas detalhadas e exemplo de chamada: seção 6.1.
+
+## 9. Métricas de fluxo
+
+Substituem EVM/SPI/CPI (ADR-003; orçamento zero e escopo emergente tornam EVM indeterminado). Fonte: GitHub Insights / GitHub Projects (SSOT), sem stack de observabilidade dedicada.
+
+| Métrica | Fórmula | Meta | Frequência |
+| Cycle Time | Média (`Done − In Progress`) | ≤ 3 dias | Semanal |
+| Throughput | Cards concluídos / semana | ≥ 5 cards | Semanal |
+| WIP em fluxo | Cards em `In Progress` | ≤ 9 (3 × 3 pessoas) | Contínuo |
+| Coverage | Linhas testadas / totais | ≥ 80% | Por push (CI) |
+
+⚠️ Os valores de baseline em `docs/metricas/baseline.md` são **seeds simulados** (período de calibração 23/09–03/10 sem dados reais) e serão recalibrados com dados empíricos do GitHub Projects a partir de 01/11/2026.
+
+## 10. Referências públicas
+
+Artefatos públicos para rastreamento direto:
+
+- Repositório: https://github.com/leonardosetti/COGME
+- CI/CD — COGME CI/CD Pipeline: https://github.com/leonardosetti/COGME/actions/workflows/ci.yml
+- SDDAI Verify Pipeline: https://github.com/leonardosetti/COGME/actions/workflows/sddai-verify.yml
+- Kanban / Projects (SSOT de execução, Backlog → Done, WIP ≤ 3): https://github.com/leonardosetti/COGME/projects
+- Issues / backlog: https://github.com/leonardosetti/COGME/issues
+- Releases: https://github.com/leonardosetti/COGME/releases
 
 ---
 

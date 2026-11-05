@@ -4,6 +4,10 @@ import json
 import sys
 import yaml
 from datetime import datetime, timezone
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
+from mcp_usage_log import log_usage
 
 LEDGER = ".ai/agents/ledger.yaml"
 
@@ -41,7 +45,7 @@ def handle(req):
                 text = yaml.safe_dump(load_ledger(), allow_unicode=True, sort_keys=False)
             elif name == "ledger_append":
                 required = ("task_id", "sender", "receiver", "action", "status", "exit_status", "notes")
-                missing = [k for k in required if not args.get(k)]
+                missing = [k for k in required if k not in args or args[k] is None]
                 if missing:
                     return {"jsonrpc": "2.0", "id": rid, "error": {"code": -32602, "message": f"campos obrigatórios ausentes: {', '.join(missing)}"}}
                 data = load_ledger()
@@ -76,7 +80,12 @@ def main():
             req = json.loads(line)
         except json.JSONDecodeError:
             continue
+        params = req.get("params") or {}
         resp = handle(req)
+        ok = resp.get("error") is None
+        tool = params.get("name") if req.get("method") == "tools/call" else None
+        log_usage("mcp-nexus-ledger", req.get("method"), tool, ok,
+                  resp.get("error", {}).get("message") if not ok else None)
         if resp is not None and req.get("id") is not None:
             sys.stdout.write(json.dumps(resp, ensure_ascii=False) + "\n")
             sys.stdout.flush()
