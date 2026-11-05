@@ -16,3 +16,12 @@ codigo-camadas-separadas: 'Camadas Dados/Back/Front separadas e proxy sempre ati
   chamando POST /v1/simulate pela mesma origem. docker compose config EXIT 0. Fecha
   bloqueante de codigo da separacao de camadas (spec-005, US-018). Coerente com ADR-016
   (RAT-2026-11-05-A16).'
+gap-d4-fatura-persistida: 'GAP-04 / D1 (persistência de invoice) DECIDIDO = PERSISTIR
+  em 05/11/2026 (ADR-016 emenda D4, instrumento RAT-2026-11-05-A16-D4, ADR-016 versão
+  1.2.0, ADR-LOG-010). Cada usuário pode gerar, armazenar persistentemente, baixar
+  e imprimir a invoice conforme sua regra de jornada e rating de pagamento. Simulações
+  não gravadas. Rota de erase (LGPD art. 18) obrigatória para invoices persistidas
+  (condicionantes D1-D6 da spec-015). Propagado para: spec-007 (modelo invoice, v0.2.0
+  ratificada), spec-004 (LGPD linha 126 atualizada), spec-015 (LGPD produto, v0.2.0,
+  D1 resolvido), spec-009 (UAT-04 e UNKNOWNs atualizados), lista-specs-pendentes (B.4
+  fechado, E.2 já fechado). KB e ADR-LOG atualizados.'

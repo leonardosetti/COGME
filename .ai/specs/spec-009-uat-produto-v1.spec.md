@@ -1,11 +1,11 @@
 ---
 spec_id: spec-009
 specname: uat-produto-v1
-version: 0.1.0
+version: 0.2.0
 status: draft
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-11-03
-updated: 2026-11-03
+updated: 2026-11-05
 origin: .ai/handoffs/HF-0610-spec-009-uat-produto-v1.md (envelope; item B.5 de docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md:37)
 task: TA-0054 | handoff: HF-0610 | sender: agent-nexus-prime-ultimate
 kill_switch: inherited
@@ -84,7 +84,7 @@ Formato de trace id da parcela TA-0047: `REQ-x::UAT-nn::layer::case` (HF-0603:40
 | `REQ-01::UAT-01::product::sim-realtime` | Simulação em tempo real USD/EUR→BRL | US-001 (spec-002:158) | REQ-01, REQ-05 (spec-002:62,66) | PASS: equivalente em BRL exibido com cotação ≤2s (chamada externa) e resposta E2E ≤3s P95 — leitura de camadas C-07 (spec-002:126); FAIL: estouro ou tela sem resultado | NF-01/NF-02 (spec-006:71-72); orçamento 1,9s (spec-004:114) |
 | `REQ-02::UAT-02::product::regimes-5` | 5 regimes de contratação operacionais e comparáveis | US-002 (spec-002:159) | REQ-02 (spec-002:63) | PASS: 100% dos regimes (`hourly|daily|weekly|monthly|fixed`, spec-004:60) calculam e são comparáveis — "100% regimes em UAT" (spec-002:63); FAIL: qualquer regime ausente | F-02 por referência (§3.4) |
 | `REQ-03::UAT-03::product::spread-iof-audit` | Encargos spread+IOF com trilha auditável e 2 casas | US-003 (spec-002:160) | REQ-03 (spec-002:64) | PASS: líquido segue a fórmula da spec-004 §2 (spec-004:46-53) com 2 casas, identidade `gross_brl − spread_brl − iof_brl == net_brl` (spec-004:53) e trilha auditável; fixture candidata: exemplo sintético canônico (rate 5.000000, spread 2, iof 0.38 → net_brl 23430.62, spec-004:55-56); alíquotas informadas pelo usuário, sem default (spec-004:29); fórmula ratificada via ADR-016 (RAT-2026-11-05-A16) | NF-04 parcial (spec-006:74) |
-| `REQ-04::UAT-04::product::invoice-pdf` | Emissão de invoice em PDF | US-004 (spec-002:161) | REQ-04 (spec-002:65) | PASS: PDF válido em ≤3s/documento (NF-03, spec-006:73) com `Content-Disposition: attachment` (spec-004:130) e zero PII em logs (spec-004:126); campos além do contrato spec-004 §3: `UNKNOWN - verify` (GAP-04; spec-007:126-138; condicionante D1, spec-007:38,48) | F-03 por referência (§3.4) |
+| `REQ-04::UAT-04::product::invoice-pdf` | Emissão de invoice em PDF | US-004 (spec-002:161) | REQ-04 (spec-002:65) | PASS: PDF válido em ≤3s/documento (NF-03, spec-006:73) com `Content-Disposition: attachment` (spec-004:130) e zero PII em logs (spec-004:126); invoice persistida na tabela `invoices` com modelo canônico (spec-007 §3.1; ADR-016 D4, RAT-2026-11-05-A16-D4); rota de erase obrigatória (LGPD art. 18) se D1-D6 da spec-007 ratificadas. | F-03 por referência (§3.4) |
 | `REQ-06::UAT-05::product::ui-browsers` | Interface web responsiva sem quebra funcional | US-005 (spec-002:162) | REQ-06 (spec-002:67) | PASS: layout responde sem quebra funcional em Chrome/Firefox/Edge **últimas 2 versões** (versões exatas na data: `UNKNOWN - verify`, §3.10); método: matriz manual de browsers (AC-4 da spec-008, spec-008:191) | NF-05 (spec-006:80) |
 | `REQ-07::UAT-06::product::cache-reduction` | Cache reduz dependência da API externa | US-006 (spec-002:163) | REQ-07 (spec-002:68) | PASS: redução ≥50% das chamadas à API externa com cache ativo; TTL fixado 3600s (`COGME_RATE_TTL_SECONDS`, spec-004:107); demais parâmetros (GAP-06): `UNKNOWN - verify` (§3.10) | NF-04 (spec-006:74) |
 | `REQ-08::UAT-07::product::coverage-gate` | Cobertura de testes ≥80% válida por CI | US-008 (spec-002:164) | REQ-08 (spec-002:69) | PASS: relatório de cobertura ≥80% sobre `src/` (spec-004:155) no run do CI citado como evidência (artefato de cobertura, ci.yml:170 via spec-005:342); run id citável: `UNKNOWN - verify` enquanto G-05 não auditado (§3.10) | NF-07 (spec-006:87) |
@@ -169,7 +169,7 @@ Lista da parcela TA-0047 (HF-0603:40, item 4), completa:
 1. **Ratificação do destino/retenção das evidências** (`docs/uat/` × `docs/auditorias/`) e do caráter bloqueante do relatório — condicionante CCB/GP, reserva da spec-005:342 (§2, §3.8).
 2. **Versões exatas dos browsers** na data da execução (REQ-06 "últ. 2 versões" é móvel — spec-002:67).
 3. **Valores de spread/IOF dos casos de teste** (GAP-03, spec-002:102): alíquotas são informadas pelo usuário, nenhuma no código (spec-004:29); fórmula do MVP fixada em spec-004:46-53, ratificada via ADR-016 (RAT-2026-11-05-A16).
-4. **Campos da invoice** além do contrato spec-004 §3 (GAP-04, spec-002:103; spec-007:126-138 — condicionante D1, spec-007:38).
+4. **Campos da invoice** além do contrato spec-004 §3: modelo canônico definido em spec-007 §3.1 (tabela `invoices`); GAP-04 fechado por ADR-016 D4 (RAT-2026-11-05-A16-D4).
 5. **Parâmetros de cache além do TTL** (GAP-06, spec-002:105; TTL 3600s já fixado, spec-004:107).
 6. **Run id de CI citável como evidência** enquanto G-05 não auditado (item B.7, LISTA-SPECS-PENDENTES-2026-11-02.md:39).
 7. **Inclusão de US-016/US-017** (KG-R-03) e de US-007 (KG-R-02) no roteiro — condicionais (§3.5).

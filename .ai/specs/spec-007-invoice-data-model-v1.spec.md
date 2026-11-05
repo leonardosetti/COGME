@@ -1,11 +1,11 @@
 ---
 spec_id: spec-007
 specname: invoice-data-model-v1
-version: 0.1.0
-status: draft
+version: 0.2.0
+status: ratificada
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-11-03
-updated: 2026-11-03
+updated: 2026-11-05
 origin: .ai/handoffs/HF-0608-spec-007-invoice-data-model-v1.md (envelope; item B.4 de docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md:36)
 task: TA-0052 | sender: agent-nexus-prime-ultimate
 kill_switch: inherited
@@ -23,11 +23,11 @@ trace:
 
 # SPEC spec-007 — invoice-data-model-v1 — Modelo canônico de dados da invoice (GAP-04)
 
-Status: DRAFT — contrato de dados canônico emitido; decisão de persistência pendente CCB/PO (condicionante D1, §2 e §3.0). Esta spec complementa a `spec-004-backend-mvp-v1.spec.md` (que cobre apenas o contrato HTTP `POST /v1/invoice`) e alimenta a US-004 (spec-002:161, "modelo de dados pendente — GAP-04").
+Status: RATIFICADA — contrato de dados canônico emitido; decisão de persistência = PERSISTIR (condicionante D1 resolvida por ADR-016 emenda D4, RAT-2026-11-05-A16-D4). Esta spec complementa a `spec-004-backend-mvp-v1.spec.md` (contrato HTTP `POST /v1/invoice`) e alimenta a US-004 (spec-002:161, "modelo de dados pendente — GAP-04").
 
 ## 1. Contexto e origem
 
-Emitida por TA-0052 / HF-0608 (agent-nexus-prime-ultimate → agent-sdd-specialist, action: spec, 2026-11-03) para fechar o item **B.4** da rodada 1 de specs pendentes (LISTA-SPECS-PENDENTES-2026-11-02.md:36): o modelo de dados da invoice — campos bancários, CPF/CNPJ, período — **não é canônico** e sobrevive apenas no legado (GAP-04, spec-002:103, com origem nos corpora `deepseek:58; qwen:18`). A `spec-004` especifica só o contrato `POST /v1/invoice` (spec-004:58-93) e declara explicitamente que a invoice **nunca é persistida** (spec-004:126) — sem qualquer modelo de dados de invoice. A US-004 (spec-002:161) é condicionada a este modelo; US-016/US-017 (spec-002:178-179) o demandam condicionalmente.
+Emitida por TA-0052 / HF-0608 (agent-nexus-prime-ultimate → agent-sdd-specialist, action: spec, 2026-11-03) para fechar o item **B.4** da rodada 1 de specs pendentes (LISTA-SPECS-PENDENTES-2026-11-02.md:36): o modelo de dados da invoice — campos bancários, CPF/CNPJ, período — **não é canônico** e sobrevive apenas no legado (GAP-04, spec-002:103, com origem nos corpora `deepseek:58; qwen:18`). A `spec-004` especifica o contrato `POST /v1/invoice` (spec-004:58-93). A decisão de persistência (ADR-016 D4, RAT-2026-11-05-A16-D4) é **PERSISTIR** com rota de erase; a `spec-004:126` ("invoice nunca é persistida") é superada por esta emenda. A US-004 (spec-002:161) é condicionada a este modelo; US-016/US-017 (spec-002:178-179) o demandam condicionalmente.
 
 Insumo normativo: a **parcela de consulta TA-0045 (agent-dba)**, retornada no meio-duplex de `.ai/handoffs/HF-0601-consulta-de-dominio.md:33-45`, é incorporada neste documento como fonte de domínio de dados (tipagem, constraints, índices, LGPD e lista de UNKNOWNs). As decisões D1-D7 da parcela de consulta TA-0050 (agent-compliance-governance, `.ai/handoffs/HF-0606-consulta-de-dominio.md:40`) entram apenas como **condicionantes, não como requisitos aprovados** (precedente de leitura: `.ai/handoffs/HF-0621-requisitos-repovoar.md:36`).
 
@@ -35,7 +35,7 @@ Insumo normativo: a **parcela de consulta TA-0045 (agent-dba)**, retornada no me
 
 | Tema | Decisão desta spec | Fonte vencedora | Texto superado / não promovido |
 |---|---|---|---|
-| **Persistência da invoice** (tensão obrigatória) | Esta spec define o **MODELO CANÔNICO de dados** (contrato de dados, §3). A **DECISÃO DE PERSISTÊNCIA** fica registrada como **condicionante CCB/PO** — decisão **D1** da consulta TA-0050 (HF-0606:40): "transitoria OU persistida com retenção+erase". **Nenhuma das alternativas é promovida a decisão aqui** (status: draft). | Condicionante D1 (HF-0606:40) + envelope HF-0608 | `spec-004:126` ("invoice nunca é persistida") **permanece vigente na spec-004** até D1 ser deliberada; esta spec não o reescreve e não autoriza nenhuma migração. US-016/017 (spec-002:178-179) seguem KG-R-03, não ratificadas. |
+| **Persistência da invoice** (tensão obrigatória) | **DECIDIDA: PERSISTIR** com rota de erase (ADR-016 D4, RAT-2026-11-05-A16-D4). Esta spec define o **MODELO CANÔNICO de dados** (contrato de dados, §3). A decisão de persistência é norma vigente: invoices são gravadas na tabela `invoices`; rota de erase (direito ao esquecimento, LGPD art. 18) é obrigatória (condicionantes D1-D6 da spec-015). US-016/017 (spec-002:178-179) seguem KG-R-03, condicionadas à ratificação CCB. | ADR-016 D4 (RAT-2026-11-05-A16-D4) + HF-0608 | `spec-004:126` ("invoice nunca é persistida") **superada por esta emenda**; esta spec autoriza a migração de `invoices` (upgrade/downgrade Alembic, §3.4). |
 | Banco canônico | PostgreSQL 15+ (ADR-010; glossario.md:161-162; spec-004:24 — resolução de conflitos da spec-004 §1) | ADR-010 via spec-004:24 + glossario.md:161-162 | SQLite do TAP congelado (plano-escopo.md:76, reproduzido em spec-002:123 e :135). Ratificação da ADR-010 por emenda Art. 1.3 é UNKNOWN - verify (§3.6, item 7). |
 | CPF/CNPJ no banco × contrato | Banco: `tax_id_digits char(14)` normalizado sem máscara, dígito validado app-side (CHECK SQL não faz mod-11) — parcela TA-0045 (HF-0601). Contrato HTTP continua `tax_id: str|None ≤40` (spec-004:74); normalização é responsabilidade da camada de aplicação. Contrato não é alterado por esta spec. | Parcela TA-0045 (HF-0601) para o banco; spec-004:74 para o contrato | Divergência de formato tratada por fronteira de normalização app-side; sem reescrita da spec-004. |
 | Endereço (coleta) | Parcela TA-0050 (inventário mínimo, HF-0606:40) propõe endereço "só se necessário à finalidade REQ-04"; parcela TA-0045 modela `address varchar(240) NULL`. Resolução: colunas **NULLable** (não NOT NULL) — a modelagem NULL **não decide** a coleta; obrigatoriedade de coleta é a condicionante **D4** (CCB/PO). | HF-0606:40 (D4) + HF-0601 | Nenhuma decisão de coleta promovida. |
@@ -45,7 +45,7 @@ Insumo normativo: a **parcela de consulta TA-0045 (agent-dba)**, retornada no me
 
 ### 3.0 Condição de vigência (D1)
 
-O §3 é o **contrato de dados canônico** da invoice. Ele **só materializa DDL/migração/execução se a condicionante D1 (§2) deliberar "persistida com retenção+erase"** (HF-0606:40). Enquanto D1 não for deliberada, vigora `spec-004:126` e nenhuma migração de invoice pode existir. A emissão deste contrato de dados não altera o runtime da `spec-004`.
+O §3 é o **contrato de dados canônico** da invoice. A condicionante D1 foi **deliberada = PERSISTIR** (ADR-016 emenda D4, RAT-2026-11-05-A16-D4). O §3 **materializa DDL/migração/execução**: a tabela `invoices` pode ser criada via migração Alembic (`upgrade`/`downgrade`, §3.4). A emissão deste contrato de dados autoriza o runtime da `spec-004` a persistir invoices.
 
 ### 3.1 Entidade `invoices` (se e somente se D1 = persistir)
 

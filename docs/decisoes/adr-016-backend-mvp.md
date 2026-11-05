@@ -17,13 +17,13 @@ tags:
 ---
 id: ADR-016
 title: Backend do MVP — cálculo, cotações, persistência e contrato de erro
-version: 1.1.0
+version: 1.2.0
 status: ratificada
 date: 2026-10-31
-decisor: GP Leonardo (CCB de membro único). Decisão: ratificada definitivamente em 05/11/2026.
+decisor: GP Leonardo (CCB de membro único). Decisão: ratificada definitivamente em 05/11/2026; emenda D4 (persistência de invoice) ratificada em 05/11/2026.
 regime: Não se aplica (decisão de implementação; não emenda o TAP nem o núcleo blindado)
 domain: Desenvolvimento e Qualidade (PMBOK 7ª: Abordagem de Desenvolvimento; Qualidade)
-instrumento-ccb: RAT-2026-11-05-A16
+instrumento-ccb: RAT-2026-11-05-A16 / RAT-2026-11-05-A16-D4
 ---
 # ADR-016 — Backend do MVP: cálculo, cotações, persistência e contrato de erro
 
@@ -60,7 +60,7 @@ Em toda resposta vale `gross_brl − spread_brl − iof_brl == net_brl`. O `Simu
 
 **D3. Arredondamento `ROUND_HALF_EVEN`.** Valores em moeda com 2 casas; taxas com 6. O cálculo usa contexto decimal próprio, com precisão de 64 dígitos, e não depende do contexto do processo. `float` não entra no cálculo. Os corpos JSON são lidos com `parse_float=Decimal`.
 
-**D4. Somente cotações são persistidas.** A tabela `fx_quotes` guarda cotações públicas. Simulações e invoices não são gravadas. Nomes, documentos e endereços existem só durante a requisição e não vão para log. Os logs trazem o nome da fonte e o tipo da falha, nunca valor, URL ou corpo da requisição (LGPD, P-04).
+**D4. Invoices são persistidas.** A tabela `invoices` guarda invoices emitidas (campos canônicos em spec-007 §3.1). Cada usuário pode gerar, armazenar persistentemente, baixar e imprimir a invoice conforme sua regra de jornada e rating de pagamento. Simulações não são gravadas (fora do escopo do MVP). Nomes, documentos e endereços são gravados na invoice apenas com base legal e minimização (P-04, LGPD art. 6º III). Rota de erase (direito ao esquecimento, LGPD art. 18) é obrigatória para invoices persistidas (retração + retenção ratificadas em spec-015 D1-D6).
 
 **D5. Fontes e identificação.** Frankfurter é a fonte primária e PTAX é a reserva obrigatória (ADR-001 v1.1.0).
 
@@ -96,7 +96,7 @@ Em toda resposta vale `gross_brl − spread_brl − iof_brl == net_brl`. O `Simu
 | Spread e IOF (D1)           | (a) alíquota fixa no código; (b) alíquota configurável com fonte e data de vigência, como prevê o RE-04; (c) o usuário informa | (c). A alíquota de IOF muda por decreto. Manter tabela de vigência exige revisão a cada mudança, fora do escopo do MVP. Com (c), o sistema não afirma uma alíquota vigente. |
 | Ordem do IOF (D2)           | IOF sobre o bruto em BRL; IOF sobre o valor após o spread                                                                            | Após o spread, como define a spec §2. É regra de produto; o projeto não a valida juridicamente.                                                                               |
 | Arredondamento (D3)         | `ROUND_HALF_UP`; `ROUND_HALF_EVEN`                                                                                                | `ROUND_HALF_EVEN`, por ser determinístico e sem viés. `ROUND_HALF_UP` é o mais difundido em documentos comerciais; um extrato que o use pode diferir em 0,01.              |
-| Persistência (D4)          | Gravar simulações e invoices; gravar só cotações                                                                                 | Só cotações. Simulação e invoice trazem dados de pessoas e de negócio (LGPD). Histórico de simulações está fora do MVP.                                                 |
+| Persistência (D4)          | Gravar simulações e invoices; gravar só cotações; gravar invoices com rota de erase | Invoices persistidas com rota de erase (LGPD art. 18); simulações não gravadas. Atende regra de jornada e rating de pagamento do usuário: gerar, armazenar persistentemente, baixar e imprimir a invoice. |
 | Fontes (D5)                 | Só Frankfurter; só PTAX; média entre as duas                                                                                       | Cadeia com reserva (ADR-001 v1.1.0), sem média, com a fonte informada na resposta.                                                                                               |
 | Cache vencido (D6)          | Idade máxima, com 503 após o limite; sem limite e sempre `stale=true`                                                             | Sem limite, com `stale=true`. A API continua respondendo. O custo é informar cotação antiga; `stale` e `quoted_at` expõem isso.                                         |
 | Erro 405 (D9)               | `validation_error`; `not_found` com `Allow`                                                                                     | `not_found` com `Allow`. A spec não define 405, e `validation_error` descreveria um erro na requisição que não existe.                                                  |
@@ -109,7 +109,7 @@ Positivas:
 - O resultado depende dos dados informados e da cotação. Não há alíquota no código para ficar desatualizada.
 - Cotação e simulação informam a fonte, o que torna a diferença entre Frankfurter e PTAX visível.
 - Erros seguem um único modelo, sem traceback e sem eco dos dados enviados.
-- Persistir só dados públicos reduz a superfície de LGPD.
+- Persistir só cotações públicas + invoices com minimização reduz a superfície de LGPD. Invoice armazena somente o mínimo necessário (nome, CPF/CNPJ, período, descrição, valores) conforme P-04.
 
 Negativas e riscos:
 
@@ -133,10 +133,11 @@ Nenhuma destas pendências está aceita nem resolvida por esta ADR.
 - **P6. Retenção de `fx_quotes`.** A spec prevê manutenção futura, sem prazo definido. **Verificação de 01/11/2026:** risco baixo. Com 175.200 linhas, equivalentes a 10 anos com 2 moedas renovadas a cada hora, a tabela ocupa 23 MB e a consulta da última cotação leva 0,04 ms. Só há dados públicos.
 - **P7. Divergências com documentos existentes.** (a) Atualizar o RE-04 do Plano de Riscos para a forma adotada em D1. (b) O TAP e o Plano de Gerenciamento v2.1.0 citam PTAX como fonte de REQ-01. Por orientação da equipe (02/11/2026), essa redação permanece. Alinhá-la à ADR-001 v1.1.0, se o CCB quiser, segue o regime de emenda controlada da ADR-005 v1.1.0 (delta em `docs/tap/delta-v3-1.md`). (c) O OKB-C-05 (A5) de `desenvolvimento.md` §3.2.3 foi substituído pela referência a esta proposta; a decisão segue sujeita ao CCB.
 - **P8. Versão do Python.** A ADR-001 v1.1.0 define Python 3.11; a imagem e o CI usam 3.12 (D11). Pela regra do ADR-LOG, cabe ao CCB escolher entre emendar a ADR-001 (ADR-LOG) ou passar imagem e CI para 3.11.
+- **P9. Rota de erase e retenção de invoice.** A persistência de invoice (D4) obriga a rota de erase (LGPD art. 18) e política de retenção, condicionantes D1-D6 da spec-015 pendentes de ratificação CCB/PO. Não bloqueiam a entrega de 16/11/2026, mas devem ser decididas antes de qualquer operação de exclusão de invoice persistida.
 
 ## Ratificação
 
-Ratificada definitivamente em 05/11/2026 pelo GP Leonardo (CCB de membro único), instrumento RAT-2026-11-05-A16, conforme Constituição Art. 5. As decisões D1–D12 são norma vigente para o backend do MVP. Pendências P1–P8 listadas nesta ADR não bloqueiam a entrega funcional de 16/11/2026 e permanecem como itens de acompanhamento pós-entrega.
+Ratificada definitivamente em 05/11/2026 pelo GP Leonardo (CCB de membro único), instrumento RAT-2026-11-05-A16, conforme Constituição Art. 5. Emenda D4 (persistência de invoice conforme regra de jornada e rating de pagamento do usuário) ratificada em 05/11/2026, instrumento RAT-2026-11-05-A16-D4. As decisões D1–D12 são norma vigente para o backend do MVP. Pendências P1–P9 listadas nesta ADR não bloqueiam a entrega funcional de 16/11/2026 e permanecem como itens de acompanhamento pós-entrega.
 
 ## Referências
 
@@ -149,4 +150,6 @@ Ratificada definitivamente em 05/11/2026 pelo GP Leonardo (CCB de membro único)
 - `docs/planos/plano-riscos.md` (RE-04)
 - `docs/dependencias/registro.md`
 - `.ai/handoffs/HF-0500-backend-mvp.md` (registro de execução)
+- `.ai/specs/spec-007-invoice-data-model-v1.spec.md` (modelo canônico de dados da invoice; condicionante D1 resolvido = persistir)
+- `.ai/specs/spec-015-lgpd-produto-proposta-v1.spec.md` (critérios LGPD de produto; condicionantes D1-D6)
 - `constitution.md` (P-02, P-03, P-04; Art. 5)

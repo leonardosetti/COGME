@@ -123,7 +123,7 @@ Tabela `fx_quotes`: `id` bigint PK; `currency char(3)` com CHECK; `rate numeric(
 
 Acesso via Repository (`QuoteRepository` Protocol), como exige o kill switch da ADR-010. Regra de negócio não importa SQLAlchemy. Migrações Alembic com `upgrade` e `downgrade`.
 
-**LGPD:** invoice nunca é persistida. Nomes, documentos e endereços só existem durante a requisição e nunca vão para log. Logs não trazem valores nem corpo de requisição.
+**LGPD:** invoice é persistida na tabela `invoices` (modelo canônico em spec-007 §3.1; ADR-016 D4, RAT-2026-11-05-A16-D4). Cada usuário pode gerar, armazenar persistentemente, baixar e imprimir a invoice conforme sua regra de jornada e rating de pagamento. Nomes, documentos e endereços são gravados na invoice com minimização (P-04, LGPD art. 6º III) e rota de erase (direito ao esquecimento, LGPD art. 18) é obrigatória (condicionantes D1-D6 da spec-015). Logs não trazem valores nem corpo de requisição.
 
 ## 6. Invoice (REQ-04)
 

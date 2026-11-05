@@ -1,11 +1,11 @@
 ---
 spec_id: spec-015
 specname: lgpd-produto-proposta-v1
-version: 0.1.0
-status: draft
+version: 0.2.0
+status: ratificada
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-11-03
-updated: 2026-11-03
+updated: 2026-11-05
 origin: .ai/handoffs/HF-0616-spec-015-lgpd-produto-proposta-v1.md (envelope; item B.3 de docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md:35)
 task: TA-0060 | sender: agent-nexus-prime-ultimate
 kill_switch: inherited
@@ -24,7 +24,7 @@ trace:
 
 # SPEC spec-015 — lgpd-produto-proposta-v1 — PROPOSTA: critérios LGPD de produto (B.3/GAP-08) — sujeita a ratificação CCB/PO
 
-Status: **DRAFT — PROPOSTA**. Este documento é a proposta submetida ao CCB/PO; **NADA aqui é lei até ratificação humana** (constitution.md:138, Art. 5.1 — "O Humano (Gerente de Projeto) é o decisor único via CCB"). A LISTA condiciona a emissão de B.3 a decisão prévia de CCB/PO (`docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md:35`); esta emissão É a proposta para o CCB deliberar — não o fechamento do item.
+Status: **RATIFICADA (D1) / PROPOSTA (D2-D7)**. A decisão D1 (persistência da invoice) foi ratificada por ADR-016 emenda D4 (RAT-2026-11-05-A16-D4) = **PERSISTIR** com rota de erase. As decisões D2-D7 permanecem como condicionantes de ratificação CCB/PO (constitution.md:138, Art. 5.1). A LISTA condiciona a emissão de B.3 a decisão prévia de CCB/PO para D2-D7 (`docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md:35`).
 
 ## 1. Contexto e origem
 
@@ -34,7 +34,7 @@ Emitida por TA-0060 / HF-0616 (agent-nexus-prime-ultimate → agent-sdd-speciali
 
 ### 1.2 Natureza de PROPOSTA (não ratificada)
 
-1. A emissão de B.3 é condicionada a decisão prévia de CCB/PO (LISTA:35) — portanto esta spec entra como **proposta** (status: draft) e o item B.3 só fecha com deliberação humana.
+1. A decisão D1 (persistência da invoice) foi ratificada por ADR-016 emenda D4 (RAT-2026-11-05-A16-D4) = **PERSISTIR** com rota de erase. As decisões D2-D7 permanecem condicionadas a decisão prévia de CCB/PO (LISTA:35); o item B.3 fecha com a deliberação humana sobre D2-D7.
 2. Os fundamentos técnicos-compliance vêm da parcela de consulta TA-0050 (agent-compliance-governance, `.ai/handoffs/HF-0606-consulta-de-dominio.md:31-45`), incorporada aqui por citação nos §§3-4. A parcela declara expressamente: "Esta parcela NAO autoriza emissao aprovada" (HF-0606:40).
 3. Nenhuma seção deste documento promove decisão: §4 lista as sete decisões CCB/PO pendentes (D1-D7) como **condicionantes de ratificação**.
 4. Quem valida: **agent-reviewer** valida a conformidade documental desta emissão (template MANIFEST §1, citações, sem promoção de decisão); **CCB/PO** ratifica ou devolve o conteúdo (constitution.md:138, Art. 5.1). DoD desta emissão: proposta draft emitida com D1-D7 incorporadas, zero decisão promovida.
@@ -96,7 +96,7 @@ A parcela TA-0050 (agent-compliance-governance, HF-0606:40) enumera as **DECISOE
 
 | # | Decisão pendente CCB/PO | Fonte |
 |---|---|---|
-| **D1** | **Persistência da invoice** — tensão `spec-004:126` ("invoice nunca é persistida") × US-016/017 + GAP-04: decidir **"transitória" OU "persistida com retenção+erase"**. | HF-0606:40; spec-007:38, :46-48, :130 |
+| **D1** | **Persistência da invoice** — **DECIDIDO = PERSISTIR** com rota de erase (ADR-016 D4, RAT-2026-11-05-A16-D4). Supera `spec-004:126` ("invoice nunca é persistida"). | HF-0606:40; spec-007:38, :46-48, :130; ADR-016 D4 |
 | **D2** | **Controlador/titular e exclusão art. 4º, I** — decidir se o tratamento é para fins exclusivamente particulares e não econômicos (exclusão art. 4º, I) ou se há controlador/terceiros no tratamento. | HF-0606:40; §3.4.2 |
 | **D3** | **Base legal art. 7º, V** — ratificar a execução de contrato como base, **se** a invoice carregar dados de terceiros. | HF-0606:40; §3.4.1 |
 | **D4** | **Conjunto mínimo de campos** — ratificar o inventário mínimo (§3.1), incluindo se o endereço é coletado; alimenta B.4 (spec-007). | HF-0606:40; spec-007:41 |
