@@ -1,15 +1,15 @@
 ---
 spec_id: spec-013
 specname: documentacao-tecnica-v1
-version: 0.1.0
-status: draft
+version: 0.2.0
+status: ratificada
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-11-03
-updated: 2026-11-03
-origin: HF-0614 (.ai/handoffs/HF-0614-spec-013-documentacao-tecnica-v1.md) | sender: agent-nexus-prime-ultimate | consulta de dominio incorporada (agent-iso-26514-specialist, autorizada em HF-0614:21)
-task: TA-0058
-sender: agent-nexus-prime-ultimate
+updated: 2026-11-05
+origin: HF-0614 (TA-0058) | sender: agent-nexus-prime-ultimate | handoff: HF-0614 | consulta de domínio incorporada (agent-iso-26514-specialist, autorizada em HF-0614:21)
+task: TA-0058 | sender: agent-nexus-prime-ultimate
 kill_switch: inherited
+wave: WS-7 | Onda 7 — Commons e Meta (documentação técnica)
 lgpd-class: n/a (zero PII neste artefato; P-04, constitution.md:90 — precedente lgpd-class: spec-002-requisitos-review-round-1.spec.md:19)
 trace:
   - .ai/handoffs/HF-0614-spec-013-documentacao-tecnica-v1.md:17-29 (tarefa, fontes obrigatórias, contrato de resposta meio-duplex)
@@ -27,6 +27,7 @@ trace:
   - .opencode/agents/agent-docker-specialist.md:6,22,209 (custódia documental; documented truth = running truth; never hand-restyled)
   - .opencode/agents/agent-reviewer.md:21,23,33,69 (vereditos pass|amend|block; rubrica R-01..R-07; risco docs=low)
   - docs/decisoes/ADR-016-backend-mvp.md:5 (status: proposta — não ratificada)
+  - ratificada CCB 05/11/2026 (instrumento RAT-2026-11-05-A16, ADR-LOG-012)
 ---
 
 # SPEC spec-013 — documentacao-tecnica-v1 — Documentação técnica: doc de arquitetura + revisão/aprovação da OpenAPI (REQ-14)
@@ -249,12 +250,13 @@ permanece `UNKNOWN - verify` intocado (imutabilidade TA-0031).
 ## CHANGELOG
 
 - 0.1.0 — 2026-11-03 (TA-0058 / HF-0614): emissão inicial. Documentação técnica (item B.9, LISTA...:41): escopo do doc de arquitetura (visão de camadas Art. 10.1, matriz de interfaces, Mermaid FOSS, ADRs ratificadas — §3.1); ciclo de vida draft → revisão Code Review (agent-reviewer, rubrica R-01..R-07) → aprovado (§3.2); documented truth = running truth com proibição de doc fabricado (§3.3); OpenAPI com fonte única de verdade no schema gerado + render nunca hand-restyled + 4 critérios binários de revisão (§3.4); mapa de rastreabilidade documental ISO 26514 com iso_clause `UNKNOWN - verify` e destino do doc registrado como inexistente (`docs/arquitetura/`, verificado 2026-11-03) — §3.5. Delimitação exata com spec-004 §3 (§2). Arquivo único; nada commitado.
+- 0.2.0 — 2026-11-05 (refinamento de ratificação, Grupo B): frontmatter atualizado ao padrão TA-0031 ratificado (adicionado `wave: WS-7`, `handoff` em `origin`; `version` 0.1.0 → 0.2.0). Ratificação CCB 05/11/2026 (instrumento RAT-2026-11-05-A16, ADR-LOG-012). Aderência ao padrão de nomenclatura `spec-NNN-specname.spec.md` confirmada (ADR-018, RAT-2026-11-05-A18). Nenhuma decisão de negócio de §§1–6 reescrita.
 
 ## CAMADAS FUNDAMENTAIS — MAPA (TA-0031)
 
 | Camada | Seção nesta spec | Estado |
 |---|---|---|
-| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem | frontmatter (`spec_id: spec-013`, `version: 0.1.0`, `status: draft`, `created/updated: 2026-11-03`, `origin: HF-0614`, `task: TA-0058`) + linha `Status:` | aplicada |
+| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem | frontmatter (`spec_id: spec-013`, `version: 0.2.0`, `status: ratificada`, `created/updated: 2026-11-03`/`2026-11-05`, `origin: HF-0614`, `task: TA-0058`) + linha `Status:` | aplicada |
 | (b) Contexto/origem | §1 Contexto e origem | aplicada |
 | (c) Resolução de conflitos | §2 (tabela tema→decisão→fonte vencedora→texto superado) | aplicada |
 | (d) Corpo de decisões/requisitos/contratos | §3 (3.1–3.5) | aplicada |
