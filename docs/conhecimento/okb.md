@@ -251,17 +251,17 @@ Campos obrigatórios da ADR tardia: `Tipo`, `Data da decisão efetiva`, `Data da
 
 Regra adicional: **qualquer mudança em lei suprema (Constituição) é sempre `normal` com co-assinatura humana** (Art. 5.4) — jamais `standard`. O CCB-LOG deve sinalizar `change-class:` na entrada (efeito prospectivo).
 
-### 2.6 Limite de ADRs por marco (GMV) — **em violação declarada**
+### 2.6 Limite de ADRs por marco (GMV)
 
 | Marco | Limite declarado (v3.1 §6.4) | Emitidas | Situação |
 |---|---|---|---|
 | M1 | 4 (001–004) | 4 | ✅ |
-| M2 | ≤ 2 | 9–10 (005–013) | ❌ excedido |
+| M2 | ≤ 2 | 9–10 (005–013) | ⚠️ excede o marco individual, coberto pelo teto global revisado |
 | M3 | ≤ 3 | 0 | — |
 | M4 | ≤ 1 | 0 | — |
-| **Total** | **≤ 10** | **13 IDs (14 artefatos)** | ❌ **OKB-C-05** |
+| **Total** | **≤ 20** | **13 IDs (14 artefatos)** | ✅ dentro do teto GMV revisado — **OKB-C-05 encerrado** |
 
-**Leitura registrada (não decisão):** o excedente decorre da onda de consolidação constitucional (28–31/10). Saídas legítimas (ambas exigem CCB): (a) revisar o teto para ≤ 14; ou (b) classificar 006–013-b como "emendas constitucionais derivadas" (ADR-012), fora da contagem GMV. **Nenhuma foi decidida** — pendência §10.2.
+**Decisão do CCB:** teto global de ADRs revisado de ≤ 10 para **≤ 20** (decisão 3 da inspeção Constitution/OKB). O excedente decorre da onda de consolidação constitucional (28–31/10). O marco M2 excede seu limite individual (≤ 2) por força da mesma onda, mas permanece coberto pelo teto global. OKB-C-05 encerrado.
 
 ---
 
@@ -671,7 +671,7 @@ Regras: (i) sempre pinar `vX.Y.Z` (ADR/norma) ou `vX.Y` (plano); (ii) citar seç
 | OKB-C-02 | Alta | Índice declara ADR-001..004 `1.1.0 ratified`; arquivos reais são `1.0.0` | KB-INDEX:41-44 vs frontmatter | ❌ aberto (KB-INDEX a harmonizar ou ADRs a bumpar — decisão CCB) |
 | OKB-C-03 | Crítica | VIO-006: evento destrutivo 24/10 reverteu leis sem trilha git; conteúdo v4.0.0 irrecuperável | vio-register; AUD-2610-04:48 | ❌ aberto — só o Humano encerra (KS) |
 | OKB-C-04 | Baixa | ADR-006 triplicada | md5 idêntico `91e91ef1…` | ✅ resolvido — apenas a canônica restou |
-| OKB-C-05 | Alta | Teto GMV de ADRs (≤ 10) excedido: 13 IDs (14 artefatos) | §2.6 | ❌ aberto — decisão CCB |
+| OKB-C-05 | Alta | Teto GMV de ADRs (≤ 10) excedido: 13 IDs (14 artefatos) | §2.6 | ✅ encerrado — teto revisado para ≤ 20 (decisão CCB); 13 IDs (14 artefatos) dentro do novo teto |
 | OKB-C-06 | Crítica | CR-001 repactua M2 → 15/11/2026, colide com M3; ADR de emenda emitida (ADR-015) e ratificada (RAT-2026-10-31-A12); Delta Log criado | CR-001; ADR-015; plano-cronograma:80; docs/tap/delta-v3-1.md | ✅ resolvido (C-06 principal) — ADR-015 emitida e ratificada 31/10/2026; CR-001 formalizado. Ressalva C-06b (colisao M2=M3 em 15/11) segue aberta para deliberacao futura do CCB (fusao M2+M3, deslocamento M3 ate M4, ou manutencao) |
 | OKB-C-07 | Alta | Glossário contradiz canon (13/48, Qwen 32B, SQLite, hierarquia invertida) | glossario:8,18,23,161 | ✅ **resolvido nesta rodada** — sanitize + bump v3.2.0 (31/10; RAT-2026-10-31-A11); re-verificar na próxima auditoria |
 | OKB-C-08 | Alta | Artefatos 0 B: `TAP.md`, `registro.md`, `requisitos.md`, `.ai/specs/{tap,eap,requisitos}.md` | `wc -c` = 0 | ❌ aberto (baseline.md recebeu seed simulado — ressalva C-16) |
@@ -702,7 +702,7 @@ Regras: (i) sempre pinar `vX.Y.Z` (ADR/norma) ou `vX.Y` (plano); (ii) citar seç
 2. **OKB-C-21/C-27** — validar consolidação da Constituição e aplicar bump v1.2.1 + re-hash.
 3. **OKB-C-06** — ratificar/ajustar CR-001 e emitir ADR de emenda do marco (M2 × M3) via regime ADR-013-a.
 4. **OKB-C-22** — decidir a arquitetura de transição SQLite → PostgreSQL (ADR-010): plano, estimativa e reflexo no cronograma/custos antes de qualquer card de dados.
-5. **OKB-C-05** — revisar o teto de ADRs ou reclassificar 006–013-b como emendas derivadas.
+5. **OKB-C-05** — ✅ encerrado: teto de ADRs revisado para ≤ 20 (decisão CCB). 13 IDs (14 artefatos) dentro do novo teto.
 6. **OKB-C-03** — encerrar VIO-006 (kill switch: só o Humano encerra).
 7. **OKB-C-12** — encerrar formalmente a ratificação da ADR-005 (ou declarar supersede full).
 8. **OKB-C-24** — nomear a matriz de partes interessadas do aceite de M4.
