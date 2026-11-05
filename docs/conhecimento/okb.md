@@ -775,6 +775,8 @@ Este bloco não integra o hash normativo da v5.2.0 (bloco §13). Versão 5.3.0 r
 | Instrumento | Decisão CCB (opção E1, inspeção Constitution/OKB, 05/11/2026); bump v5.2.0 → v5.3.0 (anunciado em A12, 02/11/2026) |
 | Ratificador | Gerente de Projeto — CCB de membro único (Art. 5.4: papel, sem nome civil) |
 | Data da ratificação | 05/11/2026 |
+| Hash normativo da v5.3.0 | `6db53c8aa02cc413e1fafcffe738a9ad5a542bcb8d41a3daed8226942cebdaa3` |
+| Método de verificação | `sha256sum` sobre os bytes do início do arquivo até a linha imediatamente anterior a `## 13. BLOCO DE RATIFICAÇÃO` (conteúdo normativo v5.3.0, excluindo ambos os blocos de ratificação §13 e §13.1) |
 | Assinatura | `/s/ CCB de membro único` |
 | Efeito | Bump de versão do OKB de v5.2.0 para v5.3.0; corpus normativo da v5.2.0 preservado; alterações incorporadas nesta inspeção (fechamento de OKB-C-02, C-05, C-06, C-08, C-09, C-10, C-12, C-24, C-25, C-28 e glossário/frontmatter alinhados) |
 | Revogação | apenas por CCB com emenda registrada e novo bump de versão |

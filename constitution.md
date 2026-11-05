@@ -21,7 +21,7 @@ tags:
 ## ART. 5.4 — CO-ASSINATURA (Atualizado 2026-10-31 — RAT-2026-10-31-A12)
 
 - **Versão:** 1.2.1 — Status: VIGENTE-PLENA
-- **Hash normativo:** `5394fc8c11f77e550c6d8229efc072ea50c9a29640dad6b60d277e91ff1fe1bd` *(método: sha256 dos bytes de `## PREÂMBULO` até a linha imediatamente anterior ao bloco final `## CO-ASSINATURA` — região sem auto-referência de hash; valor idêntico ao registrado na tabela CO-ASSINATURA ao pé, único registrador)*
+- **Hash normativo:** `2d07f0636995282d221f2c7769c95780915b62c830a7407e314edf0c9b5ac8dc` *(método: sha256 dos bytes de `## PREÂMBULO` até a linha imediatamente anterior ao bloco final `## CO-ASSINATURA` — região sem auto-referência de hash; valor idêntico ao registrado na tabela CO-ASSINATURA ao pé, único registrador)*
 - **Hash anterior (v1.2.0, 30/10/2026):** `b3f296c6ed592bb3f276302148eeb0360a72ebe35fdd48a9b972ba8261851db4` — commit `7cff886`
 - **Commit:** `bec6c1a778c96489b039eb649d3c02e7c7aac7af`
 - **Data da co-assinatura vigente:** 2026-10-31
@@ -260,4 +260,4 @@ Este bloco não integra o hash normativo.
 | 1.0.0   | `d2f0c23d9d9fd0a432bc445a4911dac19c89832338872cee453ec119392f1c75` | `ec6a95a`                      | 2026-10-26 | Gerente de Projeto — CCB de membro único | Promulgação inicial e fechamento da pendência da FASE 0 |
 | 1.1.0   | `4eb5244ffb4d2f5973b03c96f8523f36d095d1c954eb731543a0fb9e44a1fb13` | `1e206fe4b5c174c5da3133d5c66cc4c6d57808b6` | 2026-10-26 | Gerente de Projeto — CCB de membro único | CCB 26/10/2026, emendas E-01..E-08                         |
 | 1.2.0   | `b3f296c6ed592bb3f276302148eeb0360a72ebe35fdd48a9b972ba8261851db4` | `7cff886`                     | 2026-10-30 | Gerente de Projeto — CCB de membro único | COGME-UNIVERSAL-ADJUSTMENT-PARTITIONED-v4.1.2 + prompt expresso CCB 30/10/2026 |
-| 1.2.1   | `5394fc8c11f77e550c6d8229efc072ea50c9a29640dad6b60d277e91ff1fe1bd` | `bec6c1a778c96489b039eb649d3c02e7c7aac7af` + commit `62b280728acc49d2c916ce93962dc6f432e93fec` | 31/10/2026 | Gerente de Projeto — CCB de membro único | Consolidação v1.2.1 (remoção de duplicata Arts. 6-10) + prompt expresso CCB 31/10/2026; **re-hash RAT-2026-10-31-A12** (método: bytes de `## PREÂMBULO` até antes do bloco `## CO-ASSINATURA`; substitui `a29c61ff…` de fronteira indocumentada e `02e5b695…` não conferente) |
+| 1.2.1   | `2d07f0636995282d221f2c7769c95780915b62c830a7407e314edf0c9b5ac8dc` | `bec6c1a778c96489b039eb649d3c02e7c7aac7af` + commit `62b280728acc49d2c916ce93962dc6f432e93fec` + commit `b2975ca` (re-hash definitivo) | 31/10/2026 | Gerente de Projeto — CCB de membro único | Consolidação v1.2.1 (remoção de duplicata Arts. 6-10) + prompt expresso CCB 31/10/2026; **re-hash definitivo RAT-2026-10-31-A12** (método: bytes de `## PREÂMBULO` até antes do bloco `## CO-ASSINATURA`; substitui `a29c61ff…`, `02e5b695…` e `5394fc8c…` não conferentes) |
