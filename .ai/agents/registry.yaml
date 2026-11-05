@@ -171,7 +171,8 @@ agents:
   - agent-python-specialist
   - agent-backend-dev
   - agent-frontend-dev
-  downstream: []
+  downstream:
+  - agent-project-auditor
 - file: .opencode/agents/agent-cobit-specialist.md
   name: agent-cobit-specialist
   version: 0.1.0
@@ -285,6 +286,18 @@ agents:
   - agent-project-auditor
   - agent-po
   - agent-skill-master
+- file: .opencode/agents/agent-factory-architect-ultimate.md
+  name: agent-factory-architect-ultimate
+  version: 1.3.0-FINAL
+  layer: L0_ADJ
+  role: forge
+  description: COGME forjador supremo (AFA-ULTIMATE). Gera orquestradores, especialistas, generalistas,
+    skills, MCPs e analistas mestres. Soberania digital, GNU/FOSS primacia, otimização hardware-aware
+    para 8700G/60GB/CPU-only. Forja sob autoridade exclusiva (Art. 4.1).
+  status: promulgado
+  upstream:
+  - agent-nexus-prime-ultimate
+  downstream: []
 - file: .opencode/agents/agent-frontend-dev.md
   name: agent-frontend-dev
   version: 0.1.0
@@ -315,7 +328,8 @@ agents:
   upstream:
   - agent-nexus-prime-ultimate
   - agent-reviewer
-  downstream: []
+  downstream:
+  - agent-project-auditor
 - file: .opencode/agents/agent-github-specialist.md
   name: agent-github-specialist
   version: 0.1.0
@@ -590,7 +604,8 @@ agents:
   status: promulgado
   upstream:
   - agent-nexus-prime-ultimate
-  downstream: []
+  downstream:
+  - agent-gatekeeper
 - file: .opencode/agents/agent-sdd-specialist.md
   name: agent-sdd-specialist
   version: 0.1.0

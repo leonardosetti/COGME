@@ -11,9 +11,11 @@ LEGACY_SLUG_RE = re.compile(r"^agent-factory-architect(?:-ultimate)?$")
 
 # AGENT_TOPOLOGY — DAG canônica (constitution.md Art. 4.5 + registry.yaml SSOT)
 # SSOT única: derivado dos frontmatters dos agentes promulgados em .opencode/agents/
-# FORGE-LEGACY e agent-factory-architect-ultimate são legacy-forge, não promulgados
+# FORGE-LEGACY é legacy-forge, não promulgado
+# agent-factory-architect-ultimate: L0-adjacente independente, acionável pelo orquestrador
 AGENT_TOPOLOGY = {
     "L0": ["agent-nexus-prime-ultimate"],
+    "L0_ADJ": ["agent-factory-architect-ultimate"],
     "L1": [
         "agent-architect",
         "agent-business-analysis-specialist",
