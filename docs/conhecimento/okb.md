@@ -699,7 +699,7 @@ Regras: (i) sempre pinar `vX.Y.Z` (ADR/norma) ou `vX.Y` (plano); (ii) citar seç
 | OKB-C-22 | Alta | ADR-010 não propagada: REQ-07 ainda pede SQLite; sem Docker/PostgreSQL em cronograma/custos/recursos | plano-integral:77; buscas = 0 | ❌ aberto — plano de transição + estimativa |
 | OKB-C-23 | Média | Tipos de mudança não definidos normativamente | ccb-log (A01–A10) | ✅ **resolvido** — formalizado em §2.5 (31/10); sinalização `change-class:` efeito prospectivo |
 | OKB-C-24 | Média | Sem registro/matriz de partes interessadas | TAP §1.c/TAP-P7; ADR-008 | ✅ encerrado — matriz inserida em §9.1.1 (avaliador, GP/CCB, equipe de 3) |
-| OKB-C-25 | Média | CCB-LOG cita `docs/governanca/plano-consolidacao-estrutural.md` inexistente | ccb-log:6; A02 | ❌ aberto — criar o plano ou corrigir a citação |
+| OKB-C-25 | Média | CCB-LOG cita `docs/governanca/plano-consolidacao-estrutural.md` inexistente | ccb-log:6; A02 | ✅ encerrado — plano criado em `docs/governanca/plano-consolidacao-estrutural.md` (v1.0.0, ativo) |
 | **OKB-C-26** | **Crítica** | **Colisão de ID: dois artefatos diferentes usavam `ADR-013`** (`adr-013-regime-emenda-tap.md` e `ADR-013-SDDAI-Promulgacao.md`); resolvida por renumeração para ADR-014 | ls docs/decisoes; adr-014-sddai-promulgacao.md:144 (nota de renumeração); RAT-2026-10-31-A12 | ✅ resolvido — ADR-013-b renumerada para ADR-014 por decisão CCB (RAT-2026-10-31-A12); catálogo OKB §2.1 e KB-INDEX atualizados nesta rodada |
 | **OKB-C-27** | **Média** | **Bump da Constituição não aplicado:** A09-A-001 ratifica "constitution.md v1.2.1 (sanitizada)", mas o header do arquivo continuam v1.2.0 e o hash co-assinado `b3f296c6…` não foi re-gerado após consolidação | head constitution.md; ccb-log A09 | ❌ aberto — bump editorial + hash dedicado (Art. 5.4) |
 | **OKB-C-28** | **Baixa** | **Inconsistência temporal:** ADR-013-a frontmatter `date: 2026-11-01` e entrada RAT-2026-11-01-A08, enquanto o instrumento e demais artefatos da rodada são de 30–31/10 | frontmatter; ccb-log; `date` do FS (31/10) | ⏳ ajuste editorial no próximo saneamento incluindo provas de data |
@@ -714,7 +714,7 @@ Regras: (i) sempre pinar `vX.Y.Z` (ADR/norma) ou `vX.Y` (plano); (ii) citar seç
 6. **OKB-C-03** — encerrar VIO-006 (kill switch: só o Humano encerra).
 7. **OKB-C-12** — ✅ encerrada: ADR-005 v1.1.0 ratificada (CCB-LOG A08 + A12); `adr-005-freeze.md` SUPERSSEDIDA.
 8. **OKB-C-24** — ✅ encerrado: matriz de partes interessadas inserida em §9.1.1.
-9. **OKB-C-25** — criar `plano-consolidacao-estrutural.md` ou corrigir a citação no CCB-LOG.
+9. **OKB-C-25** — ✅ encerrado: `docs/governanca/plano-consolidacao-estrutural.md` criado (v1.0.0).
 10. **Ratificação deste OKB v5.2.0** — ✅ **CUMPRIDA** nesta emissão (CCB-LOG RAT-2026-10-31-A11, 31/10/2026; bloco §13).
 
 ---
