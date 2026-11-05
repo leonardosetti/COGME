@@ -2,13 +2,14 @@
 spec_id: spec-001
 specname: constitution-round-1-proposta
 version: 0.1.0
-status: draft
+status: ratificada
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-10-25
-updated: 2026-10-25
+updated: 2026-11-05
 origin: TA-0002 | handoff: HF-0001 | sender: agent-nexus-prime-ultimate
 task: TA-0002
 kill_switch: inherited
+wave: WS-1 | Rodada 1 — definição canônica da constitution.md
 lgpd-class: n/a (zero PII neste artefato; P-04, constitution.md:90)
 trace:
   - constitution.md v1.0.0 (Art. 9.1 — emendas; Art. 5.2 — ratificação humana)
@@ -17,6 +18,7 @@ trace:
   - .ai/agents/registry.yaml (roster SSOT, sincronizado por scripts/sync_agent_registry.py)
   - scripts/validate_afa_output.py, scripts/nexus_dispatcher.py, tests/validation/test_nexus_yaml.py
   - git commits dd3b087 ("ADRs 001–005 emitidas") e 7892561 ("requisitos, baseline de métricas")
+  - ratificada CCB 05/11/2026 (instrumento RAT-2026-11-05-A16, ADR-LOG-012)
 ---
 
 # PROPOSTA DE EMENDAS CONSTITUCIONAIS — RODADA 1 (WS-1)
@@ -397,6 +399,12 @@ artigo alvo → texto atual → texto proposto → justificativa → fonte.
 
 - 0.1.0 — 2026-10-25: proposta inicial R1 (WS-1): 13 gaps (G-01..G-13, sendo 3
   vereditos sem emenda), 8 emendas propostas (E-01..E-08), 4 KGs declarados.
+- 0.1.0 — 2026-11-05 (refinamento de ratificação, Grupo B): frontmatter atualizado ao
+  padrão TA-0031 ratificado (adicionado `wave: WS-1`, `handoff` em `origin`; `updated`
+  2026-10-25 → 2026-11-05; `status: draft` → `ratificada`). Ratificação CCB 05/11/2026
+  (instrumento RAT-2026-11-05-A16, ADR-LOG-012). Aderência ao padrão de nomenclatura
+  `spec-NNN-specname.spec.md` confirmada (ADR-018, RAT-2026-11-05-A18). Nenhuma decisão
+  de negócio das §§1–5 reescrita.
 
 ## CAMADAS FUNDAMENTAIS — MAPA (TA-0031)
 
@@ -404,7 +412,7 @@ Normalização estrutural (TA-0031, HF-0031): `spec_id` atualizado de `constitut
 
 | Camada | Seção nesta spec | Estado |
 |---|---|---|
-| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem | frontmatter (`spec_id: spec-001`, `version: 0.1.0`, `status: draft`, `created: 2026-10-25`, `owner`, `task: TA-0002 | handoff: HF-0001`) | aplicada |
+| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem | frontmatter (`spec_id: spec-001`, `version: 0.1.0`, `status: ratificada`, `created: 2026-10-25`, `updated: 2026-11-05`, `origin: TA-0002 | handoff: HF-0001`) | aplicada |
 | (b) Contexto/origem | parágrafo inicial sob o H1 (rito Art. 9.1 e Art. 5.1; WS-1) | aplicada |
 | (c) Resolução de conflitos | §1 (inventário de gaps/drifts/contradições com veredito por item) | aplicada |
 | (d) Corpo de decisões/requisitos | §2 (emendas E-01..E-08 no formato Art. 9.1) | aplicada |
