@@ -702,7 +702,7 @@ Regras: (i) sempre pinar `vX.Y.Z` (ADR/norma) ou `vX.Y` (plano); (ii) citar seç
 | OKB-C-25 | Média | CCB-LOG cita `docs/governanca/plano-consolidacao-estrutural.md` inexistente | ccb-log:6; A02 | ✅ encerrado — plano criado em `docs/governanca/plano-consolidacao-estrutural.md` (v1.0.0, ativo) |
 | **OKB-C-26** | **Crítica** | **Colisão de ID: dois artefatos diferentes usavam `ADR-013`** (`adr-013-regime-emenda-tap.md` e `ADR-013-SDDAI-Promulgacao.md`); resolvida por renumeração para ADR-014 | ls docs/decisoes; adr-014-sddai-promulgacao.md:144 (nota de renumeração); RAT-2026-10-31-A12 | ✅ resolvido — ADR-013-b renumerada para ADR-014 por decisão CCB (RAT-2026-10-31-A12); catálogo OKB §2.1 e KB-INDEX atualizados nesta rodada |
 | **OKB-C-27** | **Média** | **Bump da Constituição não aplicado:** A09-A-001 ratifica "constitution.md v1.2.1 (sanitizada)", mas o header do arquivo continuam v1.2.0 e o hash co-assinado `b3f296c6…` não foi re-gerado após consolidação | head constitution.md; ccb-log A09 | ❌ aberto — bump editorial + hash dedicado (Art. 5.4) |
-| **OKB-C-28** | **Baixa** | **Inconsistência temporal:** ADR-013-a frontmatter `date: 2026-11-01` e entrada RAT-2026-11-01-A08, enquanto o instrumento e demais artefatos da rodada são de 30–31/10 | frontmatter; ccb-log; `date` do FS (31/10) | ⏳ ajuste editorial no próximo saneamento incluindo provas de data |
+| **OKB-C-28** | **Baixa** | **Inconsistência temporal:** ADR-013-a frontmatter `date-decisao: 01/11/2026` vs instrumento RAT-2026-10-31-A12 de 31/10/2026 | frontmatter; ccb-log; `date` do FS (31/10) | ✅ encerrado — date-decisao ajustado para 31/10/2026 (alinhado ao instrumento A12) |
 
 ### 10.2 Decisões humanas requeridas (não executadas por agente)
 

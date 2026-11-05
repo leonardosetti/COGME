@@ -15,7 +15,7 @@ tags:
 - normalizado
 - self-updated
 - supersedida
-data-decisao: '01/11/2026'
+data-decisao: '31/10/2026'
 data-formalizacao: '31/10/2026'
 decisor: GP Leonardo (CCB único)
 instrumento-ccb: RAT-2026-10-31-A12

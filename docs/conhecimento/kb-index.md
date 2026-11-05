@@ -53,7 +53,7 @@ tags:
 | estrutura-de-diretorios | estrutura-de-diretorios.md (raiz) | spec | active | 0.2.1 | agent-sdd-specialist | [] |
 | ccb-log | docs/governanca/ccb-log.md | register-decision | active | 0.1.0 | CCB | registro vivo CCB-LOG-NNN (append-only); classe fora do enum KB-TAX-001; cita plano-consolidacao-estrutural.md inexistente (OKB-C-25) |
 | KB-INDEX (autorreferencial) | docs/conhecimento/kb-index.md | spec | active | 1.3.0 | agent-docker-specialist | atualizado na normalização do OKB v5.2.0 (CCB-LOG A11, 31/10/2026) |
-| ADR-013-a ⚠️ | docs/decisoes/adr-013-regime-emenda-tap.md | doc-decisao | ratified | 1.0.0 | — (não declarada) | Regime de Emenda Controlada do TAP (baseline viva); supersedes ADR-005 parcialmente; frontmatter date 2026-11-01 vs instrumento 31/10 (OKB-C-28) |
+| ADR-013-a ⚠️ | docs/decisoes/adr-013-regime-emenda-tap.md | doc-decisao | ratified | 1.0.0 | — (não declarada) | Regime de Emenda Controlada do TAP (baseline viva); supersedes ADR-005 parcialmente; date-decisao alinhado ao instrumento 31/10 (OKB-C-28 encerrado) |
 | ADR-007..012 | docs/decisoes/ADR-00{7..12}*.md | doc-decisao | ratified | 1.1.0/1.0.0/1.1.0/1.0.0/1.0.0/1.0.1 | vários (OKB v5.2.0 §2.1) | registrados no índice nesta rodada (eram ausentes desde CCB-001/002) |
 | ADR-016 | docs/decisoes/adr-016-backend-mvp.md | doc-decisao | proposta | 1.0.0 | agent-architect | NÃO ratificada: aprovação humana do CCB (Art. 5). O status `proposta` não consta do ciclo de vida de KB-TAX-001 (draft → active → ratified → archived). |
 | CI-CD-GOV-001 | docs/governanca/ci-cd-governance.md | doc-norma | ratified | 1.0.0 | agent-devops | promulgado RAT-2026-10-31-A10 |
