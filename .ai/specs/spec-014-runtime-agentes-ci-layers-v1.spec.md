@@ -1,15 +1,15 @@
 ---
 spec_id: spec-014
 specname: runtime-agentes-ci-layers-v1
-version: 0.1.0
-status: draft
+version: 0.2.0
+status: ratificada
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-11-03
-updated: 2026-11-03
-origin: HF-0615 (TA-0059) | sender: agent-nexus-prime-ultimate | incorpora parcela de consulta TA-0048 (agent-devops, HF-0604:33-46)
-task: TA-0059
-sender: agent-nexus-prime-ultimate
+updated: 2026-11-05
+origin: HF-0615 (TA-0059) | sender: agent-nexus-prime-ultimate | handoff: HF-0615 | incorpora parcela de consulta TA-0048 (agent-devops, HF-0604:33-46)
+task: TA-0059 | sender: agent-nexus-prime-ultimate
 kill_switch: inherited
+wave: WS-4 | Onda 4 — Execução Técnica (runtime agentes + camada CI)
 lgpd-class: zero PII (gates de CI e runtime sem dados pessoais por design; única credencial do CI é dummy efêmera, ci.yml:120,130)
 trace:
   - .ai/handoffs/HF-0615-spec-014-runtime-agentes-ci-layers-v1.md:17 (envelope com a CONFIRMAÇÃO DO ORQUESTRADOR)
@@ -25,6 +25,7 @@ trace:
   - .opencode/agents/agent-sdd-specialist.md:14 (hardware L1), :33-35 (personas/handoff_parser/sdd-cycle.sh), :39-46 (KILL_SWITCH), :48 (BYPASS_PROTOCOL), :74 (contrato de handoff)
   - .opencode/agents/agent-devops.md:6 ("Automation serves gates, never bypasses them")
   - docs/decisoes/ADR-011-Ecossistema-SDDAI.md:65-68 (MCPs nexus-*), docs/decisoes/ADR-006-inteligencia-sdd.md:57 (symlink active.md)
+  - ratificada CCB 05/11/2026 (instrumento RAT-2026-11-05-A16, ADR-LOG-012)
 ---
 
 # SPEC spec-014 — runtime-agentes-ci-layers-v1 — Camada CI e runtime de agentes SDD (L1/L3) como camadas do Art. 10.1
@@ -247,12 +248,13 @@ Critérios binários desta emissão (spec de definição — verificação por l
 ## CHANGELOG
 
 - 0.1.0 — 2026-11-03 (TA-0059, HF-0615): emissão inicial (item B.10 da LISTA). Confirmação do orquestrador citada (HF-0615:17); delimitações com spec-005 e spec-011 e superação da recomendação de desagregação da parcela TA-0048 registradas na tabela de conflitos (§2); camada CI definida como camada do Art. 10.1 com workflows como contratos de fronteira, regra "CI lê, nunca muta", gates intransferíveis (kill-switch-check primeiro, cobertura ≥80 fail-closed) e zero secrets (§3); regime Free Tier ratificado como Bypass registrado P-01 com os 3 pilares e rota de fuga FOSS (§3.4); runtime de agentes L1/L3 definido conforme Art. 6.5 com fronteiras declaradas, memória persistente em cross-ref spec-003 e MCPs do Art. 4.9 como interfaces (§4); mapa de camadas×SSOTs (§5); 9 AC binários (§6); rastreabilidade dupla (§7); escopo negativo (§8); 5 UNKNOWNs registrados (§9).
+- 0.2.0 — 2026-11-05 (refinamento de ratificação, Grupo B): frontmatter atualizado ao padrão TA-0031 ratificado (adicionado `wave: WS-4`, `handoff` em `origin`; `version` 0.1.0 → 0.2.0). Ratificação CCB 05/11/2026 (instrumento RAT-2026-11-05-A16, ADR-LOG-012). Aderência ao padrão de nomenclatura `spec-NNN-specname.spec.md` confirmada (ADR-018, RAT-2026-11-05-A18). Nenhuma decisão de negócio de §§1–9 reescrita.
 
 ## CAMADAS FUNDAMENTAIS — MAPA (TA-0031)
 
 | Camada | Seção nesta spec | Estado |
 |---|---|---|
-| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem, task, kill_switch, trace, lgpd-class | frontmatter (`spec_id: spec-014`, `version: 0.1.0`) + linha `Status:` | aplicada |
+| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem, task, kill_switch, trace, lgpd-class | frontmatter (`spec_id: spec-014`, `version: 0.2.0`, `status: ratificada`) + linha `Status:` | aplicada |
 | (b) Contexto/origem | §1 (B.10; UNKNOWN - verify de spec-005:81; follow-up :352; confirmação do orquestrador HF-0615:17; parcela TA-0048) | aplicada |
 | (c) Resolução de conflitos | §2 (especiação única × desagregação; delimitações spec-005/spec-011; alcance L1/L3 × L2) | aplicada |
 | (d) Corpo de decisões/requisitos/contratos | §§3–5 (camada CI; runtime L1/L3; fronteiras e cross-refs) | aplicada |
