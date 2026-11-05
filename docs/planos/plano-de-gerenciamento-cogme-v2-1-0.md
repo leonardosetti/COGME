@@ -1064,7 +1064,7 @@ Apenas as seguintes licenças são permitidas no projeto COGME, conforme ADR-001
 | LGPL | Copyleft fraco | Incluída para completude da whitelist FOSS acadêmica; sem uso previsto no MVP |
 | ISC | Permissiva | Equivalente à MIT |
 | PSF (Python Software Foundation) | Permissiva | Adicionada para Python 3.11 (ADR-001) |
-| Public Domain | Domínio público | Adicionada para SQLite (ADR-001) |
+| PostgreSQL License | Proprietária aberta | Adicionada para PostgreSQL (ADR-001 v1.2.0) |
 
 **Licenças proibidas (Blacklist):**
 
@@ -1095,7 +1095,7 @@ A execução operacional da auditoria de licenças é realizada pela **Fase N4.4
 | Dependência | Versão | Licença | Conformidade | EAP N1.4/N4.4 | ADR-001 |
 |-------------|--------|---------|--------------|---------------|---------|
 | FastAPI | ≥0.100 | MIT | ✅ | N4.4 | ✅ |
-| SQLite | 3.x | Public Domain | ✅ | N4.4 | ✅ |
+| PostgreSQL | 15+ | PostgreSQL License | ✅ | N4.4 | ✅ |
 | WeasyPrint | ≥59.0 | BSD-3 | ✅ | N4.4 | ✅ |
 | pytest | ≥7.0 | MIT | ✅ | N4.4 | ✅ |
 | GitHub Actions | Free Tier | Proprietário gratuito | ✅ | N1.4 | ✅ |
@@ -1115,7 +1115,7 @@ Qualquer alteração que possa impactar a linha de base de custos (mesmo que o i
 | Mudança de licença de dependência existente | Biblioteca X migra de MIT para licença proprietária | `change-request` + substituição imediata + ADR |
 | Violação acidental de conformidade | Dependência com licença não-OSI incorporada sem auditoria | `change-request` + remoção + lição aprendida |
 
-**Regra de escalation:** Se uma dependência crítica (ex: FastAPI, SQLite) mudar de licença para não-FOSS durante o projeto, e não houver alternativa viável:
+**Regra de escalation:** Se uma dependência crítica (ex: FastAPI, PostgreSQL) mudar de licença para não-FOSS durante o projeto, e não houver alternativa viável:
 
 1. GP aciona `change-request` imediato
 2. Avalia redução de escopo (remoção da funcionalidade dependente)
@@ -2165,8 +2165,8 @@ Como o projeto tem orçamento zero, as respostas se apoiam em **ações preventi
 | RE-05 | WeasyPrint depende de bibliotecas nativas (Pango, Cairo/GTK) difíceis no Windows → PDF não gera em alguma máquina | Tecnológico | 3 | 3 | 9 MÉDIA | Mitigar | Documentar a instalação por SO; homologar em Linux/WSL; CI gerando o PDF como teste | Fabricio | Falha do teste de PDF / geração > 3 s (REQ-04) |
 | RE-07 | LLM local (Qwen via llama.cpp, CPU) lento demais para o fluxo → produtividade cai | Recursos | 3 | 2 | 6 MÉDIA | Mitigar | Fallback para modelo menor (ex.: Qwen 14B); usar a IA só onde agrega valor | GP | Tempo de resposta inviável para o ciclo SDD |
 | RE-09 | Dependência com licença não-OSI entra na stack → viola o critério FOSS (REQ-15) | Conformidade | 2 | 4 | 8 MÉDIA | Evitar | Auditoria de licenças (N4.4); whitelist/blacklist do Plano de Custos | Edson | Nova dependência no `requirements.txt` sem auditoria |
-| RE-10 | Invoice em PDF contém dados pessoais (nome, CPF/CNPJ, endereço) armazenados sem base legal → não conformidade com a LGPD | Legal / Conformidade | 2 | 4 | 8 MÉDIA | Evitar | Minimização: não persistir PII, gerar o PDF sob demanda; dados fictícios nos testes e no UAT (Constituição 7.3) | GP | PII encontrada no SQLite ou em artefatos |
-| RE-11 | SQLite com concorrência limitada → travamentos em uso simultâneo | Tecnológico | 1 | 2 | 2 BAIXA | Aceitar (passiva) | Aceito para MVP acadêmico (ADR-001); PostgreSQL fica para trabalhos futuros | Fabricio | — |
+| RE-10 | Invoice em PDF contém dados pessoais (nome, CPF/CNPJ, endereço) armazenados sem base legal → não conformidade com a LGPD | Legal / Conformidade | 2 | 4 | 8 MÉDIA | Evitar | Minimização: não persistir PII, gerar o PDF sob demanda; dados fictícios nos testes e no UAT (Constituição 7.3) | GP | PII encontrada no PostgreSQL ou em artefatos |
+| RE-11 | PostgreSQL com concorrência MVCC → suporte a uso simultâneo no MVP | Tecnológico | 1 | 2 | 2 BAIXA | Aceitar (passiva) | Banco canônico PostgreSQL 15+ (ADR-001 v1.2.0); concorrência controlada por pool de conexões | Fabricio | — |
 | RE-12 | Usuários-piloto pouco representativos (só colegas) → MVP aprovado, mas pouco útil para o público real | Partes interessadas | 3 | 2 | 6 MÉDIA | Aceitar (ativa) | Incluir ao menos 1 profissional PJ/freelancer real, se possível; registrar a limitação | Edson | — |
 | RE-13 | Cobrança automática ou mudança de plano no provedor de API/hospedagem → custo ≠ R$ 0,00 | Custos | 1 | 3 | 3 BAIXA | Evitar | Só planos sem cartão cadastrado; alternativa FOSS/gratuita mapeada | GP | Aviso de cobrança do provedor |
 
@@ -2393,7 +2393,7 @@ Cross-reference a `docs/conhecimento/okb.md` com carimbo `derived-as-of: 2026-11
 |------|--------|------------|
 | Baseline de métricas | 0 B (não calibrada) | OKB-C-08, OKB-C-16 |
 | DER (Diagrama Entidade-Relacionamento) | Não existe em FS | OKB §9.2 (TOGAF C1) |
-| Plano de migração SQLite → PostgreSQL | Inexistente | OKB-C-22 |
+| Substituição prévia SQLite → PostgreSQL | Concluída (prévia à implementação, ADR-001 v1.2.0) | OKB-C-22 encerrada |
 | Matriz de partes interessadas | Não registrada | OKB-C-24 (FORA de escopo por diretriz) |
 | CR-001 / colisão M2×M3 | Pendente | FORA desta rodada (declarada, não escondida) |
 

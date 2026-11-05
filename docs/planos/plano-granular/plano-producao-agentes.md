@@ -29,7 +29,7 @@ tags:
 
 | Ativo | Status encontrado |
 |---|---|
-| Stack (ADR-001/005) | Python 3.11 + FastAPI + SQLite + MIT — FOSS 100%, R$ 0 |
+| Stack (ADR-001/005) | Python 3.11 + FastAPI + PostgreSQL 15+ + MIT — FOSS 100%, R$ 0 |
 | Governança | PMBOK 7ª (primária) + 6ª (dicionário) + Kanban em GitHub Projects (SSOT) |
 | Cronograma | Marcos M1–M4; entrega final 15/12/2026; meta de cobertura ≥ 80% |
 | Ciclo SDD | `.ai/workflows/sdd-cycle.sh` operacional (persona → handoff → `opencode run`) |
@@ -140,7 +140,7 @@ Fluxo half-duplex: toda delegação retorna parcela estruturada ao chamador; bri
 |-------|--------|--------|--------------|
 | **A.7** | `agent-python-specialist` | L2 | Padrões Python (pyproject, typing, lint) — fundação do codebase |
 | **A.8** | `agent-api-specialist` | L2 | SSOT de contrato (OpenAPI/FastAPI, `src/shared/schemas.py`) — design antes de implementação |
-| **A.9** | `agent-dba` | L2 | Schema/migrations SQLite — camada de dados decora o contrato |
+| **A.9** | `agent-dba` | L2 | Schema/migrations PostgreSQL — camada de dados decora o contrato |
 | **A.10** | `agent-backend-dev` | L2 | Implementa services/routers — consumidor de A.7 + A.8 + A.9 |
 | **A.11** | `agent-ui-ux-advisor` | L2 | Requisitos visuais precedem a execução frontend |
 | **A.12** | `agent-frontend-dev` | L2 | Templates server-side + integração browser — recebe do advisor e do contrato |

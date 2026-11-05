@@ -57,7 +57,7 @@ Mais do que o produto, o projeto foi o meio de aplicar na prática a disciplina 
 
 - Validação com um número pequeno de usuários-piloto (3 a 5), pouco representativo do público real.
 - Valores de spread e IOF são **simulados** e não substituem orientação contábil ou cotação oficial.
-- SQLite e execução local limitam o uso simultâneo e a disponibilidade pública.
+- PostgreSQL e execução local limitam o uso simultâneo e a disponibilidade pública.
 
 ## 4.6 Trabalhos Futuros
 

@@ -80,7 +80,7 @@ INSUFFICIENT DATA (OKB-C-08/16). Baseline estabelecido via seed simulado (ver do
 | Estação de inferência local (AMD Ryzen 7 8700G, 60 GB RAM) | Físico | Próprio | Execução do LLM local (Qwen via llama.cpp) para SDD, sem enviar dados à nuvem (Constituição P-02) |
 | GitHub (repositório, Projects, Issues, Insights) | Plataforma | Free Tier | SSOT de execução, versionamento, métricas |
 | GitHub Actions | Plataforma | Free Tier | Pipeline CI (lint + testes + coverage) |
-| Python 3.11, FastAPI, SQLite, WeasyPrint, HTMX, Tailwind, pytest | Software | FOSS (PSF/MIT/BSD/Public Domain) | Stack do produto (ADR-001) |
+| Python 3.11, FastAPI, PostgreSQL 15+, WeasyPrint, HTMX, Tailwind, pytest | Software | FOSS (PSF/MIT/BSD/PostgreSQL) | Stack do produto (ADR-001 v1.2.0) |
 | llama.cpp + Qwen + OpenCode | Software | MIT / licença autorizada | Specification-Driven Development com IA local |
 | API PTAX do Banco Central do Brasil (Olinda/OData) | Serviço externo público | Gratuito, sem cadastro nem chave | Fonte oficial das cotações USD/EUR → BRL (REQ-01) |
 | API da Wise Platform (Exchange Rates / Comparison) | Serviço externo (avaliação) | Exige autenticação por token | **Em avaliação:** cotação e comparação de plataformas de recebimento internacional (evolução do MVP) |

@@ -151,7 +151,7 @@ Apenas as seguintes licenças são permitidas no projeto COGME, conforme ADR-001
 | LGPL                                       | Copyleft fraco    | Incluída para completude da whitelist FOSS acadêmica; sem uso previsto no MVP |
 | ISC                                        | Permissiva        | Equivalente à MIT                                                              |
 | **PSF (Python Software Foundation)** | Permissiva        | **Adicionada para Python 3.11 (ADR-001)**                                 |
-| **Public Domain**                    | Domínio público | **Adicionada para SQLite (ADR-001)**                                      |
+| **Public Domain**                    | Domínio público | **Adicionada para PostgreSQL 15+ (ADR-001 v1.2.0)**                       |
 
 **Licenças proibidas (Blacklist):**
 
