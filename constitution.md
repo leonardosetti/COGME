@@ -16,18 +16,18 @@ tags:
 ---
 # CONSTITUIÇÃO DO PROJETO COGME
 
-<!-- Versão: 1.2.1 | Ratificação: 2026-10-29/31 | Status: VIGENTE-PLENA (consolidação de duplicata Arts. 5–10 autorizada em CCB-LOG A08; co-assinatura humana registrada via RAT-2026-10-31-A12 — Art. 5.4, gatilho deliberativo expresso do GP) |
+<!-- Versão: 1.2.2 | Ratificação: 2026-10-29/31, 2026-11-05 | Status: VIGENTE-PLENA (consolidação de duplicata Arts. 5–10 autorizada em CCB-LOG A08; co-assinatura humana registrada via RAT-2026-10-31-A12 — Art. 5.4, gatilho deliberativo expresso do GP; inclusão das normas de artefatos (template + nomenclatura) na hierarquia Art. 2.1 via RAT-2026-11-05-A20) |
 
 ## ART. 5.4 — CO-ASSINATURA (Atualizado 2026-10-31 — RAT-2026-10-31-A12)
 
-- **Versão:** 1.2.1 — Status: VIGENTE-PLENA
-- **Hash normativo:** `5ad5ec8f2ae7891cca020d51956e5fa492eee8dbcd15490fec84875086f95f65` *(método: sha256 dos bytes de `## PREÂMBULO` até a linha imediatamente anterior ao bloco final `## CO-ASSINATURA` — região sem auto-referência de hash; valor idêntico ao registrado na tabela CO-ASSINATURA ao pé, único registrador)*
-- **Hash anterior (v1.2.0, 30/10/2026):** `b3f296c6ed592bb3f276302148eeb0360a72ebe35fdd48a9b972ba8261851db4` — commit `7cff886`
-- **Commit:** `bec6c1a778c96489b039eb649d3c02e7c7aac7af`
-- **Data da co-assinatura vigente:** 2026-10-31
+- **Versão:** 1.2.2 — Status: VIGENTE-PLENA
+- **Hash normativo:** `9ae2c118102d7c352b00873a1f360383404a18b61beac09c7ca3c93c312cad56` *(método: sha256 dos bytes de `## PREÂMBULO` até a linha imediatamente anterior ao bloco final `## CO-ASSINATURA` — região sem auto-referência de hash; valor idêntico ao registrado na tabela CO-ASSINATURA ao pé, único registrador)*
+- **Hash anterior (v1.2.1, 31/10/2026):** `5ad5ec8f2ae7891cca020d51956e5fa492eee8dbcd15490fec84875086f95f65` — commit `bec6c1a778c96489b039eb649d3c02e7c7aac7af`
+- **Commit:** `bec6c1a778c96489b039eb649d3c02e7c7aac7af` (v1.2.1) / `b27167e4f8a7fec1a755c8912eb07445bdefb115` (v1.2.2)
+- **Data da co-assinatura vigente:** 2026-11-05
 - **Papel:** Gerente de Projeto — CCB de membro único
-- **Instrumento:** promulgação CCB 30/10/2026 + gatilho de permissão prévia deliberativo expresso do GP em 31/10/2026 (CCB-LOG RAT-2026-10-31-A12) — dupla manifestação humana registrada
-- **Histórico:** consolidação da duplicata Arts. 5–10 autorizada em A08 e executada; bump v1.2.0 → v1.2.1 aplicado por agente sob autoridade plena do CCB (parecer AUD-2610-09, fresco C-27)
+- **Instrumento:** inclusão das normas de artefatos (template + nomenclatura) na hierarquia Art. 2.1 via RAT-2026-11-05-A20 — ratificação humana CCB de membro único
+- **Histórico:** consolidação da duplicata Arts. 5–10 autorizada em A08 e executada; bump v1.2.0 → v1.2.1 (RAT-2026-10-31-A12); inclusão das normas de artefatos na hierarquia normativa (RAT-2026-11-05-A20)
      Método: PMBOK 7ª + Kanban + SDD + MCPs | Jurisdição: LGPD | Stack: FOSS com Bypass registrados -->
 
 ## PREÂMBULO
@@ -59,11 +59,12 @@ Para matéria de escopo, cronograma, custo, qualidade, riscos, entregas e govern
 1. Esta Constituição (`constitution.md`);
 2. TAP v3, congelado pela ADR-005, como ato autorizativo e referência de escopo, marcos, orçamento e restrições;
 3. ADRs aprovados (`docs/decisoes/`), como decisões técnicas e de processo, podendo sobrepor-se parcialmente a ADRs anteriores conforme registro canônico, mas nunca contrariando esta Constituição nem o TAP;
-4. OKB, como base consolidada de conhecimento operacional, sem autonomia normativa própria;
-5. Planos de gerenciamento (`docs/planos/`);
-6. Glossário;
-7. Especificações SDD e inputs canônicos (`.ai/specs/`);
-8. Código-fonte e testes (`src/`, `tests/`).
+4. **Normas de artefatos** (`docs/normas/`): `NORMA-TEMPLATES-ARTEFATOS.md` (template global de frontmatter por tipo de artefato) e `NORMA-NOMECLATURA-ARTEFATOS.md` (padrão de nomeação de arquivos `*.md`), governando forma e rastreamento de todo artefato do projeto;
+5. OKB, como base consolidada de conhecimento operacional, sem autonomia normativa própria;
+6. Planos de gerenciamento (`docs/planos/`);
+7. Glossário;
+8. Especificações SDD e inputs canônicos (`.ai/specs/`);
+9. Código-fonte e testes (`src/`, `tests/`).
 
 ### 2.2. Hierarquia de forja e governança de agentes
 
@@ -261,3 +262,4 @@ Este bloco não integra o hash normativo.
 | 1.1.0   | `4eb5244ffb4d2f5973b03c96f8523f36d095d1c954eb731543a0fb9e44a1fb13` | `1e206fe4b5c174c5da3133d5c66cc4c6d57808b6` | 2026-10-26 | Gerente de Projeto — CCB de membro único | CCB 26/10/2026, emendas E-01..E-08                         |
 | 1.2.0   | `b3f296c6ed592bb3f276302148eeb0360a72ebe35fdd48a9b972ba8261851db4` | `7cff886`                     | 2026-10-30 | Gerente de Projeto — CCB de membro único | COGME-UNIVERSAL-ADJUSTMENT-PARTITIONED-v4.1.2 + prompt expresso CCB 30/10/2026 |
 | 1.2.1   | `5ad5ec8f2ae7891cca020d51956e5fa492eee8dbcd15490fec84875086f95f65` | `bec6c1a778c96489b039eb649d3c02e7c7aac7af` + commit `62b280728acc49d2c916ce93962dc6f432e93fec` + commit `a62f5f3` (re-hash definitivo) | 31/10/2026 | Gerente de Projeto — CCB de membro único | Consolidação v1.2.1 (remoção de duplicata Arts. 6-10) + prompt expresso CCB 31/10/2026; **re-hash definitivo RAT-2026-10-31-A12** (método: bytes de `## PREÂMBULO` até antes do bloco `## CO-ASSINATURA` que começa a secao de co-assinatura ao pe; substitui `a29c61ff…`, `02e5b695…`, `5394fc8c…` e `2d07f063…` nao conferentes) |
+| 1.2.2   | `9ae2c118102d7c352b00873a1f360383404a18b61beac09c7ca3c93c312cad56` | `b27167e4f8a7fec1a755c8912eb07445bdefb115` | 05/11/2026 | Gerente de Projeto — CCB de membro único | Inclusão das normas de artefatos (template + nomenclatura) na hierarquia normativa Art. 2.1; bump v1.2.1 → v1.2.2 via RAT-2026-11-05-A20 |

@@ -30,7 +30,7 @@ tags:
 | Custódia | agent-architect (default KB-TAX-001; KB-INDEX:48 ajustado) |
 | Substitui | OKB v5.1.0 (30/10/2026) — **normalização estrutural, corpo normativo preservado**; linhagem v3.0 / v3.1 / v4.0.0 (perdida em VIO-006) |
 | Auditoria desta rodada | **AUD-2610-09 — Auditoria Extraordinária dedicada ao OKB** (docs/auditorias/aud-2610-09-okb-normalizacao.md) |
-| Hierarquia vigente | `constitution.md` (VIGENTE-PLENA) > TAP v3 (baseline viva sob ADR-013-a) > ADRs 001–016 > **OKB** > Planos > Glossário > Specs > Código |
+| Hierarquia vigente | `constitution.md` (VIGENTE-PLENA) > TAP v3 (baseline viva sob ADR-013-a) > ADRs 001–016 > **Normas de artefatos** (`docs/normas/NORMA-TEMPLATES-ARTEFATOS.md` + `NORMA-NOMECLATURA-ARTEFATOS.md`, ratificadas CCB-LOG RAT-2026-11-05-A20) > **OKB** > Planos > Glossário > Specs > Código |
 | LGPD | n/a (sem PII — C-P-04) |
 | Passível de auditoria | **SIM — o OKB é parte constitutiva do SSOT e encontra-se sujeito a checagem de congruência contínua contra o SSOT (KB-INDEX, ledger, ccb-log, FS)** |
 
@@ -347,6 +347,7 @@ Regra adicional: **qualquer mudança em lei suprema (Constituição) é sempre `
 | 31/10 | VIO-013..VIO-025 registrados (contratos JSON half-duplex, gates Art. 4.7) | vio-register |
 | 31/10 | A11 — **esta rodada**: normalização do OKB v5.2.0 (template canônico, sanitize, patch list, auditoria AUD-2610-09) | ccb-log; §12 |
 | 02/11 | A12 — consolidação _consolidado-adrs.tmp.md com ADRs 013–016; bump OKB para v5.3.0; atualização catálogo ADR e inventário | ccb-log; §12 |
+| 05/11 | A20 — ratificação das Normas de Templates e Nomenclatura de Artefatos (docs/normas/); inclusão na hierarquia da Constituição (Art. 2.1) e inventário do OKB (§4) | ccb-log RAT-2026-11-05-A20 |
 
 ---
 
@@ -361,6 +362,8 @@ Legenda: **real** = extraído do cabeçalho/frontmatter do arquivo em 31/10/2026
 | Lei | `constitution.md` | 1.2.0 | **VIGENTE-PLENA** | não indexada | **A-09 declara v1.2.1** (sanitizada, ratificada); header do arquivo não atualizado — **OKB-C-27** |
 | CCB-LOG | `docs/governanca/ccb-log.md` | 0.1.0 | active | não indexado | classe `register-decision` fora do enum KB-TAX (C-13); cita plano inexistente (C-25) |
 | Normas técnicas | `docs/governanca/ci-cd-governance.md`; `devsecops-policy.md` | 1.0.0 / 1.0.0 | ratified (A10) | não indexado | registrar no KB-INDEX |
+| Norma-templates | `docs/normas/NORMA-TEMPLATES-ARTEFATOS.md` | 1.0.0 | ratificado (A20) | não indexado | registrar no KB-INDEX |
+| Norma-nomenclatura | `docs/normas/NORMA-NOMECLATURA-ARTEFATOS.md` | 1.0.0 | ativo (A20) | não indexado | registrar no KB-INDEX |
 | TAP (export) | `docs/tap/TAP.docx` | 18/09/2026 | congelado/blindado | — | `TAP.md` = 248 B (frontmatter-only, ponteiro para plano-integral); fonte canônica v3 no plano-integral (OKB-C-09 segue aberto) |
 | ADR-013-a | `docs/decisoes/adr-013-regime-emenda-tap.md` | 1.0.0 | ratified | não indexado | date-decisao alinhado a 31/10 (OKB-C-28 encerrado) |
 | ADR-013-b ⚠️ | `docs/decisoes/ADR-013-SDDAI-Promulgacao.md` | 1.0.0 | ratified; supersedida por ADR-006 v2.1.0 | não indexado | **colisão de ID com ADR-013-a (C-26)** |
@@ -736,6 +739,7 @@ Esta versão é uma **normalização**, não uma reescrita: corpo normativo de v
 | VER-005 | v5.0.0 | 30/10/2026 | v3.0 + ADRs 001–012 + Constitution 1.2.0 | reemissão: frontmatter, hierarquia corrigida, catálogo ADR, estado as-of, inventário, achados, padrão de citação | — (draft absorvido por VER-006) |
 | VER-006 | v5.1.0 | 30/10/2026 | v5.0.0-draft + PMBOK/TOGAF/ITIL | primeira versão ratificada: §9 cobertura metodológica; C-22..C-24; poda YAGNI; promoção a corpus canônico único; SHA `ac27f0c1…9547` (bloco ratificado antes da promulgação) | CCB-003 (30/10) |
 | **VER-007** | **v5.2.0** | **31/10/2026** | v5.1.0 + rodada de estado 31/10 (A08–A10, VIO-013..025) | **(a) Template canônico OKB-TEMPLATE-CANON v1.0 adotado** (nomenclatura OKB \| Operational Knowledge Base; índice normativo; blocos I–IV; changelog VER-NNN; bloco de co-assinatura §13). **(b) Sanitize:** glossário v3.1 → v3.2.0 (hierarquia, EAP 12/37, PostgreSQL, Qwen MoE, refs); patch list §8.4 executada (personas ×2, ADR-012, plano-integral ×6) — cada alvo com bump/changelog próprio ou ressalva complementar. **(c) Normatize:** §2.5 tipos de mudança (encerra C-23); §5.1 namespace TAP-P#/C-P-## (encerra C-19 para o corpus); §1.4/§1.6 regimes ADR-013-a, CI-CD-GOV-001 e DEVSECOPS-001. **(d) Persistência:** estado as-of 31/10 (§3.6); inventário atualizado (baseline seed, ADR-013-a/b, normas técnicas, artefatos promulgados). **(e) Auditoria:** AUD-2610-09 extraordinária dedicada; achados novos C-26/C-27/C-28. **(f) Governança:** CCB-LOG A11 (aprovação indireta via agente, autorização expressa e deliberativa do GP); ledger append; KB-INDEX bump 1.2.0→1.3.0 | **CCB-LOG RAT-2026-10-31-A11** — CCB único (GP Leonardo), aprovação indireta via agente com gatilho de permissão prévia deliberativo executado |
+| **VER-008** | **v5.3.0** | **05/11/2026** | v5.2.0 + ratificação das Normas de Artefatos (CCB-LOG RAT-2026-11-05-A20) | **(a) Normas de template e nomenclatura de artefatos (`docs/normas/NORMA-TEMPLATES-ARTEFATOS.md` + `NORMA-NOMECLATURA-ARTEFATOS.md`) ratificadas em CCB e incluídas na hierarquia normativa da Constituição (Art. 2.1, item 4). **(b) Inventário do OKB §4.1 atualizado com ambas as normas. **(c) Evento A20 adicionado ao §3.6. **(d) KB-INDEX v1.3.0 atualizado com entradas para ambas as normas. | **CCB-LOG RAT-2026-11-05-A20** — CCB único (GP Leonardo), ratificação humana via instrumento RAT-2026-11-05-A20 |
 
 ---
 

@@ -58,6 +58,8 @@ tags:
 | ADR-016 | docs/decisoes/adr-016-backend-mvp.md | doc-decisao | proposta | 1.0.0 | agent-architect | NÃO ratificada: aprovação humana do CCB (Art. 5). O status `proposta` não consta do ciclo de vida de KB-TAX-001 (draft → active → ratified → archived). |
 | CI-CD-GOV-001 | docs/governanca/ci-cd-governance.md | doc-norma | ratified | 1.0.0 | agent-devops | promulgado RAT-2026-10-31-A10 |
 | DEVSECOPS-001 | docs/governanca/devsecops-policy.md | doc-norma | ratified | 1.0.0 | agent-devops | promulgado RAT-2026-10-31-A10 |
+| Norma-templates | docs/normas/NORMA-TEMPLATES-ARTEFATOS.md | doc-norma | ratified | 1.0.0 | agent-project-analyst | ratificado CCB-LOG RAT-2026-11-05-A20; hierarquia Constituição Art. 2.1 item 4 |
+| Norma-nomenclatura | docs/normas/NORMA-NOMECLATURA-ARTEFATOS.md | doc-norma | ratified | 1.0.0 | agent-project-analyst | ratificado CCB-LOG RAT-2026-11-05-A20; ADR-018 alinhada (RAT-2026-11-05-A19) |
 | Canon SDD | docs/conhecimento/canon-stack-sdd.md | okb-adjacente | promulgado | 2.0.0 | agent-sdd-specialist | promulgado A09-A-007 |
 | Registro de ratificação | docs/governanca/ratificacao-promulgacao.md | register-decision | promulgado | 1.0.0 | agent-architect | promulgado A09-A-005; classe fora do enum KB-TAX (C-13) |
 | AUD-2610-09 | docs/auditorias/aud-2610-09-okb-normalizacao.md | relatorio-auditoria | active | 1.0.0 | project-auditor | auditoria extraordinária dedicada ao OKB (A11); classe fora do enum (C-13) |

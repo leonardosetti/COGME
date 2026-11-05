@@ -187,3 +187,20 @@ evidencia: ADR-LOG-014 em docs/decisoes/adr-log.md; spec-adr-template v1.0.0 em 
 impacto: Todas as ADRs vigentes possuem frontmatter canonico unico e aderente a ADR-018 (nomenclatura) e ao template spec-adr-template. Nenhuma sobreposicao de ADR criada.
 rollback: Reverter commits individuais por artefato (nao recomendado).
 pmbok-gate: Integracao (4.6) | Qualidade (8.3) | Conformidade (P-05, P-08, Art. 5)
+
+
+### RAT-2026-11-05-A20 — Ratificacao das Normas de Templates e Nomenclatura de Artefatos
+contexto: Normas de governanca documental `docs/normas/NORMA-TEMPLATES-ARTEFATOS.md` (template global de frontmatter por tipo de artefato) e `docs/normas/NORMA-NOMECLATURA-ARTEFATOS.md` (padrao de nomeacao de arquivos *.md) ja aplicadas ao estoque de 338 artefatos *.md (commit 71b0318) e enforcadas por CI (scripts/validar_frontmatter_md.py no job lint de .github/workflows/ci.yml). Faltava o registro formal de ratificacao em CCB, OKB e Constituição.
+artefatos ratificados:
+  - docs/normas/NORMA-TEMPLATES-ARTEFATOS.md (v1.0.0, status ratificado, owner agent-project-analyst)
+  - docs/normas/NORMA-NOMECLATURA-ARTEFATOS.md (v1.0.0, status ativo, owner agent-project-analyst)
+  - scripts/aplicar_norma_templates.py
+  - scripts/validar_frontmatter_md.py
+  - scripts/validar_nome_arquivo.py
+decisao: A — Ratificar e promulgar ambas as normas como vigentes no ecossistema COGME; incluir na hierarquia normativa da Constituição (Art. 2.1) e no inventario do OKB (§4).
+ratificacao: Humana (GP Leonardo, CCB de membro unico, autoridade plena concedida nesta rodada)
+instrumento: RAT-2026-11-05-A20
+evidencia: frontmatter ratificado em ambos os documentos; aplicacao a 338 artefatos *.md (commit 71b0318); gate de CI ativo (validar_frontmatter_md.py + validar_nome_arquivo.py); ADR-018 (nomenclatura) ja ratificada (RAT-2026-11-05-A19).
+impacto: Todas as normas de template e nomenclatura de artefatos passam a ser vigentes e rastreaveis em CCB, OKB e Constituição.
+rollback: Reverter commits individuais por artefato (nao recomendado).
+pmbok-gate: Integracao (4.6) | Qualidade (8.3) | Conformidade (P-05, P-08, Art. 2, Art. 9)
