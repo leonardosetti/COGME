@@ -23,7 +23,7 @@ tags:
 
 | id | caminho | classe | status | versão | owner | caveats |
 |---|---|---|---|---|---|---|
-| tap-cogme | docs/tap/tap.md | plan | draft | 1.0.0 | agent-pm | "stub-ponteiro (não-0B, CCB F-06 TA-0016)"; fonte canônica: plano-integral-tap-1-2-3-4-5.md; canal SDD: .ai/specs/tap.md |
+| tap-cogme | docs/tap/tap.md | plan | draft | 1.0.0 | agent-pm | Preenchido com resumo canônico do TAP v3 + ponteiro para plano-integral-tap-1-2-3-4-5.md (fonte canônica integral); canal SDD: .ai/specs/tap.md |
 | plano-integral-tap | docs/planos/plano-integral-tap-1-2-3-4-5.md | plan | active | 1.0.0 | agent-pm | [] |
 | plano-projeto-cogme | docs/planos/Plano-de-Projeto-COGME_v1.0.md | plan | active | 1.0.0 | agent-pm | divergência docx v1.0/v1.1 PENDENTE de decisão humana CCB (KB-TAX-001 4.6/G6) |
 | plano-integracao | docs/planos/plano-integracao.md | plan | active | 2.0.0 | agent-pm | [] |

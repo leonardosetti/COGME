@@ -683,7 +683,7 @@ Regras: (i) sempre pinar `vX.Y.Z` (ADR/norma) ou `vX.Y` (plano); (ii) citar seç
 | OKB-C-06 | Crítica | CR-001 repactua M2 → 15/11/2026, colide com M3; ADR de emenda emitida (ADR-015) e ratificada (RAT-2026-10-31-A12); Delta Log criado | CR-001; ADR-015; plano-cronograma:80; docs/tap/delta-v3-1.md | ✅ resolvido (C-06 principal) — ADR-015 emitida e ratificada 31/10/2026; CR-001 formalizado. Ressalva C-06b (colisao M2=M3 em 15/11) segue aberta para deliberacao futura do CCB (fusao M2+M3, deslocamento M3 ate M4, ou manutencao) |
 | OKB-C-07 | Alta | Glossário contradiz canon (13/48, Qwen 32B, SQLite, hierarquia invertida) | glossario:8,18,23,161 | ✅ **resolvido nesta rodada** — sanitize + bump v3.2.0 (31/10; RAT-2026-10-31-A11); re-verificar na próxima auditoria |
 | OKB-C-08 | Alta | Artefatos 0 B: `TAP.md`, `registro.md`, `requisitos.md`, `.ai/specs/{tap,eap,requisitos}.md` | `wc -c` = 0 | ✅ encerrado — todos populados (frontmatter ou corpo); `registro.md` 11 KB, `.ai/specs/{tap,eap,requisitos}.md` 22–28 KB; `TAP.md`/`requisitos.md` frontmatter-only (ponteiros para plano-integral e spec-002) |
-| OKB-C-09 | Alta | TAP canônico só como `.docx` + bloco integral no plano-integral; `.md` é stub declarado "não-0B" no índice | KB-INDEX:29; plano-integral:49 | ❌ aberto |
+| OKB-C-09 | Alta | TAP canônico só como `.docx` + bloco integral no plano-integral; `.md` é stub declarado "não-0B" no índice | KB-INDEX:29; plano-integral:49 | ✅ encerrado — `docs/tap/tap.md` preenchido com resumo canônico + ponteiro para o plano-integral (fonte canônica integral) |
 | OKB-C-10 | Alta | Frontend: ADR-001 fixa vanilla JS; roster/infra assumem Jinja+HTMX+Tailwind | ADR-001:31; VIO-001 | ❌ aberto — ADR de emenda |
 | OKB-C-11 | Baixa | Custódia do OKB divergia sem registro recuperável | KB-INDEX:48 | ✅ resolvido — CCB-003 ratificou owner `agent-architect` |
 | OKB-C-12 | Média | ADR-005 em regularização tardia com ratificação formal pendente | ADR-005:6,56 | ✅ encerrada — ADR-005 v1.1.0 status `ratificado`, instrumentos CCB-LOG A08 + A12, incorpora Regime de Emenda Controlada (ADR-013) e Emenda M2 (ADR-015); `adr-005-freeze.md` marcada SUPERSSEDIDA (superseded-by: ADR-005 v1.1.0) |
@@ -716,6 +716,7 @@ Regras: (i) sempre pinar `vX.Y.Z` (ADR/norma) ou `vX.Y` (plano); (ii) citar seç
 8. **OKB-C-24** — ✅ encerrado: matriz de partes interessadas inserida em §9.1.1.
 9. **OKB-C-25** — ✅ encerrado: `docs/governanca/plano-consolidacao-estrutural.md` criado (v1.0.0).
 10. **Ratificação deste OKB v5.2.0** — ✅ **CUMPRIDA** nesta emissão (CCB-LOG RAT-2026-10-31-A11, 31/10/2026; bloco §13).
+11. **OKB-C-09** — ✅ encerrado: TAP.md preenchido com resumo canônico + ponteiro.
 
 ---
 
