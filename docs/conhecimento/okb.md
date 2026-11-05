@@ -669,7 +669,7 @@ Regras: (i) sempre pinar `vX.Y.Z` (ADR/norma) ou `vX.Y` (plano); (ii) citar seç
 |---|---|---|---|---|
 | OKB-C-01 | Alta | Hierarquia praticada ("TAP > OKB > Glossário > ADRs") contradizia a Constituição | OKB v3.0; Art. 2.1 | ✅ corrigido em v5.0.0 §1.1 |
 | OKB-C-02 | Alta | Índice declara ADR-001..004 `1.1.0 ratified`; arquivos reais são `1.0.0` | KB-INDEX:41-44 vs frontmatter | ❌ aberto (KB-INDEX a harmonizar ou ADRs a bumpar — decisão CCB) |
-| OKB-C-03 | Crítica | VIO-006: evento destrutivo 24/10 reverteu leis sem trilha git; conteúdo v4.0.0 irrecuperável | vio-register; AUD-2610-04:48 | ❌ aberto — só o Humano encerra (KS) |
+| OKB-C-03 | Crítica | VIO-006: evento destrutivo 24/10 reverteu leis sem trilha git; conteúdo v4.0.0 irrecuperável | vio-register; AUD-2610-04:48 | ✅ encerrado por decisão Humana/CCB (2026-11-05, kill switch Art. 5.1); conteúdo pré-evento irrecuperável — registrado como evidência histórica, nunca apagado |
 | OKB-C-04 | Baixa | ADR-006 triplicada | md5 idêntico `91e91ef1…` | ✅ resolvido — apenas a canônica restou |
 | OKB-C-05 | Alta | Teto GMV de ADRs (≤ 10) excedido: 13 IDs (14 artefatos) | §2.6 | ✅ encerrado — teto revisado para ≤ 20 (decisão CCB); 13 IDs (14 artefatos) dentro do novo teto |
 | OKB-C-06 | Crítica | CR-001 repactua M2 → 15/11/2026, colide com M3; ADR de emenda emitida (ADR-015) e ratificada (RAT-2026-10-31-A12); Delta Log criado | CR-001; ADR-015; plano-cronograma:80; docs/tap/delta-v3-1.md | ✅ resolvido (C-06 principal) — ADR-015 emitida e ratificada 31/10/2026; CR-001 formalizado. Ressalva C-06b (colisao M2=M3 em 15/11) segue aberta para deliberacao futura do CCB (fusao M2+M3, deslocamento M3 ate M4, ou manutencao) |
