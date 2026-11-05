@@ -2,7 +2,7 @@
 spec_id: spec-011
 specname: cicd-pipeline-v1
 version: 0.2.0
-status: draft
+status: ratificada
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-11-03
 updated: 2026-11-05
@@ -184,7 +184,7 @@ Critérios binários, verificáveis na implementação (onda seguinte) — cada 
 ## CHANGELOG
 
 - 0.1.0 — 2026-11-03 (TA-0056, HF-0612): emissão inicial. Auditoria do estado real do ci.yml (189 linhas, 6 jobs — §3.1); drift G-05 declarado FECHADO por implementação preexistente (§2, §3.1); US-011 declarado NÃO ATENDIDO com 6 deltas normativos D-01..D-06 incorporados da parcela TA-0048 (HF-0604:33-46) (§3.3); C.4 FECHADO — nome do job fixado como `contract-network` com contrato completo (§3.4); gates intransferíveis (§3.5); merge-blocking como pré-condição, nunca aprovação (§3.6); disciplina Free Tier P-01 registrada (§3.7); 11 AC binários (§4); rastreabilidade dupla (§5); escopo negativo com implementação do ci.yml fora desta spec (§6); 4 UNKNOWNs registrados (§7).
-- 0.2.0 — 2026-11-05 (refinamento de ratificação, Grupo A): frontmatter atualizado ao padrão TA-0031 ratificado (adicionado `wave: WS-4`, `handoff` em `origin`; `version` 0.1.0 → 0.2.0). Deltas D-01..D-06 já implementados no `ci.yml` (commit `d657118`..`2765903`): timeout 15→5 min, job lint separado, `permissions: contents: read`, SHA-pin de actions, artifacts `coverage.xml`+`junit.xml`, remoção de append em `.ai/agents/ledger.yaml`. Job `contract-network` fixado (spec-011 §3.4). Aderência ao padrão de nomenclatura `spec-NNN-specname.spec.md` confirmada (ADR-018, RAT-2026-11-05-A18). Nenhuma decisão de negócio de §§1–8 reescrita.
+- 0.2.0 — 2026-11-05 (refinamento de ratificação, Grupo A): frontmatter atualizado ao padrão TA-0031 ratificado (adicionado `wave: WS-4`, `handoff` em `origin`; `version` 0.1.0 → 0.2.0). Deltas D-01..D-06 já implementados no `ci.yml` (commit `d657118`..`2765903`): timeout 15→5 min, job lint separado, `permissions: contents: read`, SHA-pin de actions, artifacts `coverage.xml`+`junit.xml`, remoção de append em `.ai/agents/ledger.yaml`. Job `contract-network` fixado (spec-011 §3.4). Aderência ao padrão de nomenclatura `spec-NNN-specname.spec.md` confirmada (ADR-018, RAT-2026-11-05-A18). Nenhuma decisão de negócio de §§1–8 reescrita. **Ratificada CCB 05/11/2026 (instrumento RAT-2026-11-05-A16)**.
 
 ## CAMADAS FUNDAMENTAIS — MAPA (TA-0031)
 

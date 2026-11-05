@@ -2,7 +2,7 @@
 spec_id: spec-006
 specname: nfr-consolidados-v1
 version: 0.2.0
-status: draft
+status: ratificada
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-11-03
 updated: 2026-11-05
@@ -22,6 +22,7 @@ trace:
   - docs/planos/plano-granular/plano-escopo.md:71-80 (Tabela 1 IN/OUT)
   - .ai/specs/MANIFEST.md:20-61 (template canônico obrigatório §1)
   - .opencode/agents/agent-sdd-specialist.md:83-103,127-133,180-203 (custódia .ai/specs/; DOs/DON'Ts; template de spec)
+  - ratificada CCB 05/11/2026 (instrumento RAT-2026-11-05-A16)
 ---
 
 # SPEC spec-006 — nfr-consolidados-v1 — Requisitos Não Funcionais consolidados (registro canônico da fase N2.2 da EAP)
@@ -172,7 +173,7 @@ Rastreabilidade da emissão: tarefa TA-0051 ← HF-0607 (.ai/handoffs/HF-0607-sp
 ## CHANGELOG
 
 - 0.1.0 — 2026-11-03 (TA-0051 / HF-0607): emissão inicial. Registro canônico de NFR (item B.2, LISTA...:34): 25 NFRs (NF-01..NF-25) em 7 categorias (desempenho, usabilidade, segurança P-07/OWASP, portabilidade/FOSS P-01/P-02, LGPD P-04, manutenibilidade, observabilidade); GAP-02 coberto — fase N2.2 (plano-integral...:37) com artefato; P-04/P-06/P-07 mapeados a critérios de produto (AC-03); 4 tensões registradas na §2; lacunas de métrica marcadas `UNKNOWN - verify` (NF-09, NF-13, NF-15, cache além do TTL em NF-04). Arquivo único; nada commitado.
-- 0.2.0 — 2026-11-05 (refinamento de ratificação, Grupo A): frontmatter atualizado ao padrão TA-0031 ratificado (adicionado `wave: WS-4`, `trace`; `version` 0.1.0 → 0.2.0). ADR-016 D4 (RAT-2026-11-05-A16-D4) incorporada: NF-25 menciona fórmula spread/IOF ratificada. NFR de cotação (NF-01..NF-04) alinhadas com spec-004 v1.2.0 e spec-005 v0.4.0. Aderência ao padrão de nomenclatura `spec-NNN-specname.spec.md` confirmada (ADR-018, RAT-2026-11-05-A18). Nenhuma decisão de negócio de §§1–6 reescrita.
+- 0.2.0 — 2026-11-05 (refinamento de ratificação, Grupo A): frontmatter atualizado ao padrão TA-0031 ratificado (adicionado `wave: WS-4`, `trace`; `version` 0.1.0 → 0.2.0). ADR-016 D4 (RAT-2026-11-05-A16-D4) incorporada: NF-25 menciona fórmula spread/IOF ratificada. NFR de cotação (NF-01..NF-04) alinhadas com spec-004 v1.2.0 e spec-005 v0.4.0. Aderência ao padrão de nomenclatura `spec-NNN-specname.spec.md` confirmada (ADR-018, RAT-2026-11-05-A18). Nenhuma decisão de negócio de §§1–6 reescrita. **Ratificada CCB 05/11/2026 (instrumento RAT-2026-11-05-A16)**.
 
 ## CAMADAS FUNDAMENTAIS — MAPA (TA-0031)
 

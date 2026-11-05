@@ -2,7 +2,7 @@
 spec_id: spec-009
 specname: uat-produto-v1
 version: 0.4.0
-status: draft
+status: ratificada
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-11-03
 updated: 2026-11-05
@@ -23,6 +23,7 @@ trace:
   - .ai/specs/spec-008-frontend-web-responsive-v1.spec.md:161-163 (§8 browsers), :184-202 (§10 AC-1..AC-13), :202 (destino das evidências `UNKNOWN - verify`)
   - .ai/specs/MANIFEST.md:20-61 (template canônico camadas a–h), :58 (lacuna = literal `UNKNOWN - verify`)
   - constitution.md v1.2.1 (Art. 1.1 :27; Art. 5.1 :53; Art. 5.3 :142; P-02 :86; P-04 :90; P-08 :98; P-10 :102; P-11 :104; Art. 6.1 :150; Art. 10.1 :213)
+  - ratificada CCB 05/11/2026 (instrumento RAT-2026-11-05-A16)
 ---
 
 # SPEC spec-009 — uat-produto-v1 — Plano e roteiro de UAT de produto (fase N6.2)
@@ -246,7 +247,7 @@ Critérios de execução (fase N6.2 — NÃO executáveis nesta emissão; bloque
 ## CHANGELOG
 
 - 0.1.0 — 2026-11-03 (TA-0054, HF-0610): emissão inicial. Template canônico MANIFEST §1 (camadas a-h). Insumo normativo incorporado: parcela de consulta TA-0047 (agent-qa-sdet, HF-0603:31-44) — critério binário fail-closed, matriz fluxo×US×REQ com trace ids `REQ-x::UAT-nn::layer::case`, reuso por referência de F-01..F-07, papéis RACI, destino proposto `docs/uat/N6.2/` com nomenclatura e retenção (condicionante CCB — fecha C.5 somente após ratificação), roteiro de 7 passos, registro de defeitos com severidade `critical|blocking|major|minor` e 7 UNKNOWNs. 7 fluxos de produto (UAT-01..UAT-07) + 7 casos de camada por referência; 3 fluxos condicionais (US-007/016/017). Critérios de spec (8) + critérios de execução (6, não executáveis nesta emissão). Nenhum outro arquivo editado; nada commitado.
-- 0.2.0 — 2026-11-05 (refinamento de ratificação, Grupo A): destino das evidências DECIDIDO = `docs/uat/`, classificado por rodada (`docs/uat/rodada-NN/`), com relatório analítico por rodada (taxa de aceite, cobertura analizada, ciclo de implementação). Decisão GP/CCB fechada em 05/11/2026 (pendência #6 resolvida). §3.8 reescrito — destino não é mais condicionante; `docs/uat/README.md` criado; `docs/uat/rodada-001/relatorio-analitico.md` criado (taxa de aceite 0% não executada, cobertura 0/14 casos, ciclo EM EXECUÇÃO). `unknown - verify` do destino removido. `version` 0.1.0 → 0.4.0 (salto para alinhar com refinamento do Grupo A). Nenhuma decisão de negócio de §§1–3 reescrita.
+- 0.2.0 — 2026-11-05 (refinamento de ratificação, Grupo A): destino das evidências DECIDIDO = `docs/uat/`, classificado por rodada (`docs/uat/rodada-NN/`), com relatório analítico por rodada (taxa de aceite, cobertura analizada, ciclo de implementação). Decisão GP/CCB fechada em 05/11/2026 (pendência #6 resolvida). §3.8 reescrito — destino não é mais condicionante; `docs/uat/README.md` criado; `docs/uat/rodada-001/relatorio-analitico.md` criado (taxa de aceite 0% não executada, cobertura 0/14 casos, ciclo EM EXECUÇÃO). `unknown - verify` do destino removido. `version` 0.1.0 → 0.4.0 (salto para alinhar com refinamento do Grupo A). Nenhuma decisão de negócio de §§1–3 reescrita. **Ratificada CCB 05/11/2026 (instrumento RAT-2026-11-05-A16)**.
 
 ## CAMADAS FUNDAMENTAIS — MAPA (TA-0031)
 

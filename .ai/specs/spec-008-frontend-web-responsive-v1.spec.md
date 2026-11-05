@@ -2,7 +2,7 @@
 spec_id: spec-008
 specname: frontend-web-responsive-v1
 version: 0.2.0
-status: draft
+status: ratificada
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-11-03
 updated: 2026-11-05
@@ -23,6 +23,7 @@ trace:
   - docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md (:33 item B.1; :58 item D.1; :36 item B.4; :37 item B.5)
   - docs/planos/plano-granular/plano-producao-agentes.md (:121-131 onda 4 — A.11 agent-ui-ux-advisor :129 → A.12 agent-frontend-dev :130)
   - Verificação local de filesystem (2026-11-05): src/frontend/templates/index.html = tela de simulação funcional (era 0 B); src/frontend/static/ vazio; src/frontend/templates/invoice.html = 4996 B; schemas em src/shared/schemas.py:445-654
+  - ratificada CCB 05/11/2026 (instrumento RAT-2026-11-05-A16)
 ---
 
 # SPEC spec-008 — frontend-web-responsive-v1 — Interface web responsiva 100% FOSS do MVP (camada `front`)
@@ -236,7 +237,7 @@ Testes automatizados desta camada: render server-side dos templates por fixture 
 ## CHANGELOG
 
 - 0.1.0 — 2026-11-03 (TA-0053, HF-0609): emissão inicial. Normas da camada `front` (R-INT-01..08); inventário de `src/frontend/` e templates-alvo; estados de tela (empty/loading/error/success); registro de labels 1:1 com os schemas da spec-004; fluxos `POST /v1/simulate` e `POST /v1/invoice` com minimização P-04; acessibilidade baseline A1..A8; matriz de browsers REQ-06 (Chrome/Firefox/Edge últ. 2 versões); parcela TA-0046 (HF-0602:32-45) incorporada como insumo normativo; tabela de conflitos (HTMX vs vanilla, default spread/IOF, stale banner, custódia invoice.html, mobile, e2e); 3 stories candidatas US-022..US-024; 13 ACs verificáveis; lacunas declaradas: GAP-03 (ratificação da fórmula), GAP-04 (modelo de dados invoice), GAP-06 (TTL/stale), ratificação US-007/016/017, whitelist HTMX via ADR, destino de evidências UAT (spec-005:342), e2e de UI nesta onda.
-- 0.2.0 — 2026-11-05 (refinamento de ratificação, Grupo A): frontmatter atualizado ao padrão TA-0031 ratificado (adicionado `wave: WS-4`, `trace`; `version` 0.1.0 → 0.2.0). `src/frontend/templates/index.html` agora é tela de simulação funcional (era 0 B, commit `abc7350`), chamando `POST /v1/simulate` pela mesma origem via proxy `127.0.0.1:8080`. GAP-04 (modelo de dados invoice) fechado por ADR-016 D4 (RAT-2026-11-05-A16-D4, spec-007 ratificada). Destino de evidências UAT fechado = `docs/uat/` (pendência #6 resolvida). Aderência ao padrão de nomenclatura `spec-NNN-specname.spec.md` confirmada (ADR-018, RAT-2026-11-05-A18). Nenhuma decisão de negócio de §§1–12 reescrita.
+- 0.2.0 — 2026-11-05 (refinamento de ratificação, Grupo A): frontmatter atualizado ao padrão TA-0031 ratificado (adicionado `wave: WS-4`, `trace`; `version` 0.1.0 → 0.2.0). `src/frontend/templates/index.html` agora é tela de simulação funcional (era 0 B, commit `abc7350`), chamando `POST /v1/simulate` pela mesma origem via proxy `127.0.0.1:8080`. GAP-04 (modelo de dados invoice) fechado por ADR-016 D4 (RAT-2026-11-05-A16-D4, spec-007 ratificada). Destino de evidências UAT fechado = `docs/uat/` (pendência #6 resolvida). Aderência ao padrão de nomenclatura `spec-NNN-specname.spec.md` confirmada (ADR-018, RAT-2026-11-05-A18). Nenhuma decisão de negócio de §§1–12 reescrita. **Ratificada CCB 05/11/2026 (instrumento RAT-2026-11-05-A16)**.
 
 ## CAMADAS FUNDAMENTAIS — MAPA (TA-0031)
 
