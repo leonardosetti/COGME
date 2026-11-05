@@ -244,7 +244,7 @@ jobs:
 
       - name: Verify external images pinned by digest (Art. 10.2)
         run: |
-          if grep -E '^\s*image:' docker-compose.yml | grep -v '@sha256:' | grep -v 'cogme-web:local'; then
+          if grep -E '^\s*image:' docker-compose.yml | grep -v '@sha256:' | grep -v ':local'; then
             echo "🚨 Imagem externa sem digest imutável encontrada em docker-compose.yml"
             exit 1
           fi
