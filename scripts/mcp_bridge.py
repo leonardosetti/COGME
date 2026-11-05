@@ -63,5 +63,30 @@ def main() -> int:
     return 0
 
 
+def handle(req: dict) -> dict:
+    """Handle MCP JSON-RPC request (stdio). Compatível com mcp_nexus_* servers."""
+    method = req.get("method")
+    params = req.get("params") or {}
+    rid = req.get("id")
+    if method == "initialize":
+        return {"jsonrpc": "2.0", "id": rid, "result": {
+            "protocolVersion": "2024-11-05",
+            "capabilities": {"tools": {}},
+            "serverInfo": {"name": "mcp-bridge", "version": "0.1.0-stub"},
+        }}
+    if method == "tools/list":
+        caps = []
+        for slug, tools in MCP_CAPABLE_DEFAULT.items():
+            for t in tools:
+                caps.append({"name": f"{slug}:{t}", "description": f"MCP capability for {slug}"})
+        return {"jsonrpc": "2.0", "id": rid, "result": {"tools": caps}}
+    if method == "tools/call":
+        name = params.get("name", "")
+        return {"jsonrpc": "2.0", "id": rid, "result": {
+            "content": [{"type": "text", "text": f"stub: {name} executado (sem rede)"}]
+        }}
+    return {"jsonrpc": "2.0", "id": rid, "error": {"code": -32601, "message": "método desconhecido"}}
+
+
 if __name__ == "__main__":
     sys.exit(main())

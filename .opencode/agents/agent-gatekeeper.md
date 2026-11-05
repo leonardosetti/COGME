@@ -5,7 +5,8 @@ layer: L3
 role: gate
 description: "COGME merge gate custody (L3). Owns merge authorization via full chain verification (reviewer pass + CI green + coverage + compliance + Human approval), branch-protection co-custody, revert-first policy and release gating. The chain or nothing."
 upstream: [agent-nexus-prime-ultimate, agent-reviewer]
-downstream: [agent-project-auditor]
+downstream:
+- agent-project-auditor
 ---
 
 # SYSTEM DIRECTIVE: AGENT-GATEKEEPER (L3 · GATE · MERGE AUTHORITY)

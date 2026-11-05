@@ -26,7 +26,8 @@ sys.path.insert(0, str(Path(__file__).parent))
 from validate_nexus_yaml import KNOWN_SLUGS, AGENT_TOPOLOGY
 from nexus_dispatcher import VALID_ACTIONS
 
-ENV_ID_RE = re.compile(r"^ENV-\d{3,4}$")
+ENV_ID_RE = re.compile(r"^(?:ENV|TA)-\d{3,4}$")
+TASK_ID_RE = re.compile(r"^TA-\d{3,4}$")
 HANDOFF_RE = re.compile(r"^HF-\d{3,4}$")
 
 
@@ -40,40 +41,52 @@ def _layer_of(slug: str) -> str:
 def validate_envelope(env: dict) -> dict:
     rep = {
         "status": "aceito",
-        "envelope_id": env.get("envelope_id"),
+        "envelope_id": env.get("task_id") or env.get("envelope_id"),
+        "task_id": env.get("task_id") or env.get("envelope_id"),
         "sender": env.get("sender"),
-        "receiver": env.get("receiver"),
+        "receiver": env.get("target") or env.get("receiver"),
+        "target": env.get("target") or env.get("receiver"),
         "action": env.get("action"),
         "handoff": env.get("handoff"),
-        "payload_ref": env.get("payload_ref"),
+        "payload": env.get("payload") or env.get("payload_ref"),
+        "payload_ref": env.get("payload_ref") or env.get("payload"),
         "created_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "errors": [],
         "warnings": [],
     }
-    eid = env.get("envelope_id") or ""
-    sender = env.get("sender") or ""
-    receiver = env.get("receiver") or ""
-    action = env.get("action") or ""
+    eid = rep["envelope_id"] or ""
+    sender = rep["sender"] or ""
+    receiver = rep["receiver"] or ""
+    action = rep["action"] or ""
 
     if not ENV_ID_RE.match(eid):
-        rep["errors"].append(f"envelope_id fora do padrao ENV-NNN: {eid!r}")
+        rep["errors"].append(f"envelope_id/task_id fora do padrão ENV-NNN/TA-NNN: {eid!r}")
     if sender not in KNOWN_SLUGS:
         rep["errors"].append(f"sender fora da topologia: {sender!r}")
     if receiver not in KNOWN_SLUGS:
-        rep["errors"].append(f"receiver fora da topologia: {receiver!r}")
+        rep["errors"].append(f"receiver/target fora da topologia: {receiver!r}")
     if sender == receiver:
         rep["errors"].append(f"auto-delegacao proibida: {sender!r}")
     if action not in VALID_ACTIONS:
-        rep["errors"].append(f"acao invalida: {action!r}")
-    handoff = env.get("handoff")
+        rep["errors"].append(f"ação inválida: {action!r}")
+    handoff = rep["handoff"]
     if handoff is not None and not HANDOFF_RE.match(str(handoff)):
-        rep["errors"].append(f"handoff fora do padrao: {handoff!r}")
+        rep["errors"].append(f"handoff fora do padrão: {handoff!r}")
+    elif handoff is not None and HANDOFF_RE.match(str(handoff)):
+        handoff_path = Path(".ai/handoffs") / f"{handoff}.md"
+        if not handoff_path.exists():
+            rep["errors"].append(f"handoff .md ausente: {handoff_path}")
 
-    # camada do receiver deve ser compatível (L3 so recebe de L0/L1/L2, nunca de META para execucao)
+    # reply_required: deve ser verdadeiro para half-duplex fechar ciclo
+    reply_required = env.get("reply_required", True)
+    if not reply_required:
+        rep["warnings"].append("reply_required=False: parcela de retorno não esperada")
+
+    # camada do receiver deve ser compatível (L3 só recebe de L0/L1/L2, nunca de META para execução)
     r_layer = _layer_of(receiver)
     s_layer = _layer_of(sender)
     if r_layer == "L3" and s_layer == "META":
-        rep["warnings"].append("META -> L3 comunicacao indireta: passar pelo L0 orchestrator")
+        rep["warnings"].append("META -> L3 comunicação indireta: passar pelo L0 orchestrator")
 
     if rep["errors"]:
         rep["status"] = "rejeitado"

@@ -221,7 +221,9 @@ def main() -> int:
     else:
         script_dir = os.path.dirname(os.path.abspath(__file__))
         agent_dir = Path(script_dir).parent / ".opencode" / "agents"
-        files = sorted(agent_dir.glob("*.md"))
+        # Varredura completa: apenas agentes COGME nativos (slug com prefixo agent-).
+        # Ferramentas do framework GSD (gsd-*) não são agentes COGME e ficam de fora.
+        files = sorted(f for f in agent_dir.glob("*.md") if f.stem.startswith("agent-"))
 
     reports = []
     for f in files:

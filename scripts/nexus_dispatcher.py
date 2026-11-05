@@ -72,11 +72,11 @@ def dispatch(task: dict, promulgated: dict) -> dict:
     env = {
         "status": "aceito",
         "task_id": task.get("task_id"),
-        "sender": task.get("sender", "agent-orchestrator"),
+        "sender": task.get("sender", "agent-nexus-prime-ultimate"),
         "target": task.get("target"),
         "action": task.get("action"),
         "handoff": task.get("handoff"),
-        "route": {"sender": task.get("sender", "agent-orchestrator"),
+        "route": {"sender": task.get("sender", "agent-nexus-prime-ultimate"),
                   "receiver": task.get("target")},
         "reply_contract": "half-duplex: receiver MUST return structured status parcel",
         "dispatched_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
@@ -100,6 +100,10 @@ def dispatch(task: dict, promulgated: dict) -> dict:
     if handoff is not None and not re.match(r"^\d{3,4}-", str(handoff)) and \
             not re.match(r"^HF-\d{3,4}$", str(handoff)):
         env["errors"].append(f"handoff fora do padrão: {handoff!r}")
+    elif handoff is not None and re.match(r"^HF-\d{3,4}$", str(handoff)):
+        handoff_path = Path(".ai/handoffs") / f"{handoff}.md"
+        if not handoff_path.exists():
+            env["errors"].append(f"handoff .md ausente: {handoff_path}")
 
     # Half-duplex: anti self-delegation (Art. 4.5) — sender default = L0
     sender = task.get("sender", "agent-nexus-prime-ultimate")
@@ -124,9 +128,12 @@ def main() -> int:
         by_layer = {}
         for slug in promulgated:
             by_layer.setdefault(_layer_of(slug), []).append(slug)
+        # Contagem do plano principal (L0..L3 + META); exclui L0_ADJ (camada adjacente)
+        plano_camadas = {"L0", "L1", "L2", "L3", "META"}
+        promulgados_plano = sum(1 for s in promulgated if promulgated[s]["layer"] in plano_camadas)
         out = {
             "registry": str(REGISTRY),
-            "promulgados": len(promulgated),
+            "promulgados": promulgados_plano,
             "by_layer": {k: v for k, v in sorted(by_layer.items())},
             "dag_totals": {k: len(v) for k, v in AGENT_TOPOLOGY.items()},
             "missing_from_dag": sorted(KNOWN_SLUGS - set(promulgated)),

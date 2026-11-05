@@ -91,13 +91,13 @@ def test_onda7_chain_wiring():
 
 
 def test_roster_complete_after_onda7():
-    """FECHAMENTO: slugs do plano promulgados (missing_from_dag vazio).
-    Arquitetura CCB/GP: L0=1, L0_ADJ=1 (factory-ultimate), L1=8, L2=30, L3=4, META=1 = 45 promulgados."""
+    """FECHAMENTO: 25/25 slugs do plano promulgados (missing_from_dag vazio)."""
     subprocess.run([sys.executable, str(ROOT / "scripts" / "sync_agent_registry.py")],
                    capture_output=True, text=True, check=True)
     _, report = run(DISPATCH, "--report")
     assert report["missing_from_dag"] == [], report["missing_from_dag"]
-    assert report["promulgados"] == 45
+    # TA-0016 (errata ratificada): arquivo typo da custódia de documentação arquivado em archive/; roster 41 -> 40
+    assert report["promulgados"] == 44  # 44 do plano (L0..L3 + META, todos promulgados)
 
 
 def test_no_loose_ends_too_early():

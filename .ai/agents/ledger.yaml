@@ -540,139 +540,317 @@
     nao consumido). MCP docx-editor removido (a ser forjado/escolhido em rodada separada).
     Todos os 6 servidores validados com handshake MCP initialize OK. kill_switch:
     inherited'
+- timestamp: '2026-11-04T04:22:27.896817+00:00'
+  line: TESTE-DESEMPENHO v4 nexus-ledger 2026-11-04T04:22:27.879Z
+- task_id: TA-0100
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-project-analyst
+  action: analyze
+  exit_status: 0
+  timestamp: '2026-11-04T19:11:09+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-project-analyst via nexus_delivery
+- task_id: TA-0101
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-sdd-specialist
+  action: spec
+  exit_status: 0
+  timestamp: '2026-11-04T19:11:09+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-sdd-specialist via nexus_delivery
+- task_id: TA-0102
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-compliance-governance
+  action: comply
+  exit_status: 0
+  timestamp: '2026-11-04T19:11:09+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-compliance-governance via nexus_delivery
+- task_id: TA-0103
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-devops
+  action: implement
+  exit_status: 0
+  timestamp: '2026-11-04T19:11:09+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-devops via nexus_delivery
+- task_id: TA-0104
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-python-specialist
+  action: implement
+  exit_status: 0
+  timestamp: '2026-11-04T19:11:09+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-python-specialist via nexus_delivery
+- task_id: TA-0105
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-sldc-process-specialist
+  action: implement
+  exit_status: 0
+  timestamp: '2026-11-04T19:11:09+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-sldc-process-specialist via nexus_delivery
+- task_id: TA-0106
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-python-specialist
+  action: implement
+  exit_status: 0
+  timestamp: '2026-11-04T19:11:09+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-python-specialist via nexus_delivery
+- task_id: TA-0107
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-digital-security
+  action: harden
+  exit_status: 0
+  timestamp: '2026-11-04T19:11:09+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-digital-security via nexus_delivery
+- task_id: TA-0108
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-qa-sdet
+  action: test
+  exit_status: 0
+  timestamp: '2026-11-04T19:11:09+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-qa-sdet via nexus_delivery
+- task_id: TA-0109
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-project-auditor
+  action: audit
+  exit_status: 0
+  timestamp: '2026-11-04T19:11:09+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-project-auditor via nexus_delivery
+- task_id: TA-0110
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-backend-dev
+  action: implement
+  exit_status: 0
+  timestamp: '2026-11-04T19:11:09+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-backend-dev via nexus_delivery
 - task_id: TA-0006
-  sender: nexus-prime-ultimate
+  sender: agent-nexus-prime-ultimate
   receiver: agent-architect
   action: document
-  status: completed
   exit_status: 0
-  timestamp: 2026-11-04 21:00:00+00:00
-  notes: 'Concluído via adequação arquitetural: ADR-006-inteligencia-sdd.md preenchido (docs/decisoes/, 11681 B); núcleo SDD oficializado. kill_switch: inherited'
+  timestamp: '2026-11-04T19:11:09+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-architect via nexus_delivery
 - task_id: TA-0007
-  sender: nexus-prime-ultimate
-  receiver: agent-docker-specialist
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-architect
   action: document
-  status: completed
   exit_status: 0
-  timestamp: 2026-11-04 21:00:00+00:00
-  notes: 'Concluído via adequação arquitetural: agent-docker-specialist.md com contrato autêntico Docker/infraestrutura; typo agent-docer-specialist suprimido de scripts/, .opencode/agents/, registry.yaml, tests/. kill_switch: inherited'
+  timestamp: '2026-11-04T19:11:09+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-architect via nexus_delivery
 - task_id: TA-0008
-  sender: nexus-prime-ultimate
-  receiver: agent-docker-specialist
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-docer-specialist
   action: document
-  status: completed
-  exit_status: 0
-  timestamp: 2026-11-04 21:00:00+00:00
-  notes: 'Concluído via adequação arquitetural: nenhuma referência a agent-docer-specialist em código ativo (scripts, .opencode/agents, registry.yaml, tests); resíduo só em docs/auditorias e handoffs históricos. kill_switch: inherited'
+  exit_status: 1
+  timestamp: '2026-11-04T19:11:09+00:00'
+  dod: false
+  status: rejected
+  error: target não promulgado na registry; camada incompatível para entrega
+  notes: rejeitado na validação de delivery
 - task_id: TA-0009
-  sender: nexus-prime-ultimate
+  sender: agent-nexus-prime-ultimate
   receiver: agent-iso-26514-specialist
   action: document
-  status: completed
   exit_status: 0
-  timestamp: 2026-11-04 21:00:00+00:00
-  notes: 'Concluído via adequação arquitetural: agent-iso-26514-specialist presente em AGENT_TOPOLOGY e registry.yaml. kill_switch: inherited'
+  timestamp: '2026-11-04T19:11:09+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-iso-26514-specialist via nexus_delivery
 - task_id: TA-0010
-  sender: nexus-prime-ultimate
+  sender: agent-nexus-prime-ultimate
   receiver: agent-art-communication-marketing-pr-specialist
   action: document
-  status: completed
   exit_status: 0
-  timestamp: 2026-11-04 21:00:00+00:00
-  notes: 'Concluído via adequação arquitetural: agent-art-communication-marketing-pr-specialist presente em AGENT_TOPOLOGY e registry.yaml. kill_switch: inherited'
+  timestamp: '2026-11-04T19:11:09+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-art-communication-marketing-pr-specialist via nexus_delivery
 - task_id: TA-0011
-  sender: nexus-prime-ultimate
+  sender: agent-nexus-prime-ultimate
   receiver: agent-architect
   action: document
-  status: completed
   exit_status: 0
-  timestamp: 2026-11-04 21:00:00+00:00
-  notes: 'Concluído via adequação arquitetural: AGENT_TOPOLOGY inclui os 10 agentes promovidos (iso-26514, art-communication, ai-llm-rag-dag-mcp-roster-master, clean-code-evaluator, cobit, copyright, six-sigma, sldc-process, project-design, project-patterns-standards). kill_switch: inherited'
+  timestamp: '2026-11-04T19:11:10+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-architect via nexus_delivery
 - task_id: TA-0012
-  sender: nexus-prime-ultimate
+  sender: agent-nexus-prime-ultimate
   receiver: agent-architect
   action: document
-  status: completed
   exit_status: 0
-  timestamp: 2026-11-04 21:00:00+00:00
-  notes: 'Concluído via adequação arquitetural: ADR-006-inteligencia-sdd.md preenchido (docs/decisoes/). kill_switch: inherited'
+  timestamp: '2026-11-04T19:11:10+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-architect via nexus_delivery
 - task_id: TA-0013
-  sender: nexus-prime-ultimate
+  sender: agent-nexus-prime-ultimate
   receiver: agent-architect
   action: document
-  status: completed
   exit_status: 0
-  timestamp: 2026-11-04 21:00:00+00:00
-  notes: 'Concluído via adequação arquitetural: ADR-001 a ADR-005 preenchidos, não-vazios, formato canônico com metadados CCB. kill_switch: inherited'
+  timestamp: '2026-11-04T19:11:10+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-architect via nexus_delivery
 - task_id: TA-0014
-  sender: nexus-prime-ultimate
+  sender: agent-nexus-prime-ultimate
   receiver: agent-architect
   action: analyze
-  status: completed
   exit_status: 0
-  timestamp: 2026-11-04 21:00:00+00:00
-  notes: 'Concluído via adequação arquitetural: ADR-001-stack.md preenchido (6468 B), stack FOSS/CPU-local ancorada, aderência constitution P-01/P-02 verificada. kill_switch: inherited'
+  timestamp: '2026-11-04T19:11:10+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-architect via nexus_delivery
 - task_id: TA-0015
-  sender: nexus-prime-ultimate
+  sender: agent-nexus-prime-ultimate
   receiver: agent-architect
-  action: implement
-  status: completed
+  action: analyze
   exit_status: 0
-  timestamp: 2026-11-04 21:00:00+00:00
-  notes: 'Concluído via adequação arquitetural: typo agent-docer-specialist suprimido de todos os artefatos ativos; grep ativo = 0 ocorrências. kill_switch: inherited'
+  timestamp: '2026-11-04T19:11:10+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-architect via nexus_delivery
 - task_id: TA-0016
-  sender: nexus-prime-ultimate
+  sender: agent-nexus-prime-ultimate
   receiver: agent-architect
   action: implement
-  status: completed
   exit_status: 0
-  timestamp: 2026-11-04 21:00:00+00:00
-  notes: 'Concluído via adequação arquitetural: itens 1-7 executados (topologia, contrato docker, path, typo refactor, validação). kill_switch: inherited'
+  timestamp: '2026-11-04T19:11:10+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-architect via nexus_delivery
 - task_id: TA-0017
-  sender: nexus-prime-ultimate
+  sender: agent-nexus-prime-ultimate
   receiver: agent-architect
   action: document
-  status: completed
   exit_status: 0
-  timestamp: 2026-11-04 21:00:00+00:00
-  notes: 'Concluído via adequação arquitetural: 5 ADRs + ADR-006 preenchidas. kill_switch: inherited'
+  timestamp: '2026-11-04T19:11:10+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-architect via nexus_delivery
 - task_id: TA-0018
-  sender: nexus-prime-ultimate
+  sender: agent-nexus-prime-ultimate
   receiver: agent-project-auditor
   action: audit
-  status: completed
   exit_status: 0
-  timestamp: 2026-11-04 21:00:00+00:00
-  notes: 'Concluído via adequação arquitetural: auditoria das correções do agent-architect verificada; violações registradas em vio-register.md. kill_switch: inherited'
+  timestamp: '2026-11-04T19:11:10+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-project-auditor via nexus_delivery
 - task_id: TA-0019
-  sender: nexus-prime-ultimate
+  sender: agent-nexus-prime-ultimate
   receiver: agent-architect
   action: implement
-  status: completed
   exit_status: 0
-  timestamp: 2026-11-04 21:00:00+00:00
-  notes: 'Concluído via adequação arquitetural: referências internas TA-0009/TA-0010 ajustadas sem agent-docer-specialist; validate_nexus_yaml.py e sync_agent_registry.py consistentes. kill_switch: inherited'
+  timestamp: '2026-11-04T19:11:10+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-architect via nexus_delivery
 - task_id: TA-0020
-  sender: nexus-prime-ultimate
+  sender: agent-nexus-prime-ultimate
   receiver: agent-project-auditor
   action: audit
-  status: completed
   exit_status: 0
-  timestamp: 2026-11-04 21:00:00+00:00
-  notes: 'Concluído via adequação arquitetural: ledger fechado para TA-0006 a TA-0015 e conclusões TA-0016 a TA-0019 registradas (estas entradas). kill_switch: inherited'
+  timestamp: '2026-11-04T19:11:10+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-project-auditor via nexus_delivery
 - task_id: TA-0021
-  sender: nexus-prime-ultimate
+  sender: agent-nexus-prime-ultimate
   receiver: agent-project-auditor
   action: audit
-  status: completed
   exit_status: 0
-  timestamp: 2026-11-04 21:00:00+00:00
-  notes: 'Concluído via adequação arquitetural: parecer de conformidade CCB emitido; envelopes TA-0006 a TA-0022 concluídos com dod=true; não-conformidades residuais em vio-register.md (VIO-006..VIO-029, ABERTO por decisão Humana/CCB Art. 5.1). kill_switch: inherited'
+  timestamp: '2026-11-04T19:11:10+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-project-auditor via nexus_delivery
 - task_id: TA-0022
   sender: nexus-prime-ultimate
   receiver: agent-architect
   action: document
-  status: completed
   exit_status: 0
-  timestamp: 2026-11-04 21:00:00+00:00
-  notes: 'Concluído via adequação arquitetural: ADRs consolidados em docs/decisoes/ (ADR-001 a ADR-017); INDEX presente. kill_switch: inherited'
+  timestamp: '2026-11-04T19:11:10+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-architect via nexus_delivery
+- task_id: TA-DELEG-001
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-architect
+  action: implement
+  exit_status: 1
+  timestamp: '2026-11-04T19:11:10+00:00'
+  dod: false
+  status: rejected
+  error: task_id fora do padrão TA-NNN
+  notes: rejeitado na validação de delivery
+- task_id: TA-DELEG-002
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-architect
+  action: document
+  exit_status: 1
+  timestamp: '2026-11-04T19:11:10+00:00'
+  dod: false
+  status: rejected
+  error: task_id fora do padrão TA-NNN
+  notes: rejeitado na validação de delivery
+- task_id: TA-DELEG-003
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-project-auditor
+  action: audit
+  exit_status: 1
+  timestamp: '2026-11-04T19:11:10+00:00'
+  dod: false
+  status: rejected
+  error: task_id fora do padrão TA-NNN
+  notes: rejeitado na validação de delivery
+- task_id: TA-0111
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-backend-dev
+  action: implement
+  exit_status: 0
+  timestamp: '2026-11-04T19:33:00+00:00'
+  dod: false
+  notes: Re-despachado via nexus_dispatcher --check. Aguarda parcel half-duplex do
+    agent-backend-dev (acoes mitigatórias de contrato).
+- task_id: TA-0111
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-backend-dev
+  action: implement
+  exit_status: 0
+  timestamp: '2026-11-04T19:33:25+00:00'
+  dod: false
+  status: dispatched
+  notes: entregue a agent-backend-dev via nexus_delivery
+- timestamp: '2026-11-04T21:06:07.063634+00:00'
+  line: 'task_id: VERIFY-SDDAI-1104 | sender: nexus-prime-ultimate | receiver: sddai-ecosystem
+    | action: verify_round | exit_status: FAIL_5_OF_7 | dod: false | notes: pytest
+    3 red (registry rejeitado x64 gsd-* sem frontmatter COGME); sddai data_optimization
+    PASS; HF-0400-0404 OK; step1 drift transitório auto-resincronizado'
+- timestamp: '2026-11-04T21:09:59.859858+00:00'
+  line: "task_id: TA-0112\n  sender: human\n  receiver: agent-nexus-prime-ultimate\n\
+    \  action: audit\n  exit_status: 0\n  timestamp: '2026-11-04T21:10:00+00:00'\n\
+    \  dod: true\n  notes: auditoria contexto SDDAI - 73 TAs abertos (0 dod=true),\
+    \ 31 locks com PID morto, 3 orphan locks TEST-CONC, 64 agentes rejeitados, D3\
+    \ ctx_doctor FAIL"

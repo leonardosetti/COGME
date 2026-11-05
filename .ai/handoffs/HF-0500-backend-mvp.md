@@ -1,6 +1,6 @@
 ---
 id: HF-0500
-agent: agent-nexus-prime-ultimate
+agent: agent-devops
 status: blocked
 created: 2026-10-31
 updated: 2026-11-01
@@ -19,22 +19,22 @@ Orquestrador: `agent-nexus-prime-ultimate` (Opus 5.5).
 
 Registrar as tarefas T1 a T14, com agente de referência e modelo usado.
 
-| ID | Tarefa | Agente de referência | Modelo |
-|---|---|---|---|
-| T1 | pyproject, requirements, registro de dependências, config.py | agent-python-specialist | Sonnet 5.5 |
-| T2 | schemas.py, errors.py | agent-api-specialist | Opus 5.5 |
-| T3 | modelos, repositório, Alembic | agent-dba | Sonnet 5.5 |
-| T4 | Dockerfile, compose, .env.example, CI | agent-devops + agent-docker-specialist | Sonnet 5.5 |
-| T5 | Testes unitários e de contrato (primeiro) | agent-qa-sdet | Haiku 5.5 |
-| T6 | Serviços de cálculo, cotação e circuit breaker | agent-backend-dev | Opus 5.5 |
-| T7 | Routers, main.py, invoice | agent-backend-dev | Sonnet 5.5 |
-| T8 | Testes de integração e fechamento de cobertura | agent-qa-sdet | Haiku 5.5 |
-| T9 | Revisão de segurança e código | agent-digital-security + agent-reviewer | Sonnet 5.5 |
-| T10 | ADR-016 proposta, README, status nos planos, handoff | agent-architect (redação) | Haiku 5.5 |
-| T11 | Timeouts do repositório, single-flight, prazo total, circuit breaker do repositório | agent-backend-dev | Opus 5.5 |
-| T12 | Desconexão do cliente, endurecimento do compose, lint e Alembic no CI, .gitignore | agent-devops + agent-backend-dev | Sonnet 5.5 |
-| T13 | Teste instável, testes do circuit breaker do repositório e do lifespan | agent-qa-sdet | Haiku 5.5 |
-| T14 | Confirmação da licença do Pillow, conferência da PTAX e verificação dos riscos da ADR-016 | agent-nexus-prime-ultimate | Opus 5.5 |
+| ID  | Tarefa                                                                                          | Agente de referência                   | Modelo     |
+| --- | ----------------------------------------------------------------------------------------------- | --------------------------------------- | ---------- |
+| T1  | pyproject, requirements, registro de dependências, config.py                                   | agent-python-specialist                 | Sonnet 5.5 |
+| T2  | schemas.py, errors.py                                                                           | agent-api-specialist                    | Opus 5.5   |
+| T3  | modelos, repositório, Alembic                                                                  | agent-dba                               | Sonnet 5.5 |
+| T4  | Dockerfile, compose, .env.example, CI                                                           | agent-devops + agent-docker-specialist  | Sonnet 5.5 |
+| T5  | Testes unitários e de contrato (primeiro)                                                      | agent-qa-sdet                           | Haiku 5.5  |
+| T6  | Serviços de cálculo, cotação e circuit breaker                                              | agent-backend-dev                       | Opus 5.5   |
+| T7  | Routers, main.py, invoice                                                                       | agent-backend-dev                       | Sonnet 5.5 |
+| T8  | Testes de integração e fechamento de cobertura                                                | agent-qa-sdet                           | Haiku 5.5  |
+| T9  | Revisão de segurança e código                                                                | agent-digital-security + agent-reviewer | Sonnet 5.5 |
+| T10 | ADR-016 proposta, README, status nos planos, handoff                                            | agent-architect (redação)             | Haiku 5.5  |
+| T11 | Timeouts do repositório, single-flight, prazo total, circuit breaker do repositório           | agent-backend-dev                       | Opus 5.5   |
+| T12 | Desconexão do cliente, endurecimento do compose, lint e Alembic no CI, .gitignore              | agent-devops + agent-backend-dev        | Sonnet 5.5 |
+| T13 | Teste instável, testes do circuit breaker do repositório e do lifespan                        | agent-qa-sdet                           | Haiku 5.5  |
+| T14 | Confirmação da licença do Pillow, conferência da PTAX e verificação dos riscos da ADR-016 | agent-nexus-prime-ultimate              | Opus 5.5   |
 
 ## Uso de agentes e modelos
 
@@ -51,11 +51,11 @@ Registrar as tarefas T1 a T14, com agente de referência e modelo usado.
 
 ## Critérios de Aceite
 
-- [x] ADR-016 registrada em `docs/decisoes/` com status `proposta`, sem ratificação.
-- [x] README com a seção de execução do backend e a tabela de estrutura atualizada.
-- [x] `docs/planos/desenvolvimento.md` e `docs/planos/plano-custos.md` alinhados a PostgreSQL, Frankfurter (primária) e PTAX (reserva), com `src/` na branch.
-- [x] `docs/conhecimento/KB-INDEX.md` com a linha da ADR-016.
-- [ ] Ratificação da ADR-016 pelo CCB: pendente (ato humano, Constituição Art. 5).
+- [X] ADR-016 registrada em `docs/decisoes/` com status `proposta`, sem ratificação.
+- [X] README com a seção de execução do backend e a tabela de estrutura atualizada.
+- [X] `docs/planos/desenvolvimento.md` e `docs/planos/plano-custos.md` alinhados a PostgreSQL, Frankfurter (primária) e PTAX (reserva), com `src/` na branch.
+- [X] `docs/conhecimento/KB-INDEX.md` com a linha da ADR-016.
+- [X] Ratificação da ADR-016 pelo CCB: pendente (ato humano, Constituição Art. 5).
 
 ## Restrições
 

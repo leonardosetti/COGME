@@ -72,3 +72,47 @@ lst.txt
 # Artefatos de cobertura e tipagem
 .coverage
 .mypy_cache/
+
+# OpenCode skills (local tooling)
+.opencode/skills/
+
+# OpenCode plugins and scripts (local tooling)
+.opencode/plugins/
+.opencode/scripts/
+
+# OpenCode commands, core, hooks e config (framework, não código COGME)
+# Agentes COGME nativos (.opencode/agents/agent-*.md) permanecem versionados.
+.opencode/commands/
+.opencode/gsd-core/
+.opencode/hooks/
+.opencode/opencode.jsonc
+.opencode/.gsd-profile
+.opencode/settings.json
+
+# Agentes framework GSD (não são agentes COGME nativos)
+.opencode/agents/gsd-*.md
+.opencode/agents/archive/
+.opencode/gsd-file-manifest.json
+.opencode/gsd-install-state.json
+.opencode/gsd-migration-journal/
+
+# --- Saneamento 2026-11-05: remoção de bloat e tooling local ---
+# Ambiente Python
+.venv/
+venv/
+
+# Build Python
+*.egg-info/
+*.egg-link
+
+# Benchmarks
+.benchmarks/
+
+# Lockfile (projeto usa requirements.txt)
+uv.lock
+
+# Tarefas órfavas raiz
+task-ta-*.json
+
+# Locks transitórios de agente
+.ai/agents/locks/

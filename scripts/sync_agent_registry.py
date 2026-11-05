@@ -44,10 +44,9 @@ def scan_agents() -> list:
                     "upstream": [], "downstream": [],
                 })
                 continue
-            entries.append({
-                "file": f".opencode/agents/{f.name}", "name": None,
-                "status": "rejeitado", "errors": check["errors"],
-            })
+            # Agente inválido (frontmatter incompleto) e não legacy-forge:
+            # não entra no roster SSOT. Registra apenas no stderr para rastreio.
+            print(f"[SKIP] {f.name}: rejeitado — {', '.join(check['errors'])}", file=sys.stderr)
             continue
         # contract válido (frontmatter presente e válido)
         entries.append({

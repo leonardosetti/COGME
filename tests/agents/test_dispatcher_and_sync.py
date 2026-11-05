@@ -111,14 +111,14 @@ class TestDispatcher:
         assert any("action" in e for e in env["errors"])
 
     def test_topology_report(self):
-        """DAG canônica pós-TA-0016 + CCB/GP: L0_ADJ para factory-ultimate, L2=30."""
+        """DAG canônica pós-TA-0016 (40 slugs: 38 promulgado + 2 legacy-forge):
+        12 agentes adicionados à topologia, typo de comentário; docer da custódia de documentação arquivado em archive/."""
         rc, rep = run(DISPATCH, "--report")
         assert rc == 0
         assert rep["dag_totals"]["L0"] == 1
-        assert rep["dag_totals"]["L0_ADJ"] == 1  # agent-factory-architect-ultimate
-        assert rep["dag_totals"]["L1"] == 8
-        assert rep["dag_totals"]["L2"] == 30  # 25 base + agent-agile-specialist + 5 SDDAI
-        assert rep["dag_totals"]["L3"] == 4
+        assert rep["dag_totals"]["L1"] == 8   # 5 originais + business-analysis + project-design + project-patterns (TA-0016)
+        assert rep["dag_totals"]["L2"] == 30  # 24 + agent-agile-specialist + 5 SDDAI (loader, memory, engineer, trainer, cli)
+        assert rep["dag_totals"]["L3"] == 4   # itens do portão: reviewer, gatekeeper, auditor + clean-code-evaluator (TA-0016)
         assert rep["missing_from_dag"] == []
 
 
@@ -142,7 +142,7 @@ class TestSync:
     def test_check_drift_detected(self, seeded_registry):
         run(SYNC)
         mutated = REGISTRY.read_text(encoding="utf-8").replace(
-            "agent-factory-architect-ultimate", "agent-factory-architect-ultimate-x")
+            "agent-nexus-prime-ultimate", "agent-nexus-prime-ultimate-x")
         REGISTRY.write_text(mutated, encoding="utf-8")
         rc, rep = run(SYNC, "--check")
         assert rc == 1
