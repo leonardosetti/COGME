@@ -1,15 +1,16 @@
 ---
 spec_id: spec-010
 specname: qualidade-pdca-ishikawa-v1
-version: 0.1.0
-status: draft
+version: 0.2.0
+status: ratificada
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-11-03
-updated: 2026-11-03
-origin: HF-0611 (.ai/handoffs/HF-0611-spec-010-qualidade-pdca-ishikawa-v1.md)
-task: TA-0055 | handoff: HF-0611 | sender: agent-nexus-prime-ultimate
+updated: 2026-11-05
+origin: HF-0611 (TA-0055) | sender: agent-nexus-prime-ultimate | handoff: HF-0611
+task: TA-0055 | sender: agent-nexus-prime-ultimate
 kill_switch: inherited
-lgpd-class: n/a (zero dados de terceiros; nomes próprios do plano-fonte não replicados — papéis usados em seu lugar, P-04 constitution.md:90; precedente spec-006-nfr-consolidados-v1.spec.md:12)
+wave: WS-6 | Onda 6 — Corrente da Qualidade (qualidade PDCA + Ishikawa)
+lgpd-class: n/a (zero dados de terceiros; nomes próprios do plano-fonte não replicados — papéis usados em seu lugar, P-04 constitution.md:90; precedente lgpd-class: spec-006-nfr-consolidados-v1.spec.md:12)
 trace:
   - .ai/handoffs/HF-0611-spec-010-qualidade-pdca-ishikawa-v1.md:17-29 (tarefa, fontes obrigatórias, contrato de resposta)
   - docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md:38 (item B.6 — origem desta emissão), :60 (D.3 — onda 6), :27 (A.3 — eap.md 0 B)
@@ -25,6 +26,7 @@ trace:
   - docs/conhecimento/licoes-aprendidas/MF1-licoes.md:1-31 (LA-001 — única evidência de lição registrada; MF2-licoes.md e MF3-licoes.md = 0 B, verificado 2026-11-03)
   - .ai/specs/MANIFEST.md:20-61,66 (template canônico obrigatório §1; padrão de arquivo §2.1)
   - .opencode/agents/agent-sdd-specialist.md:83-103,180-203 (custódia .ai/specs/; DOs/DON'Ts; template)
+  - ratificada CCB 05/11/2026 (instrumento RAT-2026-11-05-A16, ADR-LOG-012)
 ---
 
 # SPEC spec-010 — qualidade-pdca-ishikawa-v1 — Entrega de qualidade REQ-10: 12 PDCAs consolidados + Ishikawa 6M (fase N6.3, onda 6 "Corrente da Qualidade")
@@ -334,12 +336,17 @@ rastreabilidade de prompts (B.8, LISTA...:40).
   terceiros (FIG-5/FIG-3 :326 vs :294; diagrams/ inexistente; ponteiro SSOT morto
   agent-quality-architect-specialist.md:31; nome de arquivo de lição); RACI onda 6 (A.19-A.22);
   parcela TA-0049 (HF-0605:32-45) incorporada por referência. Arquivo único; nada commitado.
+- 0.2.0 — 2026-11-05 (refinamento de ratificação, Grupo B): frontmatter atualizado ao padrão
+  TA-0031 ratificado (adicionado `wave: WS-6`, `handoff` em `origin`; `version` 0.1.0 → 0.2.0).
+  Ratificação CCB 05/11/2026 (instrumento RAT-2026-11-05-A16, ADR-LOG-012). Aderência ao padrão
+  de nomenclatura `spec-NNN-specname.spec.md` confirmada (ADR-018, RAT-2026-11-05-A18). Nenhuma
+  decisão de negócio de §§1–6 reescrita.
 
 ## CAMADAS FUNDAMENTAIS — MAPA (TA-0031)
 
 | Camada | Seção nesta spec | Estado |
 |---|---|---|
-| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem | frontmatter (`spec_id: spec-010`, `version: 0.1.0`, `status: draft`, `created/updated: 2026-11-03`, `origin: HF-0611`, `task: TA-0055`) | aplicada |
+| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem | frontmatter (`spec_id: spec-010`, `version: 0.2.0`, `status: ratificada`, `created/updated: 2026-11-03`/`2026-11-05`, `origin: HF-0611`, `task: TA-0055`) | aplicada |
 | (b) Contexto/origem | §1 Contexto e origem | aplicada |
 | (c) Resolução de conflitos | §2 (5 conflitos: singular/plural; SSOT; agrupamento MF; drift gráfico; gate coverage) | aplicada |
 | (d) Corpo de decisões/requisitos/contratos | §3 (3.1 baseline PDCA consolidada; 3.2 Ishikawa mermaid + tabelas de IDs; 3.3 reconciliação REQ-10; 3.4 RACI onda 6) | aplicada |
