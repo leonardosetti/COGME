@@ -689,7 +689,7 @@ Regras: (i) sempre pinar `vX.Y.Z` (ADR/norma) ou `vX.Y` (plano); (ii) citar seç
 | OKB-C-13 | Baixa | Classes `relatorio-auditoria`, `register-vio`, `register-decision` fora do enum de 10 classes | kb-taxonomy §2; audits | ⏳ próxima rodada |
 | OKB-C-14 | Baixa | Colisão de ID `CR-001` | CR-001; plano-escopo:178 | ⏳ renumerar CRs |
 | OKB-C-15 | Baixa | Constituição em VIGENTE-INTERINA | constitution.md:3 | ✅ resolvido — VIGENTE-PLENA, commit `7cff886` (30/10) |
-| OKB-C-16 | Baixa | Metas de fluxo sem baseline real | baseline.md seed SIMULADO (A09-A-006) | ⚠️ seed promulgada; medição real em M3 |
+| OKB-C-16 | Baixa | Metas de fluxo sem baseline real | baseline.md seed SIMULADO (A09-A-006) | ✅ extração de auditorias concluída — baseline.md v1.1.0 registra dados observáveis (testes 149 passed, AGENT_TOPOLOGY 30, specs repovoadas); Cycle Time/Throughput reais seguem pendentes de medição em M3 |
 | OKB-C-17 | Média | Glossário: cabeçalho 3.1 × índice 3.2.0 | glossario:1; KB-INDEX:51 | ✅ resolvido — arquivo sanitizado para v3.2.0 real (31/10) |
 | OKB-C-18 | Baixa | ADR-001 cita ADR-005/006 como "Draft" e mantém "QwenStudio" | ADR-001:11,32 | ⏳ emenda editorial ADR-001 |
 | OKB-C-19 | Média | Colisão de rótulos P# (TAP × Constituição) | §5.1/§5.2 | ✅ resolvido (~ namespace `TAP-P#` / `C-P-##` declarado — efeito prospectivo, §5.1) |
@@ -707,7 +707,7 @@ Regras: (i) sempre pinar `vX.Y.Z` (ADR/norma) ou `vX.Y` (plano); (ii) citar seç
 
 1. **OKB-C-26** — renumerar ADR-013-dupla e padronizar o catálogo — **bloqueia cross-references nuevos**.
 2. **OKB-C-21/C-27** — validar consolidação da Constituição e aplicar bump v1.2.1 + re-hash.
-3. **OKB-C-06** — ratificar/ajustar CR-001 e emitir ADR de emenda do marco (M2 × M3) via regime ADR-013-a.
+3. **OKB-C-06** — ✅ encerrado: CR-001 ratificado (ADR-015) e fusão M2+M3 aprovada pelo CCB (checkpoint único 15/11/2026).
 4. **OKB-C-22** — decidir a arquitetura de transição SQLite → PostgreSQL (ADR-010): plano, estimativa e reflexo no cronograma/custos antes de qualquer card de dados.
 5. **OKB-C-05** — ✅ encerrado: teto de ADRs revisado para ≤ 20 (decisão CCB). 13 IDs (14 artefatos) dentro do novo teto.
 6. **OKB-C-03** — encerrar VIO-006 (kill switch: só o Humano encerra).
