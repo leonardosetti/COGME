@@ -362,8 +362,8 @@ Legenda: **real** = extraído do cabeçalho/frontmatter do arquivo em 31/10/2026
 | Lei | `constitution.md` | 1.2.0 | **VIGENTE-PLENA** | não indexada | **A-09 declara v1.2.1** (sanitizada, ratificada); header do arquivo não atualizado — **OKB-C-27** |
 | CCB-LOG | `docs/governanca/ccb-log.md` | 0.1.0 | active | não indexado | classe `register-decision` fora do enum KB-TAX (C-13); cita plano inexistente (C-25) |
 | Normas técnicas | `docs/governanca/ci-cd-governance.md`; `devsecops-policy.md` | 1.0.0 / 1.0.0 | ratified (A10) | não indexado | registrar no KB-INDEX |
-| TAP (export) | `docs/tap/TAP.docx` | 18/09/2026 | congelado/blindado | — | `TAP.md` = 0 B e declarado "não-0B" no índice (OKB-C-09) |
-| ADR-013-a | `docs/decisoes/adr-013-regime-emenda-tap.md` | 1.0.0 | ratified | não indexado | frontmatter date 01/11 vs instrumento 31/10 (C-28) |
+| TAP (export) | `docs/tap/TAP.docx` | 18/09/2026 | congelado/blindado | — | `TAP.md` = 248 B (frontmatter-only, ponteiro para plano-integral); fonte canônica v3 no plano-integral (OKB-C-09 segue aberto) |
+| ADR-013-a | `docs/decisoes/adr-013-regime-emenda-tap.md` | 1.0.0 | ratified | não indexado | date-decisao alinhado a 31/10 (OKB-C-28 encerrado) |
 | ADR-013-b ⚠️ | `docs/decisoes/ADR-013-SDDAI-Promulgacao.md` | 1.0.0 | ratified; supersedida por ADR-006 v2.1.0 | não indexado | **colisão de ID com ADR-013-a (C-26)** |
 | ADR-014 | `docs/decisoes/adr-014-sddai-promulgacao.md` | 1.0.1 | ratified; supersedida por ADR-006 v2.1.0 | não indexado | renumeração de ADR-013-b (OKB-C-26) |
 | ADR-015 | `docs/decisoes/adr-015-emenda-marco-m2.md` | 1.0.0 | ratified | não indexado | — |
@@ -386,10 +386,10 @@ Legenda: **real** = extraído do cabeçalho/frontmatter do arquivo em 31/10/2026
 | Glossário | `docs/conhecimento/glossario.md` | **3.2.0** | Sanitizado (31/10) | 3.2.0 active | ✅ coerente — saneado nesta rodada (C-07) |
 | KB-INDEX | `docs/conhecimento/kb-index.md` | 1.3.0 | active | 1.3.0 | ✅ bump nesta rodada |
 | Taxonomia | `.ai/specs/kb-taxonomy.md` | 1.1.0 | ratified | 1.1.0 | coerente |
-| Requisitos | `docs/requisitos/requisitos.md` | 0 B | — | 1.0.0 draft (ponteiro) | 0 B (OKB-C-08) |
+| Requisitos | `docs/requisitos/requisitos.md` | 285 B (frontmatter-only) | — | 1.0.0 draft (ponteiro) | populado com frontmatter; corpo canônico em .ai/specs/requisitos.md (OKB-C-08 encerrado) |
 | Baseline | `docs/metricas/baseline.md` | seed | promulgado como **SIMULADO** (A09-A-006) | 1.0.0 draft | seed não-verídico — medir em M3 (C-16) |
-| Dependências | `docs/dependencias/registro.md` | 0 B | — | 1.0.0 draft | 0 B (OKB-C-08) |
-| Specs SDD | `.ai/specs/{tap,eap,requisitos}.md` | **0 B** | — | 1.0.0 draft "preenchidas" | drift grave (OKB-C-08) |
+| Dependências | `docs/dependencias/registro.md` | 11 KB | — | 1.0.0 draft | populado (OKB-C-08 encerrado); gap de lock com hashes pendente (P1 ADR-016) |
+| Specs SDD | `.ai/specs/{tap,eap,requisitos}.md` | 22–28 KB | — | 1.0.0 draft | populadas (OKB-C-08 encerrado); drift vs TAP.md ponteiro mantido propositalmente |
 | Canon SDD | `docs/conhecimento/canon-stack-sdd.md` | 2.0.0 | promulgado (A09-A-007) | não indexado | registrar |
 | Registro de ratificação | `docs/governanca/ratificacao-promulgacao.md` | 1.0.0 | promulgado (A09-A-005) | não indexado | registrar |
 | Relatórios SDD | `docs/analise/relatorio-memoria-persistente-sddai.md`; `docs/evidencias/relatorio-testes-sddai.md`; `docs/operacao/sddai-verify-pipeline.md` | — | promulgados (A09) | não indexado | registrar |
@@ -682,7 +682,7 @@ Regras: (i) sempre pinar `vX.Y.Z` (ADR/norma) ou `vX.Y` (plano); (ii) citar seç
 | OKB-C-05 | Alta | Teto GMV de ADRs (≤ 10) excedido: 13 IDs (14 artefatos) | §2.6 | ✅ encerrado — teto revisado para ≤ 20 (decisão CCB); 13 IDs (14 artefatos) dentro do novo teto |
 | OKB-C-06 | Crítica | CR-001 repactua M2 → 15/11/2026, colide com M3; ADR de emenda emitida (ADR-015) e ratificada (RAT-2026-10-31-A12); Delta Log criado | CR-001; ADR-015; plano-cronograma:80; docs/tap/delta-v3-1.md | ✅ resolvido (C-06 principal) — ADR-015 emitida e ratificada 31/10/2026; CR-001 formalizado. Ressalva C-06b (colisao M2=M3 em 15/11) segue aberta para deliberacao futura do CCB (fusao M2+M3, deslocamento M3 ate M4, ou manutencao) |
 | OKB-C-07 | Alta | Glossário contradiz canon (13/48, Qwen 32B, SQLite, hierarquia invertida) | glossario:8,18,23,161 | ✅ **resolvido nesta rodada** — sanitize + bump v3.2.0 (31/10; RAT-2026-10-31-A11); re-verificar na próxima auditoria |
-| OKB-C-08 | Alta | Artefatos 0 B: `TAP.md`, `registro.md`, `requisitos.md`, `.ai/specs/{tap,eap,requisitos}.md` | `wc -c` = 0 | ❌ aberto (baseline.md recebeu seed simulado — ressalva C-16) |
+| OKB-C-08 | Alta | Artefatos 0 B: `TAP.md`, `registro.md`, `requisitos.md`, `.ai/specs/{tap,eap,requisitos}.md` | `wc -c` = 0 | ✅ encerrado — todos populados (frontmatter ou corpo); `registro.md` 11 KB, `.ai/specs/{tap,eap,requisitos}.md` 22–28 KB; `TAP.md`/`requisitos.md` frontmatter-only (ponteiros para plano-integral e spec-002) |
 | OKB-C-09 | Alta | TAP canônico só como `.docx` + bloco integral no plano-integral; `.md` é stub declarado "não-0B" no índice | KB-INDEX:29; plano-integral:49 | ❌ aberto |
 | OKB-C-10 | Alta | Frontend: ADR-001 fixa vanilla JS; roster/infra assumem Jinja+HTMX+Tailwind | ADR-001:31; VIO-001 | ❌ aberto — ADR de emenda |
 | OKB-C-11 | Baixa | Custódia do OKB divergia sem registro recuperável | KB-INDEX:48 | ✅ resolvido — CCB-003 ratificou owner `agent-architect` |

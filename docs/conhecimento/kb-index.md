@@ -37,18 +37,18 @@ tags:
 | plano-producao-agentes | docs/planos/plano-producao-agentes.md | plan | active | 1.1.0 | agent-pm | "AGUARDANDO APROVAÇÃO HUMANA" (corpo declarado) |
 | ADR-001 | docs/decisoes/adr-001-stack.md | doc-decisao | finalizado | **1.0.0** (real) | agent-architect | índice acompanhava '1.1.0 ratified' desde 23/10; versão real do arquivo é 1.0.0 (OKB-C-02) — ver caveats |
 | ADR-002 | docs/decisoes/adr-002-kanban.md | doc-decisao | finalizado | **1.0.0** (real) | agent-architect | idem OKB-C-02 |
-| ADR-003 | docs/decisoes/adr-003-metricas.md | doc-decisao | finalizado | **1.0.0** (real) | agent-architect | idem OKB-C-02; "UNKNOWN-GAP: docs/metricas/baseline.md é seed SIMULADO (A09-A-006) e docs/dependencias/registro.md 0B; medição real em M3" |
+| ADR-003 | docs/decisoes/adr-003-metricas.md | doc-decisao | finalizado | **1.1.0** (real) | agent-architect | idem OKB-C-02 (agora 1.1.0); "docs/metricas/baseline.md é seed SIMULADO (A09-A-006); docs/dependencias/registro.md populado (11 KB); medição real em M3" |
 | ADR-004 | docs/decisoes/adr-004-tasklists.md | doc-decisao | finalizado | **1.0.0** (real) | agent-architect | idem OKB-C-02 |
 | ADR-005 | docs/decisoes/adr-005-freeze.md | doc-decisao | ratified | 1.0.0 | agent-architect | [] |
 | ADR-014 | docs/decisoes/adr-014-sddai-promulgacao.md | doc-decisao | ratified | 1.0.1 | NEXUS-PRIME ULTIMATE (L0) | Promulgação dos agentes SDDAI + gaps G-01/G-02/G-03; renumerada de ADR-013-b para ADR-014 (OKB-C-26, RAT-2026-10-31-A12); colisão encerrada; supersedida por ADR-006 v2.1.0 |
 | ADR-015 | docs/decisoes/adr-015-emenda-marco-m2.md | doc-decisao | ratified | 1.0.0 | agent-architect | [] |
-| TAP-001 | .ai/specs/tap.md | spec | draft | 1.0.0 | agent-sdd-specialist | "UNKNOWN-GAP: docs/tap/tap.md é stub-ponteiro (CCB F-06 TA-0016); TAP integral vivo reside no plano-integral" |
-| EAP-001 | .ai/specs/eap.md | spec | draft | 1.0.0 | agent-sdd-specialist | "UNKNOWN-GAP: SVGs da EAP são placeholders; fonte svg/mermaid exigida pelo DoR da classe diagrama" |
-| REQ-SPEC-001 | .ai/specs/requisitos.md | spec | draft | 1.0.0 | agent-sdd-specialist | SSOT RF/RNF declarado; docs/requisitos/requisitos.md é ponteiro |
-| requisitos-cogme | docs/requisitos/requisitos.md | requisito | draft | 1.0.0 | agent-po | "ponteiro (CCB F-06 TA-0016): lista canônica RF/RNF reside em .ai/specs/requisitos.md" |
+| TAP-001 | .ai/specs/tap.md | spec | draft | 1.0.0 | agent-sdd-specialist | docs/tap/tap.md preenchido com frontmatter (canon vivo: plano-integral-tap-1-2-3-4-5.md); canal SDD: .ai/specs/tap.md (populado, 28 KB) |
+| EAP-001 | .ai/specs/eap.md | spec | draft | 1.0.0 | agent-sdd-specialist | Populado (22 KB); SVGs da EAP são placeholders; fonte svg/mermaid exigida pelo DoR da classe diagrama |
+| REQ-SPEC-001 | .ai/specs/requisitos.md | spec | draft | 1.0.0 | agent-sdd-specialist | SSOT RF/RNF declarado (24 KB); docs/requisitos/requisitos.md é ponteiro frontmatter-only |
+| requisitos-cogme | docs/requisitos/requisitos.md | requisito | draft | 1.0.0 | agent-po | "ponteiro frontmatter-only (CCB F-06 TA-0016): lista canônica RF/RNF reside em .ai/specs/requisitos.md (24 KB)" |
 | OKB-001 | docs/conhecimento/okb.md | okb | ratified | **5.2.0** | agent-architect | ratificado por CCB-003 (30/10) + normalização RAT-2026-10-31-A11 (31/10): template canônico OKB-TEMPLATE-CANON v1.0; changelog VER-007; v3.0/v5.1.0 precedidos; corpo preservado |
 | glossario-cogme | docs/conhecimento/glossario.md | glossario | active | **3.2.0 (real)** | agent-sdd-specialist | **SANITIZADO 31/10 (A11; encerra C-07/C-17)**: hierarquia corrigida, EAP 12/37, PostgreSQL canônico, Qwen3-30B-A3B MoE, refs → OKB v5.2.0; changelog próprio §16 |
-| registro-dependencias | docs/dependencias/registro.md | log-baseline | draft | 1.0.0 | agent-pm | "stub 0B, gap declarado (DoR)"; popular no início da codificação |
+| registro-dependencias | docs/dependencias/registro.md | log-baseline | draft | 1.0.0 | agent-pm | Populado (11 KB); gap de dependências com hash pendente (P1 de ADR-016); popular no início da codificação |
 | baseline-metricas | docs/metricas/baseline.md | log-baseline | active (seed) | 1.0.0 | agent-pm | **seed SIMULADO promulgado em A09-A-006 (31/10, declarado no registro)** — não é evidência de desempenho; medição real em M3 (OKB-C-16) |
 | estrutura-de-diretorios | estrutura-de-diretorios.md (raiz) | spec | active | 0.2.1 | agent-sdd-specialist | [] |
 | ccb-log | docs/governanca/ccb-log.md | register-decision | active | 0.1.0 | CCB | registro vivo CCB-LOG-NNN (append-only); classe fora do enum KB-TAX-001; cita plano-consolidacao-estrutural.md inexistente (OKB-C-25) |
