@@ -854,3 +854,13 @@
     \  dod: true\n  notes: auditoria contexto SDDAI - 73 TAs abertos (0 dod=true),\
     \ 31 locks com PID morto, 3 orphan locks TEST-CONC, 64 agentes rejeitados, D3\
     \ ctx_doctor FAIL"
+- task_id: TA-0113
+  sender: nexus-prime-ultimate
+  receiver: nexus-prime-ultimate
+  action: saneamento-git
+  status: accepted
+  exit_status: 0
+  timestamp: 2026-11-05 00:00:00+00:00
+  notes: removeu ~950 artefatos de tooling e build do índice; .gitignore exclui
+    .opencode/ (framework GSD exceto agentes COGME agent-*.md), .venv/, *.egg-info/,
+    .benchmarks/, uv.lock, task-raiz, locks de agente
