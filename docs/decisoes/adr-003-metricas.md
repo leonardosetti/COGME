@@ -1,9 +1,9 @@
 ---
 id: decisoes-adr-003-metricas
 title: ADR-003 — Métricas de Fluxo (Substituição de EVM)
-version: '2.1'
+version: 1.0.0
 class: decisao-adr
-status: active
+status: ratificado
 owner: agent-project-analyst
 derived-from:
 - docs/decisoes/adr-003-metricas.md (normalizado em 2026-11-05)
@@ -13,6 +13,15 @@ tags:
 - decisoes
 - docs
 - normalizado
+- self-updated
+data-decisao: '19/09/2026'
+data-formalizacao: '28/10/2026'
+decisor: GP Leonardo (CCB único — TAP v3 §1.c, Premissa P7)
+gatilhos: G1, G3, G4
+rastreabilidade: TAP §3 (Métricas e Indicadores) + §11 (orçamento zero) + §11.3 (implícito); EAP N9.1; REQ-12; ADRs correlatas: ADR-002 (fluxo), ADR-004 (unidade de métrica), ADR-005 (freeze); NC-03 do Plano de Cronograma (definição operacional de Cycle Time)
+dominio-pmbok: Medição
+processo-pmbok-6: n/a
+kill-switch: screened
 ---
 # ADR-003 — Métricas de Fluxo (Substituição de EVM)
 

@@ -1,9 +1,9 @@
 ---
 id: decisoes-adr-006-ecossistema-sddai
-title: 'ADR-006 — Ecossistema SDDAI: Modelo, Agentes, MCPs e Separação L1/L2/L3'
-version: 1.2.0
+title: ADR-006 — Ecossistema SDDAI: Modelo, Agentes, MCPs e Separação L1/L2/L3
+version: 2.1.0
 class: decisao-adr
-status: obsoleto
+status: ratificado
 owner: agent-project-analyst
 derived-from:
 - docs/decisoes/adr-006-ecossistema-sddai.md (normalizado em 2026-11-05)
@@ -13,6 +13,16 @@ tags:
 - decisoes
 - docs
 - normalizado
+- self-updated
+data-decisao: '26/10/2026'
+data-formalizacao: '31/10/2026'
+decisor: GP Leonardo (CCB único — TAP v3 §1.c, Premissa P7)
+instrumento-ccb: RAT-2026-10-31-A09
+gatilhos: G1, G2, G3, G4
+rastreabilidade: TAP §3 (Inovação) + §8 (Restrições FOSS/orçamento zero) + §9 (Premissa P3 — stack local auditável); EAP N1.4, N4.4; REQ-12 (ADRs), REQ-13 (prompts catalogados); ADRs correlatas: ADR-001 (stack FOSS, sobreposta parcialmente), ADR-005 (freeze), ADR-011 (MCPs e memória persistente, sobreposta parcialmente); constitution.md v1.2.0 Art. 4.1, 4.3, 4.6, 4.7, 4.10, 6.5, 6.7, P-01..P-12
+dominio-pmbok: Trabalho do Projeto + Abordagem de Desenvolvimento + Incerteza
+processo-pmbok-6: 4.3, 8.2
+kill-switch: screened
 ---
 # ADR-006 — Ecossistema SDDAI: Modelo, Agentes, MCPs e Separação L1/L2/L3
 

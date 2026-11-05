@@ -1,9 +1,9 @@
 ---
-id: ADR-013
-title: Adr 013 Regime Emenda Tap
-version: 1.1.0
+id: decisoes-adr-013-regime-emenda-tap
+title: ADR-013 — Regime de Emenda Controlada do TAP (Baseline Vivo) — SUPERSSEDIDA
+version: 1.0.0
 class: decisao-adr
-status: ratificado
+status: supersedida
 owner: agent-project-analyst
 derived-from:
 - docs/decisoes/adr-013-regime-emenda-tap.md (normalizado em 2026-11-05)
@@ -13,18 +13,21 @@ tags:
 - decisoes
 - docs
 - normalizado
+- self-updated
+- supersedida
+data-decisao: '01/11/2026'
+data-formalizacao: '31/10/2026'
+decisor: GP Leonardo (CCB único)
+instrumento-ccb: RAT-2026-10-31-A12
+gatilhos: n/a (instrumento próprio)
+rastreabilidade: ADR-005 (parcialmente); TAP §6 (precedência intra-TAP); EAP N9.1; REQ-12
+dominio-pmbok: Integração + Incerteza
+processo-pmbok-6: 4.6
+superseded-by: decisoes-adr-005-regime-tap
+kill-switch: n/a (instrumento histórico)
 ---
 **Esta ADR está SUPERSSEDIDA.** Foi incorporada integralmente na **ADR-005 v1.1.0** (Regime do TAP: Freeze + Emenda Controlada) conforme decisão do GP em 31/10/2026 (RAT-2026-10-31-A12). Não deve ser usada como referência normativa vigente. Consulte `docs/decisoes/adr-005-regime-tap.md` (versão 1.1.0) para o conteúdo vigente.
 
----
-id: ADR-013
-title: Regime de Emenda Controlada do TAP (Baseline Vivo)
-version: 1.0.0
-status: superseded by ADR-005 v1.1.0
-date: 2026-11-01
-decisor: GP Leonardo (CCB único)
-supersedes: ADR-005 (parcialmente)
-domain: Integração + Incerteza (PMBOK 7ª)
 ---
 
 ## Contexto

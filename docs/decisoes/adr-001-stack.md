@@ -1,9 +1,9 @@
 ---
 id: decisoes-adr-001-stack
 title: ADR-001 — Stack Tecnológica FOSS
-version: 1.0.0
+version: 1.1.0
 class: decisao-adr
-status: draft
+status: ratificado
 owner: agent-project-analyst
 derived-from:
 - docs/decisoes/adr-001-stack.md (normalizado em 2026-11-05)
@@ -13,6 +13,15 @@ tags:
 - decisoes
 - docs
 - normalizado
+- self-updated
+data-decisao: '19/09/2026'
+data-formalizacao: '28/10/2026'
+decisor: GP Leonardo (CCB único — TAP v3 §1.c, Premissa P7)
+gatilhos: G1, G2, G4
+rastreabilidade: TAP §3 (Inovação) + §8 (Restrições FOSS/§8.4 orçamento zero) + §11; EAP N1.4, N4.1, N5.1–N5.4 (fila N9.1); REQ-12 (ADRs); ADRs correlatas: ADR-005 (freeze), ADR-006 (LLM local), ADR-010 (supersedida por esta versão — veja ADR-LOG-001)
+dominio-pmbok: Trabalho do Projeto + Abordagem de Desenvolvimento
+processo-pmbok-6: 4.6
+kill-switch: screened
 ---
 # ADR-001 — Stack Tecnológica FOSS
 

@@ -78,6 +78,10 @@ Tabela única `invoices`; fonte primária = parcela TA-0045 (HF-0601:42); campos
 | `net_brl` | numeric(18,2) | NOT NULL | HF-0601; fórmula spec-004:50 |
 | `effective_rate` | numeric(18,6) | NOT NULL | HF-0601; fórmula spec-004:51 |
 | `created_at` | timestamptz | NOT NULL; `DEFAULT now()` explícito | HF-0601 |
+| `banco` | char(3) | NULL; só se o template US-004 exigir (minimização P-04) | §3.3 [alinhamento] |
+| `agencia` | varchar(10) | NULL; só se o template US-004 exigir (minimização P-04) | §3.3 [alinhamento] |
+| `conta_com_digito` | varchar(20) | NULL; só se o template US-004 exigir (minimização P-04) | §3.3 [alinhamento] |
+| `pix_key` | varchar(77) | NULL; só se o template US-004 exigir (minimização P-04) | §3.3 [alinhamento] |
 
 ### 3.2 Tipagem e aritmética
 
@@ -87,7 +91,7 @@ Tabela única `invoices`; fonte primária = parcela TA-0045 (HF-0601:42); campos
 
 ### 3.3 Dados bancários (mínimos — P-04)
 
-Conjunto **mínimo** (parcela TA-0045, HF-0601): `banco char(3)`, `agencia varchar(10)`, `conta_com_digito varchar(20)`, `pix_key varchar(77) NULL`. Incluídos na tabela **somente se o template da US-004 exigir** (minimização P-04, constitution.md:90). Os **campos bancários exatos do template legado são `UNKNOWN - verify`** (§3.6, item 2) — nenhuma coluna bancária é mandatória nesta emissão.
+Conjunto **mínimo** (parcela TA-0045, HF-0601): `banco char(3)`, `agencia varchar(10)`, `conta_com_digito varchar(20)`, `pix_key varchar(77) NULL`. Declados na tabela §3.1 como colunas **NULL** (não-mandatórias), incluídos somente quando o template US-004 exigir (minimização P-04, constitution.md:90). Os **campos bancários exatos do template legado são `UNKNOWN - verify`** (§3.7, item 2) — nenhuma coluna bancária é mandatória nesta emissão.
 
 ### 3.4 Constraints, índices e integridade (parcela TA-0045)
 
@@ -192,7 +196,7 @@ Critérios de implementação (CONDICIONAIS a D1 = persistir; **bloqueados até 
 
 | Camada | Seção nesta spec | Estado |
 |---|---|---|
-| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem | frontmatter (`spec_id: spec-007`, `version: 0.1.0`, `status: draft`) | aplicada |
+| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem | frontmatter (`spec_id: spec-007`, `version: 0.2.0`, `status: ratificada`) | aplicada |
 | (b) Contexto/origem | §1 + frontmatter `origin`/`task` | aplicada |
 | (c) Resolução de conflitos | §2 (tensão persistência D1; banco; CPF/CNPJ; endereço; valores) | aplicada |
 | (d) Corpo de decisões/requisitos/contratos | §3 (§3.0-§3.8: entidades, campos, tipos, constraints, índices, validações, enumerações) | aplicada |

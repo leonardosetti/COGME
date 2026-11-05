@@ -1,7 +1,7 @@
 ---
 id: decisoes-adr-011-ecossistema-sddai
-title: 'ADR-011 — Ecossistema de Inteligência SDD: MCPs, Memória Persistente e Separação Ortogonal L1/L2/L3'
-version: 1.2.0
+title: ADR-011 — Ecossistema de Inteligência SDD: MCPs, Memória Persistente e Separação Ortogonal L1/L2/L3
+version: 1.0.0
 class: decisao-adr
 status: ratificado
 owner: agent-project-analyst
@@ -13,6 +13,15 @@ tags:
 - decisoes
 - docs
 - normalizado
+- self-updated
+data-decisao: '29/10/2026'
+data-formalizacao: '29/10/2026'
+decisor: GP Leonardo (CCB único — TAP v3 §1.c, Premissa P7)
+gatilhos: G1, G2, G3, G4
+rastreabilidade: TAP §3 (Inovação) + §9 (Premissa P3 — stack local auditável); EAP N1.4, N4.4, N9.1; REQ-13 (prompts catalogados); ADRs correlatas: ADR-001 (stack FOSS), ADR-006 (modelo primário/fallback, sobreposta parcialmente), ADR-010 (infraestrutura, complementar); constitution.md v1.2.0 Art. 4.9, 4.10, 6.5, 6.6, 6.7
+dominio-pmbok: Trabalho do Projeto + Abordagem de Desenvolvimento + Incerteza
+processo-pmbok-6: 4.3, 4.6
+kill-switch: screened
 ---
 # ADR-011 — Ecossistema de Inteligência SDD: MCPs, Memória Persistente e Separação Ortogonal L1/L2/L3
 

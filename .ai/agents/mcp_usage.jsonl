@@ -1,0 +1,24 @@
+{"ts": "2026-11-05T15:32:08+00:00", "server": "mcp-nexus-validate", "method": "initialize", "tool": null, "ok": true, "error": null}
+{"ts": "2026-11-05T15:32:08+00:00", "server": "mcp-nexus-dispatch", "method": "initialize", "tool": null, "ok": true, "error": null}
+{"ts": "2026-11-05T15:32:08+00:00", "server": "mcp-nexus-kb", "method": "initialize", "tool": null, "ok": true, "error": null}
+{"ts": "2026-11-05T15:32:08+00:00", "server": "mcp-nexus-ledger", "method": "initialize", "tool": null, "ok": true, "error": null}
+{"ts": "2026-11-05T15:32:08+00:00", "server": "mcp-nexus-validate", "method": "notifications/initialized", "tool": null, "ok": false, "error": "método desconhecido"}
+{"ts": "2026-11-05T15:32:08+00:00", "server": "mcp-nexus-dispatch", "method": "notifications/initialized", "tool": null, "ok": false, "error": "método desconhecido"}
+{"ts": "2026-11-05T15:32:08+00:00", "server": "mcp-nexus-kb", "method": "notifications/initialized", "tool": null, "ok": false, "error": "método desconhecido"}
+{"ts": "2026-11-05T15:32:08+00:00", "server": "mcp-nexus-validate", "method": "tools/list", "tool": null, "ok": true, "error": null}
+{"ts": "2026-11-05T15:32:08+00:00", "server": "mcp-nexus-dispatch", "method": "tools/list", "tool": null, "ok": true, "error": null}
+{"ts": "2026-11-05T15:32:08+00:00", "server": "mcp-nexus-kb", "method": "tools/list", "tool": null, "ok": true, "error": null}
+{"ts": "2026-11-05T15:32:08+00:00", "server": "mcp-nexus-ledger", "method": "notifications/initialized", "tool": null, "ok": false, "error": "método desconhecido"}
+{"ts": "2026-11-05T15:32:08+00:00", "server": "mcp-nexus-ledger", "method": "tools/list", "tool": null, "ok": true, "error": null}
+{"ts": "2026-11-05T17:19:54+00:00", "server": "mcp-nexus-validate", "method": "initialize", "tool": null, "ok": true, "error": null}
+{"ts": "2026-11-05T17:19:54+00:00", "server": "mcp-nexus-kb", "method": "initialize", "tool": null, "ok": true, "error": null}
+{"ts": "2026-11-05T17:19:54+00:00", "server": "mcp-nexus-dispatch", "method": "initialize", "tool": null, "ok": true, "error": null}
+{"ts": "2026-11-05T17:19:54+00:00", "server": "mcp-nexus-ledger", "method": "initialize", "tool": null, "ok": true, "error": null}
+{"ts": "2026-11-05T17:19:54+00:00", "server": "mcp-nexus-validate", "method": "notifications/initialized", "tool": null, "ok": false, "error": "método desconhecido"}
+{"ts": "2026-11-05T17:19:54+00:00", "server": "mcp-nexus-validate", "method": "tools/list", "tool": null, "ok": true, "error": null}
+{"ts": "2026-11-05T17:19:54+00:00", "server": "mcp-nexus-kb", "method": "notifications/initialized", "tool": null, "ok": false, "error": "método desconhecido"}
+{"ts": "2026-11-05T17:19:54+00:00", "server": "mcp-nexus-kb", "method": "tools/list", "tool": null, "ok": true, "error": null}
+{"ts": "2026-11-05T17:19:54+00:00", "server": "mcp-nexus-ledger", "method": "notifications/initialized", "tool": null, "ok": false, "error": "método desconhecido"}
+{"ts": "2026-11-05T17:19:54+00:00", "server": "mcp-nexus-ledger", "method": "tools/list", "tool": null, "ok": true, "error": null}
+{"ts": "2026-11-05T17:19:54+00:00", "server": "mcp-nexus-dispatch", "method": "notifications/initialized", "tool": null, "ok": false, "error": "método desconhecido"}
+{"ts": "2026-11-05T17:19:54+00:00", "server": "mcp-nexus-dispatch", "method": "tools/list", "tool": null, "ok": true, "error": null}

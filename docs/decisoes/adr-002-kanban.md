@@ -1,9 +1,9 @@
 ---
 id: decisoes-adr-002-kanban
 title: ADR-002 — Kanban como Método de Execução
-version: '2.1'
+version: 1.0.0
 class: decisao-adr
-status: active
+status: ratificado
 owner: agent-project-analyst
 derived-from:
 - docs/decisoes/adr-002-kanban.md (normalizado em 2026-11-05)
@@ -13,6 +13,15 @@ tags:
 - decisoes
 - docs
 - normalizado
+- self-updated
+data-decisao: '19/09/2026'
+data-formalizacao: '28/10/2026'
+decisor: GP Leonardo (CCB único — TAP v3 §1.c, Premissa P7)
+gatilhos: G1, G3, G4
+rastreabilidade: TAP §1.c (Governança Híbrida) + §3 (Métricas) + §10 (R3 burnout); EAP N1.5, N7 (fila N9.1); REQ-12; ADRs correlatas: ADR-003 (métricas), ADR-004 (tasklists), ADR-005 (freeze)
+dominio-pmbok: Abordagem de Desenvolvimento + Equipe + Trabalho do Projeto
+processo-pmbok-6: n/a
+kill-switch: screened
 ---
 # ADR-002 — Kanban como Método de Execução
 

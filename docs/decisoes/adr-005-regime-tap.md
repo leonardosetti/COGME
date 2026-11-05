@@ -1,7 +1,7 @@
 ---
 id: decisoes-adr-005-regime-tap
-title: 'ADR-005 — Regime do TAP: Freeze e Emenda Controlada (Baseline Vivo)'
-version: 1.0.0
+title: ADR-005 — Regime do TAP: Freeze e Emenda Controlada (Baseline Vivo)
+version: 1.1.0
 class: decisao-adr
 status: ratificado
 owner: agent-project-analyst
@@ -13,6 +13,16 @@ tags:
 - decisoes
 - docs
 - normalizado
+- self-updated
+data-decisao: '18/09/2026'
+data-formalizacao: '28/10/2026'
+decisor: GP Leonardo (CCB único — TAP v3 §1.c, Premissa P7)
+instrumento-ccb: RAT-2026-10-31-A12
+gatilhos: G1, G3, G4
+rastreabilidade: TAP §6 (precedência intra-TAP) + §3/§9 P9 (status ontológico do TAP); EAP N9.1; REQ-12; NC-00 (Plano de Cronograma §3.8 — locus canônico da decisão); Glossário §11; ADRs correlatas: ADR-001–004 (todas sob o regime de freeze); Integração §1.4
+dominio-pmbok: Trabalho do Projeto + Incerteza
+processo-pmbok-6: 4.6
+kill-switch: screened
 ---
 # ADR-005 — Regime do TAP: Freeze e Emenda Controlada (Baseline Vivo)
 

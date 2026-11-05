@@ -1,7 +1,7 @@
 ---
 id: decisoes-adr-012-constituicao-como-artefato-de-governanca
 title: ADR-012 — Constituição como Artefato Normativo Supremo e Mecanismo de Restauração Constitucional
-version: 1.1.0
+version: 1.0.1
 class: decisao-adr
 status: ratificado
 owner: agent-project-analyst
@@ -13,6 +13,15 @@ tags:
 - decisoes
 - docs
 - normalizado
+- self-updated
+data-decisao: '29/10/2026'
+data-formalizacao: '29/10/2026'
+decisor: GP Leonardo (CCB único — TAP v3 §1.c, Premissa P7)
+gatilhos: G1, G2, G3, G4
+rastreabilidade: TAP §1 (Identidade) + §2 (Restrições Éticas/Legais); EAP N1.1 (Definição do Projeto); REQ-12 (ADRs); ADRs correlatas: ADR-005 (fundamenta o freeze do TAP, mas a Constituição está ACIMA dele), ADR-008 (grafia canônica blindada constitucionalmente), ADR-011 (MCPs e L1/L2/L3 subordinados à Constituição); CCB-001 e CCB-002 (instrumentos de ratificação); Monografia Cap. 3 (Governança Híbrida)
+dominio-pmbok: Integração + Trabalho do Projeto + Incerteza
+processo-pmbok-6: 4.1, 4.6, 13.2
+kill-switch: Ativado automaticamente se a constitution.md for alterada sem commit de Emenda aprovado pelo CCB; se hash SHA-256 divergir do registrado na co-assinatura; se agente executar instrução de Input Canônico que contradiga artigo da Constituição; ou falha na verificação de integridade no boot do circuito SDD.
 ---
 # ADR-012 — Constituição como Artefato Normativo Supremo e Mecanismo de Restauração Constitucional
 

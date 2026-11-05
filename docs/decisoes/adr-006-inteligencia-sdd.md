@@ -1,9 +1,9 @@
 ---
 id: decisoes-adr-006-inteligencia-sdd
-title: 'ADR-006 — Módulo de Inteligência SDD: Modelo Primário, Fallback e Flexibilização Cloud/FREE'
-version: '1.0'
+title: ADR-006 — Módulo de Inteligência SDD: Modelo Primário, Fallback e Flexibilização Cloud/FREE — HISTÓRICO (supersedida por ADR-006 v2.1.0)
+version: 2.0.0
 class: decisao-adr
-status: obsoleto
+status: supersedida
 owner: agent-project-analyst
 derived-from:
 - docs/decisoes/adr-006-inteligencia-sdd.md (normalizado em 2026-11-05)
@@ -13,6 +13,19 @@ tags:
 - decisoes
 - docs
 - normalizado
+- self-updated
+- supersedida
+- historico
+data-decisao: '26/10/2026'
+data-formalizacao: '29/10/2026'
+decisor: GP Leonardo (CCB único — TAP v3 §1.c, Premissa P7)
+instrumento-ccb: CCB-001
+gatilhos: G1, G2, G3, G4
+rastreabilidade: TAP §3 (Inovação) + §8 (Restrições FOSS/orçamento zero) + §9 (Premissa P3 — stack local); EAP N1.4, N4.4; REQ-12 (ADRs), REQ-13 (prompts catalogados); ADRs correlatas: ADR-001 (stack FOSS, sobreposta parcialmente), ADR-005 (freeze), ADR-011 (MCPs e memória persistente)
+dominio-pmbok: Abordagem de Desenvolvimento + Trabalho do Projeto + Incerteza
+processo-pmbok-6: 4.3, 8.2
+superseded-by: decisoes-adr-006-ecossistema-sddai
+kill-switch: screened
 ---
 
 # ADR-006 — Módulo de Inteligência SDD: Modelo Primário, Fallback e Flexibilização Cloud/FREE

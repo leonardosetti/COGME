@@ -3,7 +3,7 @@ id: decisoes-adr-017-mcp-nexus-servidores-stdio
 title: ADR-017 — Servidores MCP nexus-* (stdio, local-only)
 version: 1.0.0
 class: decisao-adr
-status: ratificado
+status: deprecated
 owner: agent-project-analyst
 derived-from:
 - docs/decisoes/adr-017-mcp-nexus-servidores-stdio.md (normalizado em 2026-11-05)
@@ -12,34 +12,35 @@ lgpd-class: n/a
 tags:
 - decisoes
 - docs
-- normalizado
+- deprecated
 ---
-# ADR-017 — Servidores MCP nexus-* (stdio, local-only)
+# ADR-017 — Servidores MCP nexus-* (stdio, local-only) — DESCONTINUADO
 
 | Campo | Valor |
 |---|---|
 | ID | ADR-017 |
-| Título | Conversão dos 4 stubs `nexus-*` em servidores MCP stdio JSON-RPC reais |
+| Título | Servidores MCP `nexus-*` (stdio, local-only) — descontinuados |
 | Versão | 1.0.0 |
-| Status | Ratificado |
+| Status | Deprecated |
 | Data da decisão | 2026-11-04 |
 | Decisor | GP Leonardo (CCB membro único) — autorização expressa TA-MCP-001 |
 | Custódia | agent-ai-llm-rag-dag-mcp-roster-master-specialist |
 
 ## Contexto
-Os 4 servidores `nexus-ledger`, `nexus-dispatch`, `nexus-kb`, `nexus-validate` estavam declarados no OKB §3.4 mas existiam apenas como stubs (funções auxiliares, sem protocolo MCP). TA-MCP-001 exige expô-los como servidores MCP registrados.
+Os 4 servidores `nexus-ledger`, `nexus-dispatch`, `nexus-kb`, `nexus-validate` foram implementados como servidores MCP stdio JSON-RPC 2.0 reais sob TA-MCP-001. Análise posterior mostrou **zero calls reais nos agentes** (apenas `initialize`/`tools/list` no log de uso) e duplicação de ~240 linhas entre os 4 servidores, cada um espelhando leitura/gravação de um único YAML local substituível por chamada direta de stdlib. Classificado como bloat.
 
 ## Decisão
-Reescrever os 4 stubs como servidores MCP stdio JSON-RPC 2.0 reais, cada um independente, expor `initialize`, `tools/list` e `tools/call`, transport stdio apenas, local-only (sem rede), FOSS (Python stdlib + PyYAML), zero custo, sem PII, sem dados sensíveis nos caminhos. Registrar em `.mcp-servers.json` e `.opencode/opencode.jsonc` com `command: python3` e `args: scripts/mcp_nexus_*.py`.
+Descontinuar os 4 servidores MCP `nexus-*` e o utilitário `mcp_usage_log.py`. Os arquivos são movidos para `.ai/deprecated/mcp-nexus/` (não publicáveis em repositório ativo) e removidos do registro em `.opencode/opencode.jsonc`. A leitura/gravação de `.ai/agents/ledger.yaml`, `.ai/agents/registry.yaml`, `.ai/knowledge_base.yaml` e validação de `scripts/mcp_*.py` volta a ser feita por chamada direta de stdlib nos scripts orquestradores (`nexus_dispatcher.py`, `validate_nexus_yaml.py`, etc.).
+
+A ADR-017 será reativada somente quando provar-se necessário o desenvolvimento de MCP nexus (refact/consolidação).
 
 ## Conformidade
-- Kill Switch: `inherited` (nenhum dado de código/specs/handoffs/PII sai do localhost).
+- Kill Switch: `inherited` (nenhum dado sai do localhost; arquivos mantidos localmente).
 - P-01 / C-P-01: FOSS zero custo, sem custo recorrente, sem proprietário.
 - P-02 / C-P-02: inferência e MCP locais; cloud não envolvida.
 - P-03 / C-P-03: soberania de dados, zero telemetria.
-- P-04 / C-P-04: LGPD, sem PII em caminhos MCP (`allowedPaths` do filesystem já restrito a pastas não sensíveis).
-- Art. 4.5: agente não se auto-delega (sender `nexus-prime-ultimate` ≠ target `agent-ai-llm-rag-dag-mcp-roster-master-specialist`).
-- Art. 4.6: Kill Switch propagado em todo envelope/parcela.
+- P-04 / C-P-04: LGPD, sem PII nos caminhos.
+- Art. 4.5 / 4.6: inalterados (nenhum agente dependia dos MCPs).
 
 ## Efeito
-`docs/conhecimento/okb.md` §3.4 já lista os 4 MCPs como "Python stdlib + PyYAML"; esta ADR torna a implementação condizente com o OKB. Não altera o hash ratificado do OKB (nenhuma edição em OKB.md).
+Registros `nexus-*` removidos de `.opencode/opencode.jsonc` (8 blocos). Arquivos movidos para `.ai/deprecated/mcp-nexus/`. Nenhum agente chama os MCPs, logo não há impacto no flow de dispatch/agentes. Testes ajustados para importar do diretório deprecated.

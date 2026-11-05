@@ -1,7 +1,7 @@
 ---
 id: decisoes-adr-015-emenda-marco-m2
-title: 'ADR-015 — Emenda de Marco: Repactuação Temporal do M2 (Regime ADR-013-a)'
-version: '3.1'
+title: ADR-015 — Emenda de Marco: Repactuação Temporal do M2 (Regime ADR-013-a)
+version: 1.0.0
 class: decisao-adr
 status: ratificado
 owner: agent-project-analyst
@@ -13,17 +13,16 @@ tags:
 - decisoes
 - docs
 - normalizado
----
----
-id: ADR-015
-title: Emenda de Marco — Repactuação Temporal do M2 (Regime de Emenda Controlada ADR-013-a)
-version: 1.0.0
-status: ratified
-date: 2026-10-31
+- self-updated
+data-decisao: '31/10/2026'
+data-formalizacao: '31/10/2026'
 decisor: GP Leonardo (CCB único)
-instrument: RAT-2026-10-31-A12
-regime: ADR-013-a (Regime de Emenda Controlada do TAP — Baseline Vivo)
-domain: Cronograma + Integração (PMBOK 7ª: Planejamento, Medição; PMBOK 6ª, dicionário: 4.6 Controle Integrado de Mudanças, 6.6 Controle do Cronograma)
+instrumento-ccb: RAT-2026-10-31-A12
+gatilhos: n/a (instrumento próprio)
+rastreabilidade: TAP §6 (Marcos); EAP N9.1; REQ-12; ADRs correlatas: ADR-005 (regime de emenda controlada), ADR-013 (absorvida por ADR-005); CR-001 (replanejamento M2)
+dominio-pmbok: Cronograma + Integração
+processo-pmbok-6: 4.6, 6.6
+kill-switch: screened
 ---
 
 # ADR-015 — Emenda de Marco: Repactuação Temporal do M2 (Regime ADR-013-a)

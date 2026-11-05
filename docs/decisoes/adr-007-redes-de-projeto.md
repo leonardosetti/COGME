@@ -1,7 +1,7 @@
 ---
 id: decisoes-adr-007-redes-de-projeto
 title: ADR-007 — Redes de Projeto como Artefato Acadêmico Macro (Dualidade CPM × Kanban)
-version: '2.0'
+version: 1.1.0
 class: decisao-adr
 status: ratificado
 owner: agent-project-analyst
@@ -13,6 +13,15 @@ tags:
 - decisoes
 - docs
 - normalizado
+- self-updated
+data-decisao: '29/10/2026'
+data-formalizacao: '29/10/2026'
+decisor: GP Leonardo (CCB único — TAP v3 §1.c, Premissa P7)
+gatilhos: G1, G3, G4
+rastreabilidade: TAP §3 (Métricas) + §6 (Marcos M1–M4); EAP N3.1–N3.6; REQ-12; ADRs correlatas: ADR-002 (Kanban como método de execução), ADR-003 (métricas de fluxo, sobreposta parcialmente), ADR-005 (freeze do TAP); NC-01 e NC-04 do Plano de Cronograma §3.6; Figuras 16–21 e Tabelas 53–58 do Plano v2.0
+dominio-pmbok: Planejamento + Medição + Entrega
+processo-pmbok-6: 6.3, 6.5
+kill-switch: Não aplicável diretamente. Violação da ADR-002 e ADR-003 aciona abortamento e escalonamento ao CCB.
 ---
 
 # ADR-007 — Redes de Projeto como Artefato Acadêmico Macro (Dualidade CPM × Kanban)

@@ -1,9 +1,9 @@
 ---
 id: decisoes-adr-016-backend-mvp
-title: 'ADR-016 — Backend do MVP: cálculo, cotações, persistência e contrato de erro'
-version: 1.1.0
+title: ADR-016 — Backend do MVP: cálculo, cotações, persistência e contrato de erro
+version: 1.2.0
 class: decisao-adr
-status: active
+status: ratificada
 owner: agent-project-analyst
 derived-from:
 - docs/decisoes/adr-016-backend-mvp.md (normalizado em 2026-11-05)
@@ -13,17 +13,16 @@ tags:
 - decisoes
 - docs
 - normalizado
----
----
-id: ADR-016
-title: Backend do MVP — cálculo, cotações, persistência e contrato de erro
-version: 1.2.0
-status: ratificada
-date: 2026-10-31
-decisor: GP Leonardo (CCB de membro único). Decisão: ratificada definitivamente em 05/11/2026; emenda D4 (persistência de invoice) ratificada em 05/11/2026.
-regime: Não se aplica (decisão de implementação; não emenda o TAP nem o núcleo blindado)
-domain: Desenvolvimento e Qualidade (PMBOK 7ª: Abordagem de Desenvolvimento; Qualidade)
+- self-updated
+data-decisao: '31/10/2026'
+data-formalizacao: '05/11/2026'
+decisor: GP Leonardo (CCB de membro único)
 instrumento-ccb: RAT-2026-11-05-A16 / RAT-2026-11-05-A16-D4
+gatilhos: G1, G2, G3, G4
+rastreabilidade: TAP §3; EAP N5; REQ-01, REQ-04, REQ-07, REQ-08; ADRs correlatas: ADR-001 v1.1.0 (stack, banco e fontes de câmbio), ADR-LOG (regra de não sobreposição), ADR-005 v1.1.0 (emenda controlada do TAP), ADR-010 (histórico, supersedida)
+dominio-pmbok: Desenvolvimento e Qualidade (PMBOK 7ª: Abordagem de Desenvolvimento; Qualidade)
+processo-pmbok-6: 4.6
+kill-switch: screened
 ---
 # ADR-016 — Backend do MVP: cálculo, cotações, persistência e contrato de erro
 
