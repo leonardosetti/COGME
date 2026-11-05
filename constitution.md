@@ -7,7 +7,7 @@
 - **Versão:** 1.2.1 — Status: VIGENTE-PLENA
 - **Hash normativo:** `02e5b69520f8c3bb81c6ef2536a042f0b46786a00581a111612e4baab3af4043` *(método: sha256 dos bytes de `## PREÂMBULO` até a linha imediatamente anterior ao bloco final `## CO-ASSINATURA` — região sem auto-referência de hash; valor idêntico ao registrado na tabela CO-ASSINATURA ao pé, único registrador)*
 - **Hash anterior (v1.2.0, 30/10/2026):** `b3f296c6ed592bb3f276302148eeb0360a72ebe35fdd48a9b972ba8261851db4` — commit `7cff886`
-- **Commit:** `PENDENTE_COMMIT_A12`
+- **Commit:** `bec6c1a778c96489b039eb649d3c02e7c7aac7af`
 - **Data da co-assinatura vigente:** 2026-10-31
 - **Papel:** Gerente de Projeto — CCB de membro único
 - **Instrumento:** promulgação CCB 30/10/2026 + gatilho de permissão prévia deliberativo expresso do GP em 31/10/2026 (CCB-LOG RAT-2026-10-31-A12) — dupla manifestação humana registrada
