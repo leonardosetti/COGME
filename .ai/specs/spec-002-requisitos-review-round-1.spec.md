@@ -2,10 +2,10 @@
 spec_id: spec-002
 specname: requisitos-review-round-1
 version: 0.1.0
-status: draft
+status: ratificada
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-10-25
-updated: 2026-10-25
+updated: 2026-11-05
 origin: TA-0004 | handoff: N/A (analyze; sem HF emitido nesta rodada) | sender: agent-nexus-prime-ultimate
 task: TA-0004
 kill_switch: inherited
@@ -20,6 +20,7 @@ trace:
   - docs/auditorias/AUD-2610-03.md (F-01..F-12; KG-01..KG-04; R-00..R-07; BLOCK)
   - .ai/specs/spec-001-constitution-round-1-proposta.spec.md (E-01..E-08 — PENDENTES de CCB, nao sao lei)
   - README.md:151-165 (espelho REQ-01..15)
+  - ratificada CCB 05/11/2026 (instrumento RAT-2026-11-05-A16, ADR-LOG-012)
 ---
 
 # REQUISITOS REVIEW — ROUND 1 (WS-3 · COGME)
@@ -268,6 +269,12 @@ especifica → implementa → valida) ate a fronteira do gate, sem saltar-la (co
   (4 espelhos) + 70 itens legados mapeados (3 corpora); 8 gaps, 9 contradicoes, 10 OUT-OF-SCOPE;
   17 stories candidatas (14 canonicas + 3 legacy-informadas; cobertura REQ→US 15/15); DoR
   12 itens; 2 condicoes de BLOCK + 4 KGR declarados.
+- 0.1.0 — 2026-11-05 (refinamento de ratificação, Grupo B): frontmatter atualizado ao
+  padrão TA-0031 ratificado (adicionado `handoff` em `origin`; `updated` 2026-10-25 →
+  2026-11-05; `status: draft` → `ratificada`). Ratificação CCB 05/11/2026 (instrumento
+  RAT-2026-11-05-A16, ADR-LOG-012). Aderência ao padrão de nomenclatura
+  `spec-NNN-specname.spec.md` confirmada (ADR-018, RAT-2026-11-05-A18). Nenhuma decisão de
+  negócio das §0–§F reescrita.
 
 ## CAMADAS FUNDAMENTAIS — MAPA (TA-0031)
 
@@ -275,7 +282,7 @@ Normalização estrutural (TA-0031, HF-0031): `spec_id` atualizado de `requisito
 
 | Camada | Seção nesta spec | Estado |
 |---|---|---|
-| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem | frontmatter (`spec_id: spec-002`, `version: 0.1.0`, `status: draft`, `created: 2026-10-25`, `owner`, `task: TA-0004 | handoff: N/A (analyze)`) | aplicada |
+| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem | frontmatter (`spec_id: spec-002`, `version: 0.1.0`, `status: ratificada`, `created: 2026-10-25`, `updated: 2026-11-05`, `origin: TA-0004 | handoff: N/A (analyze)`) | aplicada |
 | (b) Contexto/origem | parágrafo "Natureza: auditoria + proposta" + §0 (método e convenções) | aplicada |
 | (c) Resolução de conflitos | §B.3 (contradições entre fontes) + §B.4 (itens OUT-OF-SCOPE rejeitados) | aplicada |
 | (d) Corpo de decisões/requisitos | §A (inventário REQ-01..15 e legado), §B (auditoria), §C (stories), §D (DoR) | aplicada |
