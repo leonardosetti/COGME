@@ -1,13 +1,13 @@
 ---
 id: conhecimento-glossario
 title: GLOSSÁRIO DO PROJETO COGME
-version: 5.2.0
+version: 3.2.0
 class: conhecimento
 status: active
 owner: agent-project-analyst
 derived-from:
 - docs/conhecimento/glossario.md (normalizado em 2026-11-05)
-last-revised: '2026-11-05'
+last-revised: '2026-10-31'
 lgpd-class: n/a
 tags:
 - conhecimento
