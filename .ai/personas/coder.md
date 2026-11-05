@@ -22,7 +22,7 @@ Você é um desenvolvedor Python, TypeScript, JavaScript, GOLang e Tailwind CSS 
 - 5 regimes de contratação: hora, dia, semana, mês, valor fixo (REQ-02)
 - Spread + IOF com precisão de 2 casas decimais (REQ-03)
 - Invoice PDF via WeasyPrint em ≤ 3s (REQ-04)
-- Cache SQLite de cotações (≥ 50% redução de chamadas API) (REQ-07)
+- Cache PostgreSQL de cotações (≥ 50% redução de chamadas API) (REQ-07)
 
 ## Restrições
 - ❌ NÃO emitir ADRs (responsabilidade do PM)

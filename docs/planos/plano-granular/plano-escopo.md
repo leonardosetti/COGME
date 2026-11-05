@@ -89,7 +89,7 @@ A fronteira do escopo é apresentada na Tabela 1. A coluna de exclusões é fund
 | Cálculo de spread e IOF com precisão de duas casas decimais | Integração com plataformas de transferência |
 | Emissão de invoice em PDF via WeasyPrint em até três segundos | Emissão de notas fiscais brasileiras (NF-e, NFS-e) |
 | Interface web responsiva FOSS | Aplicativo mobile nativo |
-| Cache SQLite de cotações | Banco relacional multiusuário (PostgreSQL) |
+| Cache PostgreSQL de cotações | Banco relacional multiusuário (PostgreSQL) |
 | Cobertura de testes ≥ 80% e UAT com 100% dos fluxos críticos | Testes de carga ou estresse |
 | Pipeline CI com lint e testes em até cinco minutos | Continuous deployment para produção |
 | ADRs e catálogo de prompts SDD | Documentação de usuário final em PDF |

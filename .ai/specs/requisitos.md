@@ -76,7 +76,7 @@ alterado ou promovido a aprovado nesta emissão (P-08; HF-0621:35).
 | # | Tema | Leitura A | Leitura B | Fonte vencedora | Registro |
 |---|---|---|---|---|---|
 | 1 | Conferência REQ-01..15: tabela A.2 (spec-002:62-76) × Tabela 3 (plano-integral:71-85; transcrição tap.md:102-116) | síntese spec-002 (abreviada) | baseline textual integral | conteúdo idêntico em síntese, critério e fase EAP nas 15 linhas — sem divergência material nesta conferência | KG-R-01 (diff integral entre os 4 espelhos) permanece pendente na fonte (spec-002:243-245) |
-| 2 | Persistência do cache REQ-07: rótulo "SQLite" da baseline (plano-integral:77) | PostgreSQL canônico pós-emenda v1.2.0 (constitution.md:213; delta-v3.1.md:9, via tap.md:47,120) | leitura operacional = Delta Log; baseline textual permanece SQLite | constitution.md:213 + spec-006:54 | já registrado na fonte (spec-006 §2, linha 54; tap.md §3 item 2) — aqui apenas referenciado; critério numérico ≥50% íntegro (spec-006:74) |
+| 2 | Persistência do cache REQ-07: rótulo "SQLite" da baseline (plano-integral:77) | PostgreSQL canônico pós-emenda v1.2.0 (constitution.md:213; delta-v3.1.md:9, via tap.md:47,120) | leitura operacional = Delta Log; baseline textual atualizada para PostgreSQL 15+ (esta linha) | constitution.md:213 + spec-006:54 | já registrado na fonte (spec-006 §2, linha 54; tap.md §3 item 2) — aqui apenas referenciado; critério numérico ≥50% íntegro (spec-006:74) |
 | 3 | Latência REQ-01 ≤2s × REQ-05 ≤3s sem camadas explícitas (C-07) | contradição | ambiguidade — "leitura provável: 2s=chamada API, 3s=E2E" | spec-002:126 (registro) | confirmação PO/CCB pendente (spec-006:53); NF-01/NF-02 adotam a leitura declarada pela fonte |
 | 4 | Fórmula spread/IOF (GAP-03; C-05) | DEDUÇÃO (legado review:16/qwen:44) | MULTIPLICAÇÃO (legado deepseek:50) | decisão CCB/PO pendente (spec-002:102,124) | spec-006 NF-25 registra fórmula fixada em spec-004 §2, "pendente de ratificação via ADR-016" (spec-006:130) |
 | 5 | Citações constitucionais P-04/P-06/P-08: spec-002 cita constitution.md:34,36 (layout antigo) | layout v1.2.1 atual: P-04=:90, P-06=:94, P-07=:96, P-08=:98 | resolução já declarada na fonte | spec-006:56 | este arquivo cita o layout v1.2.1 verificado |
@@ -99,7 +99,7 @@ requisito é promovido a aprovado aqui (HF-0621:35).
 | REQ-04 | Emissão de invoice em formato PDF | Geração via WeasyPrint em ≤ 3s por documento | N5.4 | Must | spec-002:65; plano-integral:74; tap.md:105 |
 | REQ-05 | Tempo de resposta da aplicação | ≤ 3s em 95% das requisições (ambiente homologação) | N5.1 | Must | spec-002:66; plano-integral:75; tap.md:106 |
 | REQ-06 | Interface web responsiva (FOSS) | Compatível com Chrome/Firefox/Edge (últimas 2 versões) | N5.3 | Must | spec-002:67; plano-integral:76; tap.md:107 |
-| REQ-07 | Cache de cotações (SQLite)¹ | Redução de ≥ 50% das chamadas à API externa | N5.2 | Must | spec-002:68; plano-integral:77; tap.md:108 |
+| REQ-07 | Cache de cotações (PostgreSQL 15+)¹ | Redução de ≥ 50% das chamadas à API externa | N5.2 | Must | spec-002:68; plano-integral:77; tap.md:108 |
 | REQ-08 | Cobertura de testes automatizados | ≥ 80% do código (unitários + integração via pytest + coverage.py) | N6.1 | Must | spec-002:69; plano-integral:78; tap.md:109 |
 | REQ-09 | Testes de aceitação (UAT) | 100% dos fluxos críticos passando, zero defeitos críticos/bloqueantes | N6.2 | Must | spec-002:70; plano-integral:79; tap.md:110 |
 | REQ-10 | Aplicação de ferramentas da qualidade (PDCA + Ishikawa 6M) | 12 PDCAs consolidados + diagrama de causa e efeito documentado | N6.3 | Should | spec-002:71; plano-integral:80; tap.md:111 |
@@ -109,8 +109,7 @@ requisito é promovido a aprovado aqui (HF-0621:35).
 | REQ-14 | Documentação técnica consolidada | Arquitetura + APIs (OpenAPI) revisadas e aprovadas | N11.1 | Should | spec-002:75; plano-integral:84; tap.md:115 |
 | REQ-15 | Licenciamento 100% FOSS | Todas as dependências com licenças OSI-approved | N1.5+N4.4 | Must | spec-002:76; plano-integral:85; tap.md:116 |
 
-¹ Rótulo de persistência "SQLite" é a baseline congelada; leitura operacional vigente =
-PostgreSQL (divergência nº 2 do §3). O critério numérico (≥50%) não é afetado.
+¹ Rótulo de persistência "PostgreSQL 15+" é a leitura operacional vigente (emenda REQ-07 no Delta Log, 2026-11-01; ADR-010 / ADR-001 v1.1.0). A baseline congelada "SQLite" permanece como histórico; o critério numérico (≥50%) não é afetado.
 
 Notas da fonte (transcritas):
 

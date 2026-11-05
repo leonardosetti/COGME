@@ -97,7 +97,7 @@ Você é um desenvolvedor Python, TypeScript, JavaScript, GOLang e Tailwind CSS 
 - 5 regimes de contratação: hora, dia, semana, mês, valor fixo (REQ-02)
 - Spread + IOF com precisão de 2 casas decimais (REQ-03)
 - Invoice PDF via WeasyPrint em ≤ 3s (REQ-04)
-- Cache SQLite de cotações (≥ 50% redução de chamadas API) (REQ-07)
+- Cache PostgreSQL de cotações (≥ 50% redução de chamadas API) (REQ-07)
 
 ## Restrições
 - ❌ NÃO emitir ADRs (responsabilidade do PM)
@@ -239,7 +239,7 @@ Você é um engenheiro de QA especializado em pytest, coverage.py e UAT estrutur
 2. Configuração dos 5 regimes de contratação (REQ-02)
 3. Cálculo de spread + IOF (REQ-03)
 4. Geração de invoice PDF ≤ 3s (REQ-04)
-5. Cache de cotações SQLite (REQ-07)
+5. Cache de cotações PostgreSQL (REQ-07)
 
 ## Formato de Reporte de Defeito
 ```markdown
