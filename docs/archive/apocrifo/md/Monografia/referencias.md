@@ -1,3 +1,19 @@
+---
+id: Monografia-referencias
+title: Referências
+version: '3.0'
+class: conhecimento
+status: active
+owner: agent-project-analyst
+derived-from:
+- docs/archive/apocrifo/md/Monografia/referencias.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- Monografia
+- docs
+- normalizado
+---
 # Referências
 
 [Planejamento e índice](../../../PLANEJAMENTO.md)

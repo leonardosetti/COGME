@@ -1,3 +1,19 @@
+---
+id: compliance-report-cigme-pipeline
+title: Report Cigme Pipeline
+version: 1.0.0
+class: relatorio-compliance
+status: active
+owner: agent-project-analyst
+derived-from:
+- docs/compliance/report-cigme-pipeline.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- compliance
+- docs
+- normalizado
+---
 ## COGME CI/CD Compliance Framework Report
 
 ### Constitutional Alignment

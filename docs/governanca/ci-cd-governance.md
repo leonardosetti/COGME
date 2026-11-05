@@ -2,17 +2,17 @@
 id: CI-CD-GOV-001
 title: Política de Governança CI/CD — COGME
 version: 1.0.0
-status: ratified
-date: 2026-10-31
-decisor: GP Leonardo (CCB único)
-domain: DevOps/DevSecOps, Integração (PMBOK 7ª), Qualidade (P-06)
+class: relatorio-governanca
+status: ratificado
+owner: agent-project-analyst
 derived-from:
-  - constitution.md v1.2.1 (Art. 4.5, 4.6, 4.7, 5.1, 5.2, P-01..P-13)
-  - AFA-ULTIMATE v1.3.0-FINAL (Kill Switch, Bypass Protocol, FAIL-CLOSED)
-  - ADR-001 (Stack Tecnológica FOSS)
-  - ADR-010 (Stack Infraestrutura)
+- docs/governanca/ci-cd-governance.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
 lgpd-class: n/a (sem PII)
-jurisdiction: LGPD primária (Brasil)
+tags:
+- governanca
+- docs
+- normalizado
 ---
 
 # Política de Governança CI/CD — COGME

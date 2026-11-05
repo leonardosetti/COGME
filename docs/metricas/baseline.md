@@ -1,8 +1,18 @@
 ---
 id: baseline-metricas
+title: Baseline de Métricas de Fluxo (Calibração)
 version: 1.0.0
+class: metrica
 status: active
-derived-from: ADR-003, OKB v5.1.0 §6
+owner: agent-project-analyst
+derived-from:
+- docs/metricas/baseline.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- metricas
+- docs
+- normalizado
 ---
 
 # Baseline de Métricas de Fluxo (Calibração)

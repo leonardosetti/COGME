@@ -1,3 +1,19 @@
+---
+id: legacy-md-artifact-analise
+title: Analise
+version: 1.0.0
+class: conhecimento
+status: draft
+owner: agent-project-analyst
+derived-from:
+- docs/archive/legacy-md-artifact/analise.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- legacy-md-artifact
+- docs
+- normalizado
+---
 Com o objetivo de viabilizar o desenvolvimento do **MVP (Produto Mínimo Viável) do sistema COGME** sob restrições severas de prazo e equipe (2 pessoas, 2 bimestres e princípio KISS) [1-3], o confronto entre as propostas da **DeepSeek** e da **Qwen** revela uma excelente convergência técnica, mas também expõe **divergências cruciais de lógica de negócios** e **oportunidades de complementaridade**. 
 
 Abaixo, apresenta-se uma análise fundamentada estruturada em torno do objetivo do projeto:

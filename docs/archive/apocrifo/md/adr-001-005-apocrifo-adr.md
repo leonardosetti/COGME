@@ -1,0 +1,58 @@
+---
+id: md-adr-001-005-apocrifo-adr
+title: Adr 001 005 Apocrifo Adr
+version: 1.0.0
+class: conhecimento
+status: arquivado
+owner: agent-project-analyst
+derived-from:
+- docs/archive/apocrifo/md/adr-001-005-apocrifo-adr.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- md
+- docs
+- normalizado
+---
+## ADR-001-005: SDD Intelligence Module Architecture
+
+### Status
+Proposed
+
+### Context
+The SDD (Semantic Data Discovery) intelligence module is a critical component for enabling automated data classification, metadata enrichment, and query optimization in the COGME system. This decision addresses how to implement core AI/ML capabilities while ensuring scalability, maintainability, and integration with existing data pipelines.
+
+### Decision
+Adopt a microservices-based architecture with a core ML inference engine powered by ONNX Runtime, coupled with a modular plugin system for domain-specific models.
+
+### Rationale
+1. **Scalability**: Microservices allow independent scaling of components (e.g., training pipeline vs. inference engine)
+2. **Interoperability**: ONNX provides framework-agnostic model execution
+3. **Future-proofing**: Plugin system enables easy integration of new algorithms
+4. **Performance**: Native ONNX execution reduces inference latency compared to framework-specific runtimes
+
+### Alternatives Considered
+- **Monolithic Architecture**: Would limit scalability and increase deployment complexity
+- **Direct Framework Integration (PyTorch/TensorFlow)**: Creates vendor lock-in and complicates model deployment
+- **Custom ML Runtime**: Would require significant ongoing maintenance
+
+### Consequences
+**Positive**:
+- 30% faster inference compared to previous framework
+- Easier to onboard new ML developers
+- Improved fault isolation
+
+**Negative**:
+- Increased operational complexity
+- Initial 2-week development overhead for microservices setup
+
+### Implementation Roadmap
+1. **Week 1-2**: Design microservices boundaries and API contracts
+2. **Week 3-4**: Implement ONNX inference engine with basic data pipeline integration
+3. **Week 5**: Develop plugin system with example domain-specific models
+4. **Week 6**: Performance testing and optimization
+5. **Week 7**: Documentation and developer onboarding
+
+<!-- QUARENTENA 28/10/2026: artefato apócrifo, não é ADR do projeto. Contraria ADR-001-stack (FastAPI+SQLite, FOSS-first) e ADR-006-inteligencia-sdd (qwen30b-moe local, llama.cpp): propõe ONNX Runtime, microservices e PyTorch/TensorFlow sem trilha CCB. Igualado às decisões 001-005 no nome original (docs/ADR-001-005.md) sem autorização de conteúdo. Movido da raiz de docs/ para tombar e rastrear o artefato; conteúdo intocado. Não é fonte normativa. Ver INDEX em /docs/decisoes/INDEX.md -->
+
+Proveniência: movido de `docs/ADR-001-005.md` (commit 5af03c2, 27/10/2026) para `docs/archive/apocrifo/md/adr-001-005-apocrifo-adr.md` via git mv em 28/10/2026 (TA-0022, agent-architect; requarentena sem CCB por ser saneamento de integridade, sujeito à ratificação do GP).

@@ -1,10 +1,18 @@
 ---
 id: plano-consolidacao-estrutural
-title: Plano de Consolidação Estrutural / Desbloat — first-principles + YAGNI
+title: Plano de Consolidação Estrutural (Desbloat) — COGME
 version: 0.1.0
-date: 2026-10-30
+class: conhecimento
+status: draft
 owner: agent-nexus-prime-ultimate (custódio de roteamento)
-ratification: PENDENTE CCB (Agenda A-03)
+derived-from:
+- docs/planos/plano-granular/plano-consolidacao-estrutural.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- plano-granular
+- docs
+- normalizado
 ---
 
 # Plano de Consolidação Estrutural (Desbloat) — COGME
@@ -66,7 +74,7 @@ src/ tests/ scripts/     # código, gates, ferramentaria (kebab-case)
 | Arco de valor | Gerenc. de Valor/Stakeholders |打底裤 ADM Requirements Mgmt | Continual Improvement | auditorias recorrentes AUD-* |
 | Risco | Risco (T) | Architecture Risk Mgmt | | vio-register.md (addenda) |
 | Qualidade | Gerenc. de Qualidade | Compliance Reviews | Service Validation | gates nexus/dispatcher + pytest |
-| Conhecimento | Lições Aprendidas | Architecture Repository | SKMS | docs/conhecimento/KB-INDEX.md |
+| Conhecimento | Lições Aprendidas | Architecture Repository | SKMS | docs/conhecimento/kb-index.md |
 | Escopo | Gerenc. de Escopo | Boundary Statements | | Art. 1.2 constituição + ADR-005 |
 
 Ortogonalidade garantida: PMBOK responde "o QUE governar", TOGAF "O QUE arquiteturar",

@@ -1,3 +1,19 @@
+---
+id: drafts-glossario
+title: GLOSSÁRIO DO PROJETO COGME v2.1
+version: '2.1'
+class: conhecimento
+status: active
+owner: agent-project-analyst
+derived-from:
+- docs/conhecimento/drafts/glossario.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- drafts
+- docs
+- normalizado
+---
 # GLOSSÁRIO DO PROJETO COGME v2.1
 
 ## 1. Siglas e Acrônimos do Projeto

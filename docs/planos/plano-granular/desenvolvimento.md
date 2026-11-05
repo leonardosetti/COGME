@@ -1,3 +1,19 @@
+---
+id: plano-granular-desenvolvimento
+title: 3 DESENVOLVIMENTO
+version: 1.0.0
+class: conhecimento
+status: active
+owner: agent-project-analyst
+derived-from:
+- docs/planos/plano-granular/desenvolvimento.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- plano-granular
+- docs
+- normalizado
+---
 # 3 DESENVOLVIMENTO
 
 **Rastreabilidade:** EAP N3 (Modelagem), N4 (Ambiente), N5 (Desenvolvimento), N6 (Qualidade), N7 (DevOps) · ADR-001 (Stack FOSS) · REQ-01 a REQ-15.

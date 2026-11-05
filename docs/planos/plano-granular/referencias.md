@@ -1,3 +1,19 @@
+---
+id: plano-granular-referencias
+title: REFERÊNCIAS
+version: '1.0'
+class: conhecimento
+status: active
+owner: agent-project-analyst
+derived-from:
+- docs/planos/plano-granular/referencias.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- plano-granular
+- docs
+- normalizado
+---
 # REFERÊNCIAS
 
 > Formato ABNT NBR 6023:2018. Confira com o modelo da Fatec (`Modelo-para-elaboracao-de-Monografia.docx`) se a ordem é alfabética única ou separada em "escritas" e "eletrônicas". Aqui estão separadas para facilitar a revisão.

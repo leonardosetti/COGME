@@ -1,19 +1,18 @@
 ---
 id: REL-CI-CD-001
-title: Relatório Analítico — Rodada de Governança CI/CD e DevSecOps (COGME)
+title: Relatório Analítico — Rodada de Governança CI/CD e DevSecOps
 version: 1.0.0
-status: ratified
-date: 2026-10-31
-auditor: NEXUS-PRIME ULTIMATE (L0 Orchestrator)
-decisor: GP Leonardo (CCB único)
-domain: DevOps/DevSecOps, Governança, Qualidade
+class: relatorio-governanca
+status: ratificado
+owner: agent-project-analyst
 derived-from:
-  - constitution.md v1.2.1 (Art. 2 a 10, P-01 a P-13)
-  - AFA-ULTIMATE v1.3.0-FINAL (Kill Switch, Bypass Protocol, FAIL-CLOSED)
-  - CI-CD-GOV-001 (Política de Governança CI/CD)
-  - DEVSECOPS-001 (Política DevSecOps)
+- docs/governanca/relatorio-analitico-ci-cd-devsecops.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
 lgpd-class: n/a (sem PII)
-jurisdiction: LGPD primária (Brasil)
+tags:
+- governanca
+- docs
+- normalizado
 ---
 
 # Relatório Analítico — Rodada de Governança CI/CD e DevSecOps

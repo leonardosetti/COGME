@@ -1,3 +1,19 @@
+---
+id: especificacoes-analise-viabilidade-onda-8
+title: ANALISE DE VIABILIDADE — ONDA 8 (Expansão Administrativa/Gerencial/Desenvolvimento)
+version: 1.3.0
+class: especificacao
+status: active
+owner: agent-project-analyst
+derived-from:
+- docs/especificacoes/analise-viabilidade-onda-8.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- especificacoes
+- docs
+- normalizado
+---
 # ANALISE DE VIABILIDADE — ONDA 8 (Expansão Administrativa/Gerencial/Desenvolvimento)
 **Projeto:** COGME | **Forjador:** AFA-ULTIMATE v1.3.0-FINAL | **Data:** 2026-10-23
 **Hardware:** 8700G / 60GB / llama.cpp CPU-only @ 8 t/s | **Jurisdição:** LGPD primária

@@ -1,3 +1,19 @@
+---
+id: governanca-ccb-log
+title: Ccb Log
+version: 1.2.0
+class: relatorio-governanca
+status: draft
+owner: agent-project-analyst
+derived-from:
+- docs/governanca/ccb-log.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- governanca
+- docs
+- normalizado
+---
 ...
 
 ### RAT-2026-10-31-A01 — Ratificação e Promulgação da Constituição v1.2.0
@@ -16,7 +32,7 @@ contexto: Necessidade de alinhar o TAP às ADRs 006/010 (PostgreSQL, Qwen MoE) e
 opções avaliadas: [A] Manter freeze absoluto (gera drift documental) | [B] Bifurcar monografia e plano (gera retrabalho de 8h) | [C] Artefato híbrido único com ADR de emenda controlada.
 decisão: **C**. Aprovação da ADR-013 (Regime de Emenda Controlada do TAP) e do formato de artefato híbrido único (Capa Fatec → TAP §1 → Constituição §2 → Planos).
 ratificação: Humana (GP Leonardo, prompt expresso em 01/11/2026).
-evidência: Criação de `docs/decisoes/ADR-013-regime-emenda-tap.md` e autorização de consolidação da Constitution v1.2.1.
+evidência: Criação de `docs/decisoes/adr-013-regime-emenda-tap.md` e autorização de consolidação da Constitution v1.2.1.
 impacto: TAP torna-se baseline vivo com núcleo blindado; eliminação de 8h de retrabalho de bifurcação.
 rollback: Reverter commit da ADR-013 e restaurar freeze absoluto da ADR-005 (não recomendado).
 pmbok-gate: Integração (4.6) | togaf-gate: ADM-H (Change Management) | itil-gate: normal change.
@@ -25,22 +41,22 @@ pmbok-gate: Integração (4.6) | togaf-gate: ADM-H (Change Management) | itil-ga
 contexto: Rodada de validação, auditoria, ratificação e promulgação de artefatos componentes do projeto COGME, conforme Constitution v1.2.1 (Art. 5.1, 5.2, 5.4) e Art. 9.1. Autoridade plena concedida pelo GP/CCB para execução do circuito de governança.
 artefatos ratificados:
   - A-001: constitution.md v1.2.1 (lei suprema, sanitizada, co-assinatura atualizada)
-  - A-002: docs/decisoes/ADR-013-regime-emenda-tap.md (Regime de Emenda Controlada do TAP)
+  - A-002: docs/decisoes/adr-013-regime-emenda-tap.md (Regime de Emenda Controlada do TAP)
   - A-003: docs/decisoes/ADR-013-SDDAI-Promulgacao.md (Promulgação agentes SDDAI + gaps G-01/G-02/G-03)
   - A-004: docs/governanca/ccb-log.md (registro CCB, esta entrada inclusiva)
   - A-005: docs/governanca/ratificacao-promulgacao.md (registro de ratificação v1.2.0)
   - A-006: docs/metricas/baseline.md (baseline seed SIMULADO, OKB-C-08/16)
-  - A-007: docs/conhecimento/Canon_Stack_SDD.md (Canon Stack SDD v2.0.0)
-  - A-009: docs/analise/RELATORIO_MEMORIA_PERSISTENTE_SDDAI.md
-  - A-010: docs/evidencias/RELATORIO_TESTES_SDDAI.md
+  - A-007: docs/conhecimento/canon-stack-sdd.md (Canon Stack SDD v2.0.0)
+  - A-009: docs/analise/relatorio-memoria-persistente-sddai.md
+  - A-010: docs/evidencias/relatorio-testes-sddai.md
   - A-011: docs/governance/council-notification.md
-  - A-012: docs/operacao/SDDAI_VERIFY_PIPELINE.md
+  - A-012: docs/operacao/sddai-verify-pipeline.md
   - A-013: docs/verification/cycle-2026-10-30-archive.md
   - A-014: ledger.yaml (SSOT operacional, Art. 4.10)
   - A-015: scripts/sddai_verify_pipeline.py
   - A-016: tests/agents/test_sddai_components.py
 artefato em draft (não promulgado):
-  - A-008: docs/conhecimento/drafts/extracao-modular+normalizacao-documental-do-plano-de-projeto-COGME.md (rascunho fonte PED-003)
+  - A-008: docs/conhecimento/drafts/extracao-modular-normalizacao-documental-do-plano-de-projeto-cogme.md (rascunho fonte PED-003)
 decisao: A — Promulgar todos os artefatos listados acima; manter A-008 em draft.
 ratificacao: Humana (GP Leonardo, CCB de membro único, autoridade plena concedida nesta rodada)
 instrumento: Prompt expresso do CCB 31/10/2026 — rodadas de ratificação e promulgação
@@ -72,7 +88,7 @@ artefatos corrigidos:
   - .github/workflows/ci.yml: usar security_scan.py --strict em vez de grep -r ingênuo
 artefatos documentados:
   - docs/governanca/relatorio-analitico-falso-positivo-cicd.md (REL-FP-CICD-001)
-  - docs/auditorias/AUD-2610-09-AUDITORIA-EXTRAORDINARIA-FALSO-POSITIVO-CICD.md (AUD-2610-09)
+  - docs/auditorias/aud-2610-09-auditoria-extraordinaria-falso-positivo-cicd.md (AUD-2610-09)
 decisao: A — Corrigir falsos positivos; validar que todos os pipelines estejam green sem bypassing.
 ratificacao: Humana (GP Leonardo, CCB de membro único, autoridade plena concedida nesta iniciativa)
 instrumento: Prompt expresso do CCB 31/10/2026 — correção de falsos positivos CI/CD
@@ -88,9 +104,9 @@ contexto: Demanda do GP por normalização do artefato OKB (update + versionamen
 opções: [A] Apenas refactor sem ratificar | [B] Execução FULL-PIPELINE (refactor + sanitize + normalize + auditoria + propagação + ratificação + co-assinatura | [C] Agendar para onda normal
 decisão: **B** — gatilho de permissão prévia executado via prompt deliberativo do GP (31/10/2026): "PERMITO — MAS COM CCB DE MEMBRO ÚNICO APÓS A AUDITORIA". Parâmetros deliberativos: bump **5.2.0** (minor — corpo normativo preservado); propagação **COMPLETA + glossário**; auditoria dedicada **AUD-2610-09**; nomenclatura **OKB | Operational Knowledge Base — Base de Conhecimento Operacional**.
 ratificação/aprovação: indireta via agente — executor agent-architect + cadeia subordinada, sob CCB único (GP Leonardo; TAP v3 §1.c, TAP-P7); ratificação retroativa confirmada com parecer de AUD-2610-09.
-artefatos afetados: docs/conhecimento/OKB.md (v5.1.0 → **v5.2.0**, template OKB-TEMPLATE-CANON v1.0, changelog VER-007); docs/conhecimento/glossario.md (v3.1 → **v3.2.0**, sanitize: hierarquia, EAP 12/37, PostgreSQL, Qwen3-30B-A3B; encerra OKB-C-07/C-17); docs/conhecimento/KB-INDEX.md (**1.2.0 → 1.3.0**); .ai/personas/pm.md + all.md (refs OKB v5.2.0); docs/decisoes/ADR-012 (ref :84); docs/planos/plano-integral (refs remapeadas §8.4); .ai/agents/ledger.yaml (append).
+artefatos afetados: docs/conhecimento/okb.md (v5.1.0 → **v5.2.0**, template OKB-TEMPLATE-CANON v1.0, changelog VER-007); docs/conhecimento/glossario.md (v3.1 → **v3.2.0**, sanitize: hierarquia, EAP 12/37, PostgreSQL, Qwen3-30B-A3B; encerra OKB-C-07/C-17); docs/conhecimento/kb-index.md (**1.2.0 → 1.3.0**); .ai/personas/pm.md + all.md (refs OKB v5.2.0); docs/decisoes/ADR-012 (ref :84); docs/planos/plano-integral (refs remapeadas §8.4); .ai/agents/ledger.yaml (append).
 achados novos: OKB-C-26 (colisão de ID ADR-013 — renumeração exclusiva do CCB), OKB-C-27 (bump da Constituição v1.2.1 declarado em A09-A-001 não aplicado ao arquivo), OKB-C-28 (inconsistência temporal A08/ADR-013-a 01/11 × 31/10).
-evidencia: AUD-2610-09 (docs/auditorias/AUD-2610-09-OKB-NORMALIZACAO.md) — parecer de auditoria extraordinária dedicada; SHA-256 normativo do OKB v5.2.0 registrado no bloco de co-assinatura §13 do próprio OKB.
+evidencia: AUD-2610-09 (docs/auditorias/aud-2610-09-okb-normalizacao.md) — parecer de auditoria extraordinária dedicada; SHA-256 normativo do OKB v5.2.0 registrado no bloco de co-assinatura §13 do próprio OKB.
 impacto: OKB v5.2.0 é o corpus canônico único sob template canônico (válido até CCB decidir contrário); achados C-19, C-21, C-23 encerrados; C-07/C-17 encerrados; propagação de referências completada (resíduo único em _consolidado-adrs.tmp.md, artefato temporário).
 rollback: git revert do commit desta rodada; reverter OKB/blob v5.1.0 a partir do histórico (v3.0 arquivado permanece em docs/archive).
 pmbok-gate: Integração (4.5/4.6) | Conhecimento (Domínio Trabalho) | Conformidade (P-05, P-08)
@@ -103,7 +119,7 @@ artefatos corrigidos:
   - scripts/agent_health_check.py: nao gera erro nem aviso para agentes legacy-forge sem frontmatter (pulsa verificacao de frontmatter completamente para slugs que casa com LEGACY_SLUG_RE)
 artefatos documentados:
   - docs/governanca/relatorio-analitico-falso-positivo-health-check.md (REL-FP-HC-001)
-  - docs/auditorias/AUD-2610-10-AUDITORIA-EXTRAORDINARIA-FALSO-POSITIVO-HEALTH-CHECK.md (AUD-2610-10)
+  - docs/auditorias/aud-2610-10-auditoria-extraordinaria-falso-positivo-health-check.md (AUD-2610-10)
 decisao: A — Corrigir falso positivo no health check; validar que todos os pipelines estejam green sem bypassing.
 ratificacao: Humana (GP Leonardo, CCB de membro unico, autoridade plena concedida nesta iniciativa)
 instrumento: Prompt expresso do CCB 31/10/2026 — correcao de falso positivo health check
@@ -118,7 +134,7 @@ artefatos corrigidos:
   - .github/workflows/ci.yml: busca credenciais apenas em diretorios do projeto (.ai, .opencode, docs, scripts, src, test, tests, .github), nao em .venv/; exclui scripts/security_scan.py (padroes de deteccao, nao credenciais reais); exclui .github/workflows/ci.yml (proprio padrao regex)
 artefatos documentados:
   - docs/governanca/relatorio-analitico-falso-positivo-credenciais-ci.md (REL-FP-CRED-001)
-  - docs/auditorias/AUD-2610-11-AUDITORIA-EXTRAORDINARIA-FALSO-POSITIVO-CREDENCIAIS.md (AUD-2610-11)
+  - docs/auditorias/aud-2610-11-auditoria-extraordinaria-falso-positivo-credenciais.md (AUD-2610-11)
 decisao: A — Corrigir falsos positivos de credenciais; validar que todos os pipelines estejam green sem bypassing.
 ratificacao: Humana (GP Leonardo, CCB de membro unico, autoridade plena concedida nesta iniciativa)
 instrumento: Prompt expresso do CCB 31/10/2026 — correcao de falsos positivos CI/CD credenciais
@@ -130,9 +146,9 @@ pmbok-gate: Integracao (4.6) | Qualidade (8.3) | Conformidade (P-01, P-02, P-04,
 ### RAT-2026-10-31-A15 — Emenda de ADR-001 v1.0.0 → v1.1.0 (Substituição SQLite → PostgreSQL 15+)
 contexto: ADR-001 (stack tecnologica FOSS) originalmente declarava SQLite como banco canonico. ADR-010 (emitida 29/10/2026) sobrepunha parcialmente a ADR-001, definindo PostgreSQL 15+ como banco canonico, Docker Compose como orquestracao e Nginx como proxy latente. Conforme decisao do GP, em vez de manter ADR-010 como sobreposicao separada, o conteudo da ADR-010 foi absorvido na ADR-001 v1.1.0, que agora e o artefato normativo vigente para a stack de banco de dados e infraestrutura. A ADR-010 permanece como artefato historico de rastreamento.
 artefatos alterados:
-  - docs/decisoes/ADR-001-stack.md: v1.0.0 → v1.1.0; banco mudado de SQLite para PostgreSQL 15+; adicionado Docker Compose + Nginx latente; definicao de hierarquia de APIs de camio (Frankfurter primária, PTAX/BCB fallback); ADR-010 listada como sobreposta parcialmente
-  - docs/decisoes/ADR-010-Stack-Infraestrutura.md: marcada como supersedida por ADR-001 v1.1.0; permanece como artefato historico de rastreamento
-  - docs/decisoes/ADR-LOG.md: entrada ADR-LOG-001 registrada com justificativa, instrument CCB e status APLICADA
+  - docs/decisoes/adr-001-stack.md: v1.0.0 → v1.1.0; banco mudado de SQLite para PostgreSQL 15+; adicionado Docker Compose + Nginx latente; definicao de hierarquia de APIs de camio (Frankfurter primária, PTAX/BCB fallback); ADR-010 listada como sobreposta parcialmente
+  - docs/decisoes/adr-010-stack-infraestrutura.md: marcada como supersedida por ADR-001 v1.1.0; permanece como artefato historico de rastreamento
+  - docs/decisoes/adr-log.md: entrada ADR-LOG-001 registrada com justificativa, instrument CCB e status APLICADA
 decisao: A — Corrigir sobreposicao de ADRs; consolidar em ADR-001 v1.1.0 com log de mudanca autorizada pelo CCB.
 ratificacao: Humana (GP Leonardo, CCB de membro unico, autoridade plena concedida nesta iniciativa)
 instrumento: Prompt expresso do CCB 31/10/2026 — correcao de sobreposicao de ADRs (ADR-LOG-001)
@@ -147,7 +163,7 @@ artefatos corrigidos:
   - .github/workflows/ci.yml: busca credenciais apenas em diretorios do projeto (.ai, .opencode, docs, scripts, src, test, tests, .github), nao em .venv/; exclui scripts/security_scan.py (padroes de deteccao, nao credenciais); exclui .github/workflows/ci.yml (proprio padrao regex)
 artefatos documentados:
   - docs/governanca/relatorio-analitico-falso-positivo-credenciais-ci.md (REL-FP-CRED-001)
-  - docs/auditorias/AUD-2610-11-AUDITORIA-EXTRAORDINARIA-FALSO-POSITIVO-CREDENCIAIS.md (AUD-2610-11)
+  - docs/auditorias/aud-2610-11-auditoria-extraordinaria-falso-positivo-credenciais.md (AUD-2610-11)
 decisao: A — Corrigir falsos positivos de credenciais; validar que todos os pipelines estejam green sem bypassing.
 ratificacao: Humana (GP Leonardo, CCB de membro unico, autoridade plena concedida nesta iniciativa)
 instrumento: Prompt expresso do CCB 31/10/2026 — correcao de falsos positivos CI/CD credenciais

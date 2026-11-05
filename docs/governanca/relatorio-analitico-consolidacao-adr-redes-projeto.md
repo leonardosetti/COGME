@@ -1,4 +1,20 @@
 ---
+id: governanca-relatorio-analitico-consolidacao-adr-redes-projeto
+title: Relatório Analítico — Consolidação de ADRs e Inclusão de Redes de Projeto (COGME)
+version: 1.2.1
+class: relatorio-governanca
+status: ratificado
+owner: agent-project-analyst
+derived-from:
+- docs/governanca/relatorio-analitico-consolidacao-adr-redes-projeto.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- governanca
+- docs
+- normalizado
+---
+---
 # Relatório Analítico — Consolidação de ADRs e Inclusão de Redes de Projeto (COGME)
 
 **Versão:** 1.0.0  

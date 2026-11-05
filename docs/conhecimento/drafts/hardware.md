@@ -1,3 +1,19 @@
+---
+id: drafts-hardware
+title: Hardware
+version: 1.0.0
+class: conhecimento
+status: active
+owner: agent-project-analyst
+derived-from:
+- docs/conhecimento/drafts/hardware.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- drafts
+- docs
+- normalizado
+---
 ## System:
 
 Host: archlinux Kernel: 7.1.9-zen1-2-zen arch: x86_64 bits: 64

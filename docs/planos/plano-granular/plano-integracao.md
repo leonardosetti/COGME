@@ -1,3 +1,19 @@
+---
+id: plano-granular-plano-integracao
+title: 1 INTEGRAÇÃO
+version: 1.0.0
+class: conhecimento
+status: active
+owner: agent-project-analyst
+derived-from:
+- docs/planos/plano-granular/plano-integracao.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- plano-granular
+- docs
+- normalizado
+---
 # 1 INTEGRAÇÃO
 
 **Plano de Gerenciamento da Integração**

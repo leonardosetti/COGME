@@ -1,3 +1,19 @@
+---
+id: governanca-notificacao-conselho
+title: Notificacao Conselho
+version: 1.0.0
+class: relatorio-governanca
+status: active
+owner: agent-project-analyst
+derived-from:
+- docs/governanca/notificacao-conselho.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- governanca
+- docs
+- normalizado
+---
 ## Notificação do Conselho de Governança COGME
 
 **Data:** 30/10/2026

@@ -1,3 +1,19 @@
+---
+id: dependencias-registro
+title: Registro de Dependências e Imagens
+version: 1.0.0
+class: registro-dependencias
+status: active
+owner: agent-project-analyst
+derived-from:
+- docs/dependencias/registro.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- dependencias
+- docs
+- normalizado
+---
 # Registro de Dependências e Imagens
 
 Registro exigido por ADR-010 §6 (alínea e) e §Auditoria: componentes de terceiros do backend do MVP, com versão exata, licença, origem e finalidade.

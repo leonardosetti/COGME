@@ -1,3 +1,19 @@
+---
+id: tap-sections-smart
+title: AJUSTE DOS OBJETIVOS SMART — TAP v1.1
+version: '1.1'
+class: conhecimento
+status: active
+owner: agent-project-analyst
+derived-from:
+- docs/archive/tap-sections/smart.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- tap-sections
+- docs
+- normalizado
+---
 # AJUSTE DOS OBJETIVOS SMART — TAP v1.1
 
 **Emissor:** GP Sênior PMBOK 7ª / PMO

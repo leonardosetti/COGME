@@ -1,3 +1,19 @@
+---
+id: relatorios-analise-requisitos-constituicao-gaps-propostas
+title: RELATÓRIO CONSOLIDADO — ANÁLISE DE REQUISITOS, CONSTITUIÇÃO, GAPS E PROPOSTAS
+version: 1.1.0
+class: relatorio
+status: obsoleto
+owner: agent-project-analyst
+derived-from:
+- docs/relatorios/analise-requisitos-constituicao-gaps-propostas.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- relatorios
+- docs
+- normalizado
+---
 # RELATÓRIO CONSOLIDADO — ANÁLISE DE REQUISITOS, CONSTITUIÇÃO, GAPS E PROPOSTAS
 
 **Projeto:** COGME — Conversor de Ganhos em Moeda Estrangeira  
@@ -30,14 +46,14 @@ Foram analisados os seguintes artefatos do repositório:
 |---|---|---|
 | Constituição do Projeto COGME | `constitution.md` | v1.1.0, co-assinada CCB 26/10/2026 |
 | TAP Integral | `docs/planos/plano-integral-tap-1-2-3-4-5.md` | v3 congelado 18/09/2026 |
-| TAP.md (referenciado) | `docs/tap/TAP.md` | **0 linhas** (vazio) |
+| TAP.md (referenciado) | `docs/tap/tap.md` | **0 linhas** (vazio) |
 | Plano de Escopo | `docs/planos/plano-escopo.md` | v1.1, 20/09/2026 |
 | Plano de Produção de Agentes | `docs/planos/plano-producao-agentes.md` | v1.1, aguardando aprovação humana |
-| Seção §5 Requisitos (draft) | `docs/conhecimento/drafts/principais_requisitos_entregas.md` | 11/09/2026 |
+| Seção §5 Requisitos (draft) | `docs/conhecimento/drafts/principais-requisitos-entregas.md` | 11/09/2026 |
 | Requisitos (artefato canônico) | `docs/requisitos/requisitos.md` | **0 linhas** (vazio) |
 | Levantamento de Requisitos (monografia) | `Docs/md/Monografia/02_02_01_levantamento_de_requisitos.md` | REQ-01 a REQ-19 |
 | Funcionalidades (monografia) | `Docs/md/Monografia/03_02_funcionalidades.md` | REQ-01 a REQ-19 |
-| OKB v3.0 | `docs/conhecimento/OKB.md` | 20/09/2026 |
+| OKB v3.0 | `docs/conhecimento/okb.md` | 20/09/2026 |
 | ADRs | `docs/decisoes/ADR-001` a `ADR-006` | Misto Finalized/Draft |
 | Scripts de governança | `scripts/nexus_dispatcher.py`, `validate_nexus_yaml.py`, `validate_afa_output.py`, `sync_agent_registry.py` | Presentes |
 | Código-fonte | `src/` | Esqueleto (arquivos vazios) |
@@ -56,8 +72,8 @@ Foram analisados os seguintes artefatos do repositório:
 | **E-02** | Referência a `.opencode/agents/` inexistente | Art. 4.2 exige residência dos agentes; pasta não existe (glob vazio) | Crítica |
 | **E-03** | Referência a `.ai/specs/` inexistente | Art. 6.1 e P-06 referenciam especificações SDD nesta pasta | Crítica |
 | **E-04** | Referência a `.ai/handoffs/` inexistente | Art. 6.1 menciona handoffs parseados por `handoff_parser.py` | Crítica |
-| **E-05** | TAP v3 referenciado é vazio/inesistente | Art. 1.3 ancorra congelamento em "TAP v3 (18/09/2026) §6"; `docs/tap/TAP.md` tem 0 linhas | Alta |
-| **E-06** | ADR-005 referenciada como futura, mas existe como Draft vazia | Art. 1.3 diz que substitui TAP v3; `docs/decisoes/ADR-005-freeze.md` está Draft sem conteúdo | Alta |
+| **E-05** | TAP v3 referenciado é vazio/inesistente | Art. 1.3 ancorra congelamento em "TAP v3 (18/09/2026) §6"; `docs/tap/tap.md` tem 0 linhas | Alta |
+| **E-06** | ADR-005 referenciada como futura, mas existe como Draft vazia | Art. 1.3 diz que substitui TAP v3; `docs/decisoes/adr-005-freeze.md` está Draft sem conteúdo | Alta |
 | **E-07** | Ausência de índice/sumário e seção de definições | Documento sem sumário; termos como "marco M2", "promulgado", "CCB" não definidos | Média |
 | **E-08** | Ausência de seção de revogações/disposições transitórias | Referencia versões anteriores (AFA v2.2, deprecated neutro/liberal) sem regras de transição | Média |
 
@@ -162,7 +178,7 @@ Foram analisados os seguintes artefatos do repositório:
 | G-04 | REQ-16 a REQ-19 não no TAP §5 | Monografia vs TAP Tabela 3 | Especs para esses requisitos fora do escopo autorizado |
 | G-05 | REQ-17/18/19 conflitam com fronteira OUT | Monografia vs plano-escopo Tabela 1 | Necessário change-request antes de especar |
 | G-06 | Datas de marcos divergentes | draft §5 C2 (22/09) vs TAP Tabela 4 (30/09 M2) | Datas de specs vinculadas a marcos precisam fonte canônica |
-| G-07 | TAP.md vazio | docs/tap/TAP.md (0 linhas) vs plano-integral-tap | Referências a "TAP §5" apontam para documento inexistente |
+| G-07 | TAP.md vazio | docs/tap/tap.md (0 linhas) vs plano-integral-tap | Referências a "TAP §5" apontam para documento inexistente |
 
 ---
 
@@ -255,7 +271,7 @@ Foram analisados os seguintes artefatos do repositório:
 | **C-01** | Publicar `docs/requisitos/requisitos.md` com REQ-01 a REQ-15 consolidados, incluindo colunas NN, P, C | GE-01 | GP / PO | Imediato |
 | **C-02** | Criar `.ai/specs/` e `.ai/handoffs/` com template de spec vazio e handoff HF-0000 | GE-02 | SDD Specialist | Imediato |
 | **C-03** | Criar `.opencode/agents/` com `agent-nexus-prime-ultimate.md` (frontmatter válido) e rodar `sync_agent_registry.py --check` até `[OK]` | GE-03, GF-05 | NEXUS-PRIME / AFA | Imediato |
-| **C-04** | Preencher `docs/tap/TAP.md` com conteúdo canônico ou redirecionar referências para `plano-integral-tap-*.md` | GE-04 | GP | Curto prazo |
+| **C-04** | Preencher `docs/tap/tap.md` com conteúdo canônico ou redirecionar referências para `plano-integral-tap-*.md` | GE-04 | GP | Curto prazo |
 | **C-05** | Emitir ADR unificando modelo de IA: escolher `qwen30b-moe` (Constituição) ou `Qwen 32B` e atualizar todas as fontes | GF-04 | GP + Arquiteto | Curto prazo |
 | **C-06** | Emitir ADR unificando slug L0: manter `agent-nexus-prime-ultimate` e corrigir `plano-producao-agentes.md` | GF-05 | NEXUS-PRIME | Curto prazo |
 | **C-07** | Abrir change-request para REQ-16 a REQ-19: decidir incluir (alterar fronteira IN/OUT) ou rejeitar formalmente (Won't) | GF-01, GF-02 | GP / CCB | Antes de qualquer spec desses requisitos |

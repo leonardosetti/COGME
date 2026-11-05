@@ -1,8 +1,0 @@
-LICENSE
-README.md
-pyproject.toml
-cogme.egg-info/PKG-INFO
-cogme.egg-info/SOURCES.txt
-cogme.egg-info/dependency_links.txt
-cogme.egg-info/requires.txt
-cogme.egg-info/top_level.txt

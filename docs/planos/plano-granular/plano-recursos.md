@@ -1,3 +1,19 @@
+---
+id: plano-granular-plano-recursos
+title: 2.6 GERENCIAMENTO DOS RECURSOS DO PROJETO
+version: 1.0.0
+class: conhecimento
+status: draft
+owner: agent-project-analyst
+derived-from:
+- docs/planos/plano-granular/plano-recursos.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- plano-granular
+- docs
+- normalizado
+---
 # 2.6 GERENCIAMENTO DOS RECURSOS DO PROJETO
 
 **Responsável pelo gerenciamento dos recursos:** Edson Luis Silva.

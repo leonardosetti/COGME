@@ -1,3 +1,19 @@
+---
+id: plano-granular-rede-do-projeto
+title: Rede Do Projeto
+version: 1.0.0
+class: conhecimento
+status: active
+owner: agent-project-analyst
+derived-from:
+- docs/planos/plano-granular/rede-do-projeto.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- plano-granular
+- docs
+- normalizado
+---
 ### Rede do Projeto (Diagrama de Precedências)
 
 A rede do projeto representa a sequência lógica das atividades e permite calcular, pelo Método do Caminho Crítico (CPM), as datas mais cedo e mais tarde de cada atividade, as folgas e o caminho crítico. Pelo PMBOK® 6ª (dicionário), ela resulta do processo 6.3 (Sequenciar as Atividades) e alimenta o 6.5 (Desenvolver o Cronograma). No PMBOK® 7ª, apoia o Domínio de Planejamento e o Domínio de Medição. A rede é construída no nível dos **cards de marco** (MF1) e dos **pacotes de trabalho da EAP** (MF2 e MF3). Ela complementa, e não substitui, o sequenciamento operacional por fluxo descrito acima (ADR-003): serve para validar a viabilidade dos marcos e mostrar ao avaliador a lógica de precedências do projeto. Conforme a ADR-007, é um artefato de validação acadêmica no nível macro: "A rede valida o marco; o Kanban executa a tarefa." Nenhum card é planejado pelas datas da rede.

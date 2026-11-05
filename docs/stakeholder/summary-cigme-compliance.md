@@ -1,3 +1,19 @@
+---
+id: stakeholder-summary-cigme-compliance
+title: Summary Cigme Compliance
+version: 1.0.0
+class: resumo-stakeholder
+status: active
+owner: agent-project-analyst
+derived-from:
+- docs/stakeholder/summary-cigme-compliance.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- stakeholder
+- docs
+- normalizado
+---
 ## COGME CI/CD Compliance Summary
 
 ### Key Achievements

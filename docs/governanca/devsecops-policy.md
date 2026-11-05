@@ -2,16 +2,17 @@
 id: DEVSECOPS-001
 title: Política DevSecOps — COGME
 version: 1.0.0
-status: ratified
-date: 2026-10-31
-decisor: GP Leonardo (CCB único)
-domain: DevSecOps, Segurança (P-07), Qualidade (P-06), Governança (Art. 4)
+class: relatorio-governanca
+status: active
+owner: agent-project-analyst
 derived-from:
-  - constitution.md v1.2.1 (Art. 4.6, 4.7, P-01..P-13, Art. 7)
-  - AFA-ULTIMATE v1.3.0-FINAL (Kill Switch, FAIL-CLOSED)
-  - OWASP ASVS-lite (referência, não norma autônoma)
+- docs/governanca/devsecops-policy.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
 lgpd-class: n/a
-jurisdiction: LGPD primária (Brasil)
+tags:
+- governanca
+- docs
+- normalizado
 ---
 
 # Política DevSecOps — COGME

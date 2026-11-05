@@ -1,3 +1,19 @@
+---
+id: drafts-premissas
+title: RELATÓRIO DE CRÍTICA E REESTRUTURAÇÃO — SEÇÃO "PREMISSAS" DO TAP
+version: '3.1'
+class: conhecimento
+status: active
+owner: agent-project-analyst
+derived-from:
+- docs/conhecimento/drafts/premissas.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- drafts
+- docs
+- normalizado
+---
 # RELATÓRIO DE CRÍTICA E REESTRUTURAÇÃO — SEÇÃO "PREMISSAS" DO TAP
 
 **Eissore:** GP Sênior PMBOK 7ª / PMO (Co-Autor Crítico)  

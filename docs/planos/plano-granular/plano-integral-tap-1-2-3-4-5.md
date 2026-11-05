@@ -1,3 +1,19 @@
+---
+id: plano-granular-plano-integral-tap-1-2-3-4-5
+title: COGME — CONVERSOR DE GANHOS EM MOEDA ESTRANGEIRA
+version: 5.2.0
+class: conhecimento
+status: draft
+owner: agent-project-analyst
+derived-from:
+- docs/planos/plano-granular/plano-integral-tap-1-2-3-4-5.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- plano-granular
+- docs
+- normalizado
+---
 # COGME — CONVERSOR DE GANHOS EM MOEDA ESTRANGEIRA
 ## Redação Integral do Projeto — Marco M1 (Entrega Parcial Documental)
 

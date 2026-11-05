@@ -1,3 +1,19 @@
+---
+id: plano-granular-plano-producao-agentes
+title: PLANO CANÔNICO DE PRODUÇÃO DE AGENTES — COGME
+version: 1.3.0
+class: conhecimento
+status: obsoleto
+owner: agent-project-analyst
+derived-from:
+- docs/planos/plano-granular/plano-producao-agentes.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- plano-granular
+- docs
+- normalizado
+---
 # PLANO CANÔNICO DE PRODUÇÃO DE AGENTES — COGME
 
 <!-- Versão: 1.1 | Emitido por: AFA-ULTIMATE v1.3.0-FINAL | Data: 2026-10-22 |

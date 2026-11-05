@@ -1,3 +1,19 @@
+---
+id: plano-granular-plano-escopo
+title: 2 ESCOPO
+version: 1.0.0
+class: conhecimento
+status: active
+owner: agent-project-analyst
+derived-from:
+- docs/planos/plano-granular/plano-escopo.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- plano-granular
+- docs
+- normalizado
+---
 # 2 ESCOPO
 
 **Plano de Gerenciamento do Escopo**

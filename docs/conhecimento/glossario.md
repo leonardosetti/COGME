@@ -1,10 +1,26 @@
+---
+id: conhecimento-glossario
+title: GLOSSÁRIO DO PROJETO COGME
+version: 5.2.0
+class: conhecimento
+status: active
+owner: agent-project-analyst
+derived-from:
+- docs/conhecimento/glossario.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- conhecimento
+- docs
+- normalizado
+---
 # GLOSSÁRIO DO PROJETO COGME
 
 **Versão:** 3.2.0  
 **Data:** 31/10/2026  
 **Status:** Sanitizado — alinhado ao canon do **OKB v5.2.0** (template OKB-TEMPLATE-CANON v1.0) [CCB-LOG RAT-2026-10-31-A11]  
 **Stakeholder-Avaliador:** Prof. Dr. Nivaldo Carleto  
-**Referências:** `docs/conhecimento/OKB.md` v5.2.0, `Canon_Stack_SDD.md` v2.0.0, `TAP v3` (núcleo blindado — ADR-013-a), ADR-006 v2.0.0, ADR-009 v1.0.0, ADR-010 v1.0.0  
+**Referências:** `docs/conhecimento/okb.md` v5.2.0, `Canon_Stack_SDD.md` v2.0.0, `TAP v3` (núcleo blindado — ADR-013-a), ADR-006 v2.0.0, ADR-009 v1.0.0, ADR-010 v1.0.0  
 **Hierarquia de autoridade:** constitution.md (VIGENTE-PLENA) > TAP v3 (baseline viva, núcleo blindado) > ADRs 001–013 > **OKB** > Planos de Gerenciamento > **Glossário** > Specs (.ai/specs/) > Código
 
 ---
@@ -344,7 +360,7 @@ Este glossário deve ser consultado durante redação e revisão de artefatos pa
 | ID | Versão | Data | Registro |
 |---|---|---|---|
 | VER-001 | v2.2 → v3.1 | 20/09/2026 | 15 mudanças registradas na Seção 15 (histórico preservado) |
-| **VER-002** | **v3.2.0** | **31/10/2026** | **Sanitização de congruência ao canon OKB v5.2.0 (CCB-LOG RAT-2026-10-31-A11; encerra OKB-C-07/C-17):** hierarquia de autoridade corrigida (constituição > TAP > ADRs > OKB > ... > Glossário); EAP corrigida para 12 fases + 37 pacotes (ADR-009); SDD/LLM atualizado para Qwen3-30B-A3B MoE + fallback 14B (ADR-006); Vulkan/Mesa 1.4.354/26.2.2 e metas t/s/TTFT/KV-cache (ADR-006); SQLite revogado como banco canônico, PostgreSQL 15+ adicionado (ADR-010); flags de conflito de frontend HTMX/Tailwind (OKB-C-10); todas as referências migradas de `OKB_COGME_v3.1.md` → `docs/conhecimento/OKB.md` v5.2.0; balanço histórico v3.1 sobre EAP 13/48 marcado como REVOGADO (não apagado — honestidade de proveniência) |
+| **VER-002** | **v3.2.0** | **31/10/2026** | **Sanitização de congruência ao canon OKB v5.2.0 (CCB-LOG RAT-2026-10-31-A11; encerra OKB-C-07/C-17):** hierarquia de autoridade corrigida (constituição > TAP > ADRs > OKB > ... > Glossário); EAP corrigida para 12 fases + 37 pacotes (ADR-009); SDD/LLM atualizado para Qwen3-30B-A3B MoE + fallback 14B (ADR-006); Vulkan/Mesa 1.4.354/26.2.2 e metas t/s/TTFT/KV-cache (ADR-006); SQLite revogado como banco canônico, PostgreSQL 15+ adicionado (ADR-010); flags de conflito de frontend HTMX/Tailwind (OKB-C-10); todas as referências migradas de `OKB_COGME_v3.1.md` → `docs/conhecimento/okb.md` v5.2.0; balanço histórico v3.1 sobre EAP 13/48 marcado como REVOGADO (não apagado — honestidade de proveniência) |
 
 ---
 

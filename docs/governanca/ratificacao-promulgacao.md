@@ -1,3 +1,19 @@
+---
+id: governanca-ratificacao-promulgacao
+title: Ratificacao Promulgacao
+version: 1.0.0
+class: relatorio-governanca
+status: active
+owner: agent-project-analyst
+derived-from:
+- docs/governanca/ratificacao-promulgacao.md (normalizado em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- governanca
+- docs
+- normalizado
+---
 ...
 
 ### 2.1.1. Validação do Bloco de Co-Assinatura
