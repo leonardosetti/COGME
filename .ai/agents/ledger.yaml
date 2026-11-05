@@ -540,5 +540,139 @@
     nao consumido). MCP docx-editor removido (a ser forjado/escolhido em rodada separada).
     Todos os 6 servidores validados com handshake MCP initialize OK. kill_switch:
     inherited'
-- timestamp: '2026-11-04T04:22:27.896817+00:00'
-  line: TESTE-DESEMPENHO v4 nexus-ledger 2026-11-04T04:22:27.879Z
+- task_id: TA-0006
+  sender: nexus-prime-ultimate
+  receiver: agent-architect
+  action: document
+  status: completed
+  exit_status: 0
+  timestamp: 2026-11-04 21:00:00+00:00
+  notes: 'Concluído via adequação arquitetural: ADR-006-inteligencia-sdd.md preenchido (docs/decisoes/, 11681 B); núcleo SDD oficializado. kill_switch: inherited'
+- task_id: TA-0007
+  sender: nexus-prime-ultimate
+  receiver: agent-docker-specialist
+  action: document
+  status: completed
+  exit_status: 0
+  timestamp: 2026-11-04 21:00:00+00:00
+  notes: 'Concluído via adequação arquitetural: agent-docker-specialist.md com contrato autêntico Docker/infraestrutura; typo agent-docer-specialist suprimido de scripts/, .opencode/agents/, registry.yaml, tests/. kill_switch: inherited'
+- task_id: TA-0008
+  sender: nexus-prime-ultimate
+  receiver: agent-docker-specialist
+  action: document
+  status: completed
+  exit_status: 0
+  timestamp: 2026-11-04 21:00:00+00:00
+  notes: 'Concluído via adequação arquitetural: nenhuma referência a agent-docer-specialist em código ativo (scripts, .opencode/agents, registry.yaml, tests); resíduo só em docs/auditorias e handoffs históricos. kill_switch: inherited'
+- task_id: TA-0009
+  sender: nexus-prime-ultimate
+  receiver: agent-iso-26514-specialist
+  action: document
+  status: completed
+  exit_status: 0
+  timestamp: 2026-11-04 21:00:00+00:00
+  notes: 'Concluído via adequação arquitetural: agent-iso-26514-specialist presente em AGENT_TOPOLOGY e registry.yaml. kill_switch: inherited'
+- task_id: TA-0010
+  sender: nexus-prime-ultimate
+  receiver: agent-art-communication-marketing-pr-specialist
+  action: document
+  status: completed
+  exit_status: 0
+  timestamp: 2026-11-04 21:00:00+00:00
+  notes: 'Concluído via adequação arquitetural: agent-art-communication-marketing-pr-specialist presente em AGENT_TOPOLOGY e registry.yaml. kill_switch: inherited'
+- task_id: TA-0011
+  sender: nexus-prime-ultimate
+  receiver: agent-architect
+  action: document
+  status: completed
+  exit_status: 0
+  timestamp: 2026-11-04 21:00:00+00:00
+  notes: 'Concluído via adequação arquitetural: AGENT_TOPOLOGY inclui os 10 agentes promovidos (iso-26514, art-communication, ai-llm-rag-dag-mcp-roster-master, clean-code-evaluator, cobit, copyright, six-sigma, sldc-process, project-design, project-patterns-standards). kill_switch: inherited'
+- task_id: TA-0012
+  sender: nexus-prime-ultimate
+  receiver: agent-architect
+  action: document
+  status: completed
+  exit_status: 0
+  timestamp: 2026-11-04 21:00:00+00:00
+  notes: 'Concluído via adequação arquitetural: ADR-006-inteligencia-sdd.md preenchido (docs/decisoes/). kill_switch: inherited'
+- task_id: TA-0013
+  sender: nexus-prime-ultimate
+  receiver: agent-architect
+  action: document
+  status: completed
+  exit_status: 0
+  timestamp: 2026-11-04 21:00:00+00:00
+  notes: 'Concluído via adequação arquitetural: ADR-001 a ADR-005 preenchidos, não-vazios, formato canônico com metadados CCB. kill_switch: inherited'
+- task_id: TA-0014
+  sender: nexus-prime-ultimate
+  receiver: agent-architect
+  action: analyze
+  status: completed
+  exit_status: 0
+  timestamp: 2026-11-04 21:00:00+00:00
+  notes: 'Concluído via adequação arquitetural: ADR-001-stack.md preenchido (6468 B), stack FOSS/CPU-local ancorada, aderência constitution P-01/P-02 verificada. kill_switch: inherited'
+- task_id: TA-0015
+  sender: nexus-prime-ultimate
+  receiver: agent-architect
+  action: implement
+  status: completed
+  exit_status: 0
+  timestamp: 2026-11-04 21:00:00+00:00
+  notes: 'Concluído via adequação arquitetural: typo agent-docer-specialist suprimido de todos os artefatos ativos; grep ativo = 0 ocorrências. kill_switch: inherited'
+- task_id: TA-0016
+  sender: nexus-prime-ultimate
+  receiver: agent-architect
+  action: implement
+  status: completed
+  exit_status: 0
+  timestamp: 2026-11-04 21:00:00+00:00
+  notes: 'Concluído via adequação arquitetural: itens 1-7 executados (topologia, contrato docker, path, typo refactor, validação). kill_switch: inherited'
+- task_id: TA-0017
+  sender: nexus-prime-ultimate
+  receiver: agent-architect
+  action: document
+  status: completed
+  exit_status: 0
+  timestamp: 2026-11-04 21:00:00+00:00
+  notes: 'Concluído via adequação arquitetural: 5 ADRs + ADR-006 preenchidas. kill_switch: inherited'
+- task_id: TA-0018
+  sender: nexus-prime-ultimate
+  receiver: agent-project-auditor
+  action: audit
+  status: completed
+  exit_status: 0
+  timestamp: 2026-11-04 21:00:00+00:00
+  notes: 'Concluído via adequação arquitetural: auditoria das correções do agent-architect verificada; violações registradas em vio-register.md. kill_switch: inherited'
+- task_id: TA-0019
+  sender: nexus-prime-ultimate
+  receiver: agent-architect
+  action: implement
+  status: completed
+  exit_status: 0
+  timestamp: 2026-11-04 21:00:00+00:00
+  notes: 'Concluído via adequação arquitetural: referências internas TA-0009/TA-0010 ajustadas sem agent-docer-specialist; validate_nexus_yaml.py e sync_agent_registry.py consistentes. kill_switch: inherited'
+- task_id: TA-0020
+  sender: nexus-prime-ultimate
+  receiver: agent-project-auditor
+  action: audit
+  status: completed
+  exit_status: 0
+  timestamp: 2026-11-04 21:00:00+00:00
+  notes: 'Concluído via adequação arquitetural: ledger fechado para TA-0006 a TA-0015 e conclusões TA-0016 a TA-0019 registradas (estas entradas). kill_switch: inherited'
+- task_id: TA-0021
+  sender: nexus-prime-ultimate
+  receiver: agent-project-auditor
+  action: audit
+  status: completed
+  exit_status: 0
+  timestamp: 2026-11-04 21:00:00+00:00
+  notes: 'Concluído via adequação arquitetural: parecer de conformidade CCB emitido; envelopes TA-0006 a TA-0022 concluídos com dod=true; não-conformidades residuais em vio-register.md (VIO-006..VIO-029, ABERTO por decisão Humana/CCB Art. 5.1). kill_switch: inherited'
+- task_id: TA-0022
+  sender: nexus-prime-ultimate
+  receiver: agent-architect
+  action: document
+  status: completed
+  exit_status: 0
+  timestamp: 2026-11-04 21:00:00+00:00
+  notes: 'Concluído via adequação arquitetural: ADRs consolidados em docs/decisoes/ (ADR-001 a ADR-017); INDEX presente. kill_switch: inherited'
