@@ -1,9 +1,9 @@
 ---
-id: OKB-001
+id: docs-conhecimento-okb
 title: OKB v5.3.0 | Operational Knowledge Base — Base de Conhecimento Operacional do Projeto COGME
+type: conhecimento
 version: 5.3.0
-class: conhecimento
-status: ratified
+status: ativo
 owner: agent-architect
 derived-from:
 - docs/conhecimento/okb.md (normalizado em 2026-11-05)
@@ -283,11 +283,10 @@ Regra adicional: **qualquer mudança em lei suprema (Constituição) é sempre `
 |---|---|---|---|
 | M1 — Entrega Parcial Documental | 22/09/2026 | 5 planos + 12 PDCAs + Ishikawa, sem achados críticos | Documentos em FS; aceite acadêmico não registrado em FS |
 | Calibração (auxiliar) | 03/10/2026 | Baseline de métricas | ⚠️ baseline seed **SIMULADO** promulgada (A09-A-006); medição real pendente (C-16) |
-| M2 — Ambiente e Modelagem | 30/09/2026 (TAP) | CI verde + DER + UX/UI versionados | ⚠️ vencido sem fechamento; CR-001 propõe 15/11/2026 via ADR-013-a (C-06) |
-| M3 — MVP Funcional (Beta) | 15/11/2026 | coverage ≥ 80%, UAT sem defeitos críticos | Risco ativo: nenhum card de construção no quadro (plano-riscos Q-02:117) |
+| M2+M3 — Checkpoint único (fusão CCB) | 15/11/2026 | M2: CI verde + DER + UX/UI versionados · M3: coverage ≥ 80%, UAT sem defeitos críticos | ✅ aprovado pelo CCB (fusão M2+M3); ADR-015 já ratifica M2 → 15/11/2026; M3 mantido na mesma data; OKB-C-06b encerrado |
 | M4 — Encerramento | 15/12/2026 | documentação consolidada + aceite formal | — |
 
-> **Conflito declarado:** CR-001 (M2 → 15/11/2026) colide com M3 (15/11/2026) e não foi formalizado em ADR de emenda. Prevalece a data do TAP §6 (núcleo blindado) até decisão do CCB.
+> **Fusão aprovada pelo CCB:** M2 e M3 unificam em checkpoint único em 15/11/2026, extinguindo a colisão temporal (OKB-C-06b). M2 subsiste como leitura operacional (documentação/ambiente) dentro do checkpoint único; M3 subsiste como produto (MVP Beta). Prevalece o TAP §6 para matéria temporal até nova decisão.
 
 ### 3.3 Stack efetiva (ADR-001 v1.0.0 + ADR-010 v1.0.0)
 
@@ -680,7 +679,7 @@ Regras: (i) sempre pinar `vX.Y.Z` (ADR/norma) ou `vX.Y` (plano); (ii) citar seç
 | OKB-C-03 | Crítica | VIO-006: evento destrutivo 24/10 reverteu leis sem trilha git; conteúdo v4.0.0 irrecuperável | vio-register; AUD-2610-04:48 | ✅ encerrado por decisão Humana/CCB (2026-11-05, kill switch Art. 5.1); conteúdo pré-evento irrecuperável — registrado como evidência histórica, nunca apagado |
 | OKB-C-04 | Baixa | ADR-006 triplicada | md5 idêntico `91e91ef1…` | ✅ resolvido — apenas a canônica restou |
 | OKB-C-05 | Alta | Teto GMV de ADRs (≤ 10) excedido: 13 IDs (14 artefatos) | §2.6 | ✅ encerrado — teto revisado para ≤ 20 (decisão CCB); 13 IDs (14 artefatos) dentro do novo teto |
-| OKB-C-06 | Crítica | CR-001 repactua M2 → 15/11/2026, colide com M3; ADR de emenda emitida (ADR-015) e ratificada (RAT-2026-10-31-A12); Delta Log criado | CR-001; ADR-015; plano-cronograma:80; docs/tap/delta-v3-1.md | ✅ resolvido (C-06 principal) — ADR-015 emitida e ratificada 31/10/2026; CR-001 formalizado. Ressalva C-06b (colisao M2=M3 em 15/11) segue aberta para deliberacao futura do CCB (fusao M2+M3, deslocamento M3 ate M4, ou manutencao) |
+| OKB-C-06 | Crítica | CR-001 repactua M2 → 15/11/2026, colide com M3; ADR de emenda emitida (ADR-015) e ratificada (RAT-2026-10-31-A12); Delta Log criado; fusão M2+M3 aprovada pelo CCB | CR-001; ADR-015; plano-cronograma:80; docs/tap/delta-v3-1.md | ✅ encerrado — ADR-015 ratificada 31/10/2026; fusão M2+M3 aprovada pelo CCB (checkpoint único 15/11/2026); OKB-C-06b extinta |
 | OKB-C-07 | Alta | Glossário contradiz canon (13/48, Qwen 32B, SQLite, hierarquia invertida) | glossario:8,18,23,161 | ✅ **resolvido nesta rodada** — sanitize + bump v3.2.0 (31/10; RAT-2026-10-31-A11); re-verificar na próxima auditoria |
 | OKB-C-08 | Alta | Artefatos 0 B: `TAP.md`, `registro.md`, `requisitos.md`, `.ai/specs/{tap,eap,requisitos}.md` | `wc -c` = 0 | ✅ encerrado — todos populados (frontmatter ou corpo); `registro.md` 11 KB, `.ai/specs/{tap,eap,requisitos}.md` 22–28 KB; `TAP.md`/`requisitos.md` frontmatter-only (ponteiros para plano-integral e spec-002) |
 | OKB-C-09 | Alta | TAP canônico só como `.docx` + bloco integral no plano-integral; `.md` é stub declarado "não-0B" no índice | KB-INDEX:29; plano-integral:49 | ✅ encerrado — `docs/tap/tap.md` preenchido com resumo canônico + ponteiro para o plano-integral (fonte canônica integral) |
