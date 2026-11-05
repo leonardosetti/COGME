@@ -23,7 +23,7 @@ tags:
 - **Versão:** 1.2.2 — Status: VIGENTE-PLENA
 - **Hash normativo:** `9ae2c118102d7c352b00873a1f360383404a18b61beac09c7ca3c93c312cad56` *(método: sha256 dos bytes de `## PREÂMBULO` até a linha imediatamente anterior ao bloco final `## CO-ASSINATURA` — região sem auto-referência de hash; valor idêntico ao registrado na tabela CO-ASSINATURA ao pé, único registrador)*
 - **Hash anterior (v1.2.1, 31/10/2026):** `5ad5ec8f2ae7891cca020d51956e5fa492eee8dbcd15490fec84875086f95f65` — commit `bec6c1a778c96489b039eb649d3c02e7c7aac7af`
-- **Commit:** `bec6c1a778c96489b039eb649d3c02e7c7aac7af` (v1.2.1) / `b27167e4f8a7fec1a755c8912eb07445bdefb115` (v1.2.2)
+- **Commit:** `bec6c1a778c96489b039eb649d3c02e7c7aac7af` (v1.2.1) / `8c7f3b7368a7439f4e1444b6c84a601fe7e7166e` (v1.2.2)
 - **Data da co-assinatura vigente:** 2026-11-05
 - **Papel:** Gerente de Projeto — CCB de membro único
 - **Instrumento:** inclusão das normas de artefatos (template + nomenclatura) na hierarquia Art. 2.1 via RAT-2026-11-05-A20 — ratificação humana CCB de membro único
@@ -262,4 +262,4 @@ Este bloco não integra o hash normativo.
 | 1.1.0   | `4eb5244ffb4d2f5973b03c96f8523f36d095d1c954eb731543a0fb9e44a1fb13` | `1e206fe4b5c174c5da3133d5c66cc4c6d57808b6` | 2026-10-26 | Gerente de Projeto — CCB de membro único | CCB 26/10/2026, emendas E-01..E-08                         |
 | 1.2.0   | `b3f296c6ed592bb3f276302148eeb0360a72ebe35fdd48a9b972ba8261851db4` | `7cff886`                     | 2026-10-30 | Gerente de Projeto — CCB de membro único | COGME-UNIVERSAL-ADJUSTMENT-PARTITIONED-v4.1.2 + prompt expresso CCB 30/10/2026 |
 | 1.2.1   | `5ad5ec8f2ae7891cca020d51956e5fa492eee8dbcd15490fec84875086f95f65` | `bec6c1a778c96489b039eb649d3c02e7c7aac7af` + commit `62b280728acc49d2c916ce93962dc6f432e93fec` + commit `a62f5f3` (re-hash definitivo) | 31/10/2026 | Gerente de Projeto — CCB de membro único | Consolidação v1.2.1 (remoção de duplicata Arts. 6-10) + prompt expresso CCB 31/10/2026; **re-hash definitivo RAT-2026-10-31-A12** (método: bytes de `## PREÂMBULO` até antes do bloco `## CO-ASSINATURA` que começa a secao de co-assinatura ao pe; substitui `a29c61ff…`, `02e5b695…`, `5394fc8c…` e `2d07f063…` nao conferentes) |
-| 1.2.2   | `9ae2c118102d7c352b00873a1f360383404a18b61beac09c7ca3c93c312cad56` | `b27167e4f8a7fec1a755c8912eb07445bdefb115` | 05/11/2026 | Gerente de Projeto — CCB de membro único | Inclusão das normas de artefatos (template + nomenclatura) na hierarquia normativa Art. 2.1; bump v1.2.1 → v1.2.2 via RAT-2026-11-05-A20 |
+| 1.2.2   | `9ae2c118102d7c352b00873a1f360383404a18b61beac09c7ca3c93c312cad56` | `8c7f3b7368a7439f4e1444b6c84a601fe7e7166e` | 05/11/2026 | Gerente de Projeto — CCB de membro único | Inclusão das normas de artefatos (template + nomenclatura) na hierarquia normativa Art. 2.1; bump v1.2.1 → v1.2.2 via RAT-2026-11-05-A20 |
