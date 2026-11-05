@@ -160,7 +160,7 @@ tags:
 | Termo | Definição | Aplicação no COGME |
 | --- | --- | --- |
 | MVP | Minimum Viable Product | Escopo mínimo entregável (Nov/2026) |
-| Full-Stack | Desenvolvimento front-end + back-end + banco | Arquitetura do COGME (Python + FastAPI + **PostgreSQL 15+** + [frontend em conflito aberto: ADR-001 vanilla JS × registry Jinja/HTMX/Tailwind — OKB-C-10]) |
+| Full-Stack | Desenvolvimento front-end + back-end + banco | Arquitetura do COGME (Python + FastAPI + **PostgreSQL 15+** + frontend Jinja2 + HTMX + Tailwind CSS; alinhado à ADR-001 v1.2.0) |
 | ACID | Atomicity, Consistency, Isolation, Durability | Padrão inegociável de transações |
 | Clean Code | Código legível, manutenível, testável | Princípio P5 do COGME |
 | TDD | Test-Driven Development | Escrever testes antes do código |
@@ -177,8 +177,8 @@ tags:
 | SQLite | Banco de dados relacional leve | **REVOGADO como banco canônico** (ADR-010, 29/10/2026) — uso restrito a testes isolados; banco principal: PostgreSQL 15+ |
 | PostgreSQL | Banco de dados relacional FOSS | **Banco canônico do COGME** (ADR-010: asyncpg + SQLAlchemy async + Alembic) |
 | FastAPI | Framework web Python | Backend (async, type-safe) |
-| HTMX | Biblioteca para interatividade sem JS | Frontend registrado em roster/infra — ⚠️ **conflito aberto com ADR-001** (OKB-C-10) |
-| Tailwind CSS | Framework CSS utility-first | Estilização (rapidez, P3) — mesmo conflito HTMX (OKB-C-10) |
+| HTMX | Biblioteca para interatividade sem JS | Frontend canônico do COGME (ADR-001 v1.2.0); interatividade leve sem JS pesado |
+| Tailwind CSS | Framework CSS utility-first | Estilização canônica do COGME (ADR-001 v1.2.0); rapidez e P3 |
 | WeasyPrint | Motor de renderização HTML para PDF | Geração de invoices |
 
 ---

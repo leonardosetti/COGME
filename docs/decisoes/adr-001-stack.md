@@ -1,7 +1,7 @@
 ---
 id: decisoes-adr-001-stack
 title: ADR-001 — Stack Tecnológica FOSS
-version: 1.1.0
+version: 1.2.0
 class: decisao-adr
 status: ratificado
 owner: agent-project-analyst
@@ -27,10 +27,10 @@ kill-switch: screened
 
 | Campo | Valor |
 |---|---|
-| Versão | 1.1.0 |
+| Versão | 1.2.0 |
 | Status | Ratificado (CCB único) |
 | Data da decisão | 19/09/2026 |
-| Data de formalização do documento | 28/10/2026 (v1.0.0); 31/10/2026 (v1.1.0 — emenda ADR-LOG-001) |
+| Data de formalização do documento | 28/10/2026 (v1.0.0); 31/10/2026 (v1.1.0 — emenda ADR-LOG-001); 05/11/2026 (v1.2.0 — emenda frontend ADR-LOG-002) |
 | Decisor | GP Leonardo (CCB único — TAP v3 §1.c, Premissa P7) |
 | Gatilhos G1–G4 | G1 (impacto transversal — todas as fases N4–N12), G2 (irreversibilidade prática — troca de stack reescreve backend), G4 (trade-off FOSS × conveniência proprietária) |
 | Rastreabilidade | TAP §3 (Inovação) + §8 (Restrições FOSS/§8.4 orçamento zero) + §11; EAP N1.4, N4.1, N5.1–N5.4 (fila N9.1); REQ-12 (ADRs); ADRs correlatas: [ADR-005 v1.1.0](docs/decisoes/adr-005-regime-tap.md) (freeze), [ADR-006 v2.1.0](docs/decisoes/adr-006-ecossistema-sddai.md) (LLM local), [ADR-010 v1.0.0](docs/decisoes/adr-010-stack-infraestrutura.md) (supersedida por esta versão — veja ADR-LOG-001) |
@@ -56,7 +56,7 @@ Adoção da seguinte stack (todas as licenças OSI-approved):
 | Geração PDF | WeasyPrint | BSD-3-Clause | HTML/CSS → PDF, FOSS |
 | Testes | pytest + coverage.py | MIT | Padrão Python, integração CI |
 | CI/CD | GitHub Actions (Free Tier) | Proprietário gratuito | Nativo ao SSOT |
-| Frontend | HTML5 + CSS3 + JS vanilla | — | KISS, sem framework pesado |
+| Frontend | Jinja2 + HTMX + Tailwind CSS | BSD-3-Clause / MIT | Templates server-side (Jinja) + interatividade leve (HTMX) + estilização utility-first (Tailwind); alinha roster/infra e encerra OKB-C-10 |
 | LLM (SDD) | Qwen3-30B-A3B Q4_K_M (MoE) | Licença autorizada | TAP §3 (Inovação); inferência local via llama.cpp/Qwen no hardware 8700G/60GB — ver ADR-006 |
 | Orquestração | Docker + Docker Compose | FOSS (Apache-2.0 / MIT) | Paridade dev/test/prod, isolamento de camadas (ADR-010) |
 | Proxy | Nginx (latente, perfil opcional) | FOSS (BSD-2-Clause) | Reverse proxy latente para perfil opcional (ADR-010) |
@@ -88,6 +88,7 @@ Adoção da seguinte stack (todas as licenças OSI-approved):
 | ADR Sobreposta | Natureza | Motivo | Domínio PMBOK 7ª | Data |
 |---|---|---|---|---|
 | ADR-010 | Parcial | Substituição de SQLite por PostgreSQL 15+; adição de Docker Compose + Nginx latente; definição de hierarquia de APIs de câmbio (Frankfurter primária, PTAX/BCB fallback) | Abordagem de Desenvolvimento | 29/10/2026 |
+| ADR-001 v1.1.0 | Parcial | Substituição do frontend HTML5/CSS3/JS vanilla por Jinja2 + HTMX + Tailwind CSS (alinha roster/infra; encerra OKB-C-10) | Abordagem de Desenvolvimento | 05/11/2026 |
 
 ## Histórico
 
@@ -95,3 +96,4 @@ Adoção da seguinte stack (todas as licenças OSI-approved):
 |---|---|---|---|
 | 1.0.0 | 28/10/2026 | agent-architect | Formalização do corpo (decisão CCB de 19/09/2026; emissão original comprometida em commit de 0 byte — 21/09/2026; stubs contraditórios detectados 26/10) |
 | 1.1.0 | 31/10/2026 | GP Leonardo (CCB) | Emenda ADR-LOG-001: substituição de SQLite por PostgreSQL 15+ como banco canônico; adição de Docker Compose + Nginx latente; definição de hierarquia de APIs de câmbio (Frankfurter primária, PTAX/BCB fallback). Incorpora conteúdo da ADR-010 (emitida 29/10/2026), que passa a ser referência histórica. |
+| 1.2.0 | 05/11/2026 | GP Leonardo (CCB) | Emenda ADR-LOG-002: substituição do frontend HTML5/CSS3/JS vanilla por Jinja2 + HTMX + Tailwind CSS (alinha roster/infra; encerra OKB-C-10). Sobrepõe parcialmente a ADR-001 v1.1.0 (camada Frontend). |

@@ -300,7 +300,7 @@ Regra adicional: **qualquer mudança em lei suprema (Constituição) é sempre `
 | PDF | WeasyPrint | BSD-3 | deps nativas glibc/Pango |
 | Testes | pytest + coverage.py (≥ 80%) | MIT | CI por push |
 | CI/CD | GitHub Actions Free Tier + pipelines ratificados (CI-CD-GOV-001) | proprietário gratuito | **Bypass registrado** (C-P-01) |
-| Frontend | ⚠️ **conflito aberto**: ADR-001 = HTML5/CSS3/JS vanilla; registry = Jinja + HTMX + Tailwind | — | OKB-C-10 |
+| Frontend | Jinja2 + HTMX + Tailwind CSS (ADR-001 v1.2.0) | — | OKB-C-10 encerrado — alinhado ao roster/infra |
 | APIs de câmbio | Circuit Breaker: Frankfurter (primária) → fallbacks → **PTAX/BCB obrigatório** | MIT/CC0 | ADR-010 §4 |
 | LLM | ver §3.4 | Apache-2.0 | ADR-006 |
 
@@ -684,7 +684,7 @@ Regras: (i) sempre pinar `vX.Y.Z` (ADR/norma) ou `vX.Y` (plano); (ii) citar seç
 | OKB-C-07 | Alta | Glossário contradiz canon (13/48, Qwen 32B, SQLite, hierarquia invertida) | glossario:8,18,23,161 | ✅ **resolvido nesta rodada** — sanitize + bump v3.2.0 (31/10; RAT-2026-10-31-A11); re-verificar na próxima auditoria |
 | OKB-C-08 | Alta | Artefatos 0 B: `TAP.md`, `registro.md`, `requisitos.md`, `.ai/specs/{tap,eap,requisitos}.md` | `wc -c` = 0 | ✅ encerrado — todos populados (frontmatter ou corpo); `registro.md` 11 KB, `.ai/specs/{tap,eap,requisitos}.md` 22–28 KB; `TAP.md`/`requisitos.md` frontmatter-only (ponteiros para plano-integral e spec-002) |
 | OKB-C-09 | Alta | TAP canônico só como `.docx` + bloco integral no plano-integral; `.md` é stub declarado "não-0B" no índice | KB-INDEX:29; plano-integral:49 | ✅ encerrado — `docs/tap/tap.md` preenchido com resumo canônico + ponteiro para o plano-integral (fonte canônica integral) |
-| OKB-C-10 | Alta | Frontend: ADR-001 fixa vanilla JS; roster/infra assumem Jinja+HTMX+Tailwind | ADR-001:31; VIO-001 | ❌ aberto — ADR de emenda |
+| OKB-C-10 | Alta | Frontend: ADR-001 fixa vanilla JS; roster/infra assumem Jinja+HTMX+Tailwind | ADR-001:31; VIO-001 | ✅ encerrado — ADR-001 v1.2.0 adota Jinja2 + HTMX + Tailwind CSS (emenda ADR-LOG-002, 05/11/2026); glossário e OKB §3.3 atualizados |
 | OKB-C-11 | Baixa | Custódia do OKB divergia sem registro recuperável | KB-INDEX:48 | ✅ resolvido — CCB-003 ratificou owner `agent-architect` |
 | OKB-C-12 | Média | ADR-005 em regularização tardia com ratificação formal pendente | ADR-005:6,56 | ✅ encerrada — ADR-005 v1.1.0 status `ratificado`, instrumentos CCB-LOG A08 + A12, incorpora Regime de Emenda Controlada (ADR-013) e Emenda M2 (ADR-015); `adr-005-freeze.md` marcada SUPERSSEDIDA (superseded-by: ADR-005 v1.1.0) |
 | OKB-C-13 | Baixa | Classes `relatorio-auditoria`, `register-vio`, `register-decision` fora do enum de 10 classes | kb-taxonomy §2; audits | ⏳ próxima rodada |
