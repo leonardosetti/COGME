@@ -137,6 +137,9 @@ jobs:
       - name: Type check (mypy)
         run: python -m mypy src migrations
 
+      - name: Validate frontmatter of all *.md (Norma Global de Templates)
+        run: python3 scripts/validar_frontmatter_md.py
+
       - name: Dependency audit (pip-audit, fail-closed)
         run: pip-audit
 
@@ -192,7 +195,7 @@ jobs:
 
       - name: Execute full test suite (fail-closed, coverage >=95, zero skips)
         run: |
-          python -m pytest tests/unit tests/integration -q --tb=short \
+          python -m pytest tests/unit tests/integration tests/agents -q --tb=short \
             --cov=src --cov-report=xml:coverage.xml --cov-report=term-missing \
             --cov-fail-under=95 --junitxml=junit.xml \
             -p no:cacheprovider > /tmp/pytest-report.txt 2>&1

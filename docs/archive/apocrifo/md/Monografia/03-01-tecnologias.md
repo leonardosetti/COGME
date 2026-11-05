@@ -1,9 +1,9 @@
 ---
-id: Monografia-03-01-tecnologias
+id: docs-archive-apocrifo-md-monografia-03-01-tecnologias
 title: 3.1 Tecnologias
+type: archive
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/apocrifo/md/Monografia/03-01-tecnologias.md (normalizado em 2026-11-05)

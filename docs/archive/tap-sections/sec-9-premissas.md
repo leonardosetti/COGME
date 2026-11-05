@@ -1,9 +1,9 @@
 ---
-id: tap-sections-sec-9-premissas
+id: docs-archive-tap-sections-sec-9-premissas
 title: Sec_9_Premissas
+type: archive
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/tap-sections/sec-9-premissas.md (normalizado em 2026-11-05)

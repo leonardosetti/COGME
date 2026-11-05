@@ -1,9 +1,9 @@
 ---
-id: Monografia-02-05-02-diagrama-de-causa-e-efeito
+id: docs-archive-apocrifo-md-monografia-02-05-02-diagrama-de-causa-e-efeito
 title: 2.5.2 Diagrama de causa e efeito
+type: archive
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/apocrifo/md/Monografia/02-05-02-diagrama-de-causa-e-efeito.md (normalizado em 2026-11-05)

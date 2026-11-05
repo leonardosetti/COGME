@@ -1,8 +1,8 @@
 ---
-id: legacy-md-artifact-okb-cogme-v3-1-draft-aplicado-em-v4
+id: docs-archive-legacy-md-artifact-okb-cogme-v3-1-draft-aplicado-em-v4
 title: OKB v3.1 — Operational Knowledge Base (Consolidada Pós-M1)
+type: archive
 version: '3.1'
-class: conhecimento
 status: draft
 owner: agent-project-analyst
 derived-from:

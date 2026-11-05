@@ -1,14 +1,14 @@
 ---
-id: REL-CI-CD-001
+id: docs-governanca-relatorio-analitico-ci-cd-devsecops
 title: Relatório Analítico — Rodada de Governança CI/CD e DevSecOps
+type: governanca
 version: 1.0.0
-class: relatorio-governanca
 status: ratificado
 owner: agent-project-analyst
 derived-from:
 - docs/governanca/relatorio-analitico-ci-cd-devsecops.md (normalizado em 2026-11-05)
 last-revised: '2026-11-05'
-lgpd-class: n/a (sem PII)
+lgpd-class: n/a
 tags:
 - governanca
 - docs

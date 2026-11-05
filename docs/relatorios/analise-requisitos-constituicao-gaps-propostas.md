@@ -1,8 +1,8 @@
 ---
-id: relatorios-analise-requisitos-constituicao-gaps-propostas
+id: docs-relatorios-analise-requisitos-constituicao-gaps-propostas
 title: RELATÓRIO CONSOLIDADO — ANÁLISE DE REQUISITOS, CONSTITUIÇÃO, GAPS E PROPOSTAS
+type: relatorio
 version: 1.1.0
-class: relatorio
 status: obsoleto
 owner: agent-project-analyst
 derived-from:

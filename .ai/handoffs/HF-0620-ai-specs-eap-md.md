@@ -1,14 +1,18 @@
 ---
-id: HF-0620
-title: "Repovoar .ai/specs/eap.md (A.3) — fases N1..N11 com rastreabilidade"
-task: TA-0064
-sender: agent-nexus-prime-ultimate
-agent: agent-sdd-specialist
-action: spec
-created: 2026-11-03
-kill_switch: inherited
-status: dispatched
-source: docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md (rodada 1 de specs)
+id: ai-handoffs-hf-0620-ai-specs-eap-md
+title: Repovoar .ai/specs/eap.md (A.3) — fases N1..N11 com rastreabilidade
+type: handoff
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .ai/handoffs/HF-0620-ai-specs-eap-md.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- handoffs
+- docs
+- adequado-a-norma
 ---
 
 # HF-0620 — Repovoar .ai/specs/eap.md (A.3) — fases N1..N11 com rastreabilidade

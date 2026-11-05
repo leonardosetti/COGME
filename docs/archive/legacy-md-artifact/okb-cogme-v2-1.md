@@ -1,9 +1,9 @@
 ---
-id: legacy-md-artifact-okb-cogme-v2-1
+id: docs-archive-legacy-md-artifact-okb-cogme-v2-1
 title: BASE DE CONHECIMENTO OPERACIONAL — PROJETO COGME v2.1
+type: archive
 version: '2.1'
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/legacy-md-artifact/okb-cogme-v2-1.md (normalizado em 2026-11-05)

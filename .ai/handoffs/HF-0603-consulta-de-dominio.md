@@ -1,14 +1,18 @@
 ---
-id: HF-0603
-title: "Consulta de dominio: UAT de produto e destino de evidencias (B.5/C.5)"
-task: TA-0047
-sender: agent-nexus-prime-ultimate
-agent: agent-qa-sdet
-action: consult
-created: 2026-11-03
-kill_switch: inherited
-status: dispatched
-source: docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md (rodada 1 de specs)
+id: ai-handoffs-hf-0603-consulta-de-dominio
+title: 'Consulta de dominio: UAT de produto e destino de evidencias (B.5/C.5)'
+type: handoff
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .ai/handoffs/HF-0603-consulta-de-dominio.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- handoffs
+- docs
+- adequado-a-norma
 ---
 
 # HF-0603 — Consulta de dominio: UAT de produto e destino de evidencias (B.5/C.5)

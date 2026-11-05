@@ -1,3 +1,19 @@
+---
+id: docs-conhecimento-compliance-auditoria-renomeacao-artefatos
+title: Relatório de Auditoria — Renomeação de Artefatos docs/*/*
+type: conhecimento
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- docs/conhecimento/compliance/auditoria-renomeacao-artefatos.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- compliance
+- docs
+- adequado-a-norma
+---
 # Relatório de Auditoria — Renomeação de Artefatos docs/*/*
 
 **Gerado em:** 2026-11-05

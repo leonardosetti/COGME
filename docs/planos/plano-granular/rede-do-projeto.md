@@ -1,9 +1,9 @@
 ---
-id: plano-granular-rede-do-projeto
+id: docs-planos-plano-granular-rede-do-projeto
 title: Rede Do Projeto
+type: plano
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/planos/plano-granular/rede-do-projeto.md (normalizado em 2026-11-05)

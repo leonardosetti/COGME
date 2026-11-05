@@ -1,3 +1,19 @@
+---
+id: docs-analise-relatorio-analise-specs-roadmap-2026-11-05
+title: 'RELATÓRIO ANALÍTICO — COGME: Specs, Roadmap, Epics e User Stories'
+type: relatorio
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- docs/analise/RELATORIO-ANALISE-SPECS-ROADMAP-2026-11-05.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- analise
+- docs
+- adequado-a-norma
+---
 # RELATÓRIO ANALÍTICO — COGME: Specs, Roadmap, Epics e User Stories
 
 **Projeto:** COGME — Conversor de Ganhos em Moeda Estrangeira  

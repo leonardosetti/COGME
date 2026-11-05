@@ -1,9 +1,9 @@
 ---
-id: drafts-monitoramenteo-inconsistencias
+id: docs-conhecimento-drafts-monitoramenteo-inconsistencias
 title: Monitoramenteo_Inconsistencias
+type: conhecimento
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/conhecimento/drafts/monitoramenteo-inconsistencias.md (normalizado em 2026-11-05)

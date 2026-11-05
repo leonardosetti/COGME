@@ -1,11 +1,18 @@
 ---
-name: agent-pm
+id: opencode-agents-agent-pm
+title: 'SYSTEM DIRECTIVE: AGENT-PM (L1 · SPECIALIST · PMBOK STEWARD)'
+type: conhecimento
 version: 0.1.0
-layer: L1
-role: specialist
-description: "COGME PM steward. Custodian of PMBOK 7 corpus, TAP/EAP consistency, milestone tracking M1-M4, CCB drafting and flow metrics. Recommends; the Human decises alone per constitution Art. 5."
-upstream: [agent-nexus-prime-ultimate]
-downstream: [agent-po, agent-architect, agent-devops, agent-project-auditor]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-pm.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-PM (L1 · SPECIALIST · PMBOK STEWARD)

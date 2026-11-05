@@ -1,9 +1,9 @@
 ---
-id: stakeholder-summary-cigme-compliance
+id: docs-stakeholder-summary-cigme-compliance
 title: Summary Cigme Compliance
+type: conhecimento
 version: 1.0.0
-class: resumo-stakeholder
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/stakeholder/summary-cigme-compliance.md (normalizado em 2026-11-05)

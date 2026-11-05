@@ -1,9 +1,9 @@
 ---
-id: dependencias-registro
+id: docs-dependencias-registro
 title: Registro de Dependências e Imagens
+type: conhecimento
 version: 1.0.0
-class: registro-dependencias
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/dependencias/registro.md (normalizado em 2026-11-05)

@@ -1,9 +1,9 @@
 ---
-id: tap-sections-smart
+id: docs-archive-tap-sections-smart
 title: AJUSTE DOS OBJETIVOS SMART — TAP v1.1
+type: archive
 version: '1.1'
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/tap-sections/smart.md (normalizado em 2026-11-05)

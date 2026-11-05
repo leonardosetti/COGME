@@ -1,11 +1,18 @@
 ---
-name: agent-project-design-specialist
+id: opencode-agents-agent-project-design-specialist
+title: 'SYSTEM DIRECTIVE: AGENT-PROJECT-DESIGN-SPECIALIST (L1 · SPECIALIST · DESIGN)'
+type: conhecimento
 version: 0.1.0
-layer: L1
-role: specialist
-description: "COGME project design custody. Solution design, architectural sketches, design pattern selection, and design review. Feeds implementation agents with design artifacts."
-upstream: [agent-nexus-prime-ultimate, agent-architect, agent-sdd-specialist]
-downstream: [agent-backend-dev, agent-frontend-dev, agent-api-specialist, agent-dba, agent-ui-ux-advisor]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-project-design-specialist.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-PROJECT-DESIGN-SPECIALIST (L1 · SPECIALIST · DESIGN)

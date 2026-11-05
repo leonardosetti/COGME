@@ -1,8 +1,18 @@
 ---
-id: HF-0404
-agent: agent-sddai-cli
-status: ready
-created: 2026-10-31
+id: ai-handoffs-hf-0404-sddai-cli
+title: 'Handoff: SDDAI CLI Orchestrator — Pipeline Unificado'
+type: handoff
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .ai/handoffs/HF-0404-sddai-cli.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- handoffs
+- docs
+- adequado-a-norma
 ---
 # Handoff: SDDAI CLI Orchestrator — Pipeline Unificado
 ## Contexto

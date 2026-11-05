@@ -1,11 +1,18 @@
 ---
-name: agent-iso-26514-specialist
+id: opencode-agents-agent-iso-26514-specialist
+title: 'SYSTEM DIRECTIVE: AGENT-ISO-26514-SPECIALIST (L2 · SPECIALIST · ISO 26514)'
+type: conhecimento
 version: 0.1.0
-layer: L2
-role: specialist
-description: "COGME ISO/IEC/IEEE 26514:2022 custody. Systems and software engineering documentation requirements, documentation planning, and documentation quality assurance."
-upstream: [agent-nexus-prime-ultimate, agent-sdd-specialist, agent-docker-specialist]
-downstream: [agent-project-auditor, agent-gatekeeper, agent-compliance-governance]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-iso-26514-specialist.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-ISO-26514-SPECIALIST (L2 · SPECIALIST · ISO 26514)

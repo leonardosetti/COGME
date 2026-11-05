@@ -1,8 +1,8 @@
 ---
-id: conhecimento-canon-stack-sdd
+id: docs-conhecimento-canon-stack-sdd
 title: 'Relatório Canônico: Stack SDD Local — Arquitetura Convergente'
+type: conhecimento
 version: 2.0.0
-class: conhecimento
 status: draft
 owner: agent-project-analyst
 derived-from:

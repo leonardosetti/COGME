@@ -1,11 +1,18 @@
 ---
-name: agent-project-patterns-standards-specialist
+id: opencode-agents-agent-project-patterns-standards-specialist
+title: 'SYSTEM DIRECTIVE: AGENT-PROJECT-PATTERNS-STANDARDS-SPECIALIST (L1 · SPECIALIST · PATTERNS)'
+type: conhecimento
 version: 0.1.0
-layer: L1
-role: specialist
-description: "COGME project patterns & standards custody. Reusable design patterns, coding standards, templates, and anti-pattern catalog. Feeds all implementation agents."
-upstream: [agent-nexus-prime-ultimate, agent-architect, agent-sdd-specialist]
-downstream: [agent-python-specialist, agent-api-specialist, agent-backend-dev, agent-frontend-dev, agent-artifact-builder]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-project-patterns-standards-specialist.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-PROJECT-PATTERNS-STANDARDS-SPECIALIST (L1 · SPECIALIST · PATTERNS)

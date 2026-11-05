@@ -1,9 +1,9 @@
 ---
-id: correcao-eap-estruturada-correcao
+id: docs-archive-eap-legacy-correcao-eap-estruturada-correcao
 title: CONFIRMAÇÃO DE INSERÇÃO DA EAP v2.0 NO TAP v1.1
+type: archive
 version: '2.0'
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/eap-legacy/correcao/eap-estruturada-correcao.md (normalizado em 2026-11-05)

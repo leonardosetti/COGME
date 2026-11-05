@@ -1,8 +1,8 @@
 ---
-id: legacy-md-artifact-map-report-cobeco-artefato-estranho
+id: docs-archive-legacy-md-artifact-map-report-cobeco-artefato-estranho
 title: ⚔️ RELATÓRIO BRUTAL DE MAPEAMENTO ESTRUTURAL — COBECO MVP v3.2
+type: archive
 version: '3.2'
-class: conhecimento
 status: obsoleto
 owner: agent-project-analyst
 derived-from:

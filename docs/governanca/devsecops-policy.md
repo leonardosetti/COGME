@@ -1,9 +1,9 @@
 ---
-id: DEVSECOPS-001
+id: docs-governanca-devsecops-policy
 title: Política DevSecOps — COGME
+type: governanca
 version: 1.0.0
-class: relatorio-governanca
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/governanca/devsecops-policy.md (normalizado em 2026-11-05)

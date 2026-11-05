@@ -1,9 +1,9 @@
 ---
-id: auditorias-aud-2610-03-resultados
+id: docs-auditorias-aud-2610-03-resultados
 title: Aud 2610 03 Resultados
+type: audit
 version: 2.1.0
-class: relatorio-auditoria
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/auditorias/aud-2610-03-resultados.md (normalizado em 2026-11-05)

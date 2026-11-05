@@ -1,9 +1,9 @@
 ---
-id: operacao-sddai-verify-pipeline
+id: docs-operacao-sddai-verify-pipeline
 title: Pipeline de Teste e Verificação — SDDAI integrado ao COGME
+type: procedimento
 version: 1.0.0
-class: procedimento-operacao
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/operacao/sddai-verify-pipeline.md (normalizado em 2026-11-05)

@@ -1,8 +1,8 @@
 ---
-id: drafts-legacy-redacao-progressiva
+id: docs-conhecimento-drafts-legacy-redacao-progressiva
 title: Refinamento para Fechamento Definitivo -- Redação Progressiva
+type: conhecimento
 version: '1.0'
-class: conhecimento
 status: obsoleto
 owner: agent-project-analyst
 derived-from:

@@ -1,11 +1,18 @@
 ---
-name: agent-devops
+id: opencode-agents-agent-devops
+title: 'SYSTEM DIRECTIVE: AGENT-DEVOPS (L2 · SPECIALIST · CI/CD)'
+type: conhecimento
 version: 0.1.0
-layer: L2
-role: specialist
-description: "COGME CI/CD custody. Owns .github/workflows/ci.yml (currently empty gap G-05), gate enforcement (pytest+coverage>=80), free-tier GitHub Actions discipline, secrets hygiene and rollback runbooks. Automation serves gates, never bypasses them."
-upstream: [agent-nexus-prime-ultimate, agent-infrastructure-specialist, agent-python-specialist]
-downstream: [agent-qa-sdet, agent-gatekeeper, agent-digital-security]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-devops.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-DEVOPS (L2 · SPECIALIST · CI/CD)

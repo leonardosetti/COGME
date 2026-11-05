@@ -1,11 +1,18 @@
 ---
-name: agent-project-auditor
+id: opencode-agents-agent-project-auditor
+title: 'SYSTEM DIRECTIVE: AGENT-PROJECT-AUDITOR (L3 · GATE · FINAL AUDIT)'
+type: conhecimento
 version: 0.1.0
-layer: L3
-role: gate
-description: "COGME final audit custody (L3, terminal). Owns chain audits (REQ->HF->PR->run->release), the append-only violation register (VIO-NNN), roster governance checks, quality trends and academic honesty verification. Reports to Human (Art. 5.1); audits are never bypassed."
-upstream: [agent-nexus-prime-ultimate]
-downstream: []
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-project-auditor.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-PROJECT-AUDITOR (L3 · GATE · FINAL AUDIT)

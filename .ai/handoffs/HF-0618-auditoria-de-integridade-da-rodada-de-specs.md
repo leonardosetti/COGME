@@ -1,14 +1,18 @@
 ---
-id: HF-0618
-title: "Auditoria de integridade da rodada de specs (fechamento)"
-task: TA-0062
-sender: agent-nexus-prime-ultimate
-agent: agent-project-auditor
-action: audit
-created: 2026-11-03
-kill_switch: inherited
-status: dispatched
-source: docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md (rodada 1 de specs)
+id: ai-handoffs-hf-0618-auditoria-de-integridade-da-rodada-de-specs
+title: Auditoria de integridade da rodada de specs (fechamento)
+type: handoff
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .ai/handoffs/HF-0618-auditoria-de-integridade-da-rodada-de-specs.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- handoffs
+- docs
+- adequado-a-norma
 ---
 
 # HF-0618 — Auditoria de integridade da rodada de specs (fechamento)

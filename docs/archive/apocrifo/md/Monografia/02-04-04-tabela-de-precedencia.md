@@ -1,9 +1,9 @@
 ---
-id: Monografia-02-04-04-tabela-de-precedencia
+id: docs-archive-apocrifo-md-monografia-02-04-04-tabela-de-precedencia
 title: 2.4.4 Tabela de Precedência
+type: archive
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/apocrifo/md/Monografia/02-04-04-tabela-de-precedencia.md (normalizado em 2026-11-05)

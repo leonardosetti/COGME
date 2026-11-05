@@ -1,11 +1,18 @@
 ---
-name: agent-project-analyst
+id: opencode-agents-agent-project-analyst
+title: 'SYSTEM DIRECTIVE: AGENT-PROJECT-ANALYST (L1 · SPECIALIST · CONSOLIDATION EYE)'
+type: conhecimento
 version: 0.1.0
-layer: L1
-role: specialist
-description: "COGME analyst. Consolidates whole-project state (docs, specs, code, tests, roster) into evidence-based findings. No decision authority, no edits to canon files; feeds PM/architect/auditor with quantified parcels."
-upstream: [agent-nexus-prime-ultimate, agent-pm]
-downstream: [agent-pm, agent-architect, agent-project-auditor, agent-docker-specialist]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-project-analyst.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-PROJECT-ANALYST (L1 · SPECIALIST · CONSOLIDATION EYE)

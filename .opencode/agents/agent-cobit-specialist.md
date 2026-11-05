@@ -1,11 +1,18 @@
 ---
-name: agent-cobit-specialist
+id: opencode-agents-agent-cobit-specialist
+title: 'SYSTEM DIRECTIVE: AGENT-COBIT-SPECIALIST (L2 · SPECIALIST · COBIT)'
+type: conhecimento
 version: 0.1.0
-layer: L2
-role: specialist
-description: "COGME COBIT custody. IT governance framework, control objectives, management practices, and IT governance compliance."
-upstream: [agent-nexus-prime-ultimate, agent-compliance-governance, agent-project-auditor]
-downstream: [agent-project-auditor, agent-gatekeeper, agent-pm]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-cobit-specialist.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-COBIT-SPECIALIST (L2 · SPECIALIST · COBIT)

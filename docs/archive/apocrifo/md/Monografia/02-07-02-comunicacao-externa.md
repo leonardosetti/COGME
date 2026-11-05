@@ -1,9 +1,9 @@
 ---
-id: Monografia-02-07-02-comunicacao-externa
+id: docs-archive-apocrifo-md-monografia-02-07-02-comunicacao-externa
 title: 2.7.2 Comunicação Externa
+type: archive
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/apocrifo/md/Monografia/02-07-02-comunicacao-externa.md (normalizado em 2026-11-05)

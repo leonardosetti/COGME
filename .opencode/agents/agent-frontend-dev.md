@@ -1,11 +1,18 @@
 ---
-name: agent-frontend-dev
+id: opencode-agents-agent-frontend-dev
+title: 'SYSTEM DIRECTIVE: AGENT-FRONTEND-DEV (L2 · SPECIALIST · TEMPLATES)'
+type: conhecimento
 version: 0.1.0
-layer: L2
-role: specialist
-description: "COGME frontend implementer. Server-rendered templates (Jinja/FastAPI), HTMX progressive enhancement, Tailwind via committed util classes. Consumes ui-ux advisory + api contract. No build chain, no CDN-first, CPU-local friendly."
-upstream: [agent-nexus-prime-ultimate, agent-ui-ux-advisor, agent-api-specialist, agent-python-specialist]
-downstream: [agent-reviewer, agent-gatekeeper, agent-qa-sdet]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-frontend-dev.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-FRONTEND-DEV (L2 · SPECIALIST · TEMPLATES)

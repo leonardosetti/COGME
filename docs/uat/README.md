@@ -1,3 +1,19 @@
+---
+id: docs-uat-readme
+title: Pasta de evidências de UAT — COGME
+type: readme
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- docs/uat/README.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- uat
+- docs
+- adequado-a-norma
+---
 # Pasta de evidências de UAT — COGME
 
 Destino único e definitivo de todas as evidências de UAT do projeto COGME, conforme decisão GP/CCB de 05/11/2026 (pendência #6 dos 7 bloqueantes — decisão fechada, não mais condicionante).

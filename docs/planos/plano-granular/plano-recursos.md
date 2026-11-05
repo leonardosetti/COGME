@@ -1,8 +1,8 @@
 ---
-id: plano-granular-plano-recursos
+id: docs-planos-plano-granular-plano-recursos
 title: 2.6 GERENCIAMENTO DOS RECURSOS DO PROJETO
+type: plano
 version: 1.0.0
-class: conhecimento
 status: draft
 owner: agent-project-analyst
 derived-from:

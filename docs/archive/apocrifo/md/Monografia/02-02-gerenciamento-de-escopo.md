@@ -1,9 +1,9 @@
 ---
-id: Monografia-02-02-gerenciamento-de-escopo
+id: docs-archive-apocrifo-md-monografia-02-02-gerenciamento-de-escopo
 title: 2.2 Gerenciamento de Escopo
+type: archive
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/apocrifo/md/Monografia/02-02-gerenciamento-de-escopo.md (normalizado em 2026-11-05)

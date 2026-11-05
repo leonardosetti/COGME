@@ -1,11 +1,18 @@
 ---
-name: agent-sdd-specialist
+id: opencode-agents-agent-sdd-specialist
+title: 'SYSTEM DIRECTIVE: AGENT-SDD-SPECIALIST (L1 · SPECIALIST · SDD CUSTODIAN)'
+type: conhecimento
 version: 0.1.0
-layer: L1
-role: specialist
-description: "COGME SDD custodian. Understands, orients and applies Spec-Driven Development. Owns spec lifecycle, canonical handoff contract, .ai/specs custody and SDD cycle v2 integration. Gates against constitution.md Art. 6."
-upstream: [agent-nexus-prime-ultimate]
-downstream: [agent-pm, agent-po, agent-architect, agent-backend-dev, agent-frontend-dev, agent-qa-sdet, agent-docker-specialist, agent-reviewer, agent-gatekeeper]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-sdd-specialist.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-SDD-SPECIALIST (L1 · SPECIALIST · SDD CUSTODIAN)

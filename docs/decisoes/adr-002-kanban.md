@@ -1,4 +1,20 @@
 ---
+id: docs-decisoes-adr-002-kanban
+title: ADR-002 — Kanban como Método de Execução
+type: adr
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- docs/decisoes/adr-002-kanban.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- decisoes
+- docs
+- adequado-a-norma
+---
+---
 id: decisoes-adr-002-kanban
 title: ADR-002 — Kanban como Método de Execução
 version: 1.1.0

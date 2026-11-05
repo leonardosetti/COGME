@@ -1,9 +1,9 @@
 ---
-id: plano-granular-referencias
+id: docs-planos-plano-granular-referencias
 title: REFERÊNCIAS
+type: plano
 version: '1.0'
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/planos/plano-granular/referencias.md (normalizado em 2026-11-05)

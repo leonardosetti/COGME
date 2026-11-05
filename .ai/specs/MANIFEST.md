@@ -1,4 +1,20 @@
 ---
+id: ai-specs-manifest
+title: MANIFEST — corpus `.ai/specs/` (TA-0031, HF-0031)
+type: spec
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .ai/specs/MANIFEST.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- specs
+- docs
+- adequado-a-norma
+---
+---
 id: MANIFEST
 title: MANIFEST do corpus .ai/specs/ — normalização TA-0031
 status: active

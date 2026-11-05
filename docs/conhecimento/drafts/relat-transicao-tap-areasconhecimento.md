@@ -1,9 +1,9 @@
 ---
-id: drafts-relat-transicao-tap-areasconhecimento
+id: docs-conhecimento-drafts-relat-transicao-tap-areasconhecimento
 title: RELATÓRIO DE AUDITORIA E TRANSIÇÃO DE FASE — TAP v1.1
+type: conhecimento
 version: '1.1'
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/conhecimento/drafts/relat-transicao-tap-areasconhecimento.md (normalizado em 2026-11-05)

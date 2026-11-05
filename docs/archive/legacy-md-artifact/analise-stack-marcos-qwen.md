@@ -1,8 +1,8 @@
 ---
-id: legacy-md-artifact-analise-stack-marcos-qwen
+id: docs-archive-legacy-md-artifact-analise-stack-marcos-qwen
 title: Analise_Stack_Marcos_Qwen
+type: archive
 version: 1.0.0
-class: conhecimento
 status: draft
 owner: agent-project-analyst
 derived-from:

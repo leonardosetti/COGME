@@ -1,4 +1,20 @@
 ---
+id: docs-decisoes-adr-014-sddai-promulgacao
+title: ADR-014 — Promulgação dos Agentes SDDAI e Resolução de Gaps de Compliance (Art. 4.1, 4.7, P-06) — SUPERSSEDIDA
+type: adr
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- docs/decisoes/adr-014-sddai-promulgacao.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- decisoes
+- docs
+- adequado-a-norma
+---
+---
 id: decisoes-adr-014-sddai-promulgacao
 title: ADR-014 — Promulgação dos Agentes SDDAI e Resolução de Gaps de Compliance (Art. 4.1, 4.7, P-06) — SUPERSSEDIDA
 version: 1.0.1

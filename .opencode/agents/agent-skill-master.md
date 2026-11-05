@@ -1,11 +1,18 @@
 ---
-name: agent-skill-master
+id: opencode-agents-agent-skill-master
+title: 'SYSTEM DIRECTIVE: AGENT-SKILL-MASTER (META · FORGE · SKILL CUSTODY)'
+type: conhecimento
 version: 0.1.0
-layer: META
-role: forge
-description: "COGME skill forge (META, final agent - YAGNI-last by plan). Forges OpenCode skills (.opencode/skills/<slug>/SKILL.md) only under the YAGNI gate: recurring stable workflows (>= 3 parcel recurrences) plus Human ratification. Skills never weaken agent guards; local-only, injection-screened, ledger-registered."
-upstream: [agent-nexus-prime-ultimate, agent-docker-specialist]
-downstream: []
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-skill-master.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-SKILL-MASTER (META · FORGE · SKILL CUSTODY)

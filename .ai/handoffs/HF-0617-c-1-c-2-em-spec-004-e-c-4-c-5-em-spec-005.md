@@ -1,14 +1,18 @@
 ---
-id: HF-0617
-title: "Emendas C.1+C.2 em spec-004 e C.4+C.5 em spec-005 (lacunas de conteudo)"
-task: TA-0061
-sender: agent-nexus-prime-ultimate
-agent: agent-sdd-specialist
-action: spec
-created: 2026-11-03
-kill_switch: inherited
-status: dispatched
-source: docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md (rodada 1 de specs)
+id: ai-handoffs-hf-0617-c-1-c-2-em-spec-004-e-c-4-c-5-em-spec-005
+title: Emendas C.1+C.2 em spec-004 e C.4+C.5 em spec-005 (lacunas de conteudo)
+type: handoff
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .ai/handoffs/HF-0617-c-1-c-2-em-spec-004-e-c-4-c-5-em-spec-005.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- handoffs
+- docs
+- adequado-a-norma
 ---
 
 # HF-0617 — Emendas C.1+C.2 em spec-004 e C.4+C.5 em spec-005 (lacunas de conteudo)

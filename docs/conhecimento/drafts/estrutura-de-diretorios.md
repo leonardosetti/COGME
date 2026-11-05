@@ -1,8 +1,8 @@
 ---
-id: drafts-estrutura-de-diretorios
+id: docs-conhecimento-drafts-estrutura-de-diretorios
 title: Estrutura De Diretorios
+type: conhecimento
 version: '3.0'
-class: conhecimento
 status: obsoleto
 owner: agent-project-analyst
 derived-from:

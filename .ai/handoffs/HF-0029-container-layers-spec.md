@@ -1,8 +1,18 @@
 ---
-id: HF-0029
-agent: agent-sdd-specialist
-status: done
-created: 2026-11-02
+id: ai-handoffs-hf-0029-container-layers-spec
+title: 'Handoff: SPEC de camadas de containers para a produção ortogonal do COGME'
+type: handoff
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .ai/handoffs/HF-0029-container-layers-spec.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- handoffs
+- docs
+- adequado-a-norma
 ---
 # Handoff: SPEC de camadas de containers para a produção ortogonal do COGME
 

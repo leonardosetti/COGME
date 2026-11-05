@@ -1,3 +1,19 @@
+---
+id: readme
+title: COGME — Conversor de Ganhos em Moeda Estrangeira
+type: readme
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- README.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- ''
+- docs
+- adequado-a-norma
+---
 # COGME — Conversor de Ganhos em Moeda Estrangeira
 
 [![COGME CI/CD Pipeline](https://github.com/leonardosetti/COGME/actions/workflows/ci.yml/badge.svg)](https://github.com/leonardosetti/COGME/actions/workflows/ci.yml)
@@ -167,7 +183,7 @@ A criação, promulgação, roteamento e operação de agentes são regidos pela
 
    O serviço `migrate` aplica as migrações (`alembic upgrade head`) e termina antes de `web` iniciar. A API fica em `http://127.0.0.1:8000`. As portas são publicadas só em `127.0.0.1`, e o banco não tem porta no host.
 
-   Para incluir o proxy reverso (Nginx, desativado por padrão): `docker compose --profile proxy up --build`. Ele expõe `http://127.0.0.1:8080`.
+   O proxy reverso (Nginx) sobe sempre ativo em `http://127.0.0.1:8080` com `docker compose up --build`.
 
 **Rotas (`/v1`).**
 

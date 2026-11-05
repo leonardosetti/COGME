@@ -1,9 +1,9 @@
 ---
-id: plano-granular-plano-custos
+id: docs-planos-plano-granular-plano-custos
 title: '4: CUSTOS'
+type: plano
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/planos/plano-granular/plano-custos.md (normalizado em 2026-11-05)

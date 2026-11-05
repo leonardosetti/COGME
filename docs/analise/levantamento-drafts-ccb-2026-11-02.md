@@ -1,8 +1,8 @@
 ---
-id: analise-levantamento-drafts-ccb-2026-11-02
+id: docs-analise-levantamento-drafts-ccb-2026-11-02
 title: Levantamento de artefatos draft/pending para aprovação CCB — 2026-11-02
+type: relatorio
 version: 2.1.0
-class: relatorio-levantamento
 status: draft
 owner: agent-project-analyst
 derived-from:

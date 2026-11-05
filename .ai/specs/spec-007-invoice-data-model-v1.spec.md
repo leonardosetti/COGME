@@ -1,4 +1,20 @@
 ---
+id: ai-specs-spec-007-invoice-data-model-v1-spec
+title: SPEC spec-007 — invoice-data-model-v1 — Modelo canônico de dados da invoice (GAP-04)
+type: spec
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .ai/specs/spec-007-invoice-data-model-v1.spec.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- specs
+- docs
+- adequado-a-norma
+---
+---
 spec_id: spec-007
 specname: invoice-data-model-v1
 version: 0.2.0

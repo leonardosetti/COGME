@@ -1,9 +1,9 @@
 ---
-id: decisoes-adr-017-mcp-nexus-servidores-stdio
+id: docs-decisoes-adr-017-mcp-nexus-servidores-stdio
 title: ADR-017 — Servidores MCP nexus-* (stdio, local-only)
+type: adr
 version: 1.0.0
-class: decisao-adr
-status: deprecated
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/decisoes/adr-017-mcp-nexus-servidores-stdio.md (normalizado em 2026-11-05)

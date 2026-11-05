@@ -1,9 +1,9 @@
 ---
-id: tap-sections-req-1-0
+id: docs-archive-tap-sections-req-1-0
 title: Req_1.0
+type: archive
 version: '2.0'
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/tap-sections/req-1-0.md (normalizado em 2026-11-05)

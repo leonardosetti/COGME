@@ -1,14 +1,14 @@
 ---
-id: AUD-2610-10
+id: docs-auditorias-aud-2610-10-auditoria-extraordinaria-falso-positivo-health-check
 title: Auditoria Extraordinária — Falso Positivo no Health Check de Agentes
+type: audit
 version: 1.0.0
-class: relatorio-auditoria
 status: ratificado
 owner: agent-project-analyst
 derived-from:
 - docs/auditorias/aud-2610-10-auditoria-extraordinaria-falso-positivo-health-check.md (normalizado em 2026-11-05)
 last-revised: '2026-11-05'
-lgpd-class: n/a (sem PII)
+lgpd-class: n/a
 tags:
 - auditorias
 - docs

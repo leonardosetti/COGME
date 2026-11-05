@@ -1,8 +1,18 @@
 ---
-id: HF-0403
-agent: agent-sddai-trainer
-status: ready
-created: 2026-10-31
+id: ai-handoffs-hf-0403-sddai-trainer
+title: 'Handoff: SDDAI Model Trainer — Treinamento de Modelo'
+type: handoff
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .ai/handoffs/HF-0403-sddai-trainer.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- handoffs
+- docs
+- adequado-a-norma
 ---
 # Handoff: SDDAI Model Trainer — Treinamento de Modelo
 ## Contexto

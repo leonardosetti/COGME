@@ -1,8 +1,8 @@
 ---
-id: auditorias-vio-register
+id: docs-auditorias-vio-register
 title: Registro VIO — COGME (append-only)
+type: audit
 version: 3.2.0
-class: relatorio-auditoria
 status: draft
 owner: agent-project-analyst
 derived-from:

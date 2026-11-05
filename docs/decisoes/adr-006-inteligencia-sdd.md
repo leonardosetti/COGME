@@ -1,4 +1,20 @@
 ---
+id: docs-decisoes-adr-006-inteligencia-sdd
+title: 'ADR-006 — Módulo de Inteligência SDD: Modelo Primário, Fallback e Flexibilização Cloud/FREE'
+type: adr
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- docs/decisoes/adr-006-inteligencia-sdd.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- decisoes
+- docs
+- adequado-a-norma
+---
+---
 id: decisoes-adr-006-inteligencia-sdd
 title: ADR-006 — Módulo de Inteligência SDD: Modelo Primário, Fallback e Flexibilização Cloud/FREE — HISTÓRICO (supersedida por ADR-006 v2.1.0)
 version: 2.0.0

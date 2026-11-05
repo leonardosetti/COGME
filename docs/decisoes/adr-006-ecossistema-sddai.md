@@ -1,4 +1,20 @@
 ---
+id: docs-decisoes-adr-006-ecossistema-sddai
+title: 'ADR-006 — Ecossistema SDDAI: Modelo, Agentes, MCPs e Separação L1/L2/L3'
+type: adr
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- docs/decisoes/adr-006-ecossistema-sddai.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- decisoes
+- docs
+- adequado-a-norma
+---
+---
 id: decisoes-adr-006-ecossistema-sddai
 title: ADR-006 — Ecossistema SDDAI: Modelo, Agentes, MCPs e Separação L1/L2/L3
 version: 2.1.0

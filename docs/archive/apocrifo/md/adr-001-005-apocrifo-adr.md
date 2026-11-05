@@ -1,8 +1,8 @@
 ---
-id: md-adr-001-005-apocrifo-adr
+id: docs-archive-apocrifo-md-adr-001-005-apocrifo-adr
 title: Adr 001 005 Apocrifo Adr
+type: archive
 version: 1.0.0
-class: conhecimento
 status: arquivado
 owner: agent-project-analyst
 derived-from:

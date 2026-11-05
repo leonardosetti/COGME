@@ -1,9 +1,9 @@
 ---
-id: Monografia-02-04-01-atividades
+id: docs-archive-apocrifo-md-monografia-02-04-01-atividades
 title: 2.4.1 Atividades
+type: archive
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/apocrifo/md/Monografia/02-04-01-atividades.md (normalizado em 2026-11-05)

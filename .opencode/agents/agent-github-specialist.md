@@ -1,11 +1,18 @@
 ---
-name: agent-github-specialist
+id: opencode-agents-agent-github-specialist
+title: 'SYSTEM DIRECTIVE: AGENT-GITHUB-SPECIALIST (L2 · SPECIALIST · PLATFORM ECOSYSTEM)'
+type: conhecimento
 version: 0.1.0
-layer: L2
-role: specialist
-description: "COGME GitHub ecosystem custody. Owns Projects board mirror sync, branch protection, PR/issue templates, release tag discipline and gh API usage under least-privilege tokens. Accelerates traceability; never owns merge verdicts or CI gates."
-upstream: [agent-nexus-prime-ultimate, agent-pm]
-downstream: [agent-pm, agent-devops, agent-project-auditor]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-github-specialist.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-GITHUB-SPECIALIST (L2 · SPECIALIST · PLATFORM ECOSYSTEM)

@@ -1,11 +1,18 @@
 ---
-name: agent-copyright-specialist
+id: opencode-agents-agent-copyright-specialist
+title: 'SYSTEM DIRECTIVE: AGENT-COPYRIGHT-SPECIALIST (L2 · SPECIALIST · COPYRIGHT)'
+type: conhecimento
 version: 0.1.0
-layer: L2
-role: specialist
-description: "COGME copyright custody. Authorship, derivative works, licensing of creative output, public domain vs copyleft, copyright compliance for deliverables."
-upstream: [agent-nexus-prime-ultimate, agent-compliance-governance, agent-project-analyst]
-downstream: [agent-project-auditor, agent-gatekeeper, agent-po]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-copyright-specialist.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-COPYRIGHT-SPECIALIST (L2 · SPECIALIST · COPYRIGHT)

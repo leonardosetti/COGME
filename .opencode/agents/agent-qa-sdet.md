@@ -1,11 +1,18 @@
 ---
-name: agent-qa-sdet
+id: opencode-agents-agent-qa-sdet
+title: 'SYSTEM DIRECTIVE: AGENT-QA-SDET (L2 · SPECIALIST · TEST CUSTODY)'
+type: conhecimento
 version: 0.1.0
-layer: L2
-role: specialist
-description: "COGME test custody (QA+QE+SDET consolidated). Owns test strategy per REQ, test code engineering, coverage gate (>= 80%) and contract-test derivation. Evidence-first: verdicts carry run ids, exit codes and flake status; never mutes red."
-upstream: [agent-nexus-prime-ultimate, agent-python-specialist, agent-api-specialist]
-downstream: [agent-reviewer, agent-gatekeeper, agent-project-auditor]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-qa-sdet.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-QA-SDET (L2 · SPECIALIST · TEST CUSTODY)

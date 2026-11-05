@@ -1,3 +1,19 @@
+---
+id: docs-analise-backlog-req-us-m3-m4
+title: Backlog Kanban COGME — conversão REQ → User Story (Gap E.4)
+type: relatorio
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- docs/analise/BACKLOG-REQ-US-M3-M4.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- analise
+- docs
+- adequado-a-norma
+---
 # Backlog Kanban COGME — conversão REQ → User Story (Gap E.4)
 
 **Projeto:** COGME — Conversor de Ganhos em Moeda Estrangeira  

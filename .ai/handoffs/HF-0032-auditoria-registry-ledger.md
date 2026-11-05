@@ -1,8 +1,19 @@
 ---
-id: HF-0032
-agent: agent-project-auditor
-status: ready
-created: 2026-11-02
+id: ai-handoffs-hf-0032-auditoria-registry-ledger
+title: 'Handoff: Auditoria dedicada de registry.yaml e ledger.yaml — circuito de agentes, regras de roteamento, subutilização
+  e desvio de função (TA-0032)'
+type: handoff
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .ai/handoffs/HF-0032-auditoria-registry-ledger.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- handoffs
+- docs
+- adequado-a-norma
 ---
 # Handoff: Auditoria dedicada de registry.yaml e ledger.yaml — circuito de agentes, regras de roteamento, subutilização e desvio de função (TA-0032)
 

@@ -1,9 +1,9 @@
 ---
-id: legacy-md-artifact-analise-auditoria-1-3
+id: docs-archive-legacy-md-artifact-analise-auditoria-1-3
 title: 'Ações para produção do Relatório de auditoria e análise 3.0:'
+type: archive
 version: '1.2'
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/legacy-md-artifact/analise-auditoria-1-3.md (normalizado em 2026-11-05)

@@ -1,9 +1,9 @@
 ---
-id: decisoes-adr-005-freeze
+id: docs-decisoes-adr-005-freeze
 title: ADR-005 — Regime de Freeze do TAP e Precedência Intra-TAP — HISTÓRICO (supersedida por ADR-005 v1.1.0)
+type: adr
 version: 1.0.1
-class: decisao-adr
-status: supersedida
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/decisoes/adr-005-freeze.md (normalizado em 2026-11-05)
@@ -16,15 +16,6 @@ tags:
 - self-updated
 - supersedida
 - historico
-data-decisao: '21/09/2026'
-data-formalizacao: '28/10/2026'
-decisor: GP Leonardo (CCB único — TAP v3 §1.c, Premissa P7)
-gatilhos: G1, G3, G4
-rastreabilidade: TAP §6 (precedência intra-TAP) + §3/§9 P9; EAP N9.1; REQ-12; NC-00 (Plano de Cronograma §3.8)
-dominio-pmbok: Trabalho do Projeto + Incerteza
-processo-pmbok-6: 4.6
-superseded-by: decisoes-adr-005-regime-tap
-kill-switch: screened
 ---
 # ADR-005 — Regime de Freeze do TAP e Precedência Intra-TAP
 

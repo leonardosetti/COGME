@@ -1,11 +1,18 @@
 ---
-name: agent-artifact-builder
+id: opencode-agents-agent-artifact-builder
+title: 'SYSTEM DIRECTIVE: AGENT-ARTIFACT-BUILDER (L2 · SPECIALIST · SCAFFOLD CUSTODY)'
+type: conhecimento
 version: 0.1.0
-layer: L2
-role: specialist
-description: "COGME scaffold custody. Owns gold templates (service/router/template/test/script skeletons) aligned with every custody agent's contract. Deterministic expansion, license hygiene, executable examples; scaffolds never mutate existing code and never ship fake features."
-upstream: [agent-nexus-prime-ultimate, agent-python-specialist, agent-bash-specialist]
-downstream: [agent-backend-dev, agent-frontend-dev, agent-docker-specialist]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-artifact-builder.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-ARTIFACT-BUILDER (L2 · SPECIALIST · SCAFFOLD CUSTODY)

@@ -1,8 +1,8 @@
 ---
-id: licoes-aprendidas-mf1-licoes
+id: docs-conhecimento-licoes-aprendidas-mf1-licoes
 title: Mf1 Licoes
+type: conhecimento
 version: '3.0'
-class: conhecimento
 status: arquivado
 owner: agent-project-analyst
 derived-from:

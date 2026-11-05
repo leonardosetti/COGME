@@ -1,4 +1,20 @@
 ---
+id: docs-decisoes-adr-016-backend-mvp
+title: 'ADR-016 — Backend do MVP: cálculo, cotações, persistência e contrato de erro'
+type: adr
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- docs/decisoes/adr-016-backend-mvp.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- decisoes
+- docs
+- adequado-a-norma
+---
+---
 id: decisoes-adr-016-backend-mvp
 title: ADR-016 — Backend do MVP: cálculo, cotações, persistência e contrato de erro
 version: 1.2.0

@@ -1,9 +1,9 @@
 ---
-id: Monografia-02-02-01-levantamento-de-requisitos
+id: docs-archive-apocrifo-md-monografia-02-02-01-levantamento-de-requisitos
 title: 2.2.1 Levantamento de requisitos
+type: archive
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/apocrifo/md/Monografia/02-02-01-levantamento-de-requisitos.md (normalizado em 2026-11-05)

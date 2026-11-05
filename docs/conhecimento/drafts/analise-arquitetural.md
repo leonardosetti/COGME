@@ -1,9 +1,9 @@
 ---
-id: drafts-analise-arquitetural
+id: docs-conhecimento-drafts-analise-arquitetural
 title: RELATÓRIO DE AUDITORIA ANALÍTICA v2.0 — CONSOLIDAÇÃO ARQUITETURAL DEFINITIVA DO COGME
+type: conhecimento
 version: '2.0'
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/conhecimento/drafts/analise-arquitetural.md (normalizado em 2026-11-05)

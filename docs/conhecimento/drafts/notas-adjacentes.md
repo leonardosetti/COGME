@@ -1,8 +1,8 @@
 ---
-id: drafts-notas-adjacentes
+id: docs-conhecimento-drafts-notas-adjacentes
 title: Notas Adjacentes — Projeto COGME
+type: conhecimento
 version: '2.2'
-class: conhecimento
 status: obsoleto
 owner: agent-project-analyst
 derived-from:

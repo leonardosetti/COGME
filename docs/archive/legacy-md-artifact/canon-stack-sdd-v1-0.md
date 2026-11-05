@@ -1,8 +1,8 @@
 ---
-id: legacy-md-artifact-canon-stack-sdd-v1-0
+id: docs-archive-legacy-md-artifact-canon-stack-sdd-v1-0
 title: 'Relatório Canônico: Stack SDD Local — Arquitetura Convergente'
+type: archive
 version: 1.0.0
-class: conhecimento
 status: draft
 owner: agent-project-analyst
 derived-from:

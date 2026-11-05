@@ -1,8 +1,8 @@
 ---
-id: plano-granular-plano-comunicacoes
+id: docs-planos-plano-granular-plano-comunicacoes
 title: 2.7 GERENCIAMENTO DAS COMUNICAÇÕES DO PROJETO
+type: plano
 version: 1.0.0
-class: conhecimento
 status: draft
 owner: agent-project-analyst
 derived-from:

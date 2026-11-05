@@ -1,9 +1,9 @@
 ---
-id: compliance-report-cigme-pipeline
+id: docs-compliance-report-cigme-pipeline
 title: Report Cigme Pipeline
+type: governanca
 version: 1.0.0
-class: relatorio-compliance
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/compliance/report-cigme-pipeline.md (normalizado em 2026-11-05)

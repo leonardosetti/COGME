@@ -1,8 +1,8 @@
 ---
-id: drafts-second-brain-sddai
+id: docs-conhecimento-drafts-second-brain-sddai
 title: DOCUMENTO CANÔNICO DEFINITIVO — v3.0.0
+type: conhecimento
 version: 3.0.0
-class: conhecimento
 status: obsoleto
 owner: agent-project-analyst
 derived-from:

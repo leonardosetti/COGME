@@ -1,8 +1,8 @@
 ---
-id: plano-consolidacao-estrutural
+id: docs-planos-plano-granular-plano-consolidacao-estrutural
 title: Plano de Consolidação Estrutural (Desbloat) — COGME
+type: plano
 version: 0.1.0
-class: conhecimento
 status: draft
 owner: agent-nexus-prime-ultimate (custódio de roteamento)
 derived-from:

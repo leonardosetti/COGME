@@ -1,9 +1,9 @@
 ---
-id: drafts-support-research
+id: docs-conhecimento-drafts-support-research
 title: Questões adjacentes ao projeto
+type: conhecimento
 version: '2.2'
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/conhecimento/drafts/support-research.md (normalizado em 2026-11-05)

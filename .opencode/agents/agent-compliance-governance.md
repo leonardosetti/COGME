@@ -1,11 +1,18 @@
 ---
-name: agent-compliance-governance
+id: opencode-agents-agent-compliance-governance
+title: 'SYSTEM DIRECTIVE: AGENT-COMPLIANCE-GOVERNANCE (L2 · SPECIALIST · LEGAL)'
+type: conhecimento
 version: 0.1.0
-layer: L2
-role: specialist
-description: "COGME compliance custody. Owns LGPD (primary) + Marco Civil alignment, FOSS license whitelist (L-01 auditor absorbed by consolidation), Bypass pillar verification and Constitution drift audits. Legal truth precedes feature truth; Human remains sole authority (Art. 5.1)."
-upstream: [agent-nexus-prime-ultimate, agent-digital-security]
-downstream: [agent-project-auditor, agent-gatekeeper, agent-po]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-compliance-governance.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-COMPLIANCE-GOVERNANCE (L2 · SPECIALIST · LEGAL)

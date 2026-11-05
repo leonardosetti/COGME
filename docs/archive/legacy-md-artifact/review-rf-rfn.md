@@ -1,8 +1,8 @@
 ---
-id: legacy-md-artifact-review-rf-rfn
+id: docs-archive-legacy-md-artifact-review-rf-rfn
 title: Review_Rf_Rfn
+type: archive
 version: 1.0.0
-class: conhecimento
 status: draft
 owner: agent-project-analyst
 derived-from:

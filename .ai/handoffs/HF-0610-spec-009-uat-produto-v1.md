@@ -1,14 +1,18 @@
 ---
-id: HF-0610
-title: "Emissao spec-009-uat-produto-v1 (B.5/REQ-09) — insumo TA-0047"
-task: TA-0054
-sender: agent-nexus-prime-ultimate
-agent: agent-sdd-specialist
-action: spec
-created: 2026-11-03
-kill_switch: inherited
-status: dispatched
-source: docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md (rodada 1 de specs)
+id: ai-handoffs-hf-0610-spec-009-uat-produto-v1
+title: Emissao spec-009-uat-produto-v1 (B.5/REQ-09) — insumo TA-0047
+type: handoff
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .ai/handoffs/HF-0610-spec-009-uat-produto-v1.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- handoffs
+- docs
+- adequado-a-norma
 ---
 
 # HF-0610 — Emissao spec-009-uat-produto-v1 (B.5/REQ-09) — insumo TA-0047

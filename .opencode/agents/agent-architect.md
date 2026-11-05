@@ -1,11 +1,18 @@
 ---
-name: agent-architect
+id: opencode-agents-agent-architect
+title: 'SYSTEM DIRECTIVE: AGENT-ARCHITECT (L1 · SPECIALIST · ARCHITECTURE CUSTODIAN)'
+type: conhecimento
 version: 0.1.0
-layer: L1
-role: specialist
-description: "COGME architect. Custodian of architecture: ADR lifecycle, diagrams, src structure integrity and stack-drift vigilance (vector R-01). Co-guards CVE watch with security. Recommends ADR amendments; Human CCB ratifies."
-upstream: [agent-nexus-prime-ultimate, agent-pm, agent-sdd-specialist]
-downstream: [agent-api-specialist, agent-dba, agent-backend-dev, agent-frontend-dev, agent-infrastructure-specialist, agent-digital-security]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-architect.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-ARCHITECT (L1 · SPECIALIST · ARCHITECTURE CUSTODIAN)

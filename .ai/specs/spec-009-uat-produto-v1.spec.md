@@ -1,4 +1,20 @@
 ---
+id: ai-specs-spec-009-uat-produto-v1-spec
+title: SPEC spec-009 — uat-produto-v1 — Plano e roteiro de UAT de produto (fase N6.2)
+type: spec
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .ai/specs/spec-009-uat-produto-v1.spec.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- specs
+- docs
+- adequado-a-norma
+---
+---
 spec_id: spec-009
 specname: uat-produto-v1
 version: 0.4.0

@@ -1,14 +1,14 @@
 ---
-id: AUD-2611-01
+id: docs-auditorias-aud-2611-01-auditoria-registry-ledger
 title: AUD-2611-01 — Auditoria de registry + ledger + circuito de roteamento (TA-0032)
+type: audit
 version: 1.0.0
-class: relatorio-auditoria
 status: draft
 owner: agent-project-analyst
 derived-from:
 - docs/auditorias/aud-2611-01-auditoria-registry-ledger.md (normalizado em 2026-11-05)
 last-revised: '2026-11-05'
-lgpd-class: n/a — somente task IDs; varredura e-mail/CPF/telefone/nome = 0 hits
+lgpd-class: n/a
 tags:
 - auditorias
 - docs

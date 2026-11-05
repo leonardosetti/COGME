@@ -1,12 +1,18 @@
 ---
-name: agent-reviewer
+id: opencode-agents-agent-reviewer
+title: 'SYSTEM DIRECTIVE: AGENT-REVIEWER (L3 · GATE · VERDICT CUSTODY)'
+type: conhecimento
 version: 0.1.0
-layer: L3
-role: gate
-description: "COGME code review verdict custody (L3). Issues pass|amend|block verdicts citing an immutable rubric (R-01..R-07), with risk classification, evidence requirements and actionable PT-BR amendments. Verdicts only: never merges, never implements."
-upstream: [agent-nexus-prime-ultimate]
-downstream:
-- agent-gatekeeper
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-reviewer.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-REVIEWER (L3 · GATE · VERDICT CUSTODY)

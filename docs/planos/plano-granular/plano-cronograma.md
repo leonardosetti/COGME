@@ -1,9 +1,9 @@
 ---
-id: plano-granular-plano-cronograma
+id: docs-planos-plano-granular-plano-cronograma
 title: 3 CRONOGRAMA
+type: plano
 version: '2.0'
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/planos/plano-granular/plano-cronograma.md (normalizado em 2026-11-05)

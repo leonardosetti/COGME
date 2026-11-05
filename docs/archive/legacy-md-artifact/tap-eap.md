@@ -1,9 +1,9 @@
 ---
-id: legacy-md-artifact-tap-eap
+id: docs-archive-legacy-md-artifact-tap-eap
 title: SEÇÃO 5 — ESTRUTURA ANALÍTICA DO PROJETO (EAP/WBS)
+type: archive
 version: '0.9'
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/legacy-md-artifact/tap-eap.md (normalizado em 2026-11-05)

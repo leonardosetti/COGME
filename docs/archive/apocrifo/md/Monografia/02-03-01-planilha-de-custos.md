@@ -1,9 +1,9 @@
 ---
-id: Monografia-02-03-01-planilha-de-custos
+id: docs-archive-apocrifo-md-monografia-02-03-01-planilha-de-custos
 title: 2.3.1 Planilha de Custos (em tabela)
+type: archive
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/apocrifo/md/Monografia/02-03-01-planilha-de-custos.md (normalizado em 2026-11-05)

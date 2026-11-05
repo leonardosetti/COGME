@@ -1,9 +1,9 @@
 ---
-id: plano-granular-desenvolvimento
+id: docs-planos-plano-granular-desenvolvimento
 title: 3 DESENVOLVIMENTO
+type: plano
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/planos/plano-granular/desenvolvimento.md (normalizado em 2026-11-05)

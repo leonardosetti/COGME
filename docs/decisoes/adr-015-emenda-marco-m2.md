@@ -1,4 +1,20 @@
 ---
+id: docs-decisoes-adr-015-emenda-marco-m2
+title: 'ADR-015 — Emenda de Marco: Repactuação Temporal do M2 (Regime ADR-013-a)'
+type: adr
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- docs/decisoes/adr-015-emenda-marco-m2.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- decisoes
+- docs
+- adequado-a-norma
+---
+---
 id: decisoes-adr-015-emenda-marco-m2
 title: ADR-015 — Emenda de Marco: Repactuação Temporal do M2 (Regime ADR-013-a)
 version: 1.0.0

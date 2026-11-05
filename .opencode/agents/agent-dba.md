@@ -1,11 +1,18 @@
 ---
-name: agent-dba
+id: opencode-agents-agent-dba
+title: 'SYSTEM DIRECTIVE: AGENT-DBA (L2 · SPECIALIST · DATA CUSTODY)'
+type: conhecimento
 version: 0.1.0
-layer: L2
-role: specialist
-description: "COGME SQLite custody. Owns schema DDL, migrations, indices, integrity checks, cache quota for FX rate cache, backups and LGPD retention. Data layer reconciles after contract, never before."
-upstream: [agent-nexus-prime-ultimate, agent-api-specialist, agent-architect]
-downstream: [agent-backend-dev, agent-qa-sdet, agent-digital-security]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-dba.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-DBA (L2 · SPECIALIST · DATA CUSTODY)

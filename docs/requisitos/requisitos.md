@@ -1,9 +1,9 @@
 ---
-id: requisitos-requisitos
+id: docs-requisitos-requisitos
 title: Requisitos
+type: requisito
 version: 1.0.0
-class: requisito
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/requisitos/requisitos.md (normalizado em 2026-11-05)

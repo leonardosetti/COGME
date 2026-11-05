@@ -1,11 +1,18 @@
 ---
-name: agent-six-sigma-specialist
+id: opencode-agents-agent-six-sigma-specialist
+title: 'SYSTEM DIRECTIVE: AGENT-SIX-SIGMA-SPECIALIST (L2 · SPECIALIST · SIX SIGMA)'
+type: conhecimento
 version: 0.1.0
-layer: L2
-role: specialist
-description: "COGME Six Sigma custody. DMAIC/DMADV methodology, process variation reduction, defect prevention, and quality improvement."
-upstream: [agent-nexus-prime-ultimate, agent-quality-architect-specialist, agent-project-analyst]
-downstream: [agent-project-auditor, agent-gatekeeper, agent-pm]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-six-sigma-specialist.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-SIX-SIGMA-SPECIALIST (L2 · SPECIALIST · SIX SIGMA)

@@ -1,9 +1,9 @@
 ---
-id: drafts-glossario
+id: docs-conhecimento-drafts-glossario
 title: GLOSSÁRIO DO PROJETO COGME v2.1
+type: conhecimento
 version: '2.1'
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/conhecimento/drafts/glossario.md (normalizado em 2026-11-05)

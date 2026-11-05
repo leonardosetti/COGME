@@ -1,9 +1,9 @@
 ---
-id: Monografia-02-04-03-rede-de-projeto
+id: docs-archive-apocrifo-md-monografia-02-04-03-rede-de-projeto
 title: 2.4.3 Rede de projeto
+type: archive
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/apocrifo/md/Monografia/02-04-03-rede-de-projeto.md (normalizado em 2026-11-05)

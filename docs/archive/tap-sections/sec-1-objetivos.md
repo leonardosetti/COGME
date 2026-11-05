@@ -1,9 +1,9 @@
 ---
-id: tap-sections-sec-1-objetivos
+id: docs-archive-tap-sections-sec-1-objetivos
 title: Sec_1_Objetivos
+type: archive
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/tap-sections/sec-1-objetivos.md (normalizado em 2026-11-05)

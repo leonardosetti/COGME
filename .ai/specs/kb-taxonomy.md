@@ -1,22 +1,22 @@
 ---
-id: KB-TAX-001
+id: ai-specs-kb-taxonomy
 title: Taxonomia unificada da base de conhecimento COGME (SSOT particionado ortogonal)
+type: spec
 version: 1.1.0
-class: spec
-status: ratified
+status: ativo
 owner: agent-sdd-specialist
 derived-from:
-  - TA-0007 (analyst), TA-0008 (pm), TA-0009 (architect), TA-0010 (auditor AUD-2610-01) via .ai/agents/ledger.yaml
-  - constitution.md Art. 2, Art. 4.6, Art. 6.1, Art. 9, principios P-04/P-05/P-08
-  - docs/decisoes/ADR-004-tasklists.md
-  - docs/decisoes/ADR-005-freeze.md (escopo congelado Arts. 1.2-1.3)
-  - .opencode/agents/agent-sdd-specialist.md (custodia .ai/specs)
-last-revised: 2026-10-23
+- TA-0007 (analyst), TA-0008 (pm), TA-0009 (architect), TA-0010 (auditor AUD-2610-01) via .ai/agents/ledger.yaml
+- constitution.md Art. 2, Art. 4.6, Art. 6.1, Art. 9, principios P-04/P-05/P-08
+- docs/decisoes/ADR-004-tasklists.md
+- docs/decisoes/ADR-005-freeze.md (escopo congelado Arts. 1.2-1.3)
+- .opencode/agents/agent-sdd-specialist.md (custodia .ai/specs)
+last-revised: '2026-10-23'
 lgpd-class: n/a
-caveats:
-  - "Ratificada por CCB do Humano 23/10/2026 — aplicada e ratificada na prática pelos itens C1–C5 (ledger TA-0013; dedupe OKB v4.0.0 executado por TA-0017/HF-0017); caveats anteriores de pendência CCB dedupe/docx foram superados parcialmente: dedupe OKB EXECUTADO, mescla docx v1.0/v1.1 do Plano-de-Projeto permanece PENDENTE de decisão humana"
-  - "UNKNOWN-GAP: handoffs HF-* desta onda ainda nao numerados por completo; back-links pendentes pelo primeiro dispatch downstream"
-  - "UNKNOWN-GAP: merge dos demais drafts de docs/conhecimento/drafts/ (22 arquivos remanescentes) em okb/glossario pendente de execução downstream (KB-TAX-001 Seção 3)"
+tags:
+- specs
+- docs
+- adequado-a-norma
 ---
 
 # 1. METADADOS DE VERSIONAMENTO (frontmatter YAML obrigatorio)

@@ -1,21 +1,21 @@
 ---
-id: spec-adr-template
+id: ai-specs-spec-adr-template-spec
 title: Template Canônico de ADR — COGME
+type: spec
 version: 1.0.0
-class: spec
 status: draft
 owner: agent-project-analyst
 derived-from:
-  - docs/decisoes/adr-018-nomeclatura-arquivos.md
-  - docs/conhecimento/compliance/auditoria-normalizacao-artefatos.md
-  - docs/conhecimento/okb.md §8.3
+- docs/decisoes/adr-018-nomeclatura-arquivos.md
+- docs/conhecimento/compliance/auditoria-normalizacao-artefatos.md
+- docs/conhecimento/okb.md §8.3
 last-revised: '2026-11-05'
 lgpd-class: n/a
 tags:
-  - spec
-  - adr
-  - template
-  - norma
+- spec
+- adr
+- template
+- norma
 ---
 
 # Template Canônico de ADR — COGME

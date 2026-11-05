@@ -1,9 +1,9 @@
 ---
-id: Monografia-02-06-02-matriz-de-responsabilidade
+id: docs-archive-apocrifo-md-monografia-02-06-02-matriz-de-responsabilidade
 title: 2.6.2 Matriz de responsabilidade
+type: archive
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/apocrifo/md/Monografia/02-06-02-matriz-de-responsabilidade.md (normalizado em 2026-11-05)

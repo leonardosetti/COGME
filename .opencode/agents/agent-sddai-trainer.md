@@ -1,11 +1,18 @@
 ---
-name: agent-sddai-trainer
+id: opencode-agents-agent-sddai-trainer
+title: 'SYSTEM DIRECTIVE: AGENT-SDDAI-TRAINER (L2 · SPECIALIST · SDDAI MODEL TRAINER)'
+type: conhecimento
 version: 1.0.0
-layer: L2
-role: specialist
-description: "COGME SDDAI model trainer specialist. Custom from zero, stdlib-only. Trains deterministic model on engineered features, returns model_id, final_loss, accuracy, artifact checksum. Zero external deps."
-upstream: [agent-nexus-prime-ultimate, agent-sddai-engineer]
-downstream: []
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-sddai-trainer.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-SDDAI-TRAINER (L2 · SPECIALIST · SDDAI MODEL TRAINER)

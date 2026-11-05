@@ -1,8 +1,18 @@
 ---
-id: HF-0400
-agent: agent-sddai-loader
-status: ready
-created: 2026-10-31
+id: ai-handoffs-hf-0400-sddai-loader
+title: 'Handoff: SDDAI Data Loader — Ingestão de Dados'
+type: handoff
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .ai/handoffs/HF-0400-sddai-loader.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- handoffs
+- docs
+- adequado-a-norma
 ---
 # Handoff: SDDAI Data Loader — Ingestão de Dados
 ## Contexto

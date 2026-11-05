@@ -1,14 +1,14 @@
 ---
-id: AUD-2610-09
+id: docs-auditorias-aud-2610-09-auditoria-extraordinaria-falso-positivo-cicd
 title: Auditoria Extraordinária — Falso Positivo CI/CD e Security Scan
+type: audit
 version: 1.0.0
-class: relatorio-auditoria
 status: ratificado
 owner: agent-project-analyst
 derived-from:
 - docs/auditorias/aud-2610-09-auditoria-extraordinaria-falso-positivo-cicd.md (normalizado em 2026-11-05)
 last-revised: '2026-11-05'
-lgpd-class: n/a (sem PII)
+lgpd-class: n/a
 tags:
 - auditorias
 - docs

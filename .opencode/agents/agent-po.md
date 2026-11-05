@@ -1,11 +1,18 @@
 ---
-name: agent-po
+id: opencode-agents-agent-po
+title: 'SYSTEM DIRECTIVE: AGENT-PO (L1 · SPECIALIST · BACKLOG STEWARD)'
+type: conhecimento
 version: 0.1.0
-layer: L1
-role: specialist
-description: "COGME PO steward. Owns backlog hygiene in GitHub Projects SSOT, DoR/DoD checkboxes, WIP cap enforcement and slice sizing. Translates PMBOK scope into Kanban flow. Recommends; Human decises (constitution Art. 5)."
-upstream: [agent-nexus-prime-ultimate, agent-pm]
-downstream: [agent-backend-dev, agent-frontend-dev, agent-qa-sdet, agent-gatekeeper, ]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-po.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-PO (L1 · SPECIALIST · BACKLOG STEWARD)

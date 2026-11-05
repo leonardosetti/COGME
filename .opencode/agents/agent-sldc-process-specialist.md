@@ -1,11 +1,18 @@
 ---
-name: agent-sldc-process-specialist
+id: opencode-agents-agent-sldc-process-specialist
+title: 'SYSTEM DIRECTIVE: AGENT-SLDC-PROCESS-SPECIALIST (L2 · SPECIALIST · SDLC)'
+type: conhecimento
 version: 0.1.0
-layer: L2
-role: specialist
-description: "COGME SDLC process custody. Software development lifecycle phases, gates, entry/exit criteria, process compliance, and improvement."
-upstream: [agent-nexus-prime-ultimate, agent-sdd-specialist, agent-pm]
-downstream: [agent-backend-dev, agent-frontend-dev, agent-qa-sdet, agent-devops, agent-project-auditor]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-sldc-process-specialist.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-SLDC-PROCESS-SPECIALIST (L2 · SPECIALIST · SDLC)

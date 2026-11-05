@@ -1,9 +1,9 @@
 ---
-id: drafts-reestrutura-eap
+id: docs-conhecimento-drafts-reestrutura-eap
 title: SEÇÃO §4 — ESTRUTURA ANALÍTICA DO PROJETO (EAP/WBS) v1.0
+type: conhecimento
 version: '1.0'
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/conhecimento/drafts/reestrutura-eap.md (normalizado em 2026-11-05)

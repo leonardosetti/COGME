@@ -1,3 +1,19 @@
+---
+id: ai-handoffs-hf-relatorio-analise-constituicao
+title: RELATORIO ANALITICO — Constituição COGME vs Estrutura de Requisitos e Especificacoes
+type: handoff
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .ai/handoffs/HF-RELATORIO-ANALISE-CONSTITUICAO.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- handoffs
+- docs
+- adequado-a-norma
+---
 # RELATORIO ANALITICO — Constituição COGME vs Estrutura de Requisitos e Especificacoes
 
 **Origem:** TA-0022 | **Solicitante:** Humano (GP/CCB) | **Executor:** agent-nexus-prime-ultimate (L0)

@@ -1,4 +1,20 @@
 ---
+id: ai-specs-requisitos
+title: REQ-SPEC-001 — Requisitos COGME — SSOT RF/RNF da camada 5
+type: spec
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .ai/specs/requisitos.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- specs
+- docs
+- adequado-a-norma
+---
+---
 id: REQ-SPEC-001
 title: "Requisitos COGME — SSOT RF/RNF da camada 5"
 status: draft

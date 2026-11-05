@@ -1,9 +1,9 @@
 ---
-id: drafts-refac-prompt
+id: docs-conhecimento-drafts-refac-prompt
 title: Considerre aglutinar as seguintes informações
+type: conhecimento
 version: '1.0'
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/conhecimento/drafts/refac-prompt.md (normalizado em 2026-11-05)

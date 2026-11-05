@@ -1,4 +1,20 @@
 ---
+id: docs-decisoes-adr-005-regime-tap
+title: 'ADR-005 — Regime do TAP: Freeze e Emenda Controlada (Baseline Vivo)'
+type: adr
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- docs/decisoes/adr-005-regime-tap.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- decisoes
+- docs
+- adequado-a-norma
+---
+---
 id: decisoes-adr-005-regime-tap
 title: ADR-005 — Regime do TAP: Freeze e Emenda Controlada (Baseline Vivo)
 version: 1.1.0

@@ -1,9 +1,9 @@
 ---
-id: tap-sections-sec-6-marcos
+id: docs-archive-tap-sections-sec-6-marcos
 title: Sec_6_Marcos
+type: archive
 version: '2.0'
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/tap-sections/sec-6-marcos.md (normalizado em 2026-11-05)

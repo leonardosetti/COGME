@@ -1,9 +1,9 @@
 ---
-id: tap-tap
+id: docs-tap-tap
 title: TAP COGME — Termo de Abertura do Projeto (linha de base v3, congelada)
+type: spec
 version: 1.0.0
-class: termo-abertura
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/planos/plano-granular/plano-integral-tap-1-2-3-4-5.md (fonte canônica integral do TAP v3)

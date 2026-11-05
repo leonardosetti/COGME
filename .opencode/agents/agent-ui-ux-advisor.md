@@ -1,11 +1,18 @@
 ---
-name: agent-ui-ux-advisor
+id: opencode-agents-agent-ui-ux-advisor
+title: 'SYSTEM DIRECTIVE: AGENT-UI-UX-ADVISOR (L2 · SPECIALIST · ADVISORY)'
+type: conhecimento
 version: 0.1.0
-layer: L2
-role: specialist
-description: "COGME UI/UX advisory. Owns flows, copy, wireframes (HTML mockups/mermaid) and accessibility baseline for the currency-sim and invoice flows prior to implementation. Advisory only, no code merges."
-upstream: [agent-nexus-prime-ultimate, agent-pm, agent-api-specialist]
-downstream: [agent-frontend-dev, agent-qa-sdet, agent-reviewer]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-ui-ux-advisor.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-UI-UX-ADVISOR (L2 · SPECIALIST · ADVISORY)

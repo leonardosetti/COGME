@@ -1,9 +1,9 @@
 ---
-id: Monografia-02-05-gerenciamento-de-qualidade
+id: docs-archive-apocrifo-md-monografia-02-05-gerenciamento-de-qualidade
 title: 2.5 Gerenciamento de Qualidade
+type: archive
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/apocrifo/md/Monografia/02-05-gerenciamento-de-qualidade.md (normalizado em 2026-11-05)

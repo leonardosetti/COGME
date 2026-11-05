@@ -1,8 +1,8 @@
 ---
-id: analise-relatorio-memoria-persistente-sddai
+id: docs-analise-relatorio-memoria-persistente-sddai
 title: Relatório Analítico — Performance da Memória Persistente (SDDAI)
+type: relatorio
 version: 3.1.0
-class: relatorio-levantamento
 status: ratificado
 owner: agent-project-analyst
 derived-from:

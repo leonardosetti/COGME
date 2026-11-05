@@ -1,9 +1,9 @@
 ---
-id: plano-granular-plano-integracao
+id: docs-planos-plano-granular-plano-integracao
 title: 1 INTEGRAÇÃO
+type: plano
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/planos/plano-granular/plano-integracao.md (normalizado em 2026-11-05)

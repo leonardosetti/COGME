@@ -1,3 +1,19 @@
+---
+id: planning-graphs-graph-report
+title: Graph Report - COGME  (2026-11-05)
+type: conhecimento
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .planning/graphs/GRAPH_REPORT.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- graphs
+- docs
+- adequado-a-norma
+---
 # Graph Report - COGME  (2026-11-05)
 
 ## Corpus Check

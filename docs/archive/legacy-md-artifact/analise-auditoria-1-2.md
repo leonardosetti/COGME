@@ -1,8 +1,8 @@
 ---
-id: legacy-md-artifact-analise-auditoria-1-2
+id: docs-archive-legacy-md-artifact-analise-auditoria-1-2
 title: RELATÓRIO ANALÍTICO v1.1 — CONSOLIDAÇÃO PÓS-REVISÃO DO COGME
+type: archive
 version: '1.1'
-class: conhecimento
 status: draft
 owner: agent-project-analyst
 derived-from:

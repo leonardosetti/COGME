@@ -1,8 +1,8 @@
 ---
-id: legacy-md-artifact-analise
+id: docs-archive-legacy-md-artifact-analise
 title: Analise
+type: archive
 version: 1.0.0
-class: conhecimento
 status: draft
 owner: agent-project-analyst
 derived-from:

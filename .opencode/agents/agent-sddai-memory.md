@@ -1,11 +1,18 @@
 ---
-name: agent-sddai-memory
+id: opencode-agents-agent-sddai-memory
+title: 'SYSTEM DIRECTIVE: AGENT-SDDAI-MEMORY (L2 · SPECIALIST · SDDAI MEMORY OPTIMIZER)'
+type: conhecimento
 version: 1.0.0
-layer: L2
-role: specialist
-description: "COGME SDDAI memory optimizer specialist. Custom from zero, stdlib-only. Monitors system memory via /proc/meminfo, applies gc collection, recommends allocation. Zero external deps."
-upstream: [agent-nexus-prime-ultimate, agent-sddai-loader]
-downstream: [agent-sddai-engineer]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-sddai-memory.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-SDDAI-MEMORY (L2 · SPECIALIST · SDDAI MEMORY OPTIMIZER)

@@ -1,9 +1,9 @@
 ---
-id: Monografia-02-08-03-quadro-de-riscos
+id: docs-archive-apocrifo-md-monografia-02-08-03-quadro-de-riscos
 title: 2.8.3 Quadro de Riscos
+type: archive
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/apocrifo/md/Monografia/02-08-03-quadro-de-riscos.md (normalizado em 2026-11-05)

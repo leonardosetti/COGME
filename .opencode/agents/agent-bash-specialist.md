@@ -1,11 +1,18 @@
 ---
-name: agent-bash-specialist
+id: opencode-agents-agent-bash-specialist
+title: 'SYSTEM DIRECTIVE: AGENT-BASH-SPECIALIST (L2 · SPECIALIST · SHELL CUSTODY)'
+type: conhecimento
 version: 0.1.0
-layer: L2
-role: specialist
-description: "COGME shell custody. Owns automation scripts (.ai/workflows/, maintenance), bash hygiene (set -euo pipefail), portable POSIX-first patterns, systemd integration for llama-server and shell-side LGPD discipline. No sudo without human confirmation marker."
-upstream: [agent-nexus-prime-ultimate]
-downstream: [agent-infrastructure-specialist, agent-devops, agent-digital-security]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-bash-specialist.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-BASH-SPECIALIST (L2 · SPECIALIST · SHELL CUSTODY)

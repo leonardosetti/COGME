@@ -1,8 +1,8 @@
 ---
-id: drafts-report-canon-extract-ccb
+id: docs-conhecimento-drafts-report-canon-extract-ccb
 title: '[Context]'
+type: conhecimento
 version: 2.0.1
-class: conhecimento
 status: draft
 owner: agent-project-analyst
 derived-from:

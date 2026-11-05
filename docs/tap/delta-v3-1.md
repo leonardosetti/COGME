@@ -1,9 +1,9 @@
 ---
-id: tap-delta-v3-1
+id: docs-tap-delta-v3-1
 title: TAP v3.1 — Delta Log (Regime de Emenda Controlada ADR-013-a)
+type: spec
 version: '3.1'
-class: termo-abertura
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/tap/delta-v3-1.md (normalizado em 2026-11-05)

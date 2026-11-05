@@ -1,12 +1,18 @@
 ---
-name: agent-clean-code-evaluator
+id: opencode-agents-agent-clean-code-evaluator
+title: 'SYSTEM DIRECTIVE: AGENT-CLEAN-CODE-EVALUATOR (L3 · GATE · CLEAN CODE)'
+type: conhecimento
 version: 0.1.0
-layer: L3
-role: gate
-description: "COGME clean code evaluator (L3 gate). Evaluates source code against clean code principles: readability, simplicity, naming, functions, comments, formatting, and defect prevention."
-upstream: [agent-nexus-prime-ultimate, agent-python-specialist, agent-backend-dev, agent-frontend-dev]
-downstream:
-- agent-project-auditor
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-clean-code-evaluator.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-CLEAN-CODE-EVALUATOR (L3 · GATE · CLEAN CODE)

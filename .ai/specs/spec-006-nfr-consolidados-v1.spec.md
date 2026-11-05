@@ -1,4 +1,20 @@
 ---
+id: ai-specs-spec-006-nfr-consolidados-v1-spec
+title: SPEC spec-006 — nfr-consolidados-v1 — Requisitos Não Funcionais consolidados (registro canônico da fase N2.2 da EAP)
+type: spec
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .ai/specs/spec-006-nfr-consolidados-v1.spec.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- specs
+- docs
+- adequado-a-norma
+---
+---
 spec_id: spec-006
 specname: nfr-consolidados-v1
 version: 0.2.0

@@ -1,8 +1,8 @@
 ---
-id: drafts-redacao-m1-consolidada-0-2
+id: docs-conhecimento-drafts-redacao-m1-consolidada-0-2
 title: REDAÇÃO M1 — CONSOLIDADA v0.2
+type: conhecimento
 version: '0.2'
-class: conhecimento
 status: obsoleto
 owner: agent-project-analyst
 derived-from:

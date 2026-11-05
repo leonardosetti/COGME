@@ -1,8 +1,8 @@
 ---
-id: legacy-md-artifact-log-resumo-projeto
+id: docs-archive-legacy-md-artifact-log-resumo-projeto
 title: Log_Resumo_Projeto
+type: archive
 version: '2.2'
-class: conhecimento
 status: draft
 owner: agent-project-analyst
 derived-from:

@@ -1,4 +1,21 @@
 ---
+id: ai-specs-spec-013-documentacao-tecnica-v1-spec
+title: 'SPEC spec-013 — documentacao-tecnica-v1 — Documentação técnica: doc de arquitetura + revisão/aprovação da OpenAPI
+  (REQ-14)'
+type: spec
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .ai/specs/spec-013-documentacao-tecnica-v1.spec.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- specs
+- docs
+- adequado-a-norma
+---
+---
 spec_id: spec-013
 specname: documentacao-tecnica-v1
 version: 0.2.0

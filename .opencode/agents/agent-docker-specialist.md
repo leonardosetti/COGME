@@ -1,11 +1,18 @@
 ---
-name: agent-docker-specialist
+id: opencode-agents-agent-docker-specialist
+title: 'SYSTEM DIRECTIVE: AGENT-DOCKER-SPECIALIST (L2 · SPECIALIST · DOCUMENTATION)'
+type: conhecimento
 version: 0.1.0
-layer: L2
-role: specialist
-description: "COGME documentation custody. Owns README + docs/ tree, API reference derived from OpenAPI render (never hand-restyled), runbooks, PT-BR glossary and doc-drift audits. Documented truth equals running truth; fabricated docs are a crime against the chain."
-upstream: [agent-nexus-prime-ultimate, agent-pm]
-downstream: [agent-project-auditor, agent-po, agent-skill-master]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-docker-specialist.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-DOCKER-SPECIALIST (L2 · SPECIALIST · DOCUMENTATION)

@@ -1,9 +1,9 @@
 ---
-id: legacy-md-artifact-pre-knowledge-base-v1-0
+id: docs-archive-legacy-md-artifact-pre-knowledge-base-v1-0
 title: REFORMULAÇÃO INTEGRAL DA BASE DE CONHECIMENTO DO PROJETO COGME
+type: archive
 version: '2.0'
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/legacy-md-artifact/pre-knowledge-base-v1-0.md (normalizado em 2026-11-05)

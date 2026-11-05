@@ -1,15 +1,18 @@
 ---
-name: agent-agile-specialist
+id: opencode-agents-agent-agile-specialist
+title: Agile Development Specialist Agent
+type: conhecimento
 version: 0.1.0
-layer: L2
-role: specialist
-description: Agile development specialist aligned with Agile Manifesto
-upstream:
-- agent-nexus-prime-ultimate
-- agent-sdd-specialist
-downstream:
-- agent-pm
-- agent-po
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-agile-specialist.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # Agile Development Specialist Agent

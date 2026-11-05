@@ -1,4 +1,20 @@
 ---
+id: ai-specs-spec-011-cicd-pipeline-v1-spec
+title: SPEC spec-011 — cicd-pipeline-v1 — Pipeline CI/CD do COGME (lint+testes ≤5 min por push, falha bloqueando merge)
+type: spec
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .ai/specs/spec-011-cicd-pipeline-v1.spec.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- specs
+- docs
+- adequado-a-norma
+---
+---
 spec_id: spec-011
 specname: cicd-pipeline-v1
 version: 0.2.0

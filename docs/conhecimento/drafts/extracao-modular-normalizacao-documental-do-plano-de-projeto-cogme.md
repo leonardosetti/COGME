@@ -1,8 +1,8 @@
 ---
-id: drafts-extracao-modular-normalizacao-documental-do-plano-de-projeto-cogme
+id: docs-conhecimento-drafts-extracao-modular-normalizacao-documental-do-plano-de-projeto-cogme
 title: Baseline de Métricas de Fluxo (Calibração)
+type: conhecimento
 version: 2.0.1
-class: conhecimento
 status: obsoleto
 owner: agent-project-analyst
 derived-from:

@@ -1,8 +1,8 @@
 ---
-id: planos-plano-de-gerenciamento-cogme-v2-1-0
+id: docs-planos-plano-de-gerenciamento-cogme-v2-1-0
 title: Plano de Gerenciamento do Projeto COGME
+type: plano
 version: '1.0'
-class: plano-gerenciamento
 status: draft
 owner: agent-project-analyst
 derived-from:

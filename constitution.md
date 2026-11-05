@@ -1,3 +1,19 @@
+---
+id: constitution
+title: CONSTITUIÇÃO DO PROJETO COGME
+type: constituicao
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- constitution.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- ''
+- docs
+- adequado-a-norma
+---
 # CONSTITUIÇÃO DO PROJETO COGME
 
 <!-- Versão: 1.2.1 | Ratificação: 2026-10-29/31 | Status: VIGENTE-PLENA (consolidação de duplicata Arts. 5–10 autorizada em CCB-LOG A08; co-assinatura humana registrada via RAT-2026-10-31-A12 — Art. 5.4, gatilho deliberativo expresso do GP) |

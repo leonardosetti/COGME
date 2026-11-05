@@ -1,8 +1,8 @@
 ---
-id: verification-cycle-2026-10-30-archive
+id: docs-verification-cycle-2026-10-30-archive
 title: Cycle 2026 10 30 Archive
+type: audit
 version: 1.2.0
-class: registro-verificacao
 status: arquivado
 owner: agent-project-analyst
 derived-from:

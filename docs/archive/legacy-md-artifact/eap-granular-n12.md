@@ -1,9 +1,9 @@
 ---
-id: legacy-md-artifact-eap-granular-n12
+id: docs-archive-legacy-md-artifact-eap-granular-n12
 title: Eap_Granular_N12
+type: archive
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/legacy-md-artifact/eap-granular-n12.md (normalizado em 2026-11-05)

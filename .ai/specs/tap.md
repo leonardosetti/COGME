@@ -1,23 +1,18 @@
 ---
-id: TAP-001
-title: "TAP COGME — linha de base v3 (congelada)"
-status: draft
+id: ai-specs-tap
+title: TAP COGME — linha de base v3 (congelada)
+type: spec
 version: 1.0.0
-custody: agent-sdd-specialist (.ai/specs/)
-created: 2026-11-03
-task: TA-0063
-sender: agent-nexus-prime-ultimate
-kill_switch: inherited
-trace:
-  - "docs/planos/plano-granular/plano-integral-tap-1-2-3-4-5.md (fonte viva única — TAP v3 reproduzido integralmente; citações arquivo:linha por seção)"
-  - "docs/decisoes/ADR-005-freeze.md (v1.0.0 — freeze + precedência intra-TAP)"
-  - "docs/decisoes/ADR-005-regime-tap.md (v1.1.0 — Regime de Emenda Controlada, vigente; incorpora ADR-013)"
-  - "docs/decisoes/ADR-013-regime-emenda-tap.md (SUPERSSEDIDA — histórico, ADR-013:5)"
-  - "docs/tap/delta-v3.1.md (Delta Log append-only das emendas do TAP v3)"
-  - "docs/conhecimento/KB-INDEX.md:32,51 (tap-cogme stub-ponteiro; TAP-001 draft 1.0.0; canal SDD .ai/specs/tap.md)"
-  - ".ai/handoffs/HF-0619-ai-specs-tap-md.md (envelope TA-0063)"
-  - ".ai/specs/MANIFEST.md §1 (template adaptado) e §5.1 (tap.md pinned — sem rename)"
-  - "docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md:26 (item A.2)"
+status: draft
+owner: agent-project-analyst
+derived-from:
+- .ai/specs/tap.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- specs
+- docs
+- adequado-a-norma
 ---
 
 # TAP COGME — Linha de Base Congelada (espelho do plano-integral)

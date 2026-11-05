@@ -1,14 +1,14 @@
 ---
-id: CI-CD-GOV-001
+id: docs-governanca-ci-cd-governance
 title: Política de Governança CI/CD — COGME
+type: governanca
 version: 1.0.0
-class: relatorio-governanca
 status: ratificado
 owner: agent-project-analyst
 derived-from:
 - docs/governanca/ci-cd-governance.md (normalizado em 2026-11-05)
 last-revised: '2026-11-05'
-lgpd-class: n/a (sem PII)
+lgpd-class: n/a
 tags:
 - governanca
 - docs

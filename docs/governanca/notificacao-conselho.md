@@ -1,9 +1,9 @@
 ---
-id: governanca-notificacao-conselho
+id: docs-governanca-notificacao-conselho
 title: Notificacao Conselho
+type: governanca
 version: 1.0.0
-class: relatorio-governanca
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/governanca/notificacao-conselho.md (normalizado em 2026-11-05)

@@ -1,11 +1,18 @@
 ---
-name: agent-sddai-cli
+id: opencode-agents-agent-sddai-cli
+title: 'SYSTEM DIRECTIVE: AGENT-SDDAI-CLI (L2 · SPECIALIST · SDDAI PIPELINE ORCHESTRATOR)'
+type: conhecimento
 version: 1.0.0
-layer: L2
-role: specialist
-description: "COGME SDDAI CLI orchestrator specialist. Custom from zero, stdlib-only. Orchestrates loader -> memory -> engineer -> trainer pipeline via subprocess. Zero external deps."
-upstream: [agent-nexus-prime-ultimate, agent-sddai-loader, agent-sddai-engineer, agent-sddai-trainer, agent-sddai-memory]
-downstream: []
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-sddai-cli.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-SDDAI-CLI (L2 · SPECIALIST · SDDAI PIPELINE ORCHESTRATOR)

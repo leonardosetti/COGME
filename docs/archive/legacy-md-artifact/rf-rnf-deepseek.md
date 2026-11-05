@@ -1,8 +1,8 @@
 ---
-id: legacy-md-artifact-rf-rnf-deepseek
+id: docs-archive-legacy-md-artifact-rf-rnf-deepseek
 title: Rf_Rnf_Deepseek
+type: archive
 version: 1.0.0
-class: conhecimento
 status: draft
 owner: agent-project-analyst
 derived-from:

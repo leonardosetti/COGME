@@ -1,4 +1,20 @@
 ---
+id: docs-decisoes-adr-012-constituicao-como-artefato-de-governanca
+title: ADR-012 — Constituição como Artefato Normativo Supremo e Mecanismo de Restauração Constitucional
+type: adr
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- docs/decisoes/adr-012-constituicao-como-artefato-de-governanca.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- decisoes
+- docs
+- adequado-a-norma
+---
+---
 id: decisoes-adr-012-constituicao-como-artefato-de-governanca
 title: ADR-012 — Constituição como Artefato Normativo Supremo e Mecanismo de Restauração Constitucional
 version: 1.0.1

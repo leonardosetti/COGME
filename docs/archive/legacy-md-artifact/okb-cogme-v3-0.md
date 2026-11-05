@@ -1,8 +1,8 @@
 ---
-id: legacy-md-artifact-okb-cogme-v3-0
+id: docs-archive-legacy-md-artifact-okb-cogme-v3-0
 title: OKB v3.0 — Operational Knowledge Base (Consolidada)
+type: archive
 version: '3.0'
-class: conhecimento
 status: ratificado
 owner: agent-project-analyst
 derived-from:

@@ -1,9 +1,9 @@
 ---
-id: tap-sections-sec-10-riscos
+id: docs-archive-tap-sections-sec-10-riscos
 title: Sec_10_Riscos
+type: archive
 version: '2.0'
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/tap-sections/sec-10-riscos.md (normalizado em 2026-11-05)

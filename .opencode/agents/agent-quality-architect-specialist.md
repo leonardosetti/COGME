@@ -1,11 +1,18 @@
 ---
-name: agent-quality-architect-specialist
+id: opencode-agents-agent-quality-architect-specialist
+title: 'SYSTEM DIRECTIVE: AGENT-QUALITY-ARCHITECT-SPECIALIST (L2 · SPECIALIST · QUALITY ARCHITECTURE)'
+type: conhecimento
 version: 0.1.0
-layer: L2
-role: specialist
-description: "COGME quality architecture custody. Quality attributes, quality gate design, SQA planning, and quality attribute trade-off analysis."
-upstream: [agent-nexus-prime-ultimate, agent-architect, agent-sdd-specialist]
-downstream: [agent-qa-sdet, agent-reviewer, agent-project-auditor, agent-devops]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-quality-architect-specialist.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-QUALITY-ARCHITECT-SPECIALIST (L2 · SPECIALIST · QUALITY ARCHITECTURE)

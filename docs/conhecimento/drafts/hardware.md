@@ -1,9 +1,9 @@
 ---
-id: drafts-hardware
+id: docs-conhecimento-drafts-hardware
 title: Hardware
+type: conhecimento
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/conhecimento/drafts/hardware.md (normalizado em 2026-11-05)

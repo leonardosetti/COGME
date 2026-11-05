@@ -1,11 +1,18 @@
 ---
-name: agent-python-specialist
+id: opencode-agents-agent-python-specialist
+title: 'SYSTEM DIRECTIVE: AGENT-PYTHON-SPECIALIST (L2 · SPECIALIST · PYTHON STANDARDS)'
+type: conhecimento
 version: 0.1.0
-layer: L2
-role: specialist
-description: "COGME Python codebase steward. Owns standards (PEP 311-py3.11, typing, docstrings, stdlib-first), pyproject.toml, dependency whitelist and Python runtime hygiene for 100% CPU local execution. Blocks non-FOSS and cloud-bound coercions."
-upstream: [agent-nexus-prime-ultimate, agent-architect]
-downstream: [agent-backend-dev, agent-qa-sdet, agent-docker-specialist, agent-artifact-builder]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-python-specialist.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-PYTHON-SPECIALIST (L2 · SPECIALIST · PYTHON STANDARDS)

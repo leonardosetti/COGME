@@ -1,8 +1,8 @@
 ---
-id: decisoes-consolidado-adrs-tmp
+id: docs-decisoes-consolidado-adrs-tmp
 title: Consolidado temporário — ADRs 001 a 012 (COGME)
+type: adr
 version: '2.1'
-class: decisao-adr
 status: obsoleto
 owner: agent-project-analyst
 derived-from:

@@ -1,9 +1,9 @@
 ---
-id: tap-sections-sec-11-orcamento
+id: docs-archive-tap-sections-sec-11-orcamento
 title: Sec_11_Orcamento
+type: archive
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/tap-sections/sec-11-orcamento.md (normalizado em 2026-11-05)

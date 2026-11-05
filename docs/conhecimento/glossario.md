@@ -1,9 +1,9 @@
 ---
-id: conhecimento-glossario
+id: docs-conhecimento-glossario
 title: GLOSSÁRIO DO PROJETO COGME
+type: conhecimento
 version: 3.2.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/conhecimento/glossario.md (normalizado em 2026-11-05)

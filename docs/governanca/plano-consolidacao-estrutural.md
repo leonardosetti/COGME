@@ -1,9 +1,9 @@
 ---
-id: governanca-plano-consolidacao-estrutural
+id: docs-governanca-plano-consolidacao-estrutural
 title: Plano de Consolidação Estrutural — COGME
+type: governanca
 version: 1.0.0
-class: plano-governanca
-status: active
+status: ativo
 owner: agent-pm
 derived-from:
 - docs/governanca/ccb-log.md (cita este plano na entrada RAT-2026-10-31-A09 / OKB-C-25)

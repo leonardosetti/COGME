@@ -1,9 +1,9 @@
 ---
-id: Monografia-02-desenvolvimento-das-areas-de-conhecimento
+id: docs-archive-apocrifo-md-monografia-02-desenvolvimento-das-areas-de-conhecimento
 title: 2. Desenvolvimento das Áreas de conhecimento
+type: archive
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/apocrifo/md/Monografia/02-desenvolvimento-das-areas-de-conhecimento.md (normalizado em 2026-11-05)

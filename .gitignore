@@ -97,16 +97,9 @@ lst.txt
 .opencode/gsd-migration-journal/
 
 # --- Saneamento 2026-11-05: remoção de bloat e tooling local ---
-# Ambiente Python
-.venv/
-venv/
-
 # Build Python
 *.egg-info/
 *.egg-link
-
-# Benchmarks
-.benchmarks/
 
 # Lockfile (projeto usa requirements.txt)
 uv.lock

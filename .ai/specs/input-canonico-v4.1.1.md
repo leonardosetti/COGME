@@ -1,3 +1,19 @@
+---
+id: ai-specs-input-canonico-v4-1-1
+title: INPUT CANÔNICO SUBORDINADO — COGME v4.1.1
+type: spec
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .ai/specs/input-canonico-v4.1.1.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- specs
+- docs
+- adequado-a-norma
+---
 # INPUT CANÔNICO SUBORDINADO — COGME v4.1.1
 
 Este artefato é derivativo e subordinado. Ele não cria norma autônoma.

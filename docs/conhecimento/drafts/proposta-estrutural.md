@@ -1,8 +1,8 @@
 ---
-id: drafts-proposta-estrutural
+id: docs-conhecimento-drafts-proposta-estrutural
 title: Proposta de Reestruturação do Projeto COGME — v1.0
+type: conhecimento
 version: '1.0'
-class: conhecimento
 status: obsoleto
 owner: agent-project-analyst
 derived-from:

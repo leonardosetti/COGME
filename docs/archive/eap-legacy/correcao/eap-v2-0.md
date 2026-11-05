@@ -1,9 +1,9 @@
 ---
-id: correcao-eap-v2-0
+id: docs-archive-eap-legacy-correcao-eap-v2-0
 title: 4. **Estrutura Analítica do Projeto (EAP/WBS)**
+type: archive
 version: '2.0'
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/eap-legacy/correcao/eap-v2-0.md (normalizado em 2026-11-05)

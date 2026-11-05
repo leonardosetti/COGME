@@ -1,11 +1,18 @@
 ---
-name: agent-art-communication-marketing-pr-specialist
+id: opencode-agents-agent-art-communication-marketing-pr-specialist
+title: 'SYSTEM DIRECTIVE: AGENT-ART-COMMUNICATION-MARKETING-PR-SPECIALIST (L2 · SPECIALIST · COMMUNICATIONS)'
+type: conhecimento
 version: 0.1.0
-layer: L2
-role: specialist
-description: "COGME art/communication/marketing/PR custody. Visual identity, communication strategy, public relations, and deliverable presentation."
-upstream: [agent-nexus-prime-ultimate, agent-pm, agent-po]
-downstream: [agent-project-auditor, agent-gatekeeper, agent-docker-specialist]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-art-communication-marketing-pr-specialist.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-ART-COMMUNICATION-MARKETING-PR-SPECIALIST (L2 · SPECIALIST · COMMUNICATIONS)

@@ -1,9 +1,9 @@
 ---
-id: Monografia-02-06-gerenciamento-de-recursos
+id: docs-archive-apocrifo-md-monografia-02-06-gerenciamento-de-recursos
 title: 2.6 Gerenciamento de recursos
+type: archive
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/apocrifo/md/Monografia/02-06-gerenciamento-de-recursos.md (normalizado em 2026-11-05)

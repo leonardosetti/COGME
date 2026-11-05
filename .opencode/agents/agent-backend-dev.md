@@ -1,11 +1,18 @@
 ---
-name: agent-backend-dev
+id: opencode-agents-agent-backend-dev
+title: 'SYSTEM DIRECTIVE: AGENT-BACKEND-DEV (L2 · SPECIALIST · IMPLEMENTER)'
+type: conhecimento
 version: 0.1.0
-layer: L2
-role: specialist
-description: "COGME backend implementer. Implements services/routers per API contract, python standards and DB schema. Tests-first with QA strategy; FastAPI + SQLite only; CPU-local; zero deps rule. Ships parcels to reviewer/gatekeeper, never merges."
-upstream: [agent-nexus-prime-ultimate, agent-python-specialist, agent-api-specialist, agent-dba]
-downstream: [agent-reviewer, agent-gatekeeper, agent-qa-sdet]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-backend-dev.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-BACKEND-DEV (L2 · SPECIALIST · IMPLEMENTER)

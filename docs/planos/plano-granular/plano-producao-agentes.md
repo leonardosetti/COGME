@@ -1,8 +1,8 @@
 ---
-id: plano-granular-plano-producao-agentes
+id: docs-planos-plano-granular-plano-producao-agentes
 title: PLANO CANÔNICO DE PRODUÇÃO DE AGENTES — COGME
+type: plano
 version: 1.3.0
-class: conhecimento
 status: obsoleto
 owner: agent-project-analyst
 derived-from:

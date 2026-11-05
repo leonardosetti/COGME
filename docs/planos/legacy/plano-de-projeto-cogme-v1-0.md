@@ -1,9 +1,9 @@
 ---
-id: legacy-plano-de-projeto-cogme-v1-0
+id: docs-planos-legacy-plano-de-projeto-cogme-v1-0
 title: COGME — CONVERSOR DE GANHOS EM MOEDA ESTRANGEIRA
+type: plano
 version: '1.1'
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/planos/legacy/plano-de-projeto-cogme-v1-0.md (normalizado em 2026-11-05)

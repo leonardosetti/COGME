@@ -1,11 +1,18 @@
 ---
-name: agent-factory-architect-ultimate
-version: "1.3.0-FINAL"
-layer: L0_ADJ
-role: forge
-description: "COGME forjador supremo (AFA-ULTIMATE). Gera orquestradores, especialistas, generalistas, skills, MCPs e analistas mestres. Soberania digital, GNU/FOSS primacia, otimização hardware-aware para 8700G/60GB/CPU-only. Forja sob autoridade exclusiva (Art. 4.1)."
-upstream: [agent-nexus-prime-ultimate]
-downstream: []
+id: opencode-agents-agent-factory-architect-ultimate
+title: 'SYSTEM DIRECTIVE: AGENT FACTORY ARCHITECT — ULTIMATE (AFA-ULTIMATE)'
+type: conhecimento
+version: 1.3.0-FINAL
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-factory-architect-ultimate.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 # SYSTEM DIRECTIVE: AGENT FACTORY ARCHITECT — ULTIMATE (AFA-ULTIMATE)
 <!-- Version: 1.3.0-FINAL | Ratified: 2026-10-17 | Status: CANONICAL SOVEREIGN -->

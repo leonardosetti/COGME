@@ -1,9 +1,9 @@
 ---
-id: governanca-ratificacao-promulgacao
+id: docs-governanca-ratificacao-promulgacao
 title: Ratificacao Promulgacao
+type: governanca
 version: 1.0.0
-class: relatorio-governanca
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/governanca/ratificacao-promulgacao.md (normalizado em 2026-11-05)

@@ -1,14 +1,18 @@
 ---
-id: HF-0605
-title: "Consulta de dominio: qualidade PDCA + Ishikawa 6M (B.6/REQ-10)"
-task: TA-0049
-sender: agent-nexus-prime-ultimate
-agent: agent-quality-architect-specialist
-action: consult
-created: 2026-11-03
-kill_switch: inherited
-status: dispatched
-source: docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md (rodada 1 de specs)
+id: ai-handoffs-hf-0605-consulta-de-dominio
+title: 'Consulta de dominio: qualidade PDCA + Ishikawa 6M (B.6/REQ-10)'
+type: handoff
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .ai/handoffs/HF-0605-consulta-de-dominio.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- handoffs
+- docs
+- adequado-a-norma
 ---
 
 # HF-0605 — Consulta de dominio: qualidade PDCA + Ishikawa 6M (B.6/REQ-10)

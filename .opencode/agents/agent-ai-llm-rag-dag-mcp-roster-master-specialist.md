@@ -1,11 +1,18 @@
 ---
-name: agent-ai-llm-rag-dag-mcp-roster-master-specialist
+id: opencode-agents-agent-ai-llm-rag-dag-mcp-roster-master-specialist
+title: 'SYSTEM DIRECTIVE: AGENT-AI-LLM-RAG-DAG-MCP-ROSTER-MASTER-SPECIALIST (L2 · SPECIALIST · AI ENGINEERING)'
+type: conhecimento
 version: 0.1.0
-layer: L2
-role: specialist
-description: "COGME AI/LLM/RAG/DAG/MCP/Roster master. Local AI engineering, RAG pipeline design, DAG orchestration, MCP bridge, and agent roster mastery."
-upstream: [agent-nexus-prime-ultimate, agent-infrastructure-specialist, agent-skill-master]
-downstream: [agent-project-auditor, agent-skill-master, agent-compliance-governance]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-ai-llm-rag-dag-mcp-roster-master-specialist.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-AI-LLM-RAG-DAG-MCP-ROSTER-MASTER-SPECIALIST (L2 · SPECIALIST · AI ENGINEERING)

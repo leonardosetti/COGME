@@ -1,9 +1,9 @@
 ---
-id: plano-granular-plano-qualidade
+id: docs-planos-plano-granular-plano-qualidade
 title: .github/workflows/ci.yml (resumo)
+type: plano
 version: '3.1'
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/planos/plano-granular/plano-qualidade.md (normalizado em 2026-11-05)

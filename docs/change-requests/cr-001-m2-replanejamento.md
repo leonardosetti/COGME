@@ -1,9 +1,9 @@
 ---
-id: change-requests-cr-001-m2-replanejamento
+id: docs-change-requests-cr-001-m2-replanejamento
 title: Cr 001 M2 Replanejamento
+type: change-request
 version: 1.0.0
-class: change-request
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/change-requests/cr-001-m2-replanejamento.md (normalizado em 2026-11-05)

@@ -1,8 +1,8 @@
 ---
-id: legacy-md-artifact-analise-auditoria-1-1
+id: docs-archive-legacy-md-artifact-analise-auditoria-1-1
 title: RELATÓRIO ANALÍTICO v1.1 — CONSOLIDAÇÃO PÓS-REVISÃO E PLANO DE ENTREGA PARCIAL (19/09/2026)
+type: archive
 version: '1.1'
-class: conhecimento
 status: draft
 owner: agent-project-analyst
 derived-from:

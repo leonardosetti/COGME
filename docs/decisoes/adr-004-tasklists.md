@@ -1,9 +1,9 @@
 ---
-id: decisoes-adr-004-tasklists
+id: docs-decisoes-adr-004-tasklists
 title: ADR-004 — Controle de Progresso via Tasklists Markdown (Rejeição de Subissues)
+type: adr
 version: 1.1.0
-class: decisao-adr
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/decisoes/adr-004-tasklists.md (normalizado em 2026-11-05)

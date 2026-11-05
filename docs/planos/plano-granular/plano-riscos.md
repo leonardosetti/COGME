@@ -1,9 +1,9 @@
 ---
-id: plano-granular-plano-riscos
+id: docs-planos-plano-granular-plano-riscos
 title: 2.8 GERENCIAMENTO DOS RISCOS DO PROJETO
+type: plano
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/planos/plano-granular/plano-riscos.md (normalizado em 2026-11-05)

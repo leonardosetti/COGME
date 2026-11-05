@@ -1,11 +1,18 @@
 ---
-name: agent-sddai-loader
+id: opencode-agents-agent-sddai-loader
+title: 'SYSTEM DIRECTIVE: AGENT-SDDAI-LOADER (L2 · SPECIALIST · SDDAI DATA LOADER)'
+type: conhecimento
 version: 1.0.0
-layer: L2
-role: specialist
-description: "COGME SDDAI data loader specialist. Custom from zero, stdlib-only. Ingests input files, computes sha256 checksum, returns structured metadata for downstream pipeline stages. Zero external deps."
-upstream: [agent-nexus-prime-ultimate, agent-sdd-specialist]
-downstream: [agent-sddai-engineer, agent-sddai-memory]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-sddai-loader.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-SDDAI-LOADER (L2 · SPECIALIST · SDDAI DATA LOADER)

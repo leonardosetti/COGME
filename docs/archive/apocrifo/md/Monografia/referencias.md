@@ -1,9 +1,9 @@
 ---
-id: Monografia-referencias
+id: docs-archive-apocrifo-md-monografia-referencias
 title: Referências
+type: archive
 version: '3.0'
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/apocrifo/md/Monografia/referencias.md (normalizado em 2026-11-05)

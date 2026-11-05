@@ -1,8 +1,8 @@
 ---
-id: auditorias-aud-2610-06-sddai-compliance-post-tests
+id: docs-auditorias-aud-2610-06-sddai-compliance-post-tests
 title: Relatório de Auditoria e Compliance — AUD-2610-06 (Pós-Testes SDDAI)
+type: audit
 version: 1.2.0
-class: relatorio-auditoria
 status: ratificado
 owner: agent-project-analyst
 derived-from:

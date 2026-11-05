@@ -1,9 +1,9 @@
 ---
-id: Monografia-02-01-gerenciamento-da-integracao
+id: docs-archive-apocrifo-md-monografia-02-01-gerenciamento-da-integracao
 title: 2.1 Gerenciamento da Integração
+type: archive
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/apocrifo/md/Monografia/02-01-gerenciamento-da-integracao.md (normalizado em 2026-11-05)

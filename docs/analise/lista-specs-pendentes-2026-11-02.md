@@ -1,9 +1,9 @@
 ---
-id: analise-lista-specs-pendentes-2026-11-02
+id: docs-analise-lista-specs-pendentes-2026-11-02
 title: LISTA DE SPECS PENDENTES DE CRIAÇÃO — 2026-11-02
+type: relatorio
 version: 1.1.0
-class: relatorio-levantamento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/analise/lista-specs-pendentes-2026-11-02.md (normalizado em 2026-11-05)

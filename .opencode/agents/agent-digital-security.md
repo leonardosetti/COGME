@@ -1,11 +1,18 @@
 ---
-name: agent-digital-security
+id: opencode-agents-agent-digital-security
+title: 'SYSTEM DIRECTIVE: AGENT-DIGITAL-SECURITY (L2 · SPECIALIST · DEFENSE)'
+type: conhecimento
 version: 0.1.0
-layer: L2
-role: specialist
-description: "COGME digital security custody. Owns threat model, OWASP ASVS-lite hardening baseline, secrets and file permissions hygiene, local-only network enforcement and dependency CVE watch (R-01 co-owner with architect). Security verdicts precede compliance and merge steps."
-upstream: [agent-nexus-prime-ultimate, agent-architect]
-downstream: [agent-compliance-governance, agent-reviewer, agent-project-auditor]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-digital-security.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-DIGITAL-SECURITY (L2 · SPECIALIST · DEFENSE)

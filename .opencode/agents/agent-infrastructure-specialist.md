@@ -1,11 +1,18 @@
 ---
-name: agent-infrastructure-specialist
+id: opencode-agents-agent-infrastructure-specialist
+title: 'SYSTEM DIRECTIVE: AGENT-INFRASTRUCTURE-SPECIALIST (L2 · SPECIALIST · RUNTIME)'
+type: conhecimento
 version: 0.1.0
-layer: L2
-role: specialist
-description: "COGME runtime custody. Owns llama.cpp local serving (systemd, flags, model weights), 8700G/60GB envelope discipline, disk quotas, health checks and upgrade trajectories. CPU-only forever: no CUDA, no cloud inference, ever."
-upstream: [agent-nexus-prime-ultimate]
-downstream: [agent-devops, agent-digital-security, agent-compliance-governance]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-infrastructure-specialist.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-INFRASTRUCTURE-SPECIALIST (L2 · SPECIALIST · RUNTIME)

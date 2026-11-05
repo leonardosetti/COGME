@@ -1,3 +1,19 @@
+---
+id: ai-deprecated-mcp-nexus-readme
+title: MCP `nexus-*` — DESCONTINUADO / DEPRECATED
+type: readme
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .ai/deprecated/mcp-nexus/README.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- mcp-nexus
+- docs
+- adequado-a-norma
+---
 # MCP `nexus-*` — DESCONTINUADO / DEPRECATED
 
 ## Arquivos movidos para cá

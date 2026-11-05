@@ -1,9 +1,9 @@
 ---
-id: Monografia-03-02-funcionalidades
+id: docs-archive-apocrifo-md-monografia-03-02-funcionalidades
 title: 3.2 Funcionalidades
+type: archive
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/apocrifo/md/Monografia/03-02-funcionalidades.md (normalizado em 2026-11-05)

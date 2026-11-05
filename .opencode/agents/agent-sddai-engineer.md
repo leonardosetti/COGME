@@ -1,11 +1,18 @@
 ---
-name: agent-sddai-engineer
+id: opencode-agents-agent-sddai-engineer
+title: 'SYSTEM DIRECTIVE: AGENT-SDDAI-ENGINEER (L2 · SPECIALIST · SDDAI FEATURE ENGINEER)'
+type: conhecimento
 version: 1.0.0
-layer: L2
-role: specialist
-description: "COGME SDDAI feature engineer specialist. Custom from zero, stdlib-only. Transforms ingested data into structured features (word_count, char_count, unique_words, lexical_diversity). Zero external deps."
-upstream: [agent-nexus-prime-ultimate, agent-sddai-loader, agent-sddai-memory]
-downstream: [agent-sddai-trainer]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-sddai-engineer.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-SDDAI-ENGINEER (L2 · SPECIALIST · SDDAI FEATURE ENGINEER)

@@ -1,4 +1,20 @@
 ---
+id: docs-decisoes-ratificacao-normas-specs
+title: Ratificação e Promulgação de Normas de Especificação
+type: adr
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- docs/decisoes/ratificacao-normas-specs.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- decisoes
+- docs
+- adequado-a-norma
+---
+---
 id: decisoes-ratificacao-normas-specs
 title: 'Ratificação e Promulgação de Normas de Especificação — Template, Nomenclatura e Campo Wave'
 version: 1.0.0

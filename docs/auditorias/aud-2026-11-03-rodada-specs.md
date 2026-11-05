@@ -1,8 +1,8 @@
 ---
-id: auditorias-aud-2026-11-03-rodada-specs
+id: docs-auditorias-aud-2026-11-03-rodada-specs
 title: AUDITORIA AUD-2026-11-03-rodada-specs (TA-0062 / HF-0618)
+type: audit
 version: '2.1'
-class: relatorio-auditoria
 status: draft
 owner: agent-project-analyst
 derived-from:

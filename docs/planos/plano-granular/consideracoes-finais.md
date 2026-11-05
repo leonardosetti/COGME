@@ -1,9 +1,9 @@
 ---
-id: plano-granular-consideracoes-finais
+id: docs-planos-plano-granular-consideracoes-finais
 title: 4 CONSIDERAÇÕES FINAIS
+type: plano
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/planos/plano-granular/consideracoes-finais.md (normalizado em 2026-11-05)

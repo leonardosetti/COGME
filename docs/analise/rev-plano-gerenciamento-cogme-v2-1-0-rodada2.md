@@ -1,14 +1,14 @@
 ---
-id: REV-PLANO-GER-002
+id: docs-analise-rev-plano-gerenciamento-cogme-v2-1-0-rodada2
 title: REV-PLANO-GER-002 — Rodada 2 de revisão do Plano de Gerenciamento v2.1.0
+type: relatorio
 version: 1.0.0
-class: relatorio-levantamento
-status: active
+status: ativo
 owner: nexus-prime-ultimate
 derived-from:
 - docs/analise/rev-plano-gerenciamento-cogme-v2-1-0-rodada2.md (normalizado em 2026-11-05)
 last-revised: '2026-11-02'
-lgpd-class: n/a (sem PII)
+lgpd-class: n/a
 tags:
 - analise
 - docs

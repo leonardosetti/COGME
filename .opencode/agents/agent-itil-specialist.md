@@ -1,11 +1,18 @@
 ---
-name: agent-itil-specialist
+id: opencode-agents-agent-itil-specialist
+title: 'SYSTEM DIRECTIVE: AGENT-ITIL-SPECIALIST (L2 · SPECIALIST · ITIL)'
+type: conhecimento
 version: 0.1.0
-layer: L2
-role: specialist
-description: "COGME ITIL custody. IT service management, incident/change/problem/service desk processes, and service management compliance."
-upstream: [agent-nexus-prime-ultimate, agent-devops, agent-compliance-governance]
-downstream: [agent-project-auditor, agent-gatekeeper, agent-pm]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-itil-specialist.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-ITIL-SPECIALIST (L2 · SPECIALIST · ITIL)

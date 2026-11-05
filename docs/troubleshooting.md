@@ -1,3 +1,19 @@
+---
+id: docs-troubleshooting
+title: Instalação de Dependências
+type: conhecimento
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- docs/troubleshooting.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- docs
+- docs
+- adequado-a-norma
+---
 ## Seção de Troubleshooting
 
 ### 5 Problemas Comuns

@@ -1,21 +1,18 @@
 ---
-id: EAP-001
-title: "EAP COGME — fases N1..N12 (espelho rastreável)"
-status: draft
+id: ai-specs-eap
+title: EAP COGME — fases N1..N12 (espelho rastreável)
+type: spec
 version: 1.0.0
-custody: agent-sdd-specialist (.ai/specs/)
-created: 2026-11-03
-task: TA-0064
-sender: agent-nexus-prime-ultimate
-kill_switch: inherited
-trace:
-  - docs/planos/plano-granular/plano-integral-tap-1-2-3-4-5.md:10,30,32,36-47,49,51-63,93-100,194,272,306,337,360,368,371,581-602,606 (FONTE PRIMÁRIA)
-  - docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md:27 (item A.3)
-  - .ai/handoffs/HF-0620-ai-specs-eap-md.md:17-24 (envelope)
-  - .ai/specs/MANIFEST.md:102,166-172 (§5.1 — eap.md é pinned: sem rename)
-  - docs/conhecimento/KB-INDEX.md:52,83,88,109 (EAP-001 draft 1.0.0; DoR classe diagrama)
-  - .ai/specs/kb-taxonomy.md:43,57,78 (DoR da classe `diagrama`)
-  - .ai/specs/tap.md:123-129,231,242,250 (irmã da rodada — TA-0063/HF-0619)
+status: draft
+owner: agent-project-analyst
+derived-from:
+- .ai/specs/eap.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- specs
+- docs
+- adequado-a-norma
 ---
 
 # EAP-001 — EAP COGME — fases N1..N12 (espelho rastreável)

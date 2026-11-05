@@ -1,9 +1,9 @@
 ---
-id: drafts-principais-requisitos-entregas
+id: docs-conhecimento-drafts-principais-requisitos-entregas
 title: SEÇÃO §5 — PRINCIPAIS REQUISITOS DAS ENTREGAS/PRODUTOS
+type: conhecimento
 version: '1.1'
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/conhecimento/drafts/principais-requisitos-entregas.md (normalizado em 2026-11-05)

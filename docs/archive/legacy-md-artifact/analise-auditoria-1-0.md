@@ -1,8 +1,8 @@
 ---
-id: legacy-md-artifact-analise-auditoria-1-0
+id: docs-archive-legacy-md-artifact-analise-auditoria-1-0
 title: RELATÓRIO ANALÍTICO — AUDITORIA DE BLOAT, HIBRIDIZAÇÃO KISS/YAGNI E CONSOLIDAÇÃO ARQUITETURAL DO COGME
+type: archive
 version: '3.0'
-class: conhecimento
 status: obsoleto
 owner: agent-project-analyst
 derived-from:

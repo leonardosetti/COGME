@@ -1,9 +1,9 @@
 ---
-id: plano-granular-plano-escopo
+id: docs-planos-plano-granular-plano-escopo
 title: 2 ESCOPO
+type: plano
 version: 1.0.0
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/planos/plano-granular/plano-escopo.md (normalizado em 2026-11-05)

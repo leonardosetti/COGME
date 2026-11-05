@@ -1,8 +1,8 @@
 ---
-id: drafts-relatorio-avaliacao-critica-tap
+id: docs-conhecimento-drafts-relatorio-avaliacao-critica-tap
 title: RELATÓRIO DE AVALIAÇÃO CRÍTICA — TAP v1 (COGME)
+type: conhecimento
 version: '3.1'
-class: conhecimento
 status: obsoleto
 owner: agent-project-analyst
 derived-from:

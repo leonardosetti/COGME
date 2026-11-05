@@ -1,8 +1,8 @@
 ---
-id: auditorias-aud-2610-05-sddai-compliance
+id: docs-auditorias-aud-2610-05-sddai-compliance
 title: Relatório de Auditoria e Compliance — Iniciativa SDDAI (COGME)
+type: audit
 version: 1.2.0
-class: relatorio-auditoria
 status: ratificado
 owner: agent-project-analyst
 derived-from:

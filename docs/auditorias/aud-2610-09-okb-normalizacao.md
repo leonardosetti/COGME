@@ -1,9 +1,9 @@
 ---
-id: AUD-2610-09
+id: docs-auditorias-aud-2610-09-okb-normalizacao
 title: AUD-2610-09 — Auditoria Extraordinária Dedicada ao OKB (Normalização v5.2.0)
+type: audit
 version: 1.0.0
-class: relatorio-auditoria
-status: active
+status: ativo
 owner: project-auditor
 derived-from:
 - docs/auditorias/aud-2610-09-okb-normalizacao.md (normalizado em 2026-11-05)

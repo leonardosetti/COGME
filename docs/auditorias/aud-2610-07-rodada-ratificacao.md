@@ -1,8 +1,8 @@
 ---
-id: auditorias-aud-2610-07-rodada-ratificacao
+id: docs-auditorias-aud-2610-07-rodada-ratificacao
 title: Relatório de Auditoria e Ratificação — Rodada de Promulgação de Artefatos COGME
+type: audit
 version: 1.2.1
-class: relatorio-auditoria
 status: draft
 owner: agent-project-analyst
 derived-from:

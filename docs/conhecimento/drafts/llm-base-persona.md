@@ -1,9 +1,9 @@
 ---
-id: drafts-llm-base-persona
+id: docs-conhecimento-drafts-llm-base-persona
 title: Llm_Base_Persona
+type: conhecimento
 version: '2.0'
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/conhecimento/drafts/llm-base-persona.md (normalizado em 2026-11-05)

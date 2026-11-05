@@ -1,8 +1,8 @@
 ---
-id: governanca-ccb-log
+id: docs-governanca-ccb-log
 title: Ccb Log
+type: governanca
 version: 1.2.0
-class: relatorio-governanca
 status: draft
 owner: agent-project-analyst
 derived-from:

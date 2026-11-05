@@ -1,3 +1,19 @@
+---
+id: docs-uat-rodada-001-relatorio-analitico
+title: Relatório Analítico — UAT Rodada 001 (COGME)
+type: test
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- docs/uat/rodada-001/relatorio-analitico.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- rodada-001
+- docs
+- adequado-a-norma
+---
 # Relatório Analítico — UAT Rodada 001 (COGME)
 
 **Projeto:** COGME — Conversor de Ganhos em Moeda Estrangeira  

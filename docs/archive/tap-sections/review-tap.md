@@ -1,9 +1,9 @@
 ---
-id: tap-sections-review-tap
+id: docs-archive-tap-sections-review-tap
 title: RELATÓRIO DE AJUSTES DO TAP — TRANSIÇÃO PARA VERSÃO 1.2
+type: archive
 version: '1.2'
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/archive/tap-sections/review-tap.md (normalizado em 2026-11-05)

@@ -1,3 +1,19 @@
+---
+id: ai-agents-ledger-deprecated-nota
+title: Ledger operacional — corte de histórico deprecated
+type: conhecimento
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .ai/agents/ledger-deprecated-nota.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
+---
 # Ledger operacional — corte de histórico deprecated
 
 ## Arquivos

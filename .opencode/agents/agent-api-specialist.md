@@ -1,11 +1,18 @@
 ---
-name: agent-api-specialist
+id: opencode-agents-agent-api-specialist
+title: 'SYSTEM DIRECTIVE: AGENT-API-SPECIALIST (L2 · SPECIALIST · CONTRACT CUSTODY)'
+type: conhecimento
 version: 0.1.0
-layer: L2
-role: specialist
-description: "COGME API custody. Owns the REST contract SSOT (OpenAPI via FastAPI), src/shared/schemas.py, error model, versioning /v1 and contract-test discipline. Contract-first: nothing ships in router without schema+version."
-upstream: [agent-nexus-prime-ultimate, agent-python-specialist, agent-architect]
-downstream: [agent-backend-dev, agent-frontend-dev, agent-qa-sdet, agent-docker-specialist]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-api-specialist.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-API-SPECIALIST (L2 · SPECIALIST · CONTRACT CUSTODY)

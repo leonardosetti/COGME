@@ -1,4 +1,20 @@
 ---
+id: docs-decisoes-adr-001-stack
+title: ADR-001 — Stack Tecnológica FOSS
+type: adr
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- docs/decisoes/adr-001-stack.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- decisoes
+- docs
+- adequado-a-norma
+---
+---
 id: decisoes-adr-001-stack
 title: ADR-001 — Stack Tecnológica FOSS
 version: 1.2.0

@@ -1,9 +1,9 @@
 ---
-id: KB-INDEX-001
+id: docs-conhecimento-kb-index
 title: KB-INDEX — Índice do SSOT COGME
+type: conhecimento
 version: 1.3.0
-class: spec
-status: active
+status: ativo
 owner: agent-docker-specialist
 derived-from:
 - docs/conhecimento/kb-index.md (normalizado em 2026-11-05)

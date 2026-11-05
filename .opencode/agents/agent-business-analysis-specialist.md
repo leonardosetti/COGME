@@ -1,11 +1,18 @@
 ---
-name: agent-business-analysis-specialist
+id: opencode-agents-agent-business-analysis-specialist
+title: 'SYSTEM DIRECTIVE: AGENT-BUSINESS-ANALYSIS-SPECIALIST (L1 · SPECIALIST · BA)'
+type: conhecimento
 version: 0.1.0
-layer: L1
-role: specialist
-description: "COGME business analysis custody. Requirements elicitation, process modeling, stakeholder analysis, REQ traceability. Feeds SDD specs, PM scope, PO backlog."
-upstream: [agent-nexus-prime-ultimate, agent-pm, agent-po]
-downstream: [agent-sdd-specialist, agent-architect, agent-project-analyst, agent-qa-sdet]
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-business-analysis-specialist.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-BUSINESS-ANALYSIS-SPECIALIST (L1 · SPECIALIST · BA)

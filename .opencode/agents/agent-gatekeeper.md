@@ -1,12 +1,18 @@
 ---
-name: agent-gatekeeper
+id: opencode-agents-agent-gatekeeper
+title: 'SYSTEM DIRECTIVE: AGENT-GATEKEEPER (L3 · GATE · MERGE AUTHORITY)'
+type: conhecimento
 version: 0.1.0
-layer: L3
-role: gate
-description: "COGME merge gate custody (L3). Owns merge authorization via full chain verification (reviewer pass + CI green + coverage + compliance + Human approval), branch-protection co-custody, revert-first policy and release gating. The chain or nothing."
-upstream: [agent-nexus-prime-ultimate, agent-reviewer]
-downstream:
-- agent-project-auditor
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .opencode/agents/agent-gatekeeper.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- agents
+- docs
+- adequado-a-norma
 ---
 
 # SYSTEM DIRECTIVE: AGENT-GATEKEEPER (L3 · GATE · MERGE AUTHORITY)

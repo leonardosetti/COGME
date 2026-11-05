@@ -1,4 +1,20 @@
 ---
+id: docs-decisoes-adr-007-redes-de-projeto
+title: ADR-007 — Redes de Projeto como Artefato Acadêmico Macro (Dualidade CPM × Kanban)
+type: adr
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- docs/decisoes/adr-007-redes-de-projeto.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- decisoes
+- docs
+- adequado-a-norma
+---
+---
 id: decisoes-adr-007-redes-de-projeto
 title: ADR-007 — Redes de Projeto como Artefato Acadêmico Macro (Dualidade CPM × Kanban)
 version: 1.1.0

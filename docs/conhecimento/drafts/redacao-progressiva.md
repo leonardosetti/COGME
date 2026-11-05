@@ -1,8 +1,8 @@
 ---
-id: drafts-redacao-progressiva
+id: docs-conhecimento-drafts-redacao-progressiva
 title: ANÁLISE — RODADA 5 (Refinamento para Fechamento Definitivo)
+type: conhecimento
 version: '1.0'
-class: conhecimento
 status: obsoleto
 owner: agent-project-analyst
 derived-from:

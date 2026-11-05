@@ -1,8 +1,8 @@
 ---
-id: decisoes-adr-log
+id: docs-decisoes-adr-log
 title: ADR-LOG — Registro de Mudanças Autorizadas de ADRs (CCB Log)
+type: adr
 version: '3.1'
-class: decisao-adr
 status: ratificado
 owner: agent-project-analyst
 derived-from:

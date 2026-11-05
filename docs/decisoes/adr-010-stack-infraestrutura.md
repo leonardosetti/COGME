@@ -1,9 +1,9 @@
 ---
-id: decisoes-adr-010-stack-infraestrutura
+id: docs-decisoes-adr-010-stack-infraestrutura
 title: 'ADR-010 — Stack de Infraestrutura: PostgreSQL, Docker Compose, Nginx Latente e Hierarquia de APIs de Câmbio'
+type: adr
 version: 1.0.0
-class: decisao-adr
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/decisoes/adr-010-stack-infraestrutura.md (normalizado em 2026-11-05)

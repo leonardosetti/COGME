@@ -1,8 +1,8 @@
 ---
-id: drafts-legacy-notas-adjacentes
+id: docs-conhecimento-drafts-legacy-notas-adjacentes
 title: Registro de Incidente e Estratégia de Recuperação
+type: conhecimento
 version: '3.0'
-class: conhecimento
 status: obsoleto
 owner: agent-project-analyst
 derived-from:

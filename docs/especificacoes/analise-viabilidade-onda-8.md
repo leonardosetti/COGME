@@ -1,9 +1,9 @@
 ---
-id: especificacoes-analise-viabilidade-onda-8
+id: docs-especificacoes-analise-viabilidade-onda-8
 title: ANALISE DE VIABILIDADE — ONDA 8 (Expansão Administrativa/Gerencial/Desenvolvimento)
+type: spec
 version: 1.3.0
-class: especificacao
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/especificacoes/analise-viabilidade-onda-8.md (normalizado em 2026-11-05)

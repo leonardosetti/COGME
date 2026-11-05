@@ -1,3 +1,19 @@
+---
+id: ai-personas-reviewer
+title: 'Persona: Reviewer — Revisor de Código e Artefatos'
+type: persona
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .ai/personas/reviewer.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- personas
+- docs
+- adequado-a-norma
+---
 # Persona: Reviewer — Revisor de Código e Artefatos
 
 ## Identidade

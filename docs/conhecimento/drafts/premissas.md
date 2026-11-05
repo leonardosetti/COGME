@@ -1,9 +1,9 @@
 ---
-id: drafts-premissas
+id: docs-conhecimento-drafts-premissas
 title: RELATÓRIO DE CRÍTICA E REESTRUTURAÇÃO — SEÇÃO "PREMISSAS" DO TAP
+type: conhecimento
 version: '3.1'
-class: conhecimento
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/conhecimento/drafts/premissas.md (normalizado em 2026-11-05)

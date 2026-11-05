@@ -1,3 +1,19 @@
+---
+id: ai-mcp-inventario
+title: Inventário de MCPs — COGME
+type: conhecimento
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .ai/mcp/inventario.md (adequado à norma em 2026-11-05)
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+- mcp
+- docs
+- adequado-a-norma
+---
 # Inventário de MCPs — COGME
 
 Status: ratificado e promulgado (CCB/GP)

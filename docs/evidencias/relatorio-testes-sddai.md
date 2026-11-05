@@ -1,9 +1,9 @@
 ---
-id: evidencias-relatorio-testes-sddai
+id: docs-evidencias-relatorio-testes-sddai
 title: Relatório de Evidências — Testes Unitários SDDAI
+type: evidencia
 version: 1.0.0
-class: relatorio-evidencia
-status: active
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/evidencias/relatorio-testes-sddai.md (normalizado em 2026-11-05)
