@@ -45,6 +45,7 @@ Este log é o **instrumento único de ratificação** de mudanças de ADRs. Nenh
 | ADR-LOG-006 | ADR-015 | 1.0.0 | — | 31/10/2026 | **Não aplicada como emenda sobre ADR existente.** ADR-015 é instrumento próprio (Emenda de Marco M2: 30/09/2026 → 15/11/2026) sob regime ADR-013-a. Não gera emenda sobre ADR-013; estabelece delta log em `docs/tap/delta-v3-1.md`. | RAT-2026-10-31-A12 | **NAO APLICADA (ADR própria)** |
 | ADR-LOG-007 | ADR-013 | 1.0.0 | Supersedida por ADR-005 v1.1.0 | 31/10/2026 | Regime de Emenda Controlada do TAP (Regime de Emenda Controlada do TAP (Baseline Vivo)) incorporado integralmente na ADR-005 v1.1.0. ADR-013 permanece como artefato histórico. | RAT-2026-11-01-A08 | **APLICADA (supersedida por ADR-005 v1.1.0)** |
 | ADR-LOG-008 | ADR-014 | 1.0.1 | Supersedida por ADR-006 v2.1.0 | 31/10/2026 | Promulgação dos Agentes SDDAI incorporada integralmente na ADR-006 v2.1.0 (Ecossistema SDDAI: Modelo, Agentes, MCPs e Separação L1/L2/L3). ADR-014 permanece como artefato histórico. | RAT-2026-10-31-A12 | **APLICADA (supersedida por ADR-006 v2.1.0)** |
+| ADR-LOG-009 | ADR-016 | — | 1.1.0 | 05/11/2026 | Emissão e ratificação definitiva da ADR-016 (Backend do MVP: cálculo, cotações, persistência e contrato de erro). Decisões D1–D12 tornam-se norma vigente para o backend. Aderente à entrega funcional de 16/11/2026; pendências P1–P8 não bloqueiam a entrega e seguem como acompanhamento pós-entrega. | RAT-2026-11-05-A16 | **APLICADA** |
 
 ---
 
@@ -77,6 +78,7 @@ Este log é o **instrumento único de ratificação** de mudanças de ADRs. Nenh
 | ADR-013 | 1.0.0 | — | **Supersedida por ADR-005 v1.1.0** (conteúdo absorvido) |
 | ADR-014 | 1.0.1 | — | **Supersedida por ADR-006 v2.1.0** (conteúdo absorvido) |
 | ADR-015 | 1.0.0 | — | **Incorporada em ADR-005 v1.1.0** (emenda de marco M2, registro de delta log em `docs/tap/delta-v3-1.md`) |
+| ADR-016 | 1.1.0 | ADR-LOG-009 | **Ratificada** (norma vigente para o backend do MVP) |
 
 ---
 

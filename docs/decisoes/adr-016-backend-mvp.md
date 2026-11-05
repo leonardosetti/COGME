@@ -17,16 +17,17 @@ tags:
 ---
 id: ADR-016
 title: Backend do MVP — cálculo, cotações, persistência e contrato de erro
-version: 1.0.0
-status: aprovada
+version: 1.1.0
+status: ratificada
 date: 2026-10-31
-decisor: Redação técnica (agent-architect, T10). Decisão: Ratificada/Aprovada.
+decisor: GP Leonardo (CCB de membro único). Decisão: ratificada definitivamente em 05/11/2026.
 regime: Não se aplica (decisão de implementação; não emenda o TAP nem o núcleo blindado)
 domain: Desenvolvimento e Qualidade (PMBOK 7ª: Abordagem de Desenvolvimento; Qualidade)
+instrumento-ccb: RAT-2026-11-05-A16
 ---
 # ADR-016 — Backend do MVP: cálculo, cotações, persistência e contrato de erro
 
-> **Status: proposta.** Esta ADR não está ratificada. A aprovação é ato humano do CCB (Constituição, Art. 5). Até lá, as decisões abaixo são a posição técnica proposta, não norma vigente.
+> **Status: ratificada definitivamente em 05/11/2026.** A ratificação é ato humano do CCB (Constituição, Art. 5), instrumento RAT-2026-11-05-A16. A partir desta data, as decisões D1–D12 são norma vigente para o backend do MVP.
 
 ## Contexto
 
@@ -135,7 +136,7 @@ Nenhuma destas pendências está aceita nem resolvida por esta ADR.
 
 ## Ratificação
 
-Ratificada. Status `aprovada`. A ratificação é ato humano do CCB (Constituição, Art. 5). Esta ADR registra aprovação.
+Ratificada definitivamente em 05/11/2026 pelo GP Leonardo (CCB de membro único), instrumento RAT-2026-11-05-A16, conforme Constituição Art. 5. As decisões D1–D12 são norma vigente para o backend do MVP. Pendências P1–P8 listadas nesta ADR não bloqueiam a entrega funcional de 16/11/2026 e permanecem como itens de acompanhamento pós-entrega.
 
 ## Referências
 

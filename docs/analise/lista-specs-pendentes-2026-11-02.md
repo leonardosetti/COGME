@@ -81,7 +81,7 @@ ADRs e gaps conhecidos (G-01..G-13, GAP-01..GAP-08). **Cada item traz origem
 | # | Condicionante | Origem |
 |---|---|---|
 | E.1 | Emendas constitucionais E-01..E-08 pendentes de CCB (não são lei) | `spec-001-...spec.md:193-334`; cobrança em `spec-002-...spec.md:217` |
-| E.2 | ADR-016 (backend) em `status: proposta` — merge/ratificação é ato humano | `docs/decisoes/adr-016-backend-mvp.md:5`; bloqueio declarado em `.ai/handoffs/HF-0500-backend-mvp.md:12` |
+| E.2 | ADR-016 (backend) — RATIFICADA definitivamente em 05/11/2026 (RAT-2026-11-05-A16); decisões D1–D12 norma vigente; item fechado | `docs/decisoes/adr-016-backend-mvp.md` (frontmatter status: ratificada); `docs/decisoes/adr-log.md` (ADR-LOG-009) |
 | E.3 | Emenda da ADR-010 ("Nginx latente" → proxy aceito) — follow-up arquiteto → CCB | `spec-005-...spec.md:349` (§13) |
 | E.4 | GAP-07 — conversão REQ→User Story (fase N2.3) não executada; backlog inexistente | `spec-002-...spec.md:106` |
 | E.5 | REQ-12 — mínimo de 3 ADRs para decisões críticas (documentos de decisão, não specs) | `spec-002-...spec.md:73` |

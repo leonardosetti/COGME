@@ -127,7 +127,7 @@ aqui por ausência de decisão citável (P-08).
 |---|---|---|---|
 | NF-23 | Healthcheck da aplicação: `GET /v1/health` → 200; `front` alcança `back:8000/v1/health` (topologia local; sem hospedagem pública — OS-08 rejeitado) | binário 200 (spec-004...:64; spec-005...:191) | spec-004-backend-mvp-v1.spec.md:64; OS-08 (spec-002...:141) |
 | NF-24 | Evidências de qualidade nativas, sem dashboard próprio (decisão GMV): GitHub Actions + coverage.py como fonte de evidência para o avaliador | evidência = runs do Actions + relatórios de cobertura (plano-integral...:573) | plano-integral...:573 (GMV) |
-| NF-25 | Auditabilidade do cálculo financeiro — REQ-03: cálculo auditável com precisão de 2 casas decimais e trilha auditável (US-003); fórmula fixada em spec-004 §2, pendente de ratificação via ADR-016 | 2 casas decimais + trilha do cálculo (plano-integral...:73; US-003, spec-002...:160); ratificação ADR-016 pendente (LISTA...:76) | REQ-03, fase N5.1 (plano-integral...:73); spec-002...:160 |
+| NF-25 | Auditabilidade do cálculo financeiro — REQ-03: cálculo auditável com precisão de 2 casas decimais e trilha auditável (US-003); fórmula fixada em spec-004 §2, ratificada via ADR-016 (RAT-2026-11-05-A16) | 2 casas decimais + trilha do cálculo (plano-integral...:73; US-003, spec-002...:160); fórmula ratificada via ADR-016 (RAT-2026-11-05-A16) | REQ-03, fase N5.1 (plano-integral...:73); spec-002...:160 |
 
 ## 4. Critérios de aceite e testes
 
