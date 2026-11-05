@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-infrastructure-specialist
+layer: L2
+role: specialist
+description: 'Agente agent-infrastructure-specialist do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-INFRASTRUCTURE-SPECIALIST (L2 · SPECIALIST · RUNTIME)

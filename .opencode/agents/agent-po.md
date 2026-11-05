@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-po
+layer: L1
+role: specialist
+description: 'Agente agent-po do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-PO (L1 · SPECIALIST · BACKLOG STEWARD)

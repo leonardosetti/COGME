@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-sddai-loader
+layer: L2
+role: specialist
+description: 'Agente agent-sddai-loader do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-SDDAI-LOADER (L2 · SPECIALIST · SDDAI DATA LOADER)

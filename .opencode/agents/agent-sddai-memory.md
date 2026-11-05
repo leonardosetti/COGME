@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-sddai-memory
+layer: L2
+role: specialist
+description: 'Agente agent-sddai-memory do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-SDDAI-MEMORY (L2 · SPECIALIST · SDDAI MEMORY OPTIMIZER)

@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-art-communication-marketing-pr-specialist
+layer: L2
+role: specialist
+description: 'Agente agent-art-communication-marketing-pr-specialist do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-ART-COMMUNICATION-MARKETING-PR-SPECIALIST (L2 · SPECIALIST · COMMUNICATIONS)
@@ -205,4 +209,3 @@ Format MAJOR.MINOR.PATCH.
 0.1.0 - 2026-10-23
 - ONDA 8 Lote 2 forge; 16 secoes; 6 metricas; 7 RT; 6 FC; visual identity + communication strategy + PR + LGPD/FOSS screen wired.
 - Next: 0.2.0 after first communication audit cycle.
-

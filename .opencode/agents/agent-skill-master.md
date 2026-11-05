@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-skill-master
+layer: META
+role: forge
+description: 'Agente agent-skill-master do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-SKILL-MASTER (META · FORGE · SKILL CUSTODY)

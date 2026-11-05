@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-reviewer
+layer: L3
+role: gate
+description: 'Agente agent-reviewer do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-REVIEWER (L3 · GATE · VERDICT CUSTODY)

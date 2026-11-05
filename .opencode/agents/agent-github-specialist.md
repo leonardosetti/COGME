@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-github-specialist
+layer: L2
+role: specialist
+description: 'Agente agent-github-specialist do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-GITHUB-SPECIALIST (L2 · SPECIALIST · PLATFORM ECOSYSTEM)

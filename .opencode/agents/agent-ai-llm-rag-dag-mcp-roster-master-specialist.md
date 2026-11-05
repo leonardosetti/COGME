@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-ai-llm-rag-dag-mcp-roster-master-specialist
+layer: L2
+role: specialist
+description: 'Agente agent-ai-llm-rag-dag-mcp-roster-master-specialist do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-AI-LLM-RAG-DAG-MCP-ROSTER-MASTER-SPECIALIST (L2 · SPECIALIST · AI ENGINEERING)
@@ -204,4 +208,3 @@ Format MAJOR.MINOR.PATCH.
 0.1.0 - 2026-10-23
 - ONDA 8 Lote 2 forge; 16 secoes; 6 metricas; 7 RT; 6 FC; local AI + RAG + DAG + MCP + roster mastery wired.
 - Next: 0.2.0 after first AI engineering audit cycle.
-

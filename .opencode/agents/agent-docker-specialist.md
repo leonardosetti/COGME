@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-docker-specialist
+layer: L2
+role: specialist
+description: 'Agente agent-docker-specialist do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-DOCKER-SPECIALIST (L2 · SPECIALIST · DOCUMENTATION)

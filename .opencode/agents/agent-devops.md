@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-devops
+layer: L2
+role: specialist
+description: 'Agente agent-devops do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-DEVOPS (L2 · SPECIALIST · CI/CD)

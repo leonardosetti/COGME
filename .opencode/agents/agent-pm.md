@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-pm
+layer: L1
+role: specialist
+description: 'Agente agent-pm do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-PM (L1 · SPECIALIST · PMBOK STEWARD)

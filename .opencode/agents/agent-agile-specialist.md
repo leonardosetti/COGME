@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-agile-specialist
+layer: L2
+role: specialist
+description: 'Agile Development Specialist Agent — segue o Manifesto Ágil e seus doze princípios.'
 ---
 
 # Agile Development Specialist Agent

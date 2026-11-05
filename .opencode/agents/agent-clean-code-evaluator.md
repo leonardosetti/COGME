@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-clean-code-evaluator
+layer: L3
+role: gate
+description: 'Agente agent-clean-code-evaluator do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-CLEAN-CODE-EVALUATOR (L3 · GATE · CLEAN CODE)

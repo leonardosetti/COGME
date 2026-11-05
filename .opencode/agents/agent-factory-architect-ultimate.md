@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-factory-architect-ultimate
+layer: L0_ADJ
+role: forge
+description: 'Forjador AFA-ULTIMATE — forja e promulga agentes do ecossistema COGME.'
 ---
 # SYSTEM DIRECTIVE: AGENT FACTORY ARCHITECT — ULTIMATE (AFA-ULTIMATE)
 <!-- Version: 1.3.0-FINAL | Ratified: 2026-10-17 | Status: CANONICAL SOVEREIGN -->

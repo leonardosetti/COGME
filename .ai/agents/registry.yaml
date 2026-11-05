@@ -13,751 +13,404 @@ agents:
   version: 0.1.0
   layer: L2
   role: specialist
-  description: Agile development specialist aligned with Agile Manifesto
+  description: Agile Development Specialist Agent — segue o Manifesto Ágil e seus doze princípios.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-sdd-specialist
-  downstream:
-  - agent-pm
-  - agent-po
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-ai-llm-rag-dag-mcp-roster-master-specialist.md
   name: agent-ai-llm-rag-dag-mcp-roster-master-specialist
   version: 0.1.0
   layer: L2
   role: specialist
-  description: COGME AI/LLM/RAG/DAG/MCP/Roster master. Local AI engineering, RAG pipeline design, DAG
-    orchestration, MCP bridge, and agent roster mastery.
+  description: Agente agent-ai-llm-rag-dag-mcp-roster-master-specialist do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-infrastructure-specialist
-  - agent-skill-master
-  downstream:
-  - agent-project-auditor
-  - agent-skill-master
-  - agent-compliance-governance
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-api-specialist.md
   name: agent-api-specialist
   version: 0.1.0
   layer: L2
   role: specialist
-  description: 'COGME API custody. Owns the REST contract SSOT (OpenAPI via FastAPI), src/shared/schemas.py,
-    error model, versioning /v1 and contract-test discipline. Contract-first: nothing ships in router
-    without schema+version.'
+  description: Agente agent-api-specialist do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-python-specialist
-  - agent-architect
-  downstream:
-  - agent-backend-dev
-  - agent-frontend-dev
-  - agent-qa-sdet
-  - agent-docker-specialist
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-architect.md
   name: agent-architect
   version: 0.1.0
   layer: L1
   role: specialist
-  description: 'COGME architect. Custodian of architecture: ADR lifecycle, diagrams, src structure integrity
-    and stack-drift vigilance (vector R-01). Co-guards CVE watch with security. Recommends ADR amendments;
-    Human CCB ratifies.'
+  description: Agente agent-architect do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-pm
-  - agent-sdd-specialist
-  downstream:
-  - agent-api-specialist
-  - agent-dba
-  - agent-backend-dev
-  - agent-frontend-dev
-  - agent-infrastructure-specialist
-  - agent-digital-security
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-art-communication-marketing-pr-specialist.md
   name: agent-art-communication-marketing-pr-specialist
   version: 0.1.0
   layer: L2
   role: specialist
-  description: COGME art/communication/marketing/PR custody. Visual identity, communication strategy,
-    public relations, and deliverable presentation.
+  description: Agente agent-art-communication-marketing-pr-specialist do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-pm
-  - agent-po
-  downstream:
-  - agent-project-auditor
-  - agent-gatekeeper
-  - agent-docker-specialist
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-artifact-builder.md
   name: agent-artifact-builder
   version: 0.1.0
   layer: L2
   role: specialist
-  description: COGME scaffold custody. Owns gold templates (service/router/template/test/script skeletons)
-    aligned with every custody agent's contract. Deterministic expansion, license hygiene, executable
-    examples; scaffolds never mutate existing code and never ship fake features.
+  description: Agente agent-artifact-builder do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-python-specialist
-  - agent-bash-specialist
-  downstream:
-  - agent-backend-dev
-  - agent-frontend-dev
-  - agent-docker-specialist
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-backend-dev.md
   name: agent-backend-dev
   version: 0.1.0
   layer: L2
   role: specialist
-  description: COGME backend implementer. Implements services/routers per API contract, python standards
-    and DB schema. Tests-first with QA strategy; FastAPI + SQLite only; CPU-local; zero deps rule. Ships
-    parcels to reviewer/gatekeeper, never merges.
+  description: Agente agent-backend-dev do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-python-specialist
-  - agent-api-specialist
-  - agent-dba
-  downstream:
-  - agent-reviewer
-  - agent-gatekeeper
-  - agent-qa-sdet
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-bash-specialist.md
   name: agent-bash-specialist
   version: 0.1.0
   layer: L2
   role: specialist
-  description: COGME shell custody. Owns automation scripts (.ai/workflows/, maintenance), bash hygiene
-    (set -euo pipefail), portable POSIX-first patterns, systemd integration for llama-server and shell-side
-    LGPD discipline. No sudo without human confirmation marker.
+  description: Agente agent-bash-specialist do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  downstream:
-  - agent-infrastructure-specialist
-  - agent-devops
-  - agent-digital-security
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-business-analysis-specialist.md
   name: agent-business-analysis-specialist
   version: 0.1.0
   layer: L1
   role: specialist
-  description: COGME business analysis custody. Requirements elicitation, process modeling, stakeholder
-    analysis, REQ traceability. Feeds SDD specs, PM scope, PO backlog.
+  description: Agente agent-business-analysis-specialist do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-pm
-  - agent-po
-  downstream:
-  - agent-sdd-specialist
-  - agent-architect
-  - agent-project-analyst
-  - agent-qa-sdet
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-clean-code-evaluator.md
   name: agent-clean-code-evaluator
   version: 0.1.0
   layer: L3
   role: gate
-  description: 'COGME clean code evaluator (L3 gate). Evaluates source code against clean code principles:
-    readability, simplicity, naming, functions, comments, formatting, and defect prevention.'
+  description: Agente agent-clean-code-evaluator do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-python-specialist
-  - agent-backend-dev
-  - agent-frontend-dev
-  downstream:
-  - agent-project-auditor
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-cobit-specialist.md
   name: agent-cobit-specialist
   version: 0.1.0
   layer: L2
   role: specialist
-  description: COGME COBIT custody. IT governance framework, control objectives, management practices,
-    and IT governance compliance.
+  description: Agente agent-cobit-specialist do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-compliance-governance
-  - agent-project-auditor
-  downstream:
-  - agent-project-auditor
-  - agent-gatekeeper
-  - agent-pm
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-compliance-governance.md
   name: agent-compliance-governance
   version: 0.1.0
   layer: L2
   role: specialist
-  description: COGME compliance custody. Owns LGPD (primary) + Marco Civil alignment, FOSS license whitelist
-    (L-01 auditor absorbed by consolidation), Bypass pillar verification and Constitution drift audits.
-    Legal truth precedes feature truth; Human remains sole authority (Art. 5.1).
+  description: Agente agent-compliance-governance do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-digital-security
-  downstream:
-  - agent-project-auditor
-  - agent-gatekeeper
-  - agent-po
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-copyright-specialist.md
   name: agent-copyright-specialist
   version: 0.1.0
   layer: L2
   role: specialist
-  description: COGME copyright custody. Authorship, derivative works, licensing of creative output, public
-    domain vs copyleft, copyright compliance for deliverables.
+  description: Agente agent-copyright-specialist do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-compliance-governance
-  - agent-project-analyst
-  downstream:
-  - agent-project-auditor
-  - agent-gatekeeper
-  - agent-po
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-dba.md
   name: agent-dba
   version: 0.1.0
   layer: L2
   role: specialist
-  description: COGME SQLite custody. Owns schema DDL, migrations, indices, integrity checks, cache quota
-    for FX rate cache, backups and LGPD retention. Data layer reconciles after contract, never before.
+  description: Agente agent-dba do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-api-specialist
-  - agent-architect
-  downstream:
-  - agent-backend-dev
-  - agent-qa-sdet
-  - agent-digital-security
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-devops.md
   name: agent-devops
   version: 0.1.0
   layer: L2
   role: specialist
-  description: COGME CI/CD custody. Owns .github/workflows/ci.yml (currently empty gap G-05), gate enforcement
-    (pytest+coverage>=80), free-tier GitHub Actions discipline, secrets hygiene and rollback runbooks.
-    Automation serves gates, never bypasses them.
+  description: Agente agent-devops do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-infrastructure-specialist
-  - agent-python-specialist
-  downstream:
-  - agent-qa-sdet
-  - agent-gatekeeper
-  - agent-digital-security
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-digital-security.md
   name: agent-digital-security
   version: 0.1.0
   layer: L2
   role: specialist
-  description: COGME digital security custody. Owns threat model, OWASP ASVS-lite hardening baseline,
-    secrets and file permissions hygiene, local-only network enforcement and dependency CVE watch (R-01
-    co-owner with architect). Security verdicts precede compliance and merge steps.
+  description: Agente agent-digital-security do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-architect
-  downstream:
-  - agent-compliance-governance
-  - agent-reviewer
-  - agent-project-auditor
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-docker-specialist.md
   name: agent-docker-specialist
   version: 0.1.0
   layer: L2
   role: specialist
-  description: COGME documentation custody. Owns README + docs/ tree, API reference derived from OpenAPI
-    render (never hand-restyled), runbooks, PT-BR glossary and doc-drift audits. Documented truth equals
-    running truth; fabricated docs are a crime against the chain.
+  description: Agente agent-docker-specialist do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-pm
-  downstream:
-  - agent-project-auditor
-  - agent-po
-  - agent-skill-master
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-factory-architect-ultimate.md
   name: agent-factory-architect-ultimate
   version: 1.3.0-FINAL
   layer: L0_ADJ
   role: forge
-  description: COGME forjador supremo (AFA-ULTIMATE). Gera orquestradores, especialistas, generalistas,
-    skills, MCPs e analistas mestres. Soberania digital, GNU/FOSS primacia, otimização hardware-aware
-    para 8700G/60GB/CPU-only. Forja sob autoridade exclusiva (Art. 4.1).
+  description: Forjador AFA-ULTIMATE — forja e promulga agentes do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
+  upstream: []
   downstream: []
 - file: .opencode/agents/agent-frontend-dev.md
   name: agent-frontend-dev
   version: 0.1.0
   layer: L2
   role: specialist
-  description: COGME frontend implementer. Server-rendered templates (Jinja/FastAPI), HTMX progressive
-    enhancement, Tailwind via committed util classes. Consumes ui-ux advisory + api contract. No build
-    chain, no CDN-first, CPU-local friendly.
+  description: Agente agent-frontend-dev do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-ui-ux-advisor
-  - agent-api-specialist
-  - agent-python-specialist
-  downstream:
-  - agent-reviewer
-  - agent-gatekeeper
-  - agent-qa-sdet
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-gatekeeper.md
   name: agent-gatekeeper
   version: 0.1.0
   layer: L3
   role: gate
-  description: COGME merge gate custody (L3). Owns merge authorization via full chain verification (reviewer
-    pass + CI green + coverage + compliance + Human approval), branch-protection co-custody, revert-first
-    policy and release gating. The chain or nothing.
+  description: Agente agent-gatekeeper do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-reviewer
-  downstream:
-  - agent-project-auditor
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-github-specialist.md
   name: agent-github-specialist
   version: 0.1.0
   layer: L2
   role: specialist
-  description: COGME GitHub ecosystem custody. Owns Projects board mirror sync, branch protection, PR/issue
-    templates, release tag discipline and gh API usage under least-privilege tokens. Accelerates traceability;
-    never owns merge verdicts or CI gates.
+  description: Agente agent-github-specialist do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-pm
-  downstream:
-  - agent-pm
-  - agent-devops
-  - agent-project-auditor
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-infrastructure-specialist.md
   name: agent-infrastructure-specialist
   version: 0.1.0
   layer: L2
   role: specialist
-  description: 'COGME runtime custody. Owns llama.cpp local serving (systemd, flags, model weights), 8700G/60GB
-    envelope discipline, disk quotas, health checks and upgrade trajectories. CPU-only forever: no CUDA,
-    no cloud inference, ever.'
+  description: Agente agent-infrastructure-specialist do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  downstream:
-  - agent-devops
-  - agent-digital-security
-  - agent-compliance-governance
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-iso-26514-specialist.md
   name: agent-iso-26514-specialist
   version: 0.1.0
   layer: L2
   role: specialist
-  description: COGME ISO/IEC/IEEE 26514:2022 custody. Systems and software engineering documentation requirements,
-    documentation planning, and documentation quality assurance.
+  description: Agente agent-iso-26514-specialist do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-sdd-specialist
-  - agent-docker-specialist
-  downstream:
-  - agent-project-auditor
-  - agent-gatekeeper
-  - agent-compliance-governance
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-itil-specialist.md
   name: agent-itil-specialist
   version: 0.1.0
   layer: L2
   role: specialist
-  description: COGME ITIL custody. IT service management, incident/change/problem/service desk processes,
-    and service management compliance.
+  description: Agente agent-itil-specialist do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-devops
-  - agent-compliance-governance
-  downstream:
-  - agent-project-auditor
-  - agent-gatekeeper
-  - agent-pm
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-nexus-prime-ultimate.md
   name: agent-nexus-prime-ultimate
   version: 1.3.0-ULTIMATE
   layer: L0
   role: orchestrator
-  description: COGME L0 orchestrator - sole DAG dispatcher, constitutional compliance enforcer, half-duplex
-    contracts, aggregates structured parcels, owns escalation to human.
+  description: Orquestrador L0 do ecossistema COGME — roteamento DAG, triage, agregação, escalonamento
+    e conformidade constitucional.
   status: promulgado
   upstream: []
-  downstream:
-  - agent-sdd-specialist
-  - agent-pm
-  - agent-po
-  - agent-architect
-  - agent-project-analyst
-  - agent-project-design-specialist
-  - agent-project-patterns-standards-specialist
-  - agent-business-analysis-specialist
-  - agent-python-specialist
-  - agent-api-specialist
-  - agent-dba
-  - agent-backend-dev
-  - agent-ui-ux-advisor
-  - agent-frontend-dev
-  - agent-bash-specialist
-  - agent-infrastructure-specialist
-  - agent-devops
-  - agent-github-specialist
-  - agent-digital-security
-  - agent-compliance-governance
-  - agent-docker-specialist
-  - agent-artifact-builder
-  - agent-qa-sdet
-  - agent-reviewer
-  - agent-gatekeeper
-  - agent-project-auditor
-  - agent-skill-master
-  - agent-sddai-loader
-  - agent-sddai-engineer
-  - agent-sddai-trainer
-  - agent-sddai-memory
-  - agent-sddai-cli
-  - agent-agile-specialist
-  - agent-ai-llm-rag-dag-mcp-roster-master-specialist
-  - agent-art-communication-marketing-pr-specialist
-  - agent-cobit-specialist
-  - agent-copyright-specialist
-  - agent-iso-26514-specialist
-  - agent-itil-specialist
-  - agent-quality-architect-specialist
-  - agent-six-sigma-specialist
-  - agent-sldc-process-specialist
+  downstream: []
 - file: .opencode/agents/agent-pm.md
   name: agent-pm
   version: 0.1.0
   layer: L1
   role: specialist
-  description: COGME PM steward. Custodian of PMBOK 7 corpus, TAP/EAP consistency, milestone tracking
-    M1-M4, CCB drafting and flow metrics. Recommends; the Human decises alone per constitution Art. 5.
+  description: Agente agent-pm do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  downstream:
-  - agent-po
-  - agent-architect
-  - agent-devops
-  - agent-project-auditor
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-po.md
   name: agent-po
   version: 0.1.0
   layer: L1
   role: specialist
-  description: COGME PO steward. Owns backlog hygiene in GitHub Projects SSOT, DoR/DoD checkboxes, WIP
-    cap enforcement and slice sizing. Translates PMBOK scope into Kanban flow. Recommends; Human decises
-    (constitution Art. 5).
+  description: Agente agent-po do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-pm
-  downstream:
-  - agent-backend-dev
-  - agent-frontend-dev
-  - agent-qa-sdet
-  - agent-gatekeeper
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-project-analyst.md
   name: agent-project-analyst
   version: 0.1.0
   layer: L1
   role: specialist
-  description: COGME analyst. Consolidates whole-project state (docs, specs, code, tests, roster) into
-    evidence-based findings. No decision authority, no edits to canon files; feeds PM/architect/auditor
-    with quantified parcels.
+  description: Agente agent-project-analyst do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-pm
-  downstream:
-  - agent-pm
-  - agent-architect
-  - agent-project-auditor
-  - agent-docker-specialist
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-project-auditor.md
   name: agent-project-auditor
   version: 0.1.0
   layer: L3
   role: gate
-  description: COGME final audit custody (L3, terminal). Owns chain audits (REQ->HF->PR->run->release),
-    the append-only violation register (VIO-NNN), roster governance checks, quality trends and academic
-    honesty verification. Reports to Human (Art. 5.1); audits are never bypassed.
+  description: Agente agent-project-auditor do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
+  upstream: []
   downstream: []
 - file: .opencode/agents/agent-project-design-specialist.md
   name: agent-project-design-specialist
   version: 0.1.0
   layer: L1
   role: specialist
-  description: COGME project design custody. Solution design, architectural sketches, design pattern selection,
-    and design review. Feeds implementation agents with design artifacts.
+  description: Agente agent-project-design-specialist do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-architect
-  - agent-sdd-specialist
-  downstream:
-  - agent-backend-dev
-  - agent-frontend-dev
-  - agent-api-specialist
-  - agent-dba
-  - agent-ui-ux-advisor
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-project-patterns-standards-specialist.md
   name: agent-project-patterns-standards-specialist
   version: 0.1.0
   layer: L1
   role: specialist
-  description: COGME project patterns & standards custody. Reusable design patterns, coding standards,
-    templates, and anti-pattern catalog. Feeds all implementation agents.
+  description: Agente agent-project-patterns-standards-specialist do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-architect
-  - agent-sdd-specialist
-  downstream:
-  - agent-python-specialist
-  - agent-api-specialist
-  - agent-backend-dev
-  - agent-frontend-dev
-  - agent-artifact-builder
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-python-specialist.md
   name: agent-python-specialist
   version: 0.1.0
   layer: L2
   role: specialist
-  description: COGME Python codebase steward. Owns standards (PEP 311-py3.11, typing, docstrings, stdlib-first),
-    pyproject.toml, dependency whitelist and Python runtime hygiene for 100% CPU local execution. Blocks
-    non-FOSS and cloud-bound coercions.
+  description: Agente agent-python-specialist do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-architect
-  downstream:
-  - agent-backend-dev
-  - agent-qa-sdet
-  - agent-docker-specialist
-  - agent-artifact-builder
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-qa-sdet.md
   name: agent-qa-sdet
   version: 0.1.0
   layer: L2
   role: specialist
-  description: 'COGME test custody (QA+QE+SDET consolidated). Owns test strategy per REQ, test code engineering,
-    coverage gate (>= 80%) and contract-test derivation. Evidence-first: verdicts carry run ids, exit
-    codes and flake status; never mutes red.'
+  description: Agente agent-qa-sdet do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-python-specialist
-  - agent-api-specialist
-  downstream:
-  - agent-reviewer
-  - agent-gatekeeper
-  - agent-project-auditor
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-quality-architect-specialist.md
   name: agent-quality-architect-specialist
   version: 0.1.0
   layer: L2
   role: specialist
-  description: COGME quality architecture custody. Quality attributes, quality gate design, SQA planning,
-    and quality attribute trade-off analysis.
+  description: Agente agent-quality-architect-specialist do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-architect
-  - agent-sdd-specialist
-  downstream:
-  - agent-qa-sdet
-  - agent-reviewer
-  - agent-project-auditor
-  - agent-devops
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-reviewer.md
   name: agent-reviewer
   version: 0.1.0
   layer: L3
   role: gate
-  description: 'COGME code review verdict custody (L3). Issues pass|amend|block verdicts citing an immutable
-    rubric (R-01..R-07), with risk classification, evidence requirements and actionable PT-BR amendments.
-    Verdicts only: never merges, never implements.'
+  description: Agente agent-reviewer do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  downstream:
-  - agent-gatekeeper
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-sdd-specialist.md
   name: agent-sdd-specialist
   version: 0.1.0
   layer: L1
   role: specialist
-  description: COGME SDD custodian. Understands, orients and applies Spec-Driven Development. Owns spec
-    lifecycle, canonical handoff contract, .ai/specs custody and SDD cycle v2 integration. Gates against
-    constitution.md Art. 6.
+  description: Agente agent-sdd-specialist do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  downstream:
-  - agent-pm
-  - agent-po
-  - agent-architect
-  - agent-backend-dev
-  - agent-frontend-dev
-  - agent-qa-sdet
-  - agent-docker-specialist
-  - agent-reviewer
-  - agent-gatekeeper
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-sddai-cli.md
   name: agent-sddai-cli
   version: 1.0.0
   layer: L2
   role: specialist
-  description: COGME SDDAI CLI orchestrator specialist. Custom from zero, stdlib-only. Orchestrates loader
-    -> memory -> engineer -> trainer pipeline via subprocess. Zero external deps.
+  description: Agente agent-sddai-cli do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-sddai-loader
-  - agent-sddai-engineer
-  - agent-sddai-trainer
-  - agent-sddai-memory
+  upstream: []
   downstream: []
 - file: .opencode/agents/agent-sddai-engineer.md
   name: agent-sddai-engineer
   version: 1.0.0
   layer: L2
   role: specialist
-  description: COGME SDDAI feature engineer specialist. Custom from zero, stdlib-only. Transforms ingested
-    data into structured features (word_count, char_count, unique_words, lexical_diversity). Zero external
-    deps.
+  description: Agente agent-sddai-engineer do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-sddai-loader
-  - agent-sddai-memory
-  downstream:
-  - agent-sddai-trainer
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-sddai-loader.md
   name: agent-sddai-loader
   version: 1.0.0
   layer: L2
   role: specialist
-  description: COGME SDDAI data loader specialist. Custom from zero, stdlib-only. Ingests input files,
-    computes sha256 checksum, returns structured metadata for downstream pipeline stages. Zero external
-    deps.
+  description: Agente agent-sddai-loader do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-sdd-specialist
-  downstream:
-  - agent-sddai-engineer
-  - agent-sddai-memory
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-sddai-memory.md
   name: agent-sddai-memory
   version: 1.0.0
   layer: L2
   role: specialist
-  description: COGME SDDAI memory optimizer specialist. Custom from zero, stdlib-only. Monitors system
-    memory via /proc/meminfo, applies gc collection, recommends allocation. Zero external deps.
+  description: Agente agent-sddai-memory do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-sddai-loader
-  downstream:
-  - agent-sddai-engineer
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-sddai-trainer.md
   name: agent-sddai-trainer
   version: 1.0.0
   layer: L2
   role: specialist
-  description: COGME SDDAI model trainer specialist. Custom from zero, stdlib-only. Trains deterministic
-    model on engineered features, returns model_id, final_loss, accuracy, artifact checksum. Zero external
-    deps.
+  description: Agente agent-sddai-trainer do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-sddai-engineer
+  upstream: []
   downstream: []
 - file: .opencode/agents/agent-six-sigma-specialist.md
   name: agent-six-sigma-specialist
   version: 0.1.0
   layer: L2
   role: specialist
-  description: COGME Six Sigma custody. DMAIC/DMADV methodology, process variation reduction, defect prevention,
-    and quality improvement.
+  description: Agente agent-six-sigma-specialist do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-quality-architect-specialist
-  - agent-project-analyst
-  downstream:
-  - agent-project-auditor
-  - agent-gatekeeper
-  - agent-pm
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-skill-master.md
   name: agent-skill-master
   version: 0.1.0
   layer: META
   role: forge
-  description: 'COGME skill forge (META, final agent - YAGNI-last by plan). Forges OpenCode skills (.opencode/skills/<slug>/SKILL.md)
-    only under the YAGNI gate: recurring stable workflows (>= 3 parcel recurrences) plus Human ratification.
-    Skills never weaken agent guards; local-only, injection-screened, ledger-registered.'
+  description: Agente agent-skill-master do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-docker-specialist
+  upstream: []
   downstream: []
 - file: .opencode/agents/agent-sldc-process-specialist.md
   name: agent-sldc-process-specialist
   version: 0.1.0
   layer: L2
   role: specialist
-  description: COGME SDLC process custody. Software development lifecycle phases, gates, entry/exit criteria,
-    process compliance, and improvement.
+  description: Agente agent-sldc-process-specialist do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-sdd-specialist
-  - agent-pm
-  downstream:
-  - agent-backend-dev
-  - agent-frontend-dev
-  - agent-qa-sdet
-  - agent-devops
-  - agent-project-auditor
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-ui-ux-advisor.md
   name: agent-ui-ux-advisor
   version: 0.1.0
   layer: L2
   role: specialist
-  description: COGME UI/UX advisory. Owns flows, copy, wireframes (HTML mockups/mermaid) and accessibility
-    baseline for the currency-sim and invoice flows prior to implementation. Advisory only, no code merges.
+  description: Agente agent-ui-ux-advisor do ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-pm
-  - agent-api-specialist
-  downstream:
-  - agent-frontend-dev
-  - agent-qa-sdet
-  - agent-reviewer
+  upstream: []
+  downstream: []

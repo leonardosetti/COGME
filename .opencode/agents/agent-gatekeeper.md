@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-gatekeeper
+layer: L3
+role: gate
+description: 'Agente agent-gatekeeper do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-GATEKEEPER (L3 · GATE · MERGE AUTHORITY)

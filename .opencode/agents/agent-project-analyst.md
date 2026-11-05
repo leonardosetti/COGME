@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-project-analyst
+layer: L1
+role: specialist
+description: 'Agente agent-project-analyst do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-PROJECT-ANALYST (L1 · SPECIALIST · CONSOLIDATION EYE)

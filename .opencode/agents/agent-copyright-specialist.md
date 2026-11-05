@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-copyright-specialist
+layer: L2
+role: specialist
+description: 'Agente agent-copyright-specialist do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-COPYRIGHT-SPECIALIST (L2 · SPECIALIST · COPYRIGHT)
@@ -205,4 +209,3 @@ Format MAJOR.MINOR.PATCH.
 0.1.0 - 2026-10-23
 - ONDA 8 Lote 2 forge; 16 secoes; 6 metricas; 7 RT; 6 FC; copyright ledger + SPDX verification + copyleft enforcement wired.
 - Next: 0.2.0 after first copyright audit cycle.
-

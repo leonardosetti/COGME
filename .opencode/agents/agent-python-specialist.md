@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-python-specialist
+layer: L2
+role: specialist
+description: 'Agente agent-python-specialist do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-PYTHON-SPECIALIST (L2 · SPECIALIST · PYTHON STANDARDS)

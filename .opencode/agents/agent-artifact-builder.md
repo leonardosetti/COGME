@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-artifact-builder
+layer: L2
+role: specialist
+description: 'Agente agent-artifact-builder do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-ARTIFACT-BUILDER (L2 · SPECIALIST · SCAFFOLD CUSTODY)

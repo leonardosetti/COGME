@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-bash-specialist
+layer: L2
+role: specialist
+description: 'Agente agent-bash-specialist do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-BASH-SPECIALIST (L2 · SPECIALIST · SHELL CUSTODY)

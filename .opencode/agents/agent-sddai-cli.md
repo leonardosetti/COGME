@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-sddai-cli
+layer: L2
+role: specialist
+description: 'Agente agent-sddai-cli do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-SDDAI-CLI (L2 · SPECIALIST · SDDAI PIPELINE ORCHESTRATOR)

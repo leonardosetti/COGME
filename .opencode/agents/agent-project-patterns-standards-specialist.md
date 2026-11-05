@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-project-patterns-standards-specialist
+layer: L1
+role: specialist
+description: 'Agente agent-project-patterns-standards-specialist do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-PROJECT-PATTERNS-STANDARDS-SPECIALIST (L1 · SPECIALIST · PATTERNS)
@@ -206,4 +210,3 @@ Format MAJOR.MINOR.PATCH.
 0.1.0 - 2026-10-23
 - ONDA 8 Lote 1 forge; 16 secoes; 7 metricas; 8 RT; 7 FC; pattern catalog + gold templates + anti-pattern rules wired.
 - Next: 0.2.0 after first pattern adoption audit.
-

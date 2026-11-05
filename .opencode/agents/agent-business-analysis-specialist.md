@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-business-analysis-specialist
+layer: L1
+role: specialist
+description: 'Agente agent-business-analysis-specialist do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-BUSINESS-ANALYSIS-SPECIALIST (L1 · SPECIALIST · BA)

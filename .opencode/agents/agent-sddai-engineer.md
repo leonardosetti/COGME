@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-sddai-engineer
+layer: L2
+role: specialist
+description: 'Agente agent-sddai-engineer do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-SDDAI-ENGINEER (L2 · SPECIALIST · SDDAI FEATURE ENGINEER)

@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-ui-ux-advisor
+layer: L2
+role: specialist
+description: 'Agente agent-ui-ux-advisor do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-UI-UX-ADVISOR (L2 · SPECIALIST · ADVISORY)

@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-architect
+layer: L1
+role: specialist
+description: 'Agente agent-architect do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-ARCHITECT (L1 · SPECIALIST · ARCHITECTURE CUSTODIAN)

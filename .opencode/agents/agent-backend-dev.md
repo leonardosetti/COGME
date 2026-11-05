@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-backend-dev
+layer: L2
+role: specialist
+description: 'Agente agent-backend-dev do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-BACKEND-DEV (L2 · SPECIALIST · IMPLEMENTER)

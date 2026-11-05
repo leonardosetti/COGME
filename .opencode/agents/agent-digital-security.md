@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-digital-security
+layer: L2
+role: specialist
+description: 'Agente agent-digital-security do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-DIGITAL-SECURITY (L2 · SPECIALIST · DEFENSE)

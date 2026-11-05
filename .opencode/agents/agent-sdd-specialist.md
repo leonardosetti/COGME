@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-sdd-specialist
+layer: L1
+role: specialist
+description: 'Agente agent-sdd-specialist do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-SDD-SPECIALIST (L1 · SPECIALIST · SDD CUSTODIAN)

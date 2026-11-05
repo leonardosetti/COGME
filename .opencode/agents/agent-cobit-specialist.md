@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-cobit-specialist
+layer: L2
+role: specialist
+description: 'Agente agent-cobit-specialist do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-COBIT-SPECIALIST (L2 · SPECIALIST · COBIT)
@@ -205,4 +209,3 @@ Format MAJOR.MINOR.PATCH.
 0.1.0 - 2026-10-23
 - ONDA 8 Lote 2 forge; 16 secoes; 6 metricas; 7 RT; 6 FC; COBIT framework + control objectives + maturity tracking wired.
 - Next: 0.2.0 after first IT governance audit cycle.
-

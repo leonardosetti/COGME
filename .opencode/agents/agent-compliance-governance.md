@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-compliance-governance
+layer: L2
+role: specialist
+description: 'Agente agent-compliance-governance do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-COMPLIANCE-GOVERNANCE (L2 · SPECIALIST · LEGAL)

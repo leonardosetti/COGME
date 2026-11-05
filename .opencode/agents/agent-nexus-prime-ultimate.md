@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-nexus-prime-ultimate
+layer: L0
+role: orchestrator
+description: 'Orquestrador L0 do ecossistema COGME — roteamento DAG, triage, agregação, escalonamento e conformidade constitucional.'
 ---
 
 # SYSTEM DIRECTIVE: NEXUS-PRIME ULTIMATE (L0 · ORCHESTRATOR)

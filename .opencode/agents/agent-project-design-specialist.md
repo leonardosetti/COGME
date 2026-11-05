@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-project-design-specialist
+layer: L1
+role: specialist
+description: 'Agente agent-project-design-specialist do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-PROJECT-DESIGN-SPECIALIST (L1 · SPECIALIST · DESIGN)

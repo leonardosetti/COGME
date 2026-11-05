@@ -58,18 +58,51 @@ def utc_now() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
 
-def load_ledger() -> list:
+SCHEMA_KEYS = ("version", "current_session", "audit_trail", "blocked_tasks")
+
+
+def load_ledger() -> dict:
+    """Retorna o ledger no esquema Art. 4.10.
+    Retrocompatível: se o arquivo ainda for uma lista (formato legado), envolve
+    automaticamente em audit_trail sem perder nenhuma entrada.
+    """
     if not LEDGER.exists():
-        return []
+        return {"version": "2.0", "current_session": None, "audit_trail": [], "blocked_tasks": []}
     import yaml
-    data = yaml.safe_load(LEDGER.read_text(encoding="utf-8")) or []
-    if not isinstance(data, list):
-        return []
+    data = yaml.safe_load(LEDGER.read_text(encoding="utf-8")) or {}
+    if isinstance(data, list):
+        # ledger legado: lista simples de entradas -> envolve em audit_trail
+        return {
+            "version": "2.0",
+            "current_session": None,
+            "audit_trail": data,
+            "blocked_tasks": [],
+        }
+    if not isinstance(data, dict):
+        return {"version": "2.0", "current_session": None, "audit_trail": [], "blocked_tasks": []}
+    for k in SCHEMA_KEYS:
+        if k not in data or data[k] is None:
+            data[k] = [] if k in ("audit_trail", "blocked_tasks") else None
     return data
 
 
-def save_ledger(data: list) -> None:
+def save_ledger(data: dict) -> None:
+    """Persiste o ledger preservando o esquema Art. 4.10.
+    Aceita tanto um dict (esquema) quanto uma lista (retrocompatibilidade).
+    Nunca sobrescreve entradas existentes: apenas reescreve o arquivo inteiro
+    com o mesmo conteudo de audit_trail + metadados do esquema.
+    """
     import yaml
+    if isinstance(data, list):
+        data = {
+            "version": "2.0",
+            "current_session": None,
+            "audit_trail": data,
+            "blocked_tasks": [],
+        }
+    for k in SCHEMA_KEYS:
+        if k not in data or data[k] is None:
+            data[k] = [] if k in ("audit_trail", "blocked_tasks") else None
     LEDGER.write_text(
         yaml.safe_dump(data, allow_unicode=True, sort_keys=False, width=100),
         encoding="utf-8",
@@ -78,7 +111,7 @@ def save_ledger(data: list) -> None:
 
 def ledger_has_terminal(task_id: str) -> bool:
     """Idempotência: já tem dod:true, status terminal, ou já foi dispatchado."""
-    for entry in load_ledger():
+    for entry in load_ledger().get("audit_trail", []):
         if entry.get("task_id") == task_id:
             if entry.get("dod") is True:
                 return True
@@ -91,7 +124,7 @@ def ledger_has_terminal(task_id: str) -> bool:
 
 def append_ledger(entry: dict) -> None:
     data = load_ledger()
-    data.append(entry)
+    data["audit_trail"].append(entry)
     save_ledger(data)
 
 

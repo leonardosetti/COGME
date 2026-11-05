@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-project-auditor
+layer: L3
+role: gate
+description: 'Agente agent-project-auditor do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-PROJECT-AUDITOR (L3 · GATE · FINAL AUDIT)

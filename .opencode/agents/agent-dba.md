@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-dba
+layer: L2
+role: specialist
+description: 'Agente agent-dba do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-DBA (L2 · SPECIALIST · DATA CUSTODY)

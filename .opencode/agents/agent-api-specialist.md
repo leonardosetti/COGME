@@ -13,6 +13,10 @@ tags:
 - agents
 - docs
 - adequado-a-norma
+name: agent-api-specialist
+layer: L2
+role: specialist
+description: 'Agente agent-api-specialist do ecossistema COGME.'
 ---
 
 # SYSTEM DIRECTIVE: AGENT-API-SPECIALIST (L2 · SPECIALIST · CONTRACT CUSTODY)
