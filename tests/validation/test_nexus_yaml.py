@@ -26,12 +26,14 @@ REGISTRY_PATH = REPO_ROOT / ".ai" / "agents" / "registry.yaml"
 SCRIPTS_DIR = REPO_ROOT / "scripts"
 AGENTS_DIR = REPO_ROOT / ".opencode" / "agents"
 
-VALID_LAYERS = {"L0", "L1", "L2", "L3", "META"}
+VALID_LAYERS = {"L0", "L0_ADJ", "L1", "L2", "L3", "META"}
 VALID_ROLES = {"orchestrator", "specialist", "gate", "forge"}
 
 # Sequência canônica da DAG (constitution.md Art. 4.5 + registry.yaml SSOT)
+# CCB/GP ratificado: L0_ADJ para agent-factory-architect-ultimate (L0-adjacente independente)
 AGENT_TOPOLOGY = {
     "L0": ["agent-nexus-prime-ultimate"],
+    "L0_ADJ": ["agent-factory-architect-ultimate"],
     "L1": [
         "agent-sdd-specialist",
         "agent-pm",
@@ -79,7 +81,7 @@ AGENT_TOPOLOGY = {
         "agent-project-auditor",
         "agent-clean-code-evaluator",
     ],
-    "META": ["agent-skill-master", "agent-factory-architect-ultimate"],
+    "META": ["agent-skill-master"],
     "FORGE-LEGACY": ["agent-factory-architect"],
 }
 KNOWN_SLUGS = {a for members in AGENT_TOPOLOGY.values() for a in members}
@@ -296,13 +298,13 @@ def test_dag_has_no_cycles(agents_list):
 def test_layer_upstream_ordering(agents_list):
     """Upstream de um agente não deve estar em camada posterior (recomendação, não bloqueio).
     Same-layer ou anterior é aceitável; camada posterior gera warning."""
-    layer_order = {"L0": 0, "L1": 1, "L2": 2, "L3": 3, "META": 4}
+    layer_order = {"L0": 0, "L0_ADJ": 0, "L1": 1, "L2": 2, "L3": 3, "META": 4}
     layer_of = {a["name"]: a["layer"] for a in agents_list}
     warnings = []
     for a in agents_list:
         name = a["name"]
         layer = a["layer"]
-        if layer == "L0":
+        if layer in ("L0", "L0_ADJ"):
             continue
         for upstream in a.get("upstream") or []:
             up_layer = layer_of.get(upstream)
