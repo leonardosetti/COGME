@@ -204,3 +204,17 @@ evidencia: frontmatter ratificado em ambos os documentos; aplicacao a 338 artefa
 impacto: Todas as normas de template e nomenclatura de artefatos passam a ser vigentes e rastreaveis em CCB, OKB e Constituição.
 rollback: Reverter commits individuais por artefato (nao recomendado).
 pmbok-gate: Integracao (4.6) | Qualidade (8.3) | Conformidade (P-05, P-08, Art. 2, Art. 9)
+
+
+### RAT-2026-11-05-A21 — Arquivamento de teste zumbis test_adversarial_mcp.py
+contexto: `tests/agents/test_adversarial_mcp.py` importa modulos deletados (`.ai/deprecated/mcp-nexus/mcp_nexus_ledger`, `agent_communication_hub`, `mcp_usage_log`) e funcao inexistente `nexus_delivery.validate_task_for_delivery`, quebrando a coleta de pytest e o pipeline de testes. Artefato de arquitetura anterior sem mantenedor, sem referencia em workflows/CI.
+opcoes: [A] Manter e consertar recriando modulos deletados | [B] Arquivar (depreciar) o teste e remover da coleta de pytest | [C] Reescrever o teste com mocks
+decisao: B — Arquivar (depreciar) `tests/agents/test_adversarial_mcp.py` em `docs/archive/` e remover do escopo de pytest. Nenhum modulo deletado e recriado; nenhum corpo normativo alterado.
+artefatos alterados:
+  - tests/agents/test_adversarial_mcp.py -> docs/archive/test_adversarial_mcp.py (arquivado, depreciado)
+ratificacao: Humana (GP Leonardo, CCB de membro unico, autoridade plena concedida nesta rodada)
+instrumento: RAT-2026-11-05-A21
+evidencia: arquivo movido via git mv; pytest collections relevantes (tests/agents, tests/validation) nao coletam mais o modulo zumbi; as 7 falhas remanescentes sao chain-wiring pre-existentes (ONDA 2/4/5/6/7), nao relacionadas ao teste arquivado.
+impacto: Pipeline de testes nao e mais bloqueado por importacoes de modulos deletados; remocao nao quebra links internos nem workflows/CI (nenhuma referencia ao teste existia).
+rollback: git mv de volta para tests/agents/ (nao recomendado; modulos de suporte continuam deletados).
+pmbok-gate: Integracao (4.6) | Qualidade (8.3) | Conformidade (P-05, Art. 9)

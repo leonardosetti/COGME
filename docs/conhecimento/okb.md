@@ -348,6 +348,7 @@ Regra adicional: **qualquer mudança em lei suprema (Constituição) é sempre `
 | 31/10 | A11 — **esta rodada**: normalização do OKB v5.2.0 (template canônico, sanitize, patch list, auditoria AUD-2610-09) | ccb-log; §12 |
 | 02/11 | A12 — consolidação _consolidado-adrs.tmp.md com ADRs 013–016; bump OKB para v5.3.0; atualização catálogo ADR e inventário | ccb-log; §12 |
 | 05/11 | A20 — ratificação das Normas de Templates e Nomenclatura de Artefatos (docs/normas/); inclusão na hierarquia da Constituição (Art. 2.1) e inventário do OKB (§4) | ccb-log RAT-2026-11-05-A20 |
+| 05/11 | A21 — arquivamento (depreciacao) do teste zumbis `tests/agents/test_adversarial_mcp.py` para `docs/archive/`; remocao da coleta de pytest; nao bloqueia mais o pipeline de testes por importacoes de modulos deletados | ccb-log RAT-2026-11-05-A21 |
 
 ---
 
@@ -719,6 +720,7 @@ Regras: (i) sempre pinar `vX.Y.Z` (ADR/norma) ou `vX.Y` (plano); (ii) citar seç
 9. **OKB-C-25** — ✅ encerrado: `docs/governanca/plano-consolidacao-estrutural.md` criado (v1.0.0).
 10. **Ratificação deste OKB v5.2.0** — ✅ **CUMPRIDA** nesta emissão (CCB-LOG RAT-2026-10-31-A11, 31/10/2026; bloco §13).
 11. **OKB-C-09** — ✅ encerrado: TAP.md preenchido com resumo canônico + ponteiro.
+12. **Teste zumbis arquivado** — ✅ encerrado: `tests/agents/test_adversarial_mcp.py` movido para `docs/archive/` (RAT-2026-11-05-A21); nao bloqueia mais o pipeline de testes.
 
 ---
 
@@ -740,6 +742,7 @@ Esta versão é uma **normalização**, não uma reescrita: corpo normativo de v
 | VER-006 | v5.1.0 | 30/10/2026 | v5.0.0-draft + PMBOK/TOGAF/ITIL | primeira versão ratificada: §9 cobertura metodológica; C-22..C-24; poda YAGNI; promoção a corpus canônico único; SHA `ac27f0c1…9547` (bloco ratificado antes da promulgação) | CCB-003 (30/10) |
 | **VER-007** | **v5.2.0** | **31/10/2026** | v5.1.0 + rodada de estado 31/10 (A08–A10, VIO-013..025) | **(a) Template canônico OKB-TEMPLATE-CANON v1.0 adotado** (nomenclatura OKB \| Operational Knowledge Base; índice normativo; blocos I–IV; changelog VER-NNN; bloco de co-assinatura §13). **(b) Sanitize:** glossário v3.1 → v3.2.0 (hierarquia, EAP 12/37, PostgreSQL, Qwen MoE, refs); patch list §8.4 executada (personas ×2, ADR-012, plano-integral ×6) — cada alvo com bump/changelog próprio ou ressalva complementar. **(c) Normatize:** §2.5 tipos de mudança (encerra C-23); §5.1 namespace TAP-P#/C-P-## (encerra C-19 para o corpus); §1.4/§1.6 regimes ADR-013-a, CI-CD-GOV-001 e DEVSECOPS-001. **(d) Persistência:** estado as-of 31/10 (§3.6); inventário atualizado (baseline seed, ADR-013-a/b, normas técnicas, artefatos promulgados). **(e) Auditoria:** AUD-2610-09 extraordinária dedicada; achados novos C-26/C-27/C-28. **(f) Governança:** CCB-LOG A11 (aprovação indireta via agente, autorização expressa e deliberativa do GP); ledger append; KB-INDEX bump 1.2.0→1.3.0 | **CCB-LOG RAT-2026-10-31-A11** — CCB único (GP Leonardo), aprovação indireta via agente com gatilho de permissão prévia deliberativo executado |
 | **VER-008** | **v5.3.0** | **05/11/2026** | v5.2.0 + ratificação das Normas de Artefatos (CCB-LOG RAT-2026-11-05-A20) | **(a) Normas de template e nomenclatura de artefatos (`docs/normas/NORMA-TEMPLATES-ARTEFATOS.md` + `NORMA-NOMECLATURA-ARTEFATOS.md`) ratificadas em CCB e incluídas na hierarquia normativa da Constituição (Art. 2.1, item 4). **(b) Inventário do OKB §4.1 atualizado com ambas as normas. **(c) Evento A20 adicionado ao §3.6. **(d) KB-INDEX v1.3.0 atualizado com entradas para ambas as normas. | **CCB-LOG RAT-2026-11-05-A20** — CCB único (GP Leonardo), ratificação humana via instrumento RAT-2026-11-05-A20 |
+| **VER-009** | **v5.3.1** | **05/11/2026** | v5.3.0 + arquivamento de teste zumbis (CCB-LOG RAT-2026-11-05-A21) | **(a) `tests/agents/test_adversarial_mcp.py` movido para `docs/archive/` (depreciado): importava modulos deletados e funcao inexistente, bloqueando coleta de pytest. **(b) Remocao da coleta de pytest (nenhuma referencia em workflows/CI). **(c) Registro em ccb-log RAT-2026-11-05-A21. | **CCB-LOG RAT-2026-11-05-A21** — CCB unico (GP Leonardo), ratificacao humana via instrumento RAT-2026-11-05-A21 |
 
 ---
 
@@ -779,7 +782,7 @@ Este bloco não integra o hash normativo da v5.2.0 (bloco §13). Versão 5.3.0 r
 | Instrumento | Decisão CCB (opção E1, inspeção Constitution/OKB, 05/11/2026); bump v5.2.0 → v5.3.0 (anunciado em A12, 02/11/2026) |
 | Ratificador | Gerente de Projeto — CCB de membro único (Art. 5.4: papel, sem nome civil) |
 | Data da ratificação | 05/11/2026 |
-| Hash normativo da v5.3.0 | `6db53c8aa02cc413e1fafcffe738a9ad5a542bcb8d41a3daed8226942cebdaa3` |
+| Hash normativo da v5.3.1 | `dd89f4010b938f98c8d763a7c58ab056181d94f8bff43709210e2401f2537918` |
 | Método de verificação | `sha256sum` sobre os bytes do início do arquivo até a linha imediatamente anterior a `## 13. BLOCO DE RATIFICAÇÃO` (conteúdo normativo v5.3.0, excluindo ambos os blocos de ratificação §13 e §13.1) |
 | Assinatura | `/s/ CCB de membro único` |
 | Efeito | Bump de versão do OKB de v5.2.0 para v5.3.0; corpus normativo da v5.2.0 preservado; alterações incorporadas nesta inspeção (fechamento de OKB-C-02, C-05, C-06, C-08, C-09, C-10, C-12, C-24, C-25, C-28 e glossário/frontmatter alinhados) |
