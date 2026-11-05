@@ -229,9 +229,12 @@ jobs:
     timeout-minutes: 10
     needs: [kill-switch-check]
     env:
-      # docker compose interpola ${COGME_DATABASE_URL:?} no build; valor dummy CI,
+      # docker compose interpola ${...:?} no build; valores dummy CI,
       # o build não conecta ao banco.
       COGME_DATABASE_URL: postgresql+asyncpg://cogme_ci:dummy-ci-efemero@db:5432/cogme_test
+      POSTGRES_USER: cogme_ci
+      POSTGRES_PASSWORD: dummy-ci-efemero
+      POSTGRES_DB: cogme_test
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4  # v4 (Node 24-compat)
