@@ -1,12 +1,15 @@
 ---
 spec_id: spec-001
+specname: constitution-round-1-proposta
 version: 0.1.0
 status: draft
+custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-10-25
-owner: agent-sdd-specialist
-wave: WS-1 | Rodada 1 de definição canônica da constitution.md v1.0.0
-task: TA-0002 | handoff: HF-0001 | sender: agent-nexus-prime-ultimate
+updated: 2026-10-25
+origin: TA-0002 | handoff: HF-0001 | sender: agent-nexus-prime-ultimate
+task: TA-0002
 kill_switch: inherited
+lgpd-class: n/a (zero PII neste artefato; P-04, constitution.md:90)
 trace:
   - constitution.md v1.0.0 (Art. 9.1 — emendas; Art. 5.2 — ratificação humana)
   - docs/planos/COGME.pdf (106 págs.; citações por linha do texto extraído via pdftotext)

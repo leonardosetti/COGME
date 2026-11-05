@@ -7,7 +7,13 @@ custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-10-30
 updated: 2026-11-02
 origin: run CANON-20261029-01 (ADR-011) + commit 149067f (2026-10-30) | creation_handoff: UNKNOWN - verify
+task: TA-0300 | sender: agent-nexus-prime-ultimate
 kill_switch: inherited
+lgpd-class: n/a (zero PII neste artefato; P-04, constitution.md:90)
+trace:
+  - ADR-011 (v1.0.0, aprovado CCB 29/10/2026)
+  - scripts/validate_afa_output.py, scripts/nexus_dispatcher.py
+  - .ai/agents/registry.yaml (roster SSOT)
 ---
 
 # DOCUMENTO CANÔNICO DE EXECUÇÃO FASEADA — v3.1.0

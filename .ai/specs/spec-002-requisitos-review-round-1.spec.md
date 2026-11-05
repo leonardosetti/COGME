@@ -1,12 +1,16 @@
 ---
 spec_id: spec-002
+specname: requisitos-review-round-1
 version: 0.1.0
 status: draft
+custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-10-25
-owner: agent-sdd-specialist
-wave: WS-3 | Rodada 1 de revisao de requisitos base para definicao de specs + user stories
-task: TA-0004 | handoff: N/A (analyze; sem HF emitido nesta rodada) | sender: agent-nexus-prime-ultimate
+updated: 2026-10-25
+origin: TA-0004 | handoff: N/A (analyze; sem HF emitido nesta rodada) | sender: agent-nexus-prime-ultimate
+task: TA-0004
 kill_switch: inherited
+lgpd-class: n/a (zero PII neste artefato; P-04)
+wave: WS-3 | Rodada 1 de revisao de requisitos base para definicao de specs + user stories
 trace:
   - constitution.md v1.0.0 (Art. 1.2/1.3/2/3/5.1/6.1/6.2/9.1; P-01..P-10)
   - docs/planos/plano-escopo.md v1.1 (Tabela 1; secoes 2.3-2.6)
@@ -16,7 +20,6 @@ trace:
   - docs/auditorias/AUD-2610-03.md (F-01..F-12; KG-01..KG-04; R-00..R-07; BLOCK)
   - .ai/specs/spec-001-constitution-round-1-proposta.spec.md (E-01..E-08 — PENDENTES de CCB, nao sao lei)
   - README.md:151-165 (espelho REQ-01..15)
-lgpd-class: n/a (zero PII neste artefato; P-04)
 ---
 
 # REQUISITOS REVIEW — ROUND 1 (WS-3 · COGME)
