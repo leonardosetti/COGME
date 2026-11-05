@@ -289,10 +289,7 @@ jobs:
 
       - name: Verify back health via internal service DNS (contract case #4 / #5)
         run: |
-          STATUS=$(docker compose exec -T web python -c "
-            import urllib.request
-            print(urllib.request.urlopen('http://web:8000/v1/health', timeout=5).status)
-          ")
+          STATUS=$(docker compose exec -T web python -c "import urllib.request; print(urllib.request.urlopen('http://web:8000/v1/health', timeout=5).status)")
           test "$STATUS" = "200" || { echo "🚨 /v1/health retornou $STATUS"; exit 1; }
           echo "✅ back responde /v1/health com 200 sobre a rede interna"
 
