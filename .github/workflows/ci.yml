@@ -26,7 +26,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Checkout repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2 (SHA-pin)
+        uses: actions/checkout@v4  # v4 (Node 24-compat)
 
       - name: Verify Kill Switch not activated
         run: |
@@ -46,7 +46,7 @@ jobs:
     needs: [kill-switch-check]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        uses: actions/checkout@v4  # v4 (Node 24-compat)
 
       - name: Set up Python environment
         uses: ./.github/actions/python-env
@@ -80,7 +80,7 @@ jobs:
     needs: [kill-switch-check]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        uses: actions/checkout@v4  # v4 (Node 24-compat)
 
       - name: Set up Python environment
         uses: ./.github/actions/python-env
@@ -105,7 +105,7 @@ jobs:
     needs: [kill-switch-check]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        uses: actions/checkout@v4  # v4 (Node 24-compat)
 
       - name: Set up Python environment
         uses: ./.github/actions/python-env
@@ -126,7 +126,7 @@ jobs:
     needs: [kill-switch-check]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        uses: actions/checkout@v4  # v4 (Node 24-compat)
 
       - name: Set up Python environment
         uses: ./.github/actions/python-env
@@ -138,7 +138,7 @@ jobs:
         run: python -m mypy src migrations
 
       - name: Dependency audit (pip-audit, fail-closed)
-        run: python -m pip-audit
+        run: pip-audit
 
   # ------------------------------------------------------------------
   # 6. Test Suite — Constitutional Quality Gate (P-06).
@@ -171,7 +171,7 @@ jobs:
       COGME_TEST_DATABASE_URL: postgresql+asyncpg://cogme_ci:dummy-ci-efemero@localhost:5432/cogme_test
     steps:
       - name: Checkout repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        uses: actions/checkout@v4  # v4 (Node 24-compat)
 
       - name: Set up Python environment
         uses: ./.github/actions/python-env
@@ -228,9 +228,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     needs: [kill-switch-check]
+    env:
+      # docker compose interpola ${COGME_DATABASE_URL:?} no build; valor dummy CI,
+      # o build não conecta ao banco.
+      COGME_DATABASE_URL: postgresql+asyncpg://cogme_ci:dummy-ci-efemero@db:5432/cogme_test
     steps:
       - name: Checkout repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        uses: actions/checkout@v4  # v4 (Node 24-compat)
 
       - name: Build container images (docker compose build)
         run: docker compose build
@@ -257,7 +261,7 @@ jobs:
     needs: [test-suite, build-layers]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        uses: actions/checkout@v4  # v4 (Node 24-compat)
 
       - name: Set up Python environment
         uses: ./.github/actions/python-env

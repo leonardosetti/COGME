@@ -22,7 +22,7 @@ jobs:
     steps:
       # Kill Switch herdado (Art. 4.6) — primeiro e obrigatório.
       - name: Checkout repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2 (SHA-pin)
+        uses: actions/checkout@v4  # v4 (Node 24-compat)
 
       - name: Verify Kill Switch not activated
         run: |
