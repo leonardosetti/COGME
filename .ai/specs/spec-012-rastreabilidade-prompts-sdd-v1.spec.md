@@ -1,15 +1,15 @@
 ---
 spec_id: spec-012
 specname: rastreabilidade-prompts-sdd-v1
-version: 0.1.0
-status: draft
+version: 0.2.0
+status: ratificada
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-11-03
-updated: 2026-11-03
-origin: HF-0613 (TA-0057) | sender: agent-nexus-prime-ultimate
-task: TA-0057
-sender: agent-nexus-prime-ultimate
+updated: 2026-11-05
+origin: HF-0613 (TA-0057) | sender: agent-nexus-prime-ultimate | handoff: HF-0613
+task: TA-0057 | sender: agent-nexus-prime-ultimate
 kill_switch: inherited
+wave: WS-4 | Onda 4 — Execução Técnica (rastreabilidade prompts SDD)
 lgpd-class: filenames LGPD-safe (catálogo contém apenas id/tema/task/target/status; sem PII, sem conteúdo de handoff replicado)
 trace:
   - .ai/handoffs/HF-0613-spec-012-rastreabilidade-prompts-sdd-v1.md (envelope da tarefa)
@@ -23,6 +23,7 @@ trace:
   - constitution.md:64 (Art. 2.3), :88 (P-03), :98 (P-08), :102 (P-10), :124 (Art. 4.6), :132 (Art. 4.10), :138 (Art. 5.1), :150 (Art. 6.1), :168 (Art. 6.7), :186 (Art. 8.1)
   - .ai/specs/MANIFEST.md:58 (lacuna = `UNKNOWN - verify`)
   - .ai/handoffs/task-TA-0057.json (envelope: handoff HF-0613)
+  - ratificada CCB 05/11/2026 (instrumento RAT-2026-11-05-A16, ADR-LOG-012)
 ---
 
 # SPEC spec-012 — rastreabilidade-prompts-sdd-v1 — Rastreabilidade de prompts SDD (100% dos handoffs catalogados em `.ai/handoffs/` — REQ-13, fase N9.3)
@@ -208,12 +209,13 @@ Execução direta dos comandos do §3.4 sobre o filesystem (nenhum número abaix
 ## CHANGELOG
 
 - 0.1.0 — 2026-11-03 (TA-0057, HF-0613): emissão inicial. Definição operacional de "prompt catalogado" com critério binário C-01..C-04 e meta 100% REQ-13 (§3.1); formato normativo do INDEX.md como índice de ponteiros com 4 campos mínimos (§3.2); regras de nomenclatura HF-NNNN (§3.3); método de auditoria determinístico por Comandos A–E com PASS binário fail-closed e trava de kill switch #3 (§3.4); estado real auditado nesta emissão — 34 HF / 56 envelopes / índice 1/34 / parser 35→12+23 / REQ-13 NÃO ATENDIDO 0/34 (§3.5); ciclo de vida do prompt (§3.6); fundamento de co-autoria humana Art. 5.1 (§3.7); 10 ACs verificáveis (§4); rastreabilidade dupla (§5); escopo negativo com saneamento fora desta emissão (§6); 4 UNKNOWNs e 4 drifts D-01..D-04 registrados sem correção de terceiros (§7).
+- 0.2.0 — 2026-11-05 (refinamento de ratificação, Grupo B): frontmatter atualizado ao padrão TA-0031 ratificado (adicionado `wave: WS-4`, `handoff` em `origin`; `version` 0.1.0 → 0.2.0). Ratificação CCB 05/11/2026 (instrumento RAT-2026-11-05-A16, ADR-LOG-012). Aderência ao padrão de nomenclatura `spec-NNN-specname.spec.md` confirmada (ADR-018, RAT-2026-11-05-A18). Nenhuma decisão de negócio de §§1–7 reescrita.
 
 ## CAMADAS FUNDAMENTAIS — MAPA (TA-0031)
 
 | Camada | Seção nesta spec | Estado |
 |---|---|---|
-| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem, task, kill_switch, trace, lgpd-class | frontmatter (`spec_id: spec-012`, `version: 0.1.0`) + linha `Status:` | aplicada |
+| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem, task, kill_switch, trace, lgpd-class | frontmatter (`spec_id: spec-012`, `version: 0.2.0`, `status: ratificada`) + linha `Status:` | aplicada |
 | (b) Contexto/origem | §1 (origem: HF-0613/TA-0057; B.8 LISTA:40; REQ-13 spec-002:74; precedente HF-0500) | aplicada |
 | (c) Resolução de conflitos | §2 (REQ-13×estado real; contrato parser×HF-06xx; SSOT; REQ-12; INDEX v1.0) | aplicada |
 | (d) Corpo de decisões/requisitos/contratos | §3 (C-01..C-04, formato do índice, nomenclatura, Comandos A–E, estado auditado, ciclo de vida, co-autoria) | aplicada |
