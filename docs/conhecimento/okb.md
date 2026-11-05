@@ -678,7 +678,7 @@ Regras: (i) sempre pinar `vX.Y.Z` (ADR/norma) ou `vX.Y` (plano); (ii) citar seç
 | OKB-C-09 | Alta | TAP canônico só como `.docx` + bloco integral no plano-integral; `.md` é stub declarado "não-0B" no índice | KB-INDEX:29; plano-integral:49 | ❌ aberto |
 | OKB-C-10 | Alta | Frontend: ADR-001 fixa vanilla JS; roster/infra assumem Jinja+HTMX+Tailwind | ADR-001:31; VIO-001 | ❌ aberto — ADR de emenda |
 | OKB-C-11 | Baixa | Custódia do OKB divergia sem registro recuperável | KB-INDEX:48 | ✅ resolvido — CCB-003 ratificou owner `agent-architect` |
-| OKB-C-12 | Média | ADR-005 em regularização tardia com ratificação formal pendente | ADR-005:6,56 | ⏳ parcialmente sobreposta pela ADR-013-a; manter registro |
+| OKB-C-12 | Média | ADR-005 em regularização tardia com ratificação formal pendente | ADR-005:6,56 | ✅ encerrada — ADR-005 v1.1.0 status `ratificado`, instrumentos CCB-LOG A08 + A12, incorpora Regime de Emenda Controlada (ADR-013) e Emenda M2 (ADR-015); `adr-005-freeze.md` marcada SUPERSSEDIDA (superseded-by: ADR-005 v1.1.0) |
 | OKB-C-13 | Baixa | Classes `relatorio-auditoria`, `register-vio`, `register-decision` fora do enum de 10 classes | kb-taxonomy §2; audits | ⏳ próxima rodada |
 | OKB-C-14 | Baixa | Colisão de ID `CR-001` | CR-001; plano-escopo:178 | ⏳ renumerar CRs |
 | OKB-C-15 | Baixa | Constituição em VIGENTE-INTERINA | constitution.md:3 | ✅ resolvido — VIGENTE-PLENA, commit `7cff886` (30/10) |
@@ -704,7 +704,7 @@ Regras: (i) sempre pinar `vX.Y.Z` (ADR/norma) ou `vX.Y` (plano); (ii) citar seç
 4. **OKB-C-22** — decidir a arquitetura de transição SQLite → PostgreSQL (ADR-010): plano, estimativa e reflexo no cronograma/custos antes de qualquer card de dados.
 5. **OKB-C-05** — ✅ encerrado: teto de ADRs revisado para ≤ 20 (decisão CCB). 13 IDs (14 artefatos) dentro do novo teto.
 6. **OKB-C-03** — encerrar VIO-006 (kill switch: só o Humano encerra).
-7. **OKB-C-12** — encerrar formalmente a ratificação da ADR-005 (ou declarar supersede full).
+7. **OKB-C-12** — ✅ encerrada: ADR-005 v1.1.0 ratificada (CCB-LOG A08 + A12); `adr-005-freeze.md` SUPERSSEDIDA.
 8. **OKB-C-24** — nomear a matriz de partes interessadas do aceite de M4.
 9. **OKB-C-25** — criar `plano-consolidacao-estrutural.md` ou corrigir a citação no CCB-LOG.
 10. **Ratificação deste OKB v5.2.0** — ✅ **CUMPRIDA** nesta emissão (CCB-LOG RAT-2026-10-31-A11, 31/10/2026; bloco §13).
