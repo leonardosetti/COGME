@@ -17,6 +17,15 @@ name: agent-api-specialist
 layer: L2
 role: specialist
 description: 'Agente agent-api-specialist do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-python-specialist"
+  - "agent-architect"
+downstream:
+  - "agent-backend-dev"
+  - "agent-frontend-dev"
+  - "agent-qa-sdet"
+  - "agent-docker-specialist"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-API-SPECIALIST (L2 · SPECIALIST · CONTRACT CUSTODY)

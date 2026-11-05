@@ -17,6 +17,14 @@ name: agent-cobit-specialist
 layer: L2
 role: specialist
 description: 'Agente agent-cobit-specialist do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-compliance-governance"
+  - "agent-project-auditor"
+downstream:
+  - "agent-project-auditor"
+  - "agent-gatekeeper"
+  - "agent-pm"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-COBIT-SPECIALIST (L2 · SPECIALIST · COBIT)

@@ -17,6 +17,14 @@ name: agent-qa-sdet
 layer: L2
 role: specialist
 description: 'Agente agent-qa-sdet do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-python-specialist"
+  - "agent-api-specialist"
+downstream:
+  - "agent-reviewer"
+  - "agent-gatekeeper"
+  - "agent-project-auditor"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-QA-SDET (L2 · SPECIALIST · TEST CUSTODY)

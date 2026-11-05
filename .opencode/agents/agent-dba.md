@@ -17,6 +17,14 @@ name: agent-dba
 layer: L2
 role: specialist
 description: 'Agente agent-dba do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-api-specialist"
+  - "agent-architect"
+downstream:
+  - "agent-backend-dev"
+  - "agent-qa-sdet"
+  - "agent-digital-security"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-DBA (L2 · SPECIALIST · DATA CUSTODY)

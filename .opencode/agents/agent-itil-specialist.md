@@ -17,6 +17,14 @@ name: agent-itil-specialist
 layer: L2
 role: specialist
 description: 'Agente agent-itil-specialist do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-devops"
+  - "agent-compliance-governance"
+downstream:
+  - "agent-project-auditor"
+  - "agent-gatekeeper"
+  - "agent-pm"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-ITIL-SPECIALIST (L2 · SPECIALIST · ITIL)

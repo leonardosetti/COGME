@@ -17,6 +17,16 @@ name: agent-project-design-specialist
 layer: L1
 role: specialist
 description: 'Agente agent-project-design-specialist do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-architect"
+  - "agent-sdd-specialist"
+downstream:
+  - "agent-backend-dev"
+  - "agent-frontend-dev"
+  - "agent-api-specialist"
+  - "agent-dba"
+  - "agent-ui-ux-advisor"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-PROJECT-DESIGN-SPECIALIST (L1 · SPECIALIST · DESIGN)

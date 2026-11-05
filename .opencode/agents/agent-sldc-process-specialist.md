@@ -17,6 +17,16 @@ name: agent-sldc-process-specialist
 layer: L2
 role: specialist
 description: 'Agente agent-sldc-process-specialist do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-sdd-specialist"
+  - "agent-pm"
+downstream:
+  - "agent-backend-dev"
+  - "agent-frontend-dev"
+  - "agent-qa-sdet"
+  - "agent-devops"
+  - "agent-project-auditor"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-SLDC-PROCESS-SPECIALIST (L2 · SPECIALIST · SDLC)

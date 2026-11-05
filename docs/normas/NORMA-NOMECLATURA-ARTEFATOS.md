@@ -1,7 +1,7 @@
 ---
 id: norma-nomeclarte-artefatos
 title: Norma de Nomenclatura para Artefatos Markdown
-type: norma
+type: conhecimento
 version: 1.0.0
 status: ativo
 owner: agent-project-analyst

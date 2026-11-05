@@ -17,6 +17,12 @@ name: agent-sddai-loader
 layer: L2
 role: specialist
 description: 'Agente agent-sddai-loader do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-sdd-specialist"
+downstream:
+  - "agent-sddai-engineer"
+  - "agent-sddai-memory"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-SDDAI-LOADER (L2 · SPECIALIST · SDDAI DATA LOADER)

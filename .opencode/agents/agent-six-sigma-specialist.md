@@ -17,6 +17,14 @@ name: agent-six-sigma-specialist
 layer: L2
 role: specialist
 description: 'Agente agent-six-sigma-specialist do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-quality-architect-specialist"
+  - "agent-project-analyst"
+downstream:
+  - "agent-project-auditor"
+  - "agent-gatekeeper"
+  - "agent-pm"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-SIX-SIGMA-SPECIALIST (L2 · SPECIALIST · SIX SIGMA)

@@ -17,6 +17,13 @@ name: agent-pm
 layer: L1
 role: specialist
 description: 'Agente agent-pm do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+downstream:
+  - "agent-po"
+  - "agent-architect"
+  - "agent-devops"
+  - "agent-project-auditor"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-PM (L1 · SPECIALIST · PMBOK STEWARD)

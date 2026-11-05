@@ -17,6 +17,16 @@ name: agent-project-patterns-standards-specialist
 layer: L1
 role: specialist
 description: 'Agente agent-project-patterns-standards-specialist do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-architect"
+  - "agent-sdd-specialist"
+downstream:
+  - "agent-python-specialist"
+  - "agent-api-specialist"
+  - "agent-backend-dev"
+  - "agent-frontend-dev"
+  - "agent-artifact-builder"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-PROJECT-PATTERNS-STANDARDS-SPECIALIST (L1 · SPECIALIST · PATTERNS)

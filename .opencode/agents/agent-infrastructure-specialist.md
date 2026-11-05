@@ -17,6 +17,12 @@ name: agent-infrastructure-specialist
 layer: L2
 role: specialist
 description: 'Agente agent-infrastructure-specialist do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+downstream:
+  - "agent-devops"
+  - "agent-digital-security"
+  - "agent-compliance-governance"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-INFRASTRUCTURE-SPECIALIST (L2 · SPECIALIST · RUNTIME)

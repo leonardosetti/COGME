@@ -17,6 +17,13 @@ name: agent-compliance-governance
 layer: L2
 role: specialist
 description: 'Agente agent-compliance-governance do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-digital-security"
+downstream:
+  - "agent-project-auditor"
+  - "agent-gatekeeper"
+  - "agent-po"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-COMPLIANCE-GOVERNANCE (L2 · SPECIALIST · LEGAL)

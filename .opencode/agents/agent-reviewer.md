@@ -17,6 +17,10 @@ name: agent-reviewer
 layer: L3
 role: gate
 description: 'Agente agent-reviewer do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+downstream:
+  - "agent-gatekeeper"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-REVIEWER (L3 · GATE · VERDICT CUSTODY)

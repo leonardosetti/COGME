@@ -17,6 +17,12 @@ name: agent-agile-specialist
 layer: L2
 role: specialist
 description: 'Agile Development Specialist Agent — segue o Manifesto Ágil e seus doze princípios.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-sdd-specialist"
+downstream:
+  - "agent-pm"
+  - "agent-po"
 ---
 
 # Agile Development Specialist Agent

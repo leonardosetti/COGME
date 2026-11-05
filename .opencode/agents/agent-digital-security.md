@@ -17,6 +17,13 @@ name: agent-digital-security
 layer: L2
 role: specialist
 description: 'Agente agent-digital-security do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-architect"
+downstream:
+  - "agent-compliance-governance"
+  - "agent-reviewer"
+  - "agent-project-auditor"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-DIGITAL-SECURITY (L2 · SPECIALIST · DEFENSE)

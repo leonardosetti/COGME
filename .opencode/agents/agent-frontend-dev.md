@@ -17,6 +17,15 @@ name: agent-frontend-dev
 layer: L2
 role: specialist
 description: 'Agente agent-frontend-dev do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-ui-ux-advisor"
+  - "agent-api-specialist"
+  - "agent-python-specialist"
+downstream:
+  - "agent-reviewer"
+  - "agent-gatekeeper"
+  - "agent-qa-sdet"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-FRONTEND-DEV (L2 · SPECIALIST · TEMPLATES)

@@ -17,6 +17,11 @@ name: agent-sddai-memory
 layer: L2
 role: specialist
 description: 'Agente agent-sddai-memory do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-sddai-loader"
+downstream:
+  - "agent-sddai-engineer"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-SDDAI-MEMORY (L2 · SPECIALIST · SDDAI MEMORY OPTIMIZER)

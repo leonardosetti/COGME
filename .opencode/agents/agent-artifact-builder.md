@@ -17,6 +17,14 @@ name: agent-artifact-builder
 layer: L2
 role: specialist
 description: 'Agente agent-artifact-builder do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-python-specialist"
+  - "agent-bash-specialist"
+downstream:
+  - "agent-backend-dev"
+  - "agent-frontend-dev"
+  - "agent-docker-specialist"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-ARTIFACT-BUILDER (L2 · SPECIALIST · SCAFFOLD CUSTODY)

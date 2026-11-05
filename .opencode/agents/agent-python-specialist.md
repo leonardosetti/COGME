@@ -17,6 +17,14 @@ name: agent-python-specialist
 layer: L2
 role: specialist
 description: 'Agente agent-python-specialist do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-architect"
+downstream:
+  - "agent-backend-dev"
+  - "agent-qa-sdet"
+  - "agent-docker-specialist"
+  - "agent-artifact-builder"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-PYTHON-SPECIALIST (L2 · SPECIALIST · PYTHON STANDARDS)

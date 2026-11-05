@@ -17,6 +17,14 @@ name: agent-art-communication-marketing-pr-specialist
 layer: L2
 role: specialist
 description: 'Agente agent-art-communication-marketing-pr-specialist do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-pm"
+  - "agent-po"
+downstream:
+  - "agent-project-auditor"
+  - "agent-gatekeeper"
+  - "agent-docker-specialist"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-ART-COMMUNICATION-MARKETING-PR-SPECIALIST (L2 · SPECIALIST · COMMUNICATIONS)

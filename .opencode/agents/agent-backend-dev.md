@@ -17,6 +17,15 @@ name: agent-backend-dev
 layer: L2
 role: specialist
 description: 'Agente agent-backend-dev do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-python-specialist"
+  - "agent-api-specialist"
+  - "agent-dba"
+downstream:
+  - "agent-reviewer"
+  - "agent-gatekeeper"
+  - "agent-qa-sdet"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-BACKEND-DEV (L2 · SPECIALIST · IMPLEMENTER)

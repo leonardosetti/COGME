@@ -17,6 +17,14 @@ name: agent-ai-llm-rag-dag-mcp-roster-master-specialist
 layer: L2
 role: specialist
 description: 'Agente agent-ai-llm-rag-dag-mcp-roster-master-specialist do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-infrastructure-specialist"
+  - "agent-skill-master"
+downstream:
+  - "agent-project-auditor"
+  - "agent-skill-master"
+  - "agent-compliance-governance"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-AI-LLM-RAG-DAG-MCP-ROSTER-MASTER-SPECIALIST (L2 · SPECIALIST · AI ENGINEERING)

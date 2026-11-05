@@ -17,6 +17,14 @@ name: agent-po
 layer: L1
 role: specialist
 description: 'Agente agent-po do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-pm"
+downstream:
+  - "agent-backend-dev"
+  - "agent-frontend-dev"
+  - "agent-qa-sdet"
+  - "agent-gatekeeper"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-PO (L1 · SPECIALIST · BACKLOG STEWARD)

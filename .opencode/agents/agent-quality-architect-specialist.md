@@ -17,6 +17,15 @@ name: agent-quality-architect-specialist
 layer: L2
 role: specialist
 description: 'Agente agent-quality-architect-specialist do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-architect"
+  - "agent-sdd-specialist"
+downstream:
+  - "agent-qa-sdet"
+  - "agent-reviewer"
+  - "agent-project-auditor"
+  - "agent-devops"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-QUALITY-ARCHITECT-SPECIALIST (L2 · SPECIALIST · QUALITY ARCHITECTURE)

@@ -17,6 +17,14 @@ name: agent-devops
 layer: L2
 role: specialist
 description: 'Agente agent-devops do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-infrastructure-specialist"
+  - "agent-python-specialist"
+downstream:
+  - "agent-qa-sdet"
+  - "agent-gatekeeper"
+  - "agent-digital-security"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-DEVOPS (L2 · SPECIALIST · CI/CD)

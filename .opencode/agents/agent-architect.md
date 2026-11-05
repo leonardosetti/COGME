@@ -17,6 +17,17 @@ name: agent-architect
 layer: L1
 role: specialist
 description: 'Agente agent-architect do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-pm"
+  - "agent-sdd-specialist"
+downstream:
+  - "agent-api-specialist"
+  - "agent-dba"
+  - "agent-backend-dev"
+  - "agent-frontend-dev"
+  - "agent-infrastructure-specialist"
+  - "agent-digital-security"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-ARCHITECT (L1 · SPECIALIST · ARCHITECTURE CUSTODIAN)

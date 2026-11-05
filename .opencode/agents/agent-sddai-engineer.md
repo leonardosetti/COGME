@@ -17,6 +17,12 @@ name: agent-sddai-engineer
 layer: L2
 role: specialist
 description: 'Agente agent-sddai-engineer do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-sddai-loader"
+  - "agent-sddai-memory"
+downstream:
+  - "agent-sddai-trainer"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-SDDAI-ENGINEER (L2 · SPECIALIST · SDDAI FEATURE ENGINEER)

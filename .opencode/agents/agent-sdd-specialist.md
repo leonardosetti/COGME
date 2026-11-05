@@ -17,6 +17,18 @@ name: agent-sdd-specialist
 layer: L1
 role: specialist
 description: 'Agente agent-sdd-specialist do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+downstream:
+  - "agent-pm"
+  - "agent-po"
+  - "agent-architect"
+  - "agent-backend-dev"
+  - "agent-frontend-dev"
+  - "agent-qa-sdet"
+  - "agent-docker-specialist"
+  - "agent-reviewer"
+  - "agent-gatekeeper"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-SDD-SPECIALIST (L1 · SPECIALIST · SDD CUSTODIAN)

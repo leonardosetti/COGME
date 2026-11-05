@@ -17,6 +17,13 @@ name: agent-clean-code-evaluator
 layer: L3
 role: gate
 description: 'Agente agent-clean-code-evaluator do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-python-specialist"
+  - "agent-backend-dev"
+  - "agent-frontend-dev"
+downstream:
+  - "agent-project-auditor"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-CLEAN-CODE-EVALUATOR (L3 · GATE · CLEAN CODE)

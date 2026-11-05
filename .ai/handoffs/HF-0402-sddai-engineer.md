@@ -1,18 +1,19 @@
 ---
-id: ai-handoffs-hf-0402-sddai-engineer
+id: HF-0402
 title: 'Handoff: SDDAI Feature Engineer — Engenharia de Features'
 type: handoff
 version: 1.0.0
-status: ativo
+status: draft
 owner: agent-project-analyst
 derived-from:
-- .ai/handoffs/HF-0402-sddai-engineer.md (adequado à norma em 2026-11-05)
-last-revised: '2026-11-05'
+  - constitution.md (Art. 6.1)
+last-revised: '2026-10-31'
 lgpd-class: n/a
 tags:
-- handoffs
-- docs
-- adequado-a-norma
+  - handoff
+  - sddai
+agent: agent-sddai-engineer
+created: 2026-10-31
 ---
 # Handoff: SDDAI Feature Engineer — Engenharia de Features
 ## Contexto

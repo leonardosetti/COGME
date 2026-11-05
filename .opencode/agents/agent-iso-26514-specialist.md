@@ -17,6 +17,14 @@ name: agent-iso-26514-specialist
 layer: L2
 role: specialist
 description: 'Agente agent-iso-26514-specialist do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-sdd-specialist"
+  - "agent-docker-specialist"
+downstream:
+  - "agent-project-auditor"
+  - "agent-gatekeeper"
+  - "agent-compliance-governance"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-ISO-26514-SPECIALIST (L2 · SPECIALIST · ISO 26514)

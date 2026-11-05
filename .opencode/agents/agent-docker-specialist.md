@@ -17,6 +17,13 @@ name: agent-docker-specialist
 layer: L2
 role: specialist
 description: 'Agente agent-docker-specialist do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-pm"
+downstream:
+  - "agent-project-auditor"
+  - "agent-po"
+  - "agent-skill-master"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-DOCKER-SPECIALIST (L2 · SPECIALIST · DOCUMENTATION)

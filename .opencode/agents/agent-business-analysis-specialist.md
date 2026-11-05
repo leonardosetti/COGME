@@ -17,6 +17,15 @@ name: agent-business-analysis-specialist
 layer: L1
 role: specialist
 description: 'Agente agent-business-analysis-specialist do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-pm"
+  - "agent-po"
+downstream:
+  - "agent-sdd-specialist"
+  - "agent-architect"
+  - "agent-project-analyst"
+  - "agent-qa-sdet"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-BUSINESS-ANALYSIS-SPECIALIST (L1 · SPECIALIST · BA)

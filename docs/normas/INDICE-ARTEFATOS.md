@@ -1,3 +1,22 @@
+---
+id: indice-artefatos
+title: Índice de Artefatos Markdown
+type: conhecimento
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+  - constitution.md (Art. 2, Art. 3 P-05, Art. 9)
+  - docs/normas/NORMA-TEMPLATES-ARTEFATOS.md
+last-revised: '2026-11-05'
+lgpd-class: n/a
+tags:
+  - conhecimento
+  - indice
+  - artefato
+  - governanca
+---
+
 # Índice de Artefatos Markdown
 
 Total de artefatos indexados: 339

@@ -17,6 +17,11 @@ name: agent-gatekeeper
 layer: L3
 role: gate
 description: 'Agente agent-gatekeeper do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-reviewer"
+downstream:
+  - "agent-project-auditor"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-GATEKEEPER (L3 · GATE · MERGE AUTHORITY)

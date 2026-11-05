@@ -17,6 +17,14 @@ name: agent-ui-ux-advisor
 layer: L2
 role: specialist
 description: 'Agente agent-ui-ux-advisor do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-pm"
+  - "agent-api-specialist"
+downstream:
+  - "agent-frontend-dev"
+  - "agent-qa-sdet"
+  - "agent-reviewer"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-UI-UX-ADVISOR (L2 · SPECIALIST · ADVISORY)

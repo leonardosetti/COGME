@@ -17,6 +17,14 @@ name: agent-copyright-specialist
 layer: L2
 role: specialist
 description: 'Agente agent-copyright-specialist do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-compliance-governance"
+  - "agent-project-analyst"
+downstream:
+  - "agent-project-auditor"
+  - "agent-gatekeeper"
+  - "agent-po"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-COPYRIGHT-SPECIALIST (L2 · SPECIALIST · COPYRIGHT)

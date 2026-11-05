@@ -46,7 +46,9 @@ PREFIXO_BY_DIR = {
     ".ai/personas": "pers",
 }
 
-NOME_CANONICO = {"constitution.md", "README.md", "AGENTS.md"}
+# Artefatos canônicos preservados por decisão de governança (CCB/OKB) —
+# renomeá-los quebraria referências em README, specs e planos (Norma §8).
+NOME_CANONICO = {"constitution.md", "README.md", "AGENTS.md", "okb.md", "ccb-log.md"}
 
 
 def coletar_arquivos(alvos):
@@ -75,9 +77,10 @@ def prefixo_esperado(caminho: Path) -> str | None:
     return None
 
 
-def validar() -> int:
+def validar(args) -> int:
+    alvos = coletar_arquivos(args.alvos) if args.alvos else coletar_arquivos(None)
     erros = []
-    for caminho in coletar_arquivos(None):
+    for caminho in alvos:
         nome = caminho.name
         if nome in NOME_CANONICO:
             continue
@@ -107,7 +110,7 @@ def main() -> int:
         description="Valida nomes de *.md contra a Norma de Nomenclatura")
     parser.add_argument("alvos", nargs="*", help="arquivos .md para validar")
     args = parser.parse_args()
-    return validar()
+    return validar(args)
 
 
 if __name__ == "__main__":

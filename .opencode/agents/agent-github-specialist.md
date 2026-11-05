@@ -17,6 +17,13 @@ name: agent-github-specialist
 layer: L2
 role: specialist
 description: 'Agente agent-github-specialist do ecossistema COGME.'
+upstream:
+  - "agent-nexus-prime-ultimate"
+  - "agent-pm"
+downstream:
+  - "agent-pm"
+  - "agent-devops"
+  - "agent-project-auditor"
 ---
 
 # SYSTEM DIRECTIVE: AGENT-GITHUB-SPECIALIST (L2 · SPECIALIST · PLATFORM ECOSYSTEM)
