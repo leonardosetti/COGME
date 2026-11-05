@@ -277,10 +277,11 @@ jobs:
 
       - name: Bring up ephemeral stack (no host ports relied upon)
         run: |
-          docker compose up --build -d db web
-          echo "⏳ Aguardando serviços saudáveis (rede interna do compose)..."
+          docker compose up --build -d
+          echo "⏳ Aguardendo serviços saudáveis (rede interna do compose)..."
           for i in $(seq 1 30); do
-            if docker compose ps --filter "status=running" | grep -qE "db|web"; then
+            if docker compose ps --filter "status=running" | grep -qE "db" && \
+               docker compose ps --filter "status=running" | grep -qE "web"; then
               break
             fi
             sleep 2
@@ -289,7 +290,12 @@ jobs:
 
       - name: Verify back health via internal service DNS (contract case #4 / #5)
         run: |
-          STATUS=$(docker compose exec -T web python -c "import urllib.request; print(urllib.request.urlopen('http://web:8000/v1/health', timeout=5).status)")
+          STATUS=""
+          for i in $(seq 1 10); do
+            STATUS=$(docker compose exec -T web python -c "import urllib.request; print(urllib.request.urlopen('http://web:8000/v1/health', timeout=5).status)" 2>/dev/null || true)
+            [ "$STATUS" = "200" ] && break
+            sleep 3
+          done
           test "$STATUS" = "200" || { echo "🚨 /v1/health retornou $STATUS"; exit 1; }
           echo "✅ back responde /v1/health com 200 sobre a rede interna"
 
