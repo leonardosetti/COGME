@@ -33,7 +33,7 @@ kill-switch: screened
 | Data de formalização do documento | 28/10/2026 (v1.0.0); 31/10/2026 (v1.1.0 — emenda ADR-LOG-001) |
 | Decisor | GP Leonardo (CCB único — TAP v3 §1.c, Premissa P7) |
 | Gatilhos G1–G4 | G1 (impacto transversal — todas as fases N4–N12), G2 (irreversibilidade prática — troca de stack reescreve backend), G4 (trade-off FOSS × conveniência proprietária) |
-| Rastreabilidade | TAP §3 (Inovação) + §8 (Restrições FOSS/§8.4 orçamento zero) + §11; EAP N1.4, N4.1, N5.1–N5.4 (fila N9.1); REQ-12 (ADRs); ADRs correlatas: ADR-005 (freeze), ADR-006 (LLM local, Draft — Pending CCB Human Verification), ADR-010 (supersedida por esta versão — veja ADR-LOG-001) |
+| Rastreabilidade | TAP §3 (Inovação) + §8 (Restrições FOSS/§8.4 orçamento zero) + §11; EAP N1.4, N4.1, N5.1–N5.4 (fila N9.1); REQ-12 (ADRs); ADRs correlatas: [ADR-005 v1.1.0](docs/decisoes/adr-005-regime-tap.md) (freeze), [ADR-006 v2.1.0](docs/decisoes/adr-006-ecossistema-sddai.md) (LLM local), [ADR-010 v1.0.0](docs/decisoes/adr-010-stack-infraestrutura.md) (supersedida por esta versão — veja ADR-LOG-001) |
 | Domínio PMBOK 7ª | Trabalho do Projeto + Abordagem de Desenvolvimento |
 
 ## Contexto

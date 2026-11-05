@@ -19,7 +19,7 @@ data-formalizacao: '05/11/2026'
 decisor: GP Leonardo (CCB de membro único)
 instrumento-ccb: RAT-2026-11-05-A16 / RAT-2026-11-05-A16-D4
 gatilhos: G1, G2, G3, G4
-rastreabilidade: TAP §3; EAP N5; REQ-01, REQ-04, REQ-07, REQ-08; ADRs correlatas: ADR-001 v1.1.0 (stack, banco e fontes de câmbio), ADR-LOG (regra de não sobreposição), ADR-005 v1.1.0 (emenda controlada do TAP), ADR-010 (histórico, supersedida)
+rastreabilidade: TAP §3; EAP N5; REQ-01, REQ-04, REQ-07, REQ-08; ADRs correlatas: ADR-001 v1.1.0 (stack, banco e fontes de câmbio), ADR-LOG (regra de não sobreposição), [ADR-005 v1.1.0](docs/decisoes/adr-005-regime-tap.md) (emenda controlada do TAP), [ADR-010 v1.0.0](docs/decisoes/adr-010-stack-infraestrutura.md) (histórico, supersedida)
 dominio-pmbok: Desenvolvimento e Qualidade (PMBOK 7ª: Abordagem de Desenvolvimento; Qualidade)
 processo-pmbok-6: 4.6
 kill-switch: screened

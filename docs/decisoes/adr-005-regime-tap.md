@@ -34,7 +34,7 @@ kill-switch: screened
 | Data de formalização do documento | 28/10/2026 (v1.0.0) / 31/10/2026 (v1.1.0 — emenda ADR-LOG-002) |
 | Decisor | GP Leonardo (CCB único — TAP v3 §1.c, Premissa P7) |
 | Gatilhos G1–G4 | G1 (impacto transversal — todos os 8 planos), G3 (questionabilidade acadêmica), G4 (trade-off não óbvio — imutabilidade × leitura operacional) |
-| Rastreabilidade | TAP §6 (precedência intra-TAP) + §3/§9 P9 (status ontológico do TAP); EAP N9.1; REQ-12; NC-00 (Plano de Cronograma §3.8 — locus canônico da decisão); Glossário §11; ADRs correlatas: ADR-001–004 (todas sob o regime de freeze); Integração §1.4 |
+| Rastreabilidade | TAP §6 (precedência intra-TAP) + §3/§9 P9 (status ontológico do TAP); EAP N9.1; REQ-12; NC-00 (Plano de Cronograma §3.8 — locus canônico da decisão); Glossário §11; ADRs correlatas: [ADR-001 v1.1.0](docs/decisoes/adr-001-stack.md), [ADR-002 v1.0.0](docs/decisoes/adr-002-kanban.md), [ADR-003 v1.0.0](docs/decisoes/adr-003-metricas.md), [ADR-004 v1.0.0](docs/decisoes/adr-004-tasklists.md) (todas sob o regime de freeze); Integração §1.4 |
 | Domínio PMBOK 7ª | Trabalho do Projeto + Incerteza |
 | Processo PMBOK 6ª (dicionário) | 4.6 |
 
