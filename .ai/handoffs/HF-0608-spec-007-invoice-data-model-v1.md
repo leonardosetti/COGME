@@ -3,11 +3,11 @@ id: HF-0608
 title: "Emissao spec-007-invoice-data-model-v1 (B.4/GAP-04) — insumo TA-0045"
 task: TA-0052
 sender: agent-nexus-prime-ultimate
-target: agent-sdd-specialist
+agent: agent-sdd-specialist
 action: spec
 created: 2026-11-03
 kill_switch: inherited
-status: emitted
+status: dispatched
 source: docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md (rodada 1 de specs)
 ---
 
@@ -27,3 +27,9 @@ Emitir .ai/specs/spec-007-invoice-data-model-v1.spec.md (modelo canonico de dado
 ## Contrato de resposta (meio-duplex)
 Parcela JSON obrigatoria:
 {"task_id":"TA-0052","status":"accepted|rejected","parcel":{"dod":true,"artifacts":["<paths>"],"notes":"<...>"},"kill_switch":"inherited"}
+
+
+## Critérios de Aceite
+- [ ] Spec emitida conforme template MANIFEST SS1 (camadas a-h)
+- [ ] Todas as fontes obrigatórias citadas com arquivo:linha
+- [ ] Insumo da parcela TA-0045 incorporado por referência

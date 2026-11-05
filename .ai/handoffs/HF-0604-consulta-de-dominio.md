@@ -3,11 +3,11 @@ id: HF-0604
 title: "Consulta de dominio: CI/CD, drift G-05 e camada CI (B.7/B.10/C.4)"
 task: TA-0048
 sender: agent-nexus-prime-ultimate
-target: agent-devops
+agent: agent-devops
 action: consult
 created: 2026-11-03
 kill_switch: inherited
-status: emitted
+status: dispatched
 source: docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md (rodada 1 de specs)
 ---
 
@@ -44,3 +44,9 @@ Parcela JSON obrigatoria:
   "kill_switch": "inherited"
 }
 ```
+
+
+## Critérios de Aceite
+- [ ] Parcelo de consulta entregue com recomendações de CI/CD
+- [ ] Drift G-05 auditado e documentado (estado real do ci.yml vs plano)
+- [ ] Nome do job contract-network proposto (não decisão final)

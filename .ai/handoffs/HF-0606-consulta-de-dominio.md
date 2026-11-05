@@ -3,11 +3,11 @@ id: HF-0606
 title: "Consulta de dominio: LGPD de produto — fundamentos para CCB (B.3/GAP-08)"
 task: TA-0050
 sender: agent-nexus-prime-ultimate
-target: agent-compliance-governance
+agent: agent-compliance-governance
 action: consult
 created: 2026-11-03
 kill_switch: inherited
-status: emitted
+status: dispatched
 source: docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md (rodada 1 de specs)
 ---
 
@@ -42,3 +42,9 @@ Parcela JSON obrigatoria:
   "kill_switch": "inherited"
 }
 ```
+
+
+## Critérios de Aceite
+- [ ] Parcelo de consulta entregue com fundamentos de LGPD de produto
+- [ ] Lista explícita de decisões CCB/PO pendentes (D1-D7) identificada
+- [ ] Nenhuma decisão promovida — apenas proposta condicionada a CCB

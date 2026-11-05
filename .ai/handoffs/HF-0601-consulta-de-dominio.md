@@ -3,11 +3,11 @@ id: HF-0601
 title: "Consulta de dominio: modelo de dados da invoice (B.4/GAP-04)"
 task: TA-0045
 sender: agent-nexus-prime-ultimate
-target: agent-dba
+agent: agent-dba
 action: consult
 created: 2026-11-03
 kill_switch: inherited
-status: emitted
+status: dispatched
 source: docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md (rodada 1 de specs)
 ---
 
@@ -44,3 +44,9 @@ Parcela JSON obrigatoria:
   "kill_switch": "inherited"
 }
 ```
+
+
+## Critérios de Aceite
+- [ ] Parcelo de consulta entregue com recomendações de domínio de dados da invoice
+- [ ] Todas as fontes citadas (spec-004, spec-002, plano-integral) foram lidas e consideradas
+- [ ] Nenhuma decisão promovida — apenas recomendações de domínio para futura spec-007

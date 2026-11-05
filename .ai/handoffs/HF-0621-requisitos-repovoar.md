@@ -3,11 +3,11 @@ id: HF-0621
 title: "Repovoar .ai/specs/requisitos.md (A.1) — gate E RATIFICADO (drift E.1 corrigido)"
 task: TA-0065
 sender: agent-nexus-prime-ultimate
-target: agent-sdd-specialist
+agent: agent-sdd-specialist
 action: spec
 created: 2026-11-03
 kill_switch: inherited
-status: emitted
+status: dispatched
 source: docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md (item A.1)
 ---
 
@@ -36,3 +36,9 @@ Para CADA requisito: rastreabilidade arquivo:linha. O que nao tiver fonte = `UNK
 - Consulta TA-0050 (compliance): docs/uat/... decisoes D1-D7 sao condicionantes, nao requisitos aprovados.
 - Documento ponteiro docs/requisitos/requisitos.md ja aponta para ca (KB-INDEX) — nao editar.
 - Contrato de resposta: parcela JSON meio-duplex (dod, artifacts, notes).
+
+
+## Critérios de Aceite
+- [ ] Artefato requisitos.md repovoado com RF/RNF/US
+- [ ] Rastreabilidade REQ→US (15/15) declarada
+- [ ] Gate E verificado como satisfeito (constitution.md:226)

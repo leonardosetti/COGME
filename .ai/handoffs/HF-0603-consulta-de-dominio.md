@@ -3,11 +3,11 @@ id: HF-0603
 title: "Consulta de dominio: UAT de produto e destino de evidencias (B.5/C.5)"
 task: TA-0047
 sender: agent-nexus-prime-ultimate
-target: agent-qa-sdet
+agent: agent-qa-sdet
 action: consult
 created: 2026-11-03
 kill_switch: inherited
-status: emitted
+status: dispatched
 source: docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md (rodada 1 de specs)
 ---
 
@@ -42,3 +42,9 @@ Parcela JSON obrigatoria:
   "kill_switch": "inherited"
 }
 ```
+
+
+## Critérios de Aceite
+- [ ] Parcelo de consulta entregue com roteiro de UAT de produto
+- [ ] Critério binário fail-closed definido (100% fluxos críticos, zero defeitos críticos)
+- [ ] Destino de evidências proposto (condicionante CCB — não decisão final)

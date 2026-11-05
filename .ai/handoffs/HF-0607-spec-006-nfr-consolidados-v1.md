@@ -3,11 +3,11 @@ id: HF-0607
 title: "Emissao spec-006-nfr-consolidados-v1 (B.2/GAP-02)"
 task: TA-0051
 sender: agent-nexus-prime-ultimate
-target: agent-sdd-specialist
+agent: agent-sdd-specialist
 action: spec
 created: 2026-11-03
 kill_switch: inherited
-status: emitted
+status: dispatched
 source: docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md (rodada 1 de specs)
 ---
 
@@ -27,3 +27,9 @@ Emitir .ai/specs/spec-006-nfr-consolidados-v1.spec.md (registro canonico de NFR 
 ## Contrato de resposta (meio-duplex)
 Parcela JSON obrigatoria:
 {"task_id":"TA-0051","status":"accepted|rejected","parcel":{"dod":true,"artifacts":["<paths>"],"notes":"<...>"},"kill_switch":"inherited"}
+
+
+## Critérios de Aceite
+- [ ] Spec emitida conforme template MANIFEST SS1 (camadas a-h)
+- [ ] Todas as fontes obrigatórias citadas com arquivo:linha
+- [ ] Zero decisões novas promovidas — apenas especificação de NFR existentes

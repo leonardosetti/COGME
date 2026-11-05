@@ -3,11 +3,11 @@ id: HF-0612
 title: "Emissao spec-011-cicd-pipeline-v1 (B.7/REQ-11) — insumo TA-0048"
 task: TA-0056
 sender: agent-nexus-prime-ultimate
-target: agent-sdd-specialist
+agent: agent-sdd-specialist
 action: spec
 created: 2026-11-03
 kill_switch: inherited
-status: emitted
+status: dispatched
 source: docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md (rodada 1 de specs)
 ---
 
@@ -27,3 +27,9 @@ Emitir .ai/specs/spec-011-cicd-pipeline-v1.spec.md (pipeline CI/CD — item B.7 
 ## Contrato de resposta (meio-duplex)
 Parcela JSON obrigatoria:
 {"task_id":"TA-0056","status":"accepted|rejected","parcel":{"dod":true,"artifacts":["<paths>"],"notes":"<...>"},"kill_switch":"inherited"}
+
+
+## Critérios de Aceite
+- [ ] Spec emitida conforme template MANIFEST SS1 (camadas a-h)
+- [ ] Todas as fontes obrigatórias citadas com arquivo:linha
+- [ ] Insumo da parcela TA-0048 incorporado por referência

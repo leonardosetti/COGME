@@ -3,11 +3,11 @@ id: HF-0618
 title: "Auditoria de integridade da rodada de specs (fechamento)"
 task: TA-0062
 sender: agent-nexus-prime-ultimate
-target: agent-project-auditor
+agent: agent-project-auditor
 action: audit
 created: 2026-11-03
 kill_switch: inherited
-status: emitted
+status: dispatched
 source: docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md (rodada 1 de specs)
 ---
 
@@ -24,3 +24,9 @@ Auditar a rodada: (1) existencia e nao-vaziedade de spec-006..spec-015 em .ai/sp
 ## Contrato de resposta (meio-duplex)
 Parcela JSON obrigatoria:
 {"task_id":"TA-0062","status":"accepted|rejected","parcel":{"dod":true,"artifacts":["<paths>"],"notes":"<...>"},"kill_switch":"inherited"}
+
+
+## Critérios de Aceite
+- [ ] Relatório de auditoria emitido em docs/auditorias/
+- [ ] Todos os 10 itens de auditoria verificados com resultado binário
+- [ ] Parcela final com DoD devolvida ao orquestrador

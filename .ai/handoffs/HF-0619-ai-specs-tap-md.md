@@ -3,11 +3,11 @@ id: HF-0619
 title: "Repovoar .ai/specs/tap.md (A.2) — transcricao da baseline congelada TAP v3"
 task: TA-0063
 sender: agent-nexus-prime-ultimate
-target: agent-sdd-specialist
+agent: agent-sdd-specialist
 action: spec
 created: 2026-11-03
 kill_switch: inherited
-status: emitted
+status: dispatched
 source: docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md (rodada 1 de specs)
 ---
 
@@ -27,3 +27,9 @@ Repovoar .ai/specs/tap.md (0 B, item A.2 da LISTA): espelho NAO VAZIO da linha d
 ## Contrato de resposta (meio-duplex)
 Parcela JSON obrigatoria:
 {"task_id":"TA-0063","status":"accepted|rejected","parcel":{"dod":true,"artifacts":["<paths>"],"notes":"<...>"},"kill_switch":"inherited"}
+
+
+## Critérios de Aceite
+- [ ] Artefato tap.md repovoado com conteúdo não vazio
+- [ ] Rastreabilidade arquivo:linha para cada seção transcrita
+- [ ] Regime de congelamento (ADR-005/ADR-013) declarado no cabeçalho

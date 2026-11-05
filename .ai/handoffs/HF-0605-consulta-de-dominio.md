@@ -3,11 +3,11 @@ id: HF-0605
 title: "Consulta de dominio: qualidade PDCA + Ishikawa 6M (B.6/REQ-10)"
 task: TA-0049
 sender: agent-nexus-prime-ultimate
-target: agent-quality-architect-specialist
+agent: agent-quality-architect-specialist
 action: consult
 created: 2026-11-03
 kill_switch: inherited
-status: emitted
+status: dispatched
 source: docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md (rodada 1 de specs)
 ---
 
@@ -43,3 +43,9 @@ Parcela JSON obrigatoria:
   "kill_switch": "inherited"
 }
 ```
+
+
+## Critérios de Aceite
+- [ ] Parcelo de consulta entregue com estrutura dos 12 PDCAs e Ishikawa 6M
+- [ ] Todas as fontes citadas (plano-qualidade, plano-producao-agentes) foram lidas
+- [ ] Nenhuma decisão promovida — apenas recomendações para futura spec-010

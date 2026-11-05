@@ -3,11 +3,11 @@ id: HF-0602
 title: "Consulta de dominio: frontend web responsivo (B.1/REQ-06)"
 task: TA-0046
 sender: agent-nexus-prime-ultimate
-target: agent-ui-ux-advisor
+agent: agent-ui-ux-advisor
 action: consult
 created: 2026-11-03
 kill_switch: inherited
-status: emitted
+status: dispatched
 source: docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md (rodada 1 de specs)
 ---
 
@@ -43,3 +43,9 @@ Parcela JSON obrigatoria:
   "kill_switch": "inherited"
 }
 ```
+
+
+## Critérios de Aceite
+- [ ] Parcelo de consulta entregue com recomendações de UX/UI para camada front
+- [ ] Todas as fontes citadas (spec-002, spec-005, plano-producao-agentes) foram lidas
+- [ ] Nenhuma decisão promovida — apenas recomendações para futura spec-008

@@ -3,11 +3,11 @@ id: HF-0617
 title: "Emendas C.1+C.2 em spec-004 e C.4+C.5 em spec-005 (lacunas de conteudo)"
 task: TA-0061
 sender: agent-nexus-prime-ultimate
-target: agent-sdd-specialist
+agent: agent-sdd-specialist
 action: spec
 created: 2026-11-03
 kill_switch: inherited
-status: emitted
+status: dispatched
 source: docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md (rodada 1 de specs)
 ---
 
@@ -31,3 +31,9 @@ INCORPORE as parcelas TA-0047 e TA-0048.
 ## Contrato de resposta (meio-duplex)
 Parcela JSON obrigatoria:
 {"task_id":"TA-0061","status":"accepted|rejected","parcel":{"dod":true,"artifacts":["<paths>"],"notes":"<...>"},"kill_switch":"inherited"}
+
+
+## Critérios de Aceite
+- [ ] Emendas C.1 e C.2 aplicadas em spec-004 e spec-005 sem reescrever decisões
+- [ ] Bump de versão registrado no CHANGELOG de cada spec
+- [ ] C.3 resolvida por processo (não editar specs 003/004)

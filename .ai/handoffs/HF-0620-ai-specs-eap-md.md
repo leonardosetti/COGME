@@ -3,11 +3,11 @@ id: HF-0620
 title: "Repovoar .ai/specs/eap.md (A.3) — fases N1..N11 com rastreabilidade"
 task: TA-0064
 sender: agent-nexus-prime-ultimate
-target: agent-sdd-specialist
+agent: agent-sdd-specialist
 action: spec
 created: 2026-11-03
 kill_switch: inherited
-status: emitted
+status: dispatched
 source: docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md (rodada 1 de specs)
 ---
 
@@ -26,3 +26,9 @@ Repovoar .ai/specs/eap.md (0 B, item A.3 da LISTA): artefato NAO VAZIO declarand
 ## Contrato de resposta (meio-duplex)
 Parcela JSON obrigatoria:
 {"task_id":"TA-0064","status":"accepted|rejected","parcel":{"dod":true,"artifacts":["<paths>"],"notes":"<...>"},"kill_switch":"inherited"}
+
+
+## Critérios de Aceite
+- [ ] Artefato eap.md repovoado com fases N1..N11
+- [ ] Rastreabilidade arquivo:linha para cada fase
+- [ ] Diagrama mermaid textual incluído ou UNKNOWN - declare

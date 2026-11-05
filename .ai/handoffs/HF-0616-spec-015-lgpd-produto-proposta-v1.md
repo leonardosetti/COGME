@@ -3,11 +3,11 @@ id: HF-0616
 title: "Emissao spec-015-lgpd-produto-proposta-v1 (B.3/GAP-08) — PROPOSTA draft condicionada a CCB"
 task: TA-0060
 sender: agent-nexus-prime-ultimate
-target: agent-sdd-specialist
+agent: agent-sdd-specialist
 action: spec
 created: 2026-11-03
 kill_switch: inherited
-status: emitted
+status: dispatched
 source: docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md (rodada 1 de specs)
 ---
 
@@ -26,3 +26,9 @@ Emitir .ai/specs/spec-015-lgpd-produto-proposta-v1.spec.md (item B.3 da LISTA) c
 ## Contrato de resposta (meio-duplex)
 Parcela JSON obrigatoria:
 {"task_id":"TA-0060","status":"accepted|rejected","parcel":{"dod":true,"artifacts":["<paths>"],"notes":"<...>"},"kill_switch":"inherited"}
+
+
+## Critérios de Aceite
+- [ ] Spec emitida como PROPOSTA (status: draft), não aprovada
+- [ ] Todas as fontes obrigatórias citadas com arquivo:linha
+- [ ] Condicionantes D1-D7 listadas como pendentes do CCB/PO
