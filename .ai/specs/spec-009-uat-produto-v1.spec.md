@@ -1,7 +1,7 @@
 ---
 spec_id: spec-009
 specname: uat-produto-v1
-version: 0.3.0
+version: 0.4.0
 status: draft
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-11-03
@@ -9,6 +9,7 @@ updated: 2026-11-05
 origin: .ai/handoffs/HF-0610-spec-009-uat-produto-v1.md (envelope; item B.5 de docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md:37)
 task: TA-0054 | handoff: HF-0610 | sender: agent-nexus-prime-ultimate
 kill_switch: inherited
+wave: WS-4 | Onda 4 — Execução Técnica (UAT produto)
 lgpd-class: n/a neste artefato (zero PII); evidências de UAT exclusivamente sintéticas (P-04, constitution.md:90; parcela TA-0047, .ai/handoffs/HF-0603-consulta-de-dominio.md:40)
 trace:
   - .ai/handoffs/HF-0610-spec-009-uat-produto-v1.md:14-29 (envelope — tarefa, fontes obrigatórias, contrato de resposta)
@@ -245,12 +246,13 @@ Critérios de execução (fase N6.2 — NÃO executáveis nesta emissão; bloque
 ## CHANGELOG
 
 - 0.1.0 — 2026-11-03 (TA-0054, HF-0610): emissão inicial. Template canônico MANIFEST §1 (camadas a-h). Insumo normativo incorporado: parcela de consulta TA-0047 (agent-qa-sdet, HF-0603:31-44) — critério binário fail-closed, matriz fluxo×US×REQ com trace ids `REQ-x::UAT-nn::layer::case`, reuso por referência de F-01..F-07, papéis RACI, destino proposto `docs/uat/N6.2/` com nomenclatura e retenção (condicionante CCB — fecha C.5 somente após ratificação), roteiro de 7 passos, registro de defeitos com severidade `critical|blocking|major|minor` e 7 UNKNOWNs. 7 fluxos de produto (UAT-01..UAT-07) + 7 casos de camada por referência; 3 fluxos condicionais (US-007/016/017). Critérios de spec (8) + critérios de execução (6, não executáveis nesta emissão). Nenhum outro arquivo editado; nada commitado.
+- 0.2.0 — 2026-11-05 (refinamento de ratificação, Grupo A): destino das evidências DECIDIDO = `docs/uat/`, classificado por rodada (`docs/uat/rodada-NN/`), com relatório analítico por rodada (taxa de aceite, cobertura analizada, ciclo de implementação). Decisão GP/CCB fechada em 05/11/2026 (pendência #6 resolvida). §3.8 reescrito — destino não é mais condicionante; `docs/uat/README.md` criado; `docs/uat/rodada-001/relatorio-analitico.md` criado (taxa de aceite 0% não executada, cobertura 0/14 casos, ciclo EM EXECUÇÃO). `unknown - verify` do destino removido. `version` 0.1.0 → 0.4.0 (salto para alinhar com refinamento do Grupo A). Nenhuma decisão de negócio de §§1–3 reescrita.
 
 ## CAMADAS FUNDAMENTAIS — MAPA (TA-0031)
 
 | Camada | Seção nesta spec | Estado |
 |---|---|---|
-| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem | frontmatter (`spec_id: spec-009`, `specname: uat-produto-v1`, `version: 0.1.0`, `status: draft`, `custody`, `created/updated: 2026-11-03`, `origin`, `task/sender`, `kill_switch: inherited`, `lgpd-class`, `trace`) | aplicada |
+| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem | frontmatter (`spec_id: spec-009`, `version: 0.4.0`, `status: draft`) + linha `Status:` | aplicada |
 | (b) Contexto/origem | §1 (origem TA-0054/HF-0610; item B.5; insumo TA-0047; specs irmãs) | aplicada |
 | (c) Resolução de conflitos | §2 (6 temas: alcance, critério, destino evidências, caráter bloqueante, condicionais, defeitos) | aplicada |
 | (d) Corpo de decisões/requisitos/contratos | §3 (§3.1-§3.10: escopo, critério binário, matriz com trace ids, reuso F-01..F-07, condicionais, RACI, roteiro, evidências, defeitos, UNKNOWNs) | aplicada |

@@ -1,15 +1,15 @@
 ---
 spec_id: spec-011
 specname: cicd-pipeline-v1
-version: 0.1.0
+version: 0.2.0
 status: draft
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-11-03
-updated: 2026-11-03
+updated: 2026-11-05
 origin: HF-0612 (TA-0056) | sender: agent-nexus-prime-ultimate | incorpora parcela de consulta TA-0048 (agent-devops, HF-0604:33-46)
-task: TA-0056
-sender: agent-nexus-prime-ultimate
+task: TA-0056 | handoff: HF-0612 | sender: agent-nexus-prime-ultimate
 kill_switch: inherited
+wave: WS-4 | Onda 4 — Execução Técnica (CI/CD)
 lgpd-class: filenames LGPD-safe (artefatos de CI sem PII; credenciais do banco dummy e efêmeras, ci.yml:120,130)
 trace:
   - .ai/handoffs/HF-0612-spec-011-cicd-pipeline-v1.md (envelope da tarefa)
@@ -184,12 +184,13 @@ Critérios binários, verificáveis na implementação (onda seguinte) — cada 
 ## CHANGELOG
 
 - 0.1.0 — 2026-11-03 (TA-0056, HF-0612): emissão inicial. Auditoria do estado real do ci.yml (189 linhas, 6 jobs — §3.1); drift G-05 declarado FECHADO por implementação preexistente (§2, §3.1); US-011 declarado NÃO ATENDIDO com 6 deltas normativos D-01..D-06 incorporados da parcela TA-0048 (HF-0604:33-46) (§3.3); C.4 FECHADO — nome do job fixado como `contract-network` com contrato completo (§3.4); gates intransferíveis (§3.5); merge-blocking como pré-condição, nunca aprovação (§3.6); disciplina Free Tier P-01 registrada (§3.7); 11 AC binários (§4); rastreabilidade dupla (§5); escopo negativo com implementação do ci.yml fora desta spec (§6); 4 UNKNOWNs registrados (§7).
+- 0.2.0 — 2026-11-05 (refinamento de ratificação, Grupo A): frontmatter atualizado ao padrão TA-0031 ratificado (adicionado `wave: WS-4`, `handoff` em `origin`; `version` 0.1.0 → 0.2.0). Deltas D-01..D-06 já implementados no `ci.yml` (commit `d657118`..`2765903`): timeout 15→5 min, job lint separado, `permissions: contents: read`, SHA-pin de actions, artifacts `coverage.xml`+`junit.xml`, remoção de append em `.ai/agents/ledger.yaml`. Job `contract-network` fixado (spec-011 §3.4). Aderência ao padrão de nomenclatura `spec-NNN-specname.spec.md` confirmada (ADR-018, RAT-2026-11-05-A18). Nenhuma decisão de negócio de §§1–8 reescrita.
 
 ## CAMADAS FUNDAMENTAIS — MAPA (TA-0031)
 
 | Camada | Seção nesta spec | Estado |
 |---|---|---|
-| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem, task, kill_switch, trace, lgpd-class | frontmatter (`spec_id: spec-011`, `version: 0.1.0`) + linha `Status:` | aplicada |
+| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem, task, kill_switch, trace, lgpd-class | frontmatter (`spec_id: spec-011`, `version: 0.2.0`) + linha `Status:` | aplicada |
 | (b) Contexto/origem | §1 (origem: HF-0612/TA-0056; parcela HF-0604/TA-0048) | aplicada |
 | (c) Resolução de conflitos | §2 (G-05, US-011, C.4; C-07 avaliada e não relevante) | aplicada |
 | (d) Corpo de decisões/requisitos/contratos | §3 (estado auditado, R-01..R-04, D-01..D-06, job `contract-network`, gates, Free Tier) | aplicada |

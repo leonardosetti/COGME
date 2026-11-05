@@ -1,14 +1,16 @@
 ---
 spec_id: spec-008
 specname: frontend-web-responsive-v1
-version: 0.1.0
+version: 0.2.0
 status: draft
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-11-03
-updated: 2026-11-03
+updated: 2026-11-05
 origin: HF-0609 (TA-0053) | sender: agent-nexus-prime-ultimate | rodada 1 de specs (LISTA-SPECS-PENDENTES-2026-11-02.md, item B.1)
 task: TA-0053 | handoff: HF-0609 | sender: agent-nexus-prime-ultimate
 kill_switch: inherited
+wave: WS-4 | Onda 4 — Execução Técnica (frontend web)
+lgpd-class: formulários da invoice coletam dados pessoais/financeiros (P-04, constitution.md:90) — minimização normativa na §6.4; este artefato não contém PII; critério LGPD de produto consolidado é item B.3 da LISTA (docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md:35), condicionado a decisão CCB/PO
 trace:
   - constitution.md (Art. 1.2/1.3/5.1/6.1/10.1/10.3/10.4; P-02 constitution.md:86, P-04 :90, P-06 :94, P-08 :98, P-10 :102, P-11 :104)
   - docs/decisoes/ADR-001-stack.md v1.1.0 (Ratificado CCB, ADR-001-stack.md:6; frontend HTML5+CSS3+JS vanilla :34; emenda de stack via ADR específica :53)
@@ -20,8 +22,7 @@ trace:
   - .ai/handoffs/HF-0609-spec-008-frontend-web-responsive-v1.md (envelope desta emissão, :17, :19-25)
   - docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md (:33 item B.1; :58 item D.1; :36 item B.4; :37 item B.5)
   - docs/planos/plano-granular/plano-producao-agentes.md (:121-131 onda 4 — A.11 agent-ui-ux-advisor :129 → A.12 agent-frontend-dev :130)
-  - Verificação local de filesystem (2026-11-03): src/frontend/templates/index.html = 0 B; src/frontend/static/ vazio; src/frontend/templates/invoice.html = 4996 B; schemas em src/shared/schemas.py:445-654
-lgpd-class: formulários da invoice coletam dados pessoais/financeiros (P-04, constitution.md:90) — minimização normativa na §6.4; este artefato não contém PII; critério LGPD de produto consolidado é item B.3 da LISTA (docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md:35), condicionado a decisão CCB/PO
+  - Verificação local de filesystem (2026-11-05): src/frontend/templates/index.html = tela de simulação funcional (era 0 B); src/frontend/static/ vazio; src/frontend/templates/invoice.html = 4996 B; schemas em src/shared/schemas.py:445-654
 ---
 
 # SPEC spec-008 — frontend-web-responsive-v1 — Interface web responsiva 100% FOSS do MVP (camada `front`)
@@ -235,12 +236,13 @@ Testes automatizados desta camada: render server-side dos templates por fixture 
 ## CHANGELOG
 
 - 0.1.0 — 2026-11-03 (TA-0053, HF-0609): emissão inicial. Normas da camada `front` (R-INT-01..08); inventário de `src/frontend/` e templates-alvo; estados de tela (empty/loading/error/success); registro de labels 1:1 com os schemas da spec-004; fluxos `POST /v1/simulate` e `POST /v1/invoice` com minimização P-04; acessibilidade baseline A1..A8; matriz de browsers REQ-06 (Chrome/Firefox/Edge últ. 2 versões); parcela TA-0046 (HF-0602:32-45) incorporada como insumo normativo; tabela de conflitos (HTMX vs vanilla, default spread/IOF, stale banner, custódia invoice.html, mobile, e2e); 3 stories candidatas US-022..US-024; 13 ACs verificáveis; lacunas declaradas: GAP-03 (ratificação da fórmula), GAP-04 (modelo de dados invoice), GAP-06 (TTL/stale), ratificação US-007/016/017, whitelist HTMX via ADR, destino de evidências UAT (spec-005:342), e2e de UI nesta onda.
+- 0.2.0 — 2026-11-05 (refinamento de ratificação, Grupo A): frontmatter atualizado ao padrão TA-0031 ratificado (adicionado `wave: WS-4`, `trace`; `version` 0.1.0 → 0.2.0). `src/frontend/templates/index.html` agora é tela de simulação funcional (era 0 B, commit `abc7350`), chamando `POST /v1/simulate` pela mesma origem via proxy `127.0.0.1:8080`. GAP-04 (modelo de dados invoice) fechado por ADR-016 D4 (RAT-2026-11-05-A16-D4, spec-007 ratificada). Destino de evidências UAT fechado = `docs/uat/` (pendência #6 resolvida). Aderência ao padrão de nomenclatura `spec-NNN-specname.spec.md` confirmada (ADR-018, RAT-2026-11-05-A18). Nenhuma decisão de negócio de §§1–12 reescrita.
 
 ## CAMADAS FUNDAMENTAIS — MAPA (TA-0031)
 
 | Camada | Seção nesta spec | Estado |
 |---|---|---|
-| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem | frontmatter (`spec_id: spec-008`, `version: 0.1.0`, `status: draft`, `created: 2026-11-03`, `task`/`sender`, `trace`, `lgpd-class`) | aplicada |
+| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem | frontmatter (`spec_id: spec-008`, `version: 0.2.0`, `status: draft`, `created: 2026-11-03`, `updated: 2026-11-05`, `task`/`sender`, `trace`, `lgpd-class`, `wave`) | aplicada |
 | (b) Contexto/origem | §1 (B.1/D.1 da LISTA; estado vazio verificado; insumo TA-0046) | aplicada |
 | (c) Resolução de conflitos | §2 (6 temas com fonte vencedora e texto superado) | aplicada |
 | (d) Corpo de decisões/requisitos/contratos | §§3–9 (R-INT, templates, estados, fluxos, labels 1:1, a11y, responsividade, stories) | aplicada |

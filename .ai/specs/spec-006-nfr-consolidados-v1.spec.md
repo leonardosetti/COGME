@@ -1,14 +1,15 @@
 ---
 spec_id: spec-006
 specname: nfr-consolidados-v1
-version: 0.1.0
+version: 0.2.0
 status: draft
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-11-03
-updated: 2026-11-03
+updated: 2026-11-05
 origin: HF-0607 (.ai/handoffs/HF-0607-spec-006-nfr-consolidados-v1.md)
 task: TA-0051 | handoff: HF-0607 | sender: agent-nexus-prime-ultimate
 kill_switch: inherited
+wave: WS-4 | Onda 4 — Execução Técnica (NFR consolidados)
 lgpd-class: n/a (zero PII neste artefato; P-04, constitution.md:90 — precedente lgpd-class: spec-002-requisitos-review-round-1.spec.md:19)
 trace:
   - .ai/handoffs/HF-0607-spec-006-nfr-consolidados-v1.md:17-29 (tarefa, fontes obrigatórias, contrato de resposta)
@@ -171,12 +172,13 @@ Rastreabilidade da emissão: tarefa TA-0051 ← HF-0607 (.ai/handoffs/HF-0607-sp
 ## CHANGELOG
 
 - 0.1.0 — 2026-11-03 (TA-0051 / HF-0607): emissão inicial. Registro canônico de NFR (item B.2, LISTA...:34): 25 NFRs (NF-01..NF-25) em 7 categorias (desempenho, usabilidade, segurança P-07/OWASP, portabilidade/FOSS P-01/P-02, LGPD P-04, manutenibilidade, observabilidade); GAP-02 coberto — fase N2.2 (plano-integral...:37) com artefato; P-04/P-06/P-07 mapeados a critérios de produto (AC-03); 4 tensões registradas na §2; lacunas de métrica marcadas `UNKNOWN - verify` (NF-09, NF-13, NF-15, cache além do TTL em NF-04). Arquivo único; nada commitado.
+- 0.2.0 — 2026-11-05 (refinamento de ratificação, Grupo A): frontmatter atualizado ao padrão TA-0031 ratificado (adicionado `wave: WS-4`, `trace`; `version` 0.1.0 → 0.2.0). ADR-016 D4 (RAT-2026-11-05-A16-D4) incorporada: NF-25 menciona fórmula spread/IOF ratificada. NFR de cotação (NF-01..NF-04) alinhadas com spec-004 v1.2.0 e spec-005 v0.4.0. Aderência ao padrão de nomenclatura `spec-NNN-specname.spec.md` confirmada (ADR-018, RAT-2026-11-05-A18). Nenhuma decisão de negócio de §§1–6 reescrita.
 
 ## CAMADAS FUNDAMENTAIS — MAPA (TA-0031)
 
 | Camada | Seção nesta spec | Estado |
 |---|---|---|
-| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem | frontmatter (`spec_id: spec-006`, `version: 0.1.0`, `status: draft`, `created/updated: 2026-11-03`, `origin: HF-0607`, `task: TA-0051`) | aplicada |
+| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem | frontmatter (`spec_id: spec-006`, `version: 0.2.0`, `status: draft`, `created/updated: 2026-11-03`/`2026-11-05`, `origin: HF-0607`, `task: TA-0051`) | aplicada |
 | (b) Contexto/origem | §1 Contexto e origem | aplicada |
 | (c) Resolução de conflitos | §2 (tabela tema→decisão→fonte vencedora→texto superado) | aplicada |
 | (d) Corpo de decisões/requisitos/contratos | §3 (NF-01..NF-25 em 3.1–3.7) | aplicada |

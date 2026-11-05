@@ -6,8 +6,17 @@ status: draft
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-11-02
 updated: 2026-11-05
-origin: HF-0029 (TA-0029) + amendment HF-0030 (TA-0030) | sender: agent-nexus-prime-ultimate
+origin: HF-0029 (TA-0029) + amendment HF-0030 (TA-0030)
+task: TA-0030 | sender: agent-nexus-prime-ultimate
 kill_switch: inherited
+wave: WS-4 | Onda 4 — Execução Técnica (camadas de containers)
+lgpd-class: n/a (zero PII neste artefato; P-04, constitution.md:90)
+trace:
+  - .ai/handoffs/HF-0029-container-layers-spec.md
+  - .ai/handoffs/HF-0030-nginx-aceito-demo.md
+  - constitution.md (Art. 10.1, P-01, P-02, P-03, P-04, P-06, P-07, P-11)
+  - docs/decisoes/adr-010-stack-infraestrutura.md
+  - docs/decisoes/adr-001-stack.md
 ---
 
 # SPEC spec-005 — container-layers-v1 — Camadas de containers para a produção ortogonal do COGME
@@ -364,12 +373,13 @@ Padrão B conforme `docs/conhecimento/OKB.md:539` (§7.4): título `US-NN — sl
 
 - Normalização estrutural — 2026-11-02 (TA-0031, HF-0031): frontmatter canônico (`spec_id: spec-005`), slug `container-layers-v1.spec.md` → `spec-005-container-layers-v1.spec.md` (mapa em `.ai/specs/MANIFEST.md`), mapa de camadas a–h. **Versão mantida 0.2.0**; amenda TA-0030 (proxy Nginx ACEITO E MANTIDO) preservada integralmente; nenhum conteúdo reescrito.
 - 0.3.0 — 2026-11-03 (TA-0061, HF-0617): emendas de conteúdo C.4+C.5 (docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md:51,52). C.4 (§8.3): marcador do job `contract-network` substituído pela RESOLUÇÃO — job **inexistente** no `ci.yml` real (auditado 2026-11-03: 189 linhas, 6 jobs, nenhum com esse nome) e nome **FIXADO pela spec-011 §3.4 como job novo a implementar** (parcela TA-0048, HF-0604:42). C.5 (§12): destino das evidências passa de `UNKNOWN - verify` para **"proposta emitida (spec-009 §3.8): `docs/uat/N6.2/`, retenção permanente — ratificação CCB/PO pendente"** (parcela TA-0047, HF-0603:40); a reserva de decisão ao GP é mantida. Frontmatter: `version` 0.2.0 → 0.3.0; `updated` → 2026-11-03. **Amenda TA-0030 (proxy ACEITO E MANTIDO) e linha `Status:` preservadas integralmente**; nenhuma decisão reescrita; emendas in-place sem deslocamento de linhas (citações externas a `spec-005:210` e `spec-005:342` permanecem endereçáveis; valores `UNKNOWN - verify` residuais em :81 e :352 dizem respeito a B.10/spec-014 — fora do escopo desta emenda).
+- 0.4.0 — 2026-11-05 (refinamento de ratificação, Grupo A): frontmatter atualizado ao padrão TA-0031 ratificado (adicionado `wave: WS-4`, `lgpd-class`, `trace`; `task` definido como TA-0030, `sender` separado; removido `sender` embutido em `origin`); `version` 0.3.0 → 0.4.0. Aderência ao padrão de nomenclatura `spec-NNN-specname.spec.md` confirmada (ADR-018, RAT-2026-11-05-A18). Proxy **sempre ativo** confirmado em docker-compose (commit `abc7350`, separação `web` → `back`+`front`+proxy). Nenhuma decisão de negócio de §§1–13 reescrita.
 
 ## CAMADAS FUNDAMENTAIS — MAPA (TA-0031)
 
 | Camada | Seção nesta spec | Estado |
 |---|---|---|
-| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem | frontmatter (`spec_id: spec-005`, `version: 0.2.0`) + linha `Status:` | aplicada |
+| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem | frontmatter (`spec_id: spec-005`, `version: 0.4.0`) + linha `Status:` | aplicada |
 | (b) Contexto/origem | §1 (origem: HF-0029/TA-0029; amenda HF-0030/TA-0030) | aplicada |
 | (c) Resolução de conflitos | §2 | aplicada |
 | (d) Corpo de decisões/requisitos/contratos | §§3–10 e §12 | aplicada |

@@ -1,14 +1,20 @@
 ---
 spec_id: spec-004
 specname: backend-mvp-v1
-version: 1.1.0
+version: 1.2.0
 status: in_progress
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-11-01
-updated: 2026-11-03
-origin: commit f6e0455 (2026-11-01, "docs(spec): especificar backend do MVP") + record .ai/handoffs/HF-0500-backend-mvp.md | creation_handoff: UNKNOWN - verify
-task: UNKNOWN - verify | sender: agent-nexus-prime-ultimate
+updated: 2026-11-05
+origin: commit f6e0455 (2026-11-01, "docs(spec): especificar backend do MVP") + .ai/handoffs/HF-0500-backend-mvp.md
+task: TA-0042 | sender: agent-nexus-prime-ultimate
 kill_switch: inherited
+wave: WS-4 | Onda 4 — Execução Técnica (backend implementação)
+lgpd-class: n/a (zero PII neste artefato; P-04, constitution.md:90)
+trace:
+  - .ai/handoffs/HF-0500-backend-mvp.md (registro de execução T1–T14)
+  - docs/decisoes/adr-016-backend-mvp.md (ADR-016, fórmula spread/IOF ratificada)
+  - constitution.md (Art. 2, P-02, P-03, P-04, P-06, P-07)
 ---
 
 # SPEC spec-004 — backend-mvp-v1 — Backend do MVP COGME (REQ-01 a REQ-05, REQ-07, REQ-14)
@@ -265,7 +271,7 @@ Histórico: esta SPEC não possuía seção própria de critérios de aceite ant
 
 Escopo negativo já declarado em §1 (parágrafo "Fora do escopo: autenticação, cadastro, histórico de simulações, comparador Wise, telas (N5.3)" — telas de front são objeto da spec-008, spec-008:28). Emenda TA-0061 (C.2) — exclusões adicionais derivadas do corpo e do corpus da rodada, por cross-ref, **sem promover decisão nova** (P-11):
 
-- **Persistência de invoice / modelo de dados estendido (condicionante D1)** — invoice nunca é persistida (§5:126); o modelo de dados da invoice é objeto da spec-007 sob a condicionante D1 (spec-007:38,48) e não altera o contrato §3 desta spec.
+- **Persistência de invoice / modelo de dados estendido (condicionante D1)** — invoice é persistida na tabela `invoices` (modelo canônico em spec-007 §3.1; ADR-016 D4, RAT-2026-11-05-A16-D4). Cada usuário pode gerar, armazenar persistentemente, baixar e imprimir a invoice conforme sua regra de jornada e rating de pagamento. Rota de erase (direito ao esquecimento, LGPD art. 18) é obrigatória (condicionantes D1-D6 da spec-015). O modelo de dados da invoice é objeto da spec-007 e não altera o contrato §3 desta spec.
 - **Política LGPD de produto (B.3)** — objeto da spec-015, emitida como PROPOSTA `draft` condicionada a ratificação CCB/PO (envelope `.ai/handoffs/HF-0616-spec-015-lgpd-produto-proposta-v1.md`); esta spec retém apenas o critério vigente de §5:126.
 - **NFR consolidados (NF-01..NF-10)** — norma da spec-006 (NF-01..NF-04 em spec-006:71-74; NF-05 :80; NF-07 :87; NF-10 :90); esta spec cita apenas os orçamentos que já fixa no corpo (ex.: 1,9 s em §4:114).
 - **UAT de produto (REQ-09, fase N6.2)** e **UAT de camadas** — plano/roteiro normados pela spec-009 (spec-009 §3) e pela spec-005 §12 (F-01..F-07); esta spec não define UAT.
@@ -277,12 +283,13 @@ Escopo negativo já declarado em §1 (parágrafo "Fora do escopo: autenticação
 
 - 1.0.0 — 2026-11-02 (TA-0031, HF-0031): versionamento inicial + template canônico (camadas a–h). Conteúdo pré-existente preservado integralmente (origem: commit `f6e0455`, 2026-11-01); slug antigo `backend-mvp-v1.spec.md` → `spec-004-backend-mvp-v1.spec.md` (mapa em `.ai/specs/MANIFEST.md`); nenhuma decisão reescrita; `status: in_progress` mapeado da linha `Status:` original (IMPLEMENTADA EM BRANCH, PENDENTE DE PUSH E MERGE).
 - 1.1.0 — 2026-11-03 (TA-0061, HF-0617): emendas de conteúdo C.1+C.2 (docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md:49,50). C.1: §11 preenchida com 18 critérios binários (AC-01..AC-18) consolidados exclusivamente do corpo pré-existente (§§2–9) — nenhum requisito novo; itens sem base no corpo permanecem `UNKNOWN - verify` (§11, final). C.2: §13 preenchida com exclusões YAGNI por cross-ref (spec-007/D1, spec-015 proposta via HF-0616, spec-006, spec-009, spec-011, spec-013, retenção `fx_quotes`) — nenhuma decisão nova promovida. Frontmatter: `version` 1.0.0 → 1.1.0; `updated` → 2026-11-03. Mapa de camadas (e) atualizado por coerência. Nenhuma decisão de §§1–9 reescrita. Deslocamento de linhas: §§11/13 expandidas — linhas ≥ 231 do arquivo deslocam (citações externas às linhas ≥ 231, ex.: LISTA item B.9 → `spec-004:239`, resolvem-se pela leitura de §/seção).
+- 1.2.0 — 2026-11-05 (refinamento de ratificação, Grupo A): frontmatter atualizado ao padrão TA-0031 ratificado (adicionado `wave: WS-4`, `lgpd-class`, `trace`; `task` definido como TA-0042; removido `creation_handoff` não-padrão); `version` 1.1.0 → 1.2.0. Seção 13 (Fora de escopo) corrigida: persistência de invoice agora segue D4 da ADR-016 (PERSISTIR com rota de erase, RAT-2026-11-05-A16-D4) em vez de "nunca persistida". Aderência ao padrão de nomenclatura `spec-NNN-specname.spec.md` confirmada (ADR-018, RAT-2026-11-05-A18). Nenhuma decisão de negócio de §§1–9 reescrita.
 
 ## CAMADAS FUNDAMENTAIS — MAPA (TA-0031)
 
 | Camada | Seção nesta spec | Estado |
 |---|---|---|
-| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem | frontmatter (`spec_id: spec-004`, `version: 1.0.0`) | aplicada |
+| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem | frontmatter (`spec_id: spec-004`, `version: 1.2.0`) | aplicada |
 | (b) Contexto/origem | §10 + frontmatter `origin` + parágrafo introdutório | aplicada |
 | (c) Resolução de conflitos | §1 | aplicada |
 | (d) Corpo de decisões/requisitos/contratos | §§2–9 | aplicada |
