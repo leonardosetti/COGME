@@ -140,6 +140,19 @@ jobs:
       - name: Validate frontmatter of all *.md (Norma Global de Templates)
         run: python3 scripts/validar_frontmatter_md.py
 
+      - name: Validate names of changed *.md (Norma de Nomenclatura)
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            CHANGED_MD=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} -- '*.md' 2>/dev/null || true)
+          else
+            CHANGED_MD=$(git diff --name-only HEAD~1 HEAD -- '*.md' 2>/dev/null || true)
+          fi
+          if [ -n "$CHANGED_MD" ]; then
+            echo "$CHANGED_MD" | xargs -r python3 scripts/validar_nome_arquivo.py
+          else
+            echo "Nenhum *.md alterado. Pulando validação de nomeclatura."
+          fi
+
       - name: Dependency audit (pip-audit, fail-closed)
         run: pip-audit
 
