@@ -39,6 +39,7 @@ camada→seção, com estado por spec, está no fim de cada spec (seção
 | `kill_switch` | sim | `inherited` |
 | `trace` | sim | lista de fontes (Art./ADR/arquivo) |
 | `lgpd-class` | opcional | presente quando aplicável (precedente: spec-002) |
+| `wave` | opcional | onda de emissão (ex.: `WS-1`, `WS-3`); útil para rastreabilidade de rodadas; usado em spec-001 e spec-002 |
 
 Logo após o frontmatter: H1 no padrão `# SPEC <spec_id> — <specname> — <título>` e
 linha `Status:` (quando o texto prévio já a possuía — preservada, não reescrita).
@@ -63,7 +64,7 @@ citação `arquivo:linha`.
 
 ### 2.1 Slug e `spec_id`
 
-- Padrão de arquivo: **`spec_id-specname.spec.md`** (kebab-case), decretado em HF-0031:35.
+- Padrão de arquivo: **`spec_id-specname.spec.md`** (kebab-case), decretado em HF-0031:35. Norma geral de nomenclatura de arquivos de artefato: `tipo_artefato-id_artefato-nome_artefato.{ext}` (ADR-018, RAT-2026-11-05-A18). As specs são o caso particular `tipo_artefato=spec` com extensão `.spec.md`.
 - `spec_id` sequencial `spec-NNN` (lowercase kebab): precedente dos prefixos NNN do
   repo — `HF-NNNN`, `TA-NNNN`, `ADR-NNN`, `VIO-NNN` (HF-0031:36-37) — com a exigência
   de kebab-case no frontmatter de `.opencode/agents/agent-sdd-specialist.md:127`
