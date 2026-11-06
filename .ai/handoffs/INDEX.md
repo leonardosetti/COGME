@@ -60,7 +60,7 @@ Formato de entrada: `- HF-NNNN: <tema> (task: TA-NNNN | target: <agent> | status
 - HF-0402: SDDAI Feature Engineer — Engenharia de Features (task: N/A | target: agent-sddai-engineer | status: ready)
 - HF-0403: SDDAI Model Trainer — Treinamento de Modelo (task: N/A | target: agent-sddai-trainer | status: ready)
 - HF-0404: SDDAI CLI Orchestrator — Pipeline Unificado (task: N/A | target: agent-sddai-cli | status: ready)
-- HF-0500: Registro de execução do backend MVP (REQ-13) (task: N/A | target: agent-devops | status: blocked)
+- HF-0500: Scheduler de auditoria de compliance (REQ-13) (task: TA-0100 | target: agent-devops | status: ready)
 - HF-0601: HF-0601 — Consulta de dominio: modelo de dados da invoice (B.4/GAP-04) (task: TA-0045 | target: agent-dba | status: emitted)
 - HF-0602: HF-0602 — Consulta de dominio: frontend web responsivo (B.1/REQ-06) (task: TA-0046 | target: agent-ui-ux-advisor | status: emitted)
 - HF-0603: HF-0603 — Consulta de dominio: UAT de produto e destino de evidencias (B.5/C.5) (task: TA-0047 | target: agent-qa-sdet | status: emitted)
