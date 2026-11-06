@@ -91,18 +91,18 @@ class TestDispatcher:
         assert any("DAG" in e for e in env["errors"])
 
     def test_not_promulgated_rejected(self, tmp_path, seeded_registry):
-        # dialético robusto: escolhe dinamicamente um slug pendente (não-promulgado)
-        import yaml as _yaml
-        reg_path = REGISTRY.parent / "registry.yaml"
-        reg = _yaml.safe_load(reg_path.read_text(encoding="utf-8"))
-        promulgated = {a.get("name") for a in reg.get("agents", [])}
-        pending = sorted(KNOWN_SLUGS_SAFE - promulgated)
-        if not pending:
-            pytest.skip("roster completo — sem slug pendente para simular rejeição")
+        # slug conhecido na DAG mas não promulgado no registry de teste
+        slug = "agent-sdd-specialist"
+        seed_registry(
+            f"- name: {slug}\n"
+            "  version: '1.0'\n  layer: L1\n  role: specialist\n"
+            "  description: teste\n  status: draft\n"
+            "  upstream: []\n  downstream: []\n")
         rc, env = run(DISPATCH, "--check", write_task(tmp_path, {
-            "task_id": "TA-003", "target": pending[0], "action": "plan"}))
+            "task_id": "TA-003", "target": slug, "action": "plan"}))
         assert rc == 1
-        assert any("promulgado" in e for e in env["errors"])
+        assert env["status"] == "rejeitado"
+        assert any("não-dispachável" in e or "promulgado" in e for e in env["errors"])
 
     def test_bad_action_rejected(self, tmp_path, seeded_registry):
         rc, env = run(DISPATCH, "--check", write_task(tmp_path, {
