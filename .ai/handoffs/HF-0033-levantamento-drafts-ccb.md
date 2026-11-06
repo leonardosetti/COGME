@@ -3,11 +3,14 @@ id: ai-handoffs-hf-0033-levantamento-drafts-ccb
 title: 'Handoff: Levantamento de artefatos com status draft para aprovação CCB (TA-0033)'
 type: handoff
 version: 1.0.0
-status: ativo
+status: ready
 owner: agent-project-analyst
+agent: agent-project-analyst
 derived-from:
 - .ai/handoffs/HF-0033-levantamento-drafts-ccb.md (adequado à norma em 2026-11-05)
 last-revised: '2026-11-05'
+created: 2026-11-05
+updated: 2026-11-06
 lgpd-class: n/a
 tags:
 - handoffs
@@ -61,3 +64,5 @@ projeto com status `draft` (ou equivalente de pendência de aprovação) para su
 - Retorno: parcel half-duplex schema 6 (enum correto, `route` objeto), `dod` com todos os
   AC, `notes` ≤5 linhas com contagens (nº de drafts por status) + top-3 bloqueantes.
   Resposta final ≤1200 tokens (relatório vai ao ARQUIVO).
+- kill_switch: inherited
+- CPU-only, sem CUDA/cloud; FOSS-only; LGPD primária (zero PII em relatórios e volumes).

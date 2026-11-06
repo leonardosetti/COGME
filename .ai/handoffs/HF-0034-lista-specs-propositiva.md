@@ -3,11 +3,14 @@ id: ai-handoffs-hf-0034-lista-specs-propositiva
 title: 'Handoff: Enriquecimento da lista de specs pendentes com dados propositivos + rodapé com hora e ratificação CCB (TA-0035)'
 type: handoff
 version: 1.0.0
-status: ativo
+status: ready
 owner: agent-project-analyst
+agent: agent-sdd-specialist
 derived-from:
 - .ai/handoffs/HF-0034-lista-specs-propositiva.md (adequado à norma em 2026-11-05)
 last-revised: '2026-11-05'
+created: 2026-11-05
+updated: 2026-11-06
 lgpd-class: n/a
 tags:
 - handoffs
@@ -61,3 +64,5 @@ passar a conter **data + hora** da atualização e o registro da **ratificação
 - Retorno: parcel half-duplex schema 6 EXATO (enum `accepted|rejected|escalated|require_clarification`,
   `route` OBJETO {sender, receiver}, `notes` string — NÃO array), `dod` com todos os AC,
   `notes` ≤4 linhas. Resposta final ≤1200 tokens (conteúdo vai ao ARQUIVO).
+- kill_switch: inherited
+- CPU-only, sem CUDA/cloud; FOSS-only; LGPD primária (zero PII em relatórios e volumes).

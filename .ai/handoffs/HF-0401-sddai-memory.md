@@ -14,6 +14,7 @@ tags:
   - sddai
 agent: agent-sddai-memory
 created: 2026-10-31
+updated: 2026-11-06
 ---
 # Handoff: SDDAI Memory Optimizer — Otimização de Memória
 ## Contexto
@@ -30,4 +31,4 @@ Executar `cogme-sddai-memory.cli --threshold 10.0 --output <json>` e retornar pa
 - Zero dependências externas (stdlib Python apenas)
 - Não exceder envelope de hardware (8700G / 58GB RAM)
 - kill_switch: inherited
-- CPU-only, sem CUDA/cloud
+- CPU-only, sem CUDA/cloud; FOSS-only; LGPD primária (zero PII em resultados).

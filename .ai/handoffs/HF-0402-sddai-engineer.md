@@ -14,6 +14,7 @@ tags:
   - sddai
 agent: agent-sddai-engineer
 created: 2026-10-31
+updated: 2026-11-06
 ---
 # Handoff: SDDAI Feature Engineer — Engenharia de Features
 ## Contexto
@@ -30,4 +31,4 @@ Executar `cogme-sddai-engineer.cli --input <json_loader> --output <json>` e reto
 - Zero dependências externas (stdlib Python apenas)
 - Métricas determinísticas (não inventadas)
 - kill_switch: inherited
-- CPU-only, sem CUDA/cloud
+- CPU-only, sem CUDA/cloud; FOSS-only; LGPD primária (zero PII em resultados).

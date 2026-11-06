@@ -4,11 +4,14 @@ title: 'Handoff: Auditoria dedicada de registry.yaml e ledger.yaml — circuito 
   e desvio de função (TA-0032)'
 type: handoff
 version: 1.0.0
-status: ativo
+status: ready
 owner: agent-project-analyst
+agent: agent-project-auditor
 derived-from:
 - .ai/handoffs/HF-0032-auditoria-registry-ledger.md (adequado à norma em 2026-11-05)
 last-revised: '2026-11-05'
+created: 2026-11-05
+updated: 2026-11-06
 lgpd-class: n/a
 tags:
 - handoffs
@@ -96,3 +99,5 @@ seguinte ou escala):
 - Retorno: parcel half-duplex schema 6 (enum `accepted|rejected|escalated|require_clarification`,
   `route` objeto {sender, receiver}), `dod` com todos os AC, `notes` ≤5 linhas com top 3
   achados. Resposta final ≤1200 tokens (relatório vai ao ARQUIVO).
+- kill_switch: inherited
+- CPU-only, sem CUDA/cloud; FOSS-only; LGPD primária (zero PII em relatórios e volumes).

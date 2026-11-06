@@ -3,11 +3,14 @@ id: ai-handoffs-hf-0030-nginx-aceito-demo
 title: 'Handoff: Amenda Nginx aceito-e-mantido + comunicação integrada para demo local (TA-0030)'
 type: handoff
 version: 1.0.0
-status: ativo
+status: ready
 owner: agent-project-analyst
+agent: agent-sdd-specialist
 derived-from:
 - .ai/handoffs/HF-0030-nginx-aceito-demo.md (adequado à norma em 2026-11-05)
 last-revised: '2026-11-05'
+created: 2026-11-05
+updated: 2026-11-06
 lgpd-class: n/a
 tags:
 - handoffs
@@ -71,3 +74,5 @@ Amenda cirúrgica em `.ai/specs/container-layers-v1.spec.md` (ÚNICO arquivo edi
   incerteza marcada `UNKNOWN - verify`. Nada de invenção de status, datas ou métricas.
 - Retorno obrigatório: parcel half-duplex (schema 6 do orquestrador), `dod` só com todos os
   critérios verificados. Resposta final ≤1200 tokens (conteúdo longo vai ao ARQUIVO).
+- kill_switch: inherited
+- CPU-only, sem CUDA/cloud; FOSS-only; LGPD primária (zero PII em relatórios e volumes).

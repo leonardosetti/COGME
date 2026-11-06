@@ -14,6 +14,7 @@ tags:
   - sddai
 agent: agent-sddai-cli
 created: 2026-10-31
+updated: 2026-11-06
 ---
 # Handoff: SDDAI CLI Orchestrator — Pipeline Unificado
 ## Contexto
@@ -29,4 +30,4 @@ Executar `sddai run data_optimization --source <arquivo> --epochs 3 --memory-thr
 - Zero dependências externas (stdlib Python apenas)
 - Orquestração via subprocess (isolamento de componentes)
 - kill_switch: inherited
-- CPU-only, sem CUDA/cloud
+- CPU-only, sem CUDA/cloud; FOSS-only; LGPD primária (zero PII em resultados).

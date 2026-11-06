@@ -14,6 +14,7 @@ tags:
   - sddai
 agent: agent-sddai-loader
 created: 2026-10-31
+updated: 2026-11-06
 ---
 # Handoff: SDDAI Data Loader — Ingestão de Dados
 ## Contexto
@@ -29,4 +30,4 @@ Executar `cogme-sddai-loader.cli --source <arquivo> --output <json>` e retornar 
 - Zero dependências externas (stdlib Python apenas)
 - Não modificar arquivo de origem
 - kill_switch: inherited
-- CPU-only, sem CUDA/cloud
+- CPU-only, sem CUDA/cloud; FOSS-only; LGPD primária (zero PII em resultados).

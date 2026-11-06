@@ -3,11 +3,14 @@ id: ai-handoffs-hf-0031-specs-normalizacao
 title: 'Handoff: Normalização integral do corpus de specs — slug, versionamento, corpo canônico, realocação e pendentes (TA-0031)'
 type: handoff
 version: 1.0.0
-status: ativo
+status: ready
 owner: agent-project-analyst
+agent: agent-sdd-specialist
 derived-from:
 - .ai/handoffs/HF-0031-specs-normalizacao.md (adequado à norma em 2026-11-05)
 last-revised: '2026-11-05'
+created: 2026-11-05
+updated: 2026-11-06
 lgpd-class: n/a
 tags:
 - handoffs
@@ -105,3 +108,5 @@ Status 0.2.0 pós-TA-0030); 2 com frontmatter `spec_id:` mas sem sufixo
 - Retorno: parcel half-duplex (schema 6), `dod` só com todos os critérios verificados;
   na `notes`, incluir o resumo da lista de pendentes (≤5 linhas). Resposta final ≤1200 tokens
   (conteúdo longo vai aos ARQUIVOS).
+- kill_switch: inherited
+- CPU-only, sem CUDA/cloud; FOSS-only; LGPD primária (zero PII em relatórios e volumes).

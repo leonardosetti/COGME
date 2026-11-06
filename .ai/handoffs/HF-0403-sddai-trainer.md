@@ -14,6 +14,7 @@ tags:
   - sddai
 agent: agent-sddai-trainer
 created: 2026-10-31
+updated: 2026-11-06
 ---
 # Handoff: SDDAI Model Trainer — Treinamento de Modelo
 ## Contexto
@@ -30,4 +31,4 @@ Executar `cogme-sddai-trainer.cli --input <json_engineer> --epochs 3 --output <j
 - Zero dependências externas (stdlib Python apenas)
 - Treinamento determinístico (sem CUDA/cloud inference)
 - kill_switch: inherited
-- CPU-only
+- CPU-only, sem CUDA/cloud; FOSS-only; LGPD primária (zero PII em resultados).
