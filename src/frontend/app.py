@@ -6,8 +6,7 @@ server-side e encaminha /v1/* para o back:8000. Sem CORS: mesma origem.
 
 from __future__ import annotations
 
-from decimal import Decimal
-from typing import Any
+from pathlib import Path
 
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse, StreamingResponse
@@ -16,10 +15,14 @@ import httpx
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 app = FastAPI(title="COGME Front")
-app.mount("/static", StaticFiles(directory="src/frontend/static"), name="static")
+app.mount(
+    "/static",
+    StaticFiles(directory=Path(__file__).resolve().parent / "static"),
+    name="static",
+)
 
 env = Environment(
-    loader=FileSystemLoader("src/frontend/templates"),
+    loader=FileSystemLoader(str(Path(__file__).resolve().parent / "templates")),
     autoescape=select_autoescape(["html", "xml"]),
     auto_reload=False,
 )
@@ -29,6 +32,7 @@ def render(name: str, **context) -> HTMLResponse:
     """Renderiza um template Jinja2 com ``request`` no contexto."""
     template = env.get_template(name)
     return HTMLResponse(template.render(**context))
+
 
 BACK_BASE = "http://back:8000"
 
@@ -40,44 +44,6 @@ def _get_client() -> httpx.AsyncClient:
     if _client is None:
         _client = httpx.AsyncClient(base_url=BACK_BASE, timeout=30.0)
     return _client
-
-
-# --- filtros de formatação pt-BR (espelho dos do back, usados nos templates) ---
-
-def _brl(value: Any) -> str:
-    try:
-        return "R$ " + format(Decimal(str(value)), ",.2f").replace(",", "X").replace(".", ",").replace("X", ".")
-    except Exception:
-        return str(value)
-
-
-def _percent_br(value: Any) -> str:
-    try:
-        return format(Decimal(str(value)), ".4f").replace(".", ",") + " %"
-    except Exception:
-        return str(value)
-
-
-def _rate_br(value: Any) -> str:
-    try:
-        return format(Decimal(str(value)), ".6f").replace(".", ",") + " "
-    except Exception:
-        return str(value)
-
-
-def _date_br(value: Any) -> str:
-    return str(value)
-
-
-def _datetime_br(value: Any) -> str:
-    return str(value)
-
-
-env.filters["brl"] = _brl
-env.filters["percent_br"] = _percent_br
-env.filters["rate_br"] = _rate_br
-env.filters["date_br"] = _date_br
-env.filters["datetime_br"] = _datetime_br
 
 
 @app.on_event("shutdown")
@@ -194,7 +160,9 @@ async def invoice_server(
         status_code=resp.status_code,
         headers={
             "content-type": resp.headers.get("content-type", "application/pdf"),
-            "content-disposition": resp.headers.get("content-disposition", 'attachment; filename="invoice.pdf"'),
+            "content-disposition": resp.headers.get(
+                "content-disposition", 'attachment; filename="invoice.pdf"'
+            ),
             "cache-control": "no-store",
         },
         media_type=resp.headers.get("content-type"),
@@ -225,6 +193,10 @@ async def proxy_v1(path: str, request: Request) -> StreamingResponse:
     return StreamingResponse(
         resp.aiter_bytes(),
         status_code=resp.status_code,
-        headers={k: v for k, v in resp.headers.items() if k.lower() not in ("content-length", "transfer-encoding")},
+        headers={
+            k: v
+            for k, v in resp.headers.items()
+            if k.lower() not in ("content-length", "transfer-encoding")
+        },
         media_type=resp.headers.get("content-type"),
     )
