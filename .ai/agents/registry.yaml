@@ -648,7 +648,8 @@ agents:
   role: forge
   description: Agente agent-skill-master do ecossistema COGME.
   status: promulgado
-  upstream: []
+  upstream:
+  - agent-docker-specialist
   downstream: []
 - file: .opencode/agents/agent-sldc-process-specialist.md
   name: agent-sldc-process-specialist
