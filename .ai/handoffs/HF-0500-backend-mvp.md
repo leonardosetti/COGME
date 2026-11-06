@@ -3,7 +3,7 @@ id: ai-handoffs-hf-0500-backend-mvp
 title: 'Handoff: Scheduler de auditoria de compliance (REQ-13)'
 type: handoff
 version: 1.0.0
-status: ready
+status: ativo
 owner: agent-devops
 derived-from:
 - .ai/handoffs/HF-0500-backend-mvp.md (adequado à norma em 2026-11-06)

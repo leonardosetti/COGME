@@ -3,7 +3,7 @@ id: ai-handoffs-hf-0034-lista-specs-propositiva
 title: 'Handoff: Enriquecimento da lista de specs pendentes com dados propositivos + rodapé com hora e ratificação CCB (TA-0035)'
 type: handoff
 version: 1.0.0
-status: ready
+status: ativo
 owner: agent-project-analyst
 agent: agent-sdd-specialist
 derived-from:

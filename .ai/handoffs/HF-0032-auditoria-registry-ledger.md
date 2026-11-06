@@ -4,7 +4,7 @@ title: 'Handoff: Auditoria dedicada de registry.yaml e ledger.yaml — circuito 
   e desvio de função (TA-0032)'
 type: handoff
 version: 1.0.0
-status: ready
+status: ativo
 owner: agent-project-analyst
 agent: agent-project-auditor
 derived-from:

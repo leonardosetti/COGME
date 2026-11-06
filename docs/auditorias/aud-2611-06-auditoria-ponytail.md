@@ -1,3 +1,20 @@
+---
+id: aud-2611-06-auditoria-ponytail
+title: 'Auditoria ponytail (FOSS) — COGME'
+type: audit
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+  - constitution.md
+last-revised: '2026-11-06'
+lgpd-class: n/a
+tags:
+  - auditoria
+  - foss
+  - ponytail
+---
+
 # Auditoria ponytail (FOSS) — COGME
 
 Data: 2026-11-06

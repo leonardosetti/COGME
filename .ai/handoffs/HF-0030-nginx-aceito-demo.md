@@ -3,7 +3,7 @@ id: ai-handoffs-hf-0030-nginx-aceito-demo
 title: 'Handoff: Amenda Nginx aceito-e-mantido + comunicação integrada para demo local (TA-0030)'
 type: handoff
 version: 1.0.0
-status: ready
+status: ativo
 owner: agent-project-analyst
 agent: agent-sdd-specialist
 derived-from:

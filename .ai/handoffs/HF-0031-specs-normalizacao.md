@@ -3,7 +3,7 @@ id: ai-handoffs-hf-0031-specs-normalizacao
 title: 'Handoff: Normalização integral do corpus de specs — slug, versionamento, corpo canônico, realocação e pendentes (TA-0031)'
 type: handoff
 version: 1.0.0
-status: ready
+status: ativo
 owner: agent-project-analyst
 agent: agent-sdd-specialist
 derived-from:

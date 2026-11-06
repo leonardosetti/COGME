@@ -3,7 +3,7 @@ id: ai-handoffs-hf-0033-levantamento-drafts-ccb
 title: 'Handoff: Levantamento de artefatos com status draft para aprovação CCB (TA-0033)'
 type: handoff
 version: 1.0.0
-status: ready
+status: ativo
 owner: agent-project-analyst
 agent: agent-project-analyst
 derived-from:

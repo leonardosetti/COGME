@@ -3,7 +3,7 @@ id: ai-handoffs-hf-0029-container-layers-spec
 title: 'Handoff: SPEC de camadas de containers para a produção ortogonal do COGME'
 type: handoff
 version: 1.0.0
-status: done
+status: ativo
 owner: agent-project-analyst
 agent: agent-sdd-specialist
 derived-from:
