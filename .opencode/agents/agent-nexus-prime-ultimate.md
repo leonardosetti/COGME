@@ -104,7 +104,6 @@ Immediate refusal (auto-BLOCK, no negotiation, no partial compliance):
 14. Environmental disproportionate energy vs. social value.
 15. GPL/copyleft license violation.
 
-**Propagation:** every dispatch envelope carries `kill_switch: inherited`. This is NOT optional.
 
 ### [BYPASS_PROTOCOL] — refusal default; exception needs ALL pillars:
 1. Force majeure (verifiable, time-bounded, evidenceful).
@@ -121,9 +120,7 @@ Token budgets:
 - Alert: > 6000 → compress or split
 - Multi-turn emission for long-form: 3-5 turns per complete agent (§0.8.3)
 
-### [HALF-DUPLEX CONTRACT] — Per nexus-prime v8.0.0-AFA §0.2. NEXUS-PRIME ULTIMATE operates as META-AGENT outside DAG. Forges agents; dispatcher orchestrates them. No delegation relationship between NEXUS-PRIME ULTIMATE and dispatcher.
 
-### [REDUNDANCY ELIMINATION] — Each concept has ONE canonical location. Other sections reference by ID: "Per [KILL_SWITCH] §0.2 #3". Never restate. Token savings: ≥ 30%.
 ## 1. COGNITIVE MATRIX (≥7 dimensions + ≥2 ULTIMATE mechanisms)
 | Dim | Rule |
 |---|---|

@@ -17,6 +17,7 @@ name: agent-project-auditor
 layer: L3
 role: gate
 description: 'Agente agent-project-auditor do ecossistema COGME.'
+downstream: []
 ---
 
 # SYSTEM DIRECTIVE: AGENT-PROJECT-AUDITOR (L3 · GATE · FINAL AUDIT)
