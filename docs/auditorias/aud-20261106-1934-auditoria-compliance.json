@@ -1,0 +1,15 @@
+{
+  "pipeline": "auditoria_compliance",
+  "versao": "1.0.0",
+  "executado_em": "2026-11-06T19:34:18.561150+00:00",
+  "ok": false,
+  "passos": [
+    {
+      "passo": "security_scan.py",
+      "rc": 1,
+      "ok": false,
+      "stdout_tail": "r_proj/COGME/.opencode/agents/gsd-ui-auditor.md\",\n      \"ok\": false,\n      \"errors\": [\n        \"chave ausente: version\",\n        \"slug fora de kebab-case: gsd-ui-auditor\"\n      ],\n      \"warnings\": []\n    },\n    {\n      \"file\": \"/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-ui-checker.compact.md\",\n      \"ok\": false,\n      \"errors\": [\n        \"chave ausente: version\",\n        \"slug fora de kebab-case: gsd-ui-checker\"\n      ],\n      \"warnings\": []\n    },\n    {\n      \"file\": \"/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-ui-checker.md\",\n      \"ok\": false,\n      \"errors\": [\n        \"chave ausente: version\",\n        \"slug fora de kebab-case: gsd-ui-checker\"\n      ],\n      \"warnings\": []\n    },\n    {\n      \"file\": \"/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-ui-researcher.compact.md\",\n      \"ok\": false,\n      \"errors\": [\n        \"chave ausente: version\",\n        \"slug fora de kebab-case: gsd-ui-researcher\"\n      ],\n      \"warnings\": []\n    },\n    {\n      \"file\": \"/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-ui-researcher.md\",\n      \"ok\": false,\n      \"errors\": [\n        \"chave ausente: version\",\n        \"slug fora de kebab-case: gsd-ui-researcher\"\n      ],\n      \"warnings\": []\n    },\n    {\n      \"file\": \"/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-user-profiler.compact.md\",\n      \"ok\": false,\n      \"errors\": [\n        \"chave ausente: version\",\n        \"slug fora de kebab-case: gsd-user-profiler\"\n      ],\n      \"warnings\": []\n    },\n    {\n      \"file\": \"/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-user-profiler.md\",\n      \"ok\": false,\n      \"errors\": [\n        \"chave ausente: version\",\n        \"slug fora de kebab-case: gsd-user-profiler\"\n      ],\n      \"warnings\": []\n    },\n    {\n      \"file\": \"/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-verifier.md\",\n      \"ok\": false,\n      \"errors\": [\n        \"chave ausente: version\",\n        \"slug fora de kebab-case: gsd-verifier\"\n      ],\n      \"warnings\": []\n    }\n  ]\n}\n",
+      "stderr_tail": "[SECURITY] FALHAS: 64/109\n"
+    }
+  ]
+}

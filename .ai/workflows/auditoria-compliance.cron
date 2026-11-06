@@ -1,0 +1,8 @@
+# COGME — timer local de auditoria de compliance (TA-0100 / HF-0500)
+# Disparo a cada 90 minutos (16x/dia), 24/7, CPU-only, FOSS-only.
+# Instalacao: crontab .ai/workflows/auditoria-compliance.cron
+# ou copie as linhas abaixo para o crontab do usuario (crontab -e).
+#
+# Formato: minuto hora dia-do-mes mes dia-da-semana comando
+0 0,3,6,9,12,15,18,21 * * * /usr/bin/python3 /lab/FATEC/202602/ger_proj/COGME/scripts/auditoria_compliance.py --report >> /lab/FATEC/202602/ger_proj/COGME/.ai/workflows/auditoria-compliance.log 2>&1
+30 1,4,7,10,13,16,19,22 * * * /usr/bin/python3 /lab/FATEC/202602/ger_proj/COGME/scripts/auditoria_compliance.py --report >> /lab/FATEC/202602/ger_proj/COGME/.ai/workflows/auditoria-compliance.log 2>&1

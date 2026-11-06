@@ -1,0 +1,10 @@
+[Unit]
+Description=COGME auditoria de compliance (execucao unitaria)
+Documentation=TA-0100 / HF-0500
+
+[Service]
+Type=oneshot
+WorkingDirectory=/lab/FATEC/202602/ger_proj/COGME
+ExecStart=/usr/bin/python3 /lab/FATEC/202602/ger_proj/COGME/scripts/auditoria_compliance.py --report
+# Sem PII, sem credenciais, CPU-only, FOSS-only
+Environment=PYTHONDONTWRITEBYTECODE=1

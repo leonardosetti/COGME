@@ -1,0 +1,22 @@
+# COGME — systemd timer de auditoria de compliance (TA-0100 / HF-0500)
+# Disparo a cada 90 minutos (16x/dia), 24/7, CPU-only, FOSS-only.
+# Instalacao: copie para /etc/systemd/system/ e rode
+#   systemctl daemon-reload && systemctl enable --now auditoria-compliance.timer
+#
+# systemd OnCalendar nao expressa "cada 90 min" em uma linha; usa duas
+# versoes que se intercalam (0:00, 1:30, 3:00, ... 22:30).
+
+[Unit]
+Description=COGME auditoria de compliance (a cada 90 min)
+Documentation=TA-0100 / HF-0500
+
+[Timer]
+# Execucoes em ponto (0:00, 3:00, ... 21:00)
+OnCalendar=*-*-* 0,3,6,9,12,15,18,21:00:00
+# Execucoes em 30 min (1:30, 4:30, ... 22:30)
+OnCalendar=*-*-* 1,4,7,10,13,16,19,22:30:00
+Persistent=true
+Unit=auditoria-compliance.service
+
+[Install]
+WantedBy=timers.target

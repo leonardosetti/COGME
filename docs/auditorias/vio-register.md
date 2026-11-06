@@ -93,3 +93,4 @@ caveats:
 - VIO-028 (drift registry↔DAG): ABERTO — `agent-factory-architect-ultimate` upstream no registry mas fora de AGENT_TOPOLOGY; camada UNKNOWN no `--report`.
 - VIO-029 (gates L3 sem downstream): ABERTO — 3 gates L3 (`agent-reviewer`, `agent-gatekeeper`, `agent-clean-code-evaluator`) com `downstream: []`; cadeia de merge sem acionamento declarado.
 Nenhuma linha reescrita; correções futuras = novas addendas.
+| VIO-030 | 2026-11-06T19:34Z | scheduler auditoria compliance (TA-0100) | falha no passo 'security_scan.py' (exit 1) | execucao agendada de auditoria compliance; passo retornou nao-zero | ABERTO |
