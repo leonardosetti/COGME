@@ -1,0 +1,6 @@
+#!/usr/bin/sh
+# Executa verificação de CI local após cada commit (não bloqueia o commit).
+# Ative: cp scripts/githooks/post-commit .git/hooks/post-commit && chmod +x .git/hooks/post-commit
+# Pula quando executado por reescrita própria do README (evita recursão infinita).
+if [ "${COGME_README_REWRITING:-0}" = "1" ]; then exit 0; fi
+exec python3 scripts/ci_post_commit_check.py
