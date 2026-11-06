@@ -37,7 +37,10 @@ services:
     # Em produção/CI o banco é alcançável apenas pela rede interna `data`.
     ports:
       - "127.0.0.1:5432:5432"
-    networks: [data]
+    networks: [data, edge]
+    # `edge` (não-interna) só para permitir o published port 127.0.0.1:5432 no host
+    # (testes locais fora do Docker). A rede `data` continua interna e isolada;
+    # back e migrate alcançam o db pela `data` via DNS do serviço.
     security_opt: ["no-new-privileges:true"]
     mem_limit: 512m
     pids_limit: 200
@@ -88,6 +91,9 @@ services:
 
   # Camada Front: FastAPI com Jinja2 — renderiza templates server-side e faz proxy /v1/* para back:8000.
   front:
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: cogme-back:local
     restart: unless-stopped
     command: ["uvicorn", "src.frontend.app:app", "--host", "0.0.0.0", "--port", "8000"]
@@ -98,11 +104,7 @@ services:
       COGME_LOG_LEVEL: ${COGME_LOG_LEVEL:-INFO}
     ports:
       - "127.0.0.1:8001:8000"
-    read_only: false
-    tmpfs: [/tmp, /run]
     networks: [edge]
-    mem_limit: 512m
-    pids_limit: 64
     healthcheck:
       test:
         - CMD

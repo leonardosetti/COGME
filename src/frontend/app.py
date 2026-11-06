@@ -212,12 +212,13 @@ async def proxy_v1(path: str, request: Request) -> StreamingResponse:
     headers, query string e corpo. Arquitetura preparada para novos endpoints
     de inter-camada além do cálculo de câmbio (currency exchange)."""
     client = _get_client()
-    url = httpx.URL(path=BACK_BASE + "/v1/" + path, params=request.url.params)
+    url = httpx.URL(BACK_BASE + "/v1/" + path)
     body = await request.body()
     headers = {k: v for k, v in request.headers.items() if k.lower() != "host"}
     resp = await client.request(
         method=request.method,
         url=url,
+        params=request.query_params,
         content=body,
         headers=headers,
     )
