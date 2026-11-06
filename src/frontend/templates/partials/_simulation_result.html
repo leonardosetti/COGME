@@ -1,0 +1,14 @@
+<table class="items">
+  <tr><th>Regime de cobrança</th><td>{{ regime_label }}</td></tr>
+  {% if quantity_label %}
+  <tr><th>{{ quantity_label }}</th><td>{{ quantity | money_br }}</td></tr>
+  {% endif %}
+  <tr class="total"><th>Total bruto</th><td>{{ sim.currency.value }} {{ sim.gross_foreign | money_br }}</td></tr>
+</table>
+<table class="items">
+  <tr><th>Total bruto convertido</th><td>{{ sim.gross_brl | brl }}</td></tr>
+  <tr><th>Spread ({{ sim.spread_pct | percent_br }})</th><td>- {{ sim.spread_brl | brl }}</td></tr>
+  <tr><th>IOF ({{ sim.iof_pct | percent_br }})</th><td>- {{ sim.iof_brl | brl }}</td></tr>
+  <tr class="total"><th>Valor líquido</th><td>{{ sim.net_brl | brl }}</td></tr>
+  <tr><th>Cotação efetiva (líquido por {{ sim.currency.value }})</th><td>R$ {{ sim.effective_rate | rate_br }}</td></tr>
+</table>

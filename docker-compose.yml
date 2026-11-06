@@ -86,29 +86,31 @@ services:
       retries: 3
       start_period: 20s
 
-  # Camada Front: serve arquivos estáticos de src/frontend/ e encaminha /v1/* para back:8000.
+  # Camada Front: FastAPI com Jinja2 — renderiza templates server-side e faz proxy /v1/* para back:8000.
   front:
-    image: nginx:alpine@sha256:785835ea65db4bba6f021acc0f3be91b0fef76a53fe41f8588c6698d2aed0606
+    <<: *app
     restart: unless-stopped
     depends_on:
       back:
         condition: service_healthy
+    command: ["uvicorn", "src.frontend.app:app", "--host", "0.0.0.0", "--port", "8000"]
     ports:
-      - "127.0.0.1:8001:80"
-    volumes:
-      - ./src/frontend/templates:/usr/share/nginx/html:ro
-      - ./infra/nginx/front.conf:/etc/nginx/conf.d/default.conf:ro
+      - "127.0.0.1:8001:8000"
     networks: [edge]
     security_opt: ["no-new-privileges:true"]
     cap_drop: [ALL]
-    mem_limit: 64m
-    pids_limit: 32
+    mem_limit: 512m
+    pids_limit: 64
     healthcheck:
-      test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1:80/"]
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/', timeout=3)"
       interval: 15s
-      timeout: 3s
+      timeout: 5s
       retries: 3
-      start_period: 5s
+      start_period: 10s
 
   # Reverse proxy sempre ativo (não mais profile opcional): entrada única do usuário em 127.0.0.1:8080.
   proxy:

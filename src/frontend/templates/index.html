@@ -1,164 +1,138 @@
-<!doctype html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>COGME — Conversor Cambial</title>
-<style>
-  * { box-sizing: border-box; }
-  body { margin: 0; font: 10pt/1.45 "DejaVu Sans", Arial, sans-serif; color: #1c1c1c; background: #fafafa; }
-  .wrap { max-width: 720px; margin: 0 auto; padding: 16px; }
-  header { border-bottom: 1.5pt solid #1c1c1c; padding-bottom: 8px; margin-bottom: 16px; }
-  h1 { font-size: 16pt; margin: 0; letter-spacing: 0.5pt; }
-  form { background: #fff; border: 1pt solid #ddd; padding: 16px; border-radius: 6px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; align-items: end; }
-  label { font-size: 8.5pt; color: #555; display: block; margin-bottom: 4px; }
-  input, select { font: 10pt "DejaVu Sans", Arial, sans-serif; padding: 6px 8px; width: 100%; border: 1pt solid #bbb; border-radius: 4px; }
-  input:focus, select:focus { outline: none; border-color: #1c1c1c; }
-  button { font: bold 10pt "DejaVu Sans", Arial, sans-serif; padding: 8px 14px; background: #1c1c1c; color: #fff; border: none; border-radius: 4px; cursor: pointer; grid-column: 1 / -1; }
-  button:hover { background: #444; }
-  button:disabled { opacity: 0.6; cursor: not-allowed; }
-  #result { margin-top: 16px; display: none; }
-  .card { background: #fff; border: 1pt solid #ddd; padding: 12px; border-radius: 6px; margin-bottom: 10px; }
-  .row { display: flex; justify-content: space-between; margin: 4px 0; font-size: 9pt; }
-  .row .lbl { color: #555; }
-  .row .val { font-variant-numeric: tabular-nums; }
-  .total { border-top: 1.5pt solid #1c1c1c; padding-top: 6px; font-weight: bold; }
-  .notice { font-size: 8pt; color: #555; border-top: 0.5pt solid #bbb; margin-top: 8px; padding-top: 6px; }
-  .error { color: #b00; font-size: 8.5pt; margin: 6px 0; display: none; }
-  .stale { border: 1pt solid #b45309; background: #fff4e0; color: #7a3a00; padding: 6px; border-radius: 4px; font-size: 8.5pt; margin: 8px 0; }
-  .loading { color: #555; font-style: italic; }
-</style>
-</head>
-<body>
-<div class="wrap">
-  <header>
-    <h1>COGME — Conversor Cambial</h1>
-    <div style="font-size:8.5pt;color:#555">Simulação de caráter informativo; spread e IOF informados pelo usuário.</div>
-  </header>
+{% extends "base.html" %}
 
-  <form id="form">
-    <div class="grid">
-      <div>
-        <label>Moeda</label>
-        <select id="currency">
-          <option value="USD">USD</option>
-          <option value="EUR">EUR</option>
-        </select>
-      </div>
-      <div>
-        <label>Regime de contratação</label>
-        <select id="regime">
-          <option value="hourly">Hora</option>
-          <option value="daily">Dia</option>
-          <option value="weekly">Semana</option>
-          <option value="monthly">Mês</option>
-          <option value="fixed">Valor fixo</option>
-        </select>
-      </div>
-      <div>
-        <label>Valor por unidade (BRL)</label>
-        <input type="number" id="amount" step="0.01" min="0" value="30" required>
-      </div>
-      <div id="qty-wrap">
-        <label>Quantidade de unidades</label>
-        <input type="number" id="quantity" step="1" min="1" value="160" required>
-      </div>
-      <div>
-        <label>Spread (%)</label>
-        <input type="number" id="spread_pct" step="0.0001" min="0" max="100" value="2" required>
-      </div>
-      <div>
-        <label>IOF (%)</label>
-        <input type="number" id="iof_pct" step="0.0001" min="0" max="100" value="0.38" required>
-      </div>
-      <button type="submit" id="btn">Simular</button>
-    </div>
-    <div id="error" class="error"></div>
-  </form>
+{% block title %}COGME — Conversor Cambial{% endblock %}
 
-  <div id="result">
-    <div class="card">
-      <div class="row"><span class="lbl">Moeda estrangeira</span><span class="val" id="r-gross-foreign"></span></div>
-      <div class="row"><span class="lbl">Bruto em BRL</span><span class="val" id="r-gross-brl"></span></div>
-      <div class="row"><span class="lbl">Spread</span><span class="val" id="r-spread-brl"></span></div>
-      <div class="row"><span class="lbl">IOF</span><span class="val" id="r-iof-brl"></span></div>
-      <div class="row total"><span class="lbl">Líquido a receber</span><span class="val" id="r-net-brl"></span></div>
-      <div class="row"><span class="lbl">Cotação efetiva</span><span class="val" id="r-effective-rate"></span></div>
-      <div class="row"><span class="lbl">Fonte</span><span class="val" id="r-source"></span></div>
+{% block content %}
+<form id="form" action="/simulate" method="post" novalidate>
+  <div class="grid">
+    <div>
+      <label>Moeda</label>
+      <select id="currency" name="currency">
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+      </select>
     </div>
-    <div id="stale" class="stale"></div>
-    <div class="notice" id="notice"></div>
+    <div>
+      <label>Regime de contratação</label>
+      <select id="regime" name="regime">
+        <option value="hourly">Hora</option>
+        <option value="daily">Dia</option>
+        <option value="weekly">Semana</option>
+        <option value="monthly">Mês</option>
+        <option value="fixed">Valor fixo</option>
+      </select>
+    </div>
+    <div>
+      <label>Valor por unidade (BRL)</label>
+      <input type="number" id="amount" name="amount" step="0.01" min="0" value="30" required>
+    </div>
+    <div id="qty-wrap">
+      <label>Quantidade de unidades</label>
+      <input type="number" id="quantity" name="quantity" step="1" min="1" value="160" required>
+    </div>
+    <div>
+      <label>Spread (%)</label>
+      <input type="number" id="spread_pct" name="spread_pct" step="0.0001" min="0" max="100" value="2" required>
+    </div>
+    <div>
+      <label>IOF (%)</label>
+      <input type="number" id="iof_pct" name="iof_pct" step="0.0001" min="0" max="100" value="0.38" required>
+    </div>
   </div>
+  <div id="error" class="error"></div>
+  <button type="submit" id="btn">Simular</button>
+</form>
+
+<div id="result">
+  <div class="card">
+    <div class="row"><span class="lbl">Moeda estrangeira</span><span class="val" id="r-gross-foreign"></span></div>
+    <div class="row"><span class="lbl">Bruto em BRL</span><span class="val" id="r-gross-brl"></span></div>
+    <div class="row"><span class="lbl">Spread</span><span class="val" id="r-spread-brl"></span></div>
+    <div class="row"><span class="lbl">IOF</span><span class="val" id="r-iof-brl"></span></div>
+    <div class="row total"><span class="lbl">Líquido a receber</span><span class="val" id="r-net-brl"></span></div>
+    <div class="row"><span class="lbl">Cotação efetiva</span><span class="val" id="r-effective-rate"></span></div>
+    <div class="row"><span class="lbl">Fonte</span><span class="val" id="r-source"></span></div>
+  </div>
+  <div id="stale" class="stale"></div>
+  <div class="notice" id="notice"></div>
 </div>
+{% endblock %}
+
+{% block scripts %}
 <script>
-  const form = document.getElementById('form');
-  const result = document.getElementById('result');
-  const btn = document.getElementById('btn');
-  const error = document.getElementById('error');
-  const qtyWrap = document.getElementById('qty-wrap');
+  (function () {
+    var form = document.getElementById('form');
+    var btn = document.getElementById('btn');
+    var error = document.getElementById('error');
+    var result = document.getElementById('result');
+    var qtyWrap = document.getElementById('qty-wrap');
+    var stale = document.getElementById('stale');
+    var notice = document.getElementById('notice');
 
-  form.regime.addEventListener('change', () => {
-    const fixed = form.regime.value === 'fixed';
-    qtyWrap.style.display = fixed ? 'none' : 'block';
-    form.quantity.required = !fixed;
-  });
-  qtyWrap.style.display = form.regime.value === 'fixed' ? 'none' : 'block';
-  form.quantity.required = form.regime.value !== 'fixed';
-
-  function money(v) { return v ? Number(v).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : v; }
-  function rate(v) { return v ? Number(v).toLocaleString('pt-BR', { minimumFractionDigits: 6, maximumFractionDigits: 6 }) : v; }
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    result.style.display = 'none';
-    error.style.display = 'none';
-    btn.disabled = true;
-    btn.textContent = 'Calculando…';
-    const body = {
-      currency: form.currency.value,
-      regime: form.regime.value,
-      amount: form.amount.value,
-      quantity: form.regime.value === 'fixed' ? null : form.quantity.value,
-      spread_pct: form.spread_pct.value,
-      iof_pct: form.iof_pct.value,
-    };
-    try {
-      const res = await fetch('/v1/simulate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        error.textContent = (data.error && data.error.message) || 'Erro na simulação.';
-        error.style.display = 'block';
-        return;
-      }
-      document.getElementById('r-gross-foreign').textContent = money(data.gross_foreign) + ' ' + data.currency;
-      document.getElementById('r-gross-brl').textContent = 'R$ ' + money(data.gross_brl);
-      document.getElementById('r-spread-brl').textContent = 'R$ ' + money(data.spread_brl) + ' (' + data.spread_pct + ' %)';
-      document.getElementById('r-iof-brl').textContent = 'R$ ' + money(data.iof_brl) + ' (' + data.iof_pct + ' %)';
-      document.getElementById('r-net-brl').textContent = 'R$ ' + money(data.net_brl);
-      document.getElementById('r-effective-rate').textContent = rate(data.effective_rate);
-      document.getElementById('r-source').textContent = (data.quote && data.quote.source) || '—';
-      const stale = document.getElementById('stale');
-      if (data.quote && data.quote.stale) {
-        stale.textContent = 'Atenção: cotação com defasagem (última disponível no cache).';
-        stale.style.display = 'block';
-      } else {
-        stale.style.display = 'none';
-      }
-      document.getElementById('notice').textContent = data.notice || '';
-      result.style.display = 'block';
-    } catch (err) {
-      error.textContent = 'Não foi possível conectar à API.';
-      error.style.display = 'block';
-    } finally {
-      btn.disabled = false;
-      btn.textContent = 'Simular';
+    function toggleQty() {
+      if (!form || !form.regime) return;
+      var fixed = form.regime.value === 'fixed';
+      qtyWrap.style.display = fixed ? 'none' : 'block';
+      form.quantity.required = !fixed;
     }
-  });
+    if (form && form.regime) {
+      form.regime.addEventListener('change', toggleQty);
+      toggleQty();
+    }
+
+    function money(v) { return v ? Number(v).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : v; }
+    function rate(v) { return v ? Number(v).toLocaleString('pt-BR', { minimumFractionDigits: 6, maximumFractionDigits: 6 }) : v; }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (error) { error.style.display = 'none'; }
+      if (result) result.style.display = 'none';
+      if (stale) stale.style.display = 'none';
+      if (notice) notice.textContent = '';
+      if (btn) { btn.disabled = true; btn.textContent = 'Calculando…'; }
+
+      var body = {
+        currency: form.currency.value,
+        regime: form.regime.value,
+        amount: form.amount.value,
+        quantity: form.regime.value === 'fixed' ? null : form.quantity.value,
+        spread_pct: form.spread_pct.value,
+        iof_pct: form.iof_pct.value,
+      };
+
+      try {
+        var res = await fetch('/v1/simulate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        });
+        if (!res.ok) {
+          var data = await res.json();
+          if (error) { error.textContent = (data.error && data.error.message) || 'Erro na simulação.'; error.style.display = 'block'; }
+          return;
+        }
+        var data = await res.json();
+        document.getElementById('r-gross-foreign').textContent = money(data.gross_foreign) + ' ' + data.currency;
+        document.getElementById('r-gross-brl').textContent = 'R$ ' + money(data.gross_brl);
+        document.getElementById('r-spread-brl').textContent = 'R$ ' + money(data.spread_brl) + ' (' + data.spread_pct + ' %)';
+        document.getElementById('r-iof-brl').textContent = 'R$ ' + money(data.iof_brl) + ' (' + data.iof_pct + ' %)';
+        document.getElementById('r-net-brl').textContent = 'R$ ' + money(data.net_brl);
+        document.getElementById('r-effective-rate').textContent = rate(data.effective_rate);
+        document.getElementById('r-source').textContent = (data.quote && data.quote.source) || '—';
+        if (stale) {
+          if (data.quote && data.quote.stale) {
+            stale.textContent = 'Atenção: cotação com defasagem (última disponível no cache).';
+            stale.style.display = 'block';
+          } else { stale.style.display = 'none'; }
+        }
+        if (notice) notice.textContent = data.notice || '';
+        if (result) result.style.display = 'block';
+      } catch (err) {
+        if (error) { error.textContent = 'Não foi possível conectar à API.'; error.style.display = 'block'; }
+      } finally {
+        if (btn) { btn.disabled = false; btn.textContent = 'Simular'; }
+      }
+    });
+  })();
 </script>
-</body>
-</html>
+{% endblock %}

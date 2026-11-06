@@ -1,0 +1,8 @@
+{% if errors %}
+<div class="error" id="global-error">{{ errors.global }}</div>
+{% for field, messages in errors.fields.items() %}
+  {% for message in messages %}
+    <div class="field-error" id="{{ field }}-err">{{ message }}</div>
+  {% endfor %}
+{% endfor %}
+{% endif %}

@@ -1,6 +1,7 @@
 # COGME — dependências de runtime (reflete pyproject.toml).
 # Todas FOSS, custo zero recorrente (P-01). Imagens/ções são fixadas por digest no CI.
 fastapi>=0.162,<1
+python-multipart>=0.0.9,<1
 uvicorn[standard]>=0.54,<1
 pydantic>=2.14,<3
 pydantic-settings>=2.16,<3

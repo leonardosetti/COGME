@@ -1,0 +1,11 @@
+<table class="items">
+  <tr><th>Cotação ({{ quote.currency.value }} &rarr; BRL)</th><td>R$ {{ quote.rate | rate_br }}</td></tr>
+  <tr><th>Fonte</th><td>{{ quote.source_label }}</td></tr>
+  <tr><th>Data da cotação</th><td>{{ quote.quoted_at | datetime_br }}</td></tr>
+  {% if quote.bulletin %}
+  <tr><th>Boletim</th><td>{{ quote.bulletin }}</td></tr>
+  {% endif %}
+  {% if quote.stale %}
+  <tr><th>Status</th><td class="stale">Cotação de cache vencido — confira antes de usar.</td></tr>
+  {% endif %}
+</table>

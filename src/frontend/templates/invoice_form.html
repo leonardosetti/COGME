@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}COGME — Emitir Invoice{% endblock %}
+
+{% block content %}
+<form id="form" action="/invoice" method="post" novalidate>
+  <div class="grid">
+    <div>
+      <label>Moeda <span class="req">*</span></label>
+      <select id="sim-currency" name="sim-currency" required aria-required="true">
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+      </select>
+    </div>
+    <div>
+      <label>Regime de contratação <span class="req">*</span></label>
+      <select id="sim-regime" name="sim-regime" required aria-required="true">
+        <option value="hourly">Hora</option>
+        <option value="daily">Dia</option>
+        <option value="weekly">Semana</option>
+        <option value="monthly">Mês</option>
+        <option value="fixed">Valor fixo</option>
+      </select>
+    </div>
+    <div>
+      <label>Valor por unidade do regime (BRL) <span class="req">*</span></label>
+      <input type="number" id="sim-amount" name="sim-amount" step="0.01" min="0" max="1000000000" value="30" required aria-required="true">
+    </div>
+    <div id="qty-wrap">
+      <label>Quantidade de unidades</label>
+      <input type="number" id="sim-quantity" name="sim-quantity" step="0.01" min="0" max="100000" value="160">
+    </div>
+    <div>
+      <label>Spread (%)</label>
+      <input type="number" id="sim-spread_pct" name="sim-spread_pct" step="0.0001" min="0" max="100" value="2">
+    </div>
+    <div>
+      <label>IOF (%)</label>
+      <input type="number" id="sim-iof_pct" name="sim-iof_pct" step="0.0001" min="0" max="100" value="0.38">
+    </div>
+  </div>
+
+  <h2 style="font-size:10pt;margin:16px 0 8px 0;border-bottom:1pt solid #ddd;padding-bottom:4px">Partes e documento</h2>
+  <div class="grid">
+    <div class="full">
+      <label>Emitente — nome <span class="req">*</span></label>
+      <input id="issuer-name" name="issuer-name" required aria-required="true">
+    </div>
+    <div>
+      <label>Emitente — documento fiscal (CPF/CNPJ)</label>
+      <input id="issuer-tax_id" name="issuer-tax_id" autocomplete="off" maxlength="40">
+    </div>
+    <div>
+      <label>Emitente — endereço</label>
+      <input id="issuer-address" name="issuer-address" autocomplete="off" maxlength="240">
+    </div>
+    <div class="full">
+      <label>Cliente — nome <span class="req">*</span></label>
+      <input id="client-name" name="client-name" required aria-required="true">
+    </div>
+    <div>
+      <label>Cliente — documento fiscal (CPF/CNPJ)</label>
+      <input id="client-tax_id" name="client-tax_id" autocomplete="off" maxlength="40">
+    </div>
+    <div>
+      <label>Cliente — endereço</label>
+      <input id="client-address" name="client-address" autocomplete="off" maxlength="240">
+    </div>
+    <div>
+      <label>Número da invoice <span class="req">*</span></label>
+      <input id="invoice_number" name="invoice_number" value="INV-0001" required aria-required="true" maxlength="40">
+    </div>
+    <div>
+      <label>Data de emissão <span class="req">*</span></label>
+      <input type="date" id="issue_date" name="issue_date" required aria-required="true">
+    </div>
+    <div class="full">
+      <label>Descrição do serviço <span class="req">*</span></label>
+      <textarea id="description" name="description" required aria-required="true" maxlength="500">Serviços de desenvolvimento de software.</textarea>
+    </div>
+  </div>
+
+  <div id="error" class="error"></div>
+  <div id="global-error" class="error"></div>
+  <button type="submit" id="btn">Gerar invoice em PDF</button>
+</form>
+
+<div id="result">
+  <div class="card">
+    <div class="row"><span class="lbl">Invoice</span><span class="val" id="r-invoice_number"></span></div>
+    <div class="row"><span class="lbl">Data de emissão</span><span class="val" id="r-issue_date"></span></div>
+    <div class="row"><span class="lbl">Emitente</span><span class="val" id="r-issuer"></span></div>
+    <div class="row"><span class="lbl">Cliente</span><span class="val" id="r-client"></span></div>
+    <div class="row total"><span class="lbl">Líquido a receber</span><span class="val" id="r-net_brl"></span></div>
+  </div>
+  <div id="notice" class="notice"></div>
+  <div id="stale" class="stale"></div>
+</div>
+{% endblock %}
+
+
