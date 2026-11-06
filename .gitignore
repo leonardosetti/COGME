@@ -109,3 +109,17 @@ task-ta-*.json
 
 # Locks transitórios de agente
 .ai/agents/locks/
+
+# --- Cache e saídas de ferramentas (não publicar no repositório) ---
+# Cache de AST/índice do graphify — regenerado com `graphify update .` (sem custo de API)
+graphify-out/cache/
+# Configurações de terceiros (vendor / third-party)
+vendor/
+third_party/
+**/vendor/
+**/third_party/
+# Saídas de log e de ferramentas locais
+logs/
+**/logs/
+nohup.out
+*.out
