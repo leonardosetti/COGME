@@ -16,7 +16,7 @@ from pathlib import Path
 ROOT = Path(".")
 EXCLUDED_DIR_NAMES = {
     ".git", "node_modules", ".venv", "venv", ".pytest_cache", "graphify-out",
-    "__pycache__",
+    ".planning", "__pycache__",
 }
 EXCLUDED_PATH_PARTS = (".opencode/skills", ".agents/skills")
 
@@ -53,7 +53,11 @@ NOME_CANONICO = {"constitution.md", "README.md", "AGENTS.md", "okb.md", "ccb-log
 
 def coletar_arquivos(alvos):
     if alvos:
-        return [Path(a) for a in alvos]
+        return [
+            Path(a) for a in alvos
+            if not any(part in EXCLUDED_DIR_NAMES for part in Path(a).parts)
+            and not any(part in EXCLUDED_PATH_PARTS for part in Path(a).parts)
+        ]
     files = []
     for p in ROOT.rglob("*.md"):
         parts = p.parts
