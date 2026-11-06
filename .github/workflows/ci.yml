@@ -2,9 +2,9 @@ name: COGME CI/CD Pipeline
 
 on:
   push:
-    branches: [ main, stage ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, stage ]
+    branches: [ main ]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

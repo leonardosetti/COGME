@@ -1,0 +1,77 @@
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, Helvetica, sans-serif","fontSize":"16px","lineColor":"#333333","primaryColor":"#e8f5e9","primaryTextColor":"#1b5e20","secondaryColor":"#fff3e0","secondaryTextColor":"#e65100","tertiaryColor":"#e3f2fd","tertiaryTextColor":"#0d47a1"}}}%%
+graph TB
+    %% ==================== CAMADA 1 — USUÁRIO ====================
+    U(("Usuário<br/>navegador"))
+
+    %% ==================== CAMADA 2 — ACESSO (host, só 127.0.0.1) ====================
+    subgraph Host["Host — 127.0.0.1 (apenas loopback)"]
+        direction TB
+        subgraph Proxy["Container: proxy (nginx)"]
+            P["Nginx reverse proxy\n127.0.0.1:8080 -> 80\ncabecalhos de seguranca\nsem CORS · mesma origem"]
+        end
+        subgraph Front["Container: front (FastAPI + Jinja2)"]
+            F["Templates server-side\nindex.html · invoice.html\nHTMX + Tailwind (sem build)\nproxy v1 para back:8000\nporta 8001 (host)"]
+        end
+    end
+
+    %% ==================== CAMADA 3 — APLICACAO (rede Docker cogme) ====================
+    subgraph Rede["Rede Docker — cogme"]
+        direction TB
+        subgraph Back["Container: back (FastAPI/Uvicorn)"]
+            B1["API /v1\nGET /v1/health\nGET /v1/rates/{currency}\nPOST /v1/simulate\nPOST /v1/invoice"]
+            B2["Contrato de erro canonico\n{error:{key,message,details}}\nfail-closed · sem traceback"]
+            B3["RateService\nFrankfurter para PTAX\ncircuit breaker · cache TTL"]
+            B4["Camada de calculo e PDF\nDecimal (sem float) · WeasyPrint"]
+            B5["Repositorio SQLAlchemy/asyncpg\ntabelas fx_quotes · invoices"]
+        end
+        subgraph Data["Container: db (PostgreSQL 15)"]
+            D["Banco de dados\nrede data — interna\nsem rota para internet\nporta 5432 so em 127.0.0.1"]
+        end
+        subgraph Migra["Container: migrate (Alembic)"]
+            M["alembic upgrade head\naplica o esquema\nroda e termina\nantes do back"]
+        end
+    end
+
+    %% ==================== CAMADA 4 — EXTERNO (rede edge) ====================
+    subgraph Externo["Fontes publicas de cotacao — rede edge (só back)"]
+        Fr["Frankfurter — primaria\nHTTP GET"]
+        Pt["PTAX — fallback\nHTTP GET"]
+    end
+
+    %% ==================== ECossistema SDD (fora do runtime da app) ====================
+    subgraph SDD["Ecossistema SDD — fora do runtime da aplicacao"]
+        L["llama.cpp · Qwen3-30B-A3B Q4_K_M\nCPU-only · local · sem CUDA/nuvem\ninferencia para agentes, nao para o fluxo da app"]
+    end
+
+    %% ==================== RELACIONAMENTOS ====================
+    U -->|HTTP 127.0.0.1:8080| P
+    P -->|UI| F
+    P -->|API v1| B1
+    F -->|proxy v1| B1
+    B1 -->|asyncpg| D
+    M -->|cria/atualiza tabelas| D
+    B1 -->|consulta cotacao| B3
+    B3 -->|GET primaria| Fr
+    B3 -.->|GET fallback| Pt
+    B3 -->|leitura/gravacao cache| D
+    B1 -->|recalculo + PDF| B4
+    B4 -->|PDF anexo| U
+    L -.->|inferencia local isolada| U
+
+    %% Estilos de contêiner
+    classDef host fill:#fafafa,stroke:#999,stroke-width:2px;
+    classDef proxy fill:#e3f2fd,stroke:#0d47a1,stroke-width:2px;
+    classDef front fill:#fff3e0,stroke:#e65100,stroke-width:2px;
+    classDef back fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px;
+    classDef data fill:#fce4ec,stroke:#880e4f,stroke-width:2px;
+    classDef externo fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,stroke-dasharray: 5 5;
+    classDef sdd fill:#eceff1,stroke:#455a64,stroke-width:2px,stroke-dasharray: 5 5;
+
+    class Host host;
+    class Proxy,P proxy;
+    class Front,F front;
+    class Back,B1,B2,B3,B4,B5 back;
+    class Data,D,M data;
+    class Externo,Fr,Pt externo;
+    class SDD,L sdd;
+
