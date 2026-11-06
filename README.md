@@ -181,9 +181,18 @@ A criação, promulgação, roteamento e operação de agentes são regidos pela
    docker compose up --build
    ```
 
-   O serviço `migrate` aplica as migrações (`alembic upgrade head`) e termina antes de `web` iniciar. A API fica em `http://127.0.0.1:8000`. As portas são publicadas só em `127.0.0.1`, e o banco não tem porta no host.
+   O serviço `migrate` aplica as migrações (`alembic upgrade head`) e termina antes de `web` iniciar.
 
-   O proxy reverso (Nginx) sobe sempre ativo em `http://127.0.0.1:8080` com `docker compose up --build`.
+   As portas do host são publicadas em **`0.0.0.0`** (todas as interfaces, incluindo a interface do Tailscale/tailnet), não só em `127.0.0.1`:
+
+   | Serviço | Porta publicada (host) | Acessível via Tailscale |
+   |---------|------------------------|-------------------------|
+   | `proxy` (Nginx — entrada única) | `0.0.0.0:8080:80` | `http://<ip-tailscale>:8080` |
+   | `front` (UI direta) | `0.0.0.0:8001:8000` | `http://<ip-tailscale>:8001` |
+   | `db` (PostgreSQL) | `0.0.0.0:5432:5432` | `<ip-tailscale>:5432` (só se precisar do banco direto) |
+   | `back` (FastAPI) | — (nenhuma porta no host) | Indireto, via `proxy` `/v1/*` ou `front` |
+
+   O proxy reverso (Nginx) sobe sempre ativo em `http://0.0.0.0:8080` com `docker compose up --build`. De qualquer máquina da mesma tailnet, acesse por `http://<ip-tailscale-do-host>:8080`. Veja a seção **9. Acesso remoto via Tailscale (tailnet)** para o passo a passo completo.
 
 **Rotas (`/v1`).**
 
@@ -199,9 +208,10 @@ Todo erro segue o mesmo modelo: `{"error": {"key": "...", "message": "...", "det
 **Exemplo com dados sintéticos** (bash):
 
 ```bash
-curl -s http://127.0.0.1:8000/v1/rates/USD
+# Localmente (mesma máquina) ou via Tailscale (substitua 127.0.0.1 pelo IP da tailnet):
+curl -s http://127.0.0.1:8080/v1/rates/USD
 
-curl -s -X POST http://127.0.0.1:8000/v1/simulate \
+curl -s -X POST http://127.0.0.1:8080/v1/simulate \
   -H "Content-Type: application/json" \
   -d '{"currency":"USD","regime":"hourly","amount":"30.00","quantity":"160","spread_pct":"2.00","iof_pct":"0.38"}'
 ```
@@ -276,14 +286,26 @@ Separação de camadas Dados / Back / Front (ADR-010), orquestradas via Docker C
 | Dados | PostgreSQL 15+ (Docker) | Tabelas `fx_quotes` (cache de cotações) e `invoices`; SQLite só como fixture de teste isolado |
 | Back | FastAPI, Python 3.11+ (imagem 3.12 slim, usuário sem privilégios) | Rotas `/v1` (health, rates/{currency}, simulate, invoice), cálculo em `Decimal`, cotação Frankfurter (primária) + PTAX (fallback), circuit breaker, contrato de erro padronizado |
 | Front | HTML5 + CSS3 + JS vanilla, Jinja, HTMX, Tailwind (sem build chain, sem CDN-first) | Templates `index.html` e `invoice.html`, servidos na mesma origem (sem CORS) |
-| Orquestração | Docker Compose (`db`, `migrate`, `web`, `proxy` opcional) + Nginx reverso latente (porta 8080) | Paridade dev/test/prod; banco sem rota para internet, apenas `web` publica porta em `127.0.0.1` |
+| Orquestração | Docker Compose (`db`, `migrate`, `back`, `front`, `proxy`) + Nginx reverso latente (porta 8080) | Paridade dev/test/prod; banco sem rota para internet; `proxy`, `front` e `db` publicam porta em `0.0.0.0` (acessível via Tailscale), `back` não publica porta no host (alcançado só via proxy/front) |
 | IA / agentes | `llama.cpp`, Qwen3-30B-A3B Q4_K_M, CPU-only (AMD Ryzen 7 8700G), fallback AVX-512, limite 32 GB | Inferência local para o ecossistema SDD; sem CUDA, sem nuvem |
 
 Diagrama da arquitetura lógica: `docs/diagramas/desenvolvimento/fig-3-2-arquitetura-logica.png`.
 
 Rotas detalhadas e exemplo de chamada: seção 6.1.
 
-## 9. Métricas de fluxo
+## 9. Acesso remoto via Tailscale (tailnet)
+
+O COGME pode ser acessado de **qualquer máquina da sua tailnet** (Tailscale) — live run, demo, APIs, containers — sem expor nada na internet pública. As portas do host já são publicadas em `0.0.0.0` (veja seção 6.1), então basta saber o IP do Tailscale da máquina host.
+
+O passo a passo completo está em `docs/operacao/acesso-remoto-tailscale.md`. Resumo:
+
+1. Na máquina host: `cp .env.example .env`, edite as senhas e rode `docker compose up --build`.
+2. Descubra o IP: `tailscale ip` (ex.: `100.98.53.79`).
+3. De outra máquina da mesma tailnet: `http://<ip-tailscale>:8080` (UI + API `/v1`).
+
+Segurança: a tailnet é só máquinas suas/de confiança. Mesmo assim, proteja serviços com senha/auth. Não exponha o banco nem o front direto além do necessário; use o `proxy` (8080). Para internet pública com controle, use o Tailscale Funnel (opcional). Nunca versione credenciais reais (só `.env.example`).
+
+## 10. Métricas de fluxo
 
 Substituem EVM/SPI/CPI (ADR-003; orçamento zero e escopo emergente tornam EVM indeterminado). Fonte: GitHub Insights / GitHub Projects (SSOT), sem stack de observabilidade dedicada.
 
@@ -295,7 +317,7 @@ Substituem EVM/SPI/CPI (ADR-003; orçamento zero e escopo emergente tornam EVM i
 
 ⚠️ Os valores de baseline em `docs/metricas/baseline.md` são **seeds simulados** (período de calibração 23/09–03/10 sem dados reais) e serão recalibrados com dados empíricos do GitHub Projects a partir de 01/11/2026.
 
-## 10. Referências públicas
+## 11. Referências públicas
 
 Artefatos públicos para rastreamento direto:
 

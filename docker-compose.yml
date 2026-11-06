@@ -5,7 +5,9 @@
 #   docker compose up --build   # todas as camadas (proxy sempre ativo)
 #   docker compose restart back # reinicia só o back, sem tocar front/db
 #
-# Todas as portas do host ficam presas em 127.0.0.1.
+# As portas do host são publicadas em 0.0.0.0 (todas as interfaces, incluindo a
+# interface do Tailscale/tailnet), permitindo acesso remoto de qualquer máquina
+# da tailnet sem expor na internet pública.
 
 name: cogme
 
@@ -33,10 +35,10 @@ services:
       POSTGRES_DB: ${POSTGRES_DB:?defina POSTGRES_DB no .env}
     volumes:
       - cogme_pgdata:/var/lib/postgresql/data
-    # Porta 5432 exposta em 127.0.0.1 apenas para testes locais fora do Docker.
+    # Porta 5432 exposta em 0.0.0.0 para ser alcançável via Tailscale (tailnet).
     # Em produção/CI o banco é alcançável apenas pela rede interna `data`.
     ports:
-      - "127.0.0.1:5432:5432"
+      - "0.0.0.0:5432:5432"
     networks: [data, edge]
     # `edge` (não-interna) só para permitir o published port 127.0.0.1:5432 no host
     # (testes locais fora do Docker). A rede `data` continua interna e isolada;
@@ -103,7 +105,7 @@ services:
       COGME_PROVIDER_TIMEOUT_SECONDS: ${COGME_PROVIDER_TIMEOUT_SECONDS:-0.9}
       COGME_LOG_LEVEL: ${COGME_LOG_LEVEL:-INFO}
     ports:
-      - "127.0.0.1:8001:8000"
+      - "0.0.0.0:8001:8000"
     networks: [edge]
     healthcheck:
       test:
@@ -126,7 +128,7 @@ services:
       back:
         condition: service_healthy
     ports:
-      - "127.0.0.1:8080:80"
+      - "0.0.0.0:8080:80"
     volumes:
       - ./infra/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
     networks: [edge]

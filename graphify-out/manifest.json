@@ -126,8 +126,8 @@
     "semantic_hash": ""
   },
   ".ai/agents/registry.yaml": {
-    "mtime": 1793992922.820453,
-    "seen": 1793993412.2277794,
+    "mtime": 1793994030.332187,
+    "seen": 1793997679.0436468,
     "ast_hash": "c7e84c3418fa5038ce3a8e3706dcccc3",
     "semantic_hash": ""
   },
@@ -624,9 +624,9 @@
     "semantic_hash": ""
   },
   "docker-compose.yml": {
-    "mtime": 1793992750.9545174,
-    "seen": 1793993412.227886,
-    "ast_hash": "0ca421196b28b60a397dc75c44698549",
+    "mtime": 1793997587.7546961,
+    "seen": 1793997679.045298,
+    "ast_hash": "22ad4c45537703d371cf53b799fd7edb",
     "semantic_hash": ""
   },
   "docs/diagramas/mermaid-config.json": {
@@ -2244,9 +2244,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1793936110.41884,
-    "seen": 1793993412.228213,
-    "ast_hash": "4889249f5145f808631c7bd8f4d8073b",
+    "mtime": 1793997662.1616988,
+    "seen": 1793997679.050531,
+    "ast_hash": "a064feccacc3f03552ee55389a623085",
     "semantic_hash": ""
   },
   "constitution.md": {
@@ -2832,8 +2832,8 @@
     "semantic_hash": ""
   },
   "docs/auditorias/vio-register.md": {
-    "mtime": 1793936110.4462667,
-    "seen": 1793993412.22832,
+    "mtime": 1793994022.3348403,
+    "seen": 1793997679.052533,
     "ast_hash": "3d3949100df2fc59b64ce5e12906ba3b",
     "semantic_hash": ""
   },
@@ -4191,6 +4191,12 @@
     "mtime": 1793992750.9555173,
     "seen": 1793993412.2284634,
     "ast_hash": "6669ad957036bc59918882aeed09244b",
+    "semantic_hash": ""
+  },
+  "docs/operacao/acesso-remoto-tailscale.md": {
+    "mtime": 1793997637.996698,
+    "seen": 1793997679.0539527,
+    "ast_hash": "5ba2474b18ae7da08b11edb0cb6942f7",
     "semantic_hash": ""
   },
   "package-lock.json": {
