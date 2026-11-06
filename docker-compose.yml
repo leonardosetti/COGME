@@ -88,17 +88,19 @@ services:
 
   # Camada Front: FastAPI com Jinja2 — renderiza templates server-side e faz proxy /v1/* para back:8000.
   front:
-    <<: *app
+    image: cogme-back:local
     restart: unless-stopped
-    depends_on:
-      back:
-        condition: service_healthy
     command: ["uvicorn", "src.frontend.app:app", "--host", "0.0.0.0", "--port", "8000"]
+    environment:
+      COGME_DATABASE_URL: ${COGME_DATABASE_URL:?defina COGME_DATABASE_URL no .env}
+      COGME_RATE_TTL_SECONDS: ${COGME_RATE_TTL_SECONDS:-3600}
+      COGME_PROVIDER_TIMEOUT_SECONDS: ${COGME_PROVIDER_TIMEOUT_SECONDS:-0.9}
+      COGME_LOG_LEVEL: ${COGME_LOG_LEVEL:-INFO}
     ports:
       - "127.0.0.1:8001:8000"
+    read_only: false
+    tmpfs: [/tmp, /run]
     networks: [edge]
-    security_opt: ["no-new-privileges:true"]
-    cap_drop: [ALL]
     mem_limit: 512m
     pids_limit: 64
     healthcheck:
