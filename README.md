@@ -2,7 +2,7 @@
 id: readme
 title: COGME — Conversor de Ganhos em Moeda Estrangeira
 type: readme
-version: 1.0.0
+version: 1.0.1
 status: ativo
 owner: agent-project-analyst
 derived-from:
@@ -230,6 +230,35 @@ python -m pytest tests/unit tests/integration --cov=src --cov-fail-under=80
 - A CI roda `pytest tests/` com um PostgreSQL efêmero (ver `.github/workflows/ci.yml`).
 
 **WeasyPrint e Pango.** A invoice é gerada com WeasyPrint, que depende das bibliotecas nativas Pango e HarfBuzz. Sem elas, a API sobe normalmente, mas `POST /v1/invoice` responde 503 `pdf_unavailable`. Por isso a geração real do PDF roda no container, que instala essas bibliotecas; o CI também as instala. No Windows, sem GTK/Pango instalado, a rota de invoice não gera PDF localmente.
+
+### 6.2 Hook post-commit (opcional)
+
+Após cada commit local, pode executar a verificação de CI local
+(`scripts/ci_post_commit_check.py`) e, após push bem-sucedido, reescrever o
+README com versão e governança (`scripts/atualizar_readme_governanca.py`).
+O hook não é versionado pelo Git; ative manualmente em cada clone:
+
+```sh
+cp scripts/githooks/post-commit .git/hooks/post-commit
+chmod +x .git/hooks/post-commit
+```
+
+O hook não bloqueia o commit. Apenas avisa quando flake8, pytest, frontmatter,
+nomenclatura de `.md`, SDDAI verify ou security scan falharam.
+
+Para publicar após um push bem-sucedido, rode:
+
+```sh
+./scripts/publicar_pos_push.sh
+```
+
+Ele executa a sanidade de CI (até 5 tentativas). Se passar, reescreve o
+README (bump de versão + `last-revised`), comita e push. Se esgotar as
+tentativas, anota a falha na seção `## Falha de pipeline (último push)` do
+README e encerra com erro.
+
+A variável `COGME_README_REWRITING=1` pula o hook na reescrita automática do
+README e evita recursão infinita entre commit e reescrita.
 
 ---
 
