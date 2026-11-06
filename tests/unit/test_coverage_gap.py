@@ -1,7 +1,5 @@
 """Testes focados para cobrir linhas missing do relatório de cobertura."""
 
-from datetime import datetime
-
 import pytest
 
 from src.backend.config import Settings
@@ -40,7 +38,7 @@ def test_rate_service_repository_timeout_budget():
 
 
 def test_accept_rate_rejects():
-    from decimal import Decimal, InvalidOperation
+    from decimal import Decimal
     from src.backend.services.rate_providers import _accept_rate
     assert _accept_rate(Decimal("5.5")) == Decimal("5.5")
     with pytest.raises(Exception):
@@ -76,7 +74,15 @@ def test_handle_http_error_400():
     from starlette.exceptions import HTTPException
     from src.backend.main import _handle_http_error
     from starlette.requests import Request
-    scope = {"type": "http", "method": "GET", "path": "/x", "headers": [], "query_string": b"", "client": None, "server": None}
+    scope = {
+        "type": "http",
+        "method": "GET",
+        "path": "/x",
+        "headers": [],
+        "query_string": b"",
+        "client": None,
+        "server": None,
+    }
     req = Request(scope)
     resp = asyncio.run(_handle_http_error(req, HTTPException(status_code=400, detail="bad")))
     assert resp.status_code == 400
@@ -85,7 +91,6 @@ def test_handle_http_error_400():
 def test_gross_period_requires_quantity():
     from decimal import Decimal
     from src.backend.services.calculator import _gross
-    from src.shared.schemas import Regime
     with pytest.raises(ValueError, match="Regime por período exige quantidade"):
         _gross("periodo", Decimal("10"), None)
 
