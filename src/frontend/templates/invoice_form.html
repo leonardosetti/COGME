@@ -3,99 +3,386 @@
 {% block title %}COGME — Emitir Invoice{% endblock %}
 
 {% block content %}
+<!-- Hero Section -->
+<section class="hero" style="text-align:center; margin-bottom:var(--space-8);">
+  <h2 style="font-size:var(--fs-2xl); font-weight:700; color:var(--color-primary); margin:0 0 var(--space-2);">Emitir Invoice PDF</h2>
+  <p style="font-size:var(--fs-lg); color:var(--color-text-muted); margin:0; max-width:480px; margin:0 auto;">
+    Preencha a simulação e os dados das partes. O PDF será gerado e baixado automaticamente.
+  </p>
+</section>
+
 <form id="form" action="/invoice" method="post" novalidate>
-  <div class="grid">
-    <div>
-      <label>Moeda <span class="req">*</span></label>
-      <select id="sim-currency" name="sim-currency" required aria-required="true">
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-      </select>
-    </div>
-    <div>
-      <label>Regime de contratação <span class="req">*</span></label>
-      <select id="sim-regime" name="sim-regime" required aria-required="true">
-        <option value="hourly">Hora</option>
-        <option value="daily">Dia</option>
-        <option value="weekly">Semana</option>
-        <option value="monthly">Mês</option>
-        <option value="fixed">Valor fixo</option>
-      </select>
-    </div>
-    <div>
-      <label>Valor por unidade do regime (BRL) <span class="req">*</span></label>
-      <input type="number" id="sim-amount" name="sim-amount" step="0.01" min="0" max="1000000000" value="30" required aria-required="true">
-    </div>
-    <div id="qty-wrap">
-      <label>Quantidade de unidades</label>
-      <input type="number" id="sim-quantity" name="sim-quantity" step="0.01" min="0" max="100000" value="160">
-    </div>
-    <div>
-      <label>Spread (%)</label>
-      <input type="number" id="sim-spread_pct" name="sim-spread_pct" step="0.0001" min="0" max="100" value="2">
-    </div>
-    <div>
-      <label>IOF (%)</label>
-      <input type="number" id="sim-iof_pct" name="sim-iof_pct" step="0.0001" min="0" max="100" value="0.38">
-    </div>
+  <!-- Error Summary -->
+  <div id="error-summary" class="error-summary hidden" role="alert" aria-live="assertive" tabindex="-1">
+    <h3 class="error-summary-title">Corrija os erros abaixo</h3>
+    <ul id="error-summary-list" class="error-summary-list"></ul>
   </div>
 
-  <h2 style="font-size:10pt;margin:16px 0 8px 0;border-bottom:1pt solid #ddd;padding-bottom:4px">Partes e documento</h2>
-  <div class="grid">
-    <div class="full">
-      <label>Emitente — nome <span class="req">*</span></label>
-      <input id="issuer-name" name="issuer-name" required aria-required="true">
-    </div>
-    <div>
-      <label>Emitente — documento fiscal (CPF/CNPJ)</label>
-      <input id="issuer-tax_id" name="issuer-tax_id" autocomplete="off" maxlength="40">
-    </div>
-    <div>
-      <label>Emitente — endereço</label>
-      <input id="issuer-address" name="issuer-address" autocomplete="off" maxlength="240">
-    </div>
-    <div class="full">
-      <label>Cliente — nome <span class="req">*</span></label>
-      <input id="client-name" name="client-name" required aria-required="true">
-    </div>
-    <div>
-      <label>Cliente — documento fiscal (CPF/CNPJ)</label>
-      <input id="client-tax_id" name="client-tax_id" autocomplete="off" maxlength="40">
-    </div>
-    <div>
-      <label>Cliente — endereço</label>
-      <input id="client-address" name="client-address" autocomplete="off" maxlength="240">
-    </div>
-    <div>
-      <label>Número da invoice <span class="req">*</span></label>
-      <input id="invoice_number" name="invoice_number" value="INV-0001" required aria-required="true" maxlength="40">
-    </div>
-    <div>
-      <label>Data de emissão <span class="req">*</span></label>
-      <input type="date" id="issue_date" name="issue_date" required aria-required="true">
-    </div>
-    <div class="full">
-      <label>Descrição do serviço <span class="req">*</span></label>
-      <textarea id="description" name="description" required aria-required="true" maxlength="500">Serviços de desenvolvimento de software.</textarea>
-    </div>
-  </div>
+  <div id="global-error" class="alert alert-error hidden" role="alert"></div>
 
-  <div id="error" class="error"></div>
-  <div id="global-error" class="error"></div>
-  <button type="submit" id="btn">Gerar invoice em PDF</button>
+  <!-- Section 1: Simulação -->
+  <section class="card form-card" style="margin-bottom:var(--space-6);">
+    <h3 style="font-size:var(--fs-lg); font-weight:600; color:var(--color-primary); margin:0 0 var(--space-4); padding-bottom:var(--space-3); border-bottom:1px solid var(--color-border);">1. Simulação</h3>
+
+    <div class="field-grid">
+      <div class="field">
+        <label for="sim-currency" class="label">Moeda <span class="required" aria-hidden="true">*</span><span class="sr-only">(obrigatório)</span></label>
+        <select id="sim-currency" name="sim-currency" class="select input" required aria-required="true" aria-describedby="sim-currency-hint">
+          <option value="USD">USD — Dólar Americano</option>
+          <option value="EUR">EUR — Euro</option>
+        </select>
+        <p id="sim-currency-hint" class="hint">Moeda de recebimento</p>
+      </div>
+
+      <div class="field">
+        <label for="sim-regime" class="label">Regime de contratação <span class="required" aria-hidden="true">*</span><span class="sr-only">(obrigatório)</span></label>
+        <select id="sim-regime" name="sim-regime" class="select input" required aria-required="true" aria-describedby="sim-regime-hint">
+          <option value="hourly">Hora</option>
+          <option value="daily">Dia</option>
+          <option value="weekly">Semana</option>
+          <option value="monthly">Mês</option>
+          <option value="fixed">Valor fixo</option>
+        </select>
+        <p id="sim-regime-hint" class="hint">Define se a quantidade é necessária</p>
+      </div>
+
+      <div class="field">
+        <label for="sim-amount" class="label">Valor por unidade do regime (BRL) <span class="required" aria-hidden="true">*</span><span class="sr-only">(obrigatório)</span></label>
+        <input type="number" id="sim-amount" name="sim-amount" class="input" step="0.01" min="0.01" max="1000000000" value="30" required aria-required="true" aria-describedby="sim-amount-hint sim-amount-error" autocomplete="off">
+        <p id="sim-amount-hint" class="hint">Maior que 0, até 1.000.000.000, 2 casas</p>
+        <p id="sim-amount-error" class="field-error" role="alert" aria-live="polite"></p>
+      </div>
+
+      <div class="field" id="qty-wrap">
+        <label for="sim-quantity" class="label">Quantidade de unidades</label>
+        <input type="number" id="sim-quantity" name="sim-quantity" class="input" step="1" min="1" max="100000" value="160" aria-describedby="sim-quantity-hint sim-quantity-error" autocomplete="off">
+        <p id="sim-quantity-hint" class="hint">Obrigatória exceto no regime "Valor fixo"</p>
+        <p id="sim-quantity-error" class="field-error" role="alert" aria-live="polite"></p>
+      </div>
+
+      <div class="field">
+        <label for="sim-spread_pct" class="label">Spread (%) <span class="required" aria-hidden="true">*</span><span class="sr-only">(obrigatório)</span></label>
+        <input type="number" id="sim-spread_pct" name="sim-spread_pct" class="input" step="0.0001" min="0" max="100" value="2" required aria-required="true" aria-describedby="sim-spread-hint sim-spread-error" autocomplete="off">
+        <p id="sim-spread-hint" class="hint">De 0 a 100, 4 casas. Ex: 2.5 = 2,5%</p>
+        <p id="sim-spread-error" class="field-error" role="alert" aria-live="polite"></p>
+      </div>
+
+      <div class="field">
+        <label for="sim-iof_pct" class="label">IOF (%) <span class="required" aria-hidden="true">*</span><span class="sr-only">(obrigatório)</span></label>
+        <input type="number" id="sim-iof_pct" name="sim-iof_pct" class="input" step="0.0001" min="0" max="100" value="0.38" required aria-required="true" aria-describedby="sim-iof-hint sim-iof-error" autocomplete="off">
+        <p id="sim-iof-hint" class="hint">De 0 a 100, 4 casas. Ex: 1.1 = 1,1%</p>
+        <p id="sim-iof-error" class="field-error" role="alert" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Partes e Documento -->
+  <section class="card form-card" style="margin-bottom:var(--space-6);">
+    <h3 style="font-size:var(--fs-lg); font-weight:600; color:var(--color-primary); margin:0 0 var(--space-4); padding-bottom:var(--space-3); border-bottom:1px solid var(--color-border);">2. Partes e Documento</h3>
+
+    <div class="field-grid">
+      <!-- Emitente -->
+      <div class="field full">
+        <label for="issuer-name" class="label">Emitente — nome <span class="required" aria-hidden="true">*</span><span class="sr-only">(obrigatório)</span></label>
+        <input type="text" id="issuer-name" name="issuer-name" class="input" required aria-required="true" maxlength="120" aria-describedby="issuer-name-hint issuer-name-error" autocomplete="name">
+        <p id="issuer-name-hint" class="hint">Nome completo do emitente</p>
+        <p id="issuer-name-error" class="field-error" role="alert" aria-live="polite"></p>
+      </div>
+
+      <div class="field">
+        <label for="issuer-tax_id" class="label">Emitente — documento fiscal (CPF/CNPJ)</label>
+        <input type="text" id="issuer-tax_id" name="issuer-tax_id" class="input" maxlength="40" aria-describedby="issuer-tax-id-hint" autocomplete="off">
+        <p id="issuer-tax-id-hint" class="hint">Opcional</p>
+      </div>
+
+      <div class="field">
+        <label for="issuer-address" class="label">Emitente — endereço</label>
+        <input type="text" id="issuer-address" name="issuer-address" class="input" maxlength="240" aria-describedby="issuer-address-hint" autocomplete="street-address">
+        <p id="issuer-address-hint" class="hint">Opcional</p>
+      </div>
+
+      <!-- Cliente -->
+      <div class="field full">
+        <label for="client-name" class="label">Cliente — nome <span class="required" aria-hidden="true">*</span><span class="sr-only">(obrigatório)</span></label>
+        <input type="text" id="client-name" name="client-name" class="input" required aria-required="true" maxlength="120" aria-describedby="client-name-hint client-name-error" autocomplete="name">
+        <p id="client-name-hint" class="hint">Nome completo do cliente</p>
+        <p id="client-name-error" class="field-error" role="alert" aria-live="polite"></p>
+      </div>
+
+      <div class="field">
+        <label for="client-tax_id" class="label">Cliente — documento fiscal (CPF/CNPJ)</label>
+        <input type="text" id="client-tax_id" name="client-tax_id" class="input" maxlength="40" aria-describedby="client-tax-id-hint" autocomplete="off">
+        <p id="client-tax-id-hint" class="hint">Opcional</p>
+      </div>
+
+      <div class="field">
+        <label for="client-address" class="label">Cliente — endereço</label>
+        <input type="text" id="client-address" name="client-address" class="input" maxlength="240" aria-describedby="client-address-hint" autocomplete="street-address">
+        <p id="client-address-hint" class="hint">Opcional</p>
+      </div>
+
+      <!-- Documento -->
+      <div class="field">
+        <label for="invoice_number" class="label">Número da invoice <span class="required" aria-hidden="true">*</span><span class="sr-only">(obrigatório)</span></label>
+        <input type="text" id="invoice_number" name="invoice_number" class="input" value="INV-0001" required aria-required="true" maxlength="40" aria-describedby="invoice-number-hint invoice-number-error" autocomplete="off">
+        <p id="invoice-number-hint" class="hint">Ex: INV-0001</p>
+        <p id="invoice-number-error" class="field-error" role="alert" aria-live="polite"></p>
+      </div>
+
+      <div class="field">
+        <label for="issue_date" class="label">Data de emissão <span class="required" aria-hidden="true">*</span><span class="sr-only">(obrigatório)</span></label>
+        <input type="date" id="issue_date" name="issue_date" class="input" required aria-required="true" aria-describedby="issue-date-hint issue-date-error" autocomplete="off">
+        <p id="issue-date-hint" class="hint">Data de emissão da invoice</p>
+        <p id="issue-date-error" class="field-error" role="alert" aria-live="polite"></p>
+      </div>
+
+      <div class="field full">
+        <label for="description" class="label">Descrição do serviço <span class="required" aria-hidden="true">*</span><span class="sr-only">(obrigatório)</span></label>
+        <textarea id="description" name="description" class="textarea" required aria-required="true" maxlength="500" aria-describedby="description-hint description-error">Serviços de desenvolvimento de software.</textarea>
+        <p id="description-hint" class="hint">Máximo 500 caracteres</p>
+        <p id="description-error" class="field-error" role="alert" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <button type="submit" id="btn" class="btn btn-primary">
+    <span class="btn-text">Gerar invoice em PDF</span>
+    <span class="spinner hidden" aria-hidden="true"></span>
+  </button>
 </form>
 
-<div id="result">
-  <div class="card">
-    <div class="row"><span class="lbl">Invoice</span><span class="val" id="r-invoice_number"></span></div>
-    <div class="row"><span class="lbl">Data de emissão</span><span class="val" id="r-issue_date"></span></div>
-    <div class="row"><span class="lbl">Emitente</span><span class="val" id="r-issuer"></span></div>
-    <div class="row"><span class="lbl">Cliente</span><span class="val" id="r-client"></span></div>
-    <div class="row total"><span class="lbl">Líquido a receber</span><span class="val" id="r-net_brl"></span></div>
+<!-- Result Summary -->
+<div id="result" class="card result-card" role="region" aria-label="Resultado da emissão" aria-live="polite">
+  <div class="result-grid">
+    <div class="result-row"><span class="result-label">Invoice</span><span class="result-value" id="r-invoice_number"></span></div>
+    <div class="result-row"><span class="result-label">Data de emissão</span><span class="result-value" id="r-issue_date"></span></div>
+    <div class="result-row"><span class="result-label">Emitente</span><span class="result-value" id="r-issuer"></span></div>
+    <div class="result-row"><span class="result-label">Cliente</span><span class="result-value" id="r-client"></span></div>
+    <div class="result-row total"><span class="result-label">Líquido a receber</span><span class="result-value" id="r-net_brl"></span></div>
   </div>
-  <div id="notice" class="notice"></div>
-  <div id="stale" class="stale"></div>
+  <div id="stale" class="stale-badge hidden" role="status" aria-live="polite"></div>
+  <div id="notice" class="notice-legal" aria-live="polite"></div>
 </div>
 {% endblock %}
 
+{% block scripts %}
+<script>
+(function () {
+  var form = document.getElementById('form');
+  var btn = document.getElementById('btn');
+  var btnText = btn.querySelector('.btn-text');
+  var btnSpinner = btn.querySelector('.spinner');
+  var result = document.getElementById('result');
+  var qtyWrap = document.getElementById('qty-wrap');
+  var stale = document.getElementById('stale');
+  var notice = document.getElementById('notice');
+  var errorSummary = document.getElementById('error-summary');
+  var errorSummaryList = document.getElementById('error-summary-list');
+  var globalError = document.getElementById('global-error');
 
+  // Set today's date as default
+  var issueDate = document.getElementById('issue_date');
+  if (issueDate && !issueDate.value) {
+    var today = new Date().toISOString().split('T')[0];
+    issueDate.value = today;
+  }
+
+  // Quantity toggle
+  function toggleQty() {
+    if (!form || !form['sim-regime']) return;
+    var fixed = form['sim-regime'].value === 'fixed';
+    var qtyInput = form['sim-quantity'];
+    if (fixed) {
+      qtyWrap.classList.add('hidden');
+      if (qtyInput) qtyInput.required = false;
+    } else {
+      qtyWrap.classList.remove('hidden');
+      if (qtyInput) qtyInput.required = true;
+    }
+  }
+  if (form && form['sim-regime']) {
+    form['sim-regime'].addEventListener('change', toggleQty);
+    toggleQty();
+  }
+
+  // Formatters
+  function money(v) { return v ? Number(v).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : v; }
+
+  // Field error handling
+  function showFieldError(fieldName, message) {
+    var input = form.querySelector('[name="' + fieldName + '"]');
+    var errorEl = document.getElementById(fieldName + '-error');
+    if (input) input.classList.add('invalid');
+    if (errorEl) {
+      errorEl.textContent = message;
+      errorEl.classList.add('visible');
+    }
+  }
+
+  function clearFieldErrors() {
+    if (!form) return;
+    form.querySelectorAll('.invalid').forEach(function (el) { el.classList.remove('invalid'); });
+    form.querySelectorAll('.field-error.visible').forEach(function (el) { el.classList.remove('visible'); el.textContent = ''; });
+  }
+
+  function showGlobalError(message, showRetry) {
+    globalError.textContent = message;
+    globalError.classList.remove('hidden');
+    // Remove any existing retry button
+    var existingRetry = globalError.querySelector('.retry');
+    if (existingRetry) existingRetry.remove();
+    if (showRetry) {
+      var retry = document.createElement('button');
+      retry.type = 'button';
+      retry.textContent = 'Tentar novamente';
+      retry.className = 'retry btn btn-secondary';
+      retry.style.marginTop = 'var(--space-3)';
+      retry.onclick = function () {
+        retry.remove();
+        globalError.classList.add('hidden');
+        if (btn) { btn.disabled = false; btnText.textContent = 'Gerar invoice em PDF'; btnSpinner.classList.add('hidden'); }
+      };
+      globalError.appendChild(retry);
+    }
+  }
+
+  function hideGlobalError() {
+    globalError.classList.add('hidden');
+    globalError.textContent = '';
+  }
+
+  function showErrorSummary(details) {
+    errorSummaryList.innerHTML = '';
+    details.forEach(function (d) {
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = '#' + d.field;
+      a.textContent = d.message;
+      li.appendChild(a);
+      errorSummaryList.appendChild(li);
+    });
+    errorSummary.classList.remove('hidden');
+    errorSummary.focus();
+  }
+
+  function hideErrorSummary() {
+    errorSummary.classList.add('hidden');
+    errorSummaryList.innerHTML = '';
+  }
+
+  // Submit handler
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    clearFieldErrors();
+    hideErrorSummary();
+    hideGlobalError();
+    if (result) result.classList.remove('visible');
+    if (stale) stale.classList.add('hidden');
+    if (notice) notice.textContent = '';
+
+    btn.disabled = true;
+    btnText.textContent = 'Gerando…';
+    btnSpinner.classList.remove('hidden');
+
+    var payload = {
+      simulation: {
+        currency: form['sim-currency'].value,
+        regime: form['sim-regime'].value,
+        amount: form['sim-amount'].value,
+        quantity: form['sim-regime'].value === 'fixed' ? null : form['sim-quantity'].value,
+        spread_pct: form['sim-spread_pct'].value,
+        iof_pct: form['sim-iof_pct'].value,
+      },
+      issuer: {
+        name: document.getElementById('issuer-name').value,
+        tax_id: document.getElementById('issuer-tax_id').value || null,
+        address: document.getElementById('issuer-address').value || null,
+      },
+      client: {
+        name: document.getElementById('client-name').value,
+        tax_id: document.getElementById('client-tax_id').value || null,
+        address: document.getElementById('client-address').value || null,
+      },
+      invoice_number: document.getElementById('invoice_number').value,
+      issue_date: document.getElementById('issue_date').value,
+      description: document.getElementById('description').value,
+    };
+
+    try {
+      var res = await fetch('/v1/invoice', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (res.status === 503) {
+        var data = await res.json();
+        showGlobalError((data && data.error && data.error.message) || 'Serviço indisponível. Tente novamente.', true);
+        return;
+      }
+
+      if (!res.ok) {
+        var data = await res.json();
+        var details = (data && data.error && data.error.details) || [];
+        if (details.length) {
+          details.forEach(function (d) { showFieldError(d.field, d.message); });
+          showErrorSummary(details);
+        } else {
+          showGlobalError((data && data.error && data.error.message) || 'Dados inválidos.', false);
+        }
+        return;
+      }
+
+      // PDF download
+      var blob = await res.blob();
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      var disp = res.headers.get('content-disposition') || '';
+      var m = disp.match(/filename="([^"]+)"/);
+      a.download = m ? m[1] : 'invoice.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      // Update result summary
+      if (document.getElementById('r-invoice_number')) document.getElementById('r-invoice_number').textContent = payload.invoice_number;
+      if (document.getElementById('r-issue_date')) document.getElementById('r-issue_date').textContent = payload.issue_date;
+      if (document.getElementById('r-issuer')) document.getElementById('r-issuer').textContent = payload.issuer.name;
+      if (document.getElementById('r-client')) document.getElementById('r-client').textContent = payload.client.name;
+      if (document.getElementById('r-net_brl')) document.getElementById('r-net_brl').textContent = 'R$ ' + money(payload.simulation.amount) + ' (recálculo no servidor)';
+
+      if (notice) notice.textContent = 'Invoice gerada. Verifique o PDF baixado antes de usar.';
+      if (result) result.classList.add('visible');
+      result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    } catch (err) {
+      showGlobalError('Não foi possível conectar à API.', false);
+    } finally {
+      btn.disabled = false;
+      btnText.textContent = 'Gerar invoice em PDF';
+      btnSpinner.classList.add('hidden');
+    }
+  });
+
+  // Clear field error on input/change
+  form.querySelectorAll('.input, .select, .textarea').forEach(function (el) {
+    el.addEventListener('input', function () {
+      if (el.classList.contains('invalid')) {
+        el.classList.remove('invalid');
+        var errorEl = document.getElementById(el.name + '-error');
+        if (errorEl) { errorEl.classList.remove('visible'); errorEl.textContent = ''; }
+      }
+    });
+    el.addEventListener('change', function () {
+      if (el.classList.contains('invalid')) {
+        el.classList.remove('invalid');
+        var errorEl = document.getElementById(el.name + '-error');
+        if (errorEl) { errorEl.classList.remove('visible'); errorEl.textContent = ''; }
+      }
+    });
+  });
+})();
+</script>
+{% endblock %}

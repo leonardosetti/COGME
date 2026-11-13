@@ -16,54 +16,58 @@
   * { box-sizing: border-box; }
   body {
     margin: 0;
-    font: 10pt/1.45 "DejaVu Sans", Arial, sans-serif;
-    color: #1c1c1c;
+    font: 10pt/1.5 "DejaVu Sans", Arial, sans-serif;
+    color: #0F172A;
   }
-  h1 { font-size: 20pt; margin: 0 0 2mm 0; letter-spacing: 0.5pt; }
+  h1 { font-size: 18pt; margin: 0 0 2mm 0; letter-spacing: 0.5pt; color: #0F172A; }
   h2 {
-    font-size: 9pt;
+    font-size: 8.5pt;
     margin: 0 0 2mm 0;
     text-transform: uppercase;
     letter-spacing: 0.8pt;
     color: #444444;
+    font-weight: 600;
   }
-  .header { border-bottom: 1.5pt solid #1c1c1c; padding-bottom: 4mm; margin-bottom: 6mm; }
-  .meta { color: #444444; }
-  .meta strong { color: #1c1c1c; }
+  .header { border-bottom: 2pt solid #0F172A; padding-bottom: 4mm; margin-bottom: 6mm; }
+  .meta { color: #444444; font-size: 9pt; }
+  .meta strong { color: #0F172A; }
   .parties { width: 100%; border-collapse: separate; border-spacing: 0; margin-bottom: 6mm; }
   .parties td { width: 50%; vertical-align: top; padding: 0 4mm 0 0; }
-  .party-name { font-weight: bold; font-size: 11pt; }
-  .pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+  .party-name { font-weight: 700; font-size: 10.5pt; color: #0F172A; }
+  .pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 9pt; line-height: 1.5; }
   .section { margin-bottom: 6mm; }
-  table.items { width: 100%; border-collapse: collapse; }
+  table.items { width: 100%; border-collapse: collapse; font-size: 9pt; }
   table.items th, table.items td {
-    padding: 2mm 2.5mm;
-    border-bottom: 0.5pt solid #bbbbbb;
+    padding: 2.5mm 3mm;
+    border-bottom: 0.5pt solid #E2E8F0;
     text-align: left;
     vertical-align: top;
   }
-  table.items th { width: 55%; font-weight: normal; color: #444444; }
-  table.items td { text-align: right; font-variant-numeric: tabular-nums; }
+  table.items th { width: 60%; font-weight: 500; color: #64748B; }
+  table.items td { text-align: right; font-variant-numeric: tabular-nums; font-family: "DejaVu Sans Mono", monospace; color: #0F172A; }
   table.items tr.total th, table.items tr.total td {
-    font-weight: bold;
-    font-size: 11pt;
-    color: #1c1c1c;
-    border-top: 1.5pt solid #1c1c1c;
-    border-bottom: 1.5pt solid #1c1c1c;
+    font-weight: 700;
+    font-size: 10pt;
+    color: #0F172A;
+    border-top: 2pt solid #0F172A;
+    border-bottom: 2pt solid #0F172A;
   }
   .stale {
-    border: 1pt solid #b45309;
-    background: #fff4e0;
-    color: #7a3a00;
-    padding: 2.5mm 3mm;
+    border: 1pt solid #D97706;
+    background: #FFFBEB;
+    color: #D97706;
+    padding: 3mm 4mm;
     margin-bottom: 4mm;
+    border-radius: 4px;
+    font-size: 8.5pt;
   }
   .notice {
     margin-top: 8mm;
     padding-top: 3mm;
-    border-top: 0.5pt solid #bbbbbb;
+    border-top: 0.5pt solid #E2E8F0;
     font-size: 8.5pt;
-    color: #555555;
+    color: #64748B;
+    line-height: 1.5;
   }
 </style>
 </head>
