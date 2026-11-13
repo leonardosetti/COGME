@@ -123,14 +123,13 @@ def uat_04_invoice_pdf() -> tuple[bool, bytes | str]:
 
 def uat_05_ui_browsers() -> tuple[bool, str]:
     """UAT-05: Interface responsiva (REQ-06, US-005)."""
-    r = run_cmd(["curl", "-s", "-I", BASE_URL])
+    r = run_cmd(["curl", "-s", BASE_URL])
     if r.returncode != 0:
         return False, f"curl failed: {r.stderr}"
-    if "text/html" not in r.stdout:
-        return False, f"Front não serve HTML: {r.stdout}"
+    if "text/html" not in r.stdout[:200].lower() and "<!doctype html>" not in r.stdout.lower():
+        return False, f"Front não serve HTML: {r.stdout[:200]}"
     # Verifica viewport meta tag
-    r2 = run_cmd(["curl", "-s", BASE_URL])
-    if "viewport" not in r2.stdout.lower():
+    if "viewport" not in r.stdout.lower():
         return False, "Viewport meta tag não encontrado"
     return True, "Front serve HTML com viewport responsivo"
 
