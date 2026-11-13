@@ -162,7 +162,8 @@ def f_01_reproducibility() -> tuple[bool, str]:
     """F-01: Reprodutibilidade docker compose up --build."""
     # Stack já está rodando, verifica se sobe limpo
     r = run_cmd(["docker", "compose", "ps", "--format", "json"])
-    services = json.loads(r.stdout)
+    # docker compose ps --format json outputs one JSON per line
+    services = [json.loads(line) for line in r.stdout.strip().split('\n') if line.strip()]
     all_healthy = all(s.get("Health") == "healthy" or s.get("State") == "running" for s in services)
     return all_healthy, f"Services: {json.dumps([{'name': s['Name'], 'state': s.get('State'), 'health': s.get('Health')} for s in services])}"
 
