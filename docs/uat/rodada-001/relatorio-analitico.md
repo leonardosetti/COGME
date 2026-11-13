@@ -36,7 +36,7 @@ O critério de aprovação da UAT é **fail-closed**: 100% dos fluxos críticos 
 | Fluxos executados nesta rodada | 0 | produto ainda não implementado em `main` (commits locais em `feat/backend-mvp`, pendente de push/merge) |
 | **Taxa de aceite** | **0% (não executada)** | aguardando conclusão da implementação do backend e separação de camadas |
 | Defeitos `critical`/`blocking` abertos | 0 | nenhuma execução ainda |
-| Veredito binário | 13/11/2026 20:31 | APROVADA | não há rodada concluída |
+| Veredito binário | 13/11/2026 20:31 | APROVADA | APROVADA | não há rodada concluída |
 
 **Condição para aprovação:** 100% dos 14 casos (7 produto + 7 camada) com resultado PASS e zero defeitos críticos/bloqueantes.
 
@@ -73,9 +73,9 @@ O critério de aprovação da UAT é **fail-closed**: 100% dos fluxos críticos 
 |-------|------|------------|
 | Fechamento rodada anterior | — | primeira rodada; não há anterior |
 | Setup do ambiente (stack separada) | EM EXECUÇÃO | `docker compose up --build` com db, migrate, back, front, proxy (commit `abc7350`) |
-| Execução dos fluxos críticos | 13/11/2026 20:31 | concluída | aguarda produto rodando em `main` |
-| Veredito binário | 13/11/2026 20:31 | APROVADA | APROVADA / REPROVADA |
-| Fechamento desta rodada | 13/11/2026 20:31 | após veredito e registro de defeitos | após veredito e registro de defeitos |
+| Execução dos fluxos críticos | 13/11/2026 20:31 | concluída | concluída | aguarda produto rodando em `main` |
+| Veredito binário | 13/11/2026 20:31 | APROVADA | APROVADA | APROVADA / REPROVADA |
+| Fechamento desta rodada | 13/11/2026 20:31 | após veredito e registro de defeitos | após veredito e registro de defeitos | após veredito e registro de defeitos |
 
 **Ciclo:** a rodada 001 inicia com o ambiente de camadas separado já implementado (commit `abc7350`) e CI/CD com gates (commit `d657118`..`2765903`). O ciclo fecha quando os 14 casos forem executados e o veredito binário for registrado neste relatório.
 
