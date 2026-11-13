@@ -3,136 +3,275 @@
 {% block title %}COGME — Conversor Cambial{% endblock %}
 
 {% block content %}
+<!-- Hero Section -->
+<section class="hero" style="text-align:center; margin-bottom:var(--space-8);">
+  <h2 style="font-size:var(--fs-2xl); font-weight:700; color:var(--color-primary); margin:0 0 var(--space-2);">Simulador de Recebimento em Moeda Estrangeira</h2>
+  <p style="font-size:var(--fs-lg); color:var(--color-text-muted); margin:0; max-width:480px; margin:0 auto;">
+    Calcule o valor líquido em BRL após spread, IOF e conversão cambial. Fontes: Frankfurter (ECB) e PTAX (Banco Central).
+  </p>
+</section>
+
 <form id="form" action="/simulate" method="post" novalidate>
-  <div class="grid">
-    <div>
-      <label>Moeda</label>
-      <select id="currency" name="currency">
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-      </select>
-    </div>
-    <div>
-      <label>Regime de contratação</label>
-      <select id="regime" name="regime">
-        <option value="hourly">Hora</option>
-        <option value="daily">Dia</option>
-        <option value="weekly">Semana</option>
-        <option value="monthly">Mês</option>
-        <option value="fixed">Valor fixo</option>
-      </select>
-    </div>
-    <div>
-      <label>Valor por unidade (BRL)</label>
-      <input type="number" id="amount" name="amount" step="0.01" min="0" value="30" required>
-    </div>
-    <div id="qty-wrap">
-      <label>Quantidade de unidades</label>
-      <input type="number" id="quantity" name="quantity" step="1" min="1" value="160" required>
-    </div>
-    <div>
-      <label>Spread (%)</label>
-      <input type="number" id="spread_pct" name="spread_pct" step="0.0001" min="0" max="100" value="2" required>
-    </div>
-    <div>
-      <label>IOF (%)</label>
-      <input type="number" id="iof_pct" name="iof_pct" step="0.0001" min="0" max="100" value="0.38" required>
-    </div>
+  <!-- Error Summary (hidden until needed) -->
+  <div id="error-summary" class="error-summary hidden" role="alert" aria-live="assertive" tabindex="-1">
+    <h3 class="error-summary-title">Corrija os erros abaixo</h3>
+    <ul id="error-summary-list" class="error-summary-list"></ul>
   </div>
-  <div id="error" class="error"></div>
-  <button type="submit" id="btn">Simular</button>
+
+  <div class="card form-card">
+    <div class="field-grid">
+      <!-- Moeda -->
+      <div class="field">
+        <label for="currency" class="label">Moeda <span class="required" aria-hidden="true">*</span><span class="sr-only">(obrigatório)</span></label>
+        <select id="currency" name="currency" class="select input" required aria-required="true" aria-describedby="currency-hint">
+          <option value="USD">USD — Dólar Americano</option>
+          <option value="EUR">EUR — Euro</option>
+        </select>
+        <p id="currency-hint" class="hint">Selecione a moeda de recebimento</p>
+      </div>
+
+      <!-- Regime -->
+      <div class="field">
+        <label for="regime" class="label">Regime de contratação <span class="required" aria-hidden="true">*</span><span class="sr-only">(obrigatório)</span></label>
+        <select id="regime" name="regime" class="select input" required aria-required="true" aria-describedby="regime-hint">
+          <option value="hourly">Hora</option>
+          <option value="daily">Dia</option>
+          <option value="weekly">Semana</option>
+          <option value="monthly">Mês</option>
+          <option value="fixed">Valor fixo</option>
+        </select>
+        <p id="regime-hint" class="hint">Define se a quantidade de unidades é necessária</p>
+      </div>
+
+      <!-- Valor por unidade -->
+      <div class="field">
+        <label for="amount" class="label">Valor por unidade (BRL) <span class="required" aria-hidden="true">*</span><span class="sr-only">(obrigatório)</span></label>
+        <input type="number" id="amount" name="amount" class="input" step="0.01" min="0.01" max="1000000000" value="30" required aria-required="true" aria-describedby="amount-hint amount-error" autocomplete="off">
+        <p id="amount-hint" class="hint">Maior que 0, até 1.000.000.000, 2 casas decimais</p>
+        <p id="amount-error" class="field-error" role="alert" aria-live="polite"></p>
+      </div>
+
+      <!-- Quantidade (conditional) -->
+      <div class="field" id="qty-wrap">
+        <label for="quantity" class="label">Quantidade de unidades</label>
+        <input type="number" id="quantity" name="quantity" class="input" step="1" min="1" max="100000" value="160" aria-describedby="quantity-hint quantity-error" autocomplete="off">
+        <p id="quantity-hint" class="hint">Obrigatória exceto no regime "Valor fixo"</p>
+        <p id="quantity-error" class="field-error" role="alert" aria-live="polite"></p>
+      </div>
+
+      <!-- Spread -->
+      <div class="field">
+        <label for="spread_pct" class="label">Spread (%) <span class="required" aria-hidden="true">*</span><span class="sr-only">(obrigatório)</span></label>
+        <input type="number" id="spread_pct" name="spread_pct" class="input" step="0.0001" min="0" max="100" value="2" required aria-required="true" aria-describedby="spread-hint spread-error" autocomplete="off">
+        <p id="spread-hint" class="hint">De 0 a 100, 4 casas decimais. Ex: 2.5 = 2,5%</p>
+        <p id="spread-error" class="field-error" role="alert" aria-live="polite"></p>
+      </div>
+
+      <!-- IOF -->
+      <div class="field">
+        <label for="iof_pct" class="label">IOF (%) <span class="required" aria-hidden="true">*</span><span class="sr-only">(obrigatório)</span></label>
+        <input type="number" id="iof_pct" name="iof_pct" class="input" step="0.0001" min="0" max="100" value="0.38" required aria-required="true" aria-describedby="iof-hint iof-error" autocomplete="off">
+        <p id="iof-hint" class="hint">De 0 a 100, 4 casas decimais. Ex: 1.1 = 1,1%</p>
+        <p id="iof-error" class="field-error" role="alert" aria-live="polite"></p>
+      </div>
+    </div>
+
+    <button type="submit" id="btn" class="btn btn-primary">
+      <span class="btn-text">Simular</span>
+      <span class="spinner hidden" aria-hidden="true"></span>
+    </button>
+  </div>
 </form>
 
-<div id="result">
-  <div class="card">
-    <div class="row"><span class="lbl">Moeda estrangeira</span><span class="val" id="r-gross-foreign"></span></div>
-    <div class="row"><span class="lbl">Bruto em BRL</span><span class="val" id="r-gross-brl"></span></div>
-    <div class="row"><span class="lbl">Spread</span><span class="val" id="r-spread-brl"></span></div>
-    <div class="row"><span class="lbl">IOF</span><span class="val" id="r-iof-brl"></span></div>
-    <div class="row total"><span class="lbl">Líquido a receber</span><span class="val" id="r-net-brl"></span></div>
-    <div class="row"><span class="lbl">Cotação efetiva</span><span class="val" id="r-effective-rate"></span></div>
-    <div class="row"><span class="lbl">Fonte</span><span class="val" id="r-source"></span></div>
+<!-- Result Card -->
+<div id="result" class="card result-card" role="region" aria-label="Resultado da simulação" aria-live="polite">
+  <div class="result-grid">
+    <div class="result-row"><span class="result-label">Moeda estrangeira</span><span class="result-value" id="r-gross-foreign"></span></div>
+    <div class="result-row"><span class="result-label">Bruto em BRL</span><span class="result-value" id="r-gross-brl"></span></div>
+    <div class="result-row"><span class="result-label">Spread</span><span class="result-value" id="r-spread-brl"></span></div>
+    <div class="result-row"><span class="result-label">IOF</span><span class="result-value" id="r-iof-brl"></span></div>
+    <div class="result-row total"><span class="result-label">Líquido a receber</span><span class="result-value" id="r-net-brl"></span></div>
+    <div class="result-row"><span class="result-label">Cotação efetiva</span><span class="result-value" id="r-effective-rate"></span></div>
+    <div class="result-row"><span class="result-label">Fonte</span><span class="result-value" id="r-source"></span></div>
   </div>
-  <div id="stale" class="stale"></div>
-  <div class="notice" id="notice"></div>
+  <div id="stale" class="stale-badge hidden" role="status" aria-live="polite"></div>
+  <div id="notice" class="notice-legal" aria-live="polite"></div>
 </div>
 {% endblock %}
 
 {% block scripts %}
 <script>
-  (function () {
-    var form = document.getElementById('form');
-    var btn = document.getElementById('btn');
-    var error = document.getElementById('error');
-    var result = document.getElementById('result');
-    var qtyWrap = document.getElementById('qty-wrap');
-    var stale = document.getElementById('stale');
-    var notice = document.getElementById('notice');
+(function () {
+  var form = document.getElementById('form');
+  var btn = document.getElementById('btn');
+  var btnText = btn.querySelector('.btn-text');
+  var btnSpinner = btn.querySelector('.spinner');
+  var result = document.getElementById('result');
+  var qtyWrap = document.getElementById('qty-wrap');
+  var stale = document.getElementById('stale');
+  var notice = document.getElementById('notice');
+  var errorSummary = document.getElementById('error-summary');
+  var errorSummaryList = document.getElementById('error-summary-list');
 
-    function toggleQty() {
-      if (!form || !form.regime) return;
-      var fixed = form.regime.value === 'fixed';
-      qtyWrap.style.display = fixed ? 'none' : 'block';
-      form.quantity.required = !fixed;
+  // Initialize quantity toggle
+  function toggleQty() {
+    if (!form || !form.regime) return;
+    var fixed = form.regime.value === 'fixed';
+    var qtyInput = form.quantity;
+
+    if (fixed) {
+      qtyWrap.classList.add('hidden');
+      if (qtyInput) qtyInput.required = false;
+    } else {
+      qtyWrap.classList.remove('hidden');
+      if (qtyInput) qtyInput.required = true;
     }
-    if (form && form.regime) {
-      form.regime.addEventListener('change', toggleQty);
-      toggleQty();
+  }
+  if (form && form.regime) {
+    form.regime.addEventListener('change', toggleQty);
+    toggleQty();
+  }
+
+  // Formatters
+  function money(v) { return v ? Number(v).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : v; }
+  function rate(v) { return v ? Number(v).toLocaleString('pt-BR', { minimumFractionDigits: 6, maximumFractionDigits: 6 }) : v; }
+
+  // Field error handling
+  function showFieldError(fieldName, message) {
+    var input = form.querySelector('[name="' + fieldName + '"]');
+    var errorEl = document.getElementById(fieldName + '-error');
+    if (input) input.classList.add('invalid');
+    if (errorEl) {
+      errorEl.textContent = message;
+      errorEl.classList.add('visible');
     }
+  }
 
-    function money(v) { return v ? Number(v).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : v; }
-    function rate(v) { return v ? Number(v).toLocaleString('pt-BR', { minimumFractionDigits: 6, maximumFractionDigits: 6 }) : v; }
+  function clearFieldErrors() {
+    if (!form) return;
+    form.querySelectorAll('.invalid').forEach(function (el) { el.classList.remove('invalid'); });
+    form.querySelectorAll('.field-error.visible').forEach(function (el) { el.classList.remove('visible'); el.textContent = ''; });
+  }
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      if (error) { error.style.display = 'none'; }
-      if (result) result.style.display = 'none';
-      if (stale) stale.style.display = 'none';
-      if (notice) notice.textContent = '';
-      if (btn) { btn.disabled = true; btn.textContent = 'Calculando…'; }
+  // Error summary
+  function showErrorSummary(details) {
+    errorSummaryList.innerHTML = '';
+    details.forEach(function (d) {
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = '#' + d.field;
+      a.textContent = d.message;
+      li.appendChild(a);
+      errorSummaryList.appendChild(li);
+    });
+    errorSummary.classList.remove('hidden');
+    errorSummary.focus();
+  }
 
-      var body = {
-        currency: form.currency.value,
-        regime: form.regime.value,
-        amount: form.amount.value,
-        quantity: form.regime.value === 'fixed' ? null : form.quantity.value,
-        spread_pct: form.spread_pct.value,
-        iof_pct: form.iof_pct.value,
-      };
+  function hideErrorSummary() {
+    errorSummary.classList.add('hidden');
+    errorSummaryList.innerHTML = '';
+  }
 
-      try {
-        var res = await fetch('/v1/simulate', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(body),
-        });
-        if (!res.ok) {
-          var data = await res.json();
-          if (error) { error.textContent = (data.error && data.error.message) || 'Erro na simulação.'; error.style.display = 'block'; }
-          return;
-        }
+  // Submit handler
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    clearFieldErrors();
+    hideErrorSummary();
+    if (result) result.classList.remove('visible');
+    if (stale) stale.classList.add('hidden');
+    if (notice) notice.textContent = '';
+
+    // Loading state
+    btn.disabled = true;
+    btnText.textContent = 'Calculando…';
+    btnSpinner.classList.remove('hidden');
+
+    var body = {
+      currency: form.currency.value,
+      regime: form.regime.value,
+      amount: form.amount.value,
+      quantity: form.regime.value === 'fixed' ? null : form.quantity.value,
+      spread_pct: form.spread_pct.value,
+      iof_pct: form.iof_pct.value,
+    };
+
+    try {
+      var res = await fetch('/v1/simulate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+
+      if (!res.ok) {
         var data = await res.json();
-        document.getElementById('r-gross-foreign').textContent = money(data.gross_foreign) + ' ' + data.currency;
-        document.getElementById('r-gross-brl').textContent = 'R$ ' + money(data.gross_brl);
-        document.getElementById('r-spread-brl').textContent = 'R$ ' + money(data.spread_brl) + ' (' + data.spread_pct + ' %)';
-        document.getElementById('r-iof-brl').textContent = 'R$ ' + money(data.iof_brl) + ' (' + data.iof_pct + ' %)';
-        document.getElementById('r-net-brl').textContent = 'R$ ' + money(data.net_brl);
-        document.getElementById('r-effective-rate').textContent = rate(data.effective_rate);
-        document.getElementById('r-source').textContent = (data.quote && data.quote.source) || '—';
-        if (stale) {
-          if (data.quote && data.quote.stale) {
-            stale.textContent = 'Atenção: cotação com defasagem (última disponível no cache).';
-            stale.style.display = 'block';
-          } else { stale.style.display = 'none'; }
+        var details = (data && data.error && data.error.details) || [];
+        if (details.length) {
+          details.forEach(function (d) { showFieldError(d.field, d.message); });
+          showErrorSummary(details);
+        } else {
+          var msg = (data && data.error && data.error.message) || 'Erro na simulação.';
+          showFieldError('amount', msg); // fallback
         }
-        if (notice) notice.textContent = data.notice || '';
-        if (result) result.style.display = 'block';
-      } catch (err) {
-        if (error) { error.textContent = 'Não foi possível conectar à API.'; error.style.display = 'block'; }
-      } finally {
-        if (btn) { btn.disabled = false; btn.textContent = 'Simular'; }
+        return;
+      }
+
+      var data = await res.json();
+
+      // Populate result
+      document.getElementById('r-gross-foreign').textContent = money(data.gross_foreign) + ' ' + data.currency;
+      document.getElementById('r-gross-brl').textContent = 'R$ ' + money(data.gross_brl);
+      document.getElementById('r-spread-brl').textContent = 'R$ ' + money(data.spread_brl) + ' (' + data.spread_pct + ' %)';
+      document.getElementById('r-iof-brl').textContent = 'R$ ' + money(data.iof_brl) + ' (' + data.iof_pct + ' %)';
+      document.getElementById('r-net-brl').textContent = 'R$ ' + money(data.net_brl);
+      document.getElementById('r-effective-rate').textContent = rate(data.effective_rate);
+      document.getElementById('r-source').textContent = (data.quote && data.quote.source) || '—';
+
+      // Stale badge
+      if (stale) {
+        if (data.quote && data.quote.stale) {
+          stale.textContent = '⚠ Atenção: cotação com defasagem (última disponível no cache).';
+          stale.classList.remove('hidden');
+        } else {
+          stale.classList.add('hidden');
+        }
+      }
+
+      // Notice
+      if (notice) notice.textContent = data.notice || '';
+
+      // Show result with animation
+      if (result) result.classList.add('visible');
+
+      // Scroll to result smoothly
+      result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    } catch (err) {
+      showFieldError('amount', 'Não foi possível conectar à API.');
+    } finally {
+      btn.disabled = false;
+      btnText.textContent = 'Simular';
+      btnSpinner.classList.add('hidden');
+    }
+  });
+
+  // Clear field error on input
+  form.querySelectorAll('.input, .select').forEach(function (el) {
+    el.addEventListener('input', function () {
+      if (el.classList.contains('invalid')) {
+        el.classList.remove('invalid');
+        var errorEl = document.getElementById(el.name + '-error');
+        if (errorEl) { errorEl.classList.remove('visible'); errorEl.textContent = ''; }
       }
     });
-  })();
+    el.addEventListener('change', function () {
+      if (el.classList.contains('invalid')) {
+        el.classList.remove('invalid');
+        var errorEl = document.getElementById(el.name + '-error');
+        if (errorEl) { errorEl.classList.remove('visible'); errorEl.textContent = ''; }
+      }
+    });
+  });
+})();
 </script>
 {% endblock %}

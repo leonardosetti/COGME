@@ -4,10 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% block title %}COGME{% endblock %}</title>
+
+<!-- Fonts: IBM Plex Sans (preconnect for performance) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="/static/css/app.css">
-<style>:focus-visible { outline: 2pt solid #1c1c1c; outline-offset: 2pt; }</style>
 </head>
 <body>
+<!-- Skip link for keyboard users -->
+<a href="#main-content" class="skip-link">Pular para conteúdo principal</a>
+
 <header class="site-header">
   <div class="wrap">
     <h1><a href="/">COGME</a></h1>
@@ -18,7 +26,7 @@
   </div>
 </header>
 
-<main class="wrap">
+<main id="main-content" class="wrap">
   {% block content %}{% endblock %}
 </main>
 
