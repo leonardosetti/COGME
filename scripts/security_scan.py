@@ -105,9 +105,10 @@ def main() -> int:
     parser.add_argument("--report", default=None, help="salva JSON do report")
     args = parser.parse_args()
 
-    files = sorted(AGENTS_DIR.glob("*.md"))
+    # Apenas agentes COGME nativos (prefixo agent-). GSD e outros frameworks ficam fora.
+    files = sorted(f for f in AGENTS_DIR.glob("*.md") if f.stem.startswith("agent-"))
     if not files:
-        print("[!] Nenhum agente em .opencode/agents/", file=sys.stderr)
+        print("[!] Nenhum agente COGME em .opencode/agents/", file=sys.stderr)
         return 1
 
     results = [scan_file(f) for f in files]

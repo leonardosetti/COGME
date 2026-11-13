@@ -95,3 +95,4 @@ caveats:
 Nenhuma linha reescrita; correções futuras = novas addendas.
 | VIO-030 | 2026-11-06T19:34Z | scheduler auditoria compliance (TA-0100) | falha no passo 'security_scan.py' (exit 1) | execucao agendada de auditoria compliance; passo retornou nao-zero | ABERTO |
 | VIO-031 | 2026-11-13T20:10Z | scheduler auditoria compliance (TA-0100) | falha no passo 'security_scan.py' (exit 1) | execucao agendada de auditoria compliance; passo retornou nao-zero | ABERTO |
+| VIO-032 | 2026-11-13T20:12Z | scheduler auditoria compliance (TA-0100) | falha no passo 'registry_drift_monitor.py' (exit 1) | execucao agendada de auditoria compliance; passo retornou nao-zero | ABERTO |

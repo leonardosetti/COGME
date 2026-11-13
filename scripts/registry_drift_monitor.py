@@ -31,7 +31,8 @@ except ImportError:  # pragma: no cover
 
 
 def disco_slugs() -> set:
-    return {f.stem for f in AGENTS_DIR.glob("*.md") if not f.name.startswith(".")}
+    # Apenas agentes COGME nativos (prefixo agent-). GSD e outros frameworks ficam fora.
+    return {f.stem for f in AGENTS_DIR.glob("*.md") if not f.name.startswith(".") and f.stem.startswith("agent-")}
 
 
 def registry_slugs() -> set:
