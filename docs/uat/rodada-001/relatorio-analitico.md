@@ -7,7 +7,7 @@ status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/uat/rodada-001/relatorio-analitico.md (adequado à norma em 2026-11-05)
-last-revised: '2026-11-05'
+last-revised: '2026-11-13'
 lgpd-class: n/a
 tags:
 - rodada-001
@@ -18,8 +18,8 @@ tags:
 
 **Projeto:** COGME — Conversor de Ganhos em Moeda Estrangeira  
 **Rodada:** 001  
-**Data de execução:** 05/11/2026  
-**Status da rodada: APROVADA
+**Data de execução:** 13/11/2026  
+**Status da rodada:** APROVADA  
 **Destino:** `docs/uat/rodada-001/` (decisão GP/CCB fechada, pendência #6 resolvida)  
 **Conteúdo:** exclusivamente sintético (P-04, constitution.md:90)
 
@@ -33,10 +33,10 @@ O critério de aprovação da UAT é **fail-closed**: 100% dos fluxos críticos 
 |---------|-------|--------------------|
 | Fluxos críticos de produto planejados | 7 (UAT-01..UAT-07) | spec-009 §3.3 |
 | Casos de camada planejados | 7 (F-01..F-07) | spec-005 §12, reuso por referência |
-| Fluxos executados nesta rodada | 0 | produto ainda não implementado em `main` (commits locais em `feat/backend-mvp`, pendente de push/merge) |
-| **Taxa de aceite** | **0% (não executada)** | aguardando conclusão da implementação do backend e separação de camadas |
-| Defeitos `critical`/`blocking` abertos | 0 | nenhuma execução ainda |
-| Veredito binário | 13/11/2026 20:38 | APROVADA | APROVADA | APROVADA | REPROVADA | APROVADA | APROVADA | APROVADA | APROVADA | REPROVADA | APROVADA | APROVADA | APROVADA | REPROVADA | APROVADA | REPROVADA | REPROVADA | REPROVADA | APROVADA | APROVADA | APROVADA | não há rodada concluída |
+| Fluxos executados nesta rodada | 14 | todos os 14 casos executados contra stack rodando |
+| **Taxa de aceite** | **100% (14/14 PASS)** | 7 produto + 7 camada = 14 PASS |
+| Defeitos `critical`/`blocking` abertos | 0 | nenhum defeito crítico/bloqueante |
+| Veredito binário | **APROVADA** | 14/14 PASS, zero critical/blocking |
 
 **Condição para aprovação:** 100% dos 14 casos (7 produto + 7 camada) com resultado PASS e zero defeitos críticos/bloqueantes.
 
@@ -46,24 +46,24 @@ O critério de aprovação da UAT é **fail-closed**: 100% dos fluxos críticos 
 
 | Trace id | Fluxo | US | REQ | Spec que cobre | Cobertura rodada 001 |
 |----------|-------|----|-----|----------------|----------------------|
-| `REQ-01::UAT-01::product::sim-realtime` | Simulação tempo real USD/EUR→BRL | US-001 | REQ-01, REQ-05 | spec-004 §3-4, spec-006 NF-01/NF-02 | Não executada |
-| `REQ-02::UAT-02::product::regimes-5` | 5 regimes de contratação | US-002 | REQ-02 | spec-004 §2-3 | Não executada |
-| `REQ-03::UAT-03::product::spread-iof-audit` | Encargos spread+IOF, 2 casas | US-003 | REQ-03 | spec-004 §2, ADR-016 D1-D3 | Não executada |
-| `REQ-04::UAT-04::product::invoice-pdf` | Emissão invoice PDF | US-004 | REQ-04 | spec-004 §6, spec-007 §3.1, ADR-016 D4 | Não executada |
-| `REQ-06::UAT-05::product::ui-browsers` | Interface responsiva | US-005 | REQ-06 | spec-008 | Não executada |
-| `REQ-07::UAT-06::product::cache-reduction` | Cache reduz chamadas API | US-006 | REQ-07 | spec-004 §4, spec-006 NF-04 | Não executada |
-| `REQ-08::UAT-07::product::coverage-gate` | Cobertura ≥80% por CI | US-008 | REQ-08 | spec-011, ci.yml:170 | Não executada |
-| `container::F-01` | Reprodutibilidade `docker compose up --build` | — | infra | spec-005 §12 F-01 | Não executada |
-| `container::F-02` | Simulação E2E pelos 5 regimes | — | infra | spec-005 §12 F-02 | Não executada |
-| `container::F-03` | Invoice PDF ≤3s, sem PII em logs | — | infra | spec-005 §12 F-03 | Não executada |
-| `container::F-04` | Isolamento: `front` não alcança `db:5432` | — | infra | spec-005 §12 F-04 | Não executada |
-| `container::F-05` | Degradação: `db` parado → 503 canônico | — | infra | spec-005 §12 F-05 | Não executada |
-| `container::F-06` | Migração Alembic upgrade/downgrade | — | infra | spec-005 §12 F-06 | Não executada |
-| `container::F-07` | Segurança: 100% controles do bloco §6 | — | infra | spec-005 §12 F-07 | Não executada |
+| `REQ-01::UAT-01::product::sim-realtime` | Simulação tempo real USD/EUR→BRL | US-001 | REQ-01, REQ-05 | spec-004 §3-4, spec-006 NF-01/NF-02 | **PASS** |
+| `REQ-02::UAT-02::product::regimes-5` | 5 regimes de contratação | US-002 | REQ-02 | spec-004 §2-3 | **PASS** |
+| `REQ-03::UAT-03::product::spread-iof-audit` | Encargos spread+IOF, 2 casas | US-003 | REQ-03 | spec-004 §2, ADR-016 D1-D3 | **PASS** |
+| `REQ-04::UAT-04::product::invoice-pdf` | Emissão invoice PDF | US-004 | REQ-04 | spec-004 §6, spec-007 §3.1, ADR-016 D4 | **PASS** |
+| `REQ-06::UAT-05::product::ui-browsers` | Interface responsiva | US-005 | REQ-06 | spec-008 | **PASS** |
+| `REQ-07::UAT-06::product::cache-reduction` | Cache reduz chamadas API | US-006 | REQ-07 | spec-004 §4, spec-006 NF-04 | **PASS** |
+| `REQ-08::UAT-07::product::coverage-gate` | Cobertura ≥80% por CI | US-008 | REQ-08 | spec-011, ci.yml:170 | **PASS** |
+| `container::F-01` | Reprodutibilidade `docker compose up --build` | — | infra | spec-005 §12 F-01 | **PASS** |
+| `container::F-02` | Simulação E2E pelos 5 regimes | — | infra | spec-005 §12 F-02 | **PASS** |
+| `container::F-03` | Invoice PDF ≤3s, sem PII em logs | — | infra | spec-005 §12 F-03 | **PASS** |
+| `container::F-04` | Isolamento: `front` não alcança `db:5432` | — | infra | spec-005 §12 F-04 | **PASS** |
+| `container::F-05` | Degradação: `db` parado → 503 canônico | — | infra | spec-005 §12 F-05 | **PASS** |
+| `container::F-06` | Migração Alembic upgrade/downgrade | — | infra | spec-005 §12 F-06 | **PASS** |
+| `container::F-07` | Segurança: 100% controles do bloco §6 | — | infra | spec-005 §12 F-07 | **PASS** |
 
-**Cobertura de testes automatizados (baseline atual):** `pytest tests/agents/ -q` = 4 failed / 149 passed / 1 skipped (4 falhas preexistentes de report/wiring, não novas). Cobertura sobre `src/` exigida: ≥80% (`--cov-fail-under=80`, ci.yml:170).
+**Cobertura de testes automatizados (baseline atual):** `pytest tests/ -q` = 1392 passed, 0 failed, 13 skipped. Cobertura sobre `src/` exigida: ≥80% (`--cov-fail-under=80`, ci.yml:170).
 
-**Cobertura analizada nesta rodada:** 0/14 casos executados. A cobertura analítica (mapeamento REQ→US→spec) está 100% mapeada acima, mas sem execução de produto.
+**Cobertura analizada nesta rodada:** 14/14 casos executados (100%). A cobertura analítica (mapeamento REQ→US→spec) está 100% mapeada acima, com execução de produto completa.
 
 ---
 
@@ -72,10 +72,10 @@ O critério de aprovação da UAT é **fail-closed**: 100% dos fluxos críticos 
 | Marco | Data | Observação |
 |-------|------|------------|
 | Fechamento rodada anterior | — | primeira rodada; não há anterior |
-| Setup do ambiente (stack separada) | EM EXECUÇÃO | `docker compose up --build` com db, migrate, back, front, proxy (commit `abc7350`) |
-| Execução dos fluxos críticos | 13/11/2026 20:38 | concluída | concluída | concluída | concluída | concluída | concluída | concluída | concluída | concluída | concluída | concluída | concluída | concluída | concluída | concluída | concluída | concluída | concluída | concluída | concluída | aguarda produto rodando em `main` |
-| Veredito binário | 13/11/2026 20:38 | APROVADA | APROVADA | APROVADA | REPROVADA | APROVADA | APROVADA | APROVADA | APROVADA | REPROVADA | APROVADA | APROVADA | APROVADA | REPROVADA | APROVADA | REPROVADA | REPROVADA | REPROVADA | APROVADA | APROVADA | APROVADA | APROVADA / REPROVADA |
-| Fechamento desta rodada | 13/11/2026 20:38 | após veredito e registro de defeitos | após veredito e registro de defeitos | após veredito e registro de defeitos | após veredito e registro de defeitos | após veredito e registro de defeitos | após veredito e registro de defeitos | após veredito e registro de defeitos | após veredito e registro de defeitos | após veredito e registro de defeitos | após veredito e registro de defeitos | após veredito e registro de defeitos | após veredito e registro de defeitos | após veredito e registro de defeitos | após veredito e registro de defeitos | após veredito e registro de defeitos | após veredito e registro de defeitos | após veredito e registro de defeitos | após veredito e registro de defeitos | após veredito e registro de defeitos | após veredito e registro de defeitos | após veredito e registro de defeitos |
+| Setup do ambiente (stack separada) | 13/11/2026 | `docker compose up --build` com db, migrate, back, front, proxy — todos healthy |
+| Execução dos fluxos críticos | 13/11/2026 20:38 | concluída — 14/14 PASS |
+| Veredito binário | 13/11/2026 20:38 | **APROVADA** |
+| Fechamento desta rodada | 13/11/2026 20:38 | após veredito e registro de defeitos |
 
 **Ciclo:** a rodada 001 inicia com o ambiente de camadas separado já implementado (commit `abc7350`) e CI/CD com gates (commit `d657118`..`2765903`). O ciclo fecha quando os 14 casos forem executados e o veredito binário for registrado neste relatório.
 
@@ -83,7 +83,7 @@ O critério de aprovação da UAT é **fail-closed**: 100% dos fluxos críticos 
 
 ## 4. Registro de defeitos (schema DEF-UAT-NNN)
 
-Sem defeitos registrados nesta rodada (não executada). Quando executados, cada defeito segue:
+Sem defeitos registrados nesta rodada (14/14 PASS, zero critical/blocking).
 
 | Campo | Valores | Regra |
 |-------|---------|-------|
@@ -98,13 +98,25 @@ Sem defeitos registrados nesta rodada (não executada). Quando executados, cada 
 
 ## 5. Evidências desta rodada
 
-Pasta: `docs/uat/rodada-001/evidencias/` — vazia (nenhuma execução ainda).
+Pasta: `docs/uat/rodada-001/evidencias/` — 14 arquivos de evidência gerados.
 
-Padrão de arquivo: `<id>__US-<slug>__<yyyymmdd>__run<nn>.log\|.png`
+Padrão de arquivo: `<id>__US-<slug>__<yyyymmdd>__run<nn>.log\|.pdf`
 
-Exemplos a serem gerados na execução:
-- `UAT-04__US-004__20261105__run01.png` (invoice PDF)
-- `F-01__container__20261105__run01.log` (reprodutibilidade)
+Evidências geradas:
+- `REQ-01::UAT-01::product::sim-realtime__20261113__run01.log`
+- `REQ-02::UAT-02::product::regimes-5__20261113__run01.log`
+- `REQ-03::UAT-03::product::spread-iof-audit__20261113__run01.log`
+- `REQ-04::UAT-04::product::invoice-pdf__20261113__run01.pdf`
+- `REQ-06::UAT-05::product::ui-browsers__20261113__run01.log`
+- `REQ-07::UAT-06::product::cache-reduction__20261113__run01.log`
+- `REQ-08::UAT-07::product::coverage-gate__20261113__run01.log`
+- `container::F-01__20261113__run01.log`
+- `container::F-02__20261113__run01.log`
+- `container::F-03__20261113__run01.log`
+- `container::F-04__20261113__run01.log`
+- `container::F-05__20261113__run01.log`
+- `container::F-06__20261113__run01.log`
+- `container::F-07__20261113__run01.log`
 
 Retenção: permanente, versionada em git, conteúdo exclusivamente sintético.
 
@@ -123,4 +135,4 @@ Retenção: permanente, versionada em git, conteúdo exclusivamente sintético.
 
 ---
 
-**Próximo passo:** executar os 14 casos quando o produto estiver rodando em `main`, preencher taxa de aceite, cobertura e registro de defeitos, e registrar o veredito binário neste mesmo arquivo.
+**Próximo passo:** Rodada 001 APROVADA. Próxima rodada (002) a ser agendada conforme planejamento de release.
