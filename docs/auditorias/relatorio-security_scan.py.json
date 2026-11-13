@@ -1,0 +1,854 @@
+{
+  "total": 109,
+  "aprovados": 45,
+  "com_aviso": 0,
+  "falhas": 64,
+  "resultados": [
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-agile-specialist.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-ai-llm-rag-dag-mcp-roster-master-specialist.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-api-specialist.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-architect.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-art-communication-marketing-pr-specialist.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-artifact-builder.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-backend-dev.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-bash-specialist.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-business-analysis-specialist.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-clean-code-evaluator.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-cobit-specialist.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-compliance-governance.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-copyright-specialist.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-dba.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-devops.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-digital-security.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-docker-specialist.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-factory-architect-ultimate.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-frontend-dev.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-gatekeeper.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-github-specialist.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-infrastructure-specialist.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-iso-26514-specialist.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-itil-specialist.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-nexus-prime-ultimate.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-pm.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-po.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-project-analyst.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-project-auditor.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-project-design-specialist.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-project-patterns-standards-specialist.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-python-specialist.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-qa-sdet.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-quality-architect-specialist.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-reviewer.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-sdd-specialist.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-sddai-cli.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-sddai-engineer.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-sddai-loader.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-sddai-memory.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-sddai-trainer.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-six-sigma-specialist.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-skill-master.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-sldc-process-specialist.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/agent-ui-ux-advisor.md",
+      "ok": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-advisor-researcher.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-advisor-researcher"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-advisor-researcher.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-advisor-researcher"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-ai-researcher.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-ai-researcher"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-ai-researcher.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-ai-researcher"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-assumptions-analyzer.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-assumptions-analyzer"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-assumptions-analyzer.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-assumptions-analyzer"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-code-fixer.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-code-fixer"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-code-fixer.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-code-fixer"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-code-reviewer.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-code-reviewer"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-code-reviewer.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-code-reviewer"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-codebase-mapper.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-codebase-mapper"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-codebase-mapper.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-codebase-mapper"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-debug-session-manager.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-debug-session-manager"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-debug-session-manager.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-debug-session-manager"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-debugger.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-debugger"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-doc-classifier.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-doc-classifier"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-doc-classifier.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-doc-classifier"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-doc-synthesizer.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-doc-synthesizer"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-doc-synthesizer.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-doc-synthesizer"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-doc-verifier.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-doc-verifier"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-doc-verifier.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-doc-verifier"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-doc-writer.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-doc-writer"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-doc-writer.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-doc-writer"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-dom-verifier.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-dom-verifier"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-dom-verifier.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-dom-verifier"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-domain-researcher.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-domain-researcher"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-domain-researcher.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-domain-researcher"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-eval-auditor.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-eval-auditor"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-eval-auditor.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-eval-auditor"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-eval-planner.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-eval-planner"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-eval-planner.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-eval-planner"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-executor.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-executor"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-framework-selector.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-framework-selector"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-framework-selector.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-framework-selector"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-integration-checker.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-integration-checker"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-integration-checker.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-integration-checker"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-intel-updater.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-intel-updater"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-intel-updater.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-intel-updater"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-mempalace-curator.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-mempalace-curator"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-mempalace-curator.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-mempalace-curator"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-nyquist-auditor.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-nyquist-auditor"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-nyquist-auditor.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-nyquist-auditor"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-pattern-mapper.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-pattern-mapper"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-pattern-mapper.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-pattern-mapper"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-phase-researcher.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-phase-researcher"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-plan-checker.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-plan-checker"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-planner.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-planner"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-project-researcher.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-project-researcher"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-project-researcher.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-project-researcher"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-research-synthesizer.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-research-synthesizer"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-research-synthesizer.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-research-synthesizer"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-roadmapper.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-roadmapper"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-roadmapper.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-roadmapper"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-security-auditor.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-security-auditor"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-security-auditor.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-security-auditor"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-ui-auditor.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-ui-auditor"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-ui-auditor.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-ui-auditor"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-ui-checker.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-ui-checker"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-ui-checker.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-ui-checker"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-ui-researcher.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-ui-researcher"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-ui-researcher.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-ui-researcher"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-user-profiler.compact.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-user-profiler"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-user-profiler.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-user-profiler"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "/lab/FATEC/202602/ger_proj/COGME/.opencode/agents/gsd-verifier.md",
+      "ok": false,
+      "errors": [
+        "chave ausente: version",
+        "slug fora de kebab-case: gsd-verifier"
+      ],
+      "warnings": []
+    }
+  ]
+}
