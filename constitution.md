@@ -16,14 +16,14 @@ tags:
 ---
 # CONSTITUIÇÃO DO PROJETO COGME
 
-<!-- Versão: 1.3.0 | Ratificação: 2026-10-29/31, 2026-11-05, 2026-11-14 | Status: VIGENTE-INTERINA (emenda E-20: escopo multiusuário, extensão M4, Argon2id — aguardando co-assinatura e hash definitivo) |
+<!-- Versão: 1.3.0 | Ratificação: 2026-10-29/31, 2026-11-05, 2026-11-14 | Status: VIGENTE-PLENA (emenda E-20: escopo multiusuário, extensão M4, Argon2id, P-14/P-15 — co-assinatura e hash definitivo registrados) |
 
 ## ART. 5.4 — CO-ASSINATURA (Atualizado 2026-11-14 — RAT-2026-11-14-E20)
 
-- **Versão:** 1.3.0 — Status: VIGENTE-INTERINA
-- **Hash normativo:** `PENDENTE_CALCULO_POS_COMMIT` *(método: sha256 dos bytes de `## PREÂMBULO` até a linha imediatamente anterior ao bloco final `## CO-ASSINATURA` — região sem auto-referência de hash)*
+- **Versão:** 1.3.0 — Status: VIGENTE-PLENA
+- **Hash normativo:** `16c6c3c426d7751f5d3a2725da80f8b02a45fdb027a8c4cc1933e7ce5d326895` *(método: sha256 dos bytes de `## PREÂMBULO` até a linha imediatamente anterior ao bloco final `## CO-ASSINATURA` — região sem auto-referência de hash; valor idêntico ao registrado na tabela CO-ASSINATURA ao pé, único registrador)*
 - **Hash anterior (v1.2.2, 05/11/2026):** `373c391124dd93c386d6296f8ca10d2ffcf98711f9c2fe0f91cc7fd54e4beaa7` — commit `8c7f3b7368a7439f4e1444b6c84a601fe7e7166e`
-- **Commit:** `PENDENTE_COMMIT_REAL`
+- **Commit:** `de807ea5f567f7a114ecd01cc6068b36b2004b17`
 - **Data da co-assinatura vigente:** 2026-11-14
 - **Papel:** Gerente de Projeto — CCB de membro único
 - **Instrumento:** Emenda E-20 — escopo multiusuário (CR-002), extensão M4 para 30/12/2026, dependência Argon2id, princípios P-14/P-15 — ratificação humana CCB de membro único via prompt expresso 2026-11-14
@@ -283,4 +283,4 @@ Este bloco não integra o hash normativo.
 | 1.2.0   | `b3f296c6ed592bb3f276302148eeb0360a72ebe35fdd48a9b972ba8261851db4` | `7cff886`                     | 2026-10-30 | Gerente de Projeto — CCB de membro único | COGME-UNIVERSAL-ADJUSTMENT-PARTITIONED-v4.1.2 + prompt expresso CCB 30/10/2026 |
 | 1.2.1   | `5ad5ec8f2ae7891cca020d51956e5fa492eee8dbcd15490fec84875086f95f65` | `bec6c1a778c96489b039eb649d3c02e7c7aac7af` + commit `62b280728acc49d2c916ce93962dc6f432e93fec` + commit `a62f5f3` (re-hash definitivo) | 31/10/2026 | Gerente de Projeto — CCB de membro único | Consolidação v1.2.1 (remoção de duplicata Arts. 6-10) + prompt expresso CCB 31/10/2026; **re-hash definitivo RAT-2026-10-31-A12** (método: bytes de `## PREÂMBULO` até antes do bloco `## CO-ASSINATURA` que começa a secao de co-assinatura ao pe; substitui `a29c61ff…`, `02e5b695…`, `5394fc8c…` e `2d07f063…` nao conferentes) |
 | 1.2.2   | `373c391124dd93c386d6296f8ca10d2ffcf98711f9c2fe0f91cc7fd54e4beaa7` | `8c7f3b7368a7439f4e1444b6c84a601fe7e7166e` (v1.2.2) / commit de fechamento (re-hash definitivo) | 05/11/2026 | Gerente de Projeto — CCB de membro único | Inclusão das normas de artefatos (template + nomenclatura) na hierarquia normativa Art. 2.1; bump v1.2.1 → v1.2.2 via RAT-2026-11-05-A20; re-hash definitivo confere com metodo Art. 5.4 |
-| 1.3.0   | `PENDENTE_CALCULO_POS_COMMIT` | `PENDENTE_COMMIT_REAL` | 14/11/2026 | Gerente de Projeto — CCB de membro único | Emenda E-20 (CR-002 multiusuário, extensão M4, Argon2id, P-14/P-15, Art. 9.3v) via RAT-2026-11-14-E20; prompt expresso CCB 2026-11-14 |
+| 1.3.0   | `16c6c3c426d7751f5d3a2725da80f8b02a45fdb027a8c4cc1933e7ce5d326895` | `de807ea5f567f7a114ecd01cc6068b36b2004b17` | 14/11/2026 | Gerente de Projeto — CCB de membro único | Emenda E-20 (CR-002 multiusuário, extensão M4, Argon2id, P-14/P-15, Art. 9.3v) via RAT-2026-11-14-E20; prompt expresso CCB 2026-11-14 |
