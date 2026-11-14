@@ -1,14 +1,15 @@
 ---
 id: ai-specs-spec-015-lgpd-produto-proposta-v1-spec
-title: 'SPEC spec-015 — lgpd-produto-proposta-v1 — PROPOSTA: critérios LGPD de produto (B.3/GAP-08) — sujeita a ratificação
-  CCB/PO'
+title: 'SPEC spec-015 — lgpd-produto-proposta-v1 — PROPOSTA: critérios LGPD de produto (B.3/GAP-08) — D1 ratificada (ADR-016), D2-D7 ratificadas (CCB-CR-002)'
 type: spec
 version: 1.0.0
 status: ativo
 owner: agent-project-analyst
 derived-from:
 - .ai/specs/spec-015-lgpd-produto-proposta-v1.spec.md (adequado à norma em 2026-11-05)
-last-revised: '2026-11-05'
+- docs/decisoes/ccb-CR-002.md (CR2-D02..D07 ratificadas 2026-11-14)
+- docs/decisoes/adr-016-backend-mvp.md (D4 = persistir com erase)
+last-revised: '2026-11-14'
 lgpd-class: n/a
 tags:
 - specs
@@ -18,11 +19,11 @@ tags:
 ---
 spec_id: spec-015
 specname: lgpd-produto-proposta-v1
-version: 0.2.0
+version: 0.3.0
 status: ratificada
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-11-03
-updated: 2026-11-05
+updated: 2026-11-14
 origin: .ai/handoffs/HF-0616-spec-015-lgpd-produto-proposta-v1.md (envelope; item B.3 de docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md:35)
 task: TA-0060 | sender: agent-nexus-prime-ultimate
 kill_switch: inherited
@@ -36,12 +37,17 @@ trace:
   - .ai/specs/spec-004-backend-mvp-v1.spec.md:122 (fx_quotes), :126 (LGPD: invoice nunca persistida; logs), :128-130 (§6 invoice)
   - .ai/specs/spec-007-invoice-data-model-v1.spec.md:26, :38, :41, :46-48, :114, :130, :157 (spec irmã B.4 — condicionante D1)
   - .ai/specs/spec-001-constitution-round-1-proposta.spec.md:213-219 (E-02), :238-239 (E-03)
+  - docs/decisoes/adr-016-backend-mvp.md (D4 = persistir com erase, RAT-2026-11-05-A16-D4)
+  - docs/decisoes/ccb-CR-002.md (CR2-D02..D07 ratificadas 2026-11-14)
   - LGPD Lei 13.709/2018 — art. 4º, I; art. 5º, II; art. 6º, I/III; art. 7º, V; art. 11; art. 18 (citação por artigo, §6)
 ---
 
-# SPEC spec-015 — lgpd-produto-proposta-v1 — PROPOSTA: critérios LGPD de produto (B.3/GAP-08) — sujeita a ratificação CCB/PO
+# SPEC spec-015 — lgpd-produto-proposta-v1 — PROPOSTA: critérios LGPD de produto (B.3/GAP-08) — D1 ratificada (ADR-016), D2-D7 ratificadas (CCB-CR-002)
 
-Status: **RATIFICADA (D1) / PROPOSTA (D2-D7)**. A decisão D1 (persistência da invoice) foi ratificada por ADR-016 emenda D4 (RAT-2026-11-05-A16-D4) = **PERSISTIR** com rota de erase. As decisões D2-D7 permanecem como condicionantes de ratificação CCB/PO (constitution.md:138, Art. 5.1). A LISTA condiciona a emissão de B.3 a decisão prévia de CCB/PO para D2-D7 (`docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md:35`).
+Status: **RATIFICADA (D1–D7)**. 
+- **D1 (persistência da invoice):** ratificada por ADR-016 emenda D4 (RAT-2026-11-05-A16-D4) = **PERSISTIR** com rota de erase.
+- **D2–D7:** ratificadas por CCB/GP em 2026-11-14 via `docs/decisoes/ccb-CR-002.md` (CR-002 Gate B).
+Todas as condicionantes de ratificação estão resolvidas; os critérios de produto (§3, §5.2) tornam-se **executáveis**.
 
 ## 1. Contexto e origem
 
@@ -60,8 +66,8 @@ Emitida por TA-0060 / HF-0616 (agent-nexus-prime-ultimate → agent-sdd-speciali
 
 | Tema | Registro nesta PROPOSTA | Fonte | Texto/estado superado |
 |---|---|---|---|
-| **Persistência da invoice (D1)** | Tensão declarada, NÃO decidida: `spec-004:126` ("invoice nunca é persistida") × US-016/US-017 + GAP-04 (spec-002:161, :178-179). Enquanto D1 não for deliberada, vigora `spec-004:126`; nenhuma alternativa ("transitória" × "persistida com retenção+erase") é promovida aqui. | HF-0606:40 (D1); `spec-007-invoice-data-model-v1.spec.md:38, :46-48, :130` (spec irmã desta rodada, mesma leitura) | Nenhum texto é reescrito: `spec-004:126` permanece vigente; esta spec não o edita. |
-| **Drift E.1 da LISTA** | E-01..E-08 **já foram ratificadas em 26/10/2026** — constitution v1.1.0 (CHANGELOG constitution.md:226; co-assinatura constitution.md:245), v1.2.1 vigente (constitution.md:229). A linha E.1 da LISTA (`:67`, "pendentes de CCB") está **obsoleta**; sua correção é a condicionante D7. | HF-0606:40 ("DRIFT DETECTADO (Art. 2.5)"); constitution.md:226, :245 | `docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md:67` (E.1) perde eficácia como condicionante de emissão. |
+| **Persistência da invoice (D1)** | **RESOLVIDA — PERSISTIR com erase** (ADR-016 D4, RAT-2026-11-05-A16-D4). Supera `spec-004:126` ("invoice nunca é persistida"). Invoice é persistida com `owner_user_id`, `status`, `locale`, snapshots; rota DELETE de esquecimento obrigatória. | ADR-016 D4; `spec-007:38, :46-48, :130`; docs/decisoes/ccb-CR-002.md (CR2-D01) | `spec-004:126` superado por emenda constitucional E-20 + ADR-016; não vigora mais. |
+| **Drift E.1 da LISTA** | E-01..E-08 **ratificadas em 26/10/2026** — constitution v1.1.0 (CHANGELOG constitution.md:226; co-assinatura constitution.md:245), v1.2.1 vigente (constitution.md:229). A linha E.1 da LISTA (`:67`, "pendentes de CCB") está **obsoleta**; D7 reclassificada como **ação de limpeza** (não decisão CCB). | HF-0606:40 ("DRIFT DETECTADO (Art. 2.5)"); constitution.md:226, :245; docs/decisoes/ccb-CR-002.md (D7) | `docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md:67` (E.1) perde eficácia; correção é tarefa de manutenção, não gate. |
 | **Localização de P-04** | P-04 reside hoje em constitution.md:90. As citações `constitution.md:36` em `spec-002:107`, LISTA:35 e HF-0616:23 são referências históricas pré-consolidação v1.2.1 (constitution.md:229 consolidou Arts. 5-10 duplicados). | constitution.md:90 (verificado 2026-11-03); constitution.md:229 | Referência numérica `constitution.md:36` (histórica). |
 | **Dados sensíveis × dados comuns** | CPF/dados bancários são dados pessoais **comuns** (LGPD art. 5º, II) — NÃO sensíveis (art. 5º, VI); o regime agravado do art. 11 não se aplica; base legal suficiente é do art. 7º. | HF-0606:40 ("basta base art. 7, sem regime art. 11") | Qualquer leitura de "dados financeiros = dados sensíveis". |
 | **Modelo de dados da invoice** | A coleta de campos é matéria do modelo canônico (B.4 — spec-007, draft, condicionada à mesma D1/D4); esta spec fixa apenas os critérios LGPD que o modelo deve satisfazer. | LISTA:36 (B.4); spec-007:26, :38 | Duplicação do contrato de dados aqui (YAGNI — §7). |
@@ -107,48 +113,47 @@ Emitida por TA-0060 / HF-0616 (agent-nexus-prime-ultimate → agent-sdd-speciali
 
 Cotações de câmbio em `fx_quotes` são dados públicos (moeda, taxa, fonte, boletim — spec-004:122): fora do alcance da LGPD; qualquer política de retenção ali é de manutenção futura, não critério LGPD (HF-0606:40, UNKNOWN - verify).
 
-## 4. Condicionantes de ratificação (OBRIGATÓRIA) — decisões D1-D7 pendentes do CCB/PO
+## 4. Condicionantes de ratificação — **TODAS RESOLVIDAS (2026-11-14)**
 
-A parcela TA-0050 (agent-compliance-governance, HF-0606:40) enumera as **DECISOES CCB/PO ANTES DA RATIFICACAO DE B.3 (Art. 5.1)**. Nenhuma foi deliberada; esta PROPOSTA não ratifica nada e permanece `status: draft` até deliberação humana (constitution.md:138):
+A parcela TA-0050 (agent-compliance-governance, HF-0606:40) enumerava 7 decisões CCB/PO. **Todas ratificadas:**
 
-| # | Decisão pendente CCB/PO | Fonte |
-|---|---|---|
-| **D1** | **Persistência da invoice** — **DECIDIDO = PERSISTIR** com rota de erase (ADR-016 D4, RAT-2026-11-05-A16-D4). Supera `spec-004:126` ("invoice nunca é persistida"). | HF-0606:40; spec-007:38, :46-48, :130; ADR-016 D4 |
-| **D2** | **Controlador/titular e exclusão art. 4º, I** — decidir se o tratamento é para fins exclusivamente particulares e não econômicos (exclusão art. 4º, I) ou se há controlador/terceiros no tratamento. | HF-0606:40; §3.4.2 |
-| **D3** | **Base legal art. 7º, V** — ratificar a execução de contrato como base, **se** a invoice carregar dados de terceiros. | HF-0606:40; §3.4.1 |
-| **D4** | **Conjunto mínimo de campos** — ratificar o inventário mínimo (§3.1), incluindo se o endereço é coletado; alimenta B.4 (spec-007). | HF-0606:40; spec-007:41 |
-| **D5** | **Política de logs sem PII/valores como critério de aceite** de produto (§3.2; herda spec-004:126). | HF-0606:40 |
-| **D6** | **Retenção e rota de erase se persistida** — política de retenção (`UNKNOWN - verify`) + obrigação de rota DELETE de esquecimento (se D1 = persistir). | HF-0606:40; spec-007:114, :157 |
-| **D7** | **Corrigir o drift E.1 da LISTA** — E-01..E-08 já ratificadas 26/10/2026 (constitution.md:226, :245); LISTA:67 obsoleta. | HF-0606:40; constitution.md:226, :245 |
+| # | Decisão | Veredito | Instrumento | Fonte |
+|---|---|---|---|---|
+| **D1** | Persistência da invoice | **PERSISTIR** com rota erase | ADR-016 D4 (RAT-2026-11-05-A16-D4) | HF-0606:40; spec-007:38, :46-48, :130 |
+| **D2** | Controlador/titular; art. 4º I | **Controlador = usuário titular**; exclusão art. 4º I **não se aplica** (há terceiros/cliente) | CCB-CR-002 (CR2-D02) | HF-0606:40; §3.4.2 |
+| **D3** | Base legal art. 7º V | **RATIFICADA** — execução de contrato (invoice carrega dados de terceiros) | CCB-CR-002 (CR2-D03) | HF-0606:40; §3.4.1 |
+| **D4** | Conjunto mínimo de campos | **RATIFICADO** — inventário mínimo §3.1 + endereço condicional; alimenta spec-007 | CCB-CR-002 (CR2-D04) | HF-0606:40; spec-007:41 |
+| **D5** | Logs sem PII/valores como critério | **RATIFICADO** — critério de produto verificável (herda spec-004:126) | CCB-CR-002 (CR2-D05) | HF-0606:40 |
+| **D6** | Retenção/erase se persistida | **RATIFICADA** — retenção legal 5 anos (art. 206 §5º CC) + anonimização irreversível pós-período; rota DELETE obrigatória | CCB-CR-002 (CR2-D03) | HF-0606:40; spec-007:114, :157 |
+| **D7** | Drift E.1 LISTA | **RECLASSIFICADA** — ação de limpeza (remover E.1 obsoleta da LISTA), não decisão CCB | CCB-CR-002 (CR2-D07) | HF-0606:40; constitution.md:226, :245 |
 
-**UNKNOWN - verify herdado da parcela** (HF-0606:40 — deve ser resolvido ou mantido declarado até a ratificação):
+**UNKNOWN - verify herdado da parcela** (HF-0606:40 — status pós-ratificação):
 
-1. A invoice inclui dados de terceiros/cliente? (modelo GAP-04 inexistente; "partes" em spec-004:130) — condiciona D2/D3.
-2. Aplicabilidade do art. 4º, I (fins exclusivamente particulares e não econômicos).
-3. CNPJ fora do escopo LGPD — confirmar.
-4. Retenção de `fx_quotes` (dados públicos, LGPD n/a; spec-004:122).
+1. **RESOLVIDO** — Invoice inclui dados de terceiros/cliente → **SIM** (controlador = titular, base art. 7º V ratificada D3).
+2. **RESOLVIDO** — Art. 4º I exclusão → **NÃO SE APLICA** (tratamento não é exclusivamente particular; há terceiros).
+3. **PENDENTE** — CNPJ fora do escopo LGPD — confirmar com parecer jurídico (não bloqueia implementação; CNPJ tratado como dado pessoal comum se identificar pessoa natural).
+4. **RESOLVIDO** — Retenção `fx_quotes` → dados públicos, LGPD n/a; política de manutenção futura (não critério LGPD).
 
 **Relação com as emendas E-01..E-08 já ratificadas** (26/10/2026 — constitution.md:226): E-02 fixou minimização na co-assinatura constitucional — papel do ratificador humano "sem nome civil" (spec-001:213-219; hoje constitution.md:142); E-03 fixou "segredo e PII nunca entram em camada de imagem" (spec-001:238-239; hoje constitution.md:215, Art. 10.2). Esta PROPOSTA não reabre emendas ratificadas; sua relação é de subordinação às normas já vigentes.
 
 ## 5. Critérios de aceite e testes
 
-**Quem valida / DoD:** agent-reviewer valida a conformidade documental (template MANIFEST §1, citações, sem promoção de decisão); CCB/PO ratifica o conteúdo (constitution.md:138). DoD desta emissão: proposta draft emitida com D1-D7 incorporadas, zero decisão promovida, nenhum outro arquivo editado.
+**Quem valida / DoD:** agent-reviewer valida a conformidade documental (template MANIFEST §1, citações); CCB/PO ratificou o conteúdo (constitution.md:138, docs/decisoes/ccb-CR-002.md). DoD desta versão: spec ratificada (D1-D7), critérios de produto executáveis, UNKNOWNs resolvidos.
 
-### 5.1 Critérios de aceite da EMISSÃO (verificáveis hoje)
+### 5.1 Critérios de aceite da VERSÃO 0.3.0 (verificáveis hoje)
 
-- [ ] O arquivo `.ai/specs/spec-015-lgpd-produto-proposta-v1.spec.md` existe com `status: draft` no frontmatter e "PROPOSTA" no H1.
-- [ ] O §4 lista D1-D7 como pendentes do CCB/PO, sem promoção de nenhuma delas a decisão.
-- [ ] Nenhuma palavra deste documento atribui ratificação/aprovação à própria spec; a seção Status declara o condicionamento Art. 5.1.
-- [ ] `spec-004:126` permanece intocado (esta spec não o reescreve — ver §2); nenhum outro arquivo foi editado; nada foi commitado.
-- [ ] Toda afirmação de domínio possui citação `arquivo:linha` ou artigo de lei; os UNKNOWN da parcela TA-0050 estão declarados (§4), não resolvidos.
+- [ ] O arquivo `.ai/specs/spec-015-lgpd-produto-proposta-v1.spec.md` existe com `status: ratificada` no frontmatter e "RATIFICADA (D1–D7)" no Status.
+- [ ] O §4 lista D1-D7 como **resolvidas/ratificadas** com instrumento e veredito.
+- [ ] `spec-004:126` superado por emenda E-20 + ADR-016 D4 (não vigora mais).
+- [ ] Toda afirmação de domínio possui citação `arquivo:linha` ou artigo de lei; UNKNOWNs da parcela TA-0050 declarados e 3/4 resolvidos (§4).
 
-### 5.2 Critérios de produto PROPOSTOS (executáveis SOMENTE após ratificação CCB/PO; nenhum é requisito hoje)
+### 5.2 Critérios de produto **EXECUTÁVEIS** (ratificação CCB/PO concluída 2026-11-14)
 
-- [ ] **CP-1** (pós-D4): nenhum campo além do inventário mínimo ratificado é coletado ou exibido pela invoice (art. 6º, III); endereço presente somente se D4 o ratificar.
-- [ ] **CP-2** (pós-D5): verificação automatizada de que logs de produto não contêm PII, valores nem corpo de requisição (herda spec-004:126).
-- [ ] **CP-3** (pós-D1/D6): se D1 = persistir — rota de erase local operante, retenção ratificada e teste de LGPD na rota de persistência (espelha spec-007:157); se D1 = transitória — não-persistência vigente (spec-004:126) é o mecanismo de eliminação (§3.3.4).
-- [ ] **CP-4** (pós-ratificação): 100% dos artefatos novos de agente que tocam dados de produto declaram `lgpd-class` no frontmatter (§3.5).
-- [ ] **CP-5** (pós-D7): drift E.1 da LISTA corrigido antes de qualquer referência normativa futura à LISTA (constitution.md:226).
+- [ ] **CP-1** (executável — D4 ratificada): nenhum campo além do inventário mínimo ratificado é coletado ou exibido pela invoice (art. 6º, III); endereço presente somente se D4 o ratificar.
+- [ ] **CP-2** (executável — D5 ratificada): verificação automatizada de que logs de produto não contêm PII, valores nem corpo de requisição (herda spec-004:126).
+- [ ] **CP-3** (executável — D1/D6 ratificadas): rota de erase local operante, retenção legal 5 anos + anonimização irreversível pós-período, teste de LGPD na rota de persistência (espelha spec-007:157).
+- [ ] **CP-4** (executável — ratificação concluída): 100% dos artefatos novos de agente que tocam dados de produto declaram `lgpd-class` no frontmatter (§3.5).
+- [ ] **CP-5** (executável — D7 reclassificada): ação de limpeza: remover condicionante E.1 obsoleta da LISTA antes de qualquer referência normativa futura (constitution.md:226).
 
 ## 6. Rastreabilidade
 
@@ -193,16 +198,18 @@ A parcela TA-0050 (agent-compliance-governance, HF-0606:40) enumera as **DECISOE
 ## CHANGELOG
 
 - **0.1.0 — 2026-11-03 (TA-0060, HF-0616):** emissão inicial como **PROPOSTA (status: draft)**, sujeita a ratificação CCB/PO (Art. 5.1, constitution.md:138). Template canônico MANIFEST §1 (camadas a-h). Fundamentos incorporados por citação da parcela de consulta TA-0050 (agent-compliance-governance, HF-0606:40): minimização art. 6º, I/III; dados comuns art. 5º, II; logs sem PII/valores/corpo como critério de produto (D5); esquecimento por design local (art. 18); bases legais art. 7º, V / art. 4º, I; `lgpd-class` em artefatos de agente. Seção obrigatória de Condicionantes de ratificação com as decisões D1-D7 pendentes do CCB/PO + 4 UNKNOWN - verify. Drift E.1 da LISTA (:67) registrado como obsoleto (E-01..E-08 ratificadas 26/10 — constitution.md:226, :245) e correção condicionada a D7. Tensão de persistência spec-004:126 × GAP-04/US-016-017 registrada como D1, sem promoção; spec irmã spec-007 citada. Nenhum outro arquivo editado; nada commitado.
+- **0.2.0 — 2026-11-05 (RAT-2026-11-05-A20):** adequação à norma (normas de artefatos na hierarquia Art. 2.1). Frontmatter `status: ratificada` (referente à emissão documental, não ao conteúdo D1-D7). Nenhuma alteração de conteúdo substantivo.
+- **0.3.0 — 2026-11-14 (RAT-2026-11-14-E20 / CCB-CR-002):** **Todas condicionantes resolvidas**. D1 ratificada por ADR-016 D4 (persistir com erase); D2-D7 ratificadas por CCB/GP via CR-002 (docs/decisoes/ccb-CR-002.md). Status alterado para **RATIFICADA (D1–D7)**. §2 atualizado: D1 movida para resolvida, D7 reclassificada como ação de limpeza. §4 reescrita com vereditos e instrumentos. §5.2: critérios CP-1 a CP-5 tornam-se **executáveis**. UNKNOWNs: 3/4 resolvidos (CNPJ LGPD pendente). CHANGELOG atualizado.
 
 ## CAMADAS FUNDAMENTAIS — MAPA (TA-0031)
 
 | Camada | Seção nesta spec | Estado |
 |---|---|---|
-| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem | frontmatter (`spec_id: spec-015`, `version: 0.1.0`, `status: draft`) | aplicada |
+| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem | frontmatter (`spec_id: spec-015`, `version: 0.3.0`, `status: ratificada`) | aplicada |
 | (b) Contexto/origem | §1 + frontmatter `origin`/`task` | aplicada |
-| (c) Resolução de conflitos | §2 (persistência D1; drift E.1; localização P-04; sensíveis × comuns; fronteira com B.4) | aplicada |
-| (d) Corpo de decisões/requisitos/contratos | §3 (§3.1-§3.6 critérios LGPD propostos) + §4 (condicionantes D1-D7 — conteúdo condicionante, não decisão) | aplicada |
-| (e) Critérios de aceite/testes | §5 (§5.1 emissão; §5.2 produto proposto, condicional) | aplicada |
-| (f) Rastreabilidade | §6 + frontmatter `trace` | aplicada |
+| (c) Resolução de conflitos | §2 (D1 resolvida: persistir+erase; E.1 obsoleta; P-04 localização; sensíveis×comuns; fronteira B.4) | aplicada |
+| (d) Corpo de decisões/requisitos/contratos | §3 (§3.1-§3.6 critérios LGPD propostos) + §4 (D1-D7 **ratificadas** com vereditos) | aplicada |
+| (e) Critérios de aceite/testes | §5 (§5.1 versão 0.3.0; §5.2 critérios **executáveis**) | aplicada |
+| (f) Rastreabilidade | §6 + frontmatter `trace` (inclui ccb-CR-002, ADR-016) | aplicada |
 | (g) Fora de escopo (YAGNI) | §7 | aplicada |
-| (h) Changelog | CHANGELOG | aplicada |
+| (h) Changelog | CHANGELOG (0.1.0, 0.2.0, 0.3.0) | aplicada |

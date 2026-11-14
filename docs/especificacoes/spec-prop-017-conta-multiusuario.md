@@ -1,20 +1,24 @@
 ---
 id: docs-especificacoes-spec-prop-017-conta-multiusuario
 title: Proposta de Spec — Contas multiusuário, dados da prestadora e histórico de invoices
-type: spec
-version: 0.1.0
+type: proposta-spec
+version: 0.2.0
 status: draft
 owner: agent-project-analyst
 derived-from:
 - docs/change-requests/cr-002-cadastro-usuarios-multiusuario.md
 - docs/templates/proposta-spec-template.md
-- constitution.md (Arts. 1.2, 1.3, 3, 5.1, 7, 9)
+- constitution.md (Arts. 1.2, 1.3, 3, 5.1, 7, 9) — v1.3.0 (E-20 ratificada)
 - .ai/specs/spec-002-requisitos-review-round-1.spec.md (OS-01, US-004, US-016/US-017)
 - .ai/specs/spec-004-backend-mvp-v1.spec.md (contrato HTTP e persistência)
 - .ai/specs/spec-007-invoice-data-model-v1.spec.md (modelo canônico de invoice)
 - .ai/specs/spec-008-frontend-web-responsive-v1.spec.md (frontend, i18n e histórico)
-- .ai/specs/spec-015-lgpd-produto-proposta-v1.spec.md (critérios LGPD condicionais)
-last-revised: '2026-11-13'
+- .ai/specs/spec-015-lgpd-produto-proposta-v1.spec.md (critérios LGPD **ratificados** v0.3.0)
+- docs/decisoes/ccb-CR-002.md (CR2-D01..D09 ratificadas 2026-11-14)
+- docs/decisoes/adr-017-dependencia-argon2id.md
+- docs/decisoes/adr-018-tap-replanejamento-m4.md
+- docs/decisoes/adr-019-seguranca-multiusuario.md
+last-revised: '2026-11-14'
 lgpd-class: n/a
 tags:
 - proposta
@@ -23,9 +27,7 @@ tags:
 - multiusuario
 - invoices
 - privacidade
-spec-id: PROP-017
-camada: produto
-estado-implementacao: nao-iniciada
+proposal-id: PROP-017
 rastreia-req:
 - CR-002
 testes-vinculados: []
@@ -46,6 +48,8 @@ testes-vinculados: []
 O COGME atual é local e sem autenticação (`spec-004:54`; `spec-008:242`). A rota de invoice gera PDF, mas não vincula o documento a um titular e não mantém histórico (`spec-007:42-54`; `src/backend/routers/invoices.py:40-60`). A demanda introduce identidade, isolamento por proprietário, persistência opcional de simulações, cadastro de empresa/cliente/banco, histórico de invoices e emissão bilíngue.
 
 Isso reverte **OS-01** — autenticação/cadastro multiusuário rejeitado como fora de escopo (`spec-002:142,154-165`) e exige emenda constitucional prévia (`constitution.md:45-47`).
+
+**Emenda constitucional E-20 ratificada em 2026-11-14** (`constitution.md` v1.3.0): escopo expandido para identidade/multiusuário, prestadora/banco, clientes, histórico, invoice bilíngue, lifecycle conta. Marco M4 estendido para 30/12/2026 (ADR-018). Decisões CR2-D01..D09 ratificadas por CCB/GP (`docs/decisoes/ccb-CR-002.md`).
 
 **Descrição breve da solução proposta:**
 
@@ -247,27 +251,26 @@ flowchart TD
 - Templates separados `invoice_pt_br.html` e `invoice_en.html`; erros da API permanecem PT-BR.
 - `invoice.locale` e `client_country_code` ficam no snapshot para auditoria histórica.
 
-### 12.5 Exclusão, dormência e privacidade
+### 12.5 Exclusão, dormência e privacidade — **DECISÕES RATIFICADAS (CCB-CR-002)**
 
-- Dormência revoga sessões e bloqueia criação/alteração; dados permanecem conforme retention ratificada.
-- Reativação exige reset de senha e verificação da identidade.
-- Exclusão definitiva remove usuário, aliases, sessões, tokens, perfil, banco, clientes, simulações e eventos de lifecycle.
-- Invoices finalizadas exigem decisão CR2-D03: retenção legal, anonimização ou eliminação. A proposta **não promete retenção zero** antes desse parecer.
-- GDPR é acionado se houver oferta de serviço ou monitoramento de pessoas no EEE/Reino Unido; papel controlador/operador, bases legais, transferências e direitos do titular são decisões CR2-D02.
-- PII real nunca entra em logs, testes, seeds, handoffs ou exemplos técnicos.
+- **Dormência (CR2-D04 ratificada):** 180 dias sem login → status `dormant`; revoga sessões e bloqueia criação/alteração; dados permanecem conforme retenção ratificada. Reativação exige reset de senha + verificação de identidade.
+- **Exclusão definitiva (CR2-D03 ratificada):** Remove usuário, aliases, sessões, tokens, perfil, banco, clientes, simulações, eventos de lifecycle. **Invoices finalizadas: retenção legal mínima 5 anos (art. 206 §5º CC) + anonimização irreversível pós-período.** Rota DELETE de esquecimento obrigatória (spec-015 CP-3).
+- **LGPD/GDPR (CR2-D02 ratificada):** Controlador = usuário titular. Base legal art. 7º V LGPD (execução de contrato — invoice carrega dados de terceiros/cliente). GDPR aplica-se se oferta/monitoramento alcançar pessoas no EEE/UK. Direitos do titular operantes via erase local (single-user design).
+- **Logs/artefatos (spec-015 CP-2 ratificada):** PII real **nunca** entra em logs, testes, seeds, handoffs ou exemplos técnicos. Verificação automatizada de logs sem PII/valores/corpo.
+- **Retenção `fx_quotes` (resolvido):** Dados públicos, LGPD n/a; política de manutenção futura (não critério LGPD).
 
 ## 13. Levantamento de Specs de Relação Direta
 
-### 13.1 Novas specs a gerar
+### 13.1 Novas specs a gerar — **GATES ATUALIZADOS PÓS-RATIFICAÇÃO**
 
-| Ordem | Spec | Entregável | Dependência |
-|---:|---|---|---|
-| 1 | SPEC-022 — `account-lifecycle-privacy-v1` | decisões de retenção, dormência, exclusão, LGPD/GDPR | CR-002; precede implementação de dados sensíveis |
-| 2 | SPEC-017 — `identity-access-session-v1` | aliases, password, recovery, sessions, autorização | CR-002 + SPEC-022 |
-| 3 | SPEC-018 — `provider-profile-bank-account-v1` | tabelas, validações e APIs da prestadora/banco | SPEC-017 + SPEC-022 |
-| 4 | SPEC-019 — `client-directory-v1` | carteira, ativo/inativo e cliente fictício | SPEC-017 + SPEC-022 |
-| 5 | SPEC-020 — `simulation-invoice-history-v1` | save opt-in, owner, status, snapshots e histórico | SPEC-017/018/019 + ratificação D1 |
-| 6 | SPEC-021 — `invoice-bilingual-v1` | regra país→idioma e templates EN/PT-BR | SPEC-019/019 |
+| Ordem | Spec | Entregável | Dependência | Gate |
+|---:|---|---|---|---|
+| 1 | SPEC-022 — `account-lifecycle-privacy-v1` | retenção 5a+anonimização, dormência 180d, erase local, LGPD/GDPR (controlador=titular, base art.7ºV) | CR-002 + **D2/D3/D4/D6 ratificadas** | **Gate B — LIBERADO** |
+| 2 | SPEC-017 — `identity-access-session-v1` | aliases (HMAC), Argon2id, reset 1h TTL, sessão regenerada, owner-check, CSRF, rate-limit | CR-002 + SPEC-022 + ADR-017 + ADR-019 | **Gate C — LIBERADO** |
+| 3 | SPEC-018 — `provider-profile-bank-account-v1` | MEI/PJ, CNPJ rotaciona alias, bank accounts criptografados, snapshot invoice | SPEC-017 + SPEC-022 | **Gate D — PARALELO** |
+| 4 | SPEC-019 — `client-directory-v1` | clientes ativo/inativo, país ISO, fictício exige país, snapshot invoice | SPEC-017 + SPEC-022 | **Gate D — PARALELO** |
+| 5 | SPEC-020 — `simulation-invoice-history-v1` | save opt-in, owner, status draft/finalized, snapshots FX, histórico imutável | SPEC-017/018/019 + D1 ratificada | **Gate D — PARALELO** |
+| 6 | SPEC-021 — `invoice-bilingual-v1` | `client.country_code` → `BR`=pt-BR / demais=en; templates separados; fictício exige país | SPEC-019 + CR2-D05 ratificada | **Gate D — PARALELO** |
 
 ### 13.2 Specs existentes a emendar, não duplicar
 
@@ -294,18 +297,24 @@ Uma spec é relacionada direta se altera identidade, propriedade, persistência,
 - Exclusão e dormência passam por testes de lifecycle, retenção e fail-closed.
 - Logs, fixtures e documentação usam exclusivamente dados sintéticos.
 
-## 15. Decisões e UNKNOWNs
+## 15. Decisões e UNKNOWNs — **TODAS RATIFICADAS (2026-11-14, CCB-CR-002)**
 
-1. **CR2-D01** — emenda constitucional que admite identity/multiuser/history/directories/i18n.
-2. **CR2-D02** — papéis, bases legais e escopo territorial LGPD/GDPR.
-3. **CR2-D03** — retenção/anonimização de invoices após exclusão da conta.
-4. **CR2-D04** — prazo e efeito da dormência.
-5. **CR2-D05** — regra definitiva de país→idioma.
-6. **CR2-D06** — canal de email, TTL do reset e rotação do pepper HMAC.
-7. **CR2-D07** — posição no escopo do MVP e re-priorização do backlog.
-8. **CR2-D08** — ratificação de Rascunho/Finalizada e clonagem.
-9. **CR2-D09** — novo marco/custo ou recusa formal da expansão.
+| ID | Decisão | Veredito | Instrumento |
+|----|---------|----------|-------------|
+| **CR2-D01** | Emenda constitucional identity/multiuser/history/directories/i18n | **RATIFICADA** — E-20 (constitution.md v1.3.0) | RAT-2026-11-14-E20 |
+| **CR2-D02** | Controlador/titular, bases LGPD/GDPR, escopo territorial | **RATIFICADA** — Controlador=titular; base art.7ºV; GDPR se oferta EEE/UK | CCB-CR-002 |
+| **CR2-D03** | Retenção/anonimização invoices pós-exclusão | **RATIFICADA** — 5 anos (art.206§5ºCC) + anonimização irreversível; erase local | CCB-CR-002 |
+| **CR2-D04** | Dormência: prazo e efeito | **RATIFICADA** — 180 dias sem login → `dormant`; revoga sessões; reativação = reset+verificação | CCB-CR-002 |
+| **CR2-D05** | Regra país→idioma | **RATIFICADA** — `client.country_code`: `BR`→pt-BR, demais→en; fictício exige país | CCB-CR-002 |
+| **CR2-D06** | Canal email, TTL reset, rotação pepper HMAC | **RATIFICADA** — SMTP local/autohospedado; TTL 1h; pepper rotacionado 90d | CCB-CR-002 |
+| **CR2-D07** | Escopo MVP / re-priorização backlog | **RATIFICADA** — Cenário A Completo no M4 estendido (30/12/2026) | CCB-CR-002 + ADR-018 |
+| **CR2-D08** | Ciclo Rascunho/Finalizada / clonagem | **RATIFICADA** — rascunho editável; finalizada imutável; clone = novo rascunho + `supersedes_invoice_id` | CCB-CR-002 |
+| **CR2-D09** | Marco/custo | **RATIFICADA** — **Não criar M5; estender M4 para 30/12/2026**; AI-driven processing alocado | CCB-CR-002 + ADR-018 |
+
+**UNKNOWNs residuais:**
+1. CNPJ fora do escopo LGPD — confirmar com parecer jurídico (não bloqueia; tratado como dado comum se identificar pessoa natural).
 
 ## CHANGELOG
 
-- 0.1.0 — 2026-11-13: proposta multi-spec emitida a partir da CR-002; regras de identidade, aliases, locale e lifecycle; modelo de dez tabelas (nove novas + emenda de `invoices`); seis specs derivadas e critérios de emissão. Status draft; nenhum código, migração ou decisão humana ratificada.
+- **0.1.0 — 2026-11-13:** proposta multi-spec emitida a partir da CR-002; regras de identidade, aliases, locale e lifecycle; modelo de dez tabelas (nove novas + emenda de `invoices`); seis specs derivadas e critérios de emissão. Status draft; nenhum código, migração ou decisão humana ratificada.
+- **0.2.0 — 2026-11-14:** **Todas decisões CR2-D01..D09 ratificadas por CCB/GP** (docs/decisoes/ccb-CR-002.md). Emenda E-20 em constitution.md v1.3.0. ADRs 017, 018, 019 emitidas. Gates B/C/D liberados. §12.5 reescrito com vereditos. §13.1 atualizado com gates. §15 com tabela de vereditos. UNKNOWN CNPJ LGPD documentado.

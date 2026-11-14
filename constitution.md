@@ -2,12 +2,12 @@
 id: constitution
 title: CONSTITUIÇÃO DO PROJETO COGME
 type: constituicao
-version: 1.0.0
+version: 1.3.0
 status: ativo
 owner: agent-project-analyst
 derived-from:
 - constitution.md (adequado à norma em 2026-11-05)
-last-revised: '2026-11-05'
+last-revised: '2026-11-14'
 lgpd-class: n/a
 tags:
 - ''
@@ -16,25 +16,25 @@ tags:
 ---
 # CONSTITUIÇÃO DO PROJETO COGME
 
-<!-- Versão: 1.2.2 | Ratificação: 2026-10-29/31, 2026-11-05 | Status: VIGENTE-PLENA (consolidação de duplicata Arts. 5–10 autorizada em CCB-LOG A08; co-assinatura humana registrada via RAT-2026-10-31-A12 — Art. 5.4, gatilho deliberativo expresso do GP; inclusão das normas de artefatos (template + nomenclatura) na hierarquia Art. 2.1 via RAT-2026-11-05-A20) |
+<!-- Versão: 1.3.0 | Ratificação: 2026-10-29/31, 2026-11-05, 2026-11-14 | Status: VIGENTE-INTERINA (emenda E-20: escopo multiusuário, extensão M4, Argon2id — aguardando co-assinatura e hash definitivo) |
 
-## ART. 5.4 — CO-ASSINATURA (Atualizado 2026-10-31 — RAT-2026-10-31-A12)
+## ART. 5.4 — CO-ASSINATURA (Atualizado 2026-11-14 — RAT-2026-11-14-E20)
 
-- **Versão:** 1.2.2 — Status: VIGENTE-PLENA
-- **Hash normativo:** `373c391124dd93c386d6296f8ca10d2ffcf98711f9c2fe0f91cc7fd54e4beaa7` *(método: sha256 dos bytes de `## PREÂMBULO` até a linha imediatamente anterior ao bloco final `## CO-ASSINATURA` — região sem auto-referência de hash; valor idêntico ao registrado na tabela CO-ASSINATURA ao pé, único registrador)*
-- **Hash anterior (v1.2.1, 31/10/2026):** `5ad5ec8f2ae7891cca020d51956e5fa492eee8dbcd15490fec84875086f95f65` — commit `bec6c1a778c96489b039eb649d3c02e7c7aac7af`
-- **Commit:** `bec6c1a778c96489b039eb649d3c02e7c7aac7af` (v1.2.1) / `8c7f3b7368a7439f4e1444b6c84a601fe7e7166e` (v1.2.2)
-- **Data da co-assinatura vigente:** 2026-11-05
+- **Versão:** 1.3.0 — Status: VIGENTE-INTERINA
+- **Hash normativo:** `PENDENTE_CALCULO_POS_COMMIT` *(método: sha256 dos bytes de `## PREÂMBULO` até a linha imediatamente anterior ao bloco final `## CO-ASSINATURA` — região sem auto-referência de hash)*
+- **Hash anterior (v1.2.2, 05/11/2026):** `373c391124dd93c386d6296f8ca10d2ffcf98711f9c2fe0f91cc7fd54e4beaa7` — commit `8c7f3b7368a7439f4e1444b6c84a601fe7e7166e`
+- **Commit:** `PENDENTE_COMMIT_REAL`
+- **Data da co-assinatura vigente:** 2026-11-14
 - **Papel:** Gerente de Projeto — CCB de membro único
-- **Instrumento:** inclusão das normas de artefatos (template + nomenclatura) na hierarquia Art. 2.1 via RAT-2026-11-05-A20 — ratificação humana CCB de membro único
-- **Histórico:** consolidação da duplicata Arts. 5–10 autorizada em A08 e executada; bump v1.2.0 → v1.2.1 (RAT-2026-10-31-A12); inclusão das normas de artefatos na hierarquia normativa (RAT-2026-11-05-A20)
+- **Instrumento:** Emenda E-20 — escopo multiusuário (CR-002), extensão M4 para 30/12/2026, dependência Argon2id, princípios P-14/P-15 — ratificação humana CCB de membro único via prompt expresso 2026-11-14
+- **Histórico:** consolidação v1.2.2 (RAT-2026-11-05-A20); emenda E-20 (RAT-2026-11-14-E20) — Art. 1.2, 1.3, 3 (P-14/P-15), 9.3(v), CHANGELOG
      Método: PMBOK 7ª + Kanban + SDD + MCPs | Jurisdição: LGPD | Stack: FOSS com Bypass registrados -->
 
 ## PREÂMBULO
 
 Esta é a lei suprema do projeto **COGME — Conversor de Ganhos em Moeda Estrangeira**. Nenhum artefato, agente, script, ADR, plano, input canônico, prompt de sistema, memória persistente ou MCP a contradiz. Traição constitucional é falta gravíssima: qualquer conteúdo que viole esta Constituição é bloqueado, revertido e auditado.
 
-Esta versão incorpora as emendas **E-09 a E-19**, decorrentes da consolidação das rodadas de refatoração do Plano de Projeto, da ratificação das ADRs 001 a 012, do CCB-001, do CCB-002 e da necessidade de restauração integral diante de corrupção constitucional detectada em 29/10/2026.
+Esta versão incorpora as emendas **E-09 a E-20**, decorrentes da consolidação das rodadas de refatoração do Plano de Projeto, da ratificação das ADRs 001 a 012, do CCB-001, do CCB-002, da necessidade de restauração integral diante de corrupção constitucional detectada em 29/10/2026, e da **emenda E-20 (2026-11-14)** que admite escopo multiusuário (CR-002), estende marco M4 para 30/12/2026, adiciona dependência Argon2id e princípios P-14 (Isolamento de Dados por Proprietário) e P-15 (LGPD/GDPR por Design em Dados de Produto).
 
 ---
 
@@ -42,9 +42,18 @@ Esta versão incorpora as emendas **E-09 a E-19**, decorrentes da consolidação
 
 1.1. COGME é um conversor cambial FOSS, gratuito, de jurisdição brasileira (LGPD primária), entregue na disciplina de Gerência de Projetos da Fatec Taquaritinga, com marcos M1–M4 e entrega final em 15/12/2026. O stakeholder-avaliador canônico é **Prof. Dr. Nivaldo Carleto**, conforme ADR-008 v1.1. A stack é FOSS por regra, admitindo-se exceções proprietárias gratuitas somente mediante Bypass Protocol registrado.
 
-1.2. Escopo canônico: simulação cambial, comparação de 5 regimes de contratação, spread/IOF, emissão de invoice PDF. A EAP canônica é composta por **12 fases e 37 pacotes de trabalho**, conforme TAP v3 §4 e ADR-009.
+1.2. Escopo canônico: simulação cambial, comparação de 5 regimes de contratação, spread/IOF, emissão de invoice PDF,
+    identidade e contas multiusuário com sessão individual, cadastro da empresa prestadora e contas bancárias,
+    carteira de clientes com estado ativo/inativo, histórico persistente de simulações e invoices por proprietário,
+    invoice bilíngue (PT-BR para cliente BR, EN para cliente estrangeiro), ciclo de vida de conta (ativo, dormente,
+    exclusão definitiva) com direitos LGPD/GDPR. A EAP canônica é composta por **12 fases e 37 pacotes de trabalho**,
+    conforme TAP v3 §4 e ADR-009, com replanejamento de marcos e custo para acomodar a expansão (ADR-018).
 
-1.3. Nada fora do escopo congelado entra sem emenda constitucional prévia. O congelamento do TAP v3 (18/09/2026) é regido pela **ADR-005**, vigente, com precedência intra-TAP da seção §6 para matéria temporal e de marcos. Divergências operacionais são tratadas por Notas de Contexto nos planos, sem alteração do termo autorizativo congelado.
+1.3. Nada fora do escopo congelado entra sem emenda constitucional prévia. O congelamento do TAP v3 (18/09/2026) 
+   é regido pela **ADR-005**, vigente, com precedência intra-TAP da seção §6 para matéria temporal e de marcos.
+   Esta emenda (E-20) altera o escopo autorizado; o TAP v3 e o plano de gerenciamento serão replanejados via ADR-018
+   e Nota de Contexto antes da implementação. Divergências operacionais durante a transição são tratadas por Notas
+   de Contexto nos planos, sem alteração do termo autorizativo congelado até a emenda do TAP.
 
 1.4. A governança primária do projeto é o PMBOK® 7ª edição, por princípios e domínios de desempenho. O PMBOK® 6ª edição atua exclusivamente como dicionário terminológico, com obsolescência procedural declarada para métricas preditivas como EVM, SPI e CPI.
 
@@ -123,6 +132,10 @@ Conflito resolve-se **de cima para baixo**. A camada inferior se adequa; nunca o
 **P-12 — PRIMEIROS PRINCÍPIOS:** toda decisão de design parte de fundamentos verificáveis até a primeira causa; pressuposto sem fundamentação é KNOWLEDGE GAP declarado antes de virar premissa.
 
 **P-13 — PRECISÃO LINGUÍSTICA E DETERMINISMO OPERACIONAL:** a narrativa em PT-BR deve ser gramatical, semântica, sintática e ortograficamente impecável. Inputs canônicos, prompts e memórias operacionais não podem introduzir ambiguidade normativa, inferência não validada ou conflito hierárquico.
+
+**P-14 — ISOLAMENTO DE DADOS POR PROPRIETÁRIO:** todo recurso persistido (simulação, invoice, cliente, perfil, banco) carrega `owner_user_id` obrigatório e é acessível exclusivamente pelo titular da conta. Autorização é server-side, derivada da sessão; IDs enviados pelo cliente nunca constituem autorização. Violação é defeito de segurança tratado em gate `gatekeeper`.
+
+**P-15 — LGPD/GDPR POR DESIGN EM DADOS DE PRODUTO:** dados pessoais de produto (CPF, CNPJ, email, nome, endereço, dados bancários) são tratados sob minimização (art. 6º LGPD), bases legais ratificadas (art. 7º LGPD / art. 6 GDPR), retenção definida e direito ao esquecimento operante. Logs, seeds, fixtures, handoffs e artefatos técnicos **nunca** contêm PII real. Criptografia de segredos (senhas, tokens, dados bancários) é obrigatória. Decisões de retenção/anonymização de invoices finalizadas são condicionantes de implementação (CR2-D03).
 
 ---
 
@@ -220,6 +233,11 @@ Mudanças em uma camada não exigem mudanças nas demais. Violação dessa separ
 (ii) mudanças que alterem marcos (M1–M4), o escopo do MVP, a linha de base ou a stack tecnológica — incluindo a stack SDD — exigem ADR específica;
 (iii) nenhuma ADR pode contrariar esta Constituição: divergência com camada superior resolve-se por emenda, nunca por ADR;
 (iv) mudança que toque Kill Switch, Bypass Protocol ou os princípios do Art. 3 escala diretamente a emenda constitucional com ratificação humana.
+(v)  emenda de escopo que derive múltiplas specs e exija replanejamento de marcos (M1–M4) deve declarar, no mesmo instrumento:
+     (a) o conjunto de specs derivadas com dependências e ordem de emissão;
+     (b) o impacto em custo/cronograma com cenários (corte de escopo vs. novo marco);
+     (c) as decisões CCB condicionantes (ex.: CR2-D01..D09) e seus gates de liberação;
+     (d) a ADR de replanejamento de TAP/marcos como pré-requisito de implementação.
 
 9.4. **Sobreposição entre ADRs:** ADR mais recente pode sobrepor-se total ou parcialmente a ADR anterior, desde que declare explicitamente: ADR sobreposta, natureza da sobreposição, motivo, domínio PMBOK 7ª afetado e data. A sobreposição deve ser consolidada no OKB e registrada em commit com mensagem padrão `docs(adr): ADR-0XX sobrepõe [total|parcialmente] ADR-0YY`. ADR alguma pode sobrepor esta Constituição ou o TAP congelado.
 
@@ -244,6 +262,8 @@ Mudanças em uma camada não exigem mudanças nas demais. Violação dessa separ
 - **1.2.0 — 2026-10-29:** emenda de normalização universal e restauração integral por corrupção constitucional, incorporando ADRs 006 a 012, CCB-001, CCB-002, stack PostgreSQL/Docker/Nginx, APIs de câmbio, MCPs, memória persistente, separação L1/L2/L3, grafia canônica do stakeholder-avaliador, EAP 12/37, precisão linguística e subordinação de inputs canônicos.
 - **1.2.0 — 2026-10-30:** promulgação encerrada — Status VIGENTE-PLENA; co-assinatura humana via prompt expresso do CCB (Art. 5.4); sincronização do ecossistema (41 agentes, DAG acíclico) e lote de consolidação estrutural registrado em docs/governanca/ccb-log.md.
 - **1.2.1 — 2026-10-31:** consolidação da duplicata Arts. 5–10 (autorização CCB-LOG A08/A09-A-001); bump do header e do bloco Art. 5.4 do topo (antes inconsistentes); re-hash com método de fronteira explícito e replicável — substitui o hash `a29c61ff…` da linha v1.2.1 anterior (fronteira não documentada); instrumento: RAT-2026-10-31-A12 (gatilho deliberativo expresso do GP); parecer AUD-2610-09 encerra OKB-C-27.
+- **1.2.2 — 2026-11-05:** inclusão das normas de artefatos (template + nomenclatura) na hierarquia normativa Art. 2.1; bump v1.2.1 → v1.2.2 via RAT-2026-11-05-A20; re-hash definitivo confere com metodo Art. 5.4.
+- **1.3.0 — 2026-11-14:** **Emenda E-20** — escopo multiusuário (CR-002): identidade/sessão, prestadora/banco, clientes, histórico, invoice bilíngue, lifecycle conta (ativo/dormente/exclusão); extensão M4 para 30/12/2026 (ADR-018); dependência Argon2id (ADR-017); princípios P-14 (Isolamento por Proprietário) e P-15 (LGPD/GDPR por Design); Art. 9.3(v) fluxo de emenda multi-spec. Status: VIGENTE-INTERINA (aguardando co-assinatura e hash definitivo).
 
 ---
 
@@ -263,3 +283,4 @@ Este bloco não integra o hash normativo.
 | 1.2.0   | `b3f296c6ed592bb3f276302148eeb0360a72ebe35fdd48a9b972ba8261851db4` | `7cff886`                     | 2026-10-30 | Gerente de Projeto — CCB de membro único | COGME-UNIVERSAL-ADJUSTMENT-PARTITIONED-v4.1.2 + prompt expresso CCB 30/10/2026 |
 | 1.2.1   | `5ad5ec8f2ae7891cca020d51956e5fa492eee8dbcd15490fec84875086f95f65` | `bec6c1a778c96489b039eb649d3c02e7c7aac7af` + commit `62b280728acc49d2c916ce93962dc6f432e93fec` + commit `a62f5f3` (re-hash definitivo) | 31/10/2026 | Gerente de Projeto — CCB de membro único | Consolidação v1.2.1 (remoção de duplicata Arts. 6-10) + prompt expresso CCB 31/10/2026; **re-hash definitivo RAT-2026-10-31-A12** (método: bytes de `## PREÂMBULO` até antes do bloco `## CO-ASSINATURA` que começa a secao de co-assinatura ao pe; substitui `a29c61ff…`, `02e5b695…`, `5394fc8c…` e `2d07f063…` nao conferentes) |
 | 1.2.2   | `373c391124dd93c386d6296f8ca10d2ffcf98711f9c2fe0f91cc7fd54e4beaa7` | `8c7f3b7368a7439f4e1444b6c84a601fe7e7166e` (v1.2.2) / commit de fechamento (re-hash definitivo) | 05/11/2026 | Gerente de Projeto — CCB de membro único | Inclusão das normas de artefatos (template + nomenclatura) na hierarquia normativa Art. 2.1; bump v1.2.1 → v1.2.2 via RAT-2026-11-05-A20; re-hash definitivo confere com metodo Art. 5.4 |
+| 1.3.0   | `PENDENTE_CALCULO_POS_COMMIT` | `PENDENTE_COMMIT_REAL` | 14/11/2026 | Gerente de Projeto — CCB de membro único | Emenda E-20 (CR-002 multiusuário, extensão M4, Argon2id, P-14/P-15, Art. 9.3v) via RAT-2026-11-14-E20; prompt expresso CCB 2026-11-14 |

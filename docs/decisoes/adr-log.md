@@ -2,12 +2,12 @@
 id: docs-decisoes-adr-log
 title: ADR-LOG — Registro de Mudanças Autorizadas de ADRs (CCB Log)
 type: adr
-version: '3.1'
+version: '3.2'
 status: ratificado
 owner: agent-project-analyst
 derived-from:
 - docs/decisoes/adr-log.md (normalizado em 2026-11-05)
-last-revised: '2026-11-05'
+last-revised: '2026-11-14'
 lgpd-class: n/a
 tags:
 - decisoes
@@ -51,6 +51,9 @@ Este log é o **instrumento único de ratificação** de mudanças de ADRs. Nenh
 | ADR-LOG-012 | specs Grupo A (004, 005, 006, 008, 009, 011) | — | ratificada | 05/11/2026 | Ratificação CCB das 6 specs do Grupo A (backend MVP, container layers, UAT produto, frontend web, NFR consolidados, CI/CD pipeline). Todas aderentes ao padrão TA-0031 (frontmatter camada a + camadas b-h), nomenclatura spec-NNN-specname.spec.md (ADR-018), campo wave (WS-4). Ambiguidade ≤ 0.20 em todas (gate gsd-spec-phase). Pronto para merge do backend e execução da UAT. | RAT-2026-11-05-A16 | **APLICADA** |
 | ADR-LOG-013 | specs Grupo B (003, 001, 002, 013, 012, 014, 010) | — | ratificada | 05/11/2026 | Ratificação CCB das 7 specs do Grupo B (memória persistente SDD, emenda constitucional R1, requisitos review R1, documentação técnica, rastreabilidade prompts SDD, runtime agentes + camada CI, qualidade PDCA + Ishikawa). Todas aderentes ao padrão TA-0031 (frontmatter camada a + camadas b-h), nomenclatura spec-NNN-specname.spec.md (ADR-018), campo wave (WS-4/WS-6/WS-7). Ambiguidade ≤ 0.20 em todas (gate gsd-spec-phase). Pronto para ratificação do Grupo C. | RAT-2026-11-05-A16 | **APLICADA** |
 | ADR-LOG-014 | ADRs 001, 002, 003, 005, 006, 007, 008, 009, 011, 012, 013, 014, 015, 016 | — | normalizada | 05/11/2026 | Normalização de frontmatter: alinhamento version/status ao corpo das ADRs, campos do template canônico (spec-adr-template v1.0.0: data-decisao, data-formalizacao, decisor, gatilhos, rastreabilidade, dominio-pmbok, processo-pmbok-6, kill-switch), cópias duplicadas marcadas históricas/supersedidas (adr-005-freeze, adr-006-inteligencia-sdd), frontmatter duplos unificados (adr-013, adr-014, adr-015, adr-016), tag self-updated onde derived-from aponta para si mesmo. Nenhuma sobreposição de ADR criada; regra ADR-LOG mantida. | RAT-2026-11-05-A19 | **APLICADA** |
+| ADR-LOG-015 | ADR-017 | — | 1.0.0 | 14/11/2026 | Dependência `argon2-cffi` (Argon2id) para hash de senhas. OWASP/RFC 9106 recomendação principal. Parâmetros mínimos: m=19456, t=2, p=1. FOSS (MIT), zero custo, soberania local. Requerida por CR-002 Gate C (SPEC-017). | RAT-2026-11-14-E20 (CCB-CR-002 CR2-D06) | **APLICADA** |
+| ADR-LOG-016 | ADR-018 | — | 1.0.0 | 14/11/2026 | Replanejamento TAP/M4: extensão marco M4 de 15/12/2026 para 30/12/2026 (15 dias úteis adicionais). Cenário A Completo (6 specs + 5 emendas, 264–408h) viável com recurso AI-Driven processing. Não criar M5. Notas de Contexto em planos operacionais per ADR-005 §6. | RAT-2026-11-14-E20 (CCB-CR-002 CR2-D09) | **APLICADA** |
+| ADR-LOG-017 | ADR-019 | — | 1.0.0 | 14/11/2026 | Threat Model e controles segurança multiusuário (CR-002). STRIDE: spoofing, tampering, repudiation, info disclosure, DoS, elevation. Controles: Argon2id, session regeneration, HMAC aliases, owner-check middleware, CSRF double-submit, rate limiting, bank data encryption, log sanitization. 10 testes obrigatórios (ST-01..ST-10). Gate C → SPEC-017. | RAT-2026-11-14-E20 (CCB-CR-002 Gate C) | **APLICADA** |
 
 ---
 
@@ -84,7 +87,9 @@ Este log é o **instrumento único de ratificação** de mudanças de ADRs. Nenh
 | ADR-014 | 1.0.1 | — | **Supersedida por ADR-006 v2.1.0** (conteúdo absorvido) |
 | ADR-015 | 1.0.0 | — | **Incorporada em ADR-005 v1.1.0** (emenda de marco M2, registro de delta log em `docs/tap/delta-v3-1.md`) |
 | ADR-016 | 1.2.0 | ADR-LOG-010 | **Ratificada** (norma vigente para o backend do MVP; D4 = persistência de invoice com rota de erase) |
-| ADR-018 | 1.0.0 | ADR-LOG-011 | **Ratificada** (norma de nomenclatura de arquivos de artefato) |
+| ADR-017 | 1.0.0 | ADR-LOG-015 | **Ratificada** (dependência Argon2id para hash de senhas) |
+| ADR-018 | 1.0.0 | ADR-LOG-016 | **Ratificada** (replanejamento TAP/M4 — extensão para 30/12/2026) |
+| ADR-019 | 1.0.0 | ADR-LOG-017 | **Ratificada** (threat model e controles segurança multiusuário) |
 
 ---
 
@@ -94,6 +99,7 @@ Este log é o **instrumento único de ratificação** de mudanças de ADRs. Nenh
 |--------|------|-----------|-------------|
 | 1.0.0 | 31/10/2026 | Emissão inicial: catálogo de 6 mudanças aplicadas (ADR-001, ADR-005, ADR-008, ADR-012) e 2 ADRs próprias não-emenda (ADR-013, ADR-015) | GP Leonardo (CCB) |
 | 1.1.0 | 05/11/2026 | Normalização de frontmatter de 14 ADRs (ADR-LOG-014): alinhamento version/status ao corpo, template canônico (spec-adr-template v1.0.0), cópias duplicadas históricas (adr-005-freeze, adr-006-inteligencia-sdd), frontmatter duplos unificados (adr-013, adr-014, adr-015, adr-016), tag self-updated. | GP Leonardo (CCB) |
+| 1.2.0 | 14/11/2026 | Adição ADR-017 (Argon2id), ADR-018 (TAP/M4 replanejamento), ADR-019 (Threat Model multiusuário) via Emenda Constitucional E-20 + CCB-CR-002. Gates B/C/D liberados para specs 017-022. | GP Leonardo (CCB) |
 
 ---
 
