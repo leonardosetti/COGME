@@ -6,9 +6,11 @@ server-side e encaminha /v1/* para o back:8000. Sem CORS: mesma origem.
 
 from __future__ import annotations
 
+from datetime import datetime
+from decimal import Decimal
 from pathlib import Path
 
-from fastapi import FastAPI, Request, Form
+from fastapi import FastAPI, Form, Request, Response
 from fastapi.responses import HTMLResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 import httpx
@@ -21,14 +23,31 @@ app.mount(
     name="static",
 )
 
+
+def _br_number(value: str, places: int) -> str:
+    """Formata um decimal em pt-BR sem passar por float."""
+    formatted = f"{Decimal(value):,.{places}f}"
+    translation: dict[str, str | int | None] = {",": ".", ".": ",", " ": "."}
+    return formatted.translate(str.maketrans(translation))
+
+
+def _br_datetime(value: str) -> str:
+    """Formata um instante UTC em pt-BR."""
+    return datetime.fromisoformat(value.replace("Z", "+00:00")).strftime(
+        "%d/%m/%Y, %H:%M:%S UTC"
+    )
+
+
 env = Environment(
     loader=FileSystemLoader(str(Path(__file__).resolve().parent / "templates")),
     autoescape=select_autoescape(["html", "xml"]),
     auto_reload=False,
 )
+env.filters["br_number"] = _br_number
+env.filters["br_datetime"] = _br_datetime
 
 
-def render(name: str, **context) -> HTMLResponse:
+def render(name: str, **context: object) -> HTMLResponse:
     """Renderiza um template Jinja2 com ``request`` no contexto."""
     template = env.get_template(name)
     return HTMLResponse(template.render(**context))
@@ -86,20 +105,52 @@ async def simulate_server(
         "currency": currency,
         "regime": regime,
         "amount": amount,
-        "quantity": quantity,
+        "quantity": None if regime == "fixed" else quantity,
         "spread_pct": spread_pct,
         "iof_pct": iof_pct,
     }
-    resp = await client.post("/v1/simulate", json=body)
-    if resp.status_code != 200:
+    try:
+        resp = await client.post("/v1/simulate", json=body)
+    except httpx.RequestError:
         return HTMLResponse(
             env.get_template("index.html").render(
-                request=request, error="Erro na simulação. Tente novamente."
+                request=request,
+                error="Não foi possível conectar ao serviço de simulação. Tente novamente.",
+                values=body,
+            ),
+            status_code=503,
+        )
+
+    if resp.status_code != 200:
+        error = (
+            "Cotação indisponível. Tente novamente."
+            if resp.status_code == 503
+            else "Erro na simulação. Tente novamente."
+        )
+        details: list[dict[str, str]] = []
+        try:
+            payload = resp.json()
+        except ValueError:
+            payload = {}
+        if not isinstance(payload, dict):
+            payload = {}
+        error_payload = payload.get("error") or {}
+        if not isinstance(error_payload, dict):
+            error_payload = {}
+        error = error_payload.get("message") or error
+        raw_details = error_payload.get("details") or []
+        details = raw_details if isinstance(raw_details, list) else []
+        return HTMLResponse(
+            env.get_template("index.html").render(
+                request=request,
+                error=error,
+                details=details,
+                values=body,
             ),
             status_code=resp.status_code,
         )
     data = resp.json()
-    return render("index.html", request=request, sim=data)
+    return render("index.html", request=request, sim=data, values=body)
 
 
 @app.post("/invoice", response_class=StreamingResponse)
@@ -120,7 +171,7 @@ async def invoice_server(
     invoice_number: str = Form(...),
     issue_date: str = Form(...),
     description: str = Form(...),
-) -> StreamingResponse:
+) -> Response:
     """Recebe o formulário de invoice, chama o back e devolve o PDF."""
     client = _get_client()
     body = {

@@ -70,7 +70,7 @@ mas a linha de rastreabilidade :239 registra a seção dedicada como `UNKNOWN - 
 esta emissão endereça pelo lado do DOC e do PROCESSO de revisão, sem tocar na spec-004 (intocável
 aqui: normalização TA-0031, .ai/specs/MANIFEST.md:97).
 
-Estado verificado no filesystem (2026-11-03): **não existe** `docs/arquitetura/` no repositório
+Estado verificado no filesystem (2026-11-03): **não existe** `docs/conhecimento/arquitetura/` no repositório
 (`ls docs/`: analise, archive, auditorias, change-requests, compliance, conhecimento, decisoes,
 dependencias, diagramas, especificacoes, evidencias, governanca, metricas, operacao, planos,
 requisitos, slides_apresentacao, stakeholder, tap, troubleshooting.md, verification — nenhum
@@ -94,7 +94,7 @@ ISO, agent-iso-26514-specialist.md:100).
 | Quem escreve e quem aprova | Escrita do doc de arquitetura = custódia documental **agent-docker-specialist** ("documentation custody. Owns README + docs/ tree", agent-docker-specialist.md:6; "the sole documentation custodian", agent-iso-26514-specialist.md:24); revisão/aprovação = **agent-reviewer** em Code Review (vereditos pass\|amend\|block, agent-reviewer.md:21; portão Art. 6.2/6.4, constitution.md:152,156); QA documental = **agent-iso-26514-specialist** (parcela de conformidade, agent-iso-26514-specialist.md:66-67). O SDD custodian especifica e custodia esta spec, não escreve o doc | agent-docker-specialist.md:6,22 + agent-reviewer.md:21 + constitution.md:152,156 | Qualquer leitura de que o SDD custodian é redator técnico do produto (ele não é — DON'T de fronteira, .opencode/agents/agent-sdd-specialist.md:24) |
 | ADR-016 como decisão de arquitetura no doc | O doc de arquitetura cita **apenas decisões ratificadas** como norma (ADR-001 v1.1.0, ADR-010 histórica, Constituição); ADR-016 está `status: proposta` (docs/decisoes/ADR-016-backend-mvp.md:5 — "não está ratificada... posição técnica proposta, não norma vigente") e deve ser citada somente com esse estado, jamais como decisão vigente | ADR-016-backend-mvp.md:5,13 + E.2 (LISTA...:68) | Citar ADR-016 como norma ratificada (P-08 — status inventado) |
 | Arquitetura do PRODUTO × arquitetura do ecossistema SDD | REQ-14 exige o doc de arquitetura do PRODUTO COGME (simulador cambial). A arquitetura do ecossistema SDD (L1/L2/L3, stack local) já tem canon ratificado v2.0.0: docs/conhecimento/Canon_Stack_SDD.md:27,41,64 — este canon NÃO é substituído nem duplicado | Canon_Stack_SDD.md:27,41 | Reescrever o canon SDD num eventual doc de arquitetura de produto (duplicação de SSOT — P-03, Canon_Stack_SDD.md:79) |
-| Destino do doc no repositório | **Registro, não decisão:** `docs/arquitetura/` não existe (verificado 2026-11-03, §1). O destino é ato da custódia documental + arquiteto na implementação; candidatos registrados SEM decisão: `docs/arquitetura/` (novo), `docs/especificacoes/` (existe, 1 arquivo), `docs/conhecimento/`. `docs/` é o território de documentação humana (Canon_Stack_SDD.md:280,283 — regra de ouro de `.ai/`) | Estado verificado (P-08) + Canon_Stack_SDD.md:283 | Inventar caminho definitivo sem decisão da custódia (P-08) |
+| Destino do doc no repositório | **Registro, não decisão:** `docs/conhecimento/arquitetura/` não existe (verificado 2026-11-03, §1). O destino é ato da custódia documental + arquiteto na implementação; candidatos registrados SEM decisão: `docs/conhecimento/arquitetura/` (novo), `docs/especificacoes/` (existe, 1 arquivo), `docs/conhecimento/`. `docs/` é o território de documentação humana (Canon_Stack_SDD.md:280,283 — regra de ouro de `.ai/`) | Estado verificado (P-08) + Canon_Stack_SDD.md:283 | Inventar caminho definitivo sem decisão da custódia (P-08) |
 
 ## 3. Domínio — documentação técnica (REQ-14, US-014)
 
@@ -208,7 +208,7 @@ matriz REQ → spec → doc → test é duty 4, :22):
 | traceability | REQ-14 (spec-002...:75; plano-integral...:84) → spec-013 (esta) → doc de arquitetura (destino `UNKNOWN - verify`) → test_openapi.py (lado OpenAPI) | agent-iso-26514-specialist.md:123 |
 | verdict | `conforme\|brecha\|gap\|pending_human` na parcela de QA documental (:125) | agent-iso-26514-specialist.md:125 |
 
-**Destino do doc de arquitetura — estado real registrado (P-08):** `docs/arquitetura/` **não
+**Destino do doc de arquitetura — estado real registrado (P-08):** `docs/conhecimento/arquitetura/` **não
 existe** (verificação de 2026-11-03, §1/§2). Decisão de destino = `UNKNOWN - verify`, ato da
 custódia documental + arquiteto na onda de implementação; candidatos registrados sem decisão em §2.
 Vinculação REQ-14↔US-014: o critério de aceite da US-014 ("arquitetura e especificação OpenAPI
@@ -222,7 +222,7 @@ Critérios verificáveis desta emissão (checkbox, DO #2 — .opencode/agents/ag
 
 - [ ] AC-01: o arquivo `.ai/specs/spec-013-documentacao-tecnica-v1.spec.md` existe com frontmatter conforme MANIFEST §1.1 (spec_id, specname, version, status, custody, created/updated, origin, task/sender, kill_switch, trace, lgpd-class — .ai/specs/MANIFEST.md:27-44) e ≤400 linhas (DO #3, .opencode/agents/agent-sdd-specialist.md:86).
 - [ ] AC-02: o item B.9 (LISTA...:41) fecha-se declaradamente — doc de arquitetura especificado (§3.1, §3.5) + revisão/aprovação da OpenAPI especificada (§3.2, §3.4); o conteúdo do contrato `/v1` NÃO foi redeclarado (delimitação §2, linha 1).
-- [ ] AC-03: o estado real do destino está registrado — `docs/arquitetura/` inexistente documentado com data da verificação (2026-11-03) e destino marcado `UNKNOWN - verify` (§2, §3.5).
+- [ ] AC-03: o estado real do destino está registrado — `docs/conhecimento/arquitetura/` inexistente documentado com data da verificação (2026-11-03) e destino marcado `UNKNOWN - verify` (§2, §3.5).
 - [ ] AC-04: o ciclo de vida draft → revisão Code Review → aprovado está especificado com revisor nomeado (agent-reviewer), formato de veredito (rubrica R-01..R-07, agent-reviewer.md:21) e portão reviewer → gatekeeper citado (constitution.md:94,219) — §3.2.
 - [ ] AC-05: a regra doc↔código (documented truth = running truth) está citada com as três âncoras (constitution.md:156; agent-docker-specialist.md:6,209; PDCA-N11 plano-integral...:599) e a proibição de doc fabricado declarada (P-08; kill switch 3, .opencode/agents/agent-sdd-specialist.md:42) — §3.3.
 - [ ] AC-06: a fonte única de verdade da OpenAPI está declarada (`/openapi.json` gerado pela aplicação, test_openapi.py:22-26; contrato spec-004 §3) e a regra "render nunca hand-restyled" está citada (agent-docker-specialist.md:6,22), com os 4 critérios binários de revisão (§3.4).
@@ -266,7 +266,7 @@ permanece `UNKNOWN - verify` intocado (imutabilidade TA-0031).
 
 ## CHANGELOG
 
-- 0.1.0 — 2026-11-03 (TA-0058 / HF-0614): emissão inicial. Documentação técnica (item B.9, LISTA...:41): escopo do doc de arquitetura (visão de camadas Art. 10.1, matriz de interfaces, Mermaid FOSS, ADRs ratificadas — §3.1); ciclo de vida draft → revisão Code Review (agent-reviewer, rubrica R-01..R-07) → aprovado (§3.2); documented truth = running truth com proibição de doc fabricado (§3.3); OpenAPI com fonte única de verdade no schema gerado + render nunca hand-restyled + 4 critérios binários de revisão (§3.4); mapa de rastreabilidade documental ISO 26514 com iso_clause `UNKNOWN - verify` e destino do doc registrado como inexistente (`docs/arquitetura/`, verificado 2026-11-03) — §3.5. Delimitação exata com spec-004 §3 (§2). Arquivo único; nada commitado.
+- 0.1.0 — 2026-11-03 (TA-0058 / HF-0614): emissão inicial. Documentação técnica (item B.9, LISTA...:41): escopo do doc de arquitetura (visão de camadas Art. 10.1, matriz de interfaces, Mermaid FOSS, ADRs ratificadas — §3.1); ciclo de vida draft → revisão Code Review (agent-reviewer, rubrica R-01..R-07) → aprovado (§3.2); documented truth = running truth com proibição de doc fabricado (§3.3); OpenAPI com fonte única de verdade no schema gerado + render nunca hand-restyled + 4 critérios binários de revisão (§3.4); mapa de rastreabilidade documental ISO 26514 com iso_clause `UNKNOWN - verify` e destino do doc registrado como inexistente (`docs/conhecimento/arquitetura/`, verificado 2026-11-03) — §3.5. Delimitação exata com spec-004 §3 (§2). Arquivo único; nada commitado.
 - 0.2.0 — 2026-11-05 (refinamento de ratificação, Grupo B): frontmatter atualizado ao padrão TA-0031 ratificado (adicionado `wave: WS-7`, `handoff` em `origin`; `version` 0.1.0 → 0.2.0). Ratificação CCB 05/11/2026 (instrumento RAT-2026-11-05-A16, ADR-LOG-012). Aderência ao padrão de nomenclatura `spec-NNN-specname.spec.md` confirmada (ADR-018, RAT-2026-11-05-A18). Nenhuma decisão de negócio de §§1–6 reescrita.
 
 ## CAMADAS FUNDAMENTAIS — MAPA (TA-0031)

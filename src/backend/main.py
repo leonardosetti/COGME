@@ -317,6 +317,7 @@ async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
     client = httpx.AsyncClient(follow_redirects=False, headers={"User-Agent": _USER_AGENT})
     try:
         timeout = settings.provider_timeout_seconds
+        app.state.engine = engine
         app.state.rate_service = RateService(
             repository=SqlAlchemyQuoteRepository(create_session_factory(engine)),
             providers=[

@@ -1,0 +1,134 @@
+{# Macros compartilhadas entre templates bilíngues (DEC-07) #}
+
+{% macro money_br(value, places=2) -%}
+  {# Formata número no padrão brasileiro: 1.234,56 #}
+  {% set step = (10 ** -places) | string %}
+  {% set rounded = (value | float | round(places)) | string %}
+  {% set parts = rounded.split('.') %}
+  {% set integer = parts[0] %}
+  {% set decimal = parts[1] if parts|length > 1 else '0' * places %}
+  {% set formatted_int = integer | reverse | batch(3) | map('join', '') | join('.') | reverse %}
+  {{ formatted_int }},{{ decimal[:places] }}
+{%- endmacro %}
+
+{% macro money_en(value, places=2) -%}
+  {# Formata número no padrão inglês: 1,234.56 #}
+  {% set step = (10 ** -places) | string %}
+  {% set rounded = (value | float | round(places)) | string %}
+  {% set parts = rounded.split('.') %}
+  {% set integer = parts[0] %}
+  {% set decimal = parts[1] if parts|length > 1 else '0' * places %}
+  {% set formatted_int = integer | reverse | batch(3) | map('join', '') | join(',') | reverse %}
+  {{ formatted_int }}.{{ decimal[:places] }}
+{%- endmacro %}
+
+{% macro rate_br(value) -%}
+  {{ money_br(value, 6) }}
+{%- endmacro %}
+
+{% macro rate_en(value) -%}
+  {{ money_en(value, 6) }}
+{%- endmacro %}
+
+{% macro brl_br(value) -%}
+  R$ {{ money_br(value, 2) }}
+{%- endmacro %}
+
+{% macro brl_en(value) -%}
+  {{ money_en(value, 2) }} BRL
+{%- endmacro %}
+
+{% macro percent_br(value) -%}
+  {{ money_br(value, 4) }} %
+{%- endmacro %}
+
+{% macro percent_en(value) -%}
+  {{ money_en(value, 4) }}%
+{%- endmacro %}
+
+{% macro date_br(value) -%}
+  {{ value.strftime('%d/%m/%Y') }}
+{%- endmacro %}
+
+{% macro date_en(value) -%}
+  {{ value.strftime('%m/%d/%Y') }}
+{%- endmacro %}
+
+{% macro datetime_br(value) -%}
+  {{ value.strftime('%d/%m/%Y %H:%M') }} UTC
+{%- endmacro %}
+
+{% macro datetime_en(value) -%}
+  {{ value.strftime('%m/%d/%Y %H:%M') }} UTC
+{%- endmacro %}
+
+{% macro page_setup -%}
+  @page {
+    size: A4;
+    margin: 18mm 16mm 20mm 16mm;
+    @bottom-center {
+      content: "Page " counter(page) " of " counter(pages);
+      font: 8pt "DejaVu Sans", Arial, sans-serif;
+      color: #666666;
+    }
+  }
+{%- endmacro %}
+
+{% macro base_styles -%}
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font: 10pt/1.5 "DejaVu Sans", Arial, sans-serif;
+    color: #0F172A;
+  }
+  h1 { font-size: 18pt; margin: 0 0 2mm 0; letter-spacing: 0.5pt; color: #0F172A; }
+  h2 {
+    font-size: 8.5pt;
+    margin: 0 0 2mm 0;
+    text-transform: uppercase;
+    letter-spacing: 0.8pt;
+    color: #444444;
+    font-weight: 600;
+  }
+  .header { border-bottom: 2pt solid #0F172A; padding-bottom: 4mm; margin-bottom: 6mm; }
+  .meta { color: #444444; font-size: 9pt; }
+  .meta strong { color: #0F172A; }
+  .parties { width: 100%; border-collapse: separate; border-spacing: 0; margin-bottom: 6mm; }
+  .parties td { width: 50%; vertical-align: top; padding: 0 4mm 0 0; }
+  .party-name { font-weight: 700; font-size: 10.5pt; color: #0F172A; }
+  .pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 9pt; line-height: 1.5; }
+  .section { margin-bottom: 6mm; }
+  table.items { width: 100%; border-collapse: collapse; font-size: 9pt; }
+  table.items th, table.items td {
+    padding: 2.5mm 3mm;
+    border-bottom: 0.5pt solid #E2E8F0;
+    text-align: left;
+    vertical-align: top;
+  }
+  table.items th { width: 60%; font-weight: 500; color: #64748B; }
+  table.items td { text-align: right; font-variant-numeric: tabular-nums; font-family: "DejaVu Sans Mono", monospace; color: #0F172A; }
+  table.items tr.total th, table.items tr.total td {
+    font-weight: 700;
+    font-size: 10pt;
+    color: #0F172A;
+    border-top: 2pt solid #0F172A;
+    border-bottom: 2pt solid #0F172A;
+  }
+  .stale {
+    border: 1pt solid #D97706;
+    background: #FFFBEB;
+    color: #D97706;
+    padding: 3mm 4mm;
+    margin-bottom: 4mm;
+    border-radius: 4px;
+    font-size: 8.5pt;
+  }
+  .notice {
+    margin-top: 8mm;
+    padding-top: 3mm;
+    border-top: 0.5pt solid #E2E8F0;
+    font-size: 8.5pt;
+    color: #64748B;
+    line-height: 1.5;
+  }
+{%- endmacro %}

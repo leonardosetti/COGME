@@ -7,7 +7,7 @@ status: draft
 owner: agent-project-analyst
 derived-from:
 - docs/change-requests/cr-008-account-lifecycle-privacy.md
-- docs/templates/proposta-spec-template.md
+- docs/conhecimento/templates/proposta-spec-template.md
 - constitution.md (Arts. 1.1, 1.2, 1.3, 3, 5.1, 7, 9; P-02, P-03, P-04)
 - .ai/specs/spec-015-lgpd-produto-proposta-v1.spec.md (D1-D7 condicionais)
 - .ai/specs/spec-004-backend-mvp-v1.spec.md (LGPD logs)

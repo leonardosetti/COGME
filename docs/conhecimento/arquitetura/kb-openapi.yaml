@@ -1,0 +1,539 @@
+openapi: 3.1.0
+info:
+  title: COGME API
+  description: |
+    API do COGME — Conversor de Ganhos em Moeda Estrangeira.
+    
+    **Versão**: v1 (MVP)
+    **Base Path**: `/v1`
+    **Autenticação**: Nenhuma no MVP (público). Futuro: JWT Bearer (M2+).
+    **Rate Limiting**: Não implementado no MVP (interno/baixo volume).
+    **CORS**: Desabilitado (frontend same-origin via proxy).
+    
+    **Stack**: FastAPI + PostgreSQL + Docker Compose + Nginx Proxy
+    **Infra**: 100% FOSS, Local-first, CPU-only, Zero Cloud
+    **Governança**: Constitution.md, ADR-001, ADR-010, CI-CD-GOV-001
+  version: "1.0.0"
+  contact:
+    name: GP Leonardo (CCB)
+    url: https://github.com/leonardosetti/COGME
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://localhost:8080/v1
+    description: Desenvolvimento Local (Docker Compose + Nginx Proxy)
+  - url: http://{tailscale_ip}:8080/v1
+    description: Acesso via Tailscale (substitua {tailscale_ip})
+    variables:
+      tailscale_ip:
+        default: "100.98.53.79"
+        description: IP Tailscale do host
+
+tags:
+  - name: Health
+    description: Verificações de saúde do sistema e dependências
+  - name: Rates
+    description: Cotações de câmbio (cache local + fallback PTAX)
+  - name: Simulations
+    description: Simulação de conversão cambial
+  - name: Invoices
+    description: Geração de invoices PDF (bilingue PT/EN)
+
+paths:
+  /health:
+    get:
+      tags: [Health]
+      summary: Health check básico da API
+      description: Retorna status geral da aplicação. Usado por load balancer / monitoramento.
+      operationId: healthCheck
+      responses:
+        '200':
+          description: Sistema saudável
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+              example:
+                status: "healthy"
+                timestamp: "2026-11-14T10:30:00Z"
+                version: "1.0.0"
+        '503':
+          description: Sistema não saudável
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /health/db:
+    get:
+      tags: [Health]
+      summary: Health check do banco de dados
+      description: Verifica conectividade e responsividade do PostgreSQL.
+      operationId: healthCheckDb
+      responses:
+        '200':
+          description: Banco conectado e responsivo
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  db:
+                    type: string
+                    enum: [connected]
+                  latency_ms:
+                    type: integer
+              example:
+                db: "connected"
+                latency_ms: 2
+        '503':
+          description: Banco indisponível
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /health/metrics:
+    get:
+      tags: [Health]
+      summary: Métricas de fluxo (Cycle Time, Throughput, WIP, Coverage)
+      description: Retorna métricas atuais do GitHub Projects (SSOT). Atualizadas via script periódico.
+      operationId: healthCheckMetrics
+      responses:
+        '200':
+          description: Métricas disponíveis
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetricsResponse'
+
+  /rates/{currency}:
+    get:
+      tags: [Rates]
+      summary: Obter cotação atual para uma moeda
+      description: |
+        Retorna a cotação mais recente do cache local (máx. 7 dias).
+        Se cache expirado ou inexistente, busca na API primária (Frankfurter)
+        com fallback automático para PTAX/BCB.
+        Circuit breaker protege contra falhas em cascata.
+      operationId: getRate
+      parameters:
+        - name: currency
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [USD, EUR]
+            pattern: '^(USD|EUR)$'
+          description: Código da moeda (ISO 4217)
+          example: "USD"
+      responses:
+        '200':
+          description: Cotação obtida com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateResponse'
+              examples:
+                usd_frankfurter:
+                  summary: USD via Frankfurter (primária)
+                  value:
+                    currency: "USD"
+                    rate: 5.234567
+                    source: "frankfurter"
+                    bulletin: "2026-11-14"
+                    quoted_at: "2026-11-14T10:00:00Z"
+                    fetched_at: "2026-11-14T10:00:05Z"
+                eur_ptax:
+                  summary: EUR via PTAX (fallback)
+                  value:
+                    currency: "EUR"
+                    rate: 5.678901
+                    source: "ptax"
+                    bulletin: "2026-11-14"
+                    quoted_at: "2026-11-14T09:00:00Z"
+                    fetched_at: "2026-11-14T10:00:10Z"
+        '400':
+          description: Moeda inválida (não USD nem EUR)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: "validation_error"
+                message: "Moeda inválida. Use USD ou EUR."
+                details:
+                  - field: "currency"
+                    message: "Deve ser USD ou EUR"
+        '503':
+          description: Ambas APIs (Frankfurter + PTAX) indisponíveis e cache expirado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: "service_unavailable"
+                message: "Não foi possível obter cotação. Tente novamente mais tarde."
+                details: null
+
+  /simulate:
+    post:
+      tags: [Simulations]
+      summary: Simular conversão de valor em moeda estrangeira para BRL
+      description: |
+        Calcula o valor em BRL usando a cotação mais recente (cache + fallback).
+        Latência alvo P95 ≤ 2s (NFR).
+        Retorna detalhes da cotação usada para auditoria.
+      operationId: simulateConversion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SimulateRequest'
+            examples:
+              usd_1000:
+                summary: 1000 USD
+                value:
+                  amount: 1000.00
+                  currency: "USD"
+              eur_500:
+                summary: 500 EUR
+                value:
+                  amount: 500.00
+                  currency: "EUR"
+      responses:
+        '200':
+          description: Simulação realizada com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SimulateResponse'
+              examples:
+                usd_success:
+                  summary: Sucesso USD
+                  value:
+                    input_amount: 1000.00
+                    input_currency: "USD"
+                    rate_used: 5.234567
+                    rate_source: "frankfurter"
+                    rate_quoted_at: "2026-11-14T10:00:00Z"
+                    brl_amount: 5234.57
+                    calculated_at: "2026-11-14T10:30:00Z"
+        '400':
+          description: Requisição inválida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                invalid_amount:
+                  summary: Valor inválido
+                  value:
+                    error: "validation_error"
+                    message: "Valor deve ser positivo."
+                    details:
+                      - field: "amount"
+                        message: "Deve ser maior que zero"
+                invalid_currency:
+                  summary: Moeda inválida
+                  value:
+                    error: "validation_error"
+                    message: "Moeda não suportada."
+                    details:
+                      - field: "currency"
+                        message: "Deve ser USD ou EUR"
+        '422':
+          description: Erro de validação Pydantic (corpo malformado)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: Serviço de cotação indisponível
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /invoice:
+    post:
+      tags: [Invoices]
+      summary: Gerar invoice PDF (bilingue PT/EN)
+      description: |
+        Gera PDF profissional da simulação para envio ao cliente.
+        Suporta português (PT-BR, moeda BRL) e inglês (EN, moeda USD/EUR).
+        Latência alvo P95 ≤ 3s (NFR).
+        Usa WeasyPrint (HTML/CSS → PDF) com templates Jinja2.
+      operationId: generateInvoice
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvoiceRequest'
+            examples:
+              invoice_pt:
+                summary: Invoice PT-BR
+                value:
+                  simulation_id: "sim_abc123"
+                  language: "pt"
+                  client_name: "João Silva"
+                  client_tax_id: "123.456.789-00"
+              invoice_en:
+                summary: Invoice EN
+                value:
+                  simulation_id: "sim_abc123"
+                  language: "en"
+                  client_name: "John Doe"
+                  client_tax_id: "123-45-6789"
+      responses:
+        '200':
+          description: PDF gerado com sucesso
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceResponse'
+              example:
+                invoice_number: "INV-2026-0001"
+                pdf_url: "/v1/invoice/INV-2026-0001/download"
+                generated_at: "2026-11-14T10:30:00Z"
+        '400':
+          description: Requisição inválida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                invalid_language:
+                  summary: Idioma inválido
+                  value:
+                    error: "validation_error"
+                    message: "Idioma deve ser 'pt' ou 'en'."
+                    details:
+                      - field: "language"
+                        message: "Valores permitidos: pt, en"
+                simulation_not_found:
+                  summary: Simulação não encontrada
+                  value:
+                    error: "not_found"
+                    message: "Simulação não encontrada ou expirada."
+                    details: null
+        '404':
+          description: Simulação não encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Erro interno na geração do PDF (WeasyPrint, template, fonte)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /invoice/{invoice_number}/download:
+    get:
+      tags: [Invoices]
+      summary: Download direto do PDF do invoice
+      description: Retorna o arquivo PDF para download (Content-Disposition: attachment).
+      operationId: downloadInvoice
+      parameters:
+        - name: invoice_number
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^INV-\d{4}-\d{4}$'
+          description: Número do invoice (formato INV-YYYY-NNNN)
+          example: "INV-2026-0001"
+      responses:
+        '200':
+          description: Arquivo PDF
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+          headers:
+            Content-Disposition:
+              description: Nome do arquivo para download
+              schema:
+                type: string
+              example: 'attachment; filename="invoice_INV-2026-0001.pdf"'
+        '404':
+          description: Invoice não encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    HealthResponse:
+      type: object
+      required: [status, timestamp, version]
+      properties:
+        status:
+          type: string
+          enum: [healthy, degraded, unhealthy]
+        timestamp:
+          type: string
+          format: date-time
+        version:
+          type: string
+
+    MetricsResponse:
+      type: object
+      properties:
+        cycle_time_days:
+          type: number
+          format: float
+        throughput_cards_per_week:
+          type: integer
+        wip_in_progress:
+          type: integer
+        coverage_percent:
+          type: number
+          format: float
+        last_updated:
+          type: string
+          format: date-time
+
+    RateResponse:
+      type: object
+      required: [currency, rate, source, quoted_at, fetched_at]
+      properties:
+        currency:
+          type: string
+          enum: [USD, EUR]
+        rate:
+          type: number
+          format: double
+          minimum: 0
+          description: Taxa de câmbio (1 unidade moeda estrangeira = X BRL)
+        source:
+          type: string
+          enum: [frankfurter, ptax]
+          description: Fonte da cotação
+        bulletin:
+          type: string
+          nullable: true
+          description: Identificador do boletim (ex: número do boletim PTAX)
+        quoted_at:
+          type: string
+          format: date-time
+          description: Momento da cotação na fonte
+        fetched_at:
+          type: string
+          format: date-time
+          description: Momento em que foi buscada e cacheada
+
+    SimulateRequest:
+      type: object
+      required: [amount, currency]
+      properties:
+        amount:
+          type: number
+          format: double
+          exclusiveMinimum: 0
+          description: Valor na moeda estrangeira
+          example: 1000.00
+        currency:
+          type: string
+          enum: [USD, EUR]
+          description: Moeda de origem
+          example: "USD"
+
+    SimulateResponse:
+      type: object
+      required: [input_amount, input_currency, rate_used, rate_source, rate_quoted_at, brl_amount, calculated_at]
+      properties:
+        input_amount:
+          type: number
+          format: double
+        input_currency:
+          type: string
+          enum: [USD, EUR]
+        rate_used:
+          type: number
+          format: double
+        rate_source:
+          type: string
+          enum: [frankfurter, ptax]
+        rate_quoted_at:
+          type: string
+          format: date-time
+        brl_amount:
+          type: number
+          format: double
+          description: Valor calculado em BRL (arredondado 2 casas)
+        calculated_at:
+          type: string
+          format: date-time
+
+    InvoiceRequest:
+      type: object
+      required: [simulation_id, language]
+      properties:
+        simulation_id:
+          type: string
+          description: ID da simulação retornada por /simulate
+          example: "sim_abc123"
+        language:
+          type: string
+          enum: [pt, en]
+          description: Idioma do invoice (PT-BR ou EN)
+          example: "pt"
+        client_name:
+          type: string
+          maxLength: 200
+          description: Nome do cliente (opcional — para invoice personalizado)
+          example: "João Silva"
+        client_tax_id:
+          type: string
+          maxLength: 50
+          description: CPF/CNPJ do cliente (opcional)
+          example: "123.456.789-00"
+
+    InvoiceResponse:
+      type: object
+      required: [invoice_number, pdf_url, generated_at]
+      properties:
+        invoice_number:
+          type: string
+          pattern: '^INV-\d{4}-\d{4}$'
+          example: "INV-2026-0001"
+        pdf_url:
+          type: string
+          format: uri
+          example: "/v1/invoice/INV-2026-0001/download"
+        generated_at:
+          type: string
+          format: date-time
+
+    ErrorResponse:
+      type: object
+      required: [error, message]
+      properties:
+        error:
+          type: string
+          enum: [validation_error, not_found, service_unavailable, internal_error, unauthorized, forbidden]
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+          nullable: true

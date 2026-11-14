@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Invoice {{ invoice_number }}</title>
+<style>
+  {{ page_setup() }}
+  {{ base_styles() }}
+</style>
+</head>
+<body>
+  <div class="header">
+    <h1>Invoice</h1>
+    <div class="meta">
+      Number: <strong>{{ invoice_number }}</strong>
+      &nbsp;&middot;&nbsp;
+      Issue date: <strong>{{ date_en(issue_date) }}</strong>
+    </div>
+  </div>
+
+  <table class="parties">
+    <tr>
+      <td>
+        <h2>Issuer</h2>
+        <div class="party-name">{{ issuer.name }}</div>
+        {% if issuer.tax_id %}<div>Tax ID: {{ issuer.tax_id }}</div>{% endif %}
+        {% if issuer.address %}<div class="pre">{{ issuer.address }}</div>{% endif %}
+      </td>
+      <td>
+        <h2>Client</h2>
+        <div class="party-name">{{ client.name }}</div>
+        {% if client.tax_id %}<div>Tax ID: {{ client.tax_id }}</div>{% endif %}
+        {% if client.address %}<div class="pre">{{ client.address }}</div>{% endif %}
+      </td>
+    </tr>
+  </table>
+
+  <div class="section">
+    <h2>Service description</h2>
+    <div class="pre">{{ description }}</div>
+  </div>
+
+  <div class="section">
+    <h2>Amounts in original currency ({{ sim.currency.value }})</h2>
+    <table class="items">
+      <tr><th>Billing regime</th><td>{{ regime_label }}</td></tr>
+      <tr><th>Unit amount</th><td>{{ sim.currency.value }} {{ money_en(unit_amount) }}</td></tr>
+      {% if quantity is not none %}
+      <tr><th>{{ quantity_label }}</th><td>{{ money_en(quantity) }}</td></tr>
+      {% endif %}
+      <tr class="total">
+        <th>Gross total</th>
+        <td>{{ sim.currency.value }} {{ money_en(sim.gross_foreign) }}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Exchange rate used</h2>
+    {% if stale %}
+    <div class="stale">
+      Note: this exchange rate is stale. Public sources did not respond and the last cached
+      rate was used. Verify the amount before using this document.
+    </div>
+    {% endif %}
+    <table class="items">
+      <tr><th>Rate ({{ sim.currency.value }} &rarr; BRL)</th><td>{{ brl_en(quote.rate) }}</td></tr>
+      <tr><th>Source</th><td>{{ source_label }}</td></tr>
+      <tr><th>Rate date</th><td>{{ datetime_en(quote.quoted_at) }}</td></tr>
+      {% if quote.bulletin %}
+      <tr><th>Bulletin</th><td>{{ quote.bulletin }}</td></tr>
+      {% endif %}
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Conversion to BRL</h2>
+    <table class="items">
+      <tr><th>Gross total converted</th><td>{{ brl_en(sim.gross_brl) }}</td></tr>
+      <tr>
+        <th>Spread ({{ percent_en(sim.spread_pct) }})</th>
+        <td>- {{ brl_en(sim.spread_brl) }}</td>
+      </tr>
+      <tr>
+        <th>IOF ({{ percent_en(sim.iof_pct) }})</th>
+        <td>- {{ brl_en(sim.iof_brl) }}</td>
+      </tr>
+      <tr class="total"><th>Net amount</th><td>{{ brl_en(sim.net_brl) }}</td></tr>
+      <tr>
+        <th>Effective rate (net per {{ sim.currency.value }})</th>
+        <td>{{ brl_en(sim.effective_rate) }}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="notice">{{ notice }}</div>
+</body>
+</html>

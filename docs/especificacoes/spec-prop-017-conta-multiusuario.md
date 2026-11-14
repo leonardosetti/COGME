@@ -7,7 +7,7 @@ status: draft
 owner: agent-project-analyst
 derived-from:
 - docs/change-requests/cr-002-cadastro-usuarios-multiusuario.md
-- docs/templates/proposta-spec-template.md
+- docs/conhecimento/templates/proposta-spec-template.md
 - constitution.md (Arts. 1.2, 1.3, 3, 5.1, 7, 9) — v1.3.0 (E-20 ratificada)
 - .ai/specs/spec-002-requisitos-review-round-1.spec.md (OS-01, US-004, US-016/US-017)
 - .ai/specs/spec-004-backend-mvp-v1.spec.md (contrato HTTP e persistência)

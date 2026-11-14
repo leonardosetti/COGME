@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Invoice {{ invoice_number }}</title>
+<style>
+  {{ page_setup() }}
+  {{ base_styles() }}
+</style>
+</head>
+<body>
+  <div class="header">
+    <h1>Invoice</h1>
+    <div class="meta">
+      Número: <strong>{{ invoice_number }}</strong>
+      &nbsp;&middot;&nbsp;
+      Data de emissão: <strong>{{ date_br(issue_date) }}</strong>
+    </div>
+  </div>
+
+  <table class="parties">
+    <tr>
+      <td>
+        <h2>Emitente</h2>
+        <div class="party-name">{{ issuer.name }}</div>
+        {% if issuer.tax_id %}<div>Documento: {{ issuer.tax_id }}</div>{% endif %}
+        {% if issuer.address %}<div class="pre">{{ issuer.address }}</div>{% endif %}
+      </td>
+      <td>
+        <h2>Cliente</h2>
+        <div class="party-name">{{ client.name }}</div>
+        {% if client.tax_id %}<div>Documento: {{ client.tax_id }}</div>{% endif %}
+        {% if client.address %}<div class="pre">{{ client.address }}</div>{% endif %}
+      </td>
+    </tr>
+  </table>
+
+  <div class="section">
+    <h2>Descrição do serviço</h2>
+    <div class="pre">{{ description }}</div>
+  </div>
+
+  <div class="section">
+    <h2>Valores na moeda original ({{ sim.currency.value }})</h2>
+    <table class="items">
+      <tr><th>Regime de cobrança</th><td>{{ regime_label }}</td></tr>
+      <tr><th>Valor por unidade</th><td>{{ sim.currency.value }} {{ money_br(unit_amount) }}</td></tr>
+      {% if quantity is not none %}
+      <tr><th>{{ quantity_label }}</th><td>{{ money_br(quantity) }}</td></tr>
+      {% endif %}
+      <tr class="total">
+        <th>Total bruto</th>
+        <td>{{ sim.currency.value }} {{ money_br(sim.gross_foreign) }}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Cotação utilizada</h2>
+    {% if stale %}
+    <div class="stale">
+      Atenção: esta cotação está desatualizada. As fontes públicas não responderam e foi
+      usada a última cotação guardada. Confira o valor antes de usar este documento.
+    </div>
+    {% endif %}
+    <table class="items">
+      <tr><th>Cotação ({{ sim.currency.value }} &rarr; BRL)</th><td>{{ brl_br(quote.rate) }}</td></tr>
+      <tr><th>Fonte</th><td>{{ source_label }}</td></tr>
+      <tr><th>Data da cotação</th><td>{{ datetime_br(quote.quoted_at) }}</td></tr>
+      {% if quote.bulletin %}
+      <tr><th>Boletim</th><td>{{ quote.bulletin }}</td></tr>
+      {% endif %}
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Conversão para reais</h2>
+    <table class="items">
+      <tr><th>Total bruto convertido</th><td>{{ brl_br(sim.gross_brl) }}</td></tr>
+      <tr>
+        <th>Spread ({{ percent_br(sim.spread_pct) }})</th>
+        <td>- {{ brl_br(sim.spread_brl) }}</td>
+      </tr>
+      <tr>
+        <th>IOF ({{ percent_br(sim.iof_pct) }})</th>
+        <td>- {{ brl_br(sim.iof_brl) }}</td>
+      </tr>
+      <tr class="total"><th>Valor líquido</th><td>{{ brl_br(sim.net_brl) }}</td></tr>
+      <tr>
+        <th>Cotação efetiva (líquido por {{ sim.currency.value }})</th>
+        <td>{{ brl_br(sim.effective_rate) }}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="notice">{{ notice }}</div>
+</body>
+</html>

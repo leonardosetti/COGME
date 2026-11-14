@@ -7,7 +7,7 @@ status: draft
 owner: agent-project-analyst
 derived-from:
 - docs/change-requests/cr-006-simulation-invoice-history.md
-- docs/templates/proposta-spec-template.md
+- docs/conhecimento/templates/proposta-spec-template.md
 - constitution.md (Arts. 1.2, 1.3, 3, 5.1, 7, 9)
 - .ai/specs/spec-004-backend-mvp-v1.spec.md
 - .ai/specs/spec-007-invoice-data-model-v1.spec.md

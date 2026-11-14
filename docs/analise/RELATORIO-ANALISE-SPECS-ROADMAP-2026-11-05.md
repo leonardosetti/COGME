@@ -139,7 +139,7 @@ Formato sugerido para cada Epic: título, objetivo, specs de entrada, USs, crit�
 | E5 Qualidade | 12 PDCAs, Ishikawa, cobertura, lições | spec-010, nova spec C | US-010 | Relatório PDCA por marco; MF2-licoes.md e MF3-licoes.md preenchidas |
 | E6 UAT | 7 fluxos produto + 7 camadas, fail-closed | spec-009 | US-009 | Relatorio-UAT com 100% PASS; zero defeitos críticos/bloqueantes |
 | E7 Rastreabilidade SDD | 100% handoffs catalogados, INDEX.md, parser | spec-012 | US-013 | Comando B: rejeitados=0; Comando C: índice×disco sincronizado |
-| E8 Documentação técnica | Doc arquitetura + OpenAPI aprovada | spec-013 | US-014 | `docs/arquitetura/` criada; veredito `pass` do reviewer |
+| E8 Documentação técnica | Doc arquitetura + OpenAPI aprovada | spec-013 | US-014 | `docs/conhecimento/arquitetura/` criada; veredito `pass` do reviewer |
 | E9 LGPD produto | Critérios LGPD executados (após D1-D7) | spec-015, nova spec D | — | Logs sem PII; rota erase se persistida |
 | E10 Backlog US | Catálogo REQ→US, DoR/DoD, ondas | nova spec A | US-001..017, US-018..024 | Kanban populado com ordem de execução |
 
@@ -208,7 +208,7 @@ Ordem respeita dependências técnicas e decisões humanas pendentes. Ondas A.11
 |------|------|------|------------|
 | F7.1 | Sanitizar INDEX.md (7 órfãos + 33 ausentes), corrigir HF-06xx | sdd-specialist | — |
 | F7.2 | Auditoria parser: rejeitados=0, cobertura 100% | sdd-specialist + auditor (A.22) | F7.1 |
-| F7.3 | Criar docs/arquitetura/ com visão camadas + matriz interfaces | docker-specialist (A.23) | F3.1, F2.1 |
+| F7.3 | Criar docs/conhecimento/arquitetura/ com visão camadas + matriz interfaces | docker-specialist (A.23) | F3.1, F2.1 |
 | F7.4 | Revisão Code Review OpenAPI (veredito pass) | reviewer (A.20) | F7.3 |
 
 ### Fase 8 — LGPD (E9) — semana 12 (condicional a D1-D7)
