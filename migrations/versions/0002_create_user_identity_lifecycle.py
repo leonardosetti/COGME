@@ -8,11 +8,10 @@ from __future__ import annotations
 
 from alembic import op
 import sqlalchemy as sa
-from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
-revision = "0003_create_user_identity_lifecycle"
-down_revision = "0002_create_invoices_and_sequences"
+revision = "0002_user_identity"
+down_revision = "0001_create_fx_quotes"
 branch_labels = None
 depends_on = None
 
@@ -169,7 +168,8 @@ def upgrade() -> None:
         ),
         sa.PrimaryKeyConstraint("id", name="pk_account_lifecycle_events"),
         sa.CheckConstraint(
-            "event_type IN ('CREATED','ACTIVATED','DORMANT_AUTO','DORMANT_MANUAL','REACTIVATED','DELETED','ANONYMIZED')",
+            "event_type IN ('CREATED','ACTIVATED','DORMANT_AUTO','DORMANT_MANUAL',"
+            "'REACTIVATED','DELETED','ANONYMIZED')",
             name="chk_lifecycle_event_type",
         ),
         sa.CheckConstraint(
@@ -185,7 +185,11 @@ def upgrade() -> None:
         ),
     )
 
-    op.create_index("ix_lifecycle_user_created", "account_lifecycle_events", ["user_id", "created_at"])
+    op.create_index(
+        "ix_lifecycle_user_created",
+        "account_lifecycle_events",
+        ["user_id", "created_at"],
+    )
     op.create_index("ix_lifecycle_type", "account_lifecycle_events", ["event_type"])
 
     # ---------- Trigger para updated_at em users ----------

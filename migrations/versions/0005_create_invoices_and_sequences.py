@@ -8,11 +8,10 @@ from __future__ import annotations
 
 from alembic import op
 import sqlalchemy as sa
-from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
-revision = "0002_create_invoices_and_sequences"
-down_revision = "0001_create_fx_quotes"
+revision = "0005_invoices"
+down_revision = "0004_simulations"
 branch_labels = None
 depends_on = None
 
@@ -44,7 +43,8 @@ def upgrade() -> None:
                    AND year_month = v_ym
                 RETURNING last_number INTO v_next;
                 IF FOUND THEN
-                    v_number := 'INV-' || replace(v_ym, '-', '') || '-' || lpad(v_next::TEXT, 4, '0');
+                    v_number := 'INV-' || replace(v_ym, '-', '') || '-' ||
+                        lpad(v_next::TEXT, 4, '0');
                     RETURN v_number;
                 END IF;
                 -- Race condition: tenta inserir nova linha
@@ -111,8 +111,18 @@ def upgrade() -> None:
         # Lifecycle
         sa.Column("finalized_at", sa.DateTime(timezone=True), nullable=True),
         sa.Column("supersedes_invoice_id", sa.BigInteger(), nullable=True),
-        sa.Column("created_at", sa.DateTime(timezone=True), nullable=False, server_default=sa.text("NOW()")),
-        sa.Column("updated_at", sa.DateTime(timezone=True), nullable=False, server_default=sa.text("NOW()")),
+        sa.Column(
+            "created_at",
+            sa.DateTime(timezone=True),
+            nullable=False,
+            server_default=sa.text("NOW()"),
+        ),
+        sa.Column(
+            "updated_at",
+            sa.DateTime(timezone=True),
+            nullable=False,
+            server_default=sa.text("NOW()"),
+        ),
         # Constraints
         sa.PrimaryKeyConstraint("id", name="pk_invoices"),
         sa.CheckConstraint(

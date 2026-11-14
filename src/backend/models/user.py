@@ -10,7 +10,6 @@ from enum import Enum as PyEnum
 
 from sqlalchemy import (
     BIGINT,
-    BOOLEAN,
     CHAR,
     CheckConstraint,
     DateTime,
@@ -116,10 +115,16 @@ class UserLoginIdentifier(Base):
     __tablename__ = "user_login_identifiers"
     __table_args__ = (
         UniqueConstraint("kind", "lookup_hmac", name="uq_user_login_kind_hmac"),
-        # Partial unique index handled in migration (postgresql_where not supported in UniqueConstraint)
+        # Partial unique index handled in migration
+        # (postgresql_where not supported in UniqueConstraint)
         Index("ix_user_login_user_kind", "user_id", "kind"),
         Index("ix_user_login_hmac", "lookup_hmac"),
-        Index("ix_user_login_active_kind", "user_id", "kind", postgresql_where="retired_at IS NULL"),
+        Index(
+            "ix_user_login_active_kind",
+            "user_id",
+            "kind",
+            postgresql_where="retired_at IS NULL",
+        ),
     )
 
     id: Mapped[int] = mapped_column(BIGINT, primary_key=True)

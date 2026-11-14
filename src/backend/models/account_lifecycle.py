@@ -16,7 +16,6 @@ from sqlalchemy import (
     Enum as SAEnum,
     ForeignKey,
     Index,
-    String,
 )
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -41,7 +40,8 @@ class AccountLifecycleEvent(Base):
     __tablename__ = "account_lifecycle_events"
     __table_args__ = (
         CheckConstraint(
-            "event_type IN ('CREATED','ACTIVATED','DORMANT_AUTO','DORMANT_MANUAL','REACTIVATED','DELETED','ANONYMIZED')",
+            "event_type IN ('CREATED','ACTIVATED','DORMANT_AUTO','DORMANT_MANUAL',"
+            "'REACTIVATED','DELETED','ANONYMIZED')",
             name="chk_lifecycle_event_type",
         ),
         CheckConstraint(
