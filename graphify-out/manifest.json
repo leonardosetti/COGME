@@ -126,8 +126,8 @@
     "semantic_hash": ""
   },
   ".ai/agents/registry.yaml": {
-    "mtime": 1794638386.7748013,
-    "seen": 1794675600.185424,
+    "mtime": 1794676283.1055984,
+    "seen": 1794676341.2659028,
     "ast_hash": "c7e84c3418fa5038ce3a8e3706dcccc3",
     "semantic_hash": ""
   },
@@ -858,9 +858,9 @@
     "semantic_hash": ""
   },
   "src/backend/routers/invoices.py": {
-    "mtime": 1794638082.5181813,
-    "seen": 1794675600.1880734,
-    "ast_hash": "2835ec6ae65c3be0f96d98e94d874f91",
+    "mtime": 1794676017.4993708,
+    "seen": 1794676341.2689157,
+    "ast_hash": "6324e1f70c241f97f7bd3ee8e457797e",
     "semantic_hash": ""
   },
   "src/backend/routers/rates.py": {
@@ -1098,9 +1098,9 @@
     "semantic_hash": ""
   },
   "tests/integration/test_openapi.py": {
-    "mtime": 1793936110.5641408,
-    "seen": 1793993412.2279952,
-    "ast_hash": "24f8c6914ae2eed80b7c63464766bc6f",
+    "mtime": 1794676264.101398,
+    "seen": 1794676341.2697341,
+    "ast_hash": "867988bde27bc6e02ba6922726784dda",
     "semantic_hash": ""
   },
   "tests/integration/test_postgres_repository.py": {
@@ -4452,9 +4452,9 @@
     "semantic_hash": ""
   },
   "tests/integration/test_invoices_persistence.py": {
-    "mtime": 1794637650.3641336,
-    "seen": 1794675600.188795,
-    "ast_hash": "136b02e7caab7b50919bd418d5748c82",
+    "mtime": 1794675838.8383913,
+    "seen": 1794676341.2697153,
+    "ast_hash": "f732d6fbb82be9ec28bd14c50e8e627e",
     "semantic_hash": ""
   },
   "tests/unit/test_property_lgpd_erase.py": {
@@ -4647,6 +4647,54 @@
     "mtime": 1794632502.429052,
     "seen": 1794675600.197375,
     "ast_hash": "962e50b31eb21be3514bd45f56e7c027",
+    "semantic_hash": ""
+  },
+  "docs/arquitetura/c4-container.md": {
+    "mtime": 1794676264.8733983,
+    "seen": 1794676341.275359,
+    "ast_hash": "4382f577a8d84ada31faeaa3313c9f0f",
+    "semantic_hash": ""
+  },
+  "docs/arquitetura/c4-context.md": {
+    "mtime": 1794676206.5253918,
+    "seen": 1794676341.2753603,
+    "ast_hash": "51d49225365df1d66a8578d0bfaf2511",
+    "semantic_hash": ""
+  },
+  "docs/estrategia/business-case.md": {
+    "mtime": 1794675675.385333,
+    "seen": 1794676341.2774217,
+    "ast_hash": "9c97d8195ea4d8403496989ce3d7657a",
+    "semantic_hash": ""
+  },
+  "docs/governanca/communication-plan.md": {
+    "mtime": 1794675811.4333482,
+    "seen": 1794676341.2774801,
+    "ast_hash": "8b71487cb01c9292cc790f59ff0bcd04",
+    "semantic_hash": ""
+  },
+  "docs/governanca/stakeholder-register.md": {
+    "mtime": 1794675756.405342,
+    "seen": 1794676341.2776802,
+    "ast_hash": "97c35601c6b4879430c8cc7288dbee93",
+    "semantic_hash": ""
+  },
+  "docs/operacao/runbook.md": {
+    "mtime": 1794676109.495381,
+    "seen": 1794676341.2777843,
+    "ast_hash": "e78cda1a22186bd6ad142d189bdc1e69",
+    "semantic_hash": ""
+  },
+  "docs/qualidade/requirements-traceability-matrix.md": {
+    "mtime": 1794675975.7293663,
+    "seen": 1794676341.2781317,
+    "ast_hash": "aef6bc0d16fb7e0367beb43bd105d94c",
+    "semantic_hash": ""
+  },
+  "docs/qualidade/test-plan.md": {
+    "mtime": 1794675889.9453568,
+    "seen": 1794676341.2781327,
+    "ast_hash": "8ca8d28b04bb611d62f9e10b1110e0cb",
     "semantic_hash": ""
   },
   "package-lock.json": {

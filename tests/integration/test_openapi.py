@@ -13,7 +13,17 @@ from fastapi.testclient import TestClient
 
 from src.backend.main import app
 
-EXPECTED_PATHS = {"/v1/health", "/v1/rates/{currency}", "/v1/simulate", "/v1/invoice"}
+EXPECTED_PATHS = {
+    "/v1/health",
+    "/v1/rates/{currency}",
+    "/v1/simulate",
+    "/v1/invoice",
+    # Expanded invoice routes (SPEC-020)
+    "/v1/invoices",
+    "/v1/invoices/{invoice_id}",
+    "/v1/invoices/{invoice_id}/finalize",
+    "/v1/invoices/{invoice_id}/clone",
+}
 ERROR_REF_SUFFIX = "/ErrorResponse"
 
 
