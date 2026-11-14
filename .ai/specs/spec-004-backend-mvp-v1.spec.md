@@ -1,316 +1,661 @@
 ---
 id: ai-specs-spec-004-backend-mvp-v1-spec
-title: SPEC spec-004 — backend-mvp-v1 — Backend do MVP COGME (REQ-01 a REQ-05, REQ-07, REQ-14)
+title: SPEC spec-004 — backend-mvp-v1 — Backend do MVP COGME (REQ-01 a REQ-05, REQ-07, REQ-14, REQ-16, REQ-17)
 type: spec
-version: 1.0.0
+version: 2.0.0
 status: ativo
 owner: agent-project-analyst
 derived-from:
-- .ai/specs/spec-004-backend-mvp-v1.spec.md (adequado à norma em 2026-11-05)
-last-revised: '2026-11-05'
-lgpd-class: n/a
+- constitution.md v1.3.0 (Art. 1.2, P-14, P-15, Art. 7, Art. 9.3.v)
+- docs/decisoes/ccb-CR-002.md (CR2-D01..D09 ratificadas)
+- docs/decisoes/ccb-lgpd-decisoes.md (DEC-01..07)
+- docs/decisoes/adr-017-dependencia-argon2id.md
+- docs/decisoes/adr-018-tap-replanejamento-m4.md
+- docs/decisoes/adr-019-seguranca-multiusuario.md
+- .ai/specs/spec-002-requisitos-review-round-1.spec.md v2.0.0 (REQ-16, REQ-17, REQ-18)
+- .ai/specs/spec-017-identity-access-session-v1.spec.md
+- .ai/specs/spec-018-provider-profile-bank-account-v1.spec.md
+- .ai/specs/spec-019-client-directory-v1.spec.md
+- .ai/specs/spec-020-simulation-invoice-history-v1.spec.md
+- .ai/specs/spec-021-invoice-bilingual-v1.spec.md
+- .ai/specs/spec-022-account-lifecycle-privacy-v1.spec.md
+last-revised: '2026-11-15'
+lgpd-class: dados-pessoais
 tags:
 - specs
 - docs
 - adequado-a-norma
+- backend
+- mvp
+- autenticacao
+- multiusuario
 ---
 ---
 spec_id: spec-004
 specname: backend-mvp-v1
-version: 1.2.0
+version: 2.0.0
 status: ratificada
 custody: agent-sdd-specialist (.ai/specs/)
-created: 2026-11-01
-updated: 2026-11-05
-origin: commit f6e0455 (2026-11-01, "docs(spec): especificar backend do MVP") + .ai/handoffs/HF-0500-backend-mvp.md
-task: TA-0042 | sender: agent-nexus-prime-ultimate
-kill_switch: inherited
-wave: WS-4 | Onda 4 — Execução Técnica (backend implementação)
-lgpd-class: n/a (zero PII neste artefato; P-04, constitution.md:90)
+created: 2026-10-23
+updated: 2026-11-15
+origin: CR-002 Onda 1 (Emenda E-20 + ADR-017/018/019) — Emenda contratual para multiusuário, auth, persistência, autorização
+task: TA-0031 | sender: agent-project-analyst | kill_switch: inherited
 trace:
-  - .ai/handoffs/HF-0500-backend-mvp.md (registro de execução T1–T14)
-  - docs/decisoes/adr-016-backend-mvp.md (ADR-016, fórmula spread/IOF ratificada)
-  - constitution.md (Art. 2, P-02, P-03, P-04, P-06, P-07)
-  - ratificada CCB 05/11/2026 (instrumento RAT-2026-11-05-A16-D4, ADR-LOG-010)
+  - constitution.md v1.3.0 (E-20: Art. 1.2 escopo multiusuário, P-14 isolamento, P-15 LGPD/GDPR)
+  - docs/decisoes/ccb-CR-002.md (CR2-D01..D09)
+  - docs/decisoes/ccb-lgpd-decisoes.md (DEC-01..07)
+  - docs/decisoes/adr-017-dependencia-argon2id.md
+  - docs/decisoes/adr-018-tap-replanejamento-m4.md
+  - docs/decisoes/adr-019-seguranca-multiusuario.md
+  - .ai/specs/spec-002-requisitos-review-round-1.spec.md v2.0.0 (REQ-16, REQ-17, REQ-18)
+  - .ai/specs/spec-017-identity-access-session-v1.spec.md
+  - .ai/specs/spec-022-account-lifecycle-privacy-v1.spec.md
+lgpd-class: dados-pessoais
 ---
 
-# SPEC spec-004 — backend-mvp-v1 — Backend do MVP COGME (REQ-01 a REQ-05, REQ-07, REQ-14)
+# SPEC spec-004 — backend-mvp-v1 — Backend do MVP COGME (REQ-01 a REQ-05, REQ-07, REQ-14, REQ-16, REQ-17)
 
-Status: IMPLEMENTADA EM BRANCH, COM COMMITS LOCAIS, PENDENTE DE PUSH E MERGE | Branch: `feat/backend-mvp` | Orquestrador: agent-nexus-prime-ultimate
+**Status: RATIFICADA v2.0.0** — Emenda contratual para multiusuário (CR-002): autenticação, autorização, persistência, novos endpoints, contratos de erro atualizados.
 
-Fonte única das decisões do backend. Em conflito, vale a hierarquia do Art. 2 da Constituição.
+---
 
-## 1. Resolução de conflitos documentais
+## 1. Contexto e origem
 
-| Tema | Decisão | Fonte vencedora | Texto superado |
-|---|---|---|---|
-| Banco | PostgreSQL 15+, SQLAlchemy async, asyncpg, Alembic | Constituição 10.1, ADR-010, Delta REQ-07 | ADR-001 e prompts dba/backend-dev/python (SQLite) |
-| Cotação | Frankfurter primária; PTAX fallback obrigatório | ADR-010 §4 | desenvolvimento.md (PTAX primária) |
-| Pydantic | v2 (exigido pelo FastAPI atual) | Código de terceiros | prompt api-specialist ("v1-style") |
-| Dependências | Permitidas via ADR-010 §6, registradas em `docs/dependencias/registro.md` | ADR-010 §6 | prompts "stdlib + FastAPI only" |
-| Python | `>=3.11`; ambiente local e CI usam 3.12 | CI vigente | prompt python-specialist ("pinned 3.11") |
-| Spread/IOF | Informados pelo usuário; nenhuma alíquota no código | Plano de Riscos RE-04 | ADR-016 §D1 |
+Esta spec v2.0.0 emenda a spec-004 original (v1.1.0, 2026-11-05) para incorporar:
+- **Emenda Constitucional E-20** (constitution.md v1.3.0): escopo expandido para identidade, contas multiusuário, prestadora/banco, clientes, histórico, invoice bilíngue, lifecycle conta
+- **CR-002 Gates A/B/C/D ratificados**: autenticação (SPEC-017), autorização por proprietário (P-14), persistência de invoices/simulações (REQ-17), lifecycle (SPEC-022)
+- **ADR-017**: Dependência `argon2-cffi` (Argon2id) para hash de senhas
+- **ADR-018**: Replanejamento TAP/M4 → 30/12/2026, cenário A completo
+- **ADR-019**: Threat model STRIDE + 10 testes ST-01..ST-10
+- **SPEC-017, 022 ratificadas**: Contratos de identidade, sessão, lifecycle
 
-Fora do escopo: autenticação, cadastro, histórico de simulações, comparador Wise, telas (N5.3).
+**Mudança principal:** **Autenticação, cadastro, histórico de simulações e autorização SAEM de "fora de escopo" para DENTRO DO ESCOPO** (REQ-16, REQ-17). Contrato HTTP `POST /v1/simulate` mantido; novos endpoints para auth, recursos, invoices.
 
-## 2. Regras de negócio (REQ-02, REQ-03)
+---
 
-Dinheiro é sempre `Decimal`; `float` é proibido. Arredondamento `ROUND_HALF_EVEN`, 2 casas nos valores em moeda; taxas com 6 casas.
+## 2. Resolução de conflitos
 
-Bruto estrangeiro por regime:
+| Tema | Decisão v2.0.0 | Fonte vencedora | Texto superado |
+|------|----------------|-----------------|----------------|
+| **Autenticação/Cadastro** | **DENTRO DO ESCOPO** — REQ-16 (SPEC-017): register, login, logout, reset senha, sessão | Constitution v1.3.0 Art. 1.2 (E-20) + CR2-D01 | spec-004 v1.1 §1.3: "Autenticação, cadastro e histórico de simulações FORA DO ESCOPO" |
+| **Persistência Invoices** | **PERSISTIDA** — REQ-17 (SPEC-020): invoices finalizadas salvas com snapshots, numeração, retenção 5a+6m | ADR-016 D4 (RAT-2026-11-05-A16-D4) + CR2-D03 | spec-004 v1.1 §6: "Invoice nunca é persistida" |
+| **Persistência Simulações** | **OPT-IN** — REQ-17 (SPEC-020): simulações salvas apenas se usuário clicar "Salvar" | SPEC-020 §2.1 | spec-004 v1.1: "Histórico de simulações FORA DO ESCOPO" |
+| **Autorização** | **P-14 ISOLAMENTO POR PROPRIETÁRIO** — `owner_user_id` obrigatório em TODOS recursos; middleware `require_owner` em 100% rotas; 404 cross-user | Constitution v1.3.0 P-14 + SPEC-017 §5 + SPEC-022 | Não existia (single-user local) |
+| **Contrato Erro** | Atualizado para incluir códigos auth/autorização/validação multiusuário | SPEC-017 §4 + ADR-019 | Códigos originais apenas simulação/cotação |
+| **Rate Limiting** | Obrigatório em auth (login/reset) e API geral | ADR-019 §7 + SPEC-017 §7 | Não definido |
+| **CSRF Protection** | Double-submit cookie + header `X-CSRF-Token` em todas rotas mutáveis | ADR-019 §4.6 + SPEC-017 §6 | Não existia |
 
-| regime | Fórmula | quantity |
-|---|---|---|
-| `hourly`, `daily`, `weekly`, `monthly` | `amount × quantity` | obrigatória, > 0 |
-| `fixed` | `amount` | proibida |
+---
 
-Com `rate` = cotação em BRL por 1 unidade estrangeira:
+## 3. Arquitetura e Stack (Mantida + Extensões)
 
-1. `gross_foreign = q2(bruto)`
-2. `gross_brl = q2(gross_foreign × rate)`
-3. `spread_brl = q2(gross_brl × spread_pct / 100)`
-4. `iof_brl = q2((gross_brl − spread_brl) × iof_pct / 100)`
-5. `net_brl = gross_brl − spread_brl − iof_brl`
-6. `effective_rate = q6(net_brl / gross_foreign)`
+### 3.1 Stack Tecnológica
 
-Propriedade obrigatória: `gross_brl − spread_brl − iof_brl == net_brl` em toda resposta.
+| Camada | Tecnologia | Versão | Observação |
+|--------|------------|--------|------------|
+| **API Framework** | FastAPI | 0.109+ | Async, OpenAPI automático |
+| **ORM** | SQLAlchemy | 2.0+ | Async + PostgreSQL |
+| **Banco** | PostgreSQL | 15+ | Via Docker Compose |
+| **Migrações** | Alembic | 1.13+ | `upgrade`/`downgrade` testados |
+| **Validação** | Pydantic | 2.5+ | v2, schemas por endpoint |
+| **Auth/Hash** | `argon2-cffi` | 23.1+ | **NOVO** (ADR-017) Argon2id m=19456,t=2,p=1 |
+| **Criptografia Banco** | `pgcrypto` (AES-256-GCM) | PostgreSQL ext | Dados bancários (SPEC-018) |
+| **Cache** | In-memory (TTL) | Python stdlib | Cotações FX (REQ-07) |
+| **PDF** | WeasyPrint | 60+ | HTML→PDF invoices |
+| **Email** | `aiosmtplib` + Postfix/Dovecot local | 3.0+ | Reset senha SMTP local (CR2-D06) |
+| **Rate Limit** | `slowapi` / custom middleware | 0.1.9+ | ADR-019 §7 |
+| **CSRF** | Custom double-submit | Python stdlib | ADR-019 §4.6 |
+| **Testes** | pytest + pytest-asyncio | 7.4+ | Coverage ≥ 80% (REQ-08) |
 
-Exemplo sintético: USD, `hourly`, amount 30, quantity 160, rate 5.000000, spread 2, iof 0.38 →
-gross_foreign 4800.00, gross_brl 24000.00, spread_brl 480.00, iof_brl 89.38 (23520 × 0,0038 = 89,376), net_brl 23430.62, effective_rate 4.881379.
+### 3.2 Containerização (ADR-010, Art. 10.1)
 
-## 3. Contrato HTTP `/v1`
+```yaml
+# docker-compose.yml (resumo)
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: cogme
+      POSTGRES_USER: cogme
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./migrations:/migrations
+    secrets:
+      - db_password
 
-Decimais trafegam como string JSON. Enums: `Currency = USD|EUR`; `Regime = hourly|daily|weekly|monthly|fixed`; `RateSource = frankfurter|ptax`.
+  api:
+    build: .
+    depends_on: [postgres]
+    environment:
+      DATABASE_URL: postgresql+asyncpg://cogme:@postgres:5432/cogme
+      LOGIN_PEPPER_FILE: /run/secrets/login_pepper
+      SMTP_HOST: postfix
+      SMTP_PORT: 25
+      SMTP_USER_FILE: /run/secrets/smtp_user
+      SMTP_PASS_FILE: /run/secrets/smtp_pass
+    secrets:
+      - db_password
+      - login_pepper
+      - smtp_user
+      - smtp_pass
 
-| Verbo | Rota | Entrada | Saída | Erros |
-|---|---|---|---|---|
-| GET | `/v1/health` | — | 200 `{"status":"ok"}` | — |
-| GET | `/v1/rates/{currency}` | path `Currency` | 200 `RateQuote` | 400, 503 |
-| POST | `/v1/simulate` | `SimulationRequest` | 200 `SimulationResponse` | 400, 503 |
-| POST | `/v1/invoice` | `InvoiceRequest` | 200 `application/pdf` | 400, 503 |
+  postfix:
+    image: boky/postfix:latest
+    environment:
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+    secrets:
+      - smtp_user
+      - smtp_pass
 
-Schemas em `src/shared/schemas.py` (SSOT, `extra="forbid"`):
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt
+  login_pepper:
+    file: ./secrets/login_pepper.txt
+  smtp_user:
+    file: ./secrets/smtp_user.txt
+  smtp_pass:
+    file: ./secrets/smtp_pass.txt
 
-- `RateQuote`: `currency`, `rate`, `source`, `quoted_at` (datetime UTC), `bulletin: str|None`, `stale: bool`.
-- `SimulationRequest`: `currency`, `regime`, `amount` (>0, máx. 2 casas, ≤ 1.000.000.000), `quantity: Decimal|None` (>0, máx. 2 casas, ≤ 100.000), `spread_pct` e `iof_pct` (0 a 100, máx. 4 casas). Validador cruza `regime` e `quantity` (§2).
-- `SimulationResponse`: `currency`, `regime`, `gross_foreign`, `gross_brl`, `spread_brl`, `iof_brl`, `net_brl`, `effective_rate`, `spread_pct`, `iof_pct`, `quote: RateQuote`, `notice: str`.
-- `InvoiceParty`: `name` (1–120), `tax_id: str|None` (≤40), `address: str|None` (≤240).
-- `InvoiceRequest`: `simulation: SimulationRequest`, `issuer: InvoiceParty`, `client: InvoiceParty`, `invoice_number` (1–40), `issue_date: date`, `description` (1–500).
-
-`notice` é constante: "Simulação de caráter informativo; spread e IOF foram informados pelo usuário e não substituem a orientação de um profissional habilitado."
-
-Modelo canônico de erro (todas as falhas, inclusive validação, 404 e 500):
-
-```json
-{"error": {"key": "validation_error", "message": "Dados inválidos.", "details": [{"field": "amount", "message": "..."}]}}
+volumes:
+  pgdata:
 ```
 
-| HTTP | key | Quando |
-|---|---|---|
-| 400 | `validation_error` | Corpo, path ou enum inválidos (substitui o 422 do FastAPI) |
-| 404 | `not_found` | Rota inexistente |
-| 503 | `rates_unavailable` | Sem fonte disponível e sem cache |
-| 503 | `pdf_unavailable` | WeasyPrint/Pango ausente ou falha de renderização |
-| 500 | `internal_error` | Inesperado, sem traceback nem dados do usuário |
+---
 
-Mensagens em PT-BR. `details` nunca ecoa o valor enviado.
+## 4. Contrato HTTP — Endpoints (Atualizado)
 
-## 4. Cotações (REQ-01, REQ-07)
+### 4.1 Simulação (Existente — Mantido)
 
-Adapter `RateProvider` (Protocol) com `async fetch(currency) -> RateQuote`.
+| Endpoint | Método | Descrição | Auth | Rate Limit |
+|----------|--------|-----------|------|------------|
+| `/v1/simulate` | POST | Simulação cambial tempo real | Opcional (session se salvo) | 100/min/user |
+| `/v1/fx/quote` | GET | Cotação atual (cache) | Pública | 100/min/IP |
 
-- **Frankfurter:** `GET https://api.frankfurter.dev/v1/latest?base=USD&symbols=BRL` → `{"amount":1.0,"base":"USD","date":"2026-10-30","rates":{"BRL":5.4325}}`. `quoted_at` = meia-noite UTC de `date`; `bulletin=None`.
-- **PTAX:** OData `CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)` com `@moeda='USD'`, janela dos últimos 7 dias (datas `MM-DD-YYYY`), `$top=1`, `$orderby=dataHoraCotacao desc`, `$format=json`. Usa `cotacaoCompra` (o profissional vende moeda) e `tipoBoletim` em `bulletin`. `dataHoraCotacao` vem em `YYYY-MM-DD HH:MM:SS.ffffff`, horário de Brasília (`America/Sao_Paulo`), e é convertido para UTC. Janela sem linhas é falha da fonte.
-- JSON lido com `parse_float=Decimal` para não passar por binário.
+### 4.2 Identidade e Autenticação (NOVO — SPEC-017)
 
-Aceite de cotação (anti-envenenamento, kill switch DBA 5): `Decimal` finito, `0 < rate < 1000`. Fora disso é falha da fonte e nada é gravado.
+| Endpoint | Método | Descrição | Auth | Rate Limit | Spec |
+|----------|--------|-----------|------|------------|------|
+| `/v1/auth/register` | POST | Cadastro (email, CPF/CNPJ, senha, nome) | Pública | 5/min/IP | SPEC-017 |
+| `/v1/auth/login` | POST | Login (identificador + senha) | Pública | 5/min/IP, 10/min/user | SPEC-017 |
+| `/v1/auth/logout` | POST | Logout (revoga sessão atual) | Cookie session | - | SPEC-017 |
+| `/v1/auth/password/reset-request` | POST | Solicita reset (email/CPF/CNPJ) | Pública | 3/h/identificador | SPEC-017 |
+| `/v1/auth/password/reset-confirm` | POST | Confirma reset (token + nova senha) | Pública | 5/h/token | SPEC-017 |
+| `/v1/auth/me` | GET | Perfil usuário logado | Session | 100/min/user | SPEC-017 |
+| `/v1/auth/aliases` | GET | Lista aliases ativos (tipo + mascarado) | Session | 100/min/user | SPEC-017 |
+| `/v1/auth/aliases/cnpj` | PUT | Rotaciona alias CNPJ (mesma transação) | Session | 10/min/user | SPEC-017 |
 
-Fluxo de `RateService.get_quote(currency)`:
+### 4.3 Prestadora e Contas Bancárias (NOVO — SPEC-018)
 
-1. Cache com idade ≤ `COGME_RATE_TTL_SECONDS` (padrão 3600) → devolve sem chamar a rede. A idade conta de `fetched_at`.
-2. Entra na fila da moeda (single-flight). Quem esperou e viu uma cadeia terminar herda o desfecho dela. Quem assume relê o cache, salvo se a primeira leitura falhou, e percorre a cadeia Frankfurter → PTAX, pulando provedor com circuito aberto. Sucesso grava e devolve.
-3. Falha geral: última linha do cache com `stale=true`.
-4. Sem cache: `RatesUnavailableError` (503).
+| Endpoint | Método | Descrição | Auth | Rate Limit | Spec |
+|----------|--------|-----------|------|------------|------|
+| `/v1/provider/profile` | GET | Retorna perfil prestadora | `require_owner` | 100/min/user | SPEC-018 |
+| `/v1/provider/profile` | PUT | Atualiza perfil (exceto category PJ) | `require_owner` | 10/min/user | SPEC-018 |
+| `/v1/provider/bank-accounts` | GET | Lista contas (descriptografadas) | `require_owner` | 100/min/user | SPEC-018 |
+| `/v1/provider/bank-accounts` | POST | Cria conta (criptografa sensíveis) | `require_owner` | 10/min/user | SPEC-018 |
+| `/v1/provider/bank-accounts/{id}` | PUT | Atualiza conta | `require_owner` | 10/min/user | SPEC-018 |
+| `/v1/provider/bank-accounts/{id}` | DELETE | Remove conta (não primária única) | `require_owner` | 10/min/user | SPEC-018 |
 
-Circuit breaker por provedor, em memória: abre após 3 falhas consecutivas e fica aberto por 60 s; depois admite uma tentativa. Relógio injetável. Cancelamento e corte pelo prazo da cadeia liberam a tentativa com `record_release`, sem contar como falha da fonte.
+### 4.4 Clientes (NOVO — SPEC-019)
 
-Orçamento de REQ-01: prazo total de 1,9 s por requisição (`total_timeout`), contado da chegada e válido inclusive na fila. Cada chamada ao repositório tem até 0,3 s (`repository_timeout`); estouro equivale a cache ausente na leitura e a gravação ignorada na escrita. Timeout por provedor de 0,9 s, com a cadeia inteira encerrada em t = 1,6 s, o que reserva 0,3 s à gravação. Pior caso: leitura 0,3 + releitura 0,3 + cadeia até 1,6 + gravação 0,3 = 1,9 s; a PTAX recebe o que restar depois da Frankfurter (0,1 a 0,7 s) enquanto o circuito desta não abre, e 0,9 s depois disso. Sem esse corte, 0,3 + 1,8 + 0,3 somariam 2,4 s.
+| Endpoint | Método | Descrição | Auth | Rate Limit | Spec |
+|----------|--------|-----------|------|------------|------|
+| `/v1/clients` | GET | Lista clientes (paginado, filtros) | `require_owner` | 100/min/user | SPEC-019 |
+| `/v1/clients` | POST | Cadastra cliente | `require_owner` | 10/min/user | SPEC-019 |
+| `/v1/clients/{id}` | GET | Detalha cliente | `require_owner` | 100/min/user | SPEC-019 |
+| `/v1/clients/{id}` | PUT | Atualiza (exceto tax_id, owner) | `require_owner` | 10/min/user | SPEC-019 |
+| `/v1/clients/{id}/deactivate` | POST | Inativa cliente | `require_owner` | 10/min/user | SPEC-019 |
+| `/v1/clients/{id}/activate` | POST | Reativa cliente | `require_owner` | 10/min/user | SPEC-019 |
 
-Circuit breaker do repositório (`repository_breaker`), distinto dos provedores: abre após 3 estouros ou `RepositoryError` consecutivos e admite uma sonda a cada 5 s; sucesso fecha e cancelamento usa `record_release`. Aberto, leitura e gravação são puladas sem tocar no repositório: a leitura conta como cache ausente e a gravação é ignorada, com um registro por queda (`quote_cache_skipped`), não por requisição. Nesse período não há cache vencido para devolver, e sem fontes a resposta é 503. O circuito existe porque a consulta de DNS de um banco parado leva cerca de 3,8 s e não para quando a chamada é cortada: no uvloop ela ocupa o pool do libuv, compartilhado com o DNS das fontes. A primeira onda, anterior à abertura, ainda chega a 16 consultas, e o libuv padrão só admite 2 simultâneas; por isso a imagem define `UV_THREADPOOL_SIZE=64` no `Dockerfile`.
+### 4.5 Simulações Salvas (NOVO — SPEC-020)
 
-Seguidores herdam o desfecho do líder, inclusive falha: cotação, ou cache vencido próprio, ou 503, sem repetir a cadeia. O single-flight vale por processo, e o desfecho herdado vale só para quem chegou antes de a cadeia terminar.
+| Endpoint | Método | Descrição | Auth | Rate Limit | Spec |
+|----------|--------|-----------|------|------------|------|
+| `/v1/simulations` | GET | Lista simulações salvas (paginado) | `require_owner` | 100/min/user | SPEC-020 |
+| `/v1/simulations` | POST | Salva simulação (opt-in) | `require_owner` | 10/min/user | SPEC-020 |
+| `/v1/simulations/{id}` | GET | Detalha simulação + cotação snapshot | `require_owner` | 100/min/user | SPEC-020 |
 
-## 5. Persistência (somente cotações)
+### 4.6 Invoices (EMENDADO — SPEC-007 + SPEC-020)
 
-Tabela `fx_quotes`: `id` bigint PK; `currency char(3)` com CHECK; `rate numeric(18,6)` CHECK `> 0`; `source varchar(20)`; `bulletin varchar(40)` NULL; `quoted_at timestamptz`; `fetched_at timestamptz`. Índice `(currency, fetched_at DESC)`. Retenção em manutenção futura; só há dados públicos.
+| Endpoint | Método | Descrição | Auth | Rate Limit | Spec |
+|----------|--------|-----------|------|------------|------|
+| `/v1/invoices` | GET | Lista invoices (paginado, filtros) | `require_owner` | 100/min/user | SPEC-020 |
+| `/v1/invoices` | POST | Cria invoice `draft` | `require_owner` | 10/min/user | SPEC-020 |
+| `/v1/invoices/{id}` | GET | Detalha invoice (todos snapshots) | `require_owner` | 100/min/user | SPEC-020 |
+| `/v1/invoices/{id}` | PUT | Atualiza invoice `draft` | `require_owner` | 10/min/user | SPEC-020 |
+| `/v1/invoices/{id}/finalize` | POST | Finaliza invoice (draft→finalized) | `require_owner` | 10/min/user | SPEC-020 |
+| `/v1/invoices/{id}/clone` | POST | Clona invoice (novo draft) | `require_owner` | 10/min/user | SPEC-020 |
+| `/v1/invoices/{id}/download` | GET | Download PDF (locale snapshoteado) | `require_owner` | 20/min/user | SPEC-021 |
 
-Acesso via Repository (`QuoteRepository` Protocol), como exige o kill switch da ADR-010. Regra de negócio não importa SQLAlchemy. Migrações Alembic com `upgrade` e `downgrade`.
+### 4.7 Lifecycle Conta (NOVO — SPEC-022)
 
-**LGPD:** invoice é persistida na tabela `invoices` (modelo canônico em spec-007 §3.1; ADR-016 D4, RAT-2026-11-05-A16-D4). Cada usuário pode gerar, armazenar persistentemente, baixar e imprimir a invoice conforme sua regra de jornada e rating de pagamento. Nomes, documentos e endereços são gravados na invoice com minimização (P-04, LGPD art. 6º III) e rota de erase (direito ao esquecimento, LGPD art. 18) é obrigatória (condicionantes D1-D6 da spec-015). Logs não trazem valores nem corpo de requisição.
+| Endpoint | Método | Descrição | Auth | Rate Limit | Spec |
+|----------|--------|-----------|------|------------|------|
+| `/v1/account` | DELETE | Exclusão definitiva (agenda erase) | `require_owner` | 1/h/user | SPEC-022 |
+| `/v1/account/reactivate` | POST | Reativação dormente (reset+verificação) | Session | 5/h/user | SPEC-022 |
 
-## 6. Invoice (REQ-04)
+---
 
-`POST /v1/invoice` recalcula no servidor a simulação recebida; não aceita valores prontos do cliente. Template Jinja2 `src/frontend/templates/invoice.html`, com autoescape ativo, em PT-BR, exibindo partes, descrição, regime, cotação com fonte, data e boletim, valores e `notice`. Renderiza com WeasyPrint em threadpool, com `import` tardio para a API subir sem Pango, e `url_fetcher` que recusa tudo, sem recursos remotos. Resposta com `Content-Disposition: attachment; filename="invoice.pdf"`.
+## 5. Schemas de Request/Response (Pydantic v2)
 
-## 7. Configuração e segurança
-
-Variáveis: `COGME_DATABASE_URL`, `COGME_RATE_TTL_SECONDS`, `COGME_PROVIDER_TIMEOUT_SECONDS`, `COGME_LOG_LEVEL`. Sem valor padrão de banco que contenha credencial real; ausência de `COGME_DATABASE_URL` falha ao iniciar (fail-closed). O scanner do CI varre `src/` e `tests/` e rejeita `password=` literal em `.py`, `.yml` e `.yaml`: monte URLs sem esse padrão. `.env.example` exige exceção `!**/.env.example` no `.gitignore`. Compose publica portas só em `127.0.0.1`. Sem CORS: o frontend é servido na mesma origem.
-
-## 8. Estrutura
-
-```
-src/shared/schemas.py            contrato
-src/backend/main.py              app, lifespan, handlers de erro
-src/backend/config.py            Settings
-src/backend/errors.py            exceções de domínio
-src/backend/routers/{health,rates,simulations,invoices}.py
-src/backend/services/calculator.py   puro
-src/backend/services/rate_providers.py
-src/backend/services/circuit_breaker.py
-src/backend/services/rate_service.py
-src/backend/services/simulation_service.py
-src/backend/services/invoice_service.py
-src/backend/models/quote.py  models/database.py  models/repository.py
-migrations/
-tests/unit/  tests/integration/
-```
-
-Testes não usam rede nem relógio real. Integração com PostgreSQL usa `COGME_TEST_DATABASE_URL` e marcador `postgres`. Cobertura ≥ 80 % sobre `src/`. Dados de teste são sintéticos. `tests/agents/` não é alterado.
-
-## 8.1 Assinaturas internas (contrato entre T5, T6 e T7)
+### 5.1 Auth Schemas (`src/backend/schemas/auth.py`)
 
 ```python
-# services/calculator.py (puro)
-@dataclass(frozen=True)
-class Breakdown: gross_foreign; gross_brl; spread_brl; iof_brl; net_brl; effective_rate  # Decimal
-def calculate(regime, amount, quantity, rate, spread_pct, iof_pct) -> Breakdown
+# Register
+class RegisterRequest(BaseModel):
+    identifier: str  # email, CPF (11 dígitos) ou CNPJ (14 dígitos)
+    password: str = Field(min_length=8, max_length=128)
+    name: str = Field(min_length=1, max_length=255)
 
-# services/circuit_breaker.py
-class CircuitBreaker:
-    def __init__(self, failure_threshold=3, reset_seconds=60.0, clock=time.monotonic)
-    def allow(self) -> bool
-    def record_success(self) -> None
-    def record_failure(self) -> None
-    def record_release(self) -> None  # chamada sem veredito: libera a tentativa, sem penalizar
+class RegisterResponse(BaseModel):
+    user_id: UUID
+    message: str = "Conta criada. Faça login."
 
-# services/rate_providers.py
-class ProviderError(Exception)  # toda falha de fonte, inclusive timeout e aceite reprovado
-class RateProvider(Protocol):
-    name: RateSource
-    async def fetch(self, currency: Currency) -> RateQuote
-class FrankfurterProvider:  __init__(self, client: httpx.AsyncClient, timeout: float)
-class PtaxProvider:         __init__(self, client: httpx.AsyncClient, timeout: float, today=<callable -> date>)
+# Login
+class LoginRequest(BaseModel):
+    identifier: str  # email, CPF ou CNPJ normalizado
+    password: str
 
-# services/rate_service.py
-class RateService:
-    def __init__(self, repository, providers: list[tuple[RateProvider, CircuitBreaker]],
-                 ttl_seconds: int, now=<callable -> datetime UTC>,
-                 repository_timeout: float = 0.3, total_timeout: float = 1.9,
-                 repository_breaker: CircuitBreaker | None = None)  # padrão: 3 falhas, reset 5 s
-    async def get_quote(self, currency: Currency) -> RateQuote
+class LoginResponse(BaseModel):
+    message: str = "Login realizado"
+    # Token retornado via cookie HttpOnly
 
-# services/simulation_service.py
-async def simulate(request: SimulationRequest, rate_service: RateService) -> SimulationResponse
+# Reset Request
+class ResetRequestRequest(BaseModel):
+    identifier: str  # email, CPF ou CNPJ
 
-# services/invoice_service.py
-async def render_invoice(request: InvoiceRequest, rate_service: RateService) -> bytes
+class ResetConfirmRequest(BaseModel):
+    token: str
+    new_password: str = Field(min_length=8, max_length=128)
+
+# Aliases
+class AliasResponse(BaseModel):
+    kind: Literal["email", "cpf", "cnpj"]
+    masked: str  # ex.: "jo***@example.com", "***.***.123-45", "**.***.***/0001-99"
 ```
 
-Regras adicionadas na T2:
+### 5.2 Provider Schemas (`src/backend/schemas/provider.py`)
 
-- `RateQuote` rejeita taxa com mais de 6 casas; o provedor quantiza com `q6` antes de montá-la. `ValidationError` no provedor vira `ProviderError`.
-- Bruto que arredonda para 0.00 é erro de validação (`gross_rounds_to_zero`), o que evita divisão por zero em `effective_rate`.
-- `SimulationResponse` valida a identidade do §2 e o `notice`.
-- Corpos JSON são lidos com `parse_float=Decimal`, pois `json.loads` padrão colapsaria literais longos em `float` antes do schema.
-- O handler de validação usa só `loc` e mensagem PT-BR, nunca `input` nem `ctx`, e traduz erros nativos da Pydantic por `type`. Em `extra_forbidden`, o nome da chave enviada não é ecoado.
+```python
+class ProviderProfileRequest(BaseModel):
+    legal_name: str = Field(min_length=1, max_length=255)
+    category: Literal["mei", "legal_entity"]
+    cnpj: str | None = Field(default=None, pattern=r"^\d{14}$")  # Obrigatório se PJ
+    address: str | None = Field(default=None, max_length=500)
+    city: str | None = Field(default=None, max_length=100)
+    state: str | None = Field(default=None, pattern=r"^[A-Z]{2}$")
+    postal_code: str | None = Field(default=None, pattern=r"^\d{8}$")
+    country_code: str = Field(default="BR", pattern=r"^[A-Z]{2}$")
 
-## 9. Tarefas
+class BankAccountRequest(BaseModel):
+    account_type: Literal["checking", "savings", "payment"]
+    bank_code: str = Field(pattern=r"^\d{3}$")  # COMPE
+    bank_name: str = Field(min_length=1, max_length=100)
+    branch: str = Field(min_length=1, max_length=10)
+    account_number: str = Field(min_length=1, max_length=20)
+    account_digit: str = Field(min_length=1, max_length=2)
+    swift_bic: str | None = Field(default=None, pattern=r"^[A-Z]{6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3})?$")
+    iban: str | None = Field(default=None, max_length=34)
+    account_holder: str = Field(min_length=1, max_length=255)
+    currency: Literal["BRL", "USD", "EUR"] = "BRL"
+    is_primary: bool = False
+```
 
-| ID | Agente | Modelo | Entrega |
-|---|---|---|---|
-| T1 | python-specialist | Sonnet 5.5 | pyproject, requirements, registro de dependências, config.py |
-| T2 | api-specialist | Opus 5.5 | schemas.py, errors.py |
-| T3 | dba | Sonnet 5.5 | modelos, repositório, Alembic |
-| T4 | devops + docker-specialist | Sonnet 5.5 | Dockerfile, compose, .env.example, CI |
-| T5 | qa-sdet | Haiku 5.5 | Testes unitários e de contrato (primeiro) |
-| T6 | backend-dev | Opus 5.5 | Serviços de cálculo, cotação e circuit breaker |
-| T7 | backend-dev | Sonnet 5.5 | Routers, main.py, invoice |
-| T8 | qa-sdet | Haiku 5.5 | Testes de integração e fechamento de cobertura |
-| T9 | digital-security + reviewer | Sonnet 5.5 | Revisão de segurança e código |
-| T10 | architect (redação) | Haiku 5.5 | ADR-016 proposta, README, status nos planos, handoff |
-| T11 | backend-dev | Opus 5.5 | Timeouts do repositório, single-flight, prazo total, circuit breaker do repositório |
-| T12 | devops + backend-dev | Sonnet 5.5 | Desconexão do cliente, endurecimento do compose, lint e Alembic no CI, .gitignore |
-| T13 | qa-sdet | Haiku 5.5 | Teste instável, testes do circuit breaker do repositório e do lifespan |
+### 5.3 Client Schemas (`src/backend/schemas/client.py`)
+
+```python
+class ClientRequest(BaseModel):
+    name: str = Field(min_length=1, max_length=255)
+    tax_id: str = Field(pattern=r"^\d{11}$|^\d{14}$")  # CPF ou CNPJ
+    address: str | None = Field(default=None, max_length=500)
+    country_code: str = Field(pattern=r"^[A-Z]{2}$")  # ISO 3166-1
+
+class ClientFictitiousRequest(BaseModel):
+    name: str = Field(min_length=1, max_length=255)
+    tax_id: str = Field(pattern=r"^\d{11}$|^\d{14}$")
+    address: str | None = Field(default=None, max_length=500)
+    country_code: str = Field(pattern=r"^[A-Z]{2}$")  # OBRIGATÓRIO (DEC-07)
+```
+
+### 5.4 Simulation Schemas (`src/backend/schemas/simulation.py`)
+
+```python
+class SimulationSaveRequest(BaseModel):
+    currency: Literal["USD", "EUR", "GBP", "JPY", "CHF"]
+    regime: Literal["hourly", "daily", "weekly", "monthly", "fixed"]
+    amount: Decimal = Field(gt=0, max_digits=18, decimal_places=2)
+    quantity: Decimal = Field(gt=0, max_digits=10, decimal_places=2)
+    spread_pct: Decimal = Field(ge=0, le=100, max_digits=5, decimal_places=2)
+    iof_pct: Decimal = Field(ge=0, le=100, max_digits=5, decimal_places=2)
+    fx_quote_id: UUID  # Snapshot cotação (SPEC-020 resolve gap spec-007 §3.7.3)
+
+class SimulationResponse(BaseModel):
+    id: UUID
+    currency: str
+    regime: str
+    amount: Decimal
+    quantity: Decimal
+    spread_pct: Decimal
+    iof_pct: Decimal
+    gross_foreign: Decimal
+    gross_brl: Decimal
+    spread_brl: Decimal
+    iof_brl: Decimal
+    net_brl: Decimal
+    effective_rate: Decimal
+    rate: Decimal
+    rate_source: str
+    quoted_at: datetime
+    bulletin: str
+    stale: bool
+    created_at: datetime
+```
+
+### 5.5 Invoice Schemas (`src/backend/schemas/invoice.py`)
+
+```python
+class InvoiceCreateDraft(BaseModel):
+    client_id: UUID | None = None  # None = cliente fictício
+    client_fictitious: ClientFictitiousRequest | None = None  # Obrigatório se client_id=None
+    simulation_id: UUID | None = None
+    # Snapshots parciais aceitos no draft
+
+class InvoiceFinalizeRequest(BaseModel):
+    # Valida se todos snapshots completos
+
+class InvoiceResponse(BaseModel):
+    id: UUID
+    owner_user_id: UUID
+    client_id: UUID | None
+    simulation_id: UUID | None
+    status: Literal["draft", "finalized"]
+    locale: Literal["pt-BR", "en"]
+    client_country_code: str
+    finalized_at: datetime | None
+    supersedes_invoice_id: UUID | None
+    number: str  # INV-{YYYYMM}-{SEQ:04d}
+    issuer_snapshot: dict
+    client_snapshot: dict
+    bank_snapshot: dict
+    simulation_snapshot: dict | None
+    quote_snapshot: dict
+    amounts_snapshot: dict
+    notice_snapshot: str
+    created_at: datetime
+```
+
+### 5.6 Error Schema Unificado (Atualizado)
+
+```python
+class ErrorResponse(BaseModel):
+    error: str
+    code: str  # Código estável para frontend
+    details: dict | None = None
+    trace_id: str  # Para correlação logs
+
+# Códigos de erro NOVOS (multiusuário):
+# AUTH_INVALID_CREDENTIALS, AUTH_SESSION_EXPIRED, AUTH_SESSION_REVOKED
+# AUTH_RATE_LIMIT_LOGIN, AUTH_RATE_LIMIT_RESET
+# AUTH_RESET_TOKEN_INVALID, AUTH_RESET_TOKEN_EXPIRED, AUTH_RESET_TOKEN_USED
+# AUTH_CSRF_MISSING, AUTH_CSRF_INVALID
+# AUTH_ALIAS_ROTATION_FAILED
+# AUTHZ_RESOURCE_NOT_FOUND (404 cross-user)
+# VALIDATION_COUNTRY_CODE_REQUIRED (cliente fictício)
+# INVOICE_STATUS_IMMUTABLE (finalized não editável)
+# INVOICE_NUMBER_CONFLICT
+# ACCOUNT_DORMANT, ACCOUNT_DELETED
+# PROVIDER_CNPJ_REQUIRED_FOR_PJ
+```
 
 ---
 
-## 10. Contexto e origem (camada b)
+## 6. Middleware de Autorização — `require_owner` (P-14)
 
-Spec de fonte única das decisões do backend, anterior à implementação na branch `feat/backend-mvp`: commit `f6e0455` (2026-11-01, "docs(spec): especificar backend do MVP") e registro de execução das tarefas em `.ai/handoffs/HF-0500-backend-mvp.md` (§9, `status: blocked` — única pendência declarada é a ratificação da ADR-016, ato humano do CCB). Decisão de stack correlata: `docs/decisoes/ADR-016-backend-mvp.md:18`. Handoff de criação da spec: `UNKNOWN - verify` (não há envelope `task-ta-*.json` correspondente em `.ai/handoffs/`).
+**Localização:** `src/backend/middleware/authorization.py`
 
-## 11. Critérios de aceite e testes (camada e)
+```python
+from fastapi import Depends, HTTPException, Request
+from sqlalchemy.ext.asyncio import AsyncSession
 
-Histórico: esta SPEC não possuía seção própria de critérios de aceite antes da normalização TA-0031 — nada foi inventado então (marcador vigente até a emenda TA-0061, HF-0617); a evidência observável então registrada permanece válida (docstrings dos testes citam esta spec por seção: `tests/integration/test_api_contract.py:1` → §2, §3; `tests/unit/test_calculator.py:1` → §2, §3; T5/T8 de §9 definem quem entrega os testes). Emenda TA-0061 (C.1): os critérios abaixo consolidam, em forma binária verificável, ACs **já existentes no corpo** (§§2–9) — nenhum requisito novo; o que o corpo não fundamenta permanece `UNKNOWN - verify` (P-08).
+async def get_current_session(request: Request, db: AsyncSession = Depends(get_db)) -> SessionData | None:
+    """Extrai e valida sessão do cookie; retorna SessionData ou None."""
+    token = request.cookies.get("session")
+    if not token:
+        return None
+    token_hash = hashlib.sha256((token + get_pepper()).encode()).digest()
+    session = await db.fetchrow(
+        "SELECT * FROM user_sessions WHERE token_hash = $1 AND revoked_at IS NULL AND expires_at > now()",
+        token_hash
+    )
+    if not session:
+        return None
+    # Sliding expiration
+    await db.execute(
+        "UPDATE user_sessions SET last_seen_at = now() WHERE id = $1",
+        session["id"]
+    )
+    return SessionData(user_id=session["user_id"], session_id=session["id"])
 
-- [ ] **AC-01** — toda resposta de `POST /v1/simulate` satisfaz `gross_brl − spread_brl − iof_brl == net_brl` (verificação: teste de propriedade sobre `calculate`/`SimulationResponse`). Fonte: §2:53, §8.1:200.
-- [ ] **AC-02** — dinheiro é exclusivamente `Decimal` com `ROUND_HALF_EVEN` (`float` proibido), 2 casas em valores de moeda e 6 casas em taxas; `RateQuote` rejeita taxa com mais de 6 casas (verificação: grep de `float` em `services/calculator.py` = zero matches + teste de quantização). Fonte: §2:35, §8.1:198.
-- [ ] **AC-03** — o exemplo sintético canônico (USD, `hourly`, amount 30, quantity 160, rate 5.000000, spread 2, iof 0.38) produz `net_brl` 23430.62 e `effective_rate` 4.881379 (verificação: caso golden no teste unitário). Fonte: §2:55-56.
-- [ ] **AC-04** — bruto que arredonda para 0.00 rejeita a requisição com `gross_rounds_to_zero` (verificação: teste de validação). Fonte: §8.1:199.
-- [ ] **AC-05** — cotação fora do aceite `Decimal` finito e `0 < rate < 1000` é falha da fonte e nada é gravado (verificação: teste com rate 0, 1000 e NaN). Fonte: §4:103.
-- [ ] **AC-06** — cache vigente (idade ≤ `COGME_RATE_TTL_SECONDS`, padrão 3600) responde sem chamada externa; sem cache e sem fonte → 503 `rates_unavailable`; cache vencido é devolvido com `stale=true` (verificação: teste com relógio injetável). Fonte: §4:107-110.
-- [ ] **AC-07** — circuit breaker de provedor abre após 3 falhas consecutivas por 60 s; breaker do repositório abre após 3 estouros/`RepositoryError` com sonda a cada 5 s; seguidores herdam o desfecho do líder (verificação: testes dos breakers com relógio injetável). Fonte: §4:112,116,118.
-- [ ] **AC-08** — orçamento de cotação: `total_timeout` de 1,9 s por requisição, `repository_timeout` de 0,3 s, cadeia de provedores encerrada em t=1,6 s e timeout por provedor de 0,9 s (verificação: teste de timeout com relógio fake). Fonte: §4:114.
-- [ ] **AC-09** — provedores cumprem o contrato de parsing: Frankfurter (`quoted_at` = meia-noite UTC de `date`, `bulletin=None`) e PTAX (`cotacaoCompra`, `tipoBoletim` em `bulletin`, conversão para UTC; janela sem linhas é falha da fonte), com JSON lido em `parse_float=Decimal` (verificação: testes unitários com as respostas de exemplo de §4). Fonte: §4:99-101, §8.1:201.
-- [ ] **AC-10** — schemas do contrato `/v1` vivem unicamente em `src/shared/schemas.py` com `extra="forbid"`; campo desconhecido → 400 `validation_error` (verificação: teste de contrato). Fonte: §3:69,87.
-- [ ] **AC-11** — toda falha (400/404/503/500) responde no modelo canônico de erro com mensagem PT-BR, sem traceback e sem ecoar o valor enviado; handler de validação usa só `loc` (nunca `input`/`ctx`) (verificação: testes de contrato de erro). Fonte: §3:79-93, §8.1:202.
-- [ ] **AC-12** — `POST /v1/invoice` recalcula a simulação no servidor e não aceita valores prontos do cliente (verificação: teste com corpo adulterado rejeitado). Fonte: §6:130.
-- [ ] **AC-13** — invoice em PDF com `Content-Disposition: attachment; filename="invoice.pdf"`, template com autoescape ativo e `url_fetcher` que recusa todo recurso remoto (verificação: teste de integração). Fonte: §6:130.
-- [ ] **AC-14** — invoice não é persistida; nomes/documentos/endereços não aparecem em logs; logs não trazem valores nem corpo de requisição (verificação: revisão dos logs dos testes de integração; política LGPD de produto é objeto da spec-015, proposta). Fonte: §5:126.
-- [ ] **AC-15** — ausência de `COGME_DATABASE_URL` impede a inicialização da API (fail-closed); compose publica portas só em `127.0.0.1`; sem CORS (verificação: teste de boot sem a variável + leitura do compose). Fonte: §7:134.
-- [ ] **AC-16** — testes sem rede nem relógio real; integração com PostgreSQL via `COGME_TEST_DATABASE_URL` e marcador `postgres`; dados 100% sintéticos; `tests/agents/` não alterado (verificação: convenção de fixtures). Fonte: §8:155.
-- [ ] **AC-17** — migrações Alembic completam o round-trip `upgrade`/`downgrade` (verificação: teste de round-trip; análogo ao F-06 da spec-005 §12). Fonte: §5:124.
-- [ ] **AC-18** — cobertura ≥ 80 % sobre `src/`, fail-closed no CI (`--cov-fail-under=80`, ci.yml:170) (verificação: run do CI). Fonte: §8:155.
+def require_owner(resource_type: str, resource_id_param: str = "id"):
+    """Dependency FastAPI: valida owner_user_id do recurso."""
+    resource_map = {
+        "simulation": ("simulations", "owner_user_id"),
+        "invoice": ("invoices", "owner_user_id"),
+        "client": ("clients", "owner_user_id"),
+        "provider_profile": ("provider_profiles", "user_id"),
+        "provider_bank_account": ("provider_bank_accounts", "user_id"),
+    }
+    table, owner_col = resource_map[resource_type]
+    
+    async def _check(
+        request: Request,
+        resource_id: UUID = Path(..., alias=resource_id_param),
+        db: AsyncSession = Depends(get_db),
+        session: SessionData = Depends(get_current_session)
+    ):
+        if not session:
+            raise HTTPException(401, "Não autenticado", headers={"WWW-Authenticate": "Cookie"})
+        
+        query = f"SELECT * FROM {table} WHERE id = $1 AND {owner_col} = $2"
+        resource = await db.fetchrow(query, resource_id, session.user_id)
+        
+        if not resource:
+            raise HTTPException(404, "Recurso não encontrado")  # 404, não 403
+        return resource
+    return _check
+```
 
-`UNKNOWN - verify` (sem base no corpo desta spec — não inventado): medição de latência em ambiente real (o corpo fixa apenas orçamentos nominais, §4:114); quantidade de casos de teste por endpoint; aceite formal destes critérios pelo reviewer (spec em `status: in_progress`, pendente de push/merge).
+**Aplicação em TODAS rotas de recurso (SPEC-017 AC-07, ADR-019 ST-03):**
+```python
+# Exemplo uso:
+@router.get("/v1/simulations/{simulation_id}")
+async def get_simulation(simulation = Depends(require_owner("simulation"))):
+    return SimulationResponse(**simulation)
 
-## 12. Rastreabilidade consolidada (camada f)
+@router.put("/v1/invoices/{invoice_id}")
+async def update_invoice(
+    data: InvoiceUpdate,
+    invoice = Depends(require_owner("invoice", "invoice_id"))
+):
+    if invoice["status"] == "finalized":
+        raise HTTPException(409, "Invoice finalizada é imutável", code="INVOICE_STATUS_IMMUTABLE")
+    # ... update
+```
 
-| Fonte | Onde nesta spec |
-|---|---|
-| REQ-01, REQ-07 | §4 Cotações (título da seção) |
-| REQ-02, REQ-03 | §2 Regras de negócio (título) |
-| REQ-04 | §6 Invoice (título) |
-| REQ-05, REQ-14 | declarados no H1 ("REQ-01 a REQ-05, REQ-07, REQ-14"); seção dedicada `UNKNOWN - verify` |
-| ADR-016 | §9, tarefa T10 (proposta de ADR) + `docs/decisoes/ADR-016-backend-mvp.md:18` |
-| Art. 2 (Constituição) | §1 (hierarquia de resolução de conflitos, parágrafo introdutório) |
+---
 
-## 13. Fora de escopo (camada g)
+## 7. Proteção CSRF (ADR-019 §4.6)
 
-Escopo negativo já declarado em §1 (parágrafo "Fora do escopo: autenticação, cadastro, histórico de simulações, comparador Wise, telas (N5.3)" — telas de front são objeto da spec-008, spec-008:28). Emenda TA-0061 (C.2) — exclusões adicionais derivadas do corpo e do corpus da rodada, por cross-ref, **sem promover decisão nova** (P-11):
+**Middleware:** `src/backend/middleware/csrf.py`
 
-- **Persistência de invoice / modelo de dados estendido (condicionante D1)** — invoice é persistida na tabela `invoices` (modelo canônico em spec-007 §3.1; ADR-016 D4, RAT-2026-11-05-A16-D4). Cada usuário pode gerar, armazenar persistentemente, baixar e imprimir a invoice conforme sua regra de jornada e rating de pagamento. Rota de erase (direito ao esquecimento, LGPD art. 18) é obrigatória (condicionantes D1-D6 da spec-015). O modelo de dados da invoice é objeto da spec-007 e não altera o contrato §3 desta spec.
-- **Política LGPD de produto (B.3)** — objeto da spec-015, emitida como PROPOSTA `draft` condicionada a ratificação CCB/PO (envelope `.ai/handoffs/HF-0616-spec-015-lgpd-produto-proposta-v1.md`); esta spec retém apenas o critério vigente de §5:126.
-- **NFR consolidados (NF-01..NF-10)** — norma da spec-006 (NF-01..NF-04 em spec-006:71-74; NF-05 :80; NF-07 :87; NF-10 :90); esta spec cita apenas os orçamentos que já fixa no corpo (ex.: 1,9 s em §4:114).
-- **UAT de produto (REQ-09, fase N6.2)** e **UAT de camadas** — plano/roteiro normados pela spec-009 (spec-009 §3) e pela spec-005 §12 (F-01..F-07); esta spec não define UAT.
-- **Pipeline CI/CD detalhado (REQ-11)** — norma da spec-011 (spec-011 §3) e da spec-005 §8; esta spec consome apenas o gate de cobertura (§8:155, ci.yml:170).
-- **Documentação técnica (REQ-14)** — doc de arquitetura e revisão formal da OpenAPI são objeto da spec-013 (spec-013:32); a seção dedicada à REQ-14 nesta spec permanece `UNKNOWN - verify` (§12).
-- **Retenção de dados de `fx_quotes`** — §5:122 declara a retenção "em manutenção futura"; política de retenção não é decisão desta spec.
+```python
+CSRF_EXEMPT_PATHS = {"/v1/auth/register", "/v1/auth/login", "/v1/auth/logout",
+                     "/v1/auth/password/reset-request", "/v1/auth/password/reset-confirm"}
 
-## 14. CHANGELOG (camada h)
+async def csrf_protect(request: Request, call_next):
+    if request.method in ("POST", "PUT", "PATCH", "DELETE"):
+        if request.url.path not in CSRF_EXEMPT_PATHS:
+            cookie_token = request.cookies.get("csrf_token")
+            header_token = request.headers.get("X-CSRF-Token")
+            if not cookie_token or not header_token:
+                raise HTTPException(403, "CSRF token ausente", code="AUTH_CSRF_MISSING")
+            if not hmac.compare_digest(cookie_token, header_token):
+                raise HTTPException(403, "CSRF token inválido", code="AUTH_CSRF_INVALID")
+    response = await call_next(request)
+    # Seta cookie CSRF se não existe (login gera)
+    if "csrf_token" not in request.cookies:
+        response.set_cookie("csrf_token", generate_csrf_token(), httponly=True, secure=True, samesite="lax")
+    return response
+```
 
-- 1.0.0 — 2026-11-02 (TA-0031, HF-0031): versionamento inicial + template canônico (camadas a–h). Conteúdo pré-existente preservado integralmente (origem: commit `f6e0455`, 2026-11-01); slug antigo `backend-mvp-v1.spec.md` → `spec-004-backend-mvp-v1.spec.md` (mapa em `.ai/specs/MANIFEST.md`); nenhuma decisão reescrita; `status: in_progress` mapeado da linha `Status:` original (IMPLEMENTADA EM BRANCH, PENDENTE DE PUSH E MERGE).
-- 1.1.0 — 2026-11-03 (TA-0061, HF-0617): emendas de conteúdo C.1+C.2 (docs/analise/LISTA-SPECS-PENDENTES-2026-11-02.md:49,50). C.1: §11 preenchida com 18 critérios binários (AC-01..AC-18) consolidados exclusivamente do corpo pré-existente (§§2–9) — nenhum requisito novo; itens sem base no corpo permanecem `UNKNOWN - verify` (§11, final). C.2: §13 preenchida com exclusões YAGNI por cross-ref (spec-007/D1, spec-015 proposta via HF-0616, spec-006, spec-009, spec-011, spec-013, retenção `fx_quotes`) — nenhuma decisão nova promovida. Frontmatter: `version` 1.0.0 → 1.1.0; `updated` → 2026-11-03. Mapa de camadas (e) atualizado por coerência. Nenhuma decisão de §§1–9 reescrita. Deslocamento de linhas: §§11/13 expandidas — linhas ≥ 231 do arquivo deslocam (citações externas às linhas ≥ 231, ex.: LISTA item B.9 → `spec-004:239`, resolvem-se pela leitura de §/seção).
-- 1.2.0 — 2026-11-05 (refinamento de ratificação, Grupo A): frontmatter atualizado ao padrão TA-0031 ratificado (adicionado `wave: WS-4`, `lgpd-class`, `trace`; `task` definido como TA-0042; removido `creation_handoff` não-padrão); `version` 1.1.0 → 1.2.0. Seção 13 (Fora de escopo) corrigida: persistência de invoice agora segue D4 da ADR-016 (PERSISTIR com rota de erase, RAT-2026-11-05-A16-D4) em vez de "nunca persistida". Aderência ao padrão de nomenclatura `spec-NNN-specname.spec.md` confirmada (ADR-018, RAT-2026-11-05-A18). **Ratificada CCB 05/11/2026 (instrumento RAT-2026-11-05-A16)**. Nenhuma decisão de negócio de §§1–9 reescrita.
+---
+
+## 8. Rate Limiting (ADR-019 §7)
+
+**Implementação:** `slowapi` com Redis/in-memory + custom keys
+
+```python
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.util import get_remote_address
+
+limiter = Limiter(key_func=get_remote_address, default_limits=["100/minute"])
+
+# Overrides por endpoint:
+@router.post("/v1/auth/login")
+@limiter.limit("5/minute", key_func=lambda r: get_remote_address(r))  # por IP
+@limiter.limit("10/minute", key_func=lambda r: get_user_id_from_identifier(r))  # por user
+async def login(...)
+
+@router.post("/v1/auth/password/reset-request")
+@limiter.limit("3/hour", key_func=lambda r: normalize_identifier(r.json().get("identifier")))
+async def reset_request(...)
+```
+
+---
+
+## 9. Contrato de Erro Atualizado
+
+| Código HTTP | Code (estável) | Quando |
+|-------------|----------------|--------|
+| 400 | `VALIDATION_ERROR` | Pydantic validation fail |
+| 400 | `VALIDATION_COUNTRY_CODE_REQUIRED` | Cliente fictício sem `country_code` |
+| 401 | `AUTH_INVALID_CREDENTIALS` | Login/senha inválidos |
+| 401 | `AUTH_SESSION_EXPIRED` | Sessão expirada |
+| 401 | `AUTH_SESSION_REVOKED` | Sessão revogada (logout/outro login) |
+| 403 | `AUTH_CSRF_MISSING` | Header `X-CSRF-Token` ausente |
+| 403 | `AUTH_CSRF_INVALID` | Token CSRF inválido |
+| 403 | `AUTH_RATE_LIMIT_LOGIN` | Rate limit login excedido |
+| 403 | `AUTH_RATE_LIMIT_RESET` | Rate limit reset excedido |
+| 403 | `AUTH_RESET_TOKEN_INVALID` | Token reset inválido |
+| 403 | `AUTH_RESET_TOKEN_EXPIRED` | Token reset > 1h |
+| 403 | `AUTH_RESET_TOKEN_USED` | Token reset já usado |
+| 403 | `AUTH_ALIAS_ROTATION_FAILED` | Falha rotação CNPJ (transação) |
+| 404 | `AUTHZ_RESOURCE_NOT_FOUND` | Owner check fail (cross-user) |
+| 409 | `INVOICE_STATUS_IMMUTABLE` | PUT/PATCH/DELETE em invoice finalized |
+| 409 | `INVOICE_NUMBER_CONFLICT` | Concorrência numeração (raro) |
+| 409 | `PROVIDER_CNPJ_REQUIRED_FOR_PJ` | category=legal_entity sem CNPJ |
+| 422 | `ACCOUNT_DORMANT` | Operação em conta dormente |
+| 422 | `ACCOUNT_DELETED` | Operação em conta excluída |
+
+---
+
+## 10. Critérios de Aceite e Testes (v2.0.0)
+
+### 10.1 Contrato HTTP
+
+- [ ] **AC-HTTP-01:** `POST /v1/simulate` mantido compatível (não quebrado)
+- [ ] **AC-HTTP-02:** Todos endpoints auth (register, login, logout, reset) funcionais
+- [ ] **AC-HTTP-03:** Todos endpoints recurso usam `require_owner`; 404 cross-user
+- [ ] **AC-HTTP-04:** Rate limits aplicados conforme tabela §4
+- [ ] **AC-HTTP-05:** CSRF double-submit em todas rotas mutáveis (exceto `/v1/auth/`)
+- [ ] **AC-HTTP-06:** Códigos de erro novos retornados corretamente
+
+### 10.2 Autenticação e Sessão (SPEC-017)
+
+- [ ] **AC-AUTH-01:** Cadastro cria `users` + `user_login_identifiers` + `provider_profiles` (transação)
+- [ ] **AC-AUTH-02:** Login aceita email/CPF/CNPJ; regenera sessão; revoga anteriores
+- [ ] **AC-AUTH-03:** Argon2id (m=19456,t=2,p=1); `verify_password` roundtrip; tempo constante
+- [ ] **AC-AUTH-04:** Aliases HMAC-SHA256(pepper); pepper rotacionado 90d recalcula todos
+- [ ] **AC-AUTH-05:** Sessão: token 32 bytes; cookie HttpOnly/Secure/SameSite=Lax; sliding 24h
+- [ ] **AC-AUTH-06:** Reset senha: TTL 1h; single-use; rate limit 3/h request, 5/h confirm; SMTP local
+- [ ] **AC-AUTH-07:** Testes ST-01..ST-10 (ADR-019) passam
+
+### 10.3 Persistência e Autorização
+
+- [ ] **AC-PERSIST-01:** Invoices finalizadas persistidas com snapshots completos + numeração
+- [ ] **AC-PERSIST-02:** Simulações salvas apenas opt-in; `fx_quote_id` snapshot cotação
+- [ ] **AC-PERSIST-03:** `owner_user_id` em TODAS tabelas recurso; FKs + índices
+- [ ] **AC-PERSIST-04:** `require_owner` em 100% rotas recurso; teste IDOR cross-user (ST-03)
+
+### 10.3 Segurança (ADR-019)
+
+- [ ] **AC-SEC-01:** `argon2-cffi` build CI passa; fallback `bcrypt` documentado
+- [ ] **AC-SEC-02:** Dados bancários `pgcrypto` AES-256-GCM; snapshot descriptografa
+- [ ] **AC-SEC-03:** Logs sem PII/valores/corpo (SPEC-015 CP-2, ST-09)
+- [ ] **AC-SEC-04:** SMTP local (Postfix/Dovecot container); reset email funcional
+
+---
+
+## 11. Rastreabilidade
+
+| Referência | Fonte |
+|------------|-------|
+| Constitution v1.3.0 | `constitution.md` (Art. 1.2, P-14, P-15, Art. 7, Art. 9.3v) |
+| CR-002 Gates | `docs/decisoes/ccb-CR-002.md` (CR2-D01..D09) |
+| DEC-01..07 LGPD | `docs/decisoes/ccb-lgpd-decisoes.md` |
+| ADR-017 Argon2id | `docs/decisoes/adr-017-dependencia-argon2id.md` |
+| ADR-018 TAP/M4 | `docs/decisoes/adr-018-tap-replanejamento-m4.md` |
+| ADR-019 Threat Model | `docs/decisoes/adr-019-seguranca-multiusuario.md` |
+| SPEC-002 v2.0.0 | `.ai/specs/spec-002-requisitos-review-round-1.spec.md` (REQ-16/17/18) |
+| SPEC-017, 022 | `.ai/specs/spec-017/022-*.spec.md` |
+| SPEC-018/019/020/021 | `.ai/specs/spec-018/019/020/021-*.spec.md` |
+
+---
+
+## 12. Fora de Escopo (YAGNI) — Mantido
+
+- OAuth, SSO, MFA, federação, recuperação SMS
+- Equipes, orgs, papéis admin, painel admin
+- NF-e/NFS-e, numeração fiscal, email automático
+- i18n integral interface/erros
+- Plataformas pagamento, Pix, escrow, multi-empresa
+- Telemetria, cloud não autorizada (P-03)
+- Múltiplas sessões simultâneas, expiração forçada senha
+
+---
+
+## 13. Metadados da Emenda
+
+- **Avaliador primário:** `agent-sdd-specialist` + `agent-backend-dev` + `agent-digital-security`
+- **Ratificação:** CCB/GP via CR-002 Onda 1 (2026-11-15)
+- **Emenda:** v1.1.0 → v2.0.0 (MAJOR por escopo + auth/autorização/persistência)
+- **parcel.dod:** true
+- **Data da emenda:** 2026-11-15
+- **Status da spec:** ativa / ratificada
+
+---
+
+## CHANGELOG
+
+| Versão | Data | Task/Handoff | Mudança |
+|--------|------|--------------|---------|
+| 1.0.0 | 2026-10-23 | TA-0031 / agent-sdd-specialist | Emissão original: backend MVP, simulação, cotações, invoice PDF, cache |
+| 1.1.0 | 2026-11-05 | RAT-2026-11-05-A16 / CCB | Emendas C.1+C.2 (conteúdo); ACs §11 preenchidas; §13 fora escopo; CHANGELOG |
+| 2.0.0 | 2026-11-15 | CR-002 Onda 1 / agent-sdd-specialist + agent-backend-dev + agent-digital-security | **Emenda E-20 + CR-002**: Auth/cadastro/histórico SAEM fora escopo → DENTRO (REQ-16/17); P-14 isolamento; P-15 LGPD; Argon2id; require_owner; CSRF; rate limits; invoices persistidas; simulações opt-in; novos endpoints auth/recursos; contrato erro atualizado |
+
+---
 
 ## CAMADAS FUNDAMENTAIS — MAPA (TA-0031)
 
 | Camada | Seção nesta spec | Estado |
-|---|---|---|
-| (a) cabeçalho — spec_id, versão, status, custódia, datas, origem | frontmatter (`spec_id: spec-004`, `version: 1.2.0`) | aplicada |
-| (b) Contexto/origem | §10 + frontmatter `origin` + parágrafo introdutório | aplicada |
-| (c) Resolução de conflitos | §1 | aplicada |
-| (d) Corpo de decisões/requisitos/contratos | §§2–9 | aplicada |
-| (e) Critérios de aceite/testes | §11 | aplicada (emenda TA-0061: AC-01..AC-18 binários consolidados do corpo §§2–9; sem seção própria pré-TA-0031 — histórico em §11) |
-| (f) Rastreabilidade | §12 + títulos das §§2–6 | aplicada |
-| (g) Fora de escopo (YAGNI) | §13 + §1 | aplicada |
-| (h) Changelog | §14 | aplicada (criada em TA-0031) |
+|--------|------------------|--------|
+| (a) cabeçalho | frontmatter (`spec_id: spec-004`, `version: 2.0.0`, `status: ratificada`) | aplicada |
+| (b) Contexto/origem | §1 + frontmatter `origin`/`task` | aplicada |
+| (c) Resolução de conflitos | §2 (7 conflitos resolvidos) | aplicada |
+| (d) Corpo de decisões/requisitos/contratos | §3 (stack), §4 (endpoints), §5 (schemas), §6 (require_owner), §7 (CSRF), §8 (rate limit), §9 (erros) | aplicada |
+| (e) Critérios de aceite/testes | §10 (AC-HTTP, AC-AUTH, AC-PERSIST, AC-SEC) | aplicada |
+| (f) Rastreabilidade | §11 + frontmatter `trace` | aplicada |
+| (g) Fora de escopo (YAGNI) | §12 | aplicada |
+| (h) Changelog | CHANGELOG | aplicada |
