@@ -29,15 +29,15 @@ Board Kanban de qualidade consolidado a partir do histórico real de ações e s
 ## 1. Visão geral do board (estado atual)
 
 ```
-  BACKLOG          EM EXECUÇÃO          CONCLUÍDO           BLOQUEADO
+  BACKLOG          EM VERIFICAÇÃO       CONCLUÍDO           BLOQUEADO
   -------------    ----------------     -----------         ---------
-  INC-004 (testes  | INC-008 (commit    INC-001 (resolvido)  INC-013 (coverage
-   pulados)        |  do gate/runbook)  INC-002 (resolvido)   unitária 78% —
-  INC-005 (drift   | INC-012 (sanear    INC-003 (resolvido)   trava todo push
-   cobertura)      |  28 frontmatter)   INC-007 (resolvido)   de código)
-  INC-006 (PDCA    | INC-014 (commitar  INC-009 (gate specs)
-   evidências)     |  WIP de src/)      INC-010 (falsos
-                                        bloqueios)
+  INC-004 (testes  | INC-008 (gate      INC-001 (resolvido)  Nenhum — gate
+   pulados)        |  commitado)        INC-002 (resolvido)  local liberado
+  INC-005 (drift   | INC-012 (acervo    INC-003 (resolvido)  (coverage 84%)
+   cobertura)      |  427/427 válido)   INC-007 (resolvido)
+  INC-006 (PDCA    | INC-013 (84,01%)   INC-009 (gate specs)
+   evidências)     | INC-014 (WIP       INC-010 (falsos
+                    |  commitado)        bloqueios)
                                         INC-011 (frontmatter)
                                         INC-015 (runbook × norma)
                                         INC-016 (tipos commit)
@@ -56,11 +56,11 @@ Board Kanban de qualidade consolidado a partir do histórico real de ações e s
 | Testes pulados | 13 | 0 (regra CI zero-skipping) | ⚠ INC-004 |
 | Cobertura sobre `src/` (CI gate) | 95% | ≥ 95% | ⚠ runs recentes FAIL (INC-012/013) |
 | Cobertura declarada no plano de qualidade | 80% | ≥ 80% | ⚠ drift INC-005 |
-| Cobertura da suíte unitária local (gate pre-push) | 77,97% | ≥ 80% | ⚠ INC-013 |
+| Cobertura da suíte unitária local (gate pre-push) | 84,01% | ≥ 80% | PASS (INC-013 em verificação) |
 | Casos UAT produto + camada executados | 14 | 14 | PASS (100%) |
 | Defeitos críticos/bloqueantes em UAT | 0 | 0 | PASS |
 | Veredito binário UAT rodada 001 | APROVADA | APROVADA | PASS |
-| Incidentes resolvidos / pendentes | 9 / 7 | — | — |
+| Incidentes resolvidos / em verificação / pendentes | 9 / 4 / 3 | — | — |
 | Casos funcionais Playwright instituídos | 5 | — | Planejado (E-003) |
 
 ## 3. Incidentes — cartões do board (prioridade, impacto, severidade, RCA)
@@ -276,7 +276,7 @@ Board Kanban de qualidade consolidado a partir do histórico real de ações e s
 
 ### Coluna: BLOQUEADO
 
-INC-013 opera como bloqueante de fluxo local: enquanto a suíte unitária estiver abaixo de 80%, todo push com código é travado pelo gate (fail-closed, P-06). Não bloqueia merge diretamente. Os demais pendentes (INC-004, 005, 006, 008, 012, 014) não bloqueiam merge.
+Nenhum incidente bloqueante no momento. O gate `pre-push` está liberado (cobertura unitária 84,01% ≥ 80%, acervo 427/427 frontmatter válido, flake8/mypy verdes). INC-013 e INC-012 seguem em EM VERIFICAÇÃO até CI remoto verde e parecer do auditor.
 
 ## 4. RCA consolidada (causas-raiz por categoria)
 
@@ -317,10 +317,10 @@ Usando a estrutura Ishikawa 6M (spec-010 §3.2):
 | A-02 | Resolver skip condicional de PDF (marcador `weasyprint` ou instalar Pango local) | qa-sdet + GP | Próxima sprint | INC-004 |
 | A-03 | Alinhar `plano-qualidade.md` cobertura 80% → 95% | GP | Próxima sprint | INC-005 |
 | A-04 | Registrar lições por PDCA MF2/MF3 (`MF2-licoes.md`, `MF3-licoes.md`) | GP | Retrospectiva MF2/MF3 | INC-006 |
-| A-05 | Commitar gate `pre-push` refinado + runbook v1.1.0 (sem misturar com WIP de `src/`) | devops | Imediato | INC-008 |
-| A-06 | Sanear 28 não conformidades de frontmatter restantes do acervo (427 `.md`) | sdd-specialist + analyst | Próxima sprint | INC-012 |
-| A-07 | Elevar cobertura unitária ≥ 80% (`routers/common.py`, `routers/invoices.py`) ou fixar critério por camada | qa-sdet + backend-dev | Próxima sprint | INC-013 |
-| A-08 | Commitar WIP de `src/` (código + testes + docs, runbook §7) | backend-dev | Imediato | INC-014 |
+| A-05 | **CONCLUÍDA** — gate `pre-push` refinado + runbook v1.1.0 commitados (cf063b6, 6e2049e) | devops | 15/11/2026 | INC-008 |
+| A-06 | **CONCLUÍDA** — acervo saneado: 427/427 `.md` com frontmatter válido (2626e5d) | sdd-specialist + analyst | 15/11/2026 | INC-012 |
+| A-07 | **CONCLUÍDA** — cobertura unitária 84,01% com testes de `routers/common.py` e `invoices.py` (ebd0237) | qa-sdet + backend-dev | 15/11/2026 | INC-013 |
+| A-08 | **CONCLUÍDA** — WIP de `src/` commitado com flake8 saneado (cf063b6) | backend-dev | 15/11/2026 | INC-014 |
 | A-09 | Ratificar runbook v1.1.0 no CCB (vocabulário de status; tipos `spec`/`uat`) | GP/CCB | Próximo CCB | INC-015, INC-016 |
 
 ## 7. Assinatura do board

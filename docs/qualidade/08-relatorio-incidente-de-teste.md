@@ -167,7 +167,7 @@ Usada para todos os incidentes deste relatório e do board de resultados.
 | ID | INC-008 |
 | Título | O gate local `pre-push-ciclo-codificacao-deploy.sh` e seu runbook nunca foram commitados nem instalados em `.git/hooks/` |
 | Data de abertura | 15/11/2026 |
-| Status | Pendente (aberto) — parcialmente resolvido |
+| Status | EM VERIFICAÇÃO — gate instalado e artefatos commitados (cf063b6, 6e2049e); aguarda auditor |
 | Prioridade | P2 (Alto) |
 | Impacto | Alto — o DoD "Push permitido pelo hook `pre-push`" não era verificável; nenhum push era avaliado |
 | Severidade | Média — defeito de processo (gate morto), não de produto |
@@ -234,7 +234,7 @@ Usada para todos os incidentes deste relatório e do board de resultados.
 | ID | INC-012 |
 | Título | `validar_frontmatter_md.py` sem escopo por arquivo; acervo com 30 não conformidades em 427 `.md`; runs do `ci.yml` em FAIL |
 | Data de abertura | 15/11/2026 |
-| Status | Pendente (aberto) — parcialmente resolvido |
+| Status | EM VERIFICAÇÃO — acervo 427/427 `.md` com frontmatter válido (2626e5d); aguarda CI remoto |
 | Prioridade | P2 (Alto) |
 | Impacto | Alto — o hook contrariava o próprio cabeçalho e o runbook §7.4 (".md **alterados**"), transformando dívida legada em bloqueio permanente de push; runs recentes do CI (43619860226, 43618821664, 43555741240) em FAIL |
 | Severidade | Média — dívida documental com efeito de gate |
@@ -250,9 +250,9 @@ Usada para todos os incidentes deste relatório e do board de resultados.
 | ID | INC-013 |
 | Título | Suíte `tests/unit` sozinha em 78% — gate local `--cov-fail-under=80` bloqueia qualquer push com código |
 | Data de abertura | 15/11/2026 |
-| Status | Pendente (aberto) |
+| Status | EM VERIFICAÇÃO — cobertura unitária 84,01% ≥ 80% (ebd0237); gate local liberado |
 | Prioridade | P2 (Alto) |
-| Impacto | Alto — 1164 passed, porém `TOTAL 78%` < 80%: todo push de código falha no gate local até elevação de cobertura |
+| Impacto | Alto — 1164 passed, porém `TOTAL 78%` < 80%: todo push de código falhava no gate local até elevação de cobertura |
 | Severidade | Média — gate corre (fail-closed, P-06), mas o estado da suíte impede o fluxo |
 | Detetado em | Simulação end-to-end do hook (15/11/2026), após os ajustes de INC-010 |
 | RCA | Módulos com cobertura baixa: `src/backend/routers/common.py` 41%, `src/backend/routers/invoices.py` 39%. Relacionado ao INC-005 (drift 80% plano × 95% CI): o gate local aplica 80% sobre a suíte unitária sozinha, o CI aplica 95% sobre a suíte completa. Causa-raiz: cobertura por camada não gerida como métrica contínua (Ishikawa-4: Medida). |
@@ -266,9 +266,9 @@ Usada para todos os incidentes deste relatório e do board de resultados.
 | ID | INC-014 |
 | Título | `src/` no HEAD falha em `mypy` (erros em `invoices.py`/repositório); working tree com 11 arquivos modificados corrige, sem commit |
 | Data de abertura | 15/11/2026 |
-| Status | Pendente (aberto) |
+| Status | EM VERIFICAÇÃO — WIP commitado com lint saneado (cf063b6); mypy e flake8 verdes |
 | Prioridade | P3 (Médio) |
-| Impacto | Médio — push a partir do estado HEAD (sem o WIP) falha no gate; risco de perda do trabalho não commitado |
+| Impacto | Médio — push a partir do estado HEAD (sem o WIP) falhava no gate; risco de perda do trabalho não commitado |
 | Severidade | Baixa — estado transitório de trabalho em andamento |
 | Detetado em | Cenário de teste em worktree a partir de HEAD (15/11/2026): mypy falhou; no checkout principal, verde |
 | RCA | Correções de `src/backend/routers/invoices.py`, `models/invoice_repository.py`, `services/invoice_service.py` etc. ainda não commitadas; o WIP também carrega 27 violações de flake8 em `tests/integration/test_invoices_persistence.py` (F401, E501, F541, W292). Causa-raiz: ciclo de commit (código + testes + docs) não fechado (Ishikawa-3: Mão de Obra). |
@@ -313,9 +313,10 @@ Usada para todos os incidentes deste relatório e do board de resultados.
 | Status | Quantidade | IDs |
 |---|---|---|
 | Resolvido | 9 | INC-001, INC-002, INC-003, INC-007, INC-009, INC-010, INC-011, INC-015, INC-016 |
-| Pendente/Aberto | 7 | INC-004, INC-005, INC-006, INC-008, INC-012, INC-013, INC-014 |
+| EM VERIFICAÇÃO | 4 | INC-008, INC-012, INC-013, INC-014 |
+| Pendente/Aberto | 3 | INC-004, INC-005, INC-006 |
 
-**Total:** 16 incidentes (9 resolvidos, 7 pendentes). INC-015/016 resolvidos dependem de ratificação CCB (runbook v1.1.0).
+**Total:** 16 incidentes (9 resolvidos, 4 em verificação, 3 pendentes). INC-015/016 resolvidos dependem de ratificação CCB (runbook v1.1.0).
 
 ## 5. Assinatura
 
