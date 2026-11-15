@@ -10,8 +10,10 @@ Aplica a Norma Global de Templates para Artefatos (docs/normas/NORMA-TEMPLATES-A
   - id único no repositório
 
 Uso:
-  python3 scripts/validar_frontmatter_md.py          # valida, exit 1 se drift
-  python3 scripts/validar_frontmatter_md.py --check  # idem (sinônimo, clareza)
+  python3 scripts/validar_frontmatter_md.py                  # valida todos os *.md, exit 1 se drift
+  python3 scripts/validar_frontmatter_md.py --check          # idem (sinônimo, clareza)
+  python3 scripts/validar_frontmatter_md.py CAMINHO[.md ...]
+                                                     # valida só os arquivos dados (hook pre-push)
 """
 
 import argparse
@@ -134,10 +136,11 @@ def collect_md_files() -> list[Path]:
     return files
 
 
-def validate() -> int:
+def validate(paths: list[str] | None = None) -> int:
     errors: list[str] = []
     seen_ids: dict[str, str] = {}
-    files = collect_md_files()
+    # Sem paths: todo o *.md do projeto (CI). Com paths: só os arquivos indicados (gate local).
+    files = [Path(p) for p in paths] if paths else collect_md_files()
 
     for path in files:
         rel = str(path)
@@ -205,11 +208,15 @@ def validate() -> int:
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Valida frontmatter de todos os *.md do projeto COGME")
+        description="Valida frontmatter dos *.md do projeto COGME "
+                    "(todos, ou só os arquivos indicados)")
     parser.add_argument("--check", action="store_true",
                         help="apenas reporta drift, não grava (mesmo comportamento padrão)")
+    parser.add_argument("files", nargs="*",
+                        help="arquivos .md específicos a validar "
+                             "(padrão: todos os *.md do projeto)")
     args = parser.parse_args()
-    return validate()
+    return validate(args.files or None)
 
 
 if __name__ == "__main__":
