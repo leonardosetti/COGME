@@ -144,7 +144,10 @@ if [ -n "$SPEC_CHANGED" ]; then
     status=$(spec_field "$sf" "status")
     case "$status" in
       ativo|ratificado|ratificada|aprovado|aprovada) echo "   OK $sf ($status)" ;;
-      *) fail "spec $sf com status '$status' — codificação exige spec ativa/vigente ou ratificada pelo CCB." ;;
+      draft|obsoleto|arquivado)
+        note "spec $sf com status '$status' — edição documental liberada; codificação contra ela é bloqueada (item 9)." ;;
+      *)
+        fail "spec $sf com status '$status' fora do vocabulário fechado da norma (ativo|draft|ratificado|obsoleto|arquivado)." ;;
     esac
     if [ -z "$(spec_field "$sf" "spec-id")" ] && [ -z "$(spec_field "$sf" "id")" ]; then
       fail "spec $sf sem 'id:'/'spec-id:' no frontmatter (rastreabilidade — runbook §3)."

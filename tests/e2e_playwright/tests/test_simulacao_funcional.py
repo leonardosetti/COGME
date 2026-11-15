@@ -34,7 +34,9 @@ REGIMES = [
 ]
 
 
-async def _simulate(page: Page, base_url: str, regime: str, amount: str, quantity: str | None) -> str:
+async def _simulate(
+    page: Page, base_url: str, regime: str, amount: str, quantity: str | None
+) -> str:
     """Executa uma simulação completa e devolve o texto do líquido (net_brl)."""
     actor = actor_named("usuario")
     actor.add_ability(BrowseTheWeb(page))
