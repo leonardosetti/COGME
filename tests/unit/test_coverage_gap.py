@@ -113,8 +113,6 @@ def test_as_utc_naive_rejected():
 
 def _json_request(body: bytes | None, headers: list | None = None):
     """Monta uma DecimalJsonRequest sintética com corpo fixo."""
-    import asyncio
-
     from src.backend.routers.common import DecimalJsonRequest
 
     pending = [body] if body is not None else []
