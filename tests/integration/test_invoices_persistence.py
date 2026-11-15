@@ -18,18 +18,13 @@ from sqlalchemy.ext.asyncio import AsyncEngine
 
 from src.backend.main import app
 from src.backend.models.database import create_engine, create_session_factory
-from src.backend.models.invoice import Invoice, InvoiceSequence
 from src.backend.models.invoice_repository import (
     InvoiceRepository,
-    RepositoryError,
     SqlAlchemyInvoiceRepository,
 )
-from src.backend.models.repository import SqlAlchemyQuoteRepository
 from src.backend.routers.common import get_rate_service
-from src.backend.services.rate_providers import FrankfurterProvider, PtaxProvider
 from src.backend.services.rate_service import RateService
-from src.backend.services.circuit_breaker import CircuitBreaker
-from src.shared.schemas import Currency, RateSource, Regime
+from src.shared.schemas import RateSource, Regime
 
 from .fakes import FixedClock, FixedMonotonic, ScriptedProvider, build_service, SPEC_EXAMPLE_BODY
 
@@ -50,7 +45,8 @@ def _alembic_config():
     from alembic.config import Config
     from pathlib import Path
     config = Config()
-    config.set_main_option("script_location", str(Path(__file__).resolve().parents[2] / "migrations"))
+    script_location = Path(__file__).resolve().parents[2] / "migrations"
+    config.set_main_option("script_location", str(script_location))
     return config
 
 
@@ -73,7 +69,9 @@ async def engine(migrated: None) -> AsyncIterator[AsyncEngine]:
     url = os.environ["COGME_TEST_DATABASE_URL"]
     engine = create_engine(url)
     async with engine.begin() as conn:
-        await conn.execute(text("TRUNCATE TABLE invoices, invoice_sequences RESTART IDENTITY CASCADE"))
+        await conn.execute(
+            text("TRUNCATE TABLE invoices, invoice_sequences RESTART IDENTITY CASCADE")
+        )
     yield engine
     await engine.dispose()
 
@@ -153,9 +151,7 @@ async def test_persistence_roundtrip_equals_reprocess(
 
     Valida a propriedade central: persistência não transforma dados.
     """
-    from src.backend.services.simulation_service import simulate
     from src.backend.services.invoice_number import InvoiceNumberService
-    from sqlalchemy.ext.asyncio import AsyncSession
 
     # Cria invoice via repository
     session_factory = create_session_factory(
@@ -267,7 +263,6 @@ def test_list_invoices_with_data(
     async def _create_invoice(status: str, client_id: int | None = None):
         from datetime import datetime, UTC
         from src.backend.services.invoice_number import InvoiceNumberService
-        from sqlalchemy.ext.asyncio import AsyncSession
 
         session_factory = create_session_factory(
             create_engine(os.environ["COGME_TEST_DATABASE_URL"])
@@ -281,7 +276,8 @@ def test_list_invoices_with_data(
             'simulation_id': None, 'invoice_number': invoice_number,
             'status': status, 'locale': 'pt-BR', 'client_country_code': 'US',
             'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
-            'issuer_address': None, 'client_name': 'Cliente', 'client_tax_id_digits': '11111111111111',
+            'issuer_address': None, 'client_name': 'Cliente',
+            'client_tax_id_digits': '11111111111111',
             'client_address': None, 'banco': None, 'agencia': None,
             'conta_com_digito': None, 'pix_key': None,
             'periodo_inicio': date(2026, 1, 1), 'periodo_fim': date(2026, 1, 31),
@@ -343,7 +339,8 @@ def test_get_invoice_detail(client: TestClient, invoice_repo: InvoiceRepository)
             'simulation_id': None, 'invoice_number': invoice_number,
             'status': 'finalized', 'locale': 'pt-BR', 'client_country_code': 'US',
             'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
-            'issuer_address': 'Rua A', 'client_name': 'Cliente', 'client_tax_id_digits': '11111111111111',
+            'issuer_address': 'Rua A', 'client_name': 'Cliente',
+            'client_tax_id_digits': '11111111111111',
             'client_address': 'Rua B', 'banco': None, 'agencia': None,
             'conta_com_digito': None, 'pix_key': None,
             'periodo_inicio': date(2026, 1, 1), 'periodo_fim': date(2026, 1, 31),
@@ -395,7 +392,8 @@ def test_get_invoice_pdf(client: TestClient, invoice_repo: InvoiceRepository) ->
             'simulation_id': None, 'invoice_number': invoice_number,
             'status': 'finalized', 'locale': 'pt-BR', 'client_country_code': 'US',
             'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
-            'issuer_address': None, 'client_name': 'Cliente', 'client_tax_id_digits': '11111111111111',
+            'issuer_address': None, 'client_name': 'Cliente',
+            'client_tax_id_digits': '11111111111111',
             'client_address': None, 'banco': None, 'agencia': None,
             'conta_com_digito': None, 'pix_key': None,
             'periodo_inicio': date(2026, 1, 1), 'periodo_fim': date(2026, 1, 31),
@@ -421,7 +419,7 @@ def test_get_invoice_pdf(client: TestClient, invoice_repo: InvoiceRepository) ->
     assert response.status_code == 200
     assert response.headers["content-type"] == "application/pdf"
     assert "attachment" in response.headers["content-disposition"]
-    assert f"invoice-" in response.headers["content-disposition"]
+    assert "invoice-" in response.headers["content-disposition"]
 
 
 def test_get_invoice_not_found(client: TestClient) -> None:
@@ -450,7 +448,8 @@ def test_get_invoice_forbidden(client: TestClient, invoice_repo: InvoiceReposito
             'simulation_id': None, 'invoice_number': invoice_number,
             'status': 'finalized', 'locale': 'pt-BR', 'client_country_code': 'US',
             'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
-            'issuer_address': None, 'client_name': 'Cliente', 'client_tax_id_digits': '11111111111111',
+            'issuer_address': None, 'client_name': 'Cliente',
+            'client_tax_id_digits': '11111111111111',
             'client_address': None, 'banco': None, 'agencia': None,
             'conta_com_digito': None, 'pix_key': None,
             'periodo_inicio': date(2026, 1, 1), 'periodo_fim': date(2026, 1, 31),
@@ -500,7 +499,8 @@ def test_finalize_invoice_draft_to_finalized(
             'simulation_id': None, 'invoice_number': invoice_number,
             'status': 'draft', 'locale': 'pt-BR', 'client_country_code': 'US',
             'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
-            'issuer_address': None, 'client_name': 'Cliente', 'client_tax_id_digits': '11111111111111',
+            'issuer_address': None, 'client_name': 'Cliente',
+            'client_tax_id_digits': '11111111111111',
             'client_address': None, 'banco': None, 'agencia': None,
             'conta_com_digito': None, 'pix_key': None,
             'periodo_inicio': date(2026, 1, 1), 'periodo_fim': date(2026, 1, 31),
@@ -553,7 +553,8 @@ def test_finalize_not_draft_returns_409(
             'simulation_id': None, 'invoice_number': invoice_number,
             'status': 'finalized', 'locale': 'pt-BR', 'client_country_code': 'US',
             'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
-            'issuer_address': None, 'client_name': 'Cliente', 'client_tax_id_digits': '11111111111111',
+            'issuer_address': None, 'client_name': 'Cliente',
+            'client_tax_id_digits': '11111111111111',
             'client_address': None, 'banco': None, 'agencia': None,
             'conta_com_digito': None, 'pix_key': None,
             'periodo_inicio': date(2026, 1, 1), 'periodo_fim': date(2026, 1, 31),
@@ -607,7 +608,8 @@ def test_clone_invoice_creates_new_draft(
             'simulation_id': None, 'invoice_number': invoice_number,
             'status': 'finalized', 'locale': 'pt-BR', 'client_country_code': 'US',
             'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
-            'issuer_address': 'Rua A', 'client_name': 'Cliente', 'client_tax_id_digits': '11111111111111',
+            'issuer_address': 'Rua A', 'client_name': 'Cliente',
+            'client_tax_id_digits': '11111111111111',
             'client_address': 'Rua B', 'banco': None, 'agencia': None,
             'conta_com_digito': None, 'pix_key': None,
             'periodo_inicio': date(2026, 1, 1), 'periodo_fim': date(2026, 1, 31),
@@ -661,7 +663,8 @@ def test_clone_only_finalized_allowed(
             'simulation_id': None, 'invoice_number': invoice_number,
             'status': 'draft', 'locale': 'pt-BR', 'client_country_code': 'US',
             'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
-            'issuer_address': None, 'client_name': 'Cliente', 'client_tax_id_digits': '11111111111111',
+            'issuer_address': None, 'client_name': 'Cliente',
+            'client_tax_id_digits': '11111111111111',
             'client_address': None, 'banco': None, 'agencia': None,
             'conta_com_digito': None, 'pix_key': None,
             'periodo_inicio': date(2026, 1, 1), 'periodo_fim': date(2026, 1, 31),
@@ -712,7 +715,8 @@ def test_erase_invoice_hard_delete(
             'simulation_id': None, 'invoice_number': invoice_number,
             'status': 'finalized', 'locale': 'pt-BR', 'client_country_code': 'US',
             'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
-            'issuer_address': None, 'client_name': 'Cliente', 'client_tax_id_digits': '11111111111111',
+            'issuer_address': None, 'client_name': 'Cliente',
+            'client_tax_id_digits': '11111111111111',
             'client_address': None, 'banco': None, 'agencia': None,
             'conta_com_digito': None, 'pix_key': None,
             'periodo_inicio': date(2026, 1, 1), 'periodo_fim': date(2026, 1, 31),
@@ -768,7 +772,8 @@ def test_erase_invoice_forbidden(client: TestClient, invoice_repo: InvoiceReposi
             'simulation_id': None, 'invoice_number': invoice_number,
             'status': 'finalized', 'locale': 'pt-BR', 'client_country_code': 'US',
             'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
-            'issuer_address': None, 'client_name': 'Cliente', 'client_tax_id_digits': '11111111111111',
+            'issuer_address': None, 'client_name': 'Cliente',
+            'client_tax_id_digits': '11111111111111',
             'client_address': None, 'banco': None, 'agencia': None,
             'conta_com_digito': None, 'pix_key': None,
             'periodo_inicio': date(2026, 1, 1), 'periodo_fim': date(2026, 1, 31),
@@ -818,7 +823,8 @@ def test_template_pt_br_renders_brl_format(
             'simulation_id': None, 'invoice_number': invoice_number,
             'status': 'finalized', 'locale': 'pt-BR', 'client_country_code': 'BR',
             'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
-            'issuer_address': None, 'client_name': 'Cliente', 'client_tax_id_digits': '11111111111111',
+            'issuer_address': None, 'client_name': 'Cliente',
+            'client_tax_id_digits': '11111111111111',
             'client_address': None, 'banco': None, 'agencia': None,
             'conta_com_digito': None, 'pix_key': None,
             'periodo_inicio': date(2026, 1, 1), 'periodo_fim': date(2026, 1, 31),
@@ -867,7 +873,8 @@ def test_template_en_renders_en_format(
             'simulation_id': None, 'invoice_number': invoice_number,
             'status': 'finalized', 'locale': 'en', 'client_country_code': 'US',
             'issuer_name': 'Issuer', 'issuer_tax_id_digits': '00000000000000',
-            'issuer_address': None, 'client_name': 'Client', 'client_tax_id_digits': '11111111111111',
+            'issuer_address': None, 'client_name': 'Client',
+            'client_tax_id_digits': '11111111111111',
             'client_address': None, 'banco': None, 'agencia': None,
             'conta_com_digito': None, 'pix_key': None,
             'periodo_inicio': date(2026, 1, 1), 'periodo_fim': date(2026, 1, 31),

@@ -15,11 +15,13 @@ from datetime import date, datetime
 from decimal import ROUND_HALF_EVEN, Decimal
 from functools import lru_cache
 from pathlib import Path
+from types import SimpleNamespace
 from typing import Any, Final
 
 from jinja2 import Environment, FileSystemLoader, StrictUndefined
 
 from src.backend.errors import PdfUnavailableError
+from src.backend.models.invoice_repository import StoredInvoice
 from src.backend.services.rate_service import RateService
 from src.backend.services.simulation_service import simulate
 from src.shared.schemas import InvoiceRequest, RateSource, Regime
@@ -242,5 +244,75 @@ async def render_invoice(request: InvoiceRequest, rate_service: RateService) -> 
         "quote": simulation.quote,
         "stale": simulation.quote.stale,
         "notice": simulation.notice,
+    }
+    return await asyncio.to_thread(_render_pdf, context)
+
+
+async def render_pdf_from_stored(
+    stored: StoredInvoice, rate_service: RateService
+) -> bytes:
+    """Renderiza PDF de uma invoice já persistida, sem recalcular simulação.
+
+    Usa os valores guardados no StoredInvoice (snapshot reprodutível).
+    O ``rate_service`` é aceito por simetria de assinatura com
+    :func:`render_invoice`, mas não é usado: a cotação já está no snapshot.
+
+    Args:
+        stored: Invoice persistida com todos os valores calculados.
+        rate_service: Aceito por compatibilidade; não usado aqui.
+
+    Returns:
+        Os bytes do PDF.
+
+    Raises:
+        PdfUnavailableError: WeasyPrint/Pango ausente ou falha de renderização.
+    """
+    regime = stored.regime
+    currency_value = stored.currency
+    sim = SimpleNamespace(
+        currency=SimpleNamespace(value=currency_value),
+        gross_foreign=stored.gross_foreign,
+        gross_brl=stored.gross_brl,
+        spread_pct=stored.spread_pct,
+        spread_brl=stored.spread_brl,
+        iof_pct=stored.iof_pct,
+        iof_brl=stored.iof_brl,
+        net_brl=stored.net_brl,
+        effective_rate=stored.effective_rate,
+    )
+    quote = SimpleNamespace(
+        rate=stored.quote_rate,
+        quoted_at=stored.quoted_at,
+        bulletin=stored.quote_bulletin,
+        source=stored.quote_source,
+    )
+    regime_enum = Regime(regime)
+    source_label = {
+        "frankfurter": "Frankfurter",
+        "ptax": "PTAX (Banco Central do Brasil)",
+    }.get(stored.quote_source, stored.quote_source)
+    context: dict[str, Any] = {
+        "issuer": {
+            "name": stored.issuer_name,
+            "tax_id": stored.issuer_tax_id_digits,
+            "address": stored.issuer_address,
+        },
+        "client": {
+            "name": stored.client_name,
+            "tax_id": stored.client_tax_id_digits,
+            "address": stored.client_address,
+        },
+        "invoice_number": stored.invoice_number,
+        "issue_date": stored.periodo_inicio,
+        "description": stored.description,
+        "regime_label": _REGIME_LABELS[regime_enum],
+        "quantity_label": _QUANTITY_LABELS[regime_enum],
+        "unit_amount": stored.amount,
+        "quantity": stored.quantity,
+        "source_label": source_label,
+        "sim": sim,
+        "quote": quote,
+        "stale": stored.stale,
+        "notice": "",
     }
     return await asyncio.to_thread(_render_pdf, context)

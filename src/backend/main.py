@@ -26,6 +26,7 @@ from src.backend.config import get_settings
 from src.backend.errors import DomainError
 from src.backend.models.database import create_engine, create_session_factory
 from src.backend.models.repository import SqlAlchemyQuoteRepository
+
 from src.backend.routers import health, invoices, rates, simulations
 from src.backend.services.circuit_breaker import CircuitBreaker
 from src.backend.services.rate_providers import FrankfurterProvider, PtaxProvider
@@ -318,6 +319,7 @@ async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
     try:
         timeout = settings.provider_timeout_seconds
         app.state.engine = engine
+        app.state.session_factory = create_session_factory(engine)
         app.state.rate_service = RateService(
             repository=SqlAlchemyQuoteRepository(create_session_factory(engine)),
             providers=[

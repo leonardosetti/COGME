@@ -121,6 +121,21 @@ class InvoiceRepository(Protocol):
         """Chama function PL/pgSQL next_invoice_number (DEC-06)."""
         ...
 
+    async def get_by_number(
+        self, invoice_number: str, owner_user_id: int
+    ) -> StoredInvoice | None:
+        """Busca invoice pelo número e owner."""
+        ...
+
+    async def clone(
+        self, invoice_id: int, owner_user_id: int
+    ) -> StoredInvoice:
+        """Clona uma invoice finalizada em novo draft (DEC-05).
+
+        Gera novo número, define status='draft' e vincula supersedes_invoice_id.
+        """
+        ...
+
 
 class SqlAlchemyInvoiceRepository:
     """Implementação de :class:`InvoiceRepository` sobre PostgreSQL."""
@@ -268,6 +283,82 @@ class SqlAlchemyInvoiceRepository:
                 return str(result.scalar_one())
         except _STORAGE_FAILURES as error:
             raise RepositoryError("Falha ao gerar número de invoice.") from error
+
+    async def get_by_number(
+        self, invoice_number: str, owner_user_id: int
+    ) -> StoredInvoice | None:
+        stmt = select(Invoice).where(
+            Invoice.invoice_number == invoice_number,
+            Invoice.owner_user_id == owner_user_id,
+        )
+        try:
+            async with self._session_factory() as session:
+                row = (await session.execute(stmt)).scalar_one_or_none()
+                if row is None:
+                    return None
+                return self._to_stored(row)
+        except _STORAGE_FAILURES as error:
+            raise RepositoryError("Falha ao buscar invoice por número.") from error
+
+    async def clone(
+        self, invoice_id: int, owner_user_id: int
+    ) -> StoredInvoice:
+        original = await self.get_by_id(invoice_id, owner_user_id)
+        if original is None:
+            raise RepositoryError("Invoice original não encontrada para clone.")
+
+        next_number = await self.get_next_number(original.issuer_tax_id_digits)
+
+        cloned = StoredInvoice(
+            id=0,
+            owner_user_id=original.owner_user_id,
+            client_id=original.client_id,
+            simulation_id=original.simulation_id,
+            invoice_number=next_number,
+            status="draft",
+            locale=original.locale,
+            client_country_code=original.client_country_code,
+            issuer_name=original.issuer_name,
+            issuer_tax_id_digits=original.issuer_tax_id_digits,
+            issuer_address=original.issuer_address,
+            client_name=original.client_name,
+            client_tax_id_digits=original.client_tax_id_digits,
+            client_address=original.client_address,
+            banco=original.banco,
+            agencia=original.agencia,
+            conta_com_digito=original.conta_com_digito,
+            pix_key=original.pix_key,
+            periodo_inicio=original.periodo_inicio,
+            periodo_fim=original.periodo_fim,
+            description=original.description,
+            regime=original.regime,
+            currency=original.currency,
+            amount=original.amount,
+            quantity=original.quantity,
+            spread_pct=original.spread_pct,
+            iof_pct=original.iof_pct,
+            gross_foreign=original.gross_foreign,
+            gross_brl=original.gross_brl,
+            spread_brl=original.spread_brl,
+            iof_brl=original.iof_brl,
+            net_brl=original.net_brl,
+            effective_rate=original.effective_rate,
+            quote_rate=original.quote_rate,
+            quote_source=original.quote_source,
+            quote_bulletin=original.quote_bulletin,
+            quoted_at=original.quoted_at,
+            stale=original.stale,
+            finalized_at=None,
+            supersedes_invoice_id=original.id,
+            created_at=datetime.now().astimezone(),
+            updated_at=datetime.now().astimezone(),
+        )
+        await self.save(cloned)
+        # Re-lê pelo número gerado para devolver com id preenchido pelo banco
+        stored = await self.get_by_number(next_number, owner_user_id)
+        if stored is None:
+            raise RepositoryError("Clone gravado não pôde ser recuperado.")
+        return stored
 
     def _to_stored(self, row: Invoice) -> StoredInvoice:
         return StoredInvoice(

@@ -16,7 +16,9 @@ from typing import Annotated, Any, Final, NoReturn
 from fastapi import Depends, Request, Response
 from fastapi.exceptions import RequestValidationError
 from fastapi.routing import APIRoute
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
+from src.backend.models.database import create_session_factory
 from src.backend.services.rate_service import RateService
 from src.shared.schemas import ErrorResponse
 
@@ -49,6 +51,22 @@ def get_rate_service(request: Request) -> RateService:
     return rate_service
 
 
+def get_session_factory(request: Request) -> async_sessionmaker[AsyncSession]:
+    """Entrega a fábrica de sessões montada no ``lifespan``.
+
+    Args:
+        request: Requisição corrente.
+
+    Returns:
+        A fábrica guardada em ``app.state``.
+    """
+    engine = request.app.state.engine
+    return create_session_factory(engine)
+
+
+SessionFactoryDep = Annotated[
+    async_sessionmaker[AsyncSession], Depends(get_session_factory)
+]
 RateServiceDep = Annotated[RateService, Depends(get_rate_service)]
 
 

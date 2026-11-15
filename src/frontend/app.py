@@ -6,6 +6,8 @@ server-side e encaminha /v1/* para o back:8000. Sem CORS: mesma origem.
 
 from __future__ import annotations
 
+from contextlib import asynccontextmanager
+from collections.abc import AsyncIterator
 from datetime import datetime
 from decimal import Decimal
 from pathlib import Path
@@ -16,7 +18,16 @@ from fastapi.staticfiles import StaticFiles
 import httpx
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-app = FastAPI(title="COGME Front")
+
+@asynccontextmanager
+async def _lifespan(_app: FastAPI) -> AsyncIterator[None]:
+    """Fecha o cliente HTTP do back no encerramento."""
+    yield
+    if _client is not None:
+        await _client.aclose()
+
+
+app = FastAPI(title="COGME Front", lifespan=_lifespan)
 app.mount(
     "/static",
     StaticFiles(directory=Path(__file__).resolve().parent / "static"),
@@ -63,14 +74,6 @@ def _get_client() -> httpx.AsyncClient:
     if _client is None:
         _client = httpx.AsyncClient(base_url=BACK_BASE, timeout=30.0)
     return _client
-
-
-@app.on_event("shutdown")
-async def _shutdown() -> None:
-    global _client
-    if _client is not None:
-        await _client.aclose()
-        _client = None
 
 
 # --- rotas de interface ---
