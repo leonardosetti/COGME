@@ -10,10 +10,8 @@ import os
 from datetime import date, datetime, UTC
 from decimal import Decimal
 
-from typing import AsyncIterator, Iterator
 import pytest
 from fastapi.testclient import TestClient
-from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncEngine
 
 from src.backend.main import app
@@ -22,7 +20,6 @@ from src.backend.models.invoice_repository import (
     InvoiceRepository,
     SqlAlchemyInvoiceRepository,
 )
-from src.backend.routers.common import get_rate_service
 from src.backend.services.rate_service import RateService
 from src.shared.schemas import RateSource, Regime
 
@@ -41,62 +38,9 @@ OWNER_USER_ID = 1
 BASE_INSTANT = datetime(2026, 10, 30, 16, 0, 0, tzinfo=UTC)
 
 
-def _alembic_config():
-    from alembic.config import Config
-    from pathlib import Path
-    config = Config()
-    script_location = Path(__file__).resolve().parents[2] / "migrations"
-    config.set_main_option("script_location", str(script_location))
-    return config
-
-
-@pytest.fixture(scope="module")
-def migrated() -> None:
-    from alembic import command
-    config = _alembic_config()
-    import os
-    with pytest.MonkeyPatch.context() as patch:
-        patch.setenv("COGME_DATABASE_URL", os.environ["COGME_TEST_DATABASE_URL"])
-        command.upgrade(config, "head")
-    yield
-    with pytest.MonkeyPatch.context() as patch:
-        patch.setenv("COGME_DATABASE_URL", os.environ["COGME_TEST_DATABASE_URL"])
-        command.downgrade(config, "base")
-
-
-@pytest.fixture
-async def engine(migrated: None) -> AsyncIterator[AsyncEngine]:
-    url = os.environ["COGME_TEST_DATABASE_URL"]
-    engine = create_engine(url)
-    async with engine.begin() as conn:
-        await conn.execute(
-            text("TRUNCATE TABLE invoices, invoice_sequences RESTART IDENTITY CASCADE")
-        )
-    yield engine
-    await engine.dispose()
-
-
 @pytest.fixture
 async def invoice_repo(engine: AsyncEngine) -> InvoiceRepository:
     return SqlAlchemyInvoiceRepository(create_session_factory(engine))
-
-
-@pytest.fixture
-def clock() -> FixedClock:
-    return FixedClock()
-
-
-@pytest.fixture
-def monotonic_clock() -> FixedMonotonic:
-    return FixedMonotonic()
-
-
-@pytest.fixture
-def serve_rates() -> Iterator[callable]:
-    def _serve(service: RateService) -> None:
-        app.dependency_overrides[get_rate_service] = lambda: service
-    yield _serve
-    app.dependency_overrides.clear()
 
 
 @pytest.fixture
@@ -242,20 +186,17 @@ async def test_persistence_roundtrip_equals_reprocess(
 # ---------- Teste: Listagem ----------
 
 
-def test_list_invoices_empty(client: TestClient) -> None:
-    """Lista vazia retorna 200 com items=[], total=0."""
-    response = client.get(f"{INVOICES}?owner_user_id={OWNER_USER_ID}")
+def test_list_invoices_empty(db_client: TestClient) -> None:
+    """Lista vazia retorna 200 com lista vazia."""
+    response = db_client.get(f"{INVOICES}?owner_user_id={OWNER_USER_ID}")
     assert response.status_code == 200
     data = response.json()
-    assert data["items"] == []
-    assert data["total"] == 0
-    assert data["page"] == 1
-    assert data["page_size"] == 20
-    assert data["total_pages"] == 0
+    assert isinstance(data, list)
+    assert data == []
 
 
 def test_list_invoices_with_data(
-    client: TestClient, invoice_repo: InvoiceRepository
+    db_client: TestClient, invoice_repo: InvoiceRepository
 ) -> None:
     """Lista invoices com filtros status e client_id."""
     import asyncio
@@ -303,24 +244,30 @@ def test_list_invoices_with_data(
     draft_id = asyncio.run(_create_invoice('draft'))
 
     # Lista todas
-    response = client.get(f"{INVOICES}?owner_user_id={OWNER_USER_ID}")
+    response = db_client.get(f"{INVOICES}?owner_user_id={OWNER_USER_ID}")
     assert response.status_code == 200
-    assert response.json()["total"] == 3
+    data = response.json()
+    assert isinstance(data, list)
+    assert len(data) == 3
 
     # Filtra finalized
-    response = client.get(f"{INVOICES}?owner_user_id={OWNER_USER_ID}&status=finalized")
-    assert response.json()["total"] == 2
+    response = db_client.get(f"{INVOICES}?owner_user_id={OWNER_USER_ID}&status=finalized")
+    data = response.json()
+    assert isinstance(data, list)
+    assert len(data) == 2
 
     # Filtra draft
-    response = client.get(f"{INVOICES}?owner_user_id={OWNER_USER_ID}&status=draft")
-    assert response.json()["total"] == 1
-    assert response.json()["items"][0]["id"] == draft_id
+    response = db_client.get(f"{INVOICES}?owner_user_id={OWNER_USER_ID}&status=draft")
+    data = response.json()
+    assert isinstance(data, list)
+    assert len(data) == 1
+    assert data[0]["id"] == draft_id
 
 
 # ---------- Teste: GET / PDF ----------
 
 
-def test_get_invoice_detail(client: TestClient, invoice_repo: InvoiceRepository) -> None:
+def test_get_invoice_detail(db_client: TestClient, invoice_repo: InvoiceRepository) -> None:
     """GET /v1/invoices/{id} retorna detalhes completos."""
     import asyncio
 
@@ -373,7 +320,7 @@ def test_get_invoice_detail(client: TestClient, invoice_repo: InvoiceRepository)
     assert data["client"]["name"] == "Cliente"
 
 
-def test_get_invoice_pdf(client: TestClient, invoice_repo: InvoiceRepository) -> None:
+def test_get_invoice_pdf(db_client: TestClient, invoice_repo: InvoiceRepository) -> None:
     """GET /v1/invoices/{id}?as_pdf=true retorna PDF (Content-Disposition attachment)."""
     import asyncio
 
@@ -422,14 +369,14 @@ def test_get_invoice_pdf(client: TestClient, invoice_repo: InvoiceRepository) ->
     assert "invoice-" in response.headers["content-disposition"]
 
 
-def test_get_invoice_not_found(client: TestClient) -> None:
+def test_get_invoice_not_found(db_client: TestClient) -> None:
     """GET invoice inexistente retorna 404."""
     response = client.get(f"{INVOICES}/999999?owner_user_id={OWNER_USER_ID}")
     assert response.status_code == 404
     assert response.json()["error"]["key"] == "not_found"
 
 
-def test_get_invoice_forbidden(client: TestClient, invoice_repo: InvoiceRepository) -> None:
+def test_get_invoice_forbidden(db_client: TestClient, invoice_repo: InvoiceRepository) -> None:
     """GET invoice de outro owner retorna 404 (não 403 para não vazar existência)."""
     import asyncio
 
@@ -479,7 +426,7 @@ def test_get_invoice_forbidden(client: TestClient, invoice_repo: InvoiceReposito
 
 
 def test_finalize_invoice_draft_to_finalized(
-    client: TestClient, invoice_repo: InvoiceRepository
+    db_client: TestClient, invoice_repo: InvoiceRepository
 ) -> None:
     """POST /finalize transiciona draft → finalized com finalized_at."""
     import asyncio
@@ -522,7 +469,7 @@ def test_finalize_invoice_draft_to_finalized(
 
     inv_id = asyncio.run(_create_draft())
 
-    response = client.post(
+    response = db_client.post(
         f"{INVOICES}/{inv_id}/finalize?owner_user_id={OWNER_USER_ID}",
         json={},
     )
@@ -533,7 +480,7 @@ def test_finalize_invoice_draft_to_finalized(
 
 
 def test_finalize_not_draft_returns_409(
-    client: TestClient, invoice_repo: InvoiceRepository
+    db_client: TestClient, invoice_repo: InvoiceRepository
 ) -> None:
     """Finalizar invoice já finalized retorna 409."""
     import asyncio
@@ -576,7 +523,7 @@ def test_finalize_not_draft_returns_409(
 
     inv_id = asyncio.run(_create_finalized())
 
-    response = client.post(
+    response = db_client.post(
         f"{INVOICES}/{inv_id}/finalize?owner_user_id={OWNER_USER_ID}",
         json={},
     )
@@ -588,7 +535,7 @@ def test_finalize_not_draft_returns_409(
 
 
 def test_clone_invoice_creates_new_draft(
-    client: TestClient, invoice_repo: InvoiceRepository
+    db_client: TestClient, invoice_repo: InvoiceRepository
 ) -> None:
     """POST /clone cria novo draft com novo número e supersedes_invoice_id."""
     import asyncio
@@ -631,7 +578,7 @@ def test_clone_invoice_creates_new_draft(
 
     original_id, original_number = asyncio.run(_create_finalized())
 
-    response = client.post(
+    response = db_client.post(
         f"{INVOICES}/{original_id}/clone?owner_user_id={OWNER_USER_ID}",
     )
     assert response.status_code == 201
@@ -643,7 +590,7 @@ def test_clone_invoice_creates_new_draft(
 
 
 def test_clone_only_finalized_allowed(
-    client: TestClient, invoice_repo: InvoiceRepository
+    db_client: TestClient, invoice_repo: InvoiceRepository
 ) -> None:
     """Clonar draft retorna 409."""
     import asyncio
@@ -686,7 +633,7 @@ def test_clone_only_finalized_allowed(
 
     inv_id = asyncio.run(_create_draft())
 
-    response = client.post(f"{INVOICES}/{inv_id}/clone?owner_user_id={OWNER_USER_ID}")
+    response = db_client.post(f"{INVOICES}/{inv_id}/clone?owner_user_id={OWNER_USER_ID}")
     assert response.status_code == 409
     assert "Só é permitido clonar invoices finalizadas" in response.json()["error"]["message"]
 
@@ -695,7 +642,7 @@ def test_clone_only_finalized_allowed(
 
 
 def test_erase_invoice_hard_delete(
-    client: TestClient, invoice_repo: InvoiceRepository
+    db_client: TestClient, invoice_repo: InvoiceRepository
 ) -> None:
     """DELETE /v1/invoices/{id} remove permanentemente (LGPD art. 18)."""
     import asyncio
@@ -739,7 +686,7 @@ def test_erase_invoice_hard_delete(
     inv_id = asyncio.run(_create())
 
     # Deleta
-    response = client.delete(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}")
+    response = db_client.delete(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}")
     assert response.status_code == 204
 
     # Confirma que não existe mais
@@ -747,13 +694,13 @@ def test_erase_invoice_hard_delete(
     assert response.status_code == 404
 
 
-def test_erase_invoice_not_found(client: TestClient) -> None:
+def test_erase_invoice_not_found(db_client: TestClient) -> None:
     """Erase invoice inexistente retorna 404."""
     response = client.delete(f"{INVOICES}/999999?owner_user_id={OWNER_USER_ID}")
     assert response.status_code == 404
 
 
-def test_erase_invoice_forbidden(client: TestClient, invoice_repo: InvoiceRepository) -> None:
+def test_erase_invoice_forbidden(db_client: TestClient, invoice_repo: InvoiceRepository) -> None:
     """Erase invoice de outro owner retorna 404."""
     import asyncio
 
@@ -803,7 +750,7 @@ def test_erase_invoice_forbidden(client: TestClient, invoice_repo: InvoiceReposi
 
 
 def test_template_pt_br_renders_brl_format(
-    client: TestClient, invoice_repo: InvoiceRepository
+    db_client: TestClient, invoice_repo: InvoiceRepository
 ) -> None:
     """Template pt-BR usa formatação brasileira (R$ 1.234,56)."""
     import asyncio
@@ -846,14 +793,14 @@ def test_template_pt_br_renders_brl_format(
 
     inv_id = asyncio.run(_create())
 
-    response = client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}&as_pdf=true")
+    response = db_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}&as_pdf=true")
     assert response.status_code == 200
     # Verifica se o PDF foi gerado (conteúdo binário)
     assert response.content.startswith(b"%PDF-")
 
 
 def test_template_en_renders_en_format(
-    client: TestClient, invoice_repo: InvoiceRepository
+    db_client: TestClient, invoice_repo: InvoiceRepository
 ) -> None:
     """Template en usa formatação inglesa (1,234.56 BRL)."""
     import asyncio
@@ -896,7 +843,7 @@ def test_template_en_renders_en_format(
 
     inv_id = asyncio.run(_create())
 
-    response = client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}&as_pdf=true")
+    response = db_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}&as_pdf=true")
     assert response.status_code == 200
     assert response.content.startswith(b"%PDF-")
 

@@ -18,7 +18,8 @@ from sqlalchemy.ext.asyncio import create_async_engine
 from src.backend.models.database import Base
 
 # Importa os modelos para registrá-los em Base.metadata (autogenerate/check).
-from src.backend.models import quote  # noqa: F401
+# Importar do pacote models registra todos os modelos via __init__.py
+from src.backend import models  # noqa: F401
 
 DATABASE_URL_ENV = "COGME_DATABASE_URL"
 

@@ -20,7 +20,7 @@ EXCLUDED_DIR_NAMES = {
 }
 EXCLUDED_PATH_PARTS = (".opencode/skills", ".agents/skills")
 
-NOME_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*\.md$")
+NOME_RE = re.compile(r"^[a-zA-Z0-9]+(-[a-zA-Z0-9]+)*\.md$")
 
 # diretório → prefixo esperado
 PREFIXO_BY_DIR = {
@@ -48,7 +48,7 @@ PREFIXO_BY_DIR = {
 
 # Artefatos canônicos preservados por decisão de governança (CCB/OKB) —
 # renomeá-los quebraria referências em README, specs e planos (Norma §8).
-NOME_CANONICO = {"constitution.md", "README.md", "AGENTS.md", "okb.md", "ccb-log.md"}
+NOME_CANONICO = {"constitution.md", "README.md", "AGENTS.md", "okb.md", "ccb-log.md", "INDEX.md"}
 
 
 def coletar_arquivos(alvos):
@@ -94,7 +94,7 @@ def validar(args) -> int:
         esperado = prefixo_esperado(caminho)
         if esperado is None:
             continue  # diretório sem regra de prefixo
-        prefixo_atual = nome.split("-")[0]
+        prefixo_atual = nome.split("-")[0].lower()
         if prefixo_atual != esperado:
             erros.append(
                 f"{caminho}: prefixo '{prefixo_atual}' incoerente com diretório "

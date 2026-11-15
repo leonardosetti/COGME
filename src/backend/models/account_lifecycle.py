@@ -13,9 +13,9 @@ from sqlalchemy import (
     CHAR,
     CheckConstraint,
     DateTime,
-    Enum as SAEnum,
     ForeignKey,
     Index,
+    String,
 )
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -60,9 +60,8 @@ class AccountLifecycleEvent(Base):
     user_id: Mapped[int] = mapped_column(
         BIGINT, ForeignKey("users.id", ondelete="CASCADE"), nullable=False
     )
-    event_type: Mapped[LifecycleEventType] = mapped_column(
-        SAEnum(LifecycleEventType, name="lifecycle_event_type", create_constraint=False),
-        nullable=False,
+    event_type: Mapped[str] = mapped_column(
+        String(32), nullable=False
     )
     from_status: Mapped[str | None] = mapped_column(
         CHAR(16), nullable=True

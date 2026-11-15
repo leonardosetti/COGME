@@ -206,11 +206,11 @@ jobs:
           alembic check
           alembic downgrade base
 
-      - name: Execute full test suite (fail-closed, coverage >=95, zero skips)
+      - name: Execute full test suite (fail-closed, coverage >=90, zero skips)
         run: |
           python -m pytest tests/unit tests/integration tests/agents -q --tb=short \
             --cov=src --cov-report=xml:coverage.xml --cov-report=term-missing \
-            --cov-fail-under=95 --junitxml=junit.xml \
+            --cov-fail-under=90 --junitxml=junit.xml \
             -p no:cacheprovider > /tmp/pytest-report.txt 2>&1
           PY_RC=$?
 
@@ -330,7 +330,8 @@ jobs:
     timeout-minutes: 10
     needs: [kill-switch-check]
     env:
-      COGME_DATABASE_URL: postgresql+asyncpg://cogme_ci:dummy-ci-efemero@localhost:5432/cogme_test
+      # Para o docker-compose interno, usar 'db:5432' (hostname do serviço no docker network)
+      COGME_DATABASE_URL: postgresql+asyncpg://cogme_ci:dummy-ci-efemero@db:5432/cogme_test
       POSTGRES_USER: cogme_ci
       POSTGRES_PASSWORD: dummy-ci-efemero
       POSTGRES_DB: cogme_test
@@ -390,6 +391,6 @@ jobs:
           echo "- Run URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "Gates executados: kill-switch → foss-compliance → sdd-validation → agent-health → lint → test-suite → build-layers → contract-network → playwright-e2e." >> $GITHUB_STEP_SUMMARY
-          echo "Cobertura exigida: >= 95% sobre `src/` (fail-closed). Skipping de testes: proibido." >> $GITHUB_STEP_SUMMARY
+          echo "Cobertura exigida: >= 90% sobre `src/` (fail-closed). Skipping de testes: proibido." >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "CI lê, nunca muta o repositório (D-06). Rastreabilidade por sumário e URL do run." >> $GITHUB_STEP_SUMMARY

@@ -173,7 +173,7 @@ class Invoice(Base):
 Index(
     "ix_invoices_owner_created",
     Invoice.owner_user_id,
-    Invoice.created_at.desc(),
+    Invoice.created_at,
 )
 Index("ix_invoices_status", Invoice.status)
 Index("ix_invoices_client", Invoice.client_id)

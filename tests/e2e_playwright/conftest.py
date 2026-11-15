@@ -18,9 +18,9 @@ from tests.e2e_playwright.screenplay.actor import Actor, stage
 BASE_URL: Final[str] = os.environ.get("COGME_BASE_URL", "http://localhost:8001")
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 async def browser():
-    """Navegador Chromium lançado uma vez por sessão de testes."""
+    """Navegador Chromium lançado por teste (evita ScopeMismatch com pytest-asyncio)."""
     async with async_playwright() as playwright:
         browser = await playwright.chromium.launch(headless=True)
         yield browser

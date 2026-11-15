@@ -13,7 +13,6 @@ from sqlalchemy import (
     CHAR,
     CheckConstraint,
     DateTime,
-    Enum as SAEnum,
     ForeignKey,
     Index,
     String,
@@ -73,10 +72,8 @@ class User(Base):
     phone: Mapped[str | None] = mapped_column(String(30), nullable=True)
     cpf: Mapped[str] = mapped_column(CHAR(11), nullable=False)
     password_hash: Mapped[str] = mapped_column(String(255), nullable=False)
-    status: Mapped[UserStatus] = mapped_column(
-        SAEnum(UserStatus, name="user_status", create_constraint=False),
-        nullable=False,
-        default=UserStatus.ACTIVE,
+    status: Mapped[str] = mapped_column(
+        String(16), nullable=False, default=UserStatus.ACTIVE
     )
     dormant_since: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True), nullable=True
@@ -115,14 +112,16 @@ class UserLoginIdentifier(Base):
     __tablename__ = "user_login_identifiers"
     __table_args__ = (
         UniqueConstraint("kind", "lookup_hmac", name="uq_user_login_kind_hmac"),
-        # Partial unique index handled in migration
-        # (postgresql_where not supported in UniqueConstraint)
+        # Partial unique index for active (non-retired) identifiers per user+kind
+        # Matches migration: CREATE UNIQUE INDEX uq_user_login_user_kind_active
+        # ON user_login_identifiers (user_id, kind) WHERE retired_at IS NULL
         Index("ix_user_login_user_kind", "user_id", "kind"),
         Index("ix_user_login_hmac", "lookup_hmac"),
         Index(
-            "ix_user_login_active_kind",
+            "uq_user_login_user_kind_active",
             "user_id",
             "kind",
+            unique=True,
             postgresql_where="retired_at IS NULL",
         ),
     )
@@ -131,9 +130,8 @@ class UserLoginIdentifier(Base):
     user_id: Mapped[int] = mapped_column(
         BIGINT, ForeignKey("users.id", ondelete="CASCADE"), nullable=False
     )
-    kind: Mapped[UserLoginIdentifierKind] = mapped_column(
-        SAEnum(UserLoginIdentifierKind, name="user_login_kind", create_constraint=False),
-        nullable=False,
+    kind: Mapped[str] = mapped_column(
+        String(16), nullable=False
     )
     lookup_hmac: Mapped[str] = mapped_column(
         String(64), nullable=False
