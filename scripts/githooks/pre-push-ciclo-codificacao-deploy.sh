@@ -93,9 +93,10 @@ PY_CHANGED=$(printf '%s\n' "$CHANGED" | grep -E '\.py$' | grep -E '^(src|migrati
 SRC_CHANGED=$(printf '%s\n' "$PY_CHANGED" | grep -E '^src/' || true)
 
 # --- 3. frontmatter de .md alterados (só os alterados; o estoque legado é dívida à parte) ---
+# xargs -d '\n': caminhos com espaços (ex.: exports Excalidraw) chegam inteiros ao validador.
 if [ -n "$MD_CHANGED" ]; then
   echo "==> validando frontmatter de .md alterados"
-  if ! python3 scripts/validar_frontmatter_md.py $MD_CHANGED; then
+  if ! printf '%s\n' "$MD_CHANGED" | xargs -d '\n' python3 scripts/validar_frontmatter_md.py; then
     fail "frontmatter .md inválido (scripts/validar_frontmatter_md.py). Corrija antes do push."
   fi
 fi
@@ -103,7 +104,7 @@ fi
 # --- 4. flake8 em Python alterado ---
 if [ -n "$PY_CHANGED" ]; then
   echo "==> flake8 em Python alterado"
-  if ! python3 -m flake8 $PY_CHANGED; then
+  if ! printf '%s\n' "$PY_CHANGED" | xargs -d '\n' python3 -m flake8; then
     fail "flake8 falhou nos arquivos Python alterados."
   fi
 fi
