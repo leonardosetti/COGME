@@ -1,3 +1,19 @@
+---
+id: docs-der-cogme
+title: "DER — COGME (Diagrama Entidade-Relacionamento)"
+type: spec
+version: 0.1.0
+status: draft
+owner: agent-dba
+derived-from:
+  - ".ai/specs/spec-007-invoice-data-model-v1.spec.md"
+last-revised: '2026-11-15'
+lgpd-class: n/a
+tags:
+  - der
+  - modelo-de-dados
+---
+
 # DER — COGME (Diagrama Entidade-Relacionamento)
 
 > **Status**: Tabela `fx_quotes` implementada; demais tabelas em **specs draft** (PROP-018 a PROP-021), aguardando ratificação CCB.

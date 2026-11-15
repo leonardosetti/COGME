@@ -1,9 +1,9 @@
 ---
 id: docs-decisoes-ccb-lgpd-decisoes
 title: Registro de Decisões LGPD — CR-002 (DEC-01 a DEC-07)
-type: decisao-ccb
+type: adr
 version: 1.0.0
-status: ratificada
+status: ratificado
 owner: agent-compliance-governance
 derived-from:
 - docs/decisoes/ccb-CR-002.md (CR2-D02, CR2-D03, CR2-D04, CR2-D05, CR2-D08)

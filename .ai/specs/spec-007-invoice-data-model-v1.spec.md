@@ -20,7 +20,7 @@ derived-from:
 - .ai/specs/spec-021-invoice-bilingual-v1.spec.md
 - .ai/specs/spec-022-account-lifecycle-privacy-v1.spec.md
 last-revised: '2026-11-15'
-lgpd-class: dados-pessoais
+lgpd-class: interno
 tags:
 - specs
 - docs
@@ -54,7 +54,7 @@ trace:
   - .ai/specs/spec-020-simulation-invoice-history-v1.spec.md
   - .ai/specs/spec-021-invoice-bilingual-v1.spec.md
   - .ai/specs/spec-022-account-lifecycle-privacy-v1.spec.md
-lgpd-class: dados-pessoais
+lgpd-class: interno
 ---
 
 # SPEC spec-007 — invoice-data-model-v1 — Modelo canônico de dados da invoice (GAP-04 + CR-002)

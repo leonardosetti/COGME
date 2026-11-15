@@ -3,7 +3,7 @@ id: docs-decisoes-adr-018-tap-replanejamento-m4
 title: ADR-018 — Replanejamento TAP/M4 — Extensão para 30/12/2026 (Cenário A Completo)
 type: adr
 version: 1.0.0
-status: aprovada
+status: ratificado
 owner: agent-project-analyst
 derived-from:
 - constitution.md (Art. 1.1, 1.2, 1.3, 9.3.ii, 9.3.v)

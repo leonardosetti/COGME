@@ -20,7 +20,7 @@ derived-from:
 - .ai/specs/spec-021-invoice-bilingual-v1.spec.md
 - .ai/specs/spec-022-account-lifecycle-privacy-v1.spec.md
 last-revised: '2026-11-15'
-lgpd-class: dados-pessoais
+lgpd-class: interno
 tags:
 - specs
 - docs
@@ -50,7 +50,7 @@ trace:
   - .ai/specs/spec-002-requisitos-review-round-1.spec.md v2.0.0 (REQ-16, REQ-17, REQ-18)
   - .ai/specs/spec-017-identity-access-session-v1.spec.md
   - .ai/specs/spec-022-account-lifecycle-privacy-v1.spec.md
-lgpd-class: dados-pessoais
+lgpd-class: interno
 ---
 
 # SPEC spec-004 — backend-mvp-v1 — Backend do MVP COGME (REQ-01 a REQ-05, REQ-07, REQ-14, REQ-16, REQ-17)

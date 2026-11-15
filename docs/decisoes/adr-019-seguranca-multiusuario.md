@@ -3,7 +3,7 @@ id: docs-decisoes-adr-019-seguranca-multiusuario
 title: ADR-019 — Threat Model e Controles de Segurança — Contas Multiusuário (CR-002)
 type: adr
 version: 1.0.0
-status: aprovada
+status: ratificado
 owner: agent-digital-security
 derived-from:
 - constitution.md (P-07, Art. 7, Art. 9.3.ii)

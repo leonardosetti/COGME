@@ -1,7 +1,7 @@
 ---
 id: <TBD>
 title: Template de Proposta de Nova Spec
-type: proposta
+type: plano
 version: 0.0.1
 status: draft
 owner: agent-project-analyst

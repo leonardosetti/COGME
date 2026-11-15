@@ -1,6 +1,6 @@
 ---
 id: proc-cr-spec-approval-workflow
-title: Runbook: Workflow de Aprovação CR + Spec → Produção de Recursos
+title: "Runbook: Workflow de Aprovação CR + Spec → Produção de Recursos"
 type: procedimento
 version: 1.0.0
 status: ativo

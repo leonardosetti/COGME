@@ -1,9 +1,9 @@
 ---
 id: docs-decisoes-ccb-003-multiusuario-lgpd
-title: CCB-003 — Deliberação CR-008: Ciclo de Vida, LGPD/GDPR e Expansão Multiusuário
+title: "CCB-003 — Deliberação CR-008: Ciclo de Vida, LGPD/GDPR e Expansão Multiusuário"
 type: adr
 version: 1.0.0
-status: accepted
+status: ratificado
 owner: Gerente de Projeto
 derived-from:
 - docs/change-requests/cr-008-account-lifecycle-privacy.md
@@ -20,7 +20,6 @@ tags:
 - multiusuario
 - decisao
 decision: accepted
-status: proposed
 supersedes: []
 domain-pmbok: integracao
 github-issue: '#41'

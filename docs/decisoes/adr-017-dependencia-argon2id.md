@@ -3,7 +3,7 @@ id: docs-decisoes-adr-017-dependencia-argon2id
 title: ADR-017 — Dependência Argon2id (argon2-cffi) para Hash de Senhas
 type: adr
 version: 1.0.0
-status: aprovada
+status: ratificado
 owner: agent-architect
 derived-from:
 - constitution.md (Art. 9.3.ii, P-01, P-07)

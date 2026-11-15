@@ -1,9 +1,9 @@
 ---
 id: docs-decisoes-ccb-auditoria-cr-002
 title: Ratificação CCB/GP — Parecer Auditoria/Compliance CR-002 Gate 1
-type: decisao-ccb
+type: adr
 version: 1.0.0
-status: ratificada
+status: ratificado
 owner: agent-project-analyst
 derived-from:
 - docs/auditorias/aud-CR-002-2026-11-15.md

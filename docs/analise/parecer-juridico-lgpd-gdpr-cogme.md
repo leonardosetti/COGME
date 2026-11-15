@@ -1,7 +1,7 @@
 ---
 id: docs-analise-parecer-juridico-lgpd-gdpr-cogme
 title: Parecer Jurídico — LGPD e GDPR para Expansão Multiusuário COGME
-type: analise
+type: relatorio
 version: 1.0.0
 status: ativo
 owner: agent-compliance-governance

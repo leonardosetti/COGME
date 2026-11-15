@@ -1,9 +1,9 @@
 ---
 id: docs-decisoes-ccb-cr-002
 title: Registro de Decisões CCB/GP — CR-002 Contas Multiusuário
-type: decisao-ccb
+type: adr
 version: 1.0.0
-status: ratificada
+status: ratificado
 owner: agent-project-analyst
 derived-from:
 - docs/change-requests/cr-002-cadastro-usuarios-multiusuario.md

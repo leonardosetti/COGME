@@ -1,9 +1,9 @@
 ---
 id: docs-especificacoes-proposta-spec-preenchimento-tempo-jornada
 title: Proposta de Spec — Preenchimento de Tempo por Regime de Jornada
-type: proposta-spec
+type: spec
 version: 1.0.0
-status: aceita
+status: ratificado
 owner: agent-project-analyst
 derived-from:
 - docs/conhecimento/templates/proposta-spec-template.md (template v1.1.0, 2026-11-07)

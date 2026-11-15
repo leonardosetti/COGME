@@ -1,9 +1,9 @@
 ---
 id: docs-decisoes-ratificacao-ccb-invoices-2026-11-14
 title: Ratificação CCB/GP — Persistência de Invoices + LGPD (DEC-04 a DEC-07)
-type: decisao-ccb
+type: adr
 version: 1.0.0
-status: ratificada
+status: ratificado
 owner: agent-project-analyst
 derived-from:
 - docs/decisoes/ccb-lgpd-decisoes.md (DEC-04 a DEC-07)

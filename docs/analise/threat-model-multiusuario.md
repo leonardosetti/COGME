@@ -1,7 +1,7 @@
 ---
 id: docs-analise-threat-model-multiusuario
 title: Threat Model — Expansão Multiusuário COGME (CR-008 / SPEC-022)
-type: analise
+type: relatorio
 version: 1.0.0
 status: ativo
 owner: agent-digital-security

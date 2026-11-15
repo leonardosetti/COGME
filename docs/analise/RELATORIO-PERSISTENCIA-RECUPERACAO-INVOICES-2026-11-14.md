@@ -1,3 +1,21 @@
+---
+id: docs-analise-relatorio-persistencia-recuperacao-invoices-2026-11-14
+title: "Relatório Analítico: Persistência e Recuperação de Invoices"
+type: relatorio
+version: 1.0.0
+status: ativo
+owner: agent-architect
+derived-from:
+  - "docs/decisoes/adr-016-*.md (RAT-2026-11-05-A16-D4)"
+last-revised: '2026-11-14'
+lgpd-class: interno
+tags:
+  - relatorio
+  - invoices
+  - persistencia
+  - lgpd
+---
+
 # Relatório Analítico: Persistência e Recuperação de Invoices
 
 **Data:** 2026-11-14  
