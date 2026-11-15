@@ -320,7 +320,57 @@ jobs:
         run: docker compose down -v --remove-orphans
 
   # ------------------------------------------------------------------
-  # 9. Final Status (P-05: traces).
+  # 10. Funcional/E2E — Playwright (Screenplay Pattern)
+  # Executa os casos CT-FUNC-* contra o stack efêmero (front na porta 8001,
+  # publicada pelo serviço `front` do docker-compose.yml).
+  # ------------------------------------------------------------------
+  playwright-e2e:
+    name: Playwright E2E (Screenplay)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: [kill-switch-check]
+    env:
+      COGME_DATABASE_URL: postgresql+asyncpg://cogme_ci:dummy-ci-efemero@localhost:5432/cogme_test
+      POSTGRES_USER: cogme_ci
+      POSTGRES_PASSWORD: dummy-ci-efemero
+      POSTGRES_DB: cogme_test
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4  # v4 (Node 24-compat)
+
+      - name: Set up Python environment
+        uses: ./.github/actions/python-env
+
+      - name: Instalar dependências de dev (inclui Playwright)
+        run: pip install -r requirements-dev.txt
+
+      - name: Instalar navegadores Playwright (Chromium + deps do sistema)
+        run: playwright install chromium --with-deps
+
+      - name: Subir stack efêmera (db, migrate, back, front)
+        run: docker compose up --build -d db migrate back front
+
+      - name: Aguardar front saudável
+        run: |
+          STATUS=""
+          for i in $(seq 1 30); do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 3 http://localhost:8001/ 2>/dev/null || true)
+            [ "$STATUS" = "200" ] && break
+            sleep 2
+          done
+          test "$STATUS" = "200" || { echo "🚨 front não respondeu 200 em http://localhost:8001/ (obteve $STATUS)"; docker compose ps; exit 1; }
+          echo "✅ front saudável em http://localhost:8001/"
+
+      - name: Executar testes funcionais Playwright (Screenplay Pattern)
+        run: |
+          COGME_BASE_URL=http://localhost:8001 python -m pytest tests/e2e_playwright -q --tb=short -m "playwright"
+
+      - name: Derrubar stack efêmera
+        if: always()
+        run: docker compose down -v --remove-orphans
+
+  # ------------------------------------------------------------------
+  # 11. Final Status (P-05: traces).
   # D-06: o CI lê, nunca muta o repo. Zero escritas em .ai/ pelo workflow;
   # rastreabilidade via GITHUB_STEP_SUMMARY + URL do run.
   # ------------------------------------------------------------------
@@ -328,7 +378,7 @@ jobs:
     name: Final Status
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    needs: [kill-switch-check, foss-compliance, sdd-validation, agent-health, lint, test-suite, build-layers, contract-network]
+    needs: [kill-switch-check, foss-compliance, sdd-validation, agent-health, lint, test-suite, build-layers, contract-network, playwright-e2e]
     if: always()
     steps:
       - name: Pipeline summary (GITHUB_STEP_SUMMARY)
@@ -339,7 +389,7 @@ jobs:
           echo "- Ref: `${{ github.ref }}`" >> $GITHUB_STEP_SUMMARY
           echo "- Run URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "Gates executados: kill-switch → foss-compliance → sdd-validation → agent-health → lint → test-suite → build-layers → contract-network." >> $GITHUB_STEP_SUMMARY
+          echo "Gates executados: kill-switch → foss-compliance → sdd-validation → agent-health → lint → test-suite → build-layers → contract-network → playwright-e2e." >> $GITHUB_STEP_SUMMARY
           echo "Cobertura exigida: >= 95% sobre `src/` (fail-closed). Skipping de testes: proibido." >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "CI lê, nunca muta o repositório (D-06). Rastreabilidade por sumário e URL do run." >> $GITHUB_STEP_SUMMARY
