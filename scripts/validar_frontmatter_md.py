@@ -110,27 +110,31 @@ def parse_frontmatter(text: str):
     return data, body
 
 
+def is_excluded(path: Path) -> bool:
+    """Devolve True para caminhos fora do escopo da norma (gerados, skills, etc.)."""
+    parts = path.parts
+    if any(part in EXCLUDED_DIR_NAMES for part in parts):
+        return True
+    if ".opencode" in parts and "skills" in parts:
+        return True
+    if ".agents" in parts and "skills" in parts:
+        return True
+    if ".opencode" in parts:
+        idx = parts.index(".opencode")
+        resto = parts[idx + 1:]
+        if not (len(resto) >= 2 and resto[0] == "agents" and resto[1].startswith("agent-")):
+            return True
+    return False
+
+
 def collect_md_files() -> list[Path]:
     files: list[Path] = []
     for p in ROOT.rglob("*.md"):
         # Pular symlinks (alias de outro arquivo, não artefato independente)
         if p.is_symlink():
             continue
-        # pule pastas excluídas
-        parts = p.parts
-        if any(part in EXCLUDED_DIR_NAMES for part in parts):
+        if is_excluded(p):
             continue
-        # Excluir skills instaladas do OpenCode (mantidas externamente)
-        if ".opencode" in parts and "skills" in parts:
-            continue
-        if ".agents" in parts and "skills" in parts:
-            continue
-        # Em .opencode/, só agentes COGME nativos (.opencode/agents/agent-*.md)
-        if ".opencode" in parts:
-            idx = parts.index(".opencode")
-            resto = parts[idx + 1:]
-            if not (len(resto) >= 2 and resto[0] == "agents" and resto[1].startswith("agent-")):
-                continue
         files.append(p)
     files.sort()
     return files
@@ -139,8 +143,9 @@ def collect_md_files() -> list[Path]:
 def validate(paths: list[str] | None = None) -> int:
     errors: list[str] = []
     seen_ids: dict[str, str] = {}
-    # Sem paths: todo o *.md do projeto (CI). Com paths: só os arquivos indicados (gate local).
-    files = [Path(p) for p in paths] if paths else collect_md_files()
+    # Sem paths: todo o *.md do projeto (CI). Com paths: só os arquivos indicados (gate local),
+    # mantendo as mesmas exclusões do acervo (artefatos gerados como graphify-out/ ficam fora).
+    files = [Path(p) for p in paths if not is_excluded(Path(p))] if paths else collect_md_files()
 
     for path in files:
         rel = str(path)
