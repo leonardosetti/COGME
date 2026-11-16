@@ -50,7 +50,7 @@ def upgrade() -> None:
                 -- Race condition: tenta inserir nova linha
                 BEGIN
                     INSERT INTO invoice_sequences (issuer_tax_id_digits, year_month, last_number)
-                    VALUES (p_issuer_tax_id_digits, v_ym, 1)
+                    VALUES (p_issuer_tax_id_digits, v_ym, 0)
                     ON CONFLICT (issuer_tax_id_digits, year_month) DO NOTHING;
                 EXCEPTION WHEN unique_violation THEN
                     -- Outra transação inseriu; loop continua

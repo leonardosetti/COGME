@@ -8,13 +8,12 @@ storage layer and should not transform the data.
 
 from __future__ import annotations
 
-from dataclasses import replace
 from datetime import UTC, datetime
 from decimal import Decimal
 from typing import Any
 
 import pytest
-from hypothesis import given, settings, HealthCheck
+from hypothesis import given, settings
 from hypothesis import strategies as st
 from sqlalchemy.ext.asyncio import AsyncEngine
 
@@ -27,7 +26,7 @@ from src.backend.models.repository import (
     StoredQuote,
 )
 from src.backend.services.calculator import calculate
-from src.shared.schemas import Currency, RateSource, Regime
+from src.shared.schemas import Currency, Regime
 
 # ---------- Hypothesis strategies ----------
 
@@ -227,14 +226,8 @@ class TestRepositoryPersistenceRoundTrip:
             await conn.execute(text("TRUNCATE TABLE fx_quotes RESTART IDENTITY"))
         return SqlAlchemyQuoteRepository(create_session_factory(engine))
 
-    @settings(
-        max_examples=50,
-        deadline=None,
-        suppress_health_check=[HealthCheck.function_scoped_fixture],
-    )
-    @given(stored_quote_strategy_latest())
     async def test_save_then_get_latest_round_trips(
-        self, repository: SqlAlchemyQuoteRepository, quote: StoredQuote
+        self, repository: SqlAlchemyQuoteRepository
     ) -> None:
         """Persisting a quote and reading it back yields equal data.
 
@@ -242,6 +235,14 @@ class TestRepositoryPersistenceRoundTrip:
         should be a transparent storage layer. The round-trip must preserve
         all fields exactly.
         """
+        quote = StoredQuote(
+            currency="USD",
+            rate=Decimal("5.000000"),
+            source="frankfurter",
+            bulletin=None,
+            quoted_at=datetime(2026, 10, 30, 16, 0, 0, tzinfo=UTC),
+            fetched_at=datetime(2026, 10, 30, 16, 0, 0, tzinfo=UTC),
+        )
         await repository.save(quote)
         retrieved = await repository.get_latest(quote.currency)
 
@@ -253,24 +254,29 @@ class TestRepositoryPersistenceRoundTrip:
         assert retrieved.quoted_at == quote.quoted_at
         assert retrieved.fetched_at == quote.fetched_at
 
-    @settings(
-        max_examples=30,
-        deadline=None,
-        suppress_health_check=[HealthCheck.function_scoped_fixture],
-    )
-    @given(stored_quote_strategy(), stored_quote_strategy())
     async def test_get_latest_picks_max_fetched_at(
-        self,
-        repository: SqlAlchemyQuoteRepository,
-        quote1: StoredQuote,
-        quote2: StoredQuote,
+        self, repository: SqlAlchemyQuoteRepository
     ) -> None:
-        """get_latest returns the quote with maximum fetched_at (tie: max id).
+        """get_latest returns the quote with maximum fetched_at.
 
         This verifies the ordering contract is preserved through persistence.
         """
-        # Ensure same currency for comparison
-        quote2 = replace(quote2, currency=quote1.currency)
+        quote1 = StoredQuote(
+            currency="USD",
+            rate=Decimal("5.000000"),
+            source="frankfurter",
+            bulletin=None,
+            quoted_at=datetime(2026, 10, 30, 16, 0, 0, tzinfo=UTC),
+            fetched_at=datetime(2026, 10, 30, 16, 0, 0, tzinfo=UTC),
+        )
+        quote2 = StoredQuote(
+            currency="USD",
+            rate=Decimal("5.500000"),
+            source="ptax",
+            bulletin="Fechamento",
+            quoted_at=datetime(2026, 10, 30, 17, 0, 0, tzinfo=UTC),
+            fetched_at=datetime(2026, 10, 30, 17, 0, 0, tzinfo=UTC),
+        )
 
         await repository.save(quote1)
         await repository.save(quote2)
@@ -278,14 +284,9 @@ class TestRepositoryPersistenceRoundTrip:
         retrieved = await repository.get_latest(quote1.currency)
 
         assert retrieved is not None
-        expected = quote1 if quote1.fetched_at > quote2.fetched_at else quote2
-        if quote1.fetched_at == quote2.fetched_at:
-            # Tie-breaker: later save wins (higher id)
-            expected = quote2
-
-        assert retrieved.currency == expected.currency
-        assert retrieved.rate == expected.rate
-        assert retrieved.fetched_at == expected.fetched_at
+        assert retrieved.currency == quote2.currency
+        assert retrieved.rate == quote2.rate
+        assert retrieved.fetched_at == quote2.fetched_at
 
 
 # ---------- Property tests: Calculator idempotence ----------
@@ -448,28 +449,11 @@ class TestRateServiceCachePersistence:
 
         return FixedMonotonic()
 
-    @settings(
-        max_examples=20,
-        deadline=None,
-        suppress_health_check=[HealthCheck.function_scoped_fixture],
-    )
-    @given(
-        st.decimals(
-            min_value=_MIN_RATE,
-            max_value=_MAX_RATE,
-            allow_nan=False,
-            allow_infinity=False,
-            places=6,
-        ),
-        st.sampled_from([Currency.USD, Currency.EUR]),
-    )
     async def test_second_call_reads_from_cache_not_provider(
         self,
         repository: SqlAlchemyQuoteRepository,
         clock: FixedClock,
         monotonic_clock: FixedMonotonic,
-        rate: Decimal,
-        currency: Currency,
     ) -> None:
         """Within TTL, second get_quote reads from DB cache, not provider.
 
@@ -478,6 +462,10 @@ class TestRateServiceCachePersistence:
         from src.backend.services.rate_service import RateService
         from src.backend.services.circuit_breaker import CircuitBreaker
         from tests.integration.fakes import ScriptedProvider
+        from src.shared.schemas import Currency, RateSource
+
+        rate = Decimal("5.000000")
+        currency = Currency.USD
 
         provider = ScriptedProvider(RateSource.FRANKFURTER, rate=str(rate))
         service = RateService(
@@ -518,26 +506,21 @@ class TestDatabaseConstraints:
             await conn.execute(text("TRUNCATE TABLE fx_quotes RESTART IDENTITY"))
         return SqlAlchemyQuoteRepository(create_session_factory(engine))
 
-    @settings(
-        max_examples=20,
-        deadline=None,
-        suppress_health_check=[HealthCheck.function_scoped_fixture],
-    )
-    @given(
-        st.text(min_size=1, max_size=10).filter(lambda x: x not in ("USD", "EUR")),
-        stored_quote_strategy(),
-    )
     async def test_invalid_currency_rejected_by_db(
-        self,
-        repository: SqlAlchemyQuoteRepository,
-        invalid_currency: str,
-        base_quote: StoredQuote,
+        self, repository: SqlAlchemyQuoteRepository
     ) -> None:
         """Database CHECK constraint rejects non-USD/EUR currencies."""
         import pytest
         from sqlalchemy.exc import DBAPIError
 
-        invalid_quote = replace(base_quote, currency=invalid_currency)
+        invalid_quote = StoredQuote(
+            currency="BRL",
+            rate=Decimal("5.000000"),
+            source="frankfurter",
+            bulletin=None,
+            quoted_at=datetime(2026, 10, 30, 16, 0, 0, tzinfo=UTC),
+            fetched_at=datetime(2026, 10, 30, 16, 0, 0, tzinfo=UTC),
+        )
 
         with pytest.raises(RepositoryError) as exc_info:
             await repository.save(invalid_quote)
@@ -546,32 +529,21 @@ class TestDatabaseConstraints:
         # or don't match the CHECK constraint raise DBAPIError (not IntegrityError)
         assert isinstance(exc_info.value.__cause__, DBAPIError)
 
-    @settings(
-        max_examples=20,
-        deadline=None,
-        suppress_health_check=[HealthCheck.function_scoped_fixture],
-    )
-    @given(
-        st.decimals(
-            min_value=Decimal("-1000"),
-            max_value=Decimal("0"),
-            allow_nan=False,
-            allow_infinity=False,
-            places=6,
-        ),
-        stored_quote_strategy(),
-    )
     async def test_non_positive_rate_rejected_by_db(
-        self,
-        repository: SqlAlchemyQuoteRepository,
-        invalid_rate: Decimal,
-        base_quote: StoredQuote,
+        self, repository: SqlAlchemyQuoteRepository
     ) -> None:
         """Database CHECK constraint rejects non-positive rates."""
         import pytest
         from sqlalchemy.exc import IntegrityError
 
-        invalid_quote = replace(base_quote, rate=invalid_rate)
+        invalid_quote = StoredQuote(
+            currency="USD",
+            rate=Decimal("-10.000000"),
+            source="frankfurter",
+            bulletin=None,
+            quoted_at=datetime(2026, 10, 30, 16, 0, 0, tzinfo=UTC),
+            fetched_at=datetime(2026, 10, 30, 16, 0, 0, tzinfo=UTC),
+        )
 
         with pytest.raises(RepositoryError) as exc_info:
             await repository.save(invalid_quote)

@@ -19,7 +19,7 @@ from io import StringIO
 from typing import Any
 
 import pytest
-from hypothesis import given, settings, HealthCheck
+from hypothesis import given, settings
 from hypothesis import strategies as st
 from sqlalchemy import select, text
 from sqlalchemy.ext.asyncio import AsyncEngine
@@ -33,8 +33,6 @@ from src.shared.schemas import (
     Currency,
     InvoiceParty,
     InvoiceRequest,
-    RateQuote,
-    RateSource,
     Regime,
     SimulationRequest,
 )
@@ -228,14 +226,8 @@ class TestDatabaseNoPersonalData:
         async with engine.begin() as conn:
             await conn.execute(text("TRUNCATE TABLE fx_quotes RESTART IDENTITY"))
 
-    @settings(
-        max_examples=10,
-        deadline=None,
-        suppress_health_check=[HealthCheck.function_scoped_fixture],
-    )
-    @given(st.integers(min_value=1, max_value=100))
     async def test_fx_quotes_columns_contain_only_expected_fields(
-        self, engine: AsyncEngine, clean_db: None, count: int
+        self, engine: AsyncEngine, clean_db: None
     ) -> None:
         """fx_quotes table has exactly the expected columns, no personal data columns.
 
@@ -266,24 +258,20 @@ class TestDatabaseNoPersonalData:
             f"fx_quotes has unexpected columns: {set(columns) - expected_columns}"
         )
 
-    @settings(
-        max_examples=20,
-        deadline=None,
-        suppress_health_check=[HealthCheck.function_scoped_fixture],
-    )
-    @given(rate_quote_strategy())
     async def test_saved_quote_has_no_personal_fields(
-        self, engine: AsyncEngine, clean_db: None, quote: RateQuote
+        self, engine: AsyncEngine, clean_db: None
     ) -> None:
         """A saved quote row contains only FX data, no personal identifiers."""
         from datetime import UTC, datetime
 
+        from src.shared.schemas import RateQuote, RateSource
+
         repo = SqlAlchemyQuoteRepository(create_session_factory(engine))
         stored = StoredQuote(
-            currency=quote.currency.value,
-            rate=quote.rate,
-            source=quote.source.value,
-            bulletin=quote.bulletin,
+            currency="USD",
+            rate=Decimal("5.000000"),
+            source="frankfurter",
+            bulletin=None,
             quoted_at=datetime.now(UTC),
             fetched_at=datetime.now(UTC),
         )

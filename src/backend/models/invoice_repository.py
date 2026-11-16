@@ -143,6 +143,11 @@ class SqlAlchemyInvoiceRepository:
     def __init__(self, session_factory: async_sessionmaker[AsyncSession]) -> None:
         self._session_factory = session_factory
 
+    @property
+    def session_factory(self) -> async_sessionmaker[AsyncSession]:
+        """Retorna a factory de sessões (para uso em testes)."""
+        return self._session_factory
+
     async def get_by_id(self, invoice_id: int, owner_user_id: int) -> StoredInvoice | None:
         stmt = select(Invoice).where(
             Invoice.id == invoice_id, Invoice.owner_user_id == owner_user_id

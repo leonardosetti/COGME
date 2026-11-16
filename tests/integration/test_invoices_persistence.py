@@ -180,9 +180,9 @@ async def test_persistence_roundtrip_equals_reprocess(
 # ---------- Teste: Listagem ----------
 
 
-def test_list_invoices_empty(db_client: TestClient) -> None:
+async def test_list_invoices_empty(db_client: TestClient) -> None:
     """Lista vazia retorna 200 com lista vazia."""
-    response = db_client.get(f"{INVOICES}?owner_user_id={OWNER_USER_ID}")
+    response = await db_client.get(f"{INVOICES}?owner_user_id={OWNER_USER_ID}")
     assert response.status_code == 200
     data = response.json()
     assert isinstance(data, list)
@@ -233,20 +233,20 @@ async def test_list_invoices_with_data(
     draft_id = await _create_invoice('draft')
 
     # Lista todas
-    response = db_client.get(f"{INVOICES}?owner_user_id={OWNER_USER_ID}")
+    response = await db_client.get(f"{INVOICES}?owner_user_id={OWNER_USER_ID}")
     assert response.status_code == 200
     data = response.json()
     assert isinstance(data, list)
     assert len(data) == 3
 
     # Filtra finalized
-    response = db_client.get(f"{INVOICES}?owner_user_id={OWNER_USER_ID}&status=finalized")
+    response = await db_client.get(f"{INVOICES}?owner_user_id={OWNER_USER_ID}&status=finalized")
     data = response.json()
     assert isinstance(data, list)
     assert len(data) == 2
 
     # Filtra draft
-    response = db_client.get(f"{INVOICES}?owner_user_id={OWNER_USER_ID}&status=draft")
+    response = await db_client.get(f"{INVOICES}?owner_user_id={OWNER_USER_ID}&status=draft")
     data = response.json()
     assert isinstance(data, list)
     assert len(data) == 1
@@ -290,7 +290,7 @@ async def test_get_invoice_detail(db_client: TestClient, invoice_repo: InvoiceRe
     await invoice_repo.save(stored)
     inv_id = stored.id
 
-    response = db_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}")
+    response = await db_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}")
     assert response.status_code == 200
     data = response.json()
     assert data["id"] == inv_id
@@ -336,7 +336,7 @@ async def test_get_invoice_pdf(db_client: TestClient, invoice_repo: InvoiceRepos
     await invoice_repo.save(stored)
     inv_id = stored.id
 
-    response = db_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}&as_pdf=true")
+    response = await db_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}&as_pdf=true")
     assert response.status_code == 200
     assert response.headers["content-type"] == "application/pdf"
     assert "attachment" in response.headers["content-disposition"]
@@ -345,7 +345,7 @@ async def test_get_invoice_pdf(db_client: TestClient, invoice_repo: InvoiceRepos
 
 async def test_get_invoice_not_found(db_client: TestClient) -> None:
     """GET invoice inexistente retorna 404."""
-    response = db_client.get(f"{INVOICES}/999999?owner_user_id={OWNER_USER_ID}")
+    response = await db_client.get(f"{INVOICES}/999999?owner_user_id={OWNER_USER_ID}")
     assert response.status_code == 404
     assert response.json()["error"]["key"] == "not_found"
 
@@ -423,7 +423,7 @@ async def test_get_invoice_forbidden(
 
     inv_id = await _create()
 
-    response = db_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}")
+    response = await db_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}")
 
     assert response.status_code == 404
 
@@ -473,7 +473,7 @@ async def test_finalize_invoice_draft_to_finalized(
 
     inv_id = await _create_draft()
 
-    response = db_client.post(
+    response = await db_client.post(
         f"{INVOICES}/{inv_id}/finalize?owner_user_id={OWNER_USER_ID}",
         json={},
     )
@@ -524,7 +524,7 @@ async def test_finalize_not_draft_returns_409(
 
     inv_id = await _create_finalized()
 
-    response = db_client.post(
+    response = await db_client.post(
         f"{INVOICES}/{inv_id}/finalize?owner_user_id={OWNER_USER_ID}",
         json={},
     )
@@ -575,7 +575,7 @@ async def test_clone_invoice_creates_new_draft(
 
     original_id, original_number = await _create_finalized()
 
-    response = db_client.post(
+    response = await db_client.post(
         f"{INVOICES}/{original_id}/clone?owner_user_id={OWNER_USER_ID}",
     )
     assert response.status_code == 201
@@ -627,7 +627,7 @@ async def test_clone_only_finalized_allowed(
 
     inv_id = await _create_draft()
 
-    response = db_client.post(f"{INVOICES}/{inv_id}/clone?owner_user_id={OWNER_USER_ID}")
+    response = await db_client.post(f"{INVOICES}/{inv_id}/clone?owner_user_id={OWNER_USER_ID}")
     assert response.status_code == 409
     assert "Só é permitido clonar invoices finalizadas" in response.json()["error"]["message"]
 
@@ -676,7 +676,7 @@ async def test_erase_invoice_hard_delete(
     inv_id = await _create()
 
     # Deleta
-    response = db_client.delete(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}")
+    response = await db_client.delete(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}")
     assert response.status_code == 204
 
     # Confirma que não existe mais
@@ -778,7 +778,7 @@ async def test_template_pt_br_renders_brl_format(
 
     inv_id = await _create()
 
-    response = db_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}&as_pdf=true")
+    response = await db_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}&as_pdf=true")
     assert response.status_code == 200
     # Verifica se o PDF foi gerado (conteúdo binário)
     assert response.content.startswith(b"%PDF-")
@@ -825,7 +825,7 @@ async def test_template_en_renders_en_format(
 
     inv_id = await _create()
 
-    response = db_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}&as_pdf=true")
+    response = await db_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}&as_pdf=true")
     assert response.status_code == 200
     assert response.content.startswith(b"%PDF-")
 

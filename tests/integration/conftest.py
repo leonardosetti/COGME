@@ -15,6 +15,7 @@ from collections.abc import AsyncIterator, Callable, Iterator
 import os
 import pytest
 from fastapi.testclient import TestClient
+from httpx import ASGITransport, AsyncClient
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncEngine
 
@@ -137,21 +138,27 @@ def client(serve_rates: Callable[[RateService], None], rates_service: RateServic
 
 
 @pytest.fixture
-def db_client(
+async def db_client(
     serve_rates: Callable[[RateService], None],
     rates_service: RateService,
     engine,  # shared fixture from conftest
-) -> Iterator[TestClient]:
-    """Cliente da API com banco real (configura engine/session_factory no app.state)."""
+) -> AsyncIterator[AsyncClient]:
+    """Cliente HTTP async com banco real (configura engine/session_factory no app.state).
+
+    Usa ``AsyncClient`` + ``ASGITransport`` para rodar o app ASGI no mesmo loop de
+    eventos do teste pytest-asyncio, evitando ``Event loop is closed``.
+    """
     import os
+
     serve_rates(rates_service)
-    # Configura o app com o engine do teste ANTES de criar TestClient
+    # Configura o app com o engine do teste ANTES de criar o cliente
     # para evitar que o lifespan tente ler settings
     app.state.engine = engine
     app.state.session_factory = create_session_factory(engine)
     # Set env var so lifespan doesn't fail if it runs
     os.environ["COGME_DATABASE_URL"] = os.environ["COGME_TEST_DATABASE_URL"]
-    with TestClient(app) as c:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://testserver") as c:
         yield c
     # Cleanup
     app.state.engine = None
