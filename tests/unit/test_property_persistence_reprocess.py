@@ -530,7 +530,7 @@ class TestDatabaseConstraints:
         assert isinstance(exc_info.value.__cause__, DBAPIError)
 
     def test_non_positive_rate_rejected_by_db(
-        self, repository: SqlAlchemyQuoteRepository
+        self,
     ) -> None:
         """Model rejects non-positive rates before reaching the database."""
         import pytest
