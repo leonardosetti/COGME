@@ -285,7 +285,8 @@ class InternalErrorMiddleware:
             logger.info("client_disconnect route=%s", route)
         except Exception as error:
             route = getattr(scope.get("route"), "path", "-")
-            logger.exception("unhandled_exception type=%s route=%s", type(error).__name__, route)
+            # Log só o tipo da exceção (nunca o traceback/mensagem: pode conter segredo).
+            logger.error("unhandled_exception type=%s route=%s", type(error).__name__, route)
             if started:
                 raise
             response = _error_response(ErrorKey.INTERNAL_ERROR, _INTERNAL_ERROR_MESSAGE, 500)
