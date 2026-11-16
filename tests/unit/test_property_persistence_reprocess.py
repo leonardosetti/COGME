@@ -14,7 +14,7 @@ from decimal import Decimal
 from typing import Any
 
 import pytest
-from hypothesis import given, settings
+from hypothesis import given, settings, HealthCheck
 from hypothesis import strategies as st
 from sqlalchemy.ext.asyncio import AsyncEngine
 
@@ -193,7 +193,7 @@ class TestRepositoryPersistenceRoundTrip:
         return SqlAlchemyQuoteRepository(create_session_factory(engine))
 
     @given(stored_quote_strategy())
-    @settings(max_examples=50, deadline=None)
+    @settings(max_examples=50, deadline=None, suppress_health_check=[HealthCheck.function_scoped_fixture])
     async def test_save_then_get_latest_round_trips(
         self, repository: SqlAlchemyQuoteRepository, quote: StoredQuote
     ) -> None:
@@ -215,7 +215,7 @@ class TestRepositoryPersistenceRoundTrip:
         assert retrieved.fetched_at == quote.fetched_at
 
     @given(stored_quote_strategy(), stored_quote_strategy())
-    @settings(max_examples=30, deadline=None)
+    @settings(max_examples=30, deadline=None, suppress_health_check=[HealthCheck.function_scoped_fixture])
     async def test_get_latest_picks_max_fetched_at(
         self,
         repository: SqlAlchemyQuoteRepository,
