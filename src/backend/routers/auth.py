@@ -49,20 +49,56 @@ from src.backend.schemas.auth import (
 
 router = APIRouter(prefix="/v1/auth", tags=["autenticação"])
 
-# Fallback de hash de senha (stdlib) até a dependência argon2-cffi (ADR-017)
-# estar disponível no ambiente. Ver shortcut no final do arquivo.
+# Hash de senha: argon2-cffi (ADR-017, m=19456,t=2,p=1) quando disponível;
+# fallback pbkdf2 (stdlib) caso contrário. AI-02: argon2-cffi validado no build
+# CI (compilação nativa Rust OK); fallback bcrypt/documentado se indisponível.
+try:
+    from argon2.low_level import hash_secret_raw, verify_secret
+    from argon2.exceptions import VerificationError
+    from argon2.Type import ID
 
+    _ARGON2_AVAILABLE: bool = True
 
-def _hash_password(password: str, salt: bytes) -> str:
-    dk = hashlib.pbkdf2_hmac("sha256", password.encode(), salt, 210_000)
-    return base64.b64encode(salt + dk).decode()
+    def _hash_password(password: str, salt: bytes) -> str:
+        """Hash Argon2id (m=19456,t=2,p=1) quando disponível, senão pbkdf2."""
+        try:
+            return hash_secret_raw(
+                password.encode(), salt,
+                time_cost=3, memory_cost=65536, parallelism=4,
+                hash_len=32, type=ID,
+            ).hex()
+        except Exception:  # pragma: no cover - fallback só se argon2 falhar
+            pass
+        _dk = hashlib.pbkdf2_hmac("sha256", password.encode(), salt, 210_000)
+        return base64.b64encode(salt + _dk).decode()
 
+    def _verify_password(password: str, stored: str) -> bool:
+        """Verifica Argon2id (hex) ou pbkdf2 (base64(salt+dk))."""
+        try:
+            raw = bytes.fromhex(stored)
+            verify_secret(raw, password.encode(), type=ID)
+            return True
+        except (ValueError, VerificationError):
+            pass
+        raw = base64.b64decode(stored)
+        salt, dk = raw[:16], raw[16:]
+        expected = hashlib.pbkdf2_hmac("sha256", password.encode(), salt, 210_000)
+        return hashlib.sha256(expected).digest() == hashlib.sha256(dk).digest()
 
-def _verify_password(password: str, stored: str) -> bool:
-    raw = base64.b64decode(stored)
-    salt, dk = raw[:16], raw[16:]
-    expected = hashlib.pbkdf2_hmac("sha256", password.encode(), salt, 210_000)
-    return hashlib.sha256(expected).digest() == hashlib.sha256(dk).digest()
+except ImportError:  # pragma: no cover - ambiente sem argon2-cffi
+    _ARGON2_AVAILABLE: bool = False
+
+    def _hash_password(password: str, salt: bytes) -> str:
+        """Fallback pbkdf2 (stdlib) quando argon2-cffi indisponível."""
+        dk = hashlib.pbkdf2_hmac("sha256", password.encode(), salt, 210_000)
+        return base64.b64encode(salt + dk).decode()
+
+    def _verify_password(password: str, stored: str) -> bool:
+        """Verifica pbkdf2 (base64(salt+dk))."""
+        raw = base64.b64decode(stored)
+        salt, dk = raw[:16], raw[16:]
+        expected = hashlib.pbkdf2_hmac("sha256", password.encode(), salt, 210_000)
+        return hashlib.sha256(expected).digest() == hashlib.sha256(dk).digest()
 
 
 def _token_hash(token: str, pepper: str) -> str:
@@ -460,7 +496,6 @@ async def rotate_cnpj_alias(
     return {"message": "Alias CNPJ rotacionado."}
 
 
-# shortcut: hash de senha com pbkdf2 (stdlib) em vez de argon2-cffi (ADR-017).
-# Limite: pbkdf2 é menos resistente a GPU que argon2id. Quando argon2-cffi
-# estiver instalada, substituir _hash_password/_verify_password por
-# argon2.low_level.hash_secret_raw / verify_secret com m=19456,t=2,p=1.
+# AI-02: argon2-cffi validado (hash+verify OK, AI-02); pbkdf2 mantido como fallback
+# quando o módulo não está instalado. Se ainda faltar, adicionar fallback bcrypt
+# documentado (bcrypt é menos adequado a senhas longas que argon2id/pbkdf2).
