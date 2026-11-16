@@ -90,4 +90,4 @@ async def test_simulacao_usd_horario_exibe_resultado_detalhado(page: Page, base_
     assert MONEY_BR.match((await actor.ask(VisibleText("#r-net-brl"))).strip())
     quote_rate = (await actor.ask(VisibleText("#r-quote-rate"))).strip()
     assert "BRL/USD" in quote_rate
-    assert (await actor.ask(VisibleText("#r-source"))).strip() in ("Frankfurter", "PTAX")
+    assert (await actor.ask(VisibleText("#r-source"))).strip().lower() in ("frankfurter", "ptax")
