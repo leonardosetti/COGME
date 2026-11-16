@@ -40,7 +40,7 @@ trace:
 
 # REQ-SPEC-001 — Requisitos COGME — SSOT RF/RNF da camada 5
 
-Status: draft — transcrição rastreável de fontes ratificadas. NENHUM requisito foi criado,
+Status: ativo — transcrição rastreável de fontes ratificadas. NENHUM requisito foi criado,
 alterado ou promovido a aprovado nesta emissão (P-08; HF-0621:35).
 
 ## 1. Regime — fontes e precedência

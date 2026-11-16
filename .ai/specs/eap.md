@@ -329,16 +329,16 @@ architect, fora desta emissão. O mermaid acima é a fonte textual válida ao Do
 | (g) Fora de escopo (YAGNI) | §9 | ✅ |
 | (h) Changelog | §CHANGELOG | ✅ abaixo |
 
-## 21. Fase encerrada — caninização (EAP concluída)
+## 21. Fase encerrada — canonização (EAP concluída)
 
-Esta fase da EAP está **encerrada e caninizada**: o espelho rastreável da linha de base
+Esta fase da EAP está **encerrada e canonizada**: o espelho rastreável da linha de base
 12 fases / 37 pacotes (MF1/MF2/MF3), marcos M1–M4, diagrama mermaid e cross-refs às specs
 irmãs foi transcrita integralmente com citações `arquivo:linha` do plano-integral
 (fonte primária). Nenhuma alteração na EAP pode ser feita sem change-request formal
 (plano-integral:362). O artefato permanece como referência imutável para auditoria de
 rastreabilidade (REQ-12, REQ-13) e não recebe mais inclusões de pacotes, fases ou marcos.
 
-- Fase: encerrada (caninizada)
+- Fase: encerrada (canonizada)
 - Fonte primária: plano-integral-tap-1-2-3-4-5.md (Tabela 2 :36-47; Tabela 18 :581-602;
   Tabela 4 :91-100)
 - DoR satisfeita: mermaid textual §7 (classe `diagrama`, kb-taxonomy.md:57)
