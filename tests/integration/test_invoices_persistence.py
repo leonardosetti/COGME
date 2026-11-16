@@ -15,7 +15,7 @@ from fastapi.testclient import TestClient
 from sqlalchemy.ext.asyncio import AsyncEngine
 
 from src.backend.main import app
-from src.backend.models.database import create_engine, create_session_factory
+from src.backend.models.database import create_session_factory
 from src.backend.models.invoice_repository import (
     InvoiceRepository,
     SqlAlchemyInvoiceRepository,
@@ -83,7 +83,6 @@ def _make_invoice_payload(
     }
     payload.update(overrides)
     return payload
-
 
 # ---------- Teste: Property persistence = reprocessing ----------
 
@@ -178,7 +177,6 @@ async def test_persistence_roundtrip_equals_reprocess(
     # Identity check
     assert retrieved.gross_brl - retrieved.spread_brl - retrieved.iof_brl == retrieved.net_brl
 
-
 # ---------- Teste: Listagem ----------
 
 
@@ -253,7 +251,6 @@ async def test_list_invoices_with_data(
     assert isinstance(data, list)
     assert len(data) == 1
     assert data[0]["id"] == draft_id
-
 
 # ---------- Teste: GET / PDF ----------
 
@@ -353,49 +350,87 @@ async def test_get_invoice_not_found(db_client: TestClient) -> None:
     assert response.json()["error"]["key"] == "not_found"
 
 
-async def test_get_invoice_forbidden(db_client: TestClient, invoice_repo: InvoiceRepository) -> None:
-    """GET invoice de outro owner retorna 404 (não 403 para não vazar existência)."""
+async def test_get_invoice_forbidden(
+
+    db_client: TestClient, invoice_repo: InvoiceRepository
+
+) -> None:
+    """GET invoice de outro owner retorna 404 (não 403 para não
+
+    vazar existência)."""
+
     from datetime import datetime, UTC
+
     from src.backend.services.invoice_number import InvoiceNumberService
 
-    async with invoice_repo.session_factory() as session:
-        number_service = InvoiceNumberService(session)
-        invoice_number = await number_service.generate("00000000000000")
+    async def _create():
 
-    stored = type('StoredInvoice', (), {
-        'id': 0, 'owner_user_id': 999, 'client_id': None,
-        'simulation_id': None, 'invoice_number': invoice_number,
-        'status': 'finalized', 'locale': 'pt-BR', 'client_country_code': 'US',
-        'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
-        'issuer_address': None, 'client_name': 'Cliente',
-        'client_tax_id_digits': '11111111111111',
-        'client_address': None, 'banco': None, 'agencia': None,
-        'conta_com_digito': None, 'pix_key': None,
-        'periodo_inicio': date(2026, 1, 1), 'periodo_fim': date(2026, 1, 31),
-        'description': 'Test', 'regime': 'hourly', 'currency': 'USD',
-        'amount': Decimal('10'), 'quantity': Decimal('10'),
-        'spread_pct': Decimal('1'), 'iof_pct': Decimal('0.38'),
+        async with invoice_repo.session_factory() as session:
+
+            number_service = InvoiceNumberService(session)
+
+            invoice_number = await number_service.generate("00000000000000")
+
+        stored = type('StoredInvoice', (), {
+
+            'id': 0, 'owner_user_id': 999, 'client_id': None,
+
+            'simulation_id': None, 'invoice_number': invoice_number,
+
+            'status': 'finalized', 'locale': 'pt-BR', 'client_country_code': 'US',
+
+            'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
+
+            'issuer_address': None, 'client_name': 'Cliente',
+
+            'client_tax_id_digits': '11111111111111',
+
+            'client_address': None, 'banco': None, 'agencia': None,
+
+            'conta_com_digito': None, 'pix_key': None,
+
+            'periodo_inicio': date(2026, 1, 1), 'periodo_fim': date(2026, 1, 31),
+
+            'description': 'Test', 'regime': 'hourly', 'currency': 'USD',
+
+            'amount': Decimal('10'), 'quantity': Decimal('10'),
+
+            'spread_pct': Decimal('1'), 'iof_pct': Decimal('0.38'),
+
             'gross_foreign': Decimal('100'), 'gross_brl': Decimal('500'),
+
             'spread_brl': Decimal('5'), 'iof_brl': Decimal('1.89'),
+
             'net_brl': Decimal('493.11'), 'effective_rate': Decimal('4.9311'),
+
             'quote_rate': Decimal('5.000000'), 'quote_source': 'frankfurter',
+
             'quote_bulletin': None,
+
             'quoted_at': datetime(2026, 10, 30, 0, 0, 0, tzinfo=UTC),
+
             'stale': False, 'finalized_at': datetime.now(UTC),
+
             'supersedes_invoice_id': None,
+
             'created_at': datetime.now(UTC), 'updated_at': datetime.now(UTC),
-            'created_at': datetime.now(UTC), 'updated_at': datetime.now(UTC),
-        })
-    await invoice_repo.save(stored)
-    return stored.id
+
+        })()
+
+        await invoice_repo.save(stored)
+
+        return stored.id
 
     inv_id = await _create()
-    response = db_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}")
-    assert response.status_code == 404
 
+    response = db_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}")
+
+    assert response.status_code == 404
 
 # ---------- Teste: Finalize (DEC-05) ----------
 
+
+# ---------- Teste: Finalize (DEC-05) ----------
 
 async def test_finalize_invoice_draft_to_finalized(
     db_client: TestClient, invoice_repo: InvoiceRepository
@@ -495,7 +530,6 @@ async def test_finalize_not_draft_returns_409(
     )
     assert response.status_code == 409
     assert "não está em status draft" in response.json()["error"]["message"]
-
 
 # ---------- Teste: Clone (DEC-05, US-017) ----------
 
@@ -597,7 +631,6 @@ async def test_clone_only_finalized_allowed(
     assert response.status_code == 409
     assert "Só é permitido clonar invoices finalizadas" in response.json()["error"]["message"]
 
-
 # ---------- Teste: Erase LGPD art. 18 (DEC-04) ----------
 
 
@@ -657,7 +690,9 @@ def test_erase_invoice_not_found(db_client: TestClient) -> None:
     assert response.status_code == 404
 
 
-async def test_erase_invoice_forbidden(db_client: TestClient, invoice_repo: InvoiceRepository) -> None:
+async def test_erase_invoice_forbidden(
+    db_client: TestClient, invoice_repo: InvoiceRepository
+) -> None:
     """Erase invoice de outro owner retorna 404."""
 
     async def _create():
@@ -698,7 +733,6 @@ async def test_erase_invoice_forbidden(db_client: TestClient, invoice_repo: Invo
 
     response = client.delete(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}")
     assert response.status_code == 404
-
 
 # ---------- Teste: Bilingual templates (DEC-07) ----------
 
@@ -794,7 +828,6 @@ async def test_template_en_renders_en_format(
     response = db_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}&as_pdf=true")
     assert response.status_code == 200
     assert response.content.startswith(b"%PDF-")
-
 
 # ---------- Teste: Numeração sequencial (DEC-06) ----------
 
