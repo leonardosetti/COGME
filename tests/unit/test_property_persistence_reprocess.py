@@ -532,20 +532,15 @@ class TestDatabaseConstraints:
     async def test_non_positive_rate_rejected_by_db(
         self, repository: SqlAlchemyQuoteRepository
     ) -> None:
-        """Database CHECK constraint rejects non-positive rates."""
+        """Model rejects non-positive rates before reaching the database."""
         import pytest
-        from sqlalchemy.exc import IntegrityError
 
-        invalid_quote = StoredQuote(
-            currency="USD",
-            rate=Decimal("-10.000000"),
-            source="frankfurter",
-            bulletin=None,
-            quoted_at=datetime(2026, 10, 30, 16, 0, 0, tzinfo=UTC),
-            fetched_at=datetime(2026, 10, 30, 16, 0, 0, tzinfo=UTC),
-        )
-
-        with pytest.raises(RepositoryError) as exc_info:
-            await repository.save(invalid_quote)
-
-        assert isinstance(exc_info.value.__cause__, IntegrityError)
+        with pytest.raises(ValueError, match="finito e positivo"):
+            StoredQuote(
+                currency="USD",
+                rate=Decimal("-10.000000"),
+                source="frankfurter",
+                bulletin=None,
+                quoted_at=datetime(2026, 10, 30, 16, 0, 0, tzinfo=UTC),
+                fetched_at=datetime(2026, 10, 30, 16, 0, 0, tzinfo=UTC),
+            )

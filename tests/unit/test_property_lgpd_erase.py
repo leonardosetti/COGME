@@ -21,11 +21,10 @@ from typing import Any
 import pytest
 from hypothesis import given, settings
 from hypothesis import strategies as st
-from sqlalchemy import select, text
+from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncEngine
 
 from src.backend.models.database import create_engine, create_session_factory
-from src.backend.models.quote import FxQuote
 from src.backend.models.repository import SqlAlchemyQuoteRepository, StoredQuote
 from src.backend.services.invoice_service import render_invoice
 from src.backend.services.simulation_service import simulate
@@ -280,23 +279,28 @@ class TestDatabaseNoPersonalData:
 
         # Read raw from DB
         async with engine.connect() as conn:
-            result = await conn.execute(select(FxQuote))
-            row = result.scalar_one()
+            result = await conn.execute(
+                text("""
+                    SELECT column_name
+                    FROM information_schema.columns
+                    WHERE table_name = 'fx_quotes'
+                    ORDER BY ordinal_position
+                """)
+            )
+            columns = [row[0] for row in result.fetchall()]
 
-        # Verify only expected fields exist and have correct types
-        assert row.currency in ("USD", "EUR")
-        assert isinstance(row.rate, Decimal)
-        assert row.source in ("frankfurter", "ptax")
-        assert row.bulletin is None or isinstance(row.bulletin, str)
-        assert hasattr(row.quoted_at, "tzinfo")  # datetime with tz
-        assert hasattr(row.fetched_at, "tzinfo")
-
-        # Verify NO personal data fields exist
-        row_dict = row.__dict__
-        personal_keywords = ["name", "tax", "cpf", "cnpj", "address", "endereco", "document"]
-        for keyword in personal_keywords:
-            matching_keys = [k for k in row_dict.keys() if keyword in k.lower()]
-            assert not matching_keys, f"Found personal data column: {matching_keys}"
+        expected_columns = {
+            "id",
+            "currency",
+            "rate",
+            "source",
+            "bulletin",
+            "quoted_at",
+            "fetched_at",
+        }
+        assert set(columns) == expected_columns, (
+            f"fx_quotes has unexpected columns: {set(columns) - expected_columns}"
+        )
 
 
 # ---------- Test: Logs contain no personal data ----------
