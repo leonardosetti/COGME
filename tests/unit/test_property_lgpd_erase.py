@@ -212,7 +212,7 @@ def rate_quote_strategy(draw: st.DrawFn) -> "RateQuote":
 class TestDatabaseNoPersonalData:
     """Property: fx_quotes table never contains personal identifiers."""
 
-    @pytest.fixture(scope="class")
+    @pytest.fixture
     def engine(self) -> AsyncEngine:
         import os
 

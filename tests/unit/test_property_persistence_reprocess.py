@@ -207,7 +207,7 @@ def simulation_params_strategy(draw: st.DrawFn) -> dict[str, Any]:
 class TestRepositoryPersistenceRoundTrip:
     """Property: save() then get_latest() returns equivalent data."""
 
-    @pytest.fixture(scope="class")
+    @pytest.fixture
     def engine(self) -> AsyncEngine:
         """Create engine for property tests. Requires COGME_TEST_DATABASE_URL."""
         import os
