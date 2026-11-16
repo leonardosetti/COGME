@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COGME — Simulador de Recebimento (Protótipo de UI)</title>
+<style>
+  /* =========================================================================
+     COGME — Protótipo de UI (validação de experiência)
+     Zero recursos remotos. CSS + JS embutido. Abra diretamente no navegador.
+     ========================================================================= */
+  :root {
+    --color-primary: #F59E0B;
+    --color-primary-hover: #D97706;
+    --color-primary-light: #FEF3C7;
+    --color-navy: #0F172A;
+    --color-surface: #1E1D35;
+    --color-surface-hover: #27273B;
+    --color-border: #4C1D95;
+    --color-border-subtle: #312E4A;
+    --color-text: #F8FAFC;
+    --color-text-muted: #94A3B8;
+    --color-success: #22C55E;
+    --color-destructive: #EF4444;
+    --color-warning: #F59E0B;
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+    --radius: 12px;
+    --font: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; }
+  body {
+    font-family: var(--font);
+    background: var(--color-navy);
+    color: var(--color-text);
+    line-height: 1.5;
+    min-height: 100vh;
+    padding: 1rem;
+  }
+  .container { max-width: 720px; margin: 0 auto; }
+  /* ---------- Header ---------- */
+  header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+  }
+  .logo {
+    width: 32px; height: 32px;
+    border: 2px solid var(--color-primary);
+    border-radius: 8px;
+    display: grid; place-items: center;
+    font-weight: 800; font-size: 1rem; color: var(--color-primary);
+  }
+  h1 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.01em; }
+  h1 .small { font-weight: 400; font-size: 0.85rem; color: var(--color-text-muted); }
+  .tagline { font-size: 0.875rem; color: var(--color-text-muted); margin-top: 0.25rem; }
+  /* ---------- Estados ---------- */
+  .state { display: none; }
+  .state.active { display: block; }
+  /* ---------- Cards ---------- */
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 1rem;
+  }
+  .form-card { margin-bottom: 1.5rem; }
+  /* ---------- Formulário ---------- */
+  .field { margin-bottom: 1rem; }
+  .field label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: var(--color-text-muted);
+  }
+  .field label .req { color: var(--color-primary); margin-left: 2px; }
+  input, select {
+    width: 100%;
+    background: #0B0C15;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 8px;
+    padding: 0.6rem 0.8rem;
+    color: var(--color-text);
+    font-size: 1rem;
+    font-family: inherit;
+  }
+  input:focus, select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    ring: 0 0 0 3px var(--color-primary-light);
+  }
+  .field.invalid input, .field.invalid select { border-color: var(--color-destructive); }
+  .field-error {
+    font-size: 0.75rem;
+    color: var(--color-destructive);
+    margin-top: 0.3rem;
+    display: none;
+  }
+  .field.invalid .field-error { display: block; }
+  .hint { font-size: 0.75rem; color: var(--color-text-muted); margin-top: 0.25rem; }
+  /* ---------- Botões ---------- */
+  .btn {
+    width: 100%;
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.85rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .btn:hover { background: var(--color-primary-hover); }
+  .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .btn.secondary {
+    background: transparent;
+    border: 1px solid var(--color-border-subtle);
+    color: var(--color-text);
+  }
+  .btn.secondary:hover { background: var(--color-surface-hover); }
+  .spinner {
+    width: 16px; height: 16px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .btn-text { font-weight: 700; }
+  /* ---------- Resultado ---------- */
+  .result-card { margin-top: 1rem; }
+  .result-grid { display: grid; gap: 0.75rem; }
+  .result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+  .result-row:last-child { border: none; }
+  .result-label { font-size: 0.875rem; color: var(--color-text-muted); }
+  .result-value { font-size: 1.1rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .result-row.total { font-size: 1.25rem; border-top: 2px solid var(--color-primary); padding-top: 0.75rem; margin-top: 0.5rem; }
+  .result-row.total .result-value { color: var(--color-success); }
+  /* ---------- Badge stale ---------- */
+  .stale-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--color-warning-light);
+    color: #713F12;
+    border: 1px solid var(--color-warning);
+    border-radius: 8px;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-top: 0.75rem;
+    width: fit-content;
+  }
+  .stale-badge svg { width: 16px; height: 16px; }
+  /* ---------- Notice ---------- */
+  .notice {
+    background: var(--color-navy-light);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-top: 1rem;
+    line-height: 1.6;
+  }
+  .notice strong { color: var(--color-text); }
+  /* ---------- Erros ---------- */
+  .error-summary {
+    background: var(--color-destructive-light);
+    border: 1px solid var(--color-destructive);
+    border-radius: 10px;
+    padding: 0.9rem;
+    margin-bottom: 1rem;
+    display: none;
+  }
+  .error-summary.visible { display: block; }
+  .error-summary-title { font-weight: 700; color: var(--color-destructive); font-size: 0.9rem; display: flex; align-items: center; gap: 6px; margin-bottom: 0.4rem; }
+  .error-summary-list { margin-left: 1.2rem; font-size: 0.875rem; color: #FCA5A5; }
+  .error-summary-list li { margin-bottom: 0.2rem; }
+  .field-msg { font-size: 0.75rem; color: #FCA5A5; margin-top: 0.25rem; }
+  /* ---------- Invoice preview ---------- */
+  .invoice-preview {
+    border-top: 1px solid var(--color-border-subtle);
+    padding-top: 1rem;
+    margin-top: 1rem;
+  }
+  .invoice-preview h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.75rem;
+  }
+  .invoice-row { display: flex; justify-content: space-between; font-size: 0.875rem; padding: 0.3rem 0; color: var(--color-text-muted); }
+  .invoice-row strong { color: var(--color-text); font-variant-numeric: tabular-nums; }
+  .invoice-total {
+    border-top: 2px solid var(--color-primary);
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-success);
+  }
+  .invoice-actions { display: flex; gap: 0.75rem; margin-top: 1rem; }
+  /* ---------- Utilidades ---------- */
+  .hidden { display: none !important; }
+  .flex { display: flex; gap: 0.75rem; align-items: center; }
+  .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.8rem; }
+  /* ---------- Acessibilidade ---------- */
+  @media (max-width: 480px) { body { padding: 0.75rem; } .container { max-width: 100%; } }
+  @media (prefers-reduced-motion: reduce) { .spinner { animation: none; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">C</div>
+    <div>
+      <h1>COGME <span class="small">— Simulador de Recebimento</span></h1>
+      <div class="tagline">Simulação informativa · spread e IOF informados pelo usuário · não substitui orientação profissional</div>
+    </div>
+  </header>
+
+  <!-- Estado: vazio -->
+  <section id="state-empty" class="state active card form-card">
+    <form id="form-simular">
+      <div class="field">
+        <label>Moeda estrangeira <span class="req">*</span></label>
+        <select id="currency" required>
+          <option value="USD">USD — Dólar Americano</option>
+          <option value="EUR">EUR — Euro</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Regime de contratação <span class="req">*</span></label>
+        <select id="regime" required>
+          <option value="hourly">Por hora</option>
+          <option value="daily">Por dia</option>
+          <option value="weekly">Por semana</option>
+          <option value="monthly">Por mês</option>
+          <option value="fixed">Valor fixo</option>
+        </select>
+        <p class="hint">Define se a quantidade de unidades é obrigatória.</p>
+      </div>
+      <div class="field">
+        <label>Valor por unidade (moeda estrangeira) <span class="req">*</span></label>
+        <input type="text" id="amount" required placeholder="Ex: 30,00" inputmode="decimal">
+        <p class="hint">Maior que 0, até 1.000.000.000, 2 casas decimais.</p>
+      </div>
+      <div class="field" id="qty-wrap">
+        <label>Quantidade de unidades <span class="req">*</span></label>
+        <input type="text" id="quantity" required placeholder="Ex: 160" inputmode="decimal">
+        <p class="hint">Obrigatória exceto no regime "Valor fixo".</p>
+      </div>
+      <div class="field">
+        <label>Spread (%) <span class="req">*</span></label>
+        <input type="text" id="spread_pct" required value="2" inputmode="decimal">
+        <p class="hint">Informado pelo usuário, 0 a 100, até 4 casas decimais.</p>
+      </div>
+      <div class="field">
+        <label>IOF (%) <span class="req">*</span></label>
+        <input type="text" id="iof_pct" required value="0,38" inputmode="decimal">
+        <p class="hint">Informado pelo usuário, 0 a 100, até 4 casas decimais.</p>
+      </div>
+      <button type="submit" id="btn" class="btn">
+        <span class="btn-text">Simular recebimento</span>
+        <span class="spinner hidden" id="spinner"></span>
+      </button>
+    </form>
+    <div id="error-summary" class="error-summary" role="alert" aria-live="assertive">
+      <div class="error-summary-title">⚠ Corrija os erros abaixo</div>
+      <ul class="error-summary-list" id="error-list"></ul>
+    </div>
+  </section>
+
+  <!-- Estado: carregando -->
+  <section id="state-loading" class="state card form-card">
+    <div class="flex" style="justify-content:center;">
+      <div class="spinner" style="width:24px;height:24px;"></div>
+    </div>
+    <p style="text-align:center; color:var(--color-text-muted); margin-top:0.75rem;">Consultando cotação e calculando…</p>
+  </section>
+
+  <!-- Estado: erro -->
+  <section id="state-error" class="state card form-card" style="border-color:var(--color-destructive); background:var(--color-destructive-light);">
+    <div class="error-summary-title" style="color:var(--color-destructive);">Não foi possível simular</div>
+    <p id="error-msg" style="color:var(--color-text-muted); font-size:0.875rem; margin-top:0.4rem;"></p>
+    <div class="invoice-actions">
+      <button type="button" class="btn secondary" onclick="voltarFormulario()">Tentar novamente</button>
+    </div>
+  </section>
+
+  <!-- Estado: sucesso -->
+  <section id="state-success" class="state result-card">
+    <div class="result-grid">
+      <div class="result-row">
+        <span class="result-label">Moeda estrangeira</span>
+        <span class="result-value" id="r-gross-foreign"></span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Bruto em BRL</span>
+        <span class="result-value" id="r-gross-brl"></span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Desconto de spread</span>
+        <span class="result-value" id="r-spread-brl"></span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">IOF</span>
+        <span class="result-value" id="r-iof-brl"></span>
+      </div>
+      <div class="result-row total">
+        <span class="result-label">Líquido a receber</span>
+        <span class="result-value" id="r-net-brl"></span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Câmbio efetivo</span>
+        <span class="result-value" id="r-effective-rate"></span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Cotação (BRL por 1 unidade)</span>
+        <span class="result-value" id="r-quote-rate"></span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Fonte da cotação</span>
+        <span class="result-value" id="r-source">Frankfurter (simulado)</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Data/hora da cotação</span>
+        <span class="result-value" id="r-quoted-at"></span>
+      </div>
+    </div>
+    <div id="stale-badge" class="stale-badge hidden" role="status" aria-live="polite">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <span id="stale-text">Atenção: cotação com defasagem (última disponível no cache).</span>
+    </div>
+    <div class="notice" id="notice"></div>
+
+    <div class="invoice-preview">
+      <h3>Prévia da invoice (PDF simulado)</h3>
+      <div class="invoice-row"><span>Número da invoice</span><strong id="inv-number">INV-202611-0001</strong></div>
+      <div class="invoice-row"><span>Data de emissão</span><strong id="inv-date"></strong></div>
+      <div class="invoice-row"><span>Cliente</span><strong id="inv-client">Cliente fictício</strong></div>
+      <div class="invoice-row"><span>Regime</span><strong id="inv-regime"></strong></div>
+      <div class="invoice-row"><span>Bruto (BRL)</span><strong id="inv-gross-brl"></strong></div>
+      <div class="invoice-row"><span>Spread (BRL)</span><strong id="inv-spread-brl"></strong></div>
+      <div class="invoice-row"><span>IOF (BRL)</span><strong id="inv-iof-brl"></strong></div>
+      <div class="invoice-row invoice-total"><span>Líquido (BRL)</span><strong id="inv-net-brl"></strong></div>
+      <div class="invoice-actions">
+        <button type="button" class="btn secondary" onclick="voltarFormulario()">Nova simulação</button>
+        <button type="button" class="btn" onclick="gerarPdf()">Baixar PDF (simulado)</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  /* =========================================================================
+     COGME — Protótipo de UI: lógica de simulação (mesmas fórmulas do spec-004 §2)
+     ========================================================================= */
+  const $ = (sel) => document.querySelector(sel);
+  const $$ = (sel) => document.querySelectorAll(sel);
+
+  // Estados
+  function show(id) { $$('.state').forEach(s => s.classList.remove('active')); $(id).classList.add('active'); }
+
+  // Formatação pt-BR (sem depender de locale do sistema)
+  function formatNumber(value, places) {
+    const v = Math.abs(Number(value)).toFixed(places);
+    const [int, dec] = v.split('.');
+    const intPart = int.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    return (value < 0 ? '-' : '') + intPart + ',' + dec;
+  }
+  function money(v) { return 'R$ ' + formatNumber(v, 2); }
+  function percent(v, places = 4) { return formatNumber(v, places) + ' %'; }
+  function rate(v) { return formatNumber(v, 6); }
+  function dateTimeBr(iso) {
+    const d = new Date(iso + 'Z');
+    return d.toLocaleString('pt-BR', { timeZone: 'UTC', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }) + ' UTC';
+  }
+
+  // Máscara de entrada decimal (aceita vírgula ou ponto)
+  const moneyInputs = $$('#amount, #quantity, #spread_pct, #iof_pct');
+  moneyInputs.forEach(input => {
+    input.addEventListener('input', (e) => {
+      let val = e.target.value.replace(/[^0-9,.-]/g, '').replace('.', ',');
+      e.target.value = val;
+    });
+  });
+
+  function parseDecimal(str) {
+    if (!str || str.trim() === '') return null;
+    const v = Number(str.replace(',', '.'));
+    return isNaN(v) ? null : v;
+  }
+
+  // Cálculo (idêntico ao spec-004 §2 / calculator.py)
+  function calcular(regime, amount, quantity, rate, spread_pct, iof_pct) {
+    const HUNDRED = 100;
+    const grossForeign = regime === 'fixed' ? amount : amount * quantity;
+    const grossBRL = round2(grossForeign * rate);
+    const spreadBRL = round2(grossBRL * spread_pct / HUNDRED);
+    const iofBRL = round2((grossBRL - spreadBRL) * iof_pct / HUNDRED);
+    const netBRL = grossBRL - spreadBRL - iofBRL;
+    const effectiveRate = round6(netBRL / grossForeign);
+    return { grossForeign: round2(grossForeign), grossBRL, spreadBRL, iofBRL, netBRL, effectiveRate };
+  }
+  function round2(v) { return Math.round(v * 100) / 100; }
+  function round6(v) { return Math.round(v * 1e6) / 1e6; }
+
+  // Toggle quantidade por regime
+  const regimeSel = $('#regime');
+  const qtyWrap = $('#qty-wrap');
+  function toggleQty() {
+    const fixed = regimeSel.value === 'fixed';
+    qtyWrap.classList.toggle('hidden', fixed);
+    $('#quantity').required = !fixed;
+  }
+  regimeSel.addEventListener('change', toggleQty);
+  toggleQty();
+
+  // Validação do formulário
+  function validar() {
+    const errors = [];
+    const fields = {};
+    for (const id of ['currency','regime','amount','quantity','spread_pct','iof_pct']) fields[id] = $('#'+id);
+    fields['currency'].parentElement.classList.remove('invalid');
+    fields['regime'].parentElement.classList.remove('invalid');
+    fields['amount'].parentElement.classList.remove('invalid');
+    fields['quantity'].parentElement.classList.remove('invalid');
+    fields['spread_pct'].parentElement.classList.remove('invalid');
+    fields['iof_pct'].parentElement.classList.remove('invalid');
+
+    const amount = parseDecimal(fields['amount'].value);
+    const quantity = parseDecimal(fields['quantity'].value);
+    const spread = parseDecimal(fields['spread_pct'].value);
+    const iof = parseDecimal(fields['iof_pct'].value);
+
+    if (!amount || amount <= 0 || amount > 1e9) {
+      fields['amount'].parentElement.classList.add('invalid');
+      errors.push('O valor deve ser maior que 0 e no máximo 1.000.000.000.');
+    }
+    const regime = fields['regime'].value;
+    if (regime !== 'fixed') {
+      if (!quantity || quantity <= 0 || quantity > 1e5) {
+        fields['quantity'].parentElement.classList.add('invalid');
+        errors.push('Informe a quantidade para este regime.');
+      }
+    } else {
+      fields['quantity'].value = '';
+    }
+    if (spread == null || spread < 0 || spread > 100) {
+      fields['spread_pct'].parentElement.classList.add('invalid');
+      errors.push('O spread deve ser de 0 a 100.');
+    }
+    if (iof == null || iof < 0 || iof > 100) {
+      fields['iof_pct'].parentElement.classList.add('invalid');
+      errors.push('O IOF deve ser de 0 a 100.');
+    }
+    return { errors, amount, quantity, regime, spread, iof };
+  }
+
+  // Envio do formulário
+  $('#form-simular').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    limparErros();
+    const { errors, amount, quantity, regime, spread, iof } = validar();
+    if (errors.length) {
+      mostrarErros(errors);
+      return;
+    }
+    show('#state-loading');
+    $('#btn').disabled = true;
+    $('#btn .btn-text').textContent = 'Calculando…';
+    $('#spinner').classList.remove('hidden');
+
+    // Simula latência de rede para mostrar o estado loading
+    await new Promise(r => setTimeout(r, 700));
+
+    const rate = 5.0; // cotação simulada (Frankfurter)
+    const calc = calcular(regime, amount, quantity, rate, spread, iof);
+    const stale = Math.random() < 0.3; // simula cotação de cache vencido 30% das vezes
+
+    renderResultado({
+      currency: fieldsCurrency(),
+      regime,
+      amount,
+      quantity,
+      spread_pct: spread,
+      iof_pct: iof,
+      ...calc,
+      rate,
+      stale,
+      quoted_at: new Date().toISOString()
+    });
+    $('#btn').disabled = false;
+    $('#btn .btn-text').textContent = 'Simular recebimento';
+    $('#spinner').classList.add('hidden');
+  });
+
+  function fieldsCurrency() { return $('#currency').value; }
+
+  function limparErros() {
+    $('#error-summary').classList.remove('visible');
+    $('#error-list').innerHTML = '';
+    for (const id of ['currency','regime','amount','quantity','spread_pct','iof_pct']) {
+      $('#'+id).parentElement.classList.remove('invalid');
+    }
+  }
+  function mostrarErros(errors) {
+    const list = $('#error-list');
+    list.innerHTML = '';
+    errors.forEach(msg => {
+      const li = document.createElement('li');
+      li.textContent = msg;
+      list.appendChild(li);
+    });
+    $('#error-summary').classList.add('visible');
+    $('#error-summary').focus();
+  }
+
+  // Renderiza resultado
+  function renderResultado(d) {
+    $('#r-gross-foreign').textContent = formatNumber(d.grossForeign, 2) + ' ' + d.currency;
+    $('#r-gross-brl').textContent = money(d.grossBRL);
+    $('#r-spread-brl').textContent = money(d.spreadBRL) + ' (' + percent(d.spread_pct, 4) + ')';
+    $('#r-iof-brl').textContent = money(d.iofBRL) + ' (' + percent(d.iof_pct, 4) + ')';
+    $('#r-net-brl').textContent = money(d.netBRL);
+    $('#r-effective-rate').textContent = rate(d.effectiveRate);
+    $('#r-quote-rate').textContent = rate(d.rate) + ' BRL/' + d.currency;
+    $('#r-source').textContent = 'Frankfurter (simulado)';
+    $('#r-quoted-at').textContent = dateTimeBr(d.quoted_at);
+
+    const staleBadge = $('#stale-badge');
+    if (d.stale) {
+      staleBadge.classList.remove('hidden');
+    } else {
+      staleBadge.classList.add('hidden');
+    }
+
+    // Notice legal (constante, idêntico ao spec-004)
+    const NOTICE = "Simulação de caráter informativo; spread e IOF foram informados pelo usuário e não substituem a orientação de um profissional habilitado.";
+    $('#notice').textContent = NOTICE;
+
+    // Prévia da invoice
+    $('#inv-number').textContent = 'INV-202611-0001';
+    $('#inv-date').textContent = dateTimeBr(new Date().toISOString());
+    $('#inv-client').textContent = 'Cliente fictício';
+    $('#inv-regime').textContent = {
+      hourly: 'Por hora', daily: 'Por dia', weekly: 'Por semana', monthly: 'Por mês', fixed: 'Valor fixo'
+    }[d.regime];
+    $('#inv-gross-brl').textContent = money(d.grossBRL);
+    $('#inv-spread-brl').textContent = money(d.spreadBRL);
+    $('#inv-iof-brl').textContent = money(d.iofBRL);
+    $('#inv-net-brl').textContent = money(d.netBRL);
+
+    show('#state-success');
+  }
+
+  // Ações
+  function voltarFormulario() {
+    limparErros();
+    show('#state-empty');
+    $('#form-simular').reset();
+    $('#spread_pct').value = '2';
+    $('#iof_pct').value = '0,38';
+    toggleQty();
+  }
+  function gerarPdf() {
+    alert('Funcionalidade de PDF seria gerada via WeasyPrint no backend (REQ-04). Neste protótipo, a prévia acima representa o layout da invoice.');
+  }
+</script>
+</body>
+</html>

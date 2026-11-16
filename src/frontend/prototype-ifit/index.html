@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COGME — Recebimento Internacional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* =========================================================================
+     COGME — Protótipo UI (inspiração ifit.com)
+     Limpo, tipografia forte, espaçamento generoso, transições de scroll.
+     ========================================================================= */
+  :root {
+    --ink: #0B0F19;
+    --surface: #FFFFFF;
+    --surface-soft: #F4F5F7;
+    --border: #E5E7EB;
+    --text: #111827;
+    --text-muted: #6B7280;
+    --accent: #0F172A;
+    --accent-hover: #111827;
+    --primary: #166534;
+    --primary-hover: #14532D;
+    --danger: #B91C1C;
+    --radius: 14px;
+    --shadow: 0 10px 30px -10px rgba(2,6,23,0.10);
+    --radius-sm: 8px;
+    --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--text);
+    background: var(--surface);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; display: block; }
+  button {
+    font-family: inherit;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: inherit;
+  }
+  /* ---------- Navbar ---------- */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: var(--transition);
+  }
+  .navbar.scrolled {
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 4px 20px -4px rgba(2,6,23,0.06);
+  }
+  .navbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+  .brand .mark {
+    width: 32px; height: 32px;
+    background: var(--primary);
+    border-radius: 10px;
+    display: grid; place-items: center;
+    color: #fff; font-size: 1.1rem;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .btn-outline {
+    border: 1px solid var(--border);
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: var(--transition);
+  }
+  .btn-outline:hover { background: var(--surface-soft); }
+  .btn-primary {
+    background: var(--primary);
+    color: #fff;
+    padding: 0.65rem 1.4rem;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: var(--transition);
+  }
+  .btn-primary:hover { background: var(--primary-hover); }
+  /* ---------- Hero ---------- */
+  .hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .hero h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  .hero p {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    max-width: 480px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+  }
+  .hero-visual {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-visual::before {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    background: conic-gradient(from 180deg at 50% 50%, #166534, #22c55e, #86efac, #166534);
+    opacity: 0.6;
+    animation: rotate 12s linear infinite;
+  }
+  .hero-visual .content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--primary);
+    font-weight: 800;
+    font-size: 3rem;
+  }
+  .hero-visual .sub {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+  }
+  /* ---------- Features ---------- */
+  .features {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+  }
+  .section-head {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+  }
+  .section-head h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+  }
+  .section-head p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .feature-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    transition: var(--transition);
+  }
+  .feature-card:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow);
+    transform: translateY(-4px);
+  }
+  .feature-card .icon {
+    width: 44px; height: 44px;
+    background: #f0fdf4;
+    border-radius: 12px;
+    color: var(--primary);
+    display: grid; place-items: center;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .feature-card h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .feature-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  /* ---------- Simulation Widget ---------- */
+  .sim-section {
+    background: var(--ink);
+    color: #fff;
+    border-radius: var(--radius);
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 3rem 1.5rem;
+    position: relative;
+  }
+  .sim-section::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -20%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(22,101,52,0.15) 0%, transparent 60%);
+  }
+  .sim-section .container-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    position: relative;
+    z-index: 2;
+  }
+  .sim-section h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+  .sim-section p {
+    color: rgba(255,255,255,0.7);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    max-width: 420px;
+  }
+  .sim-form {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+  }
+  .sim-field label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 0.4rem;
+    display: block;
+  }
+  .sim-field input {
+    width: 100%;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    color: #fff;
+    padding: 0.7rem 0.9rem;
+    font-size: 0.95rem;
+  }
+  .sim-field input:focus {
+    outline: none;
+    border-color: var(--primary);
+  }
+  .sim-cta {
+    margin-top: 2rem;
+    text-align: center;
+  }
+  .sim-cta .big {
+    background: var(--primary);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    width: 100%;
+    transition: var(--transition);
+  }
+  .sim-cta .big:hover { background: var(--primary-hover); transform: translateY(-2px); }
+  .sim-cta p { font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 0.5rem; }
+  /* ---------- Trust ---------- */
+  .trust {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 1.5rem;
+    text-align: center;
+  }
+  .trust p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+  }
+  .trust-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    opacity: 0.5;
+  }
+  .trust-logos .logo {
+    font-weight: 800;
+    color: var(--text-muted);
+    font-size: 1rem;
+  }
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.6);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 3rem 1.5rem 2rem;
+    margin-top: 4rem;
+  }
+  .footer-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 2rem;
+  }
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+  .footer-brand .mark {
+    width: 28px; height: 28px;
+    background: var(--primary);
+    border-radius: 8px;
+    display: grid; place-items: center;
+    color: #fff;
+  }
+  .footer-desc {
+    font-size: 0.9rem;
+    max-width: 300px;
+    line-height: 1.6;
+  }
+  .footer-col h4 {
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 0.7rem; }
+  .footer-col a {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: #fff; }
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  /* ---------- Utilities ---------- */
+  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  @keyframes rotate { to { transform: rotate(360deg); } }
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-visual { height: 300px; }
+    .features-grid { grid-template-columns: 1fr; }
+    .sim-section .container-inner { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="#" class="brand">
+      <div class="mark">C</div>
+      COGME
+    </a>
+    <ul class="nav-links">
+      <li><a href="#produto">Produto</a></li>
+      <li><a href="#simulador">Simulador</a></li>
+      <li><a href="#invoice">Invoice</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-outline">Entrar</button>
+      <button class="btn-primary">Cadastre-se</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <section class="hero" id="produto">
+    <div>
+      <h2>Receba do exterior<br>com clareza e segurança.</h2>
+      <p>Simulação de recebimentos em moeda estrangeira (USD/EUR → BRL), comparação de regimes de contratação, cálculo de spread e IOF, e emissão de invoice em PDF — gratuito, FOSS e de jurisdição brasileira.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="document.getElementById('simulador').scrollIntoView({behavior:'smooth'})">Começar a simular</button>
+        <button class="btn-outline">Ver como funciona</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="content">
+        <div style="font-size:4rem;">💱</div>
+        <div class="sub">Simulador de câmbio<br>em tempo real</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="section-head">
+      <h3>Tudo o que você precisa<br>para gerenciar recebimentos</h3>
+      <p>Funcionalidades pensadas para profissionais e empresas que faturam em moeda estrangeira.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="icon">💱</div>
+        <h4>Simulação em tempo real</h4>
+        <p>Cotação atual com Frankfurter (BCE) e PTAX (Banco Central do Brasil), com fallback automático e cache de cotações.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="icon">📊</div>
+        <h4>5 regimes de contratação</h4>
+        <p>Hora, dia, semana, mês e valor fixo — todos comparáveis e calculados com precisão de 2 casas decimais.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="icon">🧾</div>
+        <h4>Invoice em PDF</h4>
+        <p>Emissão de invoice profissional, bilíngue (pt-BR / EN), com snapshots imutáveis e numeração sequencial.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="icon">🔒</div>
+        <h4>LGPD por design</h4>
+        <p>Mínimo necessário, sem PII em logs, direito ao esquecimento e isolamento por proprietário (P-14).</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="icon">⚡</div>
+        <h4>Pipeline CI verde</h4>
+        <p>Lint + testes em ≤ 5 min por push, cobertura ≥ 80% e fail-closed em segurança.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="icon">🇧🇷🇺🇸</div>
+        <h4>Bilíngue</h4>
+        <p>Invoice em português para clientes nacionais e em inglês para clientes estrangeiros, derivada do país do cliente.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sim-section" id="simulador">
+    <div class="container-inner">
+      <div>
+        <h2>Simule seu recebimento agora</h2>
+        <p>Informe valor, regime, spread e IOF. O cálculo é feito no servidor com cotação vigente.</p>
+        <div class="sim-cta">
+          <button class="big" onclick="abrirModal()">Abrir simulador completo</button>
+          <p>Demo funcional — sem cadastro necessário.</p>
+        </div>
+      </div>
+      <div class="sim-form">
+        <div class="sim-field">
+          <label>Moeda</label>
+          <select style="width:100%;background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;padding:0.7rem 0.9rem;font-size:0.95rem;">
+            <option>USD</option><option>EUR</option>
+          </select>
+        </div>
+        <div class="sim-field">
+          <label>Regime</label>
+          <select style="width:100%;background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.15);border-radius:10px;color:#fff;padding:0.7rem 0.9rem;font-size:0.95rem;">
+            <option>hourly</option><option>daily</option><option>weekly</option><option>monthly</option><option>fixed</option>
+          </select>
+        </div>
+        <div class="sim-field">
+          <label>Valor</label>
+          <input type="text" placeholder="30,00" inputmode="decimal">
+        </div>
+        <div class="sim-field">
+          <label>Quantidade</label>
+          <input type="text" placeholder="160" inputmode="decimal">
+        </div>
+        <div class="sim-field">
+          <label>Spread %</label>
+          <input type="text" value="2" inputmode="decimal">
+        </div>
+        <div class="sim-field">
+          <label>IOF %</label>
+          <input type="text" value="0,38" inputmode="decimal">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust">
+    <p>Confiança e conformidade</p>
+    <div class="trust-logos">
+      <span class="logo">LGPD</span>
+      <span class="logo">FOSS</span>
+      <span class="logo">MIT</span>
+      <span class="logo">PostgreSQL</span>
+      <span class="logo">FastAPI</span>
+      <span class="logo">CI/CD</span>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="mark">C</div>
+      COGME
+      <p class="footer-desc">Conversor de Ganhos em Moeda Estrangeira — gratuito, FOSS, jurisdição brasileira. Desenvolvido na disciplina de Gerência de Projetos, Fatec Taquaritinga.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Produto</h4>
+      <ul>
+        <li><a href="#">Simulação cambial</a></li>
+        <li><a href="#">Regimes de contratação</a></li>
+        <li><a href="#">Emissão de invoice</a></li>
+        <li><a href="#">Histórico e clone</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Recursos</h4>
+      <ul>
+        <li><a href="#">Documentação</a></li>
+        <li><a href="#">API OpenAPI</a></li>
+        <li><a href="#">ADRs</a></li>
+        <li><a href="#">LGPD</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Empresa</h4>
+      <ul>
+        <li><a href="#">Sobre</a></li>
+        <li><a href="#">Roadmap</a></li>
+        <li><a href="#">UAT</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>COGME — MIT License · Fatec Taquaritinga · Gerência de Projetos</span>
+    <span>Entrega final prevista em 15/12/2026</span>
+  </div>
+</footer>
+
+<div id="modal" style="display:none; position:fixed; inset:0; background:rgba(2,6,23,0.6); z-index:200; display:flex; align-items:center; justify-content:center; padding:1rem;">
+  <div style="background:#fff; border-radius:var(--radius); padding:2rem; max-width:560px; width:100%; max-height:90vh; overflow-y:auto; box-shadow:var(--shadow);">
+    <h3 style="font-size:1.25rem; font-weight:800; color:var(--ink); margin-bottom:0.5rem;">Simulador de Recebimento</h3>
+    <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:1.5rem;">Informe os dados da sua simulação e calcule o líquido em BRL.</p>
+    <form id="modal-form" style="display:grid; gap:1rem;">
+      <div>
+        <label style="font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); display:block; margin-bottom:0.3rem;">Moeda</label>
+        <select id="m-currency" style="width:100%;padding:0.7rem;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--text);font-size:0.95rem;">
+          <option>USD</option><option>EUR</option>
+        </select>
+      </div>
+      <div>
+        <label style="font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); display:block; margin-bottom:0.3rem;">Regime</label>
+        <select id="m-regime" style="width:100%;padding:0.7rem;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--text);font-size:0.95rem;">
+          <option>hourly</option><option>daily</option><option>weekly</option><option>monthly</option><option>fixed</option>
+        </select>
+      </div>
+      <div>
+        <label style="font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); display:block; margin-bottom:0.3rem;">Valor (moeda estrangeira)</label>
+        <input id="m-amount" type="text" placeholder="30,00" inputmode="decimal" style="width:100%;padding:0.7rem;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--text);font-size:0.95rem;">
+      </div>
+      <div>
+        <label style="font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); display:block; margin-bottom:0.3rem;">Quantidade</label>
+        <input id="m-qty" type="text" placeholder="160" inputmode="decimal" style="width:100%;padding:0.7rem;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--text);font-size:0.95rem;">
+      </div>
+      <div style="grid-column:1/-1; display:flex; gap:0.75rem;">
+        <button type="button" class="btn-outline" onclick="fecharModal()">Cancelar</button>
+        <button type="submit" class="btn-primary">Calcular</button>
+      </div>
+    </form>
+    <div id="modal-result" style="margin-top:1.5rem; padding:1rem; background:var(--surface-soft); border-radius:10px; display:none;">
+      <div style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); margin-bottom:0.5rem;">Resultado</div>
+      <div style="font-size:1.5rem; font-weight:800; color:var(--ink);">R$ <span id="m-net"></span></div>
+      <div style="font-size:0.85rem; color:var(--text-muted); margin-top:0.25rem;">Líquido após spread e IOF</div>
+    </div>
+  </div>
+  <button onclick="fecharModal()" style="position:absolute; top:1rem; right:1rem; background:none; border:none; color:#fff; font-size:1.5rem;">✕</button>
+</div>
+
+<script>
+  /* =========================================================================
+     Interação: navbar scrolled, reveal ao scroll, simulador, modal
+     ========================================================================= */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
+    revealOnScroll();
+  });
+
+  const reveals = document.querySelectorAll('.reveal');
+  function revealOnScroll() {
+    const trigger = window.innerHeight * 0.85;
+    reveals.forEach(el => {
+      const top = el.getBoundingClientRect().top;
+      if (top < trigger) el.classList.add('visible');
+    });
+  }
+  revealOnScroll();
+
+  /* Simulador simples no modal */
+  const m = {
+    currency: document.getElementById('m-currency'),
+    regime: document.getElementById('m-regime'),
+    amount: document.getElementById('m-amount'),
+    qty: document.getElementById('m-qty'),
+    result: document.getElementById('modal-result'),
+    net: document.getElementById('m-net')
+  };
+  function fmt(v, p){ return Math.abs(Number(v||0)).toFixed(p).replace(/\B(?=(\d{3})+(?!\d))/g,'.'); }
+  function calc(){
+    const a = parseFloat(m.amount.value.replace(',','.'))||0;
+    const q = m.regime.value==='fixed'?1:(parseFloat(m.qty.value.replace(',','.'))||0);
+    const r = 5.0;
+    const gf = a*q;
+    const gb = Math.round(gf*r*100)/100;
+    const sp = Math.round(gb*2/100*100)/100;
+    const io = Math.round((gb-sp)*0.38/100*100)/100;
+    const net = gb-sp-io;
+    return {gf,gb,sp,io,net};
+  }
+  document.getElementById('modal-form').addEventListener('submit',(e)=>{
+    e.preventDefault();
+    const r=calc();
+    m.net.textContent = fmt(r.net,2);
+    m.result.style.display='block';
+  });
+  function abrirModal(){ document.getElementById('modal').style.display='flex'; document.body.style.overflow='hidden'; }
+  function fecharModal(){ document.getElementById('modal').style.display='none'; document.body.style.overflow=''; }
+  document.getElementById('modal').addEventListener('click',(e)=>{ if(e.target===document.getElementById('modal')) fecharModal(); });
+</script>
+</body>
+</html>
