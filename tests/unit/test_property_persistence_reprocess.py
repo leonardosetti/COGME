@@ -226,6 +226,7 @@ class TestRepositoryPersistenceRoundTrip:
             await conn.execute(text("TRUNCATE TABLE fx_quotes RESTART IDENTITY"))
         return SqlAlchemyQuoteRepository(create_session_factory(engine))
 
+    @pytest.mark.asyncio
     async def test_save_then_get_latest_round_trips(
         self, repository: SqlAlchemyQuoteRepository
     ) -> None:
@@ -254,6 +255,7 @@ class TestRepositoryPersistenceRoundTrip:
         assert retrieved.quoted_at == quote.quoted_at
         assert retrieved.fetched_at == quote.fetched_at
 
+    @pytest.mark.asyncio
     async def test_get_latest_picks_max_fetched_at(
         self, repository: SqlAlchemyQuoteRepository
     ) -> None:
@@ -449,6 +451,7 @@ class TestRateServiceCachePersistence:
 
         return FixedMonotonic()
 
+    @pytest.mark.asyncio
     async def test_second_call_reads_from_cache_not_provider(
         self,
         repository: SqlAlchemyQuoteRepository,
@@ -506,6 +509,7 @@ class TestDatabaseConstraints:
             await conn.execute(text("TRUNCATE TABLE fx_quotes RESTART IDENTITY"))
         return SqlAlchemyQuoteRepository(create_session_factory(engine))
 
+    @pytest.mark.asyncio
     async def test_invalid_currency_rejected_by_db(
         self, repository: SqlAlchemyQuoteRepository
     ) -> None:
@@ -529,6 +533,7 @@ class TestDatabaseConstraints:
         # or don't match the CHECK constraint raise DBAPIError (not IntegrityError)
         assert isinstance(exc_info.value.__cause__, DBAPIError)
 
+    @pytest.mark.asyncio
     async def test_non_positive_rate_rejected_by_db(
         self, repository: SqlAlchemyQuoteRepository
     ) -> None:
