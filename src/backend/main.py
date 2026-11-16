@@ -30,7 +30,7 @@ from slowapi.errors import RateLimitExceeded
 from src.backend.models.database import create_engine, create_session_factory
 from src.backend.models.repository import SqlAlchemyQuoteRepository
 
-from src.backend.routers import auth, clients, health, invoices, provider, rates, simulations
+from src.backend.routers import account, auth, clients, health, invoices, provider, rates, simulations
 from src.backend.services.circuit_breaker import CircuitBreaker
 from src.backend.services.rate_providers import FrankfurterProvider, PtaxProvider
 from src.backend.services.rate_service import RateService
@@ -381,6 +381,7 @@ def create_app() -> FastAPI:
     app.state.limiter = limiter
     app.add_exception_handler(RateLimitExceeded, rate_limit_exceeded_handler)
     for module in (
+        account,
         auth,
         clients,
         health,
