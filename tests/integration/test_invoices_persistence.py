@@ -877,7 +877,7 @@ async def test_next_invoice_number_different_issuers_independent(
     import uuid
     issuer1 = f"11{uuid.uuid4().hex[:12]}"
     issuer2 = f"22{uuid.uuid4().hex[:12]}"
-    
+
     num1_a = await invoice_repo.get_next_number(issuer1)
     num1_b = await invoice_repo.get_next_number(issuer1)
     num2_a = await invoice_repo.get_next_number(issuer2)
