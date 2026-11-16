@@ -40,8 +40,8 @@ async def _simulate(
     """Executa uma simulação completa e devolve o texto do líquido (net_brl)."""
     actor = actor_named("usuario")
     actor.add_ability(BrowseTheWeb(page))
-    actor.perform(NavigateTo(base_url + SIMULATION_URL_PATH))
-    actor.perform(
+    await actor.perform(NavigateTo(base_url + SIMULATION_URL_PATH))
+    await actor.perform(
         FillSimulationForm(
             currency="USD",
             regime=regime,
@@ -51,8 +51,8 @@ async def _simulate(
             iof_pct="0.38",
         )
     )
-    actor.perform(SubmitSimulation())
-    return actor.ask(VisibleText("#r-net-brl"))
+    await actor.perform(SubmitSimulation())
+    return await actor.ask(VisibleText("#r-net-brl"))
 
 
 @pytest.mark.functional
@@ -76,18 +76,18 @@ async def test_simulacao_usd_horario_exibe_resultado_detalhado(page: Page, base_
     """CT-FUNC-002: simulação USD hourly exibe bruto, spread, IOF, líquido e cotação."""
     actor = actor_named("usuario")
     actor.add_ability(BrowseTheWeb(page))
-    actor.perform(NavigateTo(base_url + SIMULATION_URL_PATH))
-    actor.perform(
+    await actor.perform(NavigateTo(base_url + SIMULATION_URL_PATH))
+    await actor.perform(
         FillSimulationForm(currency="USD", regime="hourly", amount="30", quantity="160",
                            spread_pct="2", iof_pct="0.38")
     )
-    actor.perform(SubmitSimulation())
+    await actor.perform(SubmitSimulation())
 
-    assert actor.ask(VisibleText("#r-gross-foreign")).strip().endswith("USD")
-    assert MONEY_BR.match(actor.ask(VisibleText("#r-gross-brl")).strip())
-    assert "R$" in actor.ask(VisibleText("#r-spread-brl"))
-    assert "R$" in actor.ask(VisibleText("#r-iof-brl"))
-    assert MONEY_BR.match(actor.ask(VisibleText("#r-net-brl")).strip())
-    quote_rate = actor.ask(VisibleText("#r-quote-rate")).strip()
+    assert (await actor.ask(VisibleText("#r-gross-foreign"))).strip().endswith("USD")
+    assert MONEY_BR.match((await actor.ask(VisibleText("#r-gross-brl"))).strip())
+    assert "R$" in (await actor.ask(VisibleText("#r-spread-brl")))
+    assert "R$" in (await actor.ask(VisibleText("#r-iof-brl")))
+    assert MONEY_BR.match((await actor.ask(VisibleText("#r-net-brl"))).strip())
+    quote_rate = (await actor.ask(VisibleText("#r-quote-rate"))).strip()
     assert "BRL/USD" in quote_rate
-    assert actor.ask(VisibleText("#r-source")).strip() in ("Frankfurter", "PTAX")
+    assert (await actor.ask(VisibleText("#r-source"))).strip() in ("Frankfurter", "PTAX")

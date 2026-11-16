@@ -57,7 +57,7 @@ class Actor:
         """
         task.perform_as(self)
 
-    def ask(self, question: object) -> object:
+    async def ask(self, question: object) -> object:
         """Responde uma pergunta por este ator.
 
         Args:
@@ -66,7 +66,7 @@ class Actor:
         Returns:
             O resultado da pergunta.
         """
-        return question.answered_by(self)
+        return await question.answered_by(self)
 
     def __repr__(self) -> str:
         return f"Actor(name={self.name!r})"

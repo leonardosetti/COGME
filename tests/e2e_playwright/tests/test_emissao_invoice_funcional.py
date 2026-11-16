@@ -30,8 +30,8 @@ async def test_emissao_invoice_gera_pdf_para_download(page: Page, base_url: str)
     """
     actor = actor_named("usuario")
     actor.add_ability(BrowseTheWeb(page))
-    actor.perform(NavigateTo(base_url + INVOICE_URL_PATH))
-    actor.perform(
+    await actor.perform(NavigateTo(base_url + INVOICE_URL_PATH))
+    await actor.perform(
         FillInvoiceForm(
             sim_currency="USD",
             sim_regime="hourly",
@@ -48,4 +48,4 @@ async def test_emissao_invoice_gera_pdf_para_download(page: Page, base_url: str)
             description="Serviços fictícios de desenvolvimento de software.",
         )
     )
-    actor.perform(GenerateInvoice())
+    await actor.perform(GenerateInvoice())
