@@ -529,7 +529,7 @@ class TestDatabaseConstraints:
         # or don't match the CHECK constraint raise DBAPIError (not IntegrityError)
         assert isinstance(exc_info.value.__cause__, DBAPIError)
 
-    async def test_non_positive_rate_rejected_by_db(
+    def test_non_positive_rate_rejected_by_db(
         self, repository: SqlAlchemyQuoteRepository
     ) -> None:
         """Model rejects non-positive rates before reaching the database."""
