@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import Literal
-from uuid import UUID
 
 from pydantic import Field
 
@@ -30,7 +29,7 @@ class RegisterRequest(_Schema):
 
 
 class RegisterResponse(_Schema):
-    user_id: UUID
+    user_id: int
     message: str = "Conta criada. Faça login."
 
 
@@ -70,7 +69,7 @@ class AliasResponse(_Schema):
 
 
 class MeResponse(_Schema):
-    user_id: UUID
+    user_id: int
     name: str
     email: str | None = None
     created_at: datetime

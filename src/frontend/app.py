@@ -86,11 +86,38 @@ async def index(request: Request) -> HTMLResponse:
 
 @app.get("/invoice", response_class=HTMLResponse)
 async def invoice_form(request: Request) -> HTMLResponse:
-    """Tela de emissão de invoice."""
-    return render("invoice_form.html", request=request)
+    """Tela de emissão de invoice. Aceita query params para pré-preencher simulação."""
+    sim_data = None
+    if request.query_params.get("currency"):
+        sim_data = {
+            "currency": request.query_params.get("currency"),
+            "regime": request.query_params.get("regime"),
+            "amount": request.query_params.get("amount"),
+            "quantity": request.query_params.get("quantity"),
+            "spread_pct": request.query_params.get("spread_pct"),
+            "iof_pct": request.query_params.get("iof_pct"),
+        }
+    return render("invoice_form.html", request=request, sim=sim_data)
+
+
+@app.get("/auth/login", response_class=HTMLResponse)
+async def auth_login(request: Request) -> HTMLResponse:
+    """Tela de login."""
+    return render("auth/login.html", request=request)
+
+
+@app.get("/auth/register", response_class=HTMLResponse)
+async def auth_register(request: Request) -> HTMLResponse:
+    """Tela de cadastro."""
+    return render("auth/register.html", request=request)
 
 
 # --- rotas server-side (fluxo sem JS, R-INT-05) ---
+
+def _normalize_decimal(value: str) -> str:
+    """Converte separador decimal vírgula para ponto."""
+    return value.replace(",", ".")
+
 
 @app.post("/simulate", response_class=HTMLResponse)
 async def simulate_server(
@@ -107,10 +134,10 @@ async def simulate_server(
     body = {
         "currency": currency,
         "regime": regime,
-        "amount": amount,
-        "quantity": None if regime == "fixed" else quantity,
-        "spread_pct": spread_pct,
-        "iof_pct": iof_pct,
+        "amount": _normalize_decimal(amount),
+        "quantity": None if regime == "fixed" else _normalize_decimal(quantity) if quantity else None,
+        "spread_pct": _normalize_decimal(spread_pct),
+        "iof_pct": _normalize_decimal(iof_pct),
     }
     try:
         resp = await client.post("/v1/simulate", json=body)
@@ -153,7 +180,16 @@ async def simulate_server(
             status_code=resp.status_code,
         )
     data = resp.json()
-    return render("index.html", request=request, sim=data, values=body)
+    # values para o template usa o formato original (com vírgula) para reexibir no form
+    display_values = {
+        "currency": currency,
+        "regime": regime,
+        "amount": amount,
+        "quantity": quantity,
+        "spread_pct": spread_pct,
+        "iof_pct": iof_pct,
+    }
+    return render("index.html", request=request, sim=data, values=display_values)
 
 
 @app.post("/invoice", response_class=StreamingResponse)

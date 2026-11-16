@@ -19,9 +19,9 @@ class InvoiceCreateDraft(_Schema):
         default=None,
         description="Cliente do diretório. None = cliente fictício.",
     )
-    client_fictitious: dict | None = Field(
+    client_fictitious: bool | None = Field(
         default=None,
-        description="Dados do cliente fictício. Obrigatório se client_id=None.",
+        description="Indica se é cliente fictício. Obrigatório true se client_id=None.",
     )
     simulation_id: UUID | None = Field(
         default=None,
@@ -65,7 +65,7 @@ class InvoiceUpdate(_Schema):
     """Campos atualizáveis de uma invoice draft (SPEC-020)."""
 
     client_id: UUID | None = None
-    client_fictitious: dict | None = None
+    client_fictitious: bool | None = None
     issuer_name: str | None = Field(default=None, min_length=1, max_length=120)
     issuer_tax_id_digits: str | None = Field(default=None, max_length=14)
     issuer_address: str | None = Field(default=None, max_length=240)

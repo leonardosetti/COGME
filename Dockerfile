@@ -57,8 +57,8 @@ WORKDIR /app
 COPY alembic.ini ./alembic.ini
 COPY migrations ./migrations
 COPY src ./src
-# Garantir que o usuário cogme possa ler os arquivos (world-readable)
-RUN chmod -R a+r /app
+# Garantir que o usuário cogme possa ler os arquivos e atravessar diretórios
+RUN find /app -type d -exec chmod a+rx {} + && find /app -type f -exec chmod a+r {} +
 
 USER cogme
 EXPOSE 8000

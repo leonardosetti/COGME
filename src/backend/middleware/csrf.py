@@ -21,6 +21,8 @@ CSRF_EXEMPT_PATHS: frozenset[str] = frozenset(
         "/v1/auth/logout",
         "/v1/auth/password/reset-request",
         "/v1/auth/password/reset-confirm",
+        "/v1/simulate",
+        "/v1/invoice",
     }
 )
 CSRF_COOKIE_NAME: str = "csrf_token"

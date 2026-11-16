@@ -68,42 +68,66 @@
         <p>Simulação funcional — sem cadastro necessário.</p>
       </div>
     </div>
-    <div class="sim-form">
+    <form action="/simulate#simulador" method="post" class="sim-form">
       <div class="sim-field">
         <label>Moeda</label>
-        <select id="currency">
-          <option value="USD">USD</option>
-          <option value="EUR">EUR</option>
+        <select id="currency" name="currency">
+          <option value="USD" {% if values and values.currency == 'USD' %}selected{% endif %}>USD</option>
+          <option value="EUR" {% if values and values.currency == 'EUR' %}selected{% endif %}>EUR</option>
         </select>
       </div>
       <div class="sim-field">
         <label>Regime</label>
-        <select id="regime">
-          <option value="hourly">Por hora</option>
-          <option value="daily">Por dia</option>
-          <option value="weekly">Por semana</option>
-          <option value="monthly">Por mês</option>
-          <option value="fixed">Valor fixo</option>
+        <select id="regime" name="regime">
+          <option value="hourly" {% if values and values.regime == 'hourly' %}selected{% endif %}>Por hora</option>
+          <option value="daily" {% if values and values.regime == 'daily' %}selected{% endif %}>Por dia</option>
+          <option value="weekly" {% if values and values.regime == 'weekly' %}selected{% endif %}>Por semana</option>
+          <option value="monthly" {% if values and values.regime == 'monthly' %}selected{% endif %}>Por mês</option>
+          <option value="fixed" {% if values and values.regime == 'fixed' %}selected{% endif %}>Valor fixo</option>
         </select>
       </div>
       <div class="sim-field">
         <label>Valor por unidade</label>
-        <input type="text" id="amount" placeholder="30,00" inputmode="decimal" value="30,00">
+        <input type="text" id="amount" name="amount" placeholder="30,00" inputmode="decimal" value="{{ values.amount if values else '30,00' }}">
       </div>
       <div class="sim-field">
         <label>Quantidade</label>
-        <input type="text" id="quantity" placeholder="160" inputmode="decimal" value="160">
+        <input type="text" id="quantity" name="quantity" placeholder="160" inputmode="decimal" value="{{ values.quantity if values else '160' }}">
       </div>
       <div class="sim-field">
         <label>Spread %</label>
-        <input type="text" id="spread_pct" placeholder="2,00" inputmode="decimal" value="2,00">
+        <input type="text" id="spread_pct" name="spread_pct" placeholder="2,00" inputmode="decimal" value="{{ values.spread_pct if values else '2,00' }}">
       </div>
       <div class="sim-field">
         <label>IOF %</label>
-        <input type="text" id="iof_pct" placeholder="0,38" inputmode="decimal" value="0,38">
+        <input type="text" id="iof_pct" name="iof_pct" placeholder="0,38" inputmode="decimal" value="{{ values.iof_pct if values else '0,38' }}">
       </div>
+      <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Simular</button>
+    </form>
+  </div>
+  {% if sim %}
+  <div class="sim-result" style="margin-top: 2rem; padding: 1.5rem; background: var(--color-surface); border-radius: var(--radius-lg); border: 1px solid var(--color-border);">
+    <h3 style="margin: 0 0 1rem; color: var(--color-primary);">Resultado da Simulação</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+      <div><strong>Bruto ({{ sim.currency }}):</strong> {{ sim.gross_foreign }}</div>
+      <div><strong>Bruto (BRL):</strong> R$ {{ sim.gross_brl }}</div>
+      <div><strong>Spread (BRL):</strong> R$ {{ sim.spread_brl }}</div>
+      <div><strong>IOF (BRL):</strong> R$ {{ sim.iof_brl }}</div>
+      <div style="grid-column: span 2;"><strong>Líquido (BRL):</strong> <span style="color: var(--color-primary); font-size: 1.25rem;">R$ {{ sim.net_brl }}</span></div>
+      <div style="grid-column: span 2;"><strong>Taxa Efetiva:</strong> {{ sim.effective_rate }} BRL/{{ sim.currency }}</div>
+      <div style="grid-column: span 2;"><strong>Cotação usada:</strong> {{ sim.quote.rate }} ({{ sim.quote.source }}, {{ sim.quote.quoted_at }}){% if sim.quote.stale %} <span style="color: var(--color-warning);">[cache vencido]</span>{% endif %}</div>
+    </div>
+    <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--color-text-muted);">{{ sim.notice }}</p>
+    <div style="margin-top: 1.5rem; text-align: center;">
+      <a href="/invoice?currency={{ sim.currency }}&regime={{ sim.regime }}&amount={{ values.amount }}&quantity={{ values.quantity | default('') }}&spread_pct={{ values.spread_pct }}&iof_pct={{ values.iof_pct }}" class="btn btn-primary" style="display: inline-block;">
+        Emitir Invoice com estes dados →
+      </a>
+      <p style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--color-text-muted);">
+        Seus dados da simulação serão pré-preenchidos na tela de invoice.
+      </p>
     </div>
   </div>
+  {% endif %}
 </section>
 
 <section class="trust">
@@ -115,6 +139,161 @@
     <span class="logo">PostgreSQL</span>
     <span class="logo">FastAPI</span>
     <span class="logo">CI/CD</span>
+  </div>
+</section>
+
+<!-- =========================================================================
+     SOBRE O PROJETO (Gestalt: proximity, similarity, closure)
+     ========================================================================= -->
+<section class="about" id="sobre">
+  <div class="container">
+    <header class="section-head">
+      <h2>Sobre o COGME</h2>
+      <p>Conversor de Ganhos em Moeda Estrangeira — projeto de Gerência de Projetos, Fatec Taquaritinga.</p>
+    </header>
+
+    <!-- Objetivos -->
+    <section class="about-section">
+      <h3>Objetivos do Projeto</h3>
+      <div class="about-grid">
+        <article class="card about-card">
+          <div class="about-icon">🎯</div>
+          <h4>Ferramenta Gratuita e Soberana</h4>
+          <p>Oferecer simulador cambial USD/EUR → BRL 100% FOSS, sem custo recorrente, rodando localmente (LGPD by design). Zero vendor lock-in, zero telemetria.</p>
+        </article>
+        <article class="card about-card">
+          <div class="about-icon">📊</div>
+          <h4>Transparência Total</h4>
+          <p>Exibir cotação usada, fonte (Frankfurter/PTAX), timestamp, spread e IOF informados pelo usuário. Cálculo reproduzível com precisão de 2 casas decimais.</p </p>
+        </article>
+        <article class="card about-card">
+          <div class="about-icon">🧾</div>
+          <h4>Invoice Profissional Bilíngue</h4>
+          <p>Geração de PDF pronto para envio a clientes nacionais (pt-BR) e internacionais (EN), com numeração sequencial, snapshots imutáveis e clone de invoices finalizadas.</        </article>
+        <article class="card about-card">
+          <div class="about-icon">🔒</div>
+          <h4>Privacidade por Design</h4>
+          <p>Isolamento de dados por proprietário (P-14), Argon2id, HMAC login identifiers, sessão HttpOnly/Secure, CSRF double-submit, LGPD/GDPR art. 18 (erase) em invoices draft.
+        </article>
+      </div>
+    </section>
+
+    <!-- Funcionamento -->
+    <section class="about-section">
+      <h3>Como Funciona</h3>
+      <div class="steps">
+        <article class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>Simule</h4>
+            <p>Informe moeda (USD/EUR), regime (hora/dia/semana/mês/fixo), valor, quantidade, spread e IOF. O cálculo roda no servidor com cotação vigente (Frankfurter → fallback PTAX).</p>
+          </div>
+        </article>
+        <article class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>Revise</h4>
+            <p>Veja o resultado detalhado: bruto na moeda estrangeira, bruto em BRL, spread, IOF, líquido e taxa efetiva. A cotação usada e sua fonte são exibidas com aviso se veio de cache.</p>
+          </div>
+        </article>
+        <article class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4>Emita Invoice</h4>
+            <p>Clique em "Emitir Invoice" — seus dados da simulação pré-preenchem o formulário. Complete dados do emitente, cliente, descrição e período. O PDF é gerado e baixado instantaneamente.</          </div>
+        </article>
+        <article class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h4>Gerencie</h4>
+            <p>Cadastre-se para salvar simulações, criar clientes, configurar perfil da prestadora e contas bancárias. Acesse histórico, clone invoices finalizadas, finalize rascunhos ou apague rascunhos (LGPD erase).</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Qualidade -->
+    <section class="about-section">
+      <h3>Qualidade e Conformidade</h3>
+      <div class="quality-grid">
+        <article class="card quality-card">
+          <div class="quality-icon">✅</div>
+          <h4>Testes Automatizados</h4>
+          <ul>
+            <li>1.192 testes unitários passando (cobertura ≥ 84%)</li>
+            <li>Testes de integração com PostgreSQL real</li>
+            <li>E2E Playwright para fluxos críticos</li>
+          </ul>
+        </article>
+        <article class="card quality-card">
+          <div class="quality-icon">🔐</div>
+          <h4>Segurança</h4>
+          <ul>
+            <li>Argon2id (m=65536,t=3,p=4) + HMAC login</li>
+            <li>CSRF double-submit + sessão HttpOnly/Secure</li>
+            <li>Rate limiting (5/min login, 3/h reset)</li>
+            <li>Fail-closed em falhas de cotação</li>
+          </ul>
+        </article>
+        <article class="card quality-card">
+          <div class="quality-icon">🏗️</div>
+          <h4>Arquitetura</h4>
+          <ul>
+            <li>Stack 100% FOSS: FastAPI, PostgreSQL, Nginx, Docker</li>
+            <li>Ortogonalidade: camadas isoladas (db, back, front, proxy)</li>
+            <li>Health checks: /v1/health, /v1/health/db</li>
+            <li>Imagens Docker fixadas por digest SHA256</li>
+          </ul>
+        </article>
+        <article class="card quality-card">
+          <div class="quality-icon">📋</div>
+          <h4>Governança</h4>
+          <ul>
+            <li>Constituição do projeto (v1.3.0) + ADRs (10 ativas)</li>
+            <li>PMBOK 7ª + Kanban GitHub Projects</li>
+            <li>EAP 12 fases / 37 pacotes de trabalho</li>
+            <li>CCB de membro único, co-assinatura SHA256</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Stack Tecnológica -->
+    <section class="about-section">
+      <h3>Stack Tecnológica</h3>
+      <div class="stack-grid">
+        <div class="stack-item"><strong>Backend:</strong> FastAPI 0.163, Python 3.12, Pydantic 2, SQLAlchemy 2, asyncpg</div>
+        <div class="stack-item"><strong>Frontend:</strong> FastAPI + Jinja2, HTMX, Tailwind-like CSS (custom), Inter font</div>
+        <div class="stack-item"><strong>Banco:</strong> PostgreSQL 15 (async), Alembic migrations</div>
+        <div class="stack-item"><strong>Infra:</strong> Docker Compose, Nginx reverse proxy, Tailscale access</div>
+        <div class="stack-item"><strong>Cotação:</strong> Frankfurter (BCE) primário, PTAX/BCB fallback, Circuit Breaker</div>
+        <div class="stack-item"><strong>PDF:</strong> WeasyPrint 70, Jinja2 templates, fontes DejaVu</div>
+        <div class="stack-item"><strong>Auth:</strong> Argon2id, HMAC-SHA256 identifiers, sessão cookie 24h sliding</div>
+        <div class="stack-item"><strong>Qualidade:</strong> pytest, pytest-asyncio, hypothesis, bandit, trivy, coverage ≥ 80%</div>
+      </div>
+    </section>
+
+    <!-- Equipe e Instituição -->
+    <section class="about-section">
+      <h3>Equipe e Instituição</h3>
+      <div class="team-grid">
+        <article class="card team-card">
+          <div class="team-icon">🎓</div>
+          <h4>Instituição</h4>
+          <p>FATEC Taquaritinga — Curso de Gerência de Projetos (2026/2)</p>
+        </article>
+        <article class="card team-card">
+          <div class="team-icon">👨‍🏫</div>
+          <h4>Stakeholder Avaliador</h4>
+          <p>Prof. Dr. Nivaldo Carleto (conforme ADR-008 v1.1)</p>
+        </article>
+        <article class="card team-card">
+          <div class="team-icon">🤖</div>
+          <h4>Agentes SDD</h4>
+          <p>46 agentes promulgados via AFA-ULTIMATE (nexus, architect, backend, frontend, qa, devops, security, dba, etc.)</p>
+        </article>
+      </div>
+    </section>
   </div>
 </section>
 

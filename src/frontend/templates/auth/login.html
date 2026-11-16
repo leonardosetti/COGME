@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block title %}COGME — Entrar{% endblock %}
+
+{% block content %}
+<div class="auth-page">
+  <header class="auth-header">
+    <h1>Entrar no COGME</h1>
+    <p>Acesse seu histórico de simulações e invoices.</p>
+  </header>
+
+  <form id="form" action="/v1/auth/login" method="post" novalidate class="auth-form">
+    <div id="global-error" class="alert alert-error hidden" role="alert"></div>
+
+    <div class="card form-card">
+      <div class="field">
+        <label for="identifier" class="label">Email, CPF ou CNPJ <span class="required" aria-hidden="true">*</span><span class="sr-only">(obrigatório)</span></label>
+        <input type="text" id="identifier" name="identifier" class="input" required aria-required="true" autocomplete="username" placeholder="seu@email.com ou 12345678901">
+        <p id="identifier-hint" class="hint">Email, CPF (11 dígitos) ou CNPJ (14 dígitos)</p>
+        <p id="identifier-error" class="field-error" role="alert" aria-live="polite"></p>
+      </div>
+
+      <div class="field">
+        <label for="password" class="label">Senha <span class="required" aria-hidden="true">*</span><span class="sr-only">(obrigatório)</span></label>
+        <input type="password" id="password" name="password" class="input" required aria-required="true" autocomplete="current-password" placeholder="••••••••">
+        <p id="password-error" class="field-error" role="alert" aria-live="polite"></p>
+      </div>
+    </div>
+
+    <button type="submit" id="btn" class="btn btn-primary">
+      <span class="btn-text">Entrar</span>
+      <span class="spinner hidden" aria-hidden="true"></span>
+    </button>
+  </form>
+
+  <footer class="auth-footer">
+    <p>Não tem conta? <a href="/auth/register">Cadastre-se grátis</a></p>
+    <p><a href="/auth/password/reset-request">Esqueci a senha</a></p>
+  </footer>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function () {
+  var form = document.getElementById('form');
+  var btn = document.getElementById('btn');
+  var btnText = btn.querySelector('.btn-text');
+  var btnSpinner = btn.querySelector('.spinner');
+  var globalError = document.getElementById('global-error');
+
+  function showFieldError(fieldName, message) {
+    var input = form.querySelector('[name="' + fieldName + '"]');
+    var errorEl = document.getElementById(fieldName + '-error');
+    if (input) input.classList.add('invalid');
+    if (errorEl) {
+      errorEl.textContent = message;
+      errorEl.classList.add('visible');
+    }
+  }
+
+  function clearFieldErrors() {
+    if (!form) return;
+    form.querySelectorAll('.invalid').forEach(function (el) { el.classList.remove('invalid'); });
+    form.querySelectorAll('.field-error.visible').forEach(function (el) { el.classList.remove('visible'); el.textContent = ''; });
+  }
+
+  function showGlobalError(message) {
+    globalError.textContent = message;
+    globalError.classList.remove('hidden');
+  }
+
+  function hideGlobalError() {
+    globalError.classList.add('hidden');
+    globalError.textContent = '';
+  }
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    clearFieldErrors();
+    hideGlobalError();
+
+    btn.disabled = true;
+    btnText.textContent = 'Entrando…';
+    btnSpinner.classList.remove('hidden');
+
+    var payload = {
+      identifier: form['identifier'].value,
+      password: form['password'].value,
+    };
+
+    try {
+      var res = await fetch('/v1/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        var data = await res.json();
+        var details = (data && data.error && data.error.details) || [];
+        if (details.length) {
+          details.forEach(function (d) { showFieldError(d.field, d.message); });
+        } else {
+          showGlobalError((data && data.error && data.error.message) || 'Credenciais inválidas.');
+        }
+        return;
+      }
+
+      // Success - redirect to home
+      window.location.href = '/';
+    } catch (err) {
+      showGlobalError('Não foi possível conectar à API.');
+    } finally {
+      btn.disabled = false;
+      btnText.textContent = 'Entrar';
+      btnSpinner.classList.add('hidden');
+    }
+  });
+
+  form.querySelectorAll('.input').forEach(function (el) {
+    el.addEventListener('input', function () {
+      if (el.classList.contains('invalid')) {
+        el.classList.remove('invalid');
+        var errorEl = document.getElementById(el.name + '-error');
+        if (errorEl) { errorEl.classList.remove('visible'); errorEl.textContent = ''; }
+      }
+    });
+  });
+})();
+</script>
+{% endblock %}

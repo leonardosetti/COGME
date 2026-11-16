@@ -22,6 +22,7 @@ dependencies = [
     "jinja2>=3.1,<4",
     "weasyprint>=70,<71",
     "tzdata>=2026.6",
+    "slowapi>=0.1.9,<1",
 ]
 
 [project.optional-dependencies]

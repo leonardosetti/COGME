@@ -21,6 +21,7 @@ x-app: &app
     COGME_RATE_TTL_SECONDS: ${COGME_RATE_TTL_SECONDS:-3600}
     COGME_PROVIDER_TIMEOUT_SECONDS: ${COGME_PROVIDER_TIMEOUT_SECONDS:-0.9}
     COGME_LOG_LEVEL: ${COGME_LOG_LEVEL:-INFO}
+    COGME_LOGIN_PEPPER: ${COGME_LOGIN_PEPPER:?defina COGME_LOGIN_PEPPER no .env}
   networks: [data, edge]
   security_opt: ["no-new-privileges:true"]
   cap_drop: [ALL]

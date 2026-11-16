@@ -174,8 +174,8 @@ async def register(
     now = datetime.now(timezone.utc)
 
     async with sf() as session, session.begin():
-        email_col = normalized if kind == UserLoginIdentifierKind.EMAIL else ""
-        cpf_col = normalized if kind == UserLoginIdentifierKind.CPF else ""
+        email_col = normalized if kind == UserLoginIdentifierKind.EMAIL else None
+        cpf_col = normalized if kind == UserLoginIdentifierKind.CPF else None
         existing = (
             await session.execute(
                 select(User).where(
@@ -210,7 +210,7 @@ async def register(
             )
         )
         session.add(
-            ProviderProfile(user_id=user.id, category="mei")
+            ProviderProfile(user_id=user.id, legal_name=payload.name, category="mei")
         )
 
     return RegisterResponse(user_id=user.id)

@@ -242,6 +242,13 @@ async def _handle_http_error(_: Request, error: Exception) -> JSONResponse:
     return _error_response(ErrorKey.INTERNAL_ERROR, _INTERNAL_ERROR_MESSAGE, 500)
 
 
+async def _handle_generic_error(_: Request, error: Exception) -> JSONResponse:
+    """Catch-all handler para exceções não tratadas - loga o erro real."""
+    import traceback
+    logger.exception("Unhandled exception: %s", error)
+    return _error_response(ErrorKey.INTERNAL_ERROR, _INTERNAL_ERROR_MESSAGE, 500)
+
+
 def _configure_logging(level: str) -> None:
     """Ajusta o logging do projeto ao nível da configuração.
 
@@ -322,6 +329,7 @@ def create_app() -> FastAPI:
     app.add_exception_handler(DomainError, _handle_domain_error)
     app.add_exception_handler(RequestValidationError, _handle_validation_error)
     app.add_exception_handler(StarletteHTTPException, _handle_http_error)
+    app.add_exception_handler(Exception, _handle_generic_error)
     app.add_middleware(CSRFMiddleware)
     app.state.limiter = limiter
     app.add_exception_handler(RateLimitExceeded, rate_limit_exceeded_handler)

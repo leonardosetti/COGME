@@ -70,7 +70,7 @@ class User(Base):
     name: Mapped[str] = mapped_column(String(120), nullable=False)
     email: Mapped[str] = mapped_column(String(255), nullable=False)
     phone: Mapped[str | None] = mapped_column(String(30), nullable=True)
-    cpf: Mapped[str] = mapped_column(CHAR(11), nullable=False)
+    cpf: Mapped[str | None] = mapped_column(CHAR(11), nullable=True)
     password_hash: Mapped[str] = mapped_column(String(255), nullable=False)
     status: Mapped[str] = mapped_column(
         String(16), nullable=False, default=UserStatus.ACTIVE
