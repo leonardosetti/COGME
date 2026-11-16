@@ -31,6 +31,10 @@ class InvoiceNumberService:
                 text("SELECT next_invoice_number(:issuer)"),
                 {"issuer": issuer_tax_id_digits},
             )
+            # Persiste o incremento da sequência entre sessões (commit só quando
+            # a sessão o suporta; testes com sessão fake seguem sem commit).
+            if hasattr(self._session, "commit"):
+                await self._session.commit()
             return str(result.scalar_one())
         except SQLAlchemyError as error:
             raise RepositoryError("Falha ao gerar número de invoice.") from error

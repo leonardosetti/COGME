@@ -280,7 +280,7 @@ class SqlAlchemyInvoiceRepository:
         from sqlalchemy import text
 
         try:
-            async with self._session_factory() as session:
+            async with self._session_factory() as session, session.begin():
                 result = await session.execute(
                     text("SELECT next_invoice_number(:issuer)"),
                     {"issuer": issuer_tax_id_digits},

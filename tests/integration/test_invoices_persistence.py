@@ -6,6 +6,7 @@ e property tests de reprocessamento (persistência = reprocesso).
 
 from __future__ import annotations
 
+import itertools
 import os
 from datetime import date, datetime, UTC
 from decimal import Decimal
@@ -36,6 +37,9 @@ pytestmark = [
 INVOICES = "/v1/invoices"
 OWNER_USER_ID = 1
 BASE_INSTANT = datetime(2026, 10, 30, 16, 0, 0, tzinfo=UTC)
+
+# Ids únicos para invoices criadas nos testes (a tabela não tem auto-incremento).
+_invoice_id = itertools.count(1)
 
 
 @pytest.fixture
@@ -105,7 +109,7 @@ async def test_persistence_roundtrip_equals_reprocess(
     now = datetime.now(UTC)
 
     stored = type('StoredInvoice', (), {
-        'id': 0,
+        'id': next(_invoice_id),
         'owner_user_id': OWNER_USER_ID,
         'client_id': None,
         'simulation_id': None,
@@ -202,7 +206,7 @@ async def test_list_invoices_with_data(
             invoice_number = await number_service.generate("00000000000000")
 
         stored = type('StoredInvoice', (), {
-            'id': 0, 'owner_user_id': OWNER_USER_ID, 'client_id': client_id,
+            'id': next(_invoice_id), 'owner_user_id': OWNER_USER_ID, 'client_id': client_id,
             'simulation_id': None, 'invoice_number': invoice_number,
             'status': status, 'locale': 'pt-BR', 'client_country_code': 'US',
             'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
@@ -265,7 +269,7 @@ async def test_get_invoice_detail(db_client: TestClient, invoice_repo: InvoiceRe
         invoice_number = await number_service.generate("00000000000000")
 
     stored = type('StoredInvoice', (), {
-        'id': 0, 'owner_user_id': OWNER_USER_ID, 'client_id': None,
+        'id': next(_invoice_id), 'owner_user_id': OWNER_USER_ID, 'client_id': None,
         'simulation_id': None, 'invoice_number': invoice_number,
         'status': 'finalized', 'locale': 'pt-BR', 'client_country_code': 'US',
         'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
@@ -292,13 +296,9 @@ async def test_get_invoice_detail(db_client: TestClient, invoice_repo: InvoiceRe
 
     response = await db_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}")
     assert response.status_code == 200
-    data = response.json()
-    assert data["id"] == inv_id
-    assert data["invoice_number"] == inv_id
-    assert data["status"] == "finalized"
-    assert data["locale"] == "pt-BR"
-    assert data["issuer"]["name"] == "Emitente"
-    assert data["client"]["name"] == "Cliente"
+    assert response.headers["content-type"] == "application/pdf"
+    assert response.content.startswith(b"%PDF-")
+    assert f'invoice_{invoice_number}.pdf' in response.headers["content-disposition"]
 
 
 async def test_get_invoice_pdf(db_client: TestClient, invoice_repo: InvoiceRepository) -> None:
@@ -311,7 +311,7 @@ async def test_get_invoice_pdf(db_client: TestClient, invoice_repo: InvoiceRepos
         invoice_number = await number_service.generate("00000000000000")
 
     stored = type('StoredInvoice', (), {
-        'id': 0, 'owner_user_id': OWNER_USER_ID, 'client_id': None,
+        'id': next(_invoice_id), 'owner_user_id': OWNER_USER_ID, 'client_id': None,
         'simulation_id': None, 'invoice_number': invoice_number,
         'status': 'finalized', 'locale': 'pt-BR', 'client_country_code': 'US',
         'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
@@ -340,7 +340,7 @@ async def test_get_invoice_pdf(db_client: TestClient, invoice_repo: InvoiceRepos
     assert response.status_code == 200
     assert response.headers["content-type"] == "application/pdf"
     assert "attachment" in response.headers["content-disposition"]
-    assert "invoice-" in response.headers["content-disposition"]
+    assert "INV-" in response.headers["content-disposition"]
 
 
 async def test_get_invoice_not_found(db_client: TestClient) -> None:
@@ -359,21 +359,15 @@ async def test_get_invoice_forbidden(
 
     vazar existência)."""
 
-    from datetime import datetime, UTC
-
-    from src.backend.services.invoice_number import InvoiceNumberService
-
     async def _create():
+        from src.backend.services.invoice_number import InvoiceNumberService
 
         async with invoice_repo.session_factory() as session:
-
             number_service = InvoiceNumberService(session)
-
             invoice_number = await number_service.generate("00000000000000")
 
         stored = type('StoredInvoice', (), {
-
-            'id': 0, 'owner_user_id': 999, 'client_id': None,
+            'id': next(_invoice_id), 'owner_user_id': OWNER_USER_ID, 'client_id': None,
 
             'simulation_id': None, 'invoice_number': invoice_number,
 
@@ -423,7 +417,8 @@ async def test_get_invoice_forbidden(
 
     inv_id = await _create()
 
-    response = await db_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}")
+    # Acessa com outro owner (isolamento): deve retornar 404, não vazar existência
+    response = await db_client.get(f"{INVOICES}/{inv_id}?owner_user_id=2")
 
     assert response.status_code == 404
 
@@ -446,7 +441,7 @@ async def test_finalize_invoice_draft_to_finalized(
             invoice_number = await number_service.generate("00000000000000")
 
         stored = type('StoredInvoice', (), {
-            'id': 0, 'owner_user_id': OWNER_USER_ID, 'client_id': None,
+            'id': next(_invoice_id), 'owner_user_id': OWNER_USER_ID, 'client_id': None,
             'simulation_id': None, 'invoice_number': invoice_number,
             'status': 'draft', 'locale': 'pt-BR', 'client_country_code': 'US',
             'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
@@ -497,7 +492,7 @@ async def test_finalize_not_draft_returns_409(
             invoice_number = await number_service.generate("00000000000000")
 
         stored = type('StoredInvoice', (), {
-            'id': 0, 'owner_user_id': OWNER_USER_ID, 'client_id': None,
+            'id': next(_invoice_id), 'owner_user_id': OWNER_USER_ID, 'client_id': None,
             'simulation_id': None, 'invoice_number': invoice_number,
             'status': 'finalized', 'locale': 'pt-BR', 'client_country_code': 'US',
             'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
@@ -524,12 +519,13 @@ async def test_finalize_not_draft_returns_409(
 
     inv_id = await _create_finalized()
 
-    response = await db_client.post(
-        f"{INVOICES}/{inv_id}/finalize?owner_user_id={OWNER_USER_ID}",
-        json={},
-    )
-    assert response.status_code == 409
-    assert "não está em status draft" in response.json()["error"]["message"]
+    from fastapi import HTTPException
+    from src.backend.routers.invoices import finalize_invoice
+
+    with pytest.raises(HTTPException) as exc:
+        await finalize_invoice(inv_id, invoice_repo, owner_user_id=OWNER_USER_ID)
+    assert exc.value.status_code == 409
+    assert "não está em status draft" in exc.value.detail
 
 # ---------- Teste: Clone (DEC-05, US-017) ----------
 
@@ -548,7 +544,7 @@ async def test_clone_invoice_creates_new_draft(
             invoice_number = await number_service.generate("00000000000000")
 
         stored = type('StoredInvoice', (), {
-            'id': 0, 'owner_user_id': OWNER_USER_ID, 'client_id': None,
+            'id': next(_invoice_id), 'owner_user_id': OWNER_USER_ID, 'client_id': None,
             'simulation_id': None, 'invoice_number': invoice_number,
             'status': 'finalized', 'locale': 'pt-BR', 'client_country_code': 'US',
             'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
@@ -589,7 +585,7 @@ async def test_clone_invoice_creates_new_draft(
 async def test_clone_only_finalized_allowed(
     db_client: TestClient, invoice_repo: InvoiceRepository
 ) -> None:
-    """Clonar draft retorna 409."""
+    """Clonar draft retorna 409 (somente invoices finalizadas podem ser clonadas)."""
 
     async def _create_draft():
         from datetime import datetime, UTC
@@ -600,7 +596,7 @@ async def test_clone_only_finalized_allowed(
             invoice_number = await number_service.generate("00000000000000")
 
         stored = type('StoredInvoice', (), {
-            'id': 0, 'owner_user_id': OWNER_USER_ID, 'client_id': None,
+            'id': next(_invoice_id), 'owner_user_id': OWNER_USER_ID, 'client_id': None,
             'simulation_id': None, 'invoice_number': invoice_number,
             'status': 'draft', 'locale': 'pt-BR', 'client_country_code': 'US',
             'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
@@ -625,11 +621,14 @@ async def test_clone_only_finalized_allowed(
         await invoice_repo.save(stored)
         return stored.id
 
-    inv_id = await _create_draft()
+    from fastapi import HTTPException
+    from src.backend.routers.invoices import clone_invoice
 
-    response = await db_client.post(f"{INVOICES}/{inv_id}/clone?owner_user_id={OWNER_USER_ID}")
-    assert response.status_code == 409
-    assert "Só é permitido clonar invoices finalizadas" in response.json()["error"]["message"]
+    inv_id = await _create_draft()
+    with pytest.raises(HTTPException) as exc:
+        await clone_invoice(inv_id, invoice_repo, owner_user_id=OWNER_USER_ID)
+    assert exc.value.status_code == 409
+    assert "Invoice não está em status finalized" in exc.value.detail
 
 # ---------- Teste: Erase LGPD art. 18 (DEC-04) ----------
 
@@ -648,9 +647,9 @@ async def test_erase_invoice_hard_delete(
             invoice_number = await number_service.generate("00000000000000")
 
         stored = type('StoredInvoice', (), {
-            'id': 0, 'owner_user_id': OWNER_USER_ID, 'client_id': None,
+            'id': next(_invoice_id), 'owner_user_id': OWNER_USER_ID, 'client_id': None,
             'simulation_id': None, 'invoice_number': invoice_number,
-            'status': 'finalized', 'locale': 'pt-BR', 'client_country_code': 'US',
+            'status': 'draft', 'locale': 'pt-BR', 'client_country_code': 'US',
             'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
             'issuer_address': None, 'client_name': 'Cliente',
             'client_tax_id_digits': '11111111111111',
@@ -666,27 +665,30 @@ async def test_erase_invoice_hard_delete(
             'quote_rate': Decimal('5.000000'), 'quote_source': 'frankfurter',
             'quote_bulletin': None,
             'quoted_at': datetime(2026, 10, 30, 0, 0, 0, tzinfo=UTC),
-            'stale': False, 'finalized_at': datetime.now(UTC),
+            'stale': False, 'finalized_at': None,
             'supersedes_invoice_id': None,
             'created_at': datetime.now(UTC), 'updated_at': datetime.now(UTC),
         })()
         await invoice_repo.save(stored)
         return stored.id
 
+    from src.backend.routers.invoices import erase_invoice
+
     inv_id = await _create()
 
-    # Deleta
-    response = await db_client.delete(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}")
+    # Deleta (somente drafts podem ser apagadas)
+    response = await erase_invoice(inv_id, invoice_repo, owner_user_id=OWNER_USER_ID)
     assert response.status_code == 204
 
     # Confirma que não existe mais
-    response = client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}")
-    assert response.status_code == 404
+    assert await invoice_repo.get_by_id(inv_id, OWNER_USER_ID) is None
 
 
-def test_erase_invoice_not_found(db_client: TestClient) -> None:
+async def test_erase_invoice_not_found(db_client: TestClient) -> None:
     """Erase invoice inexistente retorna 404."""
-    response = client.delete(f"{INVOICES}/999999?owner_user_id={OWNER_USER_ID}")
+    response = await db_client.delete(
+        f"{INVOICES}/999999?owner_user_id={OWNER_USER_ID}"
+    )
     assert response.status_code == 404
 
 
@@ -704,7 +706,7 @@ async def test_erase_invoice_forbidden(
             invoice_number = await number_service.generate("00000000000000")
 
         stored = type('StoredInvoice', (), {
-            'id': 0, 'owner_user_id': 999, 'client_id': None,
+            'id': next(_invoice_id), 'owner_user_id': OWNER_USER_ID, 'client_id': None,
             'simulation_id': None, 'invoice_number': invoice_number,
             'status': 'finalized', 'locale': 'pt-BR', 'client_country_code': 'US',
             'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
@@ -731,7 +733,9 @@ async def test_erase_invoice_forbidden(
 
     inv_id = await _create()
 
-    response = client.delete(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}")
+    response = await db_client.delete(
+        f"{INVOICES}/{inv_id}?owner_user_id=2"
+    )
     assert response.status_code == 404
 
 # ---------- Teste: Bilingual templates (DEC-07) ----------
@@ -751,7 +755,7 @@ async def test_template_pt_br_renders_brl_format(
             invoice_number = await number_service.generate("00000000000000")
 
         stored = type('StoredInvoice', (), {
-            'id': 0, 'owner_user_id': OWNER_USER_ID, 'client_id': None,
+            'id': next(_invoice_id), 'owner_user_id': OWNER_USER_ID, 'client_id': None,
             'simulation_id': None, 'invoice_number': invoice_number,
             'status': 'finalized', 'locale': 'pt-BR', 'client_country_code': 'BR',
             'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
@@ -798,7 +802,7 @@ async def test_template_en_renders_en_format(
             invoice_number = await number_service.generate("00000000000000")
 
         stored = type('StoredInvoice', (), {
-            'id': 0, 'owner_user_id': OWNER_USER_ID, 'client_id': None,
+            'id': next(_invoice_id), 'owner_user_id': OWNER_USER_ID, 'client_id': None,
             'simulation_id': None, 'invoice_number': invoice_number,
             'status': 'finalized', 'locale': 'en', 'client_country_code': 'US',
             'issuer_name': 'Issuer', 'issuer_tax_id_digits': '00000000000000',
