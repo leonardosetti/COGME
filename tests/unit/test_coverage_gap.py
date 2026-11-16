@@ -4,6 +4,7 @@ import pytest
 
 from src.backend.config import Settings
 from src.backend.main import _message_for
+from src.backend.middleware.session import SessionData
 
 
 def test_config_log_level_not_string():
@@ -383,10 +384,16 @@ def test_list_invoices_sem_e_com_filtro_de_status():
     finalizada = _make_stored_invoice(id=2, status="finalized")
     repo = FakeInvoiceRepository([rascunho, finalizada])
 
-    tudo = asyncio.run(list_invoices(object(), 1, 50, 0, None, repo))
+    tudo = asyncio.run(
+        list_invoices(object(), session=SessionData(1, 1), limit=50, offset=0, status=None, repo=repo)
+    )
     assert [inv["id"] for inv in tudo] == [1, 2]
 
-    filtrada = asyncio.run(list_invoices(object(), 1, 50, 0, "finalized", repo))
+    filtrada = asyncio.run(
+        list_invoices(
+            object(), session=SessionData(1, 1), limit=50, offset=0, status="finalized", repo=repo
+        )
+    )
     assert [inv["id"] for inv in filtrada] == [2]
 
 
@@ -398,21 +405,23 @@ def test_finalize_invoice_fluxos_404_409_e_sucesso():
     from src.backend.routers.invoices import finalize_invoice
 
     with pytest.raises(HTTPException) as erro:
-        asyncio.run(finalize_invoice(99, FakeInvoiceRepository(), owner_user_id=1))
+        asyncio.run(finalize_invoice(99, session=SessionData(1, 1), repo=FakeInvoiceRepository()))
     assert erro.value.status_code == 404
 
     finalizada = _make_stored_invoice(id=1, status="finalized")
     with pytest.raises(HTTPException) as erro:
-        asyncio.run(finalize_invoice(1, FakeInvoiceRepository([finalizada]), owner_user_id=1))
+        asyncio.run(
+            finalize_invoice(1, session=SessionData(1, 1), repo=FakeInvoiceRepository([finalizada]))
+        )
     assert erro.value.status_code == 409
 
     repo = FakeInvoiceRepository([_make_stored_invoice(id=1, status="draft")])
-    resultado = asyncio.run(finalize_invoice(1, repo, owner_user_id=1))
+    resultado = asyncio.run(finalize_invoice(1, session=SessionData(1, 1), repo=repo))
     assert resultado["status"] == "finalized"
 
     repo_falho = _RepoSemUpdate([_make_stored_invoice(id=1, status="draft")])
     with pytest.raises(HTTPException) as erro:
-        asyncio.run(finalize_invoice(1, repo_falho, owner_user_id=1))
+        asyncio.run(finalize_invoice(1, session=SessionData(1, 1), repo=repo_falho))
     assert erro.value.status_code == 404
 
 
@@ -424,16 +433,16 @@ def test_clone_invoice_fluxos_404_409_e_sucesso():
     from src.backend.routers.invoices import clone_invoice
 
     with pytest.raises(HTTPException) as erro:
-        asyncio.run(clone_invoice(99, FakeInvoiceRepository(), owner_user_id=1))
+        asyncio.run(clone_invoice(99, session=SessionData(1, 1), repo=FakeInvoiceRepository()))
     assert erro.value.status_code == 404
 
     rascunho = _make_stored_invoice(id=1, status="draft")
     with pytest.raises(HTTPException) as erro:
-        asyncio.run(clone_invoice(1, FakeInvoiceRepository([rascunho]), owner_user_id=1))
+        asyncio.run(clone_invoice(1, session=SessionData(1, 1), repo=FakeInvoiceRepository([rascunho])))
     assert erro.value.status_code == 409
 
     repo = FakeInvoiceRepository([_make_stored_invoice(id=1, status="finalized")])
-    resposta = asyncio.run(clone_invoice(1, repo, owner_user_id=1))
+    resposta = asyncio.run(clone_invoice(1, session=SessionData(1, 1), repo=repo))
     assert resposta.status == "draft"
     assert resposta.supersedes_invoice_id == 1
     assert resposta.invoice_id == 101
@@ -447,16 +456,16 @@ def test_erase_invoice_fluxos_404_409_e_sucesso():
     from src.backend.routers.invoices import erase_invoice
 
     with pytest.raises(HTTPException) as erro:
-        asyncio.run(erase_invoice(99, FakeInvoiceRepository(), owner_user_id=1))
+        asyncio.run(erase_invoice(99, session=SessionData(1, 1), repo=FakeInvoiceRepository()))
     assert erro.value.status_code == 404
 
     finalizada = _make_stored_invoice(id=1, status="finalized")
     with pytest.raises(HTTPException) as erro:
-        asyncio.run(erase_invoice(1, FakeInvoiceRepository([finalizada]), owner_user_id=1))
+        asyncio.run(erase_invoice(1, session=SessionData(1, 1), repo=FakeInvoiceRepository([finalizada])))
     assert erro.value.status_code == 409
 
     repo = FakeInvoiceRepository([_make_stored_invoice(id=1, status="draft")])
-    resposta = asyncio.run(erase_invoice(1, repo, owner_user_id=1))
+    resposta = asyncio.run(erase_invoice(1, session=SessionData(1, 1), repo=repo))
     assert resposta.status_code == 204
     assert repo.deleted == [(1, 1)]
 
@@ -475,14 +484,14 @@ def test_get_invoice_pdf_renderiza_com_monkeypatch(monkeypatch):
 
     monkeypatch.setattr(invoices, "render_pdf_from_stored", _pdf_falso)
     resposta = asyncio.run(
-        invoices.get_invoice_pdf(7, object(), repo=repo, owner_user_id=1)
+        invoices.get_invoice_pdf(7, object(), session=SessionData(1, 1), repo=repo)
     )
     assert resposta.status_code == 200
     assert resposta.body == b"%PDF-1.4 falso"
     assert "invoice_INV-0001.pdf" in resposta.headers["content-disposition"]
 
     with pytest.raises(HTTPException) as erro:
-        asyncio.run(invoices.get_invoice_pdf(999, object(), repo=repo, owner_user_id=1))
+        asyncio.run(invoices.get_invoice_pdf(999, object(), session=SessionData(1, 1), repo=repo))
     assert erro.value.status_code == 404
 
 

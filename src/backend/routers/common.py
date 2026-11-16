@@ -18,7 +18,10 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.routing import APIRoute
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
+from src.backend.config import get_settings
 from src.backend.models.database import create_session_factory
+from src.backend.middleware.session import SessionData, get_current_session
+from src.backend.middleware.authorization import require_owner
 from src.backend.services.rate_service import RateService
 from src.shared.schemas import ErrorResponse
 
@@ -68,6 +71,19 @@ SessionFactoryDep = Annotated[
     async_sessionmaker[AsyncSession], Depends(get_session_factory)
 ]
 RateServiceDep = Annotated[RateService, Depends(get_rate_service)]
+
+
+async def get_current_session_dep(
+    request: Request,
+) -> SessionData | None:
+    """Devolve a sessão validada do cookie, ou ``None`` se não houver."""
+
+    session_factory = get_session_factory(request)
+    pepper = get_settings().login_pepper
+    return await get_current_session(request, session_factory, pepper)
+
+
+CurrentSession = Annotated[SessionData | None, Depends(get_current_session_dep)]
 
 
 class BodyTooLargeError(Exception):

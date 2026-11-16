@@ -45,6 +45,7 @@ class Settings(BaseSettings):
     rate_ttl_seconds: int = Field(default=3600, gt=0)
     provider_timeout_seconds: float = Field(default=0.9, gt=0)
     log_level: str = "INFO"
+    login_pepper: str = Field(repr=False, min_length=16)
 
     @field_validator("database_url")
     @classmethod

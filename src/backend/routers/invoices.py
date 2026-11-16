@@ -26,8 +26,11 @@ from src.backend.models.invoice_repository import (
 from src.backend.routers.common import (
     INTERNAL_ERROR_RESPONSE,
     VALIDATION_ERROR_RESPONSE,
+    CurrentSession,
     RateServiceDep,
     SessionFactoryDep,
+    SessionData,
+    require_owner,
 )
 from src.backend.services.invoice_service import render_invoice, render_pdf_from_stored
 from src.shared.schemas import (
@@ -38,6 +41,22 @@ from src.shared.schemas import (
 logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/v1", tags=["invoices"])
+
+
+def get_invoice_repo(
+    session_factory: SessionFactoryDep,
+) -> InvoiceRepository:
+    return SqlAlchemyInvoiceRepository(session_factory)
+
+
+async def _require_session(session: CurrentSession) -> SessionData:
+    if session is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Não autenticado",
+            headers={"WWW-Authenticate": "Cookie"},
+        )
+    return session
 
 
 # ---------- Original Invoice PDF Generation (REQ-04) -->
@@ -115,16 +134,17 @@ def get_invoice_repo(
 )
 async def list_invoices(
     request: Request,
-    owner_user_id: int = Query(1, alias="owner_user_id"),
+    session: CurrentSession,
     limit: int = Query(50, ge=1, le=100),
     offset: int = Query(0, ge=0),
     status: str | None = Query(None, pattern="^(draft|finalized)$"),
     repo: InvoiceRepository = Depends(get_invoice_repo),
 ) -> list[dict[str, Any]]:
     """Lista invoices do usuário com paginação."""
+    sess = await _require_session(session)
     page = (offset // limit) + 1 if limit else 1
     invoices, _total = await repo.list_by_owner(
-        owner_user_id, status=status, page=page, page_size=limit
+        sess.user_id, status=status, page=page, page_size=limit
     )
     return [asdict(inv) for inv in invoices]
 
@@ -140,12 +160,13 @@ async def list_invoices(
 async def get_invoice_pdf(
     invoice_id: int,
     rate_service: RateServiceDep,
+    session: CurrentSession,
     repo: InvoiceRepository = Depends(get_invoice_repo),
-    owner_user_id: int = Query(1, alias="owner_user_id"),
 ) -> Response:
     """Recupera invoice e renderiza PDF."""
-    invoice = await repo.get_by_id(invoice_id, owner_user_id)
-    if not invoice:
+    sess = await _require_session(session)
+    invoice = await repo.get_by_id(invoice_id, sess.user_id)
+    if invoice is None:
         raise HTTPException(status_code=404, detail="Invoice not found")
 
     pdf_bytes = await render_pdf_from_stored(invoice, rate_service)
@@ -173,19 +194,22 @@ async def get_invoice_pdf(
 )
 async def finalize_invoice(
     invoice_id: int,
+    session: CurrentSession,
     repo: InvoiceRepository = Depends(get_invoice_repo),
-    owner_user_id: int = Query(1, alias="owner_user_id"),
 ) -> dict[str, Any]:
     """Finaliza invoice: draft -> finalized (DEC-05)."""
-    invoice = await repo.get_by_id(invoice_id, owner_user_id)
-    if not invoice:
+    sess = await _require_session(session)
+    invoice = await repo.get_by_id(invoice_id, sess.user_id)
+    if invoice is None:
         raise HTTPException(status_code=404, detail="Invoice not found")
-
     if invoice.status != "draft":
-        raise HTTPException(status_code=409, detail="Invoice não está em status draft")
+        raise HTTPException(
+            status_code=409,
+            detail="Invoice não está em status draft",
+        )
 
     updated = await repo.update_status(
-        invoice_id, owner_user_id, "finalized", datetime.now().astimezone()
+        invoice_id, sess.user_id, "finalized", datetime.now().astimezone()
     )
     if updated is None:
         raise HTTPException(status_code=404, detail="Invoice not found")
@@ -199,24 +223,18 @@ async def finalize_invoice(
 )
 async def clone_invoice(
     invoice_id: int,
+    session: CurrentSession,
     repo: InvoiceRepository = Depends(get_invoice_repo),
-    owner_user_id: int = Query(1, alias="owner_user_id"),
 ) -> CloneResponse:
-    """Clona invoice finalizada -> novo draft (DEC-05, US-017).
-
-    O clone:
-    - Recebe novo número único (via next_invoice_number, DEC-06)
-    - Status = 'draft'
-    - supersedes_invoice_id = invoice_id original
-    """
-    invoice = await repo.get_by_id(invoice_id, owner_user_id)
-    if not invoice:
+    """Clona invoice finalizada -> novo draft (DEC-05, US-017)."""
+    sess = await _require_session(session)
+    invoice = await repo.get_by_id(invoice_id, sess.user_id)
+    if invoice is None:
         raise HTTPException(status_code=404, detail="Invoice not found")
-
     if invoice.status != "finalized":
         raise HTTPException(status_code=409, detail="Invoice não está em status finalized")
 
-    cloned = await repo.clone(invoice_id, owner_user_id)
+    cloned = await repo.clone(invoice_id, sess.user_id)
     return CloneResponse(
         invoice_id=cloned.id,
         invoice_number=cloned.invoice_number,
@@ -240,15 +258,16 @@ async def clone_invoice(
 )
 async def erase_invoice(
     invoice_id: int,
+    session: CurrentSession,
     repo: InvoiceRepository = Depends(get_invoice_repo),
-    owner_user_id: int = Query(1, alias="owner_user_id"),
 ) -> Response:
     """Apaga invoice (erase LGPD art. 18, DEC-04).
 
     Apenas invoices em status 'draft' podem ser apagadas.
     """
-    invoice = await repo.get_by_id(invoice_id, owner_user_id)
-    if not invoice:
+    sess = await _require_session(session)
+    invoice = await repo.get_by_id(invoice_id, sess.user_id)
+    if invoice is None:
         raise HTTPException(status_code=404, detail="Invoice not found")
 
     if invoice.status != "draft":
@@ -256,5 +275,5 @@ async def erase_invoice(
             status_code=409, detail="Invoice não pode ser apagada (status finalized)"
         )
 
-    await repo.delete(invoice_id, owner_user_id)
+    await repo.delete(invoice_id, sess.user_id)
     return Response(status_code=status.HTTP_204_NO_CONTENT)

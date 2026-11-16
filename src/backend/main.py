@@ -24,10 +24,11 @@ from starlette.types import ASGIApp, Message, Receive, Scope, Send
 
 from src.backend.config import get_settings
 from src.backend.errors import DomainError
+from src.backend.middleware.csrf import CSRFMiddleware
 from src.backend.models.database import create_engine, create_session_factory
 from src.backend.models.repository import SqlAlchemyQuoteRepository
 
-from src.backend.routers import health, invoices, rates, simulations
+from src.backend.routers import auth, health, invoices, rates, simulations
 from src.backend.services.circuit_breaker import CircuitBreaker
 from src.backend.services.rate_providers import FrankfurterProvider, PtaxProvider
 from src.backend.services.rate_service import RateService
@@ -321,6 +322,7 @@ async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
         timeout = settings.provider_timeout_seconds
         app.state.engine = engine
         app.state.session_factory = create_session_factory(engine)
+        app.state.login_pepper = settings.login_pepper
         app.state.rate_service = RateService(
             repository=SqlAlchemyQuoteRepository(create_session_factory(engine)),
             providers=[
@@ -373,7 +375,8 @@ def create_app() -> FastAPI:
     app.add_exception_handler(RequestValidationError, _handle_validation_error)
     app.add_exception_handler(StarletteHTTPException, _handle_http_error)
     app.add_middleware(InternalErrorMiddleware)
-    for module in (health, rates, simulations, invoices):
+    app.add_middleware(CSRFMiddleware)
+    for module in (auth, health, rates, simulations, invoices):
         app.include_router(module.router)
     app.openapi = lambda: _build_openapi(app)  # type: ignore[method-assign]
     return app

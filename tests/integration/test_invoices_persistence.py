@@ -21,6 +21,7 @@ from src.backend.models.invoice_repository import (
     InvoiceRepository,
     SqlAlchemyInvoiceRepository,
 )
+from src.backend.middleware.session import SessionData
 from src.backend.services.rate_service import RateService
 from src.shared.schemas import RateSource, Regime
 
@@ -523,7 +524,7 @@ async def test_finalize_not_draft_returns_409(
     from src.backend.routers.invoices import finalize_invoice
 
     with pytest.raises(HTTPException) as exc:
-        await finalize_invoice(inv_id, invoice_repo, owner_user_id=OWNER_USER_ID)
+        await finalize_invoice(inv_id, invoice_repo, session=SessionData(OWNER_USER_ID, 1))
     assert exc.value.status_code == 409
     assert "não está em status draft" in exc.value.detail
 
@@ -626,7 +627,7 @@ async def test_clone_only_finalized_allowed(
 
     inv_id = await _create_draft()
     with pytest.raises(HTTPException) as exc:
-        await clone_invoice(inv_id, invoice_repo, owner_user_id=OWNER_USER_ID)
+        await clone_invoice(inv_id, invoice_repo, session=SessionData(OWNER_USER_ID, 1))
     assert exc.value.status_code == 409
     assert "Invoice não está em status finalized" in exc.value.detail
 
@@ -677,7 +678,7 @@ async def test_erase_invoice_hard_delete(
     inv_id = await _create()
 
     # Deleta (somente drafts podem ser apagadas)
-    response = await erase_invoice(inv_id, invoice_repo, owner_user_id=OWNER_USER_ID)
+    response = await erase_invoice(inv_id, invoice_repo, session=SessionData(OWNER_USER_ID, 1))
     assert response.status_code == 204
 
     # Confirma que não existe mais
