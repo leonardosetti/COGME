@@ -49,13 +49,13 @@ class Actor:
         """
         return self._abilities[ability_type]
 
-    def perform(self, task: object) -> None:
+    async def perform(self, task: object) -> None:
         """Executa uma tarefa por este ator.
 
         Args:
             task: Objeto com método ``perform_as(actor)``.
         """
-        task.perform_as(self)
+        await task.perform_as(self)
 
     async def ask(self, question: object) -> object:
         """Responde uma pergunta por este ator.
