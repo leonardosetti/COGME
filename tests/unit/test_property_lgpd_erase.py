@@ -229,7 +229,6 @@ class TestDatabaseNoPersonalData:
         async with engine.begin() as conn:
             await conn.execute(text("TRUNCATE TABLE fx_quotes RESTART IDENTITY"))
 
-    @pytest.mark.asyncio
     async def test_fx_quotes_columns_contain_only_expected_fields(
         self, engine: AsyncEngine, clean_db: None
     ) -> None:
@@ -262,7 +261,6 @@ class TestDatabaseNoPersonalData:
             f"fx_quotes has unexpected columns: {set(columns) - expected_columns}"
         )
 
-    @pytest.mark.asyncio
     async def test_saved_quote_has_no_personal_fields(
         self, engine: AsyncEngine, clean_db: None
     ) -> None:
@@ -345,7 +343,6 @@ class TestLogsNoPersonalData:
 
     @given(invoice_request_strategy(), rate_quote_strategy())
     @settings(max_examples=20, deadline=None)
-    @pytest.mark.asyncio
     async def test_invoice_render_logs_no_personal_data(
         self, invoice_request: InvoiceRequest, rate_quote: RateQuote
     ) -> None:
@@ -390,7 +387,6 @@ class TestLogsNoPersonalData:
 
     @given(simulation_request_strategy(), rate_quote_strategy())
     @settings(max_examples=20, deadline=None)
-    @pytest.mark.asyncio
     async def test_simulation_logs_no_personal_data(
         self, sim_request: SimulationRequest, rate_quote: RateQuote
     ) -> None:
@@ -450,7 +446,6 @@ class TestPersonalDataInMemoryOnly:
 
     @given(simulation_request_strategy(), rate_quote_strategy())
     @settings(max_examples=20, deadline=None)
-    @pytest.mark.asyncio
     async def test_simulation_response_no_personal_data(
         self, sim_request: SimulationRequest, rate_quote: RateQuote
     ) -> None:
@@ -492,7 +487,6 @@ class TestPdfGenerationInMemoryOnly:
 
     @given(invoice_request_strategy(), rate_quote_strategy())
     @settings(max_examples=5, deadline=None)
-    @pytest.mark.asyncio
     async def test_render_invoice_does_not_persist_personal_data(
         self, invoice_request: InvoiceRequest, rate_quote: RateQuote
     ) -> None:
