@@ -19,8 +19,6 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from pydantic_core import core_schema
 from starlette.exceptions import HTTPException as StarletteHTTPException
-from starlette.requests import ClientDisconnect
-from starlette.types import ASGIApp, Message, Receive, Scope, Send
 
 from src.backend.config import get_settings
 from src.backend.errors import DomainError
@@ -244,58 +242,6 @@ async def _handle_http_error(_: Request, error: Exception) -> JSONResponse:
     return _error_response(ErrorKey.INTERNAL_ERROR, _INTERNAL_ERROR_MESSAGE, 500)
 
 
-class InternalErrorMiddleware:
-    """Converte qualquer exceção inesperada em 500 ``internal_error``, sem traceback.
-
-    Usa um middleware em vez de ``add_exception_handler(Exception, ...)`` porque, nesse caso, o
-    Starlette responde e levanta a exceção de novo, e o servidor despeja o traceback no log. Aqui
-    a exceção é consumida e só o tipo dela e a rota vão para o log, nunca o corpo nem a mensagem.
-    """
-
-    def __init__(self, app: ASGIApp) -> None:
-        """Guarda a aplicação embrulhada.
-
-        Args:
-            app: Aplicação ASGI interna.
-        """
-        self._app = app
-
-    async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
-        """Repassa a chamada e responde 500 se algo inesperado escapar.
-
-        Args:
-            scope: Escopo ASGI.
-            receive: Canal de entrada.
-            send: Canal de saída.
-        """
-        if scope["type"] != "http":
-            await self._app(scope, receive, send)
-            return
-        started = False
-
-        async def tracking_send(message: Message) -> None:
-            nonlocal started
-            if message["type"] == "http.response.start":
-                started = True
-            await send(message)
-
-        try:
-            await self._app(scope, receive, tracking_send)
-        except ClientDisconnect:
-            # O cliente fechou o socket no meio do corpo: não é falha do servidor e não há a
-            # quem responder. Só a rota vai para o log, sem corpo nem mensagem.
-            route = getattr(scope.get("route"), "path", "-")
-            logger.info("client_disconnect route=%s", route)
-        except Exception as error:
-            route = getattr(scope.get("route"), "path", "-")
-            # Log só o tipo da exceção (nunca o traceback/mensagem: pode conter segredo).
-            logger.error("unhandled_exception type=%s route=%s", type(error).__name__, route)
-            if started:
-                raise
-            response = _error_response(ErrorKey.INTERNAL_ERROR, _INTERNAL_ERROR_MESSAGE, 500)
-            await response(scope, receive, send)
-
-
 def _configure_logging(level: str) -> None:
     """Ajusta o logging do projeto ao nível da configuração.
 
@@ -376,7 +322,6 @@ def create_app() -> FastAPI:
     app.add_exception_handler(DomainError, _handle_domain_error)
     app.add_exception_handler(RequestValidationError, _handle_validation_error)
     app.add_exception_handler(StarletteHTTPException, _handle_http_error)
-    app.add_middleware(InternalErrorMiddleware)
     app.add_middleware(CSRFMiddleware)
     app.state.limiter = limiter
     app.add_exception_handler(RateLimitExceeded, rate_limit_exceeded_handler)

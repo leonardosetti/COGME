@@ -63,7 +63,6 @@ _COUNTRIES: list[tuple[str, str]] = [
     ("NZ", "New Zealand"),
     ("SG", "Singapore"),
     ("HK", "Hong Kong"),
-    ("KR", "Korea, Republic of"),
 ]
 
 
@@ -77,13 +76,19 @@ def upgrade() -> None:
     op.create_index("ix_countries_code", "countries", ["code"], unique=True)
 
     for code, name in _COUNTRIES:
-        op.execute(
-            sa.text("INSERT INTO countries (code, name) VALUES (:c, :n) "
-                    "ON CONFLICT (code) DO NOTHING"),
-            {"c": code, "n": name},
+        op.bulk_insert(
+            countries_table,
+            [{"code": code, "name": name}],
         )
 
 
 def downgrade() -> None:
     op.drop_index("ix_countries_code", table_name="countries")
     op.drop_table("countries")
+
+
+countries_table = sa.table(
+    "countries",
+    sa.Column("code", sa.CHAR(2)),
+    sa.Column("name", sa.String(120)),
+)

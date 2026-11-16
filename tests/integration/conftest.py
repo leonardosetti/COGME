@@ -11,8 +11,11 @@ Para testes que precisam de banco real, use o fixture ``db_client``.
 from __future__ import annotations
 
 from collections.abc import AsyncIterator, Callable, Iterator
-
+import hashlib
 import os
+from datetime import datetime, timedelta, timezone
+import secrets
+
 import pytest
 from fastapi.testclient import TestClient
 from httpx import ASGITransport, AsyncClient
@@ -21,6 +24,7 @@ from sqlalchemy.ext.asyncio import AsyncEngine
 
 from src.backend.main import app
 from src.backend.models.database import create_engine, create_session_factory
+from src.backend.models.user import UserSession
 from src.backend.routers.common import get_rate_service
 from src.backend.services.rate_service import RateService
 from src.shared.schemas import RateSource
@@ -163,3 +167,39 @@ async def db_client(
     # Cleanup
     app.state.engine = None
     app.state.session_factory = None
+
+
+# ----- Sessão autenticada (Onda 1 CR-002: P-14 isolamento por proprietário) -----
+
+async def _create_session_for_user(engine: AsyncEngine, user_id: int = 1) -> str:
+    """Cria uma sessão válida para ``user_id`` e devolve o token puro."""
+    session_factory = create_session_factory(engine)
+    token = secrets.token_urlsafe(32)
+    token_hash = hashlib.sha256((token + os.environ.get("COGME_LOGIN_PEPPER", "")).encode()).hexdigest()
+    now = datetime.now(timezone.utc)
+    async with session_factory() as session:
+        session.add(
+            UserSession(
+                user_id=user_id,
+                token_hash=token_hash,
+                created_at=now,
+                last_seen_at=now,
+                expires_at=now + timedelta(hours=24),
+                revoked_at=None,
+            )
+        )
+        await session.commit()
+    return token
+
+
+@pytest.fixture
+async def auth_client(db_client: AsyncClient, engine: AsyncEngine) -> AsyncClient:
+    """Cliente autenticado como usuário id=1 (sessão + cookie CSRF para rotas mutáveis)."""
+
+    token = await _create_session_for_user(engine)
+    # Cookie de sessão + cookie CSRF (mesmo valor, para rotas mutáveis passarem CSRF).
+    db_client.cookies.set("session", token)
+    db_client.cookies.set("csrf_token", token)
+    db_client.headers["X-CSRF-Token"] = token
+    return db_client
+
