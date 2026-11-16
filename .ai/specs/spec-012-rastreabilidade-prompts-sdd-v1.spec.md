@@ -45,7 +45,7 @@ trace:
 
 # SPEC spec-012 — rastreabilidade-prompts-sdd-v1 — Rastreabilidade de prompts SDD (100% dos handoffs catalogados em `.ai/handoffs/` — REQ-13, fase N9.3)
 
-Status: SPEC EMITIDA — PENDENTE DE REVISÃO E DE IMPLEMENTAÇÃO (onda seguinte, Art. 6.1 SDD) | Tarefa: TA-0057 (handoff `.ai/handoffs/HF-0613-spec-012-rastreabilidade-prompts-sdd-v1.md`) | Orquestrador: agent-nexus-prime-ultimate | Custódia: agent-sdd-specialist (`.ai/specs/`)
+Status: IMPLEMENTADA — catálogo de handoffs em `.ai/handoffs/INDEX.md` (100% dos prompts SDD catalogados, REQ-13, fase N9.3), ratificada CCB 05/11/2026 (instrumento RAT-2026-11-05-A16, ADR-LOG-012) | Tarefa: TA-0057 (handoff `.ai/handoffs/HF-0613-spec-012-rastreabilidade-prompts-sdd-v1.md`) | Orquestrador: agent-nexus-prime-ultimate | Custódia: agent-sdd-specialist (`.ai/specs/`)
 
 Fonte única das decisões de catálogo e auditoria de rastreabilidade dos prompts SDD (handoffs) do COGME. Em conflito, vale a hierarquia do Art. 2 da Constituição (constitution.md:41-50; resolução de cima para baixo, constitution.md:78).
 

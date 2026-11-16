@@ -38,7 +38,7 @@ trace:
 
 # SPEC spec-005 — container-layers-v1 — Camadas de containers para a produção ortogonal do COGME
 
-Status: SPEC EMITIDA — AMENDADA PELA TA-0030 (2026-11-02) — PENDENTE DE REVISÃO E DE IMPLEMENTAÇÃO (onda seguinte, Art. 6.1 SDD) | Tarefa: TA-0030 (amenda cirúrgica; handoff `.ai/handoffs/HF-0030-nginx-aceito-demo.md`) sobre a emissão TA-0029 (`.ai/handoffs/HF-0029-container-layers-spec.md`, envelope `.ai/handoffs/task-ta-0029.json`) | Motivo da amenda: Nginx/proxy promovido de "profile opcional latente" para **ACEITO E MANTIDO** por ratificação GP/Humano 2026-11-02 (Art. 5.1, §2) | Orquestrador: agent-nexus-prime-ultimate | Custódia: agent-sdd-specialist (`.ai/specs/`)
+Status: IMPLEMENTADA — camadas de containers codificadas em `docker-compose.yml` (db, migrate, back, front, proxy com proxy sempre ativo), `Dockerfile` multi-stage, `infra/nginx/default.conf`, `migrations/`, ratificada CCB 05/11/2026 (instrumento RAT-2026-11-05-A16) | Tarefa: TA-0030 (amenda cirúrgica; handoff `.ai/handoffs/HF-0030-nginx-aceito-demo.md`) sobre a emissão TA-0029 | Orquestrador: agent-nexus-prime-ultimate | Custódia: agent-sdd-specialist (`.ai/specs/`)
 
 Fonte única das decisões de camadas de containers. Em conflito, vale a hierarquia do Art. 2 da Constituição (constitution.md:41-50; resolução de cima para baixo, constitution.md:78).
 

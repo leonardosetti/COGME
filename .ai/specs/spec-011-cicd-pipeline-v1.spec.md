@@ -43,7 +43,7 @@ trace:
 
 # SPEC spec-011 — cicd-pipeline-v1 — Pipeline CI/CD do COGME (lint+testes ≤5 min por push, falha bloqueando merge)
 
-Status: SPEC EMITIDA — PENDENTE DE REVISÃO E DE IMPLEMENTAÇÃO (onda seguinte, Art. 6.1 SDD) | Tarefa: TA-0056 (handoff `.ai/handoffs/HF-0612-spec-011-cicd-pipeline-v1.md`) | Orquestrador: agent-nexus-prime-ultimate | Custódia: agent-sdd-specialist (`.ai/specs/`)
+Status: IMPLEMENTADA — CI/CD codificado em `.github/workflows/ci.yml` (kill-switch, foss-compliance, sdd-validation, agent-health, lint, test-suite, build-layers, contract-network, playwright-e2e, final-status), ratificada CCB 05/11/2026 (instrumento RAT-2026-11-05-A16) | Tarefa: TA-0056 (handoff `.ai/handoffs/HF-0612-spec-011-cicd-pipeline-v1.md`) | Orquestrador: agent-nexus-prime-ultimate | Custódia: agent-sdd-specialist (`.ai/specs/`)
 
 Fonte única das decisões de pipeline CI/CD do COGME. Em conflito, vale a hierarquia do Art. 2 da Constituição (constitution.md:41-50; resolução de cima para baixo, constitution.md:78).
 

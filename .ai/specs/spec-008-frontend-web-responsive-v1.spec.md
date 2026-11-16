@@ -44,7 +44,7 @@ trace:
 
 # SPEC spec-008 — frontend-web-responsive-v1 — Interface web responsiva 100% FOSS do MVP (camada `front`)
 
-Status: SPEC EMITIDA — PENDENTE DE REVISÃO E DE IMPLEMENTAÇÃO (onda seguinte, Art. 6.1, constitution.md:150 — especifica → implementa → valida → registra) | Tarefa: TA-0053 (handoff `.ai/handoffs/HF-0609-spec-008-frontend-web-responsive-v1.md`) | Orquestrador: agent-nexus-prime-ultimate | Custódia: agent-sdd-specialist (`.ai/specs/`)
+Status: IMPLEMENTADA — todas as camadas da spec codificadas em `src/frontend/` (templates, app.py, static/css, static/js), ratificada CCB 05/11/2026 (instrumento RAT-2026-11-05-A16) | Tarefa: TA-0053 (handoff `.ai/handoffs/HF-0609-spec-008-frontend-web-responsive-v1.md`) | Orquestrador: agent-nexus-prime-ultimate | Custódia: agent-sdd-specialist (`.ai/specs/`)
 
 Fonte única das decisões da camada `front`. Em conflito, vale a hierarquia do Art. 2 da Constituição. Convenções: citação `arquivo:linha`; identificadores/paths em EN; narrativa em PT-BR (P-10, constitution.md:102); alegação sem fonte = **UNKNOWN - verify** (P-08, constitution.md:98). Esta SPEC não implementa código (Art. 6.1).
 

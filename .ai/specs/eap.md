@@ -280,19 +280,19 @@ architect, fora desta emissão. O mermaid acima é a fonte textual válida ao Do
 
 ## 8. Critérios de aceite e testes (desta emissão)
 
-- [ ] AC-01: arquivo não vazio, com frontmatter (DoR não-0B — kb-taxonomy.md:43).
-- [ ] AC-02: as 12 fases N1..N12 declaradas, cada uma com citação `arquivo:linha` real da
+- [x] AC-01: arquivo não vazio, com frontmatter (DoR não-0B — kb-taxonomy.md:43).
+- [x] AC-02: as 12 fases N1..N12 declaradas, cada uma com citação `arquivo:linha` real da
       Tabela 2 (plano-integral:36-47).
-- [ ] AC-03: contagem de pacotes por fase somando 37, conferida contra
+- [x] AC-03: contagem de pacotes por fase somando 37, conferida contra
       plano-integral:30,49,62.
-- [ ] AC-04: cross-refs às specs irmãs da rodada presentes onde a fase tem spec
+- [x] AC-04: cross-refs às specs irmãs da rodada presentes onde a fase tem spec
       (N2.2→spec-006; N5.3→spec-008; N6.2→spec-009; N6.3→spec-010; N7.1→spec-011;
       N9.3→spec-012; N11.1/N11.2→spec-013).
-- [ ] AC-05: diagrama mermaid textual presente e derivado apenas da fonte (DoR classe
+- [x] AC-05: diagrama mermaid textual presente e derivado apenas da fonte (DoR classe
       `diagrama` — kb-taxonomy.md:57).
-- [ ] AC-06: divergências D1–D4 registradas sem resolução indevida (§3).
-- [ ] AC-07: nenhum objetivo/atividade/marco inventado; lacuna = `UNKNOWN - verify` (P-08).
-- [ ] AC-08: nenhum arquivo além de `.ai/specs/eap.md` editado; nada de git.
+- [x] AC-06: divergências D1–D4 registradas sem resolução indevida (§3).
+- [x] AC-07: nenhum objetivo/atividade/marco inventado; lacuna = `UNKNOWN - verify` (P-08).
+- [x] AC-08: nenhum arquivo além de `.ai/specs/eap.md` editado; nada de git.
 
 ## 9. Fora de escopo (YAGNI)
 

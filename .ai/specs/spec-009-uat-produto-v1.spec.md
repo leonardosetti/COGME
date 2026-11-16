@@ -44,7 +44,7 @@ trace:
 
 # SPEC spec-009 — uat-produto-v1 — Plano e roteiro de UAT de produto (fase N6.2)
 
-Status: SPEC EMITIDA — PENDENTE DE REVISÃO (agent-reviewer) E DE RATIFICAÇÃO CCB/PO DO DESTINO DAS EVIDÊNCIAS (condicionante, §2 e §3.8) | Tarefa: TA-0054 (handoff `.ai/handoffs/HF-0610-spec-009-uat-produto-v1.md`) | Orquestrador: agent-nexus-prime-ultimate | Custódia: agent-sdd-specialist (`.ai/specs/`)
+Status: REVISADA E RATIFICADA — plano e roteiro de UAT de produto (fase N6.2), critério binário fail-closed, destino das evidências = `docs/uat/rodada-NN/` decidido pelo GP/CCB em 05/11/2026, ratificada CCB 05/11/2026 (instrumento RAT-2026-11-05-A16) | Tarefa: TA-0054 (handoff `.ai/handoffs/HF-0610-spec-009-uat-produto-v1.md`) | Orquestrador: agent-nexus-prime-ultimate | Custódia: agent-sdd-specialist (`.ai/specs/`)
 
 Fonte única do plano e do roteiro de UAT de produto da REQ-09. Em conflito, vale a hierarquia do Art. 2 (constitution.md:41-50; resolução de cima para baixo, constitution.md:78). Convenções: citação `arquivo:linha`; identificadores/paths/tokens de estado em EN; narrativa PT-BR (P-10, constitution.md:102); alegação sem fonte = **UNKNOWN - verify** (P-08, constitution.md:98; MANIFEST.md:58). Esta SPEC não implementa código e não executa a UAT (Art. 6.1, constitution.md:150) — ela norma a fase N6.2.
 

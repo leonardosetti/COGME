@@ -49,7 +49,7 @@ trace:
 
 # SPEC spec-013 — documentacao-tecnica-v1 — Documentação técnica: doc de arquitetura + revisão/aprovação da OpenAPI (REQ-14)
 
-Status: SPEC EMITIDA — PENDENTE DE REVISÃO E DE IMPLEMENTAÇÃO (onda seguinte, Art. 6.1 SDD) | Tarefa: TA-0058 (handoff `.ai/handoffs/HF-0614-spec-013-documentacao-tecnica-v1.md`) | Orquestrador: agent-nexus-prime-ultimate | Custódia: agent-sdd-specialist (`.ai/specs/`)
+Status: IMPLEMENTADA — documentação técnica codificada (`docs/diagramas/`, `tests/integration/test_openapi.py` com 10 testes OpenAPI REQ-14, `docs/der.md`, `constitution.md`, `AGENTS.md`, `README.md`), ratificada CCB 05/11/2026 (instrumento RAT-2026-11-05-A16, ADR-LOG-012) | Tarefa: TA-0058 (handoff `.ai/handoffs/HF-0614-spec-013-documentacao-tecnica-v1.md`) | Orquestrador: agent-nexus-prime-ultimate | Custódia: agent-sdd-specialist (`.ai/specs/`)
 
 Fonte única das decisões de documentação técnica do COGME. Em conflito, vale a hierarquia do Art. 2 da Constituição (constitution.md:41-50; resolução de cima para baixo, constitution.md:78).
 

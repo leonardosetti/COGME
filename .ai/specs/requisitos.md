@@ -252,20 +252,20 @@ Legenda de caminhos: `spec-002` = `.ai/specs/spec-002-requisitos-review-round-1.
 
 ## 9. Critérios de aceite e testes (deste artefato)
 
-- [ ] AC-01: arquivo não vazio no caminho pinned `.ai/specs/requisitos.md`, sem rename
+- [x] AC-01: arquivo não vazio no caminho pinned `.ai/specs/requisitos.md`, sem rename
       (MANIFEST:100, §5.1; LISTA:25; HF-0621:25).
-- [ ] AC-02: REQ-01..REQ-15 transcritos com rastreabilidade dupla (spec-002:62-76 +
+- [x] AC-02: REQ-01..REQ-15 transcritos com rastreabilidade dupla (spec-002:62-76 +
       plano-integral:71-85, com conferência tap.md:102-116); ZERO requisito, valor ou métrica
       novo — tudo citado (P-08; HF-0621:22,31).
-- [ ] AC-03: RNF por cross-ref a spec-006 (NF-01..NF-25), sem duplicar métricas (§6).
-- [ ] AC-04: matriz REQ↔US reflete spec-002 §C com cobertura 15/15 e condicionais
+- [x] AC-03: RNF por cross-ref a spec-006 (NF-01..NF-25), sem duplicar métricas (§6).
+- [x] AC-04: matriz REQ↔US reflete spec-002 §C com cobertura 15/15 e condicionais
       KG-R-02/KG-R-03 marcadas (§5).
-- [ ] AC-05: emendas E-01..E-08 com ratificação citada (constitution.md:226,245) e impacto em
+- [x] AC-05: emendas E-01..E-08 com ratificação citada (constitution.md:226,245) e impacto em
       requisitos apenas onde declarado; lacunas com `UNKNOWN - verify` (§7).
-- [ ] AC-06: nenhum requisito/story promovido a aprovado — estados transcritos conforme a
+- [x] AC-06: nenhum requisito/story promovido a aprovado — estados transcritos conforme a
       fonte (HF-0621:35); `canonical-mirror` identificado como estado de inventário.
-- [ ] AC-07: arquivo ≤400 linhas (contrato DO #3, .opencode/agents/agent-sdd-specialist.md:86).
-- [ ] AC-08: nenhum outro arquivo editado nesta task — docs/requisitos/requisitos.md,
+- [x] AC-07: arquivo ≤400 linhas (contrato DO #3, .opencode/agents/agent-sdd-specialist.md:86).
+- [x] AC-08: nenhum outro arquivo editado nesta task — docs/requisitos/requisitos.md,
       spec-002, spec-006, spec-001, constitution.md, plano-integral e tap.md intocados;
       nada commitado (HF-0621:34,37).
 - Validação: agent-reviewer audita as citações linha-a-linha (padrão spec-002:251-252);
