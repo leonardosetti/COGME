@@ -32,6 +32,11 @@ from src.backend.routers.common import (
     SessionData,
     require_owner,
 )
+from src.backend.schemas.invoice import (
+    InvoiceCreateDraft,
+    InvoiceResponse,
+    InvoiceUpdate,
+)
 from src.backend.services.invoice_service import render_invoice, render_pdf_from_stored
 from src.shared.schemas import (
     ErrorResponse,
@@ -277,3 +282,282 @@ async def erase_invoice(
 
     await repo.delete(invoice_id, sess.user_id)
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+
+# ---------- Invoice draft: criar, atualizar, baixar PDF (SPEC-020, SPEC-021) ----------
+
+
+def _to_invoice_response(inv) -> InvoiceResponse:
+    return InvoiceResponse(
+        id=inv.id,
+        owner_user_id=inv.owner_user_id,
+        client_id=inv.client_id,
+        simulation_id=inv.simulation_id,
+        invoice_number=inv.invoice_number,
+        status=inv.status,
+        locale=inv.locale,
+        client_country_code=inv.client_country_code,
+        finalized_at=inv.finalized_at,
+        supersedes_invoice_id=inv.supersedes_invoice_id,
+        number=inv.invoice_number,
+        issuer_name=inv.issuer_name,
+        issuer_tax_id_digits=inv.issuer_tax_id_digits,
+        issuer_address=inv.issuer_address,
+        client_name=inv.client_name,
+        client_tax_id_digits=inv.client_tax_id_digits,
+        client_address=inv.client_address,
+        banco=inv.banco,
+        agencia=inv.agencia,
+        conta_com_digito=inv.conta_com_digito,
+        pix_key=inv.pix_key,
+        periodo_inicio=inv.periodo_inicio,
+        periodo_fim=inv.periodo_fim,
+        description=inv.description,
+        regime=inv.regime,
+        currency=inv.currency,
+        amount=inv.amount,
+        quantity=inv.quantity,
+        spread_pct=inv.spread_pct,
+        iof_pct=inv.iof_pct,
+        gross_foreign=inv.gross_foreign,
+        gross_brl=inv.gross_brl,
+        spread_brl=inv.spread_brl,
+        iof_brl=inv.iof_brl,
+        net_brl=inv.net_brl,
+        effective_rate=inv.effective_rate,
+        quote_rate=inv.quote_rate,
+        quote_source=inv.quote_source,
+        quote_bulletin=inv.quote_bulletin,
+        quoted_at=inv.quoted_at,
+        stale=inv.stale,
+        created_at=inv.created_at,
+        updated_at=inv.updated_at,
+    )
+
+
+@router.post(
+    "/invoices",
+    response_model=InvoiceResponse,
+    status_code=status.HTTP_201_CREATED,
+    summary="Cria invoice em draft (SPEC-020)",
+    responses={
+        400: {"model": ErrorResponse, "description": "Dados inválidos."},
+        401: {"description": "Não autenticado", "model": ErrorResponse},
+        409: {"model": ErrorResponse, "description": "Conflito de numeração."},
+    },
+)
+async def create_invoice(
+    payload: InvoiceCreateDraft,
+    session: CurrentSession,
+    repo: InvoiceRepository = Depends(get_invoice_repo),
+) -> InvoiceResponse:
+    """Cria uma invoice em status draft com número sequencial (DEC-06)."""
+
+    sess = await _require_session(session)
+
+    # DEC-07: cliente fictício exige country_code.
+    if payload.client_id is None and not payload.client_fictitious:
+        raise HTTPException(
+            status_code=400,
+            detail="Informe client_id ou client_fictitious.",
+        )
+
+    invoice_number = await repo.get_next_number(payload.issuer_tax_id_digits)
+
+    from src.backend.models.invoice_repository import StoredInvoice
+    from datetime import datetime as _dt
+
+    now = _dt.now().astimezone()
+    stored = StoredInvoice(
+        id=0,
+        owner_user_id=sess.user_id,
+        client_id=payload.client_id,
+        simulation_id=payload.simulation_id,
+        invoice_number=invoice_number,
+        status="draft",
+        locale=payload.locale,
+        client_country_code=payload.client_country_code,
+        issuer_name=payload.issuer_name,
+        issuer_tax_id_digits=payload.issuer_tax_id_digits,
+        issuer_address=payload.issuer_address,
+        client_name=payload.client_name,
+        client_tax_id_digits=payload.client_tax_id_digits,
+        client_address=payload.client_address,
+        banco=payload.banco,
+        agencia=payload.agencia,
+        conta_com_digito=payload.conta_com_digito,
+        pix_key=payload.pix_key,
+        periodo_inicio=payload.periodo_inicio,
+        periodo_fim=payload.periodo_fim,
+        description=payload.description,
+        regime=payload.regime,
+        currency=payload.currency,
+        amount=payload.amount,
+        quantity=payload.quantity,
+        spread_pct=payload.spread_pct,
+        iof_pct=payload.iof_pct,
+        gross_foreign=payload.gross_foreign,
+        gross_brl=payload.gross_brl,
+        spread_brl=payload.spread_brl,
+        iof_brl=payload.iof_brl,
+        net_brl=payload.net_brl,
+        effective_rate=payload.effective_rate,
+        quote_rate=payload.quote_rate,
+        quote_source=payload.quote_source,
+        quote_bulletin=payload.quote_bulletin,
+        quoted_at=payload.quoted_at,
+        stale=payload.stale,
+        finalized_at=None,
+        supersedes_invoice_id=None,
+        created_at=now,
+        updated_at=now,
+    )
+    await repo.save(stored)
+    stored = await repo.get_by_number(invoice_number, sess.user_id)
+    if stored is None:
+        raise HTTPException(status_code=409, detail="Não foi possível criar a invoice.")
+    return _to_invoice_response(stored)
+
+
+@router.put(
+    "/invoices/{invoice_id}",
+    response_model=InvoiceResponse,
+    summary="Atualiza invoice draft (SPEC-020)",
+    responses={
+        400: {"model": ErrorResponse, "description": "Invoice finalizada é imutável."},
+        401: {"description": "Não autenticado", "model": ErrorResponse},
+        404: {"description": "Invoice not found", "model": ErrorResponse},
+    },
+)
+async def update_invoice(
+    invoice_id: int,
+    payload: InvoiceUpdate,
+    session: CurrentSession,
+    repo: InvoiceRepository = Depends(get_invoice_repo),
+) -> InvoiceResponse:
+    """Atualiza campos de uma invoice draft (finalized é imutável)."""
+
+    sess = await _require_session(session)
+    invoice = await repo.get_by_id(invoice_id, sess.user_id)
+    if invoice is None:
+        raise HTTPException(status_code=404, detail="Invoice not found")
+    if invoice.status != "draft":
+        raise HTTPException(
+            status_code=409,
+            detail="Invoice finalizada é imutável",
+        )
+
+    from src.backend.models.invoice_repository import StoredInvoice
+
+    updates: dict[str, Any] = {}
+    for field in (
+        "client_id",
+        "client_fictitious",
+        "issuer_name",
+        "issuer_tax_id_digits",
+        "issuer_address",
+        "client_name",
+        "client_tax_id_digits",
+        "client_address",
+        "banco",
+        "agencia",
+        "conta_com_digito",
+        "pix_key",
+        "periodo_inicio",
+        "periodo_fim",
+        "description",
+    ):
+        value = getattr(payload, field, None)
+        if value is not None:
+            updates[field] = value
+
+    if not updates:
+        return _to_invoice_response(invoice)
+
+    updated = StoredInvoice(
+        id=invoice.id,
+        owner_user_id=invoice.owner_user_id,
+        client_id=updates.get("client_id", invoice.client_id),
+        simulation_id=invoice.simulation_id,
+        invoice_number=invoice.invoice_number,
+        status=invoice.status,
+        locale=invoice.locale,
+        client_country_code=invoice.client_country_code,
+        issuer_name=updates.get("issuer_name", invoice.issuer_name),
+        issuer_tax_id_digits=updates.get(
+            "issuer_tax_id_digits", invoice.issuer_tax_id_digits
+        ),
+        issuer_address=updates.get("issuer_address", invoice.issuer_address),
+        client_name=updates.get("client_name", invoice.client_name),
+        client_tax_id_digits=updates.get(
+            "client_tax_id_digits", invoice.client_tax_id_digits
+        ),
+        client_address=updates.get("client_address", invoice.client_address),
+        banco=updates.get("banco", invoice.banco),
+        agencia=updates.get("agencia", invoice.agencia),
+        conta_com_digito=updates.get("conta_com_digito", invoice.conta_com_digito),
+        pix_key=updates.get("pix_key", invoice.pix_key),
+        periodo_inicio=updates.get("periodo_inicio", invoice.periodo_inicio),
+        periodo_fim=updates.get("periodo_fim", invoice.periodo_fim),
+        description=updates.get("description", invoice.description),
+        regime=invoice.regime,
+        currency=invoice.currency,
+        amount=invoice.amount,
+        quantity=invoice.quantity,
+        spread_pct=invoice.spread_pct,
+        iof_pct=invoice.iof_pct,
+        gross_foreign=invoice.gross_foreign,
+        gross_brl=invoice.gross_brl,
+        spread_brl=invoice.spread_brl,
+        iof_brl=invoice.iof_brl,
+        net_brl=invoice.net_brl,
+        effective_rate=invoice.effective_rate,
+        quote_rate=invoice.quote_rate,
+        quote_source=invoice.quote_source,
+        quote_bulletin=invoice.quote_bulletin,
+        quoted_at=invoice.quoted_at,
+        stale=invoice.stale,
+        finalized_at=invoice.finalized_at,
+        supersedes_invoice_id=invoice.supersedes_invoice_id,
+        created_at=invoice.created_at,
+        updated_at=invoice.updated_at,
+    )
+    await repo.save(updated)
+    return _to_invoice_response(updated)
+
+
+@router.get(
+    "/invoices/{invoice_id}/download",
+    responses={
+        200: {
+            "description": "PDF da invoice para download.",
+            "content": {"application/pdf": {"schema": {"type": "string", "format": "binary"}}},
+        },
+        401: {"description": "Não autenticado", "model": ErrorResponse},
+        404: {"description": "Invoice not found", "model": ErrorResponse},
+        503: {"model": ErrorResponse, "description": "PDF indisponível (pdf_unavailable)."},
+    },
+)
+async def download_invoice_pdf(
+    invoice_id: int,
+    session: CurrentSession,
+    rate_service: RateServiceDep,
+    repo: InvoiceRepository = Depends(get_invoice_repo),
+) -> Response:
+    """Baixa o PDF de uma invoice já persistida (snapshot reprodutível, SPEC-021)."""
+
+    sess = await _require_session(session)
+    invoice = await repo.get_by_id(invoice_id, sess.user_id)
+    if invoice is None:
+        raise HTTPException(status_code=404, detail="Invoice not found")
+
+    pdf_bytes = await render_pdf_from_stored(invoice, rate_service)
+
+    return Response(
+        content=pdf_bytes,
+        media_type="application/pdf",
+        headers={
+            "Content-Disposition": f'attachment; filename="invoice_{invoice.invoice_number}.pdf"',
+            "Cache-Control": "no-store",
+        },
+    )
