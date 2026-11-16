@@ -33,6 +33,8 @@ from src.shared.schemas import (
     Currency,
     InvoiceParty,
     InvoiceRequest,
+    RateQuote,
+    RateSource,
     Regime,
     SimulationRequest,
 )
@@ -171,8 +173,9 @@ def invoice_request_strategy(draw: st.DrawFn) -> InvoiceRequest:
 
 
 @st.composite
-def rate_quote_strategy(draw: st.DrawFn) -> RateQuote:
+def rate_quote_strategy(draw: st.DrawFn) -> "RateQuote":
     """Generate a valid RateQuote."""
+    from src.shared.schemas import Currency, RateQuote, RateSource
     currency = draw(st.sampled_from(list(Currency)))
     rate = draw(
         st.decimals(
@@ -263,8 +266,6 @@ class TestDatabaseNoPersonalData:
     ) -> None:
         """A saved quote row contains only FX data, no personal identifiers."""
         from datetime import UTC, datetime
-
-        from src.shared.schemas import RateQuote, RateSource
 
         repo = SqlAlchemyQuoteRepository(create_session_factory(engine))
         stored = StoredQuote(
