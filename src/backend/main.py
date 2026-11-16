@@ -25,6 +25,8 @@ from starlette.types import ASGIApp, Message, Receive, Scope, Send
 from src.backend.config import get_settings
 from src.backend.errors import DomainError
 from src.backend.middleware.csrf import CSRFMiddleware
+from src.backend.middleware.rate_limit import limiter, rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
 from src.backend.models.database import create_engine, create_session_factory
 from src.backend.models.repository import SqlAlchemyQuoteRepository
 
@@ -376,6 +378,8 @@ def create_app() -> FastAPI:
     app.add_exception_handler(StarletteHTTPException, _handle_http_error)
     app.add_middleware(InternalErrorMiddleware)
     app.add_middleware(CSRFMiddleware)
+    app.state.limiter = limiter
+    app.add_exception_handler(RateLimitExceeded, rate_limit_exceeded_handler)
     for module in (auth, health, rates, simulations, invoices):
         app.include_router(module.router)
     app.openapi = lambda: _build_openapi(app)  # type: ignore[method-assign]

@@ -25,6 +25,7 @@ from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 from src.backend.config import get_settings
+from src.backend.middleware.rate_limit import limiter
 from src.backend.middleware.session import SESSION_COOKIE_NAME, SessionData, get_current_session
 from src.backend.models.user import (
     PasswordResetToken,
@@ -116,6 +117,7 @@ async def _pepper(request: Request) -> str:
 # ── Register ──────────────────────────────────────────────────────────
 
 
+@limiter.limit("5/minute")
 @router.post(
     "/register",
     response_model=RegisterResponse,
@@ -181,6 +183,7 @@ async def register(
 # ── Login ─────────────────────────────────────────────────────────────
 
 
+@limiter.limit("5/minute")
 @router.post(
     "/login",
     response_model=LoginResponse,
@@ -289,6 +292,7 @@ async def logout(
 # ── Reset de senha ────────────────────────────────────────────────────
 
 
+@limiter.limit("3/hour")
 @router.post("/password/reset-request", summary="Solicita reset de senha")
 async def reset_request(
     payload: ResetRequestRequest,
