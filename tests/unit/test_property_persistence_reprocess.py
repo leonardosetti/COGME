@@ -89,6 +89,35 @@ def stored_quote_strategy(draw: st.DrawFn) -> StoredQuote:
 
 
 @st.composite
+def stored_quote_strategy_latest(draw: st.DrawFn) -> StoredQuote:
+    """Generate a StoredQuote with max fetched_at to ensure it's the latest."""
+    currency = draw(st.sampled_from(["USD", "EUR"]))
+    rate = draw(
+        st.decimals(
+            min_value=_MIN_RATE,
+            max_value=_MAX_RATE,
+            allow_nan=False,
+            allow_infinity=False,
+            places=6,
+        )
+    )
+    source = draw(st.sampled_from(["frankfurter", "ptax"]))
+    bulletin = draw(st.one_of(st.none(), st.text(min_size=1, max_size=40)))
+    quoted_at = draw(datetime_utc_strategy())
+    # Use maximum possible fetched_at to ensure this quote is the "latest"
+    fetched_at = _MAX_DATETIME
+
+    return StoredQuote(
+        currency=currency,
+        rate=rate,
+        source=source,
+        bulletin=bulletin,
+        quoted_at=quoted_at,
+        fetched_at=fetched_at,
+    )
+
+
+@st.composite
 def simulation_params_strategy(draw: st.DrawFn) -> dict[str, Any]:
     """Generate valid simulation parameters."""
     regime: Regime = draw(st.sampled_from(list(Regime)))
@@ -197,7 +226,7 @@ class TestRepositoryPersistenceRoundTrip:
         deadline=None,
         suppress_health_check=[HealthCheck.function_scoped_fixture],
     )
-    @given(stored_quote_strategy())
+    @given(stored_quote_strategy_latest())
     async def test_save_then_get_latest_round_trips(
         self, repository: SqlAlchemyQuoteRepository, quote: StoredQuote
     ) -> None:
@@ -413,6 +442,11 @@ class TestRateServiceCachePersistence:
 
         return FixedMonotonic()
 
+    @settings(
+        max_examples=20,
+        deadline=None,
+        suppress_health_check=[HealthCheck.function_scoped_fixture],
+    )
     @given(
         st.decimals(
             min_value=_MIN_RATE,
@@ -423,7 +457,6 @@ class TestRateServiceCachePersistence:
         ),
         st.sampled_from([Currency.USD, Currency.EUR]),
     )
-    @settings(max_examples=20, deadline=None)
     async def test_second_call_reads_from_cache_not_provider(
         self,
         repository: SqlAlchemyQuoteRepository,
@@ -479,11 +512,15 @@ class TestDatabaseConstraints:
             await conn.execute(text("TRUNCATE TABLE fx_quotes RESTART IDENTITY"))
         return SqlAlchemyQuoteRepository(create_session_factory(engine))
 
+    @settings(
+        max_examples=20,
+        deadline=None,
+        suppress_health_check=[HealthCheck.function_scoped_fixture],
+    )
     @given(
         st.text(min_size=1, max_size=10).filter(lambda x: x not in ("USD", "EUR")),
         stored_quote_strategy(),
     )
-    @settings(max_examples=20, deadline=None)
     async def test_invalid_currency_rejected_by_db(
         self,
         repository: SqlAlchemyQuoteRepository,
@@ -501,6 +538,11 @@ class TestDatabaseConstraints:
 
         assert isinstance(exc_info.value.__cause__, IntegrityError)
 
+    @settings(
+        max_examples=20,
+        deadline=None,
+        suppress_health_check=[HealthCheck.function_scoped_fixture],
+    )
     @given(
         st.decimals(
             min_value=Decimal("-1000"),
@@ -511,7 +553,6 @@ class TestDatabaseConstraints:
         ),
         stored_quote_strategy(),
     )
-    @settings(max_examples=20, deadline=None)
     async def test_non_positive_rate_rejected_by_db(
         self,
         repository: SqlAlchemyQuoteRepository,

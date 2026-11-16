@@ -98,11 +98,7 @@ async def test_persistence_roundtrip_equals_reprocess(
     from src.backend.services.invoice_number import InvoiceNumberService
 
     # Cria invoice via repository
-    session_factory = create_session_factory(
-        create_engine(os.environ["COGME_TEST_DATABASE_URL"])
-    )
-
-    async with session_factory() as session:
+    async with invoice_repo.session_factory() as session:
         number_service = InvoiceNumberService(session)
         invoice_number = await number_service.generate("00000000000000")
 
@@ -195,20 +191,15 @@ def test_list_invoices_empty(db_client: TestClient) -> None:
     assert data == []
 
 
-def test_list_invoices_with_data(
+async def test_list_invoices_with_data(
     db_client: TestClient, invoice_repo: InvoiceRepository
 ) -> None:
     """Lista invoices com filtros status e client_id."""
-    import asyncio
+    from datetime import datetime, UTC
+    from src.backend.services.invoice_number import InvoiceNumberService
 
     async def _create_invoice(status: str, client_id: int | None = None):
-        from datetime import datetime, UTC
-        from src.backend.services.invoice_number import InvoiceNumberService
-
-        session_factory = create_session_factory(
-            create_engine(os.environ["COGME_TEST_DATABASE_URL"])
-        )
-        async with session_factory() as session:
+        async with invoice_repo.session_factory() as session:
             number_service = InvoiceNumberService(session)
             invoice_number = await number_service.generate("00000000000000")
 
@@ -239,9 +230,9 @@ def test_list_invoices_with_data(
         return stored.id
 
     # Cria 2 finalized, 1 draft
-    asyncio.run(_create_invoice('finalized'))
-    asyncio.run(_create_invoice('finalized'))
-    draft_id = asyncio.run(_create_invoice('draft'))
+    await _create_invoice('finalized')
+    await _create_invoice('finalized')
+    draft_id = await _create_invoice('draft')
 
     # Lista todas
     response = db_client.get(f"{INVOICES}?owner_user_id={OWNER_USER_ID}")
@@ -271,7 +262,6 @@ async def test_get_invoice_detail(db_client: TestClient, invoice_repo: InvoiceRe
     """GET /v1/invoices/{id} retorna detalhes completos."""
     from datetime import datetime, UTC
     from src.backend.services.invoice_number import InvoiceNumberService
-    from src.backend.models.database import create_session_factory
 
     async with invoice_repo.session_factory() as session:
         number_service = InvoiceNumberService(session)
@@ -318,7 +308,6 @@ async def test_get_invoice_pdf(db_client: TestClient, invoice_repo: InvoiceRepos
     """GET /v1/invoices/{id}?as_pdf=true retorna PDF (Content-Disposition attachment)."""
     from datetime import datetime, UTC
     from src.backend.services.invoice_number import InvoiceNumberService
-    from src.backend.models.database import create_session_factory
 
     async with invoice_repo.session_factory() as session:
         number_service = InvoiceNumberService(session)
@@ -368,7 +357,6 @@ async def test_get_invoice_forbidden(db_client: TestClient, invoice_repo: Invoic
     """GET invoice de outro owner retorna 404 (não 403 para não vazar existência)."""
     from datetime import datetime, UTC
     from src.backend.services.invoice_number import InvoiceNumberService
-    from src.backend.models.database import create_session_factory
 
     async with invoice_repo.session_factory() as session:
         number_service = InvoiceNumberService(session)
@@ -396,32 +384,29 @@ async def test_get_invoice_forbidden(db_client: TestClient, invoice_repo: Invoic
             'stale': False, 'finalized_at': datetime.now(UTC),
             'supersedes_invoice_id': None,
             'created_at': datetime.now(UTC), 'updated_at': datetime.now(UTC),
-        })()
-        await invoice_repo.save(stored)
-        return stored.id
+            'created_at': datetime.now(UTC), 'updated_at': datetime.now(UTC),
+        })
+    await invoice_repo.save(stored)
+    return stored.id
 
-    inv_id = asyncio.run(_create())
-
-    response = client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}")
+    inv_id = await _create()
+    response = db_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}")
     assert response.status_code == 404
 
 
 # ---------- Teste: Finalize (DEC-05) ----------
 
 
-def test_finalize_invoice_draft_to_finalized(
+async def test_finalize_invoice_draft_to_finalized(
     db_client: TestClient, invoice_repo: InvoiceRepository
 ) -> None:
     """POST /finalize transiciona draft → finalized com finalized_at."""
-    import asyncio
 
     async def _create_draft():
         from datetime import datetime, UTC
         from src.backend.services.invoice_number import InvoiceNumberService
-        session_factory = create_session_factory(
-            create_engine(os.environ["COGME_TEST_DATABASE_URL"])
-        )
-        async with session_factory() as session:
+
+        async with invoice_repo.session_factory() as session:
             number_service = InvoiceNumberService(session)
             invoice_number = await number_service.generate("00000000000000")
 
@@ -451,7 +436,7 @@ def test_finalize_invoice_draft_to_finalized(
         await invoice_repo.save(stored)
         return stored.id
 
-    inv_id = asyncio.run(_create_draft())
+    inv_id = await _create_draft()
 
     response = db_client.post(
         f"{INVOICES}/{inv_id}/finalize?owner_user_id={OWNER_USER_ID}",
@@ -463,19 +448,16 @@ def test_finalize_invoice_draft_to_finalized(
     assert data["finalized_at"] is not None
 
 
-def test_finalize_not_draft_returns_409(
+async def test_finalize_not_draft_returns_409(
     db_client: TestClient, invoice_repo: InvoiceRepository
 ) -> None:
     """Finalizar invoice já finalized retorna 409."""
-    import asyncio
 
     async def _create_finalized():
         from datetime import datetime, UTC
         from src.backend.services.invoice_number import InvoiceNumberService
-        session_factory = create_session_factory(
-            create_engine(os.environ["COGME_TEST_DATABASE_URL"])
-        )
-        async with session_factory() as session:
+
+        async with invoice_repo.session_factory() as session:
             number_service = InvoiceNumberService(session)
             invoice_number = await number_service.generate("00000000000000")
 
@@ -505,7 +487,7 @@ def test_finalize_not_draft_returns_409(
         await invoice_repo.save(stored)
         return stored.id
 
-    inv_id = asyncio.run(_create_finalized())
+    inv_id = await _create_finalized()
 
     response = db_client.post(
         f"{INVOICES}/{inv_id}/finalize?owner_user_id={OWNER_USER_ID}",
@@ -518,19 +500,16 @@ def test_finalize_not_draft_returns_409(
 # ---------- Teste: Clone (DEC-05, US-017) ----------
 
 
-def test_clone_invoice_creates_new_draft(
+async def test_clone_invoice_creates_new_draft(
     db_client: TestClient, invoice_repo: InvoiceRepository
 ) -> None:
     """POST /clone cria novo draft com novo número e supersedes_invoice_id."""
-    import asyncio
 
     async def _create_finalized():
         from datetime import datetime, UTC
         from src.backend.services.invoice_number import InvoiceNumberService
-        session_factory = create_session_factory(
-            create_engine(os.environ["COGME_TEST_DATABASE_URL"])
-        )
-        async with session_factory() as session:
+
+        async with invoice_repo.session_factory() as session:
             number_service = InvoiceNumberService(session)
             invoice_number = await number_service.generate("00000000000000")
 
@@ -560,7 +539,7 @@ def test_clone_invoice_creates_new_draft(
         await invoice_repo.save(stored)
         return stored.id, invoice_number
 
-    original_id, original_number = asyncio.run(_create_finalized())
+    original_id, original_number = await _create_finalized()
 
     response = db_client.post(
         f"{INVOICES}/{original_id}/clone?owner_user_id={OWNER_USER_ID}",
@@ -573,19 +552,16 @@ def test_clone_invoice_creates_new_draft(
     assert data["invoice_number"].startswith("INV-")
 
 
-def test_clone_only_finalized_allowed(
+async def test_clone_only_finalized_allowed(
     db_client: TestClient, invoice_repo: InvoiceRepository
 ) -> None:
     """Clonar draft retorna 409."""
-    import asyncio
 
     async def _create_draft():
         from datetime import datetime, UTC
         from src.backend.services.invoice_number import InvoiceNumberService
-        session_factory = create_session_factory(
-            create_engine(os.environ["COGME_TEST_DATABASE_URL"])
-        )
-        async with session_factory() as session:
+
+        async with invoice_repo.session_factory() as session:
             number_service = InvoiceNumberService(session)
             invoice_number = await number_service.generate("00000000000000")
 
@@ -615,7 +591,7 @@ def test_clone_only_finalized_allowed(
         await invoice_repo.save(stored)
         return stored.id
 
-    inv_id = asyncio.run(_create_draft())
+    inv_id = await _create_draft()
 
     response = db_client.post(f"{INVOICES}/{inv_id}/clone?owner_user_id={OWNER_USER_ID}")
     assert response.status_code == 409
@@ -625,19 +601,16 @@ def test_clone_only_finalized_allowed(
 # ---------- Teste: Erase LGPD art. 18 (DEC-04) ----------
 
 
-def test_erase_invoice_hard_delete(
+async def test_erase_invoice_hard_delete(
     db_client: TestClient, invoice_repo: InvoiceRepository
 ) -> None:
     """DELETE /v1/invoices/{id} remove permanentemente (LGPD art. 18)."""
-    import asyncio
 
     async def _create():
         from datetime import datetime, UTC
         from src.backend.services.invoice_number import InvoiceNumberService
-        session_factory = create_session_factory(
-            create_engine(os.environ["COGME_TEST_DATABASE_URL"])
-        )
-        async with session_factory() as session:
+
+        async with invoice_repo.session_factory() as session:
             number_service = InvoiceNumberService(session)
             invoice_number = await number_service.generate("00000000000000")
 
@@ -667,7 +640,7 @@ def test_erase_invoice_hard_delete(
         await invoice_repo.save(stored)
         return stored.id
 
-    inv_id = asyncio.run(_create())
+    inv_id = await _create()
 
     # Deleta
     response = db_client.delete(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}")
@@ -684,17 +657,14 @@ def test_erase_invoice_not_found(db_client: TestClient) -> None:
     assert response.status_code == 404
 
 
-def test_erase_invoice_forbidden(db_client: TestClient, invoice_repo: InvoiceRepository) -> None:
+async def test_erase_invoice_forbidden(db_client: TestClient, invoice_repo: InvoiceRepository) -> None:
     """Erase invoice de outro owner retorna 404."""
-    import asyncio
 
     async def _create():
         from datetime import datetime, UTC
         from src.backend.services.invoice_number import InvoiceNumberService
-        session_factory = create_session_factory(
-            create_engine(os.environ["COGME_TEST_DATABASE_URL"])
-        )
-        async with session_factory() as session:
+
+        async with invoice_repo.session_factory() as session:
             number_service = InvoiceNumberService(session)
             invoice_number = await number_service.generate("00000000000000")
 
@@ -724,7 +694,7 @@ def test_erase_invoice_forbidden(db_client: TestClient, invoice_repo: InvoiceRep
         await invoice_repo.save(stored)
         return stored.id
 
-    inv_id = asyncio.run(_create())
+    inv_id = await _create()
 
     response = client.delete(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}")
     assert response.status_code == 404
@@ -733,19 +703,16 @@ def test_erase_invoice_forbidden(db_client: TestClient, invoice_repo: InvoiceRep
 # ---------- Teste: Bilingual templates (DEC-07) ----------
 
 
-def test_template_pt_br_renders_brl_format(
+async def test_template_pt_br_renders_brl_format(
     db_client: TestClient, invoice_repo: InvoiceRepository
 ) -> None:
     """Template pt-BR usa formatação brasileira (R$ 1.234,56)."""
-    import asyncio
 
     async def _create():
         from datetime import datetime, UTC
         from src.backend.services.invoice_number import InvoiceNumberService
-        session_factory = create_session_factory(
-            create_engine(os.environ["COGME_TEST_DATABASE_URL"])
-        )
-        async with session_factory() as session:
+
+        async with invoice_repo.session_factory() as session:
             number_service = InvoiceNumberService(session)
             invoice_number = await number_service.generate("00000000000000")
 
@@ -775,7 +742,7 @@ def test_template_pt_br_renders_brl_format(
         await invoice_repo.save(stored)
         return stored.id
 
-    inv_id = asyncio.run(_create())
+    inv_id = await _create()
 
     response = db_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}&as_pdf=true")
     assert response.status_code == 200
@@ -783,19 +750,16 @@ def test_template_pt_br_renders_brl_format(
     assert response.content.startswith(b"%PDF-")
 
 
-def test_template_en_renders_en_format(
+async def test_template_en_renders_en_format(
     db_client: TestClient, invoice_repo: InvoiceRepository
 ) -> None:
     """Template en usa formatação inglesa (1,234.56 BRL)."""
-    import asyncio
 
     async def _create():
         from datetime import datetime, UTC
         from src.backend.services.invoice_number import InvoiceNumberService
-        session_factory = create_session_factory(
-            create_engine(os.environ["COGME_TEST_DATABASE_URL"])
-        )
-        async with session_factory() as session:
+
+        async with invoice_repo.session_factory() as session:
             number_service = InvoiceNumberService(session)
             invoice_number = await number_service.generate("00000000000000")
 
@@ -825,7 +789,7 @@ def test_template_en_renders_en_format(
         await invoice_repo.save(stored)
         return stored.id
 
-    inv_id = asyncio.run(_create())
+    inv_id = await _create()
 
     response = db_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}&as_pdf=true")
     assert response.status_code == 200
