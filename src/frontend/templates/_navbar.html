@@ -1,0 +1,22 @@
+{# =========================================================================
+   COGME — Navbar compartilhada (inspiração ifit.com)
+   Especifica→implementa→valida→registra (spec-008, R-INT-01).
+   ========================================================================= #}
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="{{ url_for('index') }}" class="brand">
+      <div class="mark">C</div>
+      COGME
+    </a>
+    <ul class="nav-links">
+      <li><a href="#produto">Produto</a></li>
+      <li><a href="#simulador">Simulador</a></li>
+      <li><a href="#invoice">Invoice</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-outline" type="button">Entrar</button>
+      <button class="btn-primary" type="button">Cadastre-se</button>
+    </div>
+  </div>
+</nav>

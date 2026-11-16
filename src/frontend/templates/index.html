@@ -1,419 +1,121 @@
 {% extends "base.html" %}
 
-{% block title %}COGME — Simulador de Recebimento Internacional{% endblock %}
+{% block title %}Simulador de Recebimento — COGME{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
-<section class="hero" aria-labelledby="hero-title">
-  <div class="hero-icon" aria-hidden="true">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-      <path d="M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z"/>
-    </svg>
+<section class="hero" id="produto">
+  <div>
+    <h2>Receba do exterior<br>com clareza e segurança.</h2>
+    <p>Simulação de recebimentos em moeda estrangeira (USD/EUR → BRL), comparação de regimes de contratação, cálculo de spread e IOF, e emissão de invoice em PDF — gratuito, FOSS e de jurisdição brasileira.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="document.getElementById('simulador').scrollIntoView({behavior:'smooth'})">Começar a simular</button>
+      <a href="{{ url_for('invoice_form') }}" class="btn-outline">Emitir invoice</a>
+    </div>
   </div>
-  <h2 id="hero-title">Simulador de Recebimento em Moeda Estrangeira</h2>
-  <p>Calcule o valor líquido em BRL após spread, IOF e conversão cambial. Fontes: Frankfurter (ECB) e PTAX (Banco Central).</p>
-  <div class="badges" role="list" aria-label="Certificações e fontes">
-    <span class="badge badge--primary" role="listitem">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-      Cotações Oficiais
-    </span>
-    <span class="badge badge--accent" role="listitem">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-      Conformidade Bacen
-    </span>
-    <span class="badge" role="listitem">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-      Tempo Real
-    </span>
+  <div class="hero-visual">
+    <div class="content">
+      <div style="font-size:4rem;">💱</div>
+      <div class="sub">Simulador de câmbio<br>em tempo real</div>
+    </div>
   </div>
 </section>
 
-<form id="form" action="/simulate" method="post" novalidate>
-  {% if error %}
-  <div class="error-summary" role="alert">
-    <h3 class="error-summary-title">Não foi possível simular</h3>
-    <p>{{ error }}</p>
-    {% if details %}
-    <ul class="error-summary-list">
-      {% for detail in details %}
-      <li><a href="#{{ detail.field }}">{{ detail.message }}</a></li>
-      {% endfor %}
-    </ul>
-    {% endif %}
+<section class="features" id="features">
+  <div class="section-head">
+    <h3>Tudo o que você precisa<br>para gerenciar recebimentos</h3>
+    <p>Funcionalidades pensadas para profissionais e empresas que faturam em moeda estrangeira.</p>
   </div>
-  {% endif %}
-  <!-- Error Summary (hidden until needed) -->
-  <div id="error-summary" class="error-summary hidden" role="alert" aria-live="assertive" tabindex="-1">
-    <h3 class="error-summary-title">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      Corrija os erros abaixo
-    </h3>
-    <ul id="error-summary-list" class="error-summary-list"></ul>
+  <div class="features-grid">
+    <div class="feature-card reveal">
+      <div class="icon">💱</div>
+      <h4>Simulação em tempo real</h4>
+      <p>Cotação atual com Frankfurter (BCE) e PTAX (Banco Central do Brasil), com fallback automático e cache de cotações.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="icon">📊</div>
+      <h4>5 regimes de contratação</h4>
+      <p>Hora, dia, semana, mês e valor fixo — todos comparáveis e calculados com precisão de 2 casas decimais.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="icon">🧾</div>
+      <h4>Invoice em PDF</h4>
+      <p>Emissão de invoice profissional, bilíngue (pt-BR / EN), com snapshots imutáveis e numeração sequencial.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="icon">🔒</div>
+      <h4>LGPD por design</h4>
+      <p>Mínimo necessário, sem PII em logs, direito ao esquecimento e isolamento por proprietário (P-14).</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="icon">⚡</div>
+      <h4>Pipeline CI verde</h4>
+      <p>Lint + testes em ≤ 5 min por push, cobertura ≥ 80% e fail-closed em segurança.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="icon">🇧🇷🇺🇸</div>
+      <h4>Bilíngue</h4>
+      <p>Invoice em português para clientes nacionais e em inglês para clientes estrangeiros, derivada do país do cliente.</p>
+    </div>
   </div>
+</section>
 
-  <div id="global-error" class="error-summary hidden" role="alert" aria-live="assertive" tabindex="-1"></div>
-
-  <div class="card form-card">
-    <div class="field-grid">
-      <!-- Moeda -->
-      <div class="field">
-        <label for="currency" class="label">Moeda <span class="required" aria-hidden="true">*</span><span class="sr-only">(obrigatório)</span></label>
-        <select id="currency" name="currency" class="select input" required aria-required="true" aria-describedby="currency-hint">
-          <option value="USD"{% if values and values.currency == 'USD' %} selected{% endif %}>USD — Dólar Americano</option>
-          <option value="EUR"{% if values and values.currency == 'EUR' %} selected{% endif %}>EUR — Euro</option>
-        </select>
-        <p id="currency-hint" class="hint">Selecione a moeda de recebimento</p>
-      </div>
-
-      <!-- Regime -->
-      <div class="field">
-        <label for="regime" class="label">Regime de contratação <span class="required" aria-hidden="true">*</span><span class="sr-only">(obrigatório)</span></label>
-        <select id="regime" name="regime" class="select input" required aria-required="true" aria-describedby="regime-hint">
-          <option value="hourly"{% if values and values.regime == 'hourly' %} selected{% endif %}>Hora</option>
-          <option value="daily"{% if values and values.regime == 'daily' %} selected{% endif %}>Dia</option>
-          <option value="weekly"{% if values and values.regime == 'weekly' %} selected{% endif %}>Semana</option>
-          <option value="monthly"{% if values and values.regime == 'monthly' %} selected{% endif %}>Mês</option>
-          <option value="fixed"{% if values and values.regime == 'fixed' %} selected{% endif %}>Valor fixo</option>
-        </select>
-        <p id="regime-hint" class="hint">Define se a quantidade de unidades é necessária</p>
-      </div>
-
-      <!-- Valor por unidade -->
-      <div class="field full">
-        <label for="amount" class="label">Valor por unidade na moeda estrangeira <span class="required" aria-hidden="true">*</span><span class="sr-only">(obrigatório)</span></label>
-        <input type="number" id="amount" name="amount" class="input" step="0.01" min="0.01" max="1000000000" value="{% if values %}{{ values.amount }}{% else %}30{% endif %}" required aria-required="true" aria-describedby="amount-hint amount-error" autocomplete="off" placeholder="Ex: 30.00">
-        <p id="amount-hint" class="hint">Maior que 0, até 1.000.000.000, 2 casas decimais</p>
-        <p id="amount-error" class="field-error" role="alert" aria-live="polite">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <span></span>
-        </p>
-      </div>
-
-      <!-- Quantidade (conditional) -->
-      <div class="field{% if values and values.regime == 'fixed' %} hidden{% endif %}" id="qty-wrap">
-        <label for="quantity" class="label">Quantidade de unidades</label>
-        <input type="number" id="quantity" name="quantity" class="input" step="1" min="1" max="100000" value="{% if values and values.quantity is not none %}{{ values.quantity }}{% else %}160{% endif %}" aria-describedby="quantity-hint quantity-error" autocomplete="off" placeholder="Ex: 160">
-        <p id="quantity-hint" class="hint">Obrigatória exceto no regime "Valor fixo"</p>
-        <p id="quantity-error" class="field-error" role="alert" aria-live="polite">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <span></span>
-        </p>
-      </div>
-
-      <!-- Spread -->
-      <div class="field">
-        <label for="spread_pct" class="label">Spread (%) <span class="required" aria-hidden="true">*</span><span class="sr-only">(obrigatório)</span></label>
-        <input type="number" id="spread_pct" name="spread_pct" class="input" step="0.0001" min="0" max="100" value="{% if values %}{{ values.spread_pct }}{% else %}2{% endif %}" required aria-required="true" aria-describedby="spread-hint spread-error" autocomplete="off" placeholder="Ex: 2.5">
-        <p id="spread-hint" class="hint">De 0 a 100, 4 casas decimais. Ex: 2.5 = 2,5%</p>
-        <p id="spread-error" class="field-error" role="alert" aria-live="polite">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <span></span>
-        </p>
-      </div>
-
-      <!-- IOF -->
-      <div class="field">
-        <label for="iof_pct" class="label">IOF (%) <span class="required" aria-hidden="true">*</span><span class="sr-only">(obrigatório)</span></label>
-        <input type="number" id="iof_pct" name="iof_pct" class="input" step="0.0001" min="0" max="100" value="{% if values %}{{ values.iof_pct }}{% else %}0.38{% endif %}" required aria-required="true" aria-describedby="iof-hint iof-error" autocomplete="off" placeholder="Ex: 1.1">
-        <p id="iof-hint" class="hint">De 0 a 100, 4 casas decimais. Ex: 1.1 = 1,1%</p>
-        <p id="iof-error" class="field-error" role="alert" aria-live="polite">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <span></span>
-        </p>
+<section class="sim-section" id="simulador">
+  <div class="container-inner">
+    <div>
+      <h2>Simule seu recebimento agora</h2>
+      <p>Informe valor, regime, spread e IOF. O cálculo é feito no servidor com cotação vigente.</p>
+      <div class="sim-cta">
+        <p>Simulação funcional — sem cadastro necessário.</p>
       </div>
     </div>
-
-    <button type="submit" id="btn" class="btn btn-primary">
-      <span class="btn-text">Simular Recebimento</span>
-      <svg class="spinner hidden" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-    </button>
+    <div class="sim-form">
+      <div class="sim-field">
+        <label>Moeda</label>
+        <select id="currency">
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+        </select>
+      </div>
+      <div class="sim-field">
+        <label>Regime</label>
+        <select id="regime">
+          <option value="hourly">Por hora</option>
+          <option value="daily">Por dia</option>
+          <option value="weekly">Por semana</option>
+          <option value="monthly">Por mês</option>
+          <option value="fixed">Valor fixo</option>
+        </select>
+      </div>
+      <div class="sim-field">
+        <label>Valor por unidade</label>
+        <input type="text" id="amount" placeholder="30,00" inputmode="decimal" value="30,00">
+      </div>
+      <div class="sim-field">
+        <label>Quantidade</label>
+        <input type="text" id="quantity" placeholder="160" inputmode="decimal" value="160">
+      </div>
+      <div class="sim-field">
+        <label>Spread %</label>
+        <input type="text" id="spread_pct" placeholder="2,00" inputmode="decimal" value="2,00">
+      </div>
+      <div class="sim-field">
+        <label>IOF %</label>
+        <input type="text" id="iof_pct" placeholder="0,38" inputmode="decimal" value="0,38">
+      </div>
+    </div>
   </div>
-</form>
+</section>
 
-<!-- Result Card -->
-<div id="result" class="card result-card{% if sim %} visible{% endif %}" role="region" aria-label="Resultado da simulação" aria-live="polite">
-  <div class="result-grid">
-    <div class="result-row"><span class="result-label">Moeda estrangeira</span><span class="result-value" id="r-gross-foreign">{% if sim %}{{ sim.gross_foreign | br_number(2) }} {{ sim.currency }}{% endif %}</span></div>
-    <div class="result-row"><span class="result-label">Bruto em BRL</span><span class="result-value" id="r-gross-brl">{% if sim %}R$ {{ sim.gross_brl | br_number(2) }}{% endif %}</span></div>
-    <div class="result-row"><span class="result-label">Spread</span><span class="result-value" id="r-spread-brl">{% if sim %}R$ {{ sim.spread_brl | br_number(2) }} ({{ sim.spread_pct | br_number(4) }} %){% endif %}</span></div>
-    <div class="result-row"><span class="result-label">IOF</span><span class="result-value" id="r-iof-brl">{% if sim %}R$ {{ sim.iof_brl | br_number(2) }} ({{ sim.iof_pct | br_number(4) }} %){% endif %}</span></div>
-    <div class="result-row total"><span class="result-label">Líquido a receber</span><span class="result-value" id="r-net-brl">{% if sim %}R$ {{ sim.net_brl | br_number(2) }}{% endif %}</span></div>
-    <div class="result-row"><span class="result-label">Câmbio efetivo</span><span class="result-value" id="r-effective-rate">{% if sim %}{{ sim.effective_rate | br_number(6) }}{% endif %}</span></div>
-    <div class="result-row"><span class="result-label">Cotação (BRL por 1 unidade)</span><span class="result-value" id="r-quote-rate">{% if sim %}{{ sim.quote.rate | br_number(6) }} BRL/{{ sim.currency }}{% endif %}</span></div>
-    <div class="result-row"><span class="result-label">Data/hora da cotação</span><span class="result-value" id="r-quote-quoted-at">{% if sim %}{{ sim.quote.quoted_at | br_datetime }}{% endif %}</span></div>
-    <div class="result-row"><span class="result-label">Fonte da cotação</span><span class="result-value" id="r-source">{% if sim %}{{ sim.quote.source }}{% endif %}</span></div>
+<section class="trust">
+  <p>Confiança e conformidade</p>
+  <div class="trust-logos">
+    <span class="logo">LGPD</span>
+    <span class="logo">FOSS</span>
+    <span class="logo">MIT</span>
+    <span class="logo">PostgreSQL</span>
+    <span class="logo">FastAPI</span>
+    <span class="logo">CI/CD</span>
   </div>
-  <div id="stale" class="stale-badge{% if not sim or not sim.quote.stale %} hidden{% endif %}" role="status" aria-live="polite">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-    <span>{% if sim and sim.quote.stale %}Atenção: cotação com defasagem (última disponível no cache).{% endif %}</span>
-  </div>
-  <div id="notice" class="notice-legal" aria-live="polite">{% if sim %}{{ sim.notice }}{% endif %}</div>
-</div>
+</section>
 
-<!-- Toast container -->
-<div id="toast-container" class="toast-container" aria-live="polite" aria-label="Notificações"></div>
-{% endblock %}
-
-{% block scripts %}
-<script>
-(function () {
-  var form = document.getElementById('form');
-  var btn = document.getElementById('btn');
-  var btnText = btn.querySelector('.btn-text');
-  var btnSpinner = btn.querySelector('.spinner');
-  var result = document.getElementById('result');
-  var qtyWrap = document.getElementById('qty-wrap');
-  var stale = document.getElementById('stale');
-  var notice = document.getElementById('notice');
-  var errorSummary = document.getElementById('error-summary');
-  var errorSummaryList = document.getElementById('error-summary-list');
-  var globalError = document.getElementById('global-error');
-  var toastContainer = document.getElementById('toast-container');
-
-  // Initialize quantity toggle
-  function toggleQty() {
-    if (!form || !form.regime) return;
-    var fixed = form.regime.value === 'fixed';
-    var qtyInput = form.quantity;
-
-    if (fixed) {
-      qtyWrap.classList.add('hidden');
-      if (qtyInput) qtyInput.required = false;
-    } else {
-      qtyWrap.classList.remove('hidden');
-      if (qtyInput) qtyInput.required = true;
-    }
-  }
-  if (form && form.regime) {
-    form.regime.addEventListener('change', toggleQty);
-    toggleQty();
-  }
-
-  // Formatters
-  function decimalBr(v, places) {
-    if (!v) return v;
-    var raw = String(v);
-    var negative = raw.charAt(0) === '-';
-    if (negative) raw = raw.slice(1);
-    var parts = raw.split('.');
-    var integer = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-    var fraction = (parts[1] || '').slice(0, places).padEnd(places, '0');
-    return (negative ? '-' : '') + integer + ',' + fraction;
-  }
-  function money(v) { return decimalBr(v, 2); }
-  function rate(v) { return decimalBr(v, 6); }
-  function percent(v) { return decimalBr(v, 4); }
-  function dateTimeBr(v) {
-    return new Date(v).toLocaleString('pt-BR', {
-      timeZone: 'UTC', year: 'numeric', month: '2-digit', day: '2-digit',
-      hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
-    }) + ' UTC';
-  }
-
-  // Field error handling
-  function showFieldError(fieldName, message) {
-    var input = form.querySelector('[name="' + fieldName + '"]');
-    var errorEl = document.getElementById(fieldName + '-error');
-    if (input) input.classList.add('invalid');
-    if (errorEl) {
-      errorEl.querySelector('span').textContent = message;
-      errorEl.classList.add('visible');
-    }
-  }
-
-  function clearFieldErrors() {
-    if (!form) return;
-    form.querySelectorAll('.invalid').forEach(function (el) { el.classList.remove('invalid'); });
-    form.querySelectorAll('.field-error.visible').forEach(function (el) {
-      el.classList.remove('visible');
-      el.querySelector('span').textContent = '';
-    });
-  }
-
-  // Error summary
-  function showErrorSummary(details) {
-    errorSummaryList.innerHTML = '';
-    details.forEach(function (d) {
-      var li = document.createElement('li');
-      var a = document.createElement('a');
-      a.href = '#' + d.field;
-      a.textContent = d.message;
-      li.appendChild(a);
-      errorSummaryList.appendChild(li);
-    });
-    errorSummary.classList.remove('hidden');
-    errorSummary.focus();
-  }
-
-  function hideErrorSummary() {
-    errorSummary.classList.add('hidden');
-    errorSummaryList.innerHTML = '';
-  }
-
-  function showGlobalError(message, showRetry) {
-    globalError.innerHTML = '';
-    var text = document.createElement('p');
-    text.textContent = message;
-    globalError.appendChild(text);
-    if (showRetry) {
-      var retry = document.createElement('button');
-      retry.type = 'button';
-      retry.className = 'btn btn-secondary';
-      retry.textContent = 'Tentar novamente';
-      retry.onclick = function () { form.requestSubmit(); };
-      globalError.appendChild(retry);
-    }
-    globalError.classList.remove('hidden');
-    globalError.focus();
-  }
-
-  function hideGlobalError() {
-    globalError.classList.add('hidden');
-    globalError.innerHTML = '';
-  }
-
-  // Toast notifications
-  function showToast(message, type) {
-    var toast = document.createElement('div');
-    toast.className = 'toast toast-' + type;
-    toast.role = 'alert';
-    toast.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-      (type === 'success' ? '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>'
-        : type === 'error' ? '<circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>'
-        : type === 'warning' ? '<path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>'
-        : '<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>') +
-      '</svg>';
-    var label = document.createElement('span');
-    label.textContent = message;
-    toast.appendChild(label);
-    toastContainer.appendChild(toast);
-    setTimeout(function() {
-      toast.style.animation = 'slideInRight 0.25s cubic-bezier(0.4, 0, 0.2, 1) reverse';
-      setTimeout(function() { toast.remove(); }, 250);
-    }, 5000);
-  }
-
-  // Submit handler
-  form.addEventListener('submit', async function (e) {
-    e.preventDefault();
-    clearFieldErrors();
-    hideErrorSummary();
-    hideGlobalError();
-    if (result) result.classList.remove('visible');
-    if (stale) stale.classList.add('hidden');
-    if (notice) notice.textContent = '';
-
-    // Loading state
-    btn.disabled = true;
-    btnText.textContent = 'Calculando…';
-    btnSpinner.classList.remove('hidden');
-
-    var body = {
-      currency: form.currency.value,
-      regime: form.regime.value,
-      amount: form.amount.value,
-      quantity: form.regime.value === 'fixed' ? null : form.quantity.value,
-      spread_pct: form.spread_pct.value,
-      iof_pct: form.iof_pct.value,
-    };
-
-    try {
-      var res = await fetch('/v1/simulate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-      });
-
-      if (res.status === 503) {
-        var rateError = await res.json();
-        showGlobalError((rateError && rateError.error && rateError.error.message) || 'Cotação indisponível. Tente novamente.', true);
-        return;
-      }
-
-      if (!res.ok) {
-        var data = await res.json();
-        var details = (data && data.error && data.error.details) || [];
-        if (details.length) {
-          details.forEach(function (d) { showFieldError(d.field, d.message); });
-          showErrorSummary(details);
-        } else {
-          var msg = (data && data.error && data.error.message) || 'Erro na simulação.';
-          showGlobalError(msg, false);
-          showToast(msg, 'error');
-        }
-        return;
-      }
-
-      var data = await res.json();
-
-      // Populate result
-      document.getElementById('r-gross-foreign').textContent = money(data.gross_foreign) + ' ' + data.currency;
-      document.getElementById('r-gross-brl').textContent = 'R$ ' + money(data.gross_brl);
-      document.getElementById('r-spread-brl').textContent = 'R$ ' + money(data.spread_brl) + ' (' + percent(data.spread_pct) + ' %)';
-      document.getElementById('r-iof-brl').textContent = 'R$ ' + money(data.iof_brl) + ' (' + percent(data.iof_pct) + ' %)';
-      document.getElementById('r-net-brl').textContent = 'R$ ' + money(data.net_brl);
-      document.getElementById('r-effective-rate').textContent = rate(data.effective_rate);
-      document.getElementById('r-quote-rate').textContent = rate(data.quote.rate) + ' BRL/' + data.currency;
-      document.getElementById('r-quote-quoted-at').textContent = dateTimeBr(data.quote.quoted_at);
-      document.getElementById('r-source').textContent = (data.quote && data.quote.source) || '—';
-
-      // Stale badge
-      if (stale) {
-        if (data.quote && data.quote.stale) {
-          stale.querySelector('span').textContent = 'Atenção: cotação com defasagem (última disponível no cache).';
-          stale.classList.remove('hidden');
-        } else {
-          stale.classList.add('hidden');
-        }
-      }
-
-      // Notice
-      if (notice) notice.textContent = data.notice || '';
-
-      // Show result with animation
-      if (result) result.classList.add('visible');
-
-      // Scroll to result smoothly
-      result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-      showToast('Simulação concluída com sucesso', 'success');
-
-    } catch (err) {
-      showGlobalError('Não foi possível conectar à API.', true);
-      showToast('Erro de conexão. Tente novamente.', 'error');
-    } finally {
-      btn.disabled = false;
-      btnText.textContent = 'Simular Recebimento';
-      btnSpinner.classList.add('hidden');
-    }
-  });
-
-  // Clear field error on input
-  form.querySelectorAll('.input, .select').forEach(function (el) {
-    el.addEventListener('input', function () {
-      if (el.classList.contains('invalid')) {
-        el.classList.remove('invalid');
-        var errorEl = document.getElementById(el.name + '-error');
-        if (errorEl) { errorEl.classList.remove('visible'); errorEl.querySelector('span').textContent = ''; }
-      }
-    });
-    el.addEventListener('change', function () {
-      if (el.classList.contains('invalid')) {
-        el.classList.remove('invalid');
-        var errorEl = document.getElementById(el.name + '-error');
-        if (errorEl) { errorEl.classList.remove('visible'); errorEl.querySelector('span').textContent = ''; }
-      }
-    });
-  });
-
-  // Keyboard navigation enhancement for error summary
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && !errorSummary.classList.contains('hidden')) {
-      hideErrorSummary();
-      form.querySelector('.invalid')?.focus();
-    }
-  });
-})();
-</script>
 {% endblock %}
