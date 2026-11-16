@@ -228,12 +228,12 @@ class TestDatabaseNoPersonalData:
         async with engine.begin() as conn:
             await conn.execute(text("TRUNCATE TABLE fx_quotes RESTART IDENTITY"))
 
-    @given(st.integers(min_value=1, max_value=100))
     @settings(
         max_examples=10,
         deadline=None,
         suppress_health_check=[HealthCheck.function_scoped_fixture],
     )
+    @given(st.integers(min_value=1, max_value=100))
     async def test_fx_quotes_columns_contain_only_expected_fields(
         self, engine: AsyncEngine, clean_db: None, count: int
     ) -> None:
@@ -266,12 +266,12 @@ class TestDatabaseNoPersonalData:
             f"fx_quotes has unexpected columns: {set(columns) - expected_columns}"
         )
 
-    @given(rate_quote_strategy())
     @settings(
         max_examples=20,
         deadline=None,
         suppress_health_check=[HealthCheck.function_scoped_fixture],
     )
+    @given(rate_quote_strategy())
     async def test_saved_quote_has_no_personal_fields(
         self, engine: AsyncEngine, clean_db: None, quote: RateQuote
     ) -> None:

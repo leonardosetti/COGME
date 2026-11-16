@@ -267,142 +267,126 @@ def test_list_invoices_with_data(
 # ---------- Teste: GET / PDF ----------
 
 
-def test_get_invoice_detail(db_client: TestClient, invoice_repo: InvoiceRepository) -> None:
+async def test_get_invoice_detail(db_client: TestClient, invoice_repo: InvoiceRepository) -> None:
     """GET /v1/invoices/{id} retorna detalhes completos."""
-    import asyncio
+    from datetime import datetime, UTC
+    from src.backend.services.invoice_number import InvoiceNumberService
+    from src.backend.models.database import create_session_factory
 
-    async def _create():
-        from datetime import datetime, UTC
-        from src.backend.services.invoice_number import InvoiceNumberService
-        session_factory = create_session_factory(
-            create_engine(os.environ["COGME_TEST_DATABASE_URL"])
-        )
-        async with session_factory() as session:
-            number_service = InvoiceNumberService(session)
-            invoice_number = await number_service.generate("00000000000000")
+    async with invoice_repo.session_factory() as session:
+        number_service = InvoiceNumberService(session)
+        invoice_number = await number_service.generate("00000000000000")
 
-        stored = type('StoredInvoice', (), {
-            'id': 0, 'owner_user_id': OWNER_USER_ID, 'client_id': None,
-            'simulation_id': None, 'invoice_number': invoice_number,
-            'status': 'finalized', 'locale': 'pt-BR', 'client_country_code': 'US',
-            'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
-            'issuer_address': 'Rua A', 'client_name': 'Cliente',
-            'client_tax_id_digits': '11111111111111',
-            'client_address': 'Rua B', 'banco': None, 'agencia': None,
-            'conta_com_digito': None, 'pix_key': None,
-            'periodo_inicio': date(2026, 1, 1), 'periodo_fim': date(2026, 1, 31),
-            'description': 'Test', 'regime': 'hourly', 'currency': 'USD',
-            'amount': Decimal('10'), 'quantity': Decimal('10'),
-            'spread_pct': Decimal('1'), 'iof_pct': Decimal('0.38'),
-            'gross_foreign': Decimal('100'), 'gross_brl': Decimal('500'),
-            'spread_brl': Decimal('5'), 'iof_brl': Decimal('1.89'),
-            'net_brl': Decimal('493.11'), 'effective_rate': Decimal('4.9311'),
-            'quote_rate': Decimal('5.000000'), 'quote_source': 'frankfurter',
-            'quote_bulletin': None,
-            'quoted_at': datetime(2026, 10, 30, 0, 0, 0, tzinfo=UTC),
-            'stale': False, 'finalized_at': datetime.now(UTC),
-            'supersedes_invoice_id': None,
-            'created_at': datetime.now(UTC), 'updated_at': datetime.now(UTC),
-        })()
-        await invoice_repo.save(stored)
-        return stored.id
+    stored = type('StoredInvoice', (), {
+        'id': 0, 'owner_user_id': OWNER_USER_ID, 'client_id': None,
+        'simulation_id': None, 'invoice_number': invoice_number,
+        'status': 'finalized', 'locale': 'pt-BR', 'client_country_code': 'US',
+        'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
+        'issuer_address': 'Rua A', 'client_name': 'Cliente',
+        'client_tax_id_digits': '11111111111111',
+        'client_address': 'Rua B', 'banco': None, 'agencia': None,
+        'conta_com_digito': None, 'pix_key': None,
+        'periodo_inicio': date(2026, 1, 1), 'periodo_fim': date(2026, 1, 31),
+        'description': 'Test', 'regime': 'hourly', 'currency': 'USD',
+        'amount': Decimal('10'), 'quantity': Decimal('10'),
+        'spread_pct': Decimal('1'), 'iof_pct': Decimal('0.38'),
+        'gross_foreign': Decimal('100'), 'gross_brl': Decimal('500'),
+        'spread_brl': Decimal('5'), 'iof_brl': Decimal('1.89'),
+        'net_brl': Decimal('493.11'), 'effective_rate': Decimal('4.9311'),
+        'quote_rate': Decimal('5.000000'), 'quote_source': 'frankfurter',
+        'quote_bulletin': None,
+        'quoted_at': datetime(2026, 10, 30, 0, 0, 0, tzinfo=UTC),
+        'stale': False, 'finalized_at': datetime.now(UTC),
+        'supersedes_invoice_id': None,
+        'created_at': datetime.now(UTC), 'updated_at': datetime.now(UTC),
+    })()
+    await invoice_repo.save(stored)
+    inv_id = stored.id
 
-    inv_id = asyncio.run(_create())
-
-    response = client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}")
+    response = db_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}")
     assert response.status_code == 200
     data = response.json()
     assert data["id"] == inv_id
-    assert data["invoice_number"] == inv_id  # number gerado
+    assert data["invoice_number"] == inv_id
     assert data["status"] == "finalized"
     assert data["locale"] == "pt-BR"
     assert data["issuer"]["name"] == "Emitente"
     assert data["client"]["name"] == "Cliente"
 
 
-def test_get_invoice_pdf(db_client: TestClient, invoice_repo: InvoiceRepository) -> None:
+async def test_get_invoice_pdf(db_client: TestClient, invoice_repo: InvoiceRepository) -> None:
     """GET /v1/invoices/{id}?as_pdf=true retorna PDF (Content-Disposition attachment)."""
-    import asyncio
+    from datetime import datetime, UTC
+    from src.backend.services.invoice_number import InvoiceNumberService
+    from src.backend.models.database import create_session_factory
 
-    async def _create():
-        from datetime import datetime, UTC
-        from src.backend.services.invoice_number import InvoiceNumberService
-        session_factory = create_session_factory(
-            create_engine(os.environ["COGME_TEST_DATABASE_URL"])
-        )
-        async with session_factory() as session:
-            number_service = InvoiceNumberService(session)
-            invoice_number = await number_service.generate("00000000000000")
+    async with invoice_repo.session_factory() as session:
+        number_service = InvoiceNumberService(session)
+        invoice_number = await number_service.generate("00000000000000")
 
-        stored = type('StoredInvoice', (), {
-            'id': 0, 'owner_user_id': OWNER_USER_ID, 'client_id': None,
-            'simulation_id': None, 'invoice_number': invoice_number,
-            'status': 'finalized', 'locale': 'pt-BR', 'client_country_code': 'US',
-            'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
-            'issuer_address': None, 'client_name': 'Cliente',
-            'client_tax_id_digits': '11111111111111',
-            'client_address': None, 'banco': None, 'agencia': None,
-            'conta_com_digito': None, 'pix_key': None,
-            'periodo_inicio': date(2026, 1, 1), 'periodo_fim': date(2026, 1, 31),
-            'description': 'Test', 'regime': 'hourly', 'currency': 'USD',
-            'amount': Decimal('10'), 'quantity': Decimal('10'),
-            'spread_pct': Decimal('1'), 'iof_pct': Decimal('0.38'),
-            'gross_foreign': Decimal('100'), 'gross_brl': Decimal('500'),
-            'spread_brl': Decimal('5'), 'iof_brl': Decimal('1.89'),
-            'net_brl': Decimal('493.11'), 'effective_rate': Decimal('4.9311'),
-            'quote_rate': Decimal('5.000000'), 'quote_source': 'frankfurter',
-            'quote_bulletin': None,
-            'quoted_at': datetime(2026, 10, 30, 0, 0, 0, tzinfo=UTC),
-            'stale': False, 'finalized_at': datetime.now(UTC),
-            'supersedes_invoice_id': None,
-            'created_at': datetime.now(UTC), 'updated_at': datetime.now(UTC),
-        })()
-        await invoice_repo.save(stored)
-        return stored.id
+    stored = type('StoredInvoice', (), {
+        'id': 0, 'owner_user_id': OWNER_USER_ID, 'client_id': None,
+        'simulation_id': None, 'invoice_number': invoice_number,
+        'status': 'finalized', 'locale': 'pt-BR', 'client_country_code': 'US',
+        'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
+        'issuer_address': None, 'client_name': 'Cliente',
+        'client_tax_id_digits': '11111111111111',
+        'client_address': None, 'banco': None, 'agencia': None,
+        'conta_com_digito': None, 'pix_key': None,
+        'periodo_inicio': date(2026, 1, 1), 'periodo_fim': date(2026, 1, 31),
+        'description': 'Test', 'regime': 'hourly', 'currency': 'USD',
+        'amount': Decimal('10'), 'quantity': Decimal('10'),
+        'spread_pct': Decimal('1'), 'iof_pct': Decimal('0.38'),
+        'gross_foreign': Decimal('100'), 'gross_brl': Decimal('500'),
+        'spread_brl': Decimal('5'), 'iof_brl': Decimal('1.89'),
+        'net_brl': Decimal('493.11'), 'effective_rate': Decimal('4.9311'),
+        'quote_rate': Decimal('5.000000'), 'quote_source': 'frankfurter',
+        'quote_bulletin': None,
+        'quoted_at': datetime(2026, 10, 30, 0, 0, 0, tzinfo=UTC),
+        'stale': False, 'finalized_at': datetime.now(UTC),
+        'supersedes_invoice_id': None,
+        'created_at': datetime.now(UTC), 'updated_at': datetime.now(UTC),
+    })()
+    await invoice_repo.save(stored)
+    inv_id = stored.id
 
-    inv_id = asyncio.run(_create())
-
-    response = client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}&as_pdf=true")
+    response = db_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}&as_pdf=true")
     assert response.status_code == 200
     assert response.headers["content-type"] == "application/pdf"
     assert "attachment" in response.headers["content-disposition"]
     assert "invoice-" in response.headers["content-disposition"]
 
 
-def test_get_invoice_not_found(db_client: TestClient) -> None:
+async def test_get_invoice_not_found(db_client: TestClient) -> None:
     """GET invoice inexistente retorna 404."""
-    response = client.get(f"{INVOICES}/999999?owner_user_id={OWNER_USER_ID}")
+    response = db_client.get(f"{INVOICES}/999999?owner_user_id={OWNER_USER_ID}")
     assert response.status_code == 404
     assert response.json()["error"]["key"] == "not_found"
 
 
-def test_get_invoice_forbidden(db_client: TestClient, invoice_repo: InvoiceRepository) -> None:
+async def test_get_invoice_forbidden(db_client: TestClient, invoice_repo: InvoiceRepository) -> None:
     """GET invoice de outro owner retorna 404 (não 403 para não vazar existência)."""
-    import asyncio
+    from datetime import datetime, UTC
+    from src.backend.services.invoice_number import InvoiceNumberService
+    from src.backend.models.database import create_session_factory
 
-    async def _create():
-        from datetime import datetime, UTC
-        from src.backend.services.invoice_number import InvoiceNumberService
-        session_factory = create_session_factory(
-            create_engine(os.environ["COGME_TEST_DATABASE_URL"])
-        )
-        async with session_factory() as session:
-            number_service = InvoiceNumberService(session)
-            invoice_number = await number_service.generate("00000000000000")
+    async with invoice_repo.session_factory() as session:
+        number_service = InvoiceNumberService(session)
+        invoice_number = await number_service.generate("00000000000000")
 
-        stored = type('StoredInvoice', (), {
-            'id': 0, 'owner_user_id': 999, 'client_id': None,  # outro owner
-            'simulation_id': None, 'invoice_number': invoice_number,
-            'status': 'finalized', 'locale': 'pt-BR', 'client_country_code': 'US',
-            'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
-            'issuer_address': None, 'client_name': 'Cliente',
-            'client_tax_id_digits': '11111111111111',
-            'client_address': None, 'banco': None, 'agencia': None,
-            'conta_com_digito': None, 'pix_key': None,
-            'periodo_inicio': date(2026, 1, 1), 'periodo_fim': date(2026, 1, 31),
-            'description': 'Test', 'regime': 'hourly', 'currency': 'USD',
-            'amount': Decimal('10'), 'quantity': Decimal('10'),
-            'spread_pct': Decimal('1'), 'iof_pct': Decimal('0.38'),
+    stored = type('StoredInvoice', (), {
+        'id': 0, 'owner_user_id': 999, 'client_id': None,
+        'simulation_id': None, 'invoice_number': invoice_number,
+        'status': 'finalized', 'locale': 'pt-BR', 'client_country_code': 'US',
+        'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
+        'issuer_address': None, 'client_name': 'Cliente',
+        'client_tax_id_digits': '11111111111111',
+        'client_address': None, 'banco': None, 'agencia': None,
+        'conta_com_digito': None, 'pix_key': None,
+        'periodo_inicio': date(2026, 1, 1), 'periodo_fim': date(2026, 1, 31),
+        'description': 'Test', 'regime': 'hourly', 'currency': 'USD',
+        'amount': Decimal('10'), 'quantity': Decimal('10'),
+        'spread_pct': Decimal('1'), 'iof_pct': Decimal('0.38'),
             'gross_foreign': Decimal('100'), 'gross_brl': Decimal('500'),
             'spread_brl': Decimal('5'), 'iof_brl': Decimal('1.89'),
             'net_brl': Decimal('493.11'), 'effective_rate': Decimal('4.9311'),

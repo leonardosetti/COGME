@@ -192,12 +192,12 @@ class TestRepositoryPersistenceRoundTrip:
             await conn.execute(text("TRUNCATE TABLE fx_quotes RESTART IDENTITY"))
         return SqlAlchemyQuoteRepository(create_session_factory(engine))
 
-    @given(stored_quote_strategy())
     @settings(
         max_examples=50,
         deadline=None,
         suppress_health_check=[HealthCheck.function_scoped_fixture],
     )
+    @given(stored_quote_strategy())
     async def test_save_then_get_latest_round_trips(
         self, repository: SqlAlchemyQuoteRepository, quote: StoredQuote
     ) -> None:
@@ -218,12 +218,12 @@ class TestRepositoryPersistenceRoundTrip:
         assert retrieved.quoted_at == quote.quoted_at
         assert retrieved.fetched_at == quote.fetched_at
 
-    @given(stored_quote_strategy(), stored_quote_strategy())
     @settings(
         max_examples=30,
         deadline=None,
         suppress_health_check=[HealthCheck.function_scoped_fixture],
     )
+    @given(stored_quote_strategy(), stored_quote_strategy())
     async def test_get_latest_picks_max_fetched_at(
         self,
         repository: SqlAlchemyQuoteRepository,
