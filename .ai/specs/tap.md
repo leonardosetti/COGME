@@ -3,11 +3,12 @@ id: ai-specs-tap
 title: TAP COGME — linha de base v3 (congelada)
 type: spec
 version: 1.0.0
-status: draft
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - .ai/specs/tap.md (adequado à norma em 2026-11-05)
-last-revised: '2026-11-05'
+last-revised: '2026-11-16'
+fase: encerrada
 lgpd-class: n/a
 tags:
 - specs
@@ -258,3 +259,20 @@ Adaptado a arquivo pinned (sem `spec_id spec-NNN`; MANIFEST §5.1 — tap.md sem
 | (f) Rastreabilidade | §17 Rastreabilidade (`arquivo:linha` por seção) | ✅ |
 | (g) Fora de escopo (YAGNI) | §18 Fora de escopo (YAGNI) | ✅ |
 | (h) Changelog | §19 CHANGELOG | ✅ |
+
+## 21. Fase encerrada — caninização (TAP concluída)
+
+Esta linha de base do TAP v3 está **encerrada e caninizada**: o espelho da linha de base
+congelada (identificação, objeto/autorização, justificativa, requisitos REQ-01..15,
+EAP compacta 12/37, marcos M1–M4 + Calibração, premissas P1–P9, restrições §8/§11) foi
+transcrito com citações `arquivo:linha` do plano-integral (fonte viva única). O TAP está
+em regime de *freeze* (ADR-005): não é revisado, reversionado ou corrigido ao longo do
+ciclo sem Emenda MAJOR + CCB. Toda emenda pontual registra-se em
+`docs/tap/delta-v3.1.md`; este espelho não reescreve a baseline.
+
+- Fase: encerrada (caninizada)
+- Fonte viva única: plano-integral-tap-1-2-3-4-5.md (KB-INDEX:32,51)
+- Regime: freeze + emenda controlada (ADR-005 v1.1.0; ADR-013 incorporada)
+- Divergências fonte × regime: registradas no §3 (7 itens), sem reescrita da baseline
+- `docs/tap/TAP.docx` (binário): não transcrito nesta rodada — fonte potencial das
+  lacunas `UNKNOWN - verify` (§§7, 13, 14, 15)

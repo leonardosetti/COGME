@@ -3,19 +3,21 @@ id: ai-specs-spec-adr-template-spec
 title: Template Canônico de ADR — COGME
 type: spec
 version: 1.0.0
-status: draft
+status: ativo
 owner: agent-project-analyst
 derived-from:
 - docs/decisoes/adr-018-nomeclatura-arquivos.md
 - docs/conhecimento/compliance/auditoria-normalizacao-artefatos.md
 - docs/conhecimento/okb.md §8.3
-last-revised: '2026-11-05'
+last-revised: '2026-11-16'
 lgpd-class: n/a
 tags:
 - spec
 - adr
 - template
 - norma
+spec_id: spec-adr-template
+specname: adr-template
 ---
 
 # Template Canônico de ADR — COGME
@@ -98,3 +100,35 @@ Campos na ordem:
 ## 5. Ratificação e promulgação
 
 Somente após revisão deste template e do corpo, a ADR é submetida ao CCB (GP Leonardo) para ratificação via instrumento `RAT-YYYY-MM-DD-A##`, com registro em `docs/decisoes/adr-log.md` e `docs/governanca/ccb-log.md`.
+
+## 6. Critérios de aceite e testes (deste template)
+
+- [ ] AC-01: arquivo não vazio, com frontmatter YAML completo (19 campos obrigatórios na ordem declarada).
+- [ ] AC-02: campos `id`, `title`, `version`, `class`, `status`, `owner`, `derived-from`, `last-revised`, `lgpd-class`, `tags`, `data-decisao`, `data-formalizacao`, `decisor`, `gatilhos`, `rastreabilidade`, `dominio-pmbok`, `kill-switch` presentes no frontmatter.
+- [ ] AC-03: corpo segue a ordem obrigatória: 3.1 tabela de metadados → 3.2 Contexto → 3.3 Decisão → 3.4 Alternativas → 3.5 Consequências → 3.6 Sobreposição → 3.7 kill_switch → 3.8 Governança → 3.9 Histórico → 3.10 Ratificação → 3.11 Referências.
+- [ ] AC-04: regras de cross-reference respeitadas (versão pinada, nunca citar `docs/archive/`, `UNKNOWN-GAP` para versão desconhecida, um fato = um local).
+- [ ] AC-05: ratificação via CCB com instrumento `RAT-YYYY-MM-DD-A##` e registro em `adr-log.md` + `ccb-log.md`.
+- [ ] AC-06: nenhum outro arquivo editado nesta tarefa; nada commitado além deste template.
+
+## 7. Rastreabilidade
+
+| Seção deste artefato | Fonte |
+|---|---|
+| Frontmatter / spec_id | MANIFEST.md §1.1 (template canônico a–h); HF-0031 §2.1 |
+| §1 Nomenclatura | docs/decisoes/adr-018-nomeclatura-arquivos.md (ADR-018) |
+| §2 Frontmatter YAML | MANIFEST.md §1.1; ADR-018 |
+| §3 Estrutura do corpo | docs/conhecimento/compliance/auditoria-normalizacao-artefatos.md §8.3; docs/conhecimento/okb.md §8.3 |
+| §4 Regras de cross-reference | docs/conhecimento/okb.md §8.3; MANIFEST §4 |
+| §5 Ratificação | docs/decisoes/adr-log.md; docs/governanca/ccb-log.md (modelo CAB vivo, ITIL 4) |
+| §6 Critérios de aceite | MANIFEST §1.2 (camada e) |
+| §7 Rastreabilidade | MANIFEST §1.2 (camada f) |
+
+## 8. Fora de escopo (YAGNI)
+
+- Criar ADRs concretas (este é apenas o template normativo).
+- Alterar ADRs já ratificadas (usar emenda de versão, ADR-LOG).
+- Citar `docs/archive/` como fonte viva (vedado por §4).
+
+## CHANGELOG
+
+- **1.0.0 — 2026-11-16 — normalização e aprovação (opção n)**: inclusão de `spec_id`, `specname`, status `ativo`, seções de critérios de aceite (§6) e rastreabilidade (§7), fora de escopo (§8) e CHANGELOG. Template aprovado como norma para emissão de novas ADRs.

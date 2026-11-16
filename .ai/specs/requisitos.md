@@ -17,7 +17,7 @@ tags:
 ---
 id: REQ-SPEC-001
 title: "Requisitos COGME — SSOT RF/RNF da camada 5"
-status: draft
+status: ativo
 version: 1.0.0
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-11-03
