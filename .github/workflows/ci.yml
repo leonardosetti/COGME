@@ -208,11 +208,12 @@ jobs:
 
       - name: Execute full test suite (fail-closed, coverage >=90, zero skips)
         run: |
-          python -m pytest tests/unit tests/integration tests/agents -q --tb=short \
+          set +e
+          python -m pytest tests/unit tests/integration tests/agents -v --tb=short \
             --cov=src --cov-report=xml:coverage.xml --cov-report=term-missing \
             --cov-fail-under=90 --junitxml=junit.xml \
-            -p no:cacheprovider > /tmp/pytest-report.txt 2>&1
-          PY_RC=$?
+            -p no:cacheprovider 2>&1 | tee /tmp/pytest-report.txt
+          PY_RC=${PIPESTATUS[0]}
 
           # Gate de qualidade: NENHUM teste pode ser pulado (usuário: todos executados).
           if grep -qE ", [1-9][0-9]* skipped" /tmp/pytest-report.txt; then
@@ -221,7 +222,6 @@ jobs:
             exit 1
           fi
 
-          cat /tmp/pytest-report.txt
           exit $PY_RC
 
       - name: Publish quality artifacts (coverage + junit, LGPD-safe filenames)
