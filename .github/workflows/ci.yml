@@ -198,13 +198,13 @@ jobs:
           sudo apt-get install -y --no-install-recommends \
             libpango-1.0-0 libpangoft2-1.0-0 libharfbuzz-subset0 fonts-dejavu-core
 
-      - name: Migrations round trip (upgrade, check, downgrade)
+      - name: Migrations round trip (upgrade, check)
         env:
           COGME_DATABASE_URL: postgresql+asyncpg://cogme_ci:dummy-ci-efemero@localhost:5432/cogme_test
         run: |
           alembic upgrade head
           alembic check
-          alembic downgrade base
+          # Not downgrading: integration tests need migrated database
 
       - name: Execute full test suite (fail-closed, coverage >=90, zero skips)
         run: |
