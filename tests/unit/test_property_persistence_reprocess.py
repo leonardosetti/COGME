@@ -74,7 +74,10 @@ def stored_quote_strategy(draw: st.DrawFn) -> StoredQuote:
         )
     )
     source = draw(st.sampled_from(["frankfurter", "ptax"]))
-    bulletin = draw(st.one_of(st.none(), st.text(min_size=1, max_size=40)))
+    bulletin = draw(st.one_of(
+        st.none(),
+        st.text(min_size=1, max_size=40).filter(lambda x: '\x00' not in x)
+    ))
     quoted_at = draw(datetime_utc_strategy())
     fetched_at = draw(datetime_utc_strategy())
 
@@ -102,7 +105,10 @@ def stored_quote_strategy_latest(draw: st.DrawFn) -> StoredQuote:
         )
     )
     source = draw(st.sampled_from(["frankfurter", "ptax"]))
-    bulletin = draw(st.one_of(st.none(), st.text(min_size=1, max_size=40)))
+    bulletin = draw(st.one_of(
+        st.none(),
+        st.text(min_size=1, max_size=40).filter(lambda x: '\x00' not in x)
+    ))
     quoted_at = draw(datetime_utc_strategy())
     # Use maximum possible fetched_at to ensure this quote is the "latest"
     fetched_at = _MAX_DATETIME
@@ -529,14 +535,16 @@ class TestDatabaseConstraints:
     ) -> None:
         """Database CHECK constraint rejects non-USD/EUR currencies."""
         import pytest
-        from sqlalchemy.exc import IntegrityError
+        from sqlalchemy.exc import DBAPIError
 
         invalid_quote = replace(base_quote, currency=invalid_currency)
 
         with pytest.raises(RepositoryError) as exc_info:
             await repository.save(invalid_quote)
 
-        assert isinstance(exc_info.value.__cause__, IntegrityError)
+        # The currency column is CHAR(3), so invalid currencies that are too long
+        # or don't match the CHECK constraint raise DBAPIError (not IntegrityError)
+        assert isinstance(exc_info.value.__cause__, DBAPIError)
 
     @settings(
         max_examples=20,
