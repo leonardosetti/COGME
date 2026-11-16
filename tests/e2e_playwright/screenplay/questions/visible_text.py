@@ -16,7 +16,7 @@ class VisibleText(Question):
         """
         self.locator = locator
 
-    def answered_by(self, actor: Actor) -> str:
+    async def answered_by(self, actor: Actor) -> str:
         """Args:
             actor: Ator com a habilidade ``BrowseTheWeb``.
 
@@ -24,4 +24,4 @@ class VisibleText(Question):
             Texto visível do elemento.
         """
         page = actor.ability(BrowseTheWeb).page
-        return page.locator(self.locator).text_content() or ""
+        return (await page.locator(self.locator).text_content()) or ""

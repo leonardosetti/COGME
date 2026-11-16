@@ -16,11 +16,11 @@ class NavigateTo(Task):
         """
         self.url = url
 
-    def perform_as(self, actor: Actor) -> None:
+    async def perform_as(self, actor: Actor) -> None:
         """Leva o ator à URL, aguardando estabilização da rede.
 
         Args:
             actor: Ator com a habilidade ``BrowseTheWeb``.
         """
         page = actor.ability(BrowseTheWeb).page
-        page.goto(self.url, wait_until="networkidle")
+        await page.goto(self.url, wait_until="networkidle")

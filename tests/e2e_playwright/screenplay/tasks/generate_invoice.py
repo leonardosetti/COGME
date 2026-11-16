@@ -17,7 +17,7 @@ class GenerateInvoice(Task):
     def __init__(self) -> None:
         self.pdf_bytes: bytes | None = None
 
-    def perform_as(self, actor: Actor) -> None:
+    async def perform_as(self, actor: Actor) -> None:
         """Clica em gerar invoice e aguarda o download do PDF.
 
         Args:
@@ -29,10 +29,10 @@ class GenerateInvoice(Task):
         page = actor.ability(BrowseTheWeb).page
 
         download_promise = page.wait_for_event("download", timeout=15000)
-        page.click("#btn")
-        download = download_promise
+        await page.click("#btn")
+        download = await download_promise
 
-        path = download.path()
+        path = await download.path()
         assert path is not None, "download do PDF não gerou caminho de arquivo"
         self.pdf_bytes = path.read_bytes()
         assert self.pdf_bytes.startswith(PDF_SIGNATURE), "baixado não é um PDF válido"

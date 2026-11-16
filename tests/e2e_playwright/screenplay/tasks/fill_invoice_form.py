@@ -53,29 +53,29 @@ class FillInvoiceForm(Task):
         self.issue_date = issue_date
         self.description = description
 
-    def perform_as(self, actor: Actor) -> None:
+    async def perform_as(self, actor: Actor) -> None:
         """Preenche todos os campos do formulário de invoice.
 
         Args:
             actor: Ator com a habilidade ``BrowseTheWeb``.
         """
         page = actor.ability(BrowseTheWeb).page
-        page.select_option("#sim-currency", self.sim_currency)
-        page.select_option("#sim-regime", self.sim_regime)
-        page.fill("#sim-amount", self.sim_amount)
-        page.fill("#sim-quantity", self.sim_quantity)
-        page.fill("#sim-spread_pct", self.sim_spread_pct)
-        page.fill("#sim-iof_pct", self.sim_iof_pct)
-        page.fill("#issuer-name", self.issuer_name)
+        await page.select_option("#sim-currency", self.sim_currency)
+        await page.select_option("#sim-regime", self.sim_regime)
+        await page.fill("#sim-amount", self.sim_amount)
+        await page.fill("#sim-quantity", self.sim_quantity)
+        await page.fill("#sim-spread_pct", self.sim_spread_pct)
+        await page.fill("#sim-iof_pct", self.sim_iof_pct)
+        await page.fill("#issuer-name", self.issuer_name)
         if self.issuer_tax_id is not None:
-            page.fill("#issuer-tax_id", self.issuer_tax_id)
+            await page.fill("#issuer-tax_id", self.issuer_tax_id)
         if self.issuer_address is not None:
-            page.fill("#issuer-address", self.issuer_address)
-        page.fill("#client-name", self.client_name)
+            await page.fill("#issuer-address", self.issuer_address)
+        await page.fill("#client-name", self.client_name)
         if self.client_tax_id is not None:
-            page.fill("#client-tax_id", self.client_tax_id)
+            await page.fill("#client-tax_id", self.client_tax_id)
         if self.client_address is not None:
-            page.fill("#client-address", self.client_address)
-        page.fill("#invoice_number", self.invoice_number)
-        page.fill("#issue_date", self.issue_date)
-        page.fill("#description", self.description)
+            await page.fill("#client-address", self.client_address)
+        await page.fill("#invoice_number", self.invoice_number)
+        await page.fill("#issue_date", self.issue_date)
+        await page.fill("#description", self.description)

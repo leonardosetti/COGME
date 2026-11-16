@@ -35,17 +35,17 @@ class FillSimulationForm(Task):
         self.spread_pct = spread_pct
         self.iof_pct = iof_pct
 
-    def perform_as(self, actor: Actor) -> None:
+    async def perform_as(self, actor: Actor) -> None:
         """Preenche o formulário e submete.
 
         Args:
             actor: Ator com a habilidade ``BrowseTheWeb``.
         """
         page = actor.ability(BrowseTheWeb).page
-        page.select_option("#currency", self.currency)
-        page.select_option("#regime", self.regime)
-        page.fill("#amount", self.amount)
+        await page.select_option("#currency", self.currency)
+        await page.select_option("#regime", self.regime)
+        await page.fill("#amount", self.amount)
         if self.quantity is not None:
-            page.fill("#quantity", self.quantity)
-        page.fill("#spread_pct", self.spread_pct)
-        page.fill("#iof_pct", self.iof_pct)
+            await page.fill("#quantity", self.quantity)
+        await page.fill("#spread_pct", self.spread_pct)
+        await page.fill("#iof_pct", self.iof_pct)
