@@ -1833,3 +1833,47 @@ def test_b12_cookie_secure_somente_producao():
     get_settings.cache_clear()
 
 
+# ---------- Auditoria CR-009: aceitação dos BLOQ já satisfeitos (B-04, B-13) ----------
+
+
+def test_b04_invoice_unique_composto_por_emissor():
+    """B-04: unique de invoice é (issuer_tax_id_digits, invoice_number), não global."""
+    from src.backend.models.invoice import Invoice
+
+    constraints = [
+        c
+        for arg in Invoice.__table_args__
+        if hasattr(arg, "columns") and hasattr(arg, "name")
+        for c in [arg]
+    ]
+    nomes = {c.name for c in constraints}
+    assert "uq_invoices_issuer_number" in nomes
+    uq = [c for c in constraints if c.name == "uq_invoices_issuer_number"][0]
+    colunas = tuple(sorted(c.name for c in uq.columns))
+    assert colunas == ("invoice_number", "issuer_tax_id_digits")
+    # Não deve existir unique global so de invoice_number.
+    assert "uq_invoices_invoice_number" not in nomes
+
+
+def test_b13_cliente_internacional_sem_tax_id():
+    """B-13: cliente internacional (tipo foreign) pode não ter tax_id; email/phone persistidos."""
+    from src.backend.models.client import Client
+    from sqlalchemy import inspect
+
+    mapper = inspect(Client)
+    col_tax = mapper.columns["tax_id_digits"]
+    col_type = col_tax.type
+    # VARCHAR(32) nullable.
+    assert col_type.__class__.__name__ == "VARCHAR"
+    assert col_type.length == 32
+    assert col_tax.nullable is True
+
+    col_tipo = mapper.columns["tax_id_type"]
+    assert col_tipo.nullable is False
+
+    col_email = mapper.columns["email"]
+    assert col_email.nullable is True
+    col_phone = mapper.columns["phone"]
+    assert col_phone.nullable is True
+
+
