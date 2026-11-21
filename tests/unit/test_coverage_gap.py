@@ -1,5 +1,6 @@
 """Testes focados para cobrir linhas missing do relatório de cobertura."""
 
+import logging
 import pytest
 from unittest.mock import AsyncMock, MagicMock, Mock
 
@@ -1669,3 +1670,65 @@ def test_handle_generic_error_logs():
 
 
 # ---------- main.py: _message_for tipo desconhecido sem custom ----------
+
+
+# ---------- Auditoria CR-009: aceitação dos BLOQ já satisfeitos ----------
+
+
+def test_b01_cadastro_nao_loga_pii():
+    """B-01: cadastro não loga identifier/name/CPF/CNPJ; só kind e user_id."""
+    from fastapi.testclient import TestClient
+
+    from src.backend.main import create_app
+
+    app = create_app()
+    cliente = TestClient(app, raise_server_exceptions=False)
+
+    mensagens = []
+
+    class _Handler(logging.Handler):
+        def emit(self, record):
+            mensagens.append(record.getMessage())
+
+    logger = logging.getLogger("src.backend.routers.auth")
+    handler = _Handler()
+    logger.addHandler(handler)
+    logger.setLevel(logging.INFO)
+
+    try:
+        resposta = cliente.post(
+            "/v1/auth/register",
+            json={"identifier": "usuario@exemplo.com", "password": "senha123", "name": "Usuário Teste"},
+        )
+        assert resposta.status_code in (201, 400, 409, 500)
+    finally:
+        logger.removeHandler(handler)
+
+    texto = " ".join(mensagens)
+    assert "usuario@exemplo.com" not in texto
+    assert "Usuário Teste" not in texto
+    assert "senha123" not in texto
+
+
+def test_b03_senha_verifica_argon2_ou_legado():
+    """B-03: _hash_password gera hash verificável; Argon2id quando disponível, senão PBKDF2 legado."""
+    import hashlib
+    import base64
+
+    from src.backend.routers.auth import _hash_password, _verify_password, _ARGON2_AVAILABLE
+
+    h = _hash_password("senha-teste", b"\x00" * 16)
+    assert _verify_password("senha-teste", h)
+    assert not _verify_password("senha-errada", h)
+
+    if _ARGON2_AVAILABLE:
+        assert h.startswith("$argon2id$")
+    else:
+        # Fallback PBKDF2 base64(salt+dk): 16 bytes salt + 32 bytes dk = 48 bytes -> 64 base64 chars
+        assert len(h) == 64  # base64(48 bytes), 48 é múltiplo de 3 (sem padding)
+        salt = b"\x00" * 16
+        dk = hashlib.pbkdf2_hmac("sha256", b"senha-teste", salt, 210_000)
+        legado = base64.b64encode(salt + dk).decode()
+        assert _verify_password("senha-teste", legado)
+
+
