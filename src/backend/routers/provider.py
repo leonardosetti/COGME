@@ -22,6 +22,7 @@ from pydantic import BaseModel, Field
 from sqlalchemy import delete, select, update
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
+from src.backend.middleware.rate_limit import limiter
 from src.backend.routers.common import (
     CurrentSession,
     SessionFactoryDep,
@@ -213,6 +214,7 @@ async def list_bank_accounts(
     status_code=status.HTTP_201_CREATED,
     summary="Cria conta bancária",
 )
+@limiter.limit("20/minute")
 async def create_bank_account(
     payload: BankAccountRequest,
     request: Request,
@@ -246,6 +248,7 @@ async def create_bank_account(
     response_model=BankAccountResponse,
     summary="Atualiza conta bancária",
 )
+@limiter.limit("20/minute")
 async def update_bank_account(
     account_id: int,
     payload: BankAccountRequest,
@@ -284,6 +287,7 @@ async def update_bank_account(
     status_code=status.HTTP_204_NO_CONTENT,
     summary="Remove conta bancária",
 )
+@limiter.limit("20/minute")
 async def delete_bank_account(
     account_id: int,
     request: Request,
