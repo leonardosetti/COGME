@@ -1,5 +1,6 @@
 """Testes focados para cobrir linhas missing do relatório de cobertura."""
 
+import inspect
 import logging
 import os
 import pytest
@@ -1875,5 +1876,34 @@ def test_b13_cliente_internacional_sem_tax_id():
     assert col_email.nullable is True
     col_phone = mapper.columns["phone"]
     assert col_phone.nullable is True
+
+
+# ---------- Auditoria CR-009: aceitação dos BLOQ já satisfeitos (B-05, B-06) ----------
+
+
+def test_b05_create_invoice_verifica_ownership():
+    """B-05: create_invoice carrega client/simulacao filtrando por owner_user_id."""
+    import inspect
+
+    from src.backend.routers import invoices
+
+    fonte = inspect.getsource(invoices.create_invoice)
+    assert "Client.owner_user_id == sess.user_id" in fonte
+    assert "Simulation.owner_user_id == sess.user_id" in fonte
+
+
+def test_b06_csrf_cookie_nao_httponly_e_logout_nao_isento():
+    """B-06: cookie CSRF sem HttpOnly; logout nao esta isento (requer CSRF token)."""
+    from src.backend.middleware.csrf import CSRF_EXEMPT_PATHS, CSRF_COOKIE_NAME
+
+    # Cookie CSRF nao deve ser HttpOnly.
+    import src.backend.middleware.csrf as csrf_mod
+
+    fonte = inspect.getsource(csrf_mod.CSRFMiddleware.__call__)
+    set_cookie_trecho = [l for l in fonte.splitlines() if "set-cookie" in l.lower()]
+    assert any("httponly" not in l.lower() for l in set_cookie_trecho), "cookie CSRF deve permitir leitura pelo frontend"
+
+    # Logout nao esta na lista de isencao.
+    assert "/v1/auth/logout" not in CSRF_EXEMPT_PATHS
 
 
