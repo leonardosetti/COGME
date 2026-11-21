@@ -3,7 +3,7 @@ id: docs-especificacoes-spec-prop-017-conta-multiusuario
 title: Proposta de Spec — Contas multiusuário, dados da prestadora e histórico de invoices
 type: spec
 version: 0.2.0
-status: draft
+status: obsoleto
 owner: agent-project-analyst
 derived-from:
 - docs/change-requests/cr-002-cadastro-usuarios-multiusuario.md

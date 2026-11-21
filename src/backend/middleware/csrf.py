@@ -18,9 +18,11 @@ CSRF_EXEMPT_PATHS: frozenset[str] = frozenset(
     {
         "/v1/auth/register",
         "/v1/auth/login",
-        "/v1/auth/logout",
         "/v1/auth/password/reset-request",
         "/v1/auth/password/reset-confirm",
+        "/v1/auth/email/verify",
+        "/v1/auth/email/resend",
+        "/v1/account/reactivate",
         "/v1/simulate",
         "/v1/invoice",
     }
@@ -57,7 +59,7 @@ class CSRFMiddleware:
                         (
                             b"set-cookie",
                             f"{CSRF_COOKIE_NAME}={_generate_csrf_token()}; "
-                            "HttpOnly; Secure; SameSite=Lax; Path=/".encode(),
+                            "Secure; SameSite=Lax; Path=/".encode(),
                         )
                     )
             await send(message)

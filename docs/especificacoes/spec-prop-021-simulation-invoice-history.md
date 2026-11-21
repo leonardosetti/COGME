@@ -3,7 +3,7 @@ id: docs-especificacoes-spec-prop-021-simulation-invoice-history
 title: Proposta de Spec — Simulações salvas, histórico e ciclo de vida das invoices
 type: spec
 version: 0.1.0
-status: draft
+status: obsoleto
 owner: agent-project-analyst
 derived-from:
 - docs/change-requests/cr-006-simulation-invoice-history.md

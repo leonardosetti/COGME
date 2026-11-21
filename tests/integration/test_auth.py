@@ -57,14 +57,14 @@ async def test_logout_returns_status(auth_client: AsyncClient) -> None:
 
 async def test_csrf_missing_is_403(db_client: AsyncClient) -> None:
     """POST mutável sem cookie/header CSRF deve recusar (403)."""
-    response = await _post_simulate(db_client)
+    response = await db_client.post("/v1/invoices", json={"client_id": 1})
     assert response.status_code in (401, 403)  # 401 (sem sessão) ou 403 (CSRF)
 
 
 async def test_csrf_invalid_is_403(auth_client: AsyncClient) -> None:
     """CSRF token cookie diferente do header deve recusar (403)."""
     auth_client.cookies.set("csrf_token", "outro-valor")
-    response = await _post_simulate(auth_client)
+    response = await auth_client.post("/v1/invoices", json={"client_id": 1})
     assert response.status_code == 403
 
 

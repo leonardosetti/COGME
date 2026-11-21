@@ -22,6 +22,13 @@ x-app: &app
     COGME_PROVIDER_TIMEOUT_SECONDS: ${COGME_PROVIDER_TIMEOUT_SECONDS:-0.9}
     COGME_LOG_LEVEL: ${COGME_LOG_LEVEL:-INFO}
     COGME_LOGIN_PEPPER: ${COGME_LOGIN_PEPPER:?defina COGME_LOGIN_PEPPER no .env}
+    COGME_ENV: ${COGME_ENV:-development}
+    COGME_SMTP_HOST: ${COGME_SMTP_HOST:-localhost}
+    COGME_SMTP_PORT: ${COGME_SMTP_PORT:-25}
+    COGME_SMTP_USER: ${COGME_SMTP_USER:-}
+    COGME_SMTP_PASSWORD: ${COGME_SMTP_PASSWORD:-}
+    COGME_SMTP_FROM: ${COGME_SMTP_FROM:-noreply@localhost}
+    COGME_SMTP_USE_TLS: ${COGME_SMTP_USE_TLS:-false}
   networks: [data, edge]
   security_opt: ["no-new-privileges:true"]
   cap_drop: [ALL]

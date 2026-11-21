@@ -3,7 +3,7 @@ id: docs-especificacoes-spec-prop-019-provider-profile-bank
 title: Proposta de Spec — Perfil da prestadora e contas bancárias de depósito
 type: spec
 version: 0.1.0
-status: draft
+status: obsoleto
 owner: agent-project-analyst
 derived-from:
 - docs/change-requests/cr-004-provider-profile-bank.md

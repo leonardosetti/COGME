@@ -296,6 +296,9 @@ class SqlAlchemyInvoiceRepository:
     async def update_status(
         self, invoice_id: int, owner_user_id: int, status: str, finalized_at: datetime | None = None
     ) -> StoredInvoice | None:
+        import logging
+        logger = logging.getLogger(__name__)
+
         stmt = select(Invoice).where(
             Invoice.id == invoice_id, Invoice.owner_user_id == owner_user_id
         )
@@ -303,14 +306,22 @@ class SqlAlchemyInvoiceRepository:
             async with self._session_factory() as session, session.begin():
                 row = (await session.execute(stmt)).scalar_one_or_none()
                 if row is None:
+                    logger.warning(f"update_status: invoice not found, invoice_id={invoice_id}, owner_user_id={owner_user_id}")
                     return None
                 row.status = status
                 if finalized_at is not None:
                     row.finalized_at = finalized_at
                 row.updated_at = datetime.now().astimezone()
-                return self._to_stored(row)
+                logger.info(f"update_status: row updated, invoice_id={invoice_id}, status={status}")
+                stored = self._to_stored(row)
+                logger.info(f"update_status: _to_stored completed, invoice_id={invoice_id}")
+                return stored
         except _STORAGE_FAILURES as error:
+            logger.exception(f"update_status: storage failure, invoice_id={invoice_id}, owner_user_id={owner_user_id}")
             raise RepositoryError("Falha ao atualizar status da invoice.") from error
+        except Exception as error:
+            logger.exception(f"update_status: unexpected error, invoice_id={invoice_id}, owner_user_id={owner_user_id}")
+            raise
 
     async def delete(self, invoice_id: int, owner_user_id: int) -> bool:
         stmt = select(Invoice).where(

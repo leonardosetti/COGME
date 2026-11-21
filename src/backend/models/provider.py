@@ -59,6 +59,9 @@ class ProviderProfile(Base):
     state: Mapped[str | None] = mapped_column(CHAR(2), nullable=True)
     postal_code: Mapped[str | None] = mapped_column(CHAR(8), nullable=True)
     country_code: Mapped[str] = mapped_column(CHAR(2), nullable=False, default="BR")
+    deleted_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,
@@ -100,6 +103,45 @@ class ProviderBankAccount(Base):
     account_holder: Mapped[str] = mapped_column(String(255), nullable=False)
     currency: Mapped[str] = mapped_column(CHAR(3), nullable=False, default="BRL")
     is_primary: Mapped[bool] = mapped_column(nullable=False, default=False)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        nullable=False,
+        default=lambda: datetime.now().astimezone(),
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        nullable=False,
+        default=lambda: datetime.now().astimezone(),
+        onupdate=lambda: datetime.now().astimezone(),
+    )
+
+
+class ProviderCnpj(Base):
+    """CNPJ da prestadora (suporte a múltiplos CNPJs por usuário)."""
+
+    __tablename__ = "provider_cnpjs"
+    __table_args__ = (
+        UniqueConstraint("cnpj", name="uq_provider_cnpjs_cnpj"),
+        Index("ix_provider_cnpjs_user", "user_id"),
+        Index("ix_provider_cnpjs_status", "status"),
+        ForeignKeyConstraint(
+            ["user_id"], ["users.id"], name="fk_provider_cnpjs_user", ondelete="CASCADE"
+        ),
+    )
+
+    id: Mapped[int] = mapped_column(BIGINT, primary_key=True)
+    user_id: Mapped[int] = mapped_column(
+        BIGINT, ForeignKey("users.id", ondelete="CASCADE"), nullable=False
+    )
+    cnpj: Mapped[str] = mapped_column(CHAR(14), nullable=False)
+    label: Mapped[str | None] = mapped_column(String(80), nullable=True)
+    is_primary: Mapped[bool] = mapped_column(nullable=False, default=False)
+    status: Mapped[str] = mapped_column(
+        String(16), nullable=False, default="active",
+    )
+    deleted_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,

@@ -214,10 +214,16 @@ async def _handle_validation_error(_: Request, error: Exception) -> JSONResponse
 async def _handle_http_error(_: Request, error: Exception) -> JSONResponse:
     """Traduz as exceções HTTP do Starlette para o modelo canônico.
 
-    404 e 405 viram ``not_found``. Para 405 a chave ``validation_error`` seria semanticamente
-    errada (a requisição está bem formada, o recurso é que não aceita o método), então a chave
-    é ``not_found`` e o cabeçalho ``Allow`` é preservado. O 400 que o FastAPI levanta ao falhar
-    ao ler o corpo vira ``validation_error``. Qualquer outro status é tratado como erro interno.
+    Mapeamento:
+    - 400 → validation_error
+    - 401 → unauthorized
+    - 403 → forbidden (ou chaves específicas: account_dormant, email_unverified, profile_incomplete, issuer_not_allowed)
+    - 404 → not_found
+    - 405 → not_found (com header Allow)
+    - 409 → conflict
+    - 422 → limit_exceeded
+    - 429 → rate_limited
+    - outros → internal_error
 
     Args:
         _: Requisição (não usada).
@@ -227,6 +233,14 @@ async def _handle_http_error(_: Request, error: Exception) -> JSONResponse:
         A resposta canônica.
     """
     assert isinstance(error, StarletteHTTPException)
+    if error.status_code == 400:
+        return _error_response(ErrorKey.VALIDATION_ERROR, _VALIDATION_MESSAGE, 400)
+    if error.status_code == 401:
+        return _error_response(ErrorKey.UNAUTHORIZED, "Credenciais inválidas.", 401)
+    if error.status_code == 403:
+        # Chaves específicas via DomainError têm prioridade; fallback genérico
+        detail = error.detail if isinstance(error.detail, str) else "Acesso negado."
+        return _error_response(ErrorKey.FORBIDDEN, detail, 403)
     if error.status_code == 404:
         return _error_response(ErrorKey.NOT_FOUND, _NOT_FOUND_MESSAGE, 404)
     if error.status_code == 405:
@@ -237,15 +251,18 @@ async def _handle_http_error(_: Request, error: Exception) -> JSONResponse:
             405,
             headers={"Allow": allow} if allow else None,
         )
-    if error.status_code == 400:
-        return _error_response(ErrorKey.VALIDATION_ERROR, _VALIDATION_MESSAGE, 400)
+    if error.status_code == 409:
+        return _error_response(ErrorKey.CONFLICT, error.detail, 409)
+    if error.status_code == 422:
+        return _error_response(ErrorKey.LIMIT_EXCEEDED, "Limite excedido.", 422)
+    if error.status_code == 429:
+        return _error_response(ErrorKey.RATE_LIMITED, "Muitas requisições. Tente novamente mais tarde.", 429)
     return _error_response(ErrorKey.INTERNAL_ERROR, _INTERNAL_ERROR_MESSAGE, 500)
 
 
 async def _handle_generic_error(_: Request, error: Exception) -> JSONResponse:
-    """Catch-all handler para exceções não tratadas - loga o erro real."""
-    import traceback
-    logger.exception("Unhandled exception: %s", error)
+    """Catch-all handler para exceções não tratadas - loga apenas o tipo."""
+    logger.error("Unhandled exception: %s", type(error).__name__)
     return _error_response(ErrorKey.INTERNAL_ERROR, _INTERNAL_ERROR_MESSAGE, 500)
 
 

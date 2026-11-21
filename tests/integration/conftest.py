@@ -78,6 +78,19 @@ def migrated() -> None:
 
     asyncio.run(create_test_user())
     yield
+    # Clean up ALL users except id=1 before downgrade to avoid NOT NULL constraint violation
+    # (users registered with CPF/CNPJ have NULL email)
+    async def cleanup_all_users():
+        engine = create_engine(os.environ["COGME_TEST_DATABASE_URL"])
+        session_factory = create_session_factory(engine)
+        async with session_factory() as session:
+            from sqlalchemy import delete, select
+            from src.backend.models.user import User
+            # Delete all users except the test user (id=1)
+            await session.execute(delete(User).where(User.id != 1))
+            await session.commit()
+        await engine.dispose()
+    asyncio.run(cleanup_all_users())
     with pytest.MonkeyPatch.context() as patch:
         patch.setenv("COGME_DATABASE_URL", os.environ["COGME_TEST_DATABASE_URL"])
         command.downgrade(config, "base")
@@ -93,6 +106,12 @@ async def engine(migrated: None) -> AsyncIterator[AsyncEngine]:
             text("TRUNCATE TABLE invoices, invoice_sequences RESTART IDENTITY CASCADE")
         )
     yield eng
+    # Clean up deleted users after each test to avoid migration downgrade issues
+    async with create_session_factory(eng)() as session:
+        from sqlalchemy import delete
+        from src.backend.models.user import User
+        await session.execute(delete(User).where(User.status == "deleted"))
+        await session.commit()
     await eng.dispose()
 
 

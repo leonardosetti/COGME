@@ -100,6 +100,9 @@ class Simulation(Base):
     quote_bulletin: Mapped[str | None] = mapped_column(String(40), nullable=True)
     quoted_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
     stale: Mapped[bool] = mapped_column(BOOLEAN, nullable=False, default=False)
+    deleted_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), nullable=False, default=lambda: datetime.now().astimezone()
     )

@@ -54,10 +54,31 @@ class ResetRequestRequest(_Schema):
     )
 
 
+class EmailVerifyRequest(_Schema):
+    token: str = Field(
+        description="Token de verificação de e-mail.",
+        min_length=1,
+    )
+
+
 class ResetConfirmRequest(_Schema):
     token: str
     new_password: str = Field(
         description="Nova senha: 8 a 128 caracteres.",
+        min_length=8,
+        max_length=128,
+    )
+
+
+class ReactivateRequest(_Schema):
+    """Requisição de reativação de conta dormente (pública)."""
+    identifier: str = Field(
+        description="Email, CPF ou CNPJ.",
+        min_length=1,
+        max_length=255,
+    )
+    password: str = Field(
+        description="Senha atual.",
         min_length=8,
         max_length=128,
     )

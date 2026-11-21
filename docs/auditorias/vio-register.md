@@ -107,4 +107,5 @@ Nenhuma linha reescrita; correções futuras = novas addendas.
 - VIO-027 (ledger fora do contrato Art. 4.10): ENCERRADO — `ledger.yaml` reescrito com schema completo (`version`, `current_session`, `audit_trail`, `blocked_tasks`); 13 entradas preservadas em `audit_trail`.
 - VIO-028 (drift registry↔DAG): ENCERRADO — `agent-factory-architect-ultimate` presente em `AGENT_TOPOLOGY` (L0_ADJ) em `validate_nexus_yaml.py`; `nexus_dispatcher.py --report` sem camada UNKNOWN.
 - VIO-029 (3 gates L3 sem downstream): ENCERRADO — `agent-reviewer`→`agent-gatekeeper`, `agent-gatekeeper`→`agent-project-auditor`, `agent-clean-code-evaluator`→`agent-project-auditor` em `.ai/agents/registry.yaml`.
+- VIO-026 (auto-delegação TA-0028, Art. 4.5): ENCERRADO — decisão Humana/CCB (Art. 5.1), 21/11/2026. Entrada corretiva acrescentada ao ledger (`audit_trail`, TA-0028 → agent-project-auditor, status `rejected`, `exit_status: 1`, `dod: true`) via `scripts/ledger_append.py`, sem reescrever entradas existentes. Controle de prevenção já vigente: `nexus_dispatcher.py` rejeita `sender == target` com exit 1.
 Nenhuma linha reescrita; correções futuras = novas addendas.

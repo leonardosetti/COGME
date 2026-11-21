@@ -185,9 +185,9 @@ async def test_persistence_roundtrip_equals_reprocess(
 # ---------- Teste: Listagem ----------
 
 
-async def test_list_invoices_empty(db_client: TestClient) -> None:
+async def test_list_invoices_empty(auth_client: AsyncClient) -> None:
     """Lista vazia retorna 200 com lista vazia."""
-    response = await db_client.get(f"{INVOICES}?owner_user_id={OWNER_USER_ID}")
+    response = await auth_client.get(f"{INVOICES}?owner_user_id={OWNER_USER_ID}")
     assert response.status_code == 200
     data = response.json()
     assert isinstance(data, list)
@@ -195,7 +195,7 @@ async def test_list_invoices_empty(db_client: TestClient) -> None:
 
 
 async def test_list_invoices_with_data(
-    db_client: TestClient, invoice_repo: InvoiceRepository
+    auth_client: AsyncClient, invoice_repo: InvoiceRepository
 ) -> None:
     """Lista invoices com filtros status e client_id."""
     from datetime import datetime, UTC
@@ -238,20 +238,20 @@ async def test_list_invoices_with_data(
     draft_id = await _create_invoice('draft')
 
     # Lista todas
-    response = await db_client.get(f"{INVOICES}?owner_user_id={OWNER_USER_ID}")
+    response = await auth_client.get(f"{INVOICES}?owner_user_id={OWNER_USER_ID}")
     assert response.status_code == 200
     data = response.json()
     assert isinstance(data, list)
     assert len(data) == 3
 
     # Filtra finalized
-    response = await db_client.get(f"{INVOICES}?owner_user_id={OWNER_USER_ID}&status=finalized")
+    response = await auth_client.get(f"{INVOICES}?owner_user_id={OWNER_USER_ID}&status=finalized")
     data = response.json()
     assert isinstance(data, list)
     assert len(data) == 2
 
     # Filtra draft
-    response = await db_client.get(f"{INVOICES}?owner_user_id={OWNER_USER_ID}&status=draft")
+    response = await auth_client.get(f"{INVOICES}?owner_user_id={OWNER_USER_ID}&status=draft")
     data = response.json()
     assert isinstance(data, list)
     assert len(data) == 1
@@ -260,7 +260,7 @@ async def test_list_invoices_with_data(
 # ---------- Teste: GET / PDF ----------
 
 
-async def test_get_invoice_detail(db_client: TestClient, invoice_repo: InvoiceRepository) -> None:
+async def test_get_invoice_detail(auth_client: AsyncClient, invoice_repo: InvoiceRepository) -> None:
     """GET /v1/invoices/{id} retorna detalhes completos."""
     from datetime import datetime, UTC
     from src.backend.services.invoice_number import InvoiceNumberService
@@ -295,14 +295,14 @@ async def test_get_invoice_detail(db_client: TestClient, invoice_repo: InvoiceRe
     await invoice_repo.save(stored)
     inv_id = stored.id
 
-    response = await db_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}")
+    response = await auth_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}")
     assert response.status_code == 200
     assert response.headers["content-type"] == "application/pdf"
     assert response.content.startswith(b"%PDF-")
     assert f'invoice_{invoice_number}.pdf' in response.headers["content-disposition"]
 
 
-async def test_get_invoice_pdf(db_client: TestClient, invoice_repo: InvoiceRepository) -> None:
+async def test_get_invoice_pdf(auth_client: AsyncClient, invoice_repo: InvoiceRepository) -> None:
     """GET /v1/invoices/{id}?as_pdf=true retorna PDF (Content-Disposition attachment)."""
     from datetime import datetime, UTC
     from src.backend.services.invoice_number import InvoiceNumberService
@@ -337,28 +337,47 @@ async def test_get_invoice_pdf(db_client: TestClient, invoice_repo: InvoiceRepos
     await invoice_repo.save(stored)
     inv_id = stored.id
 
-    response = await db_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}&as_pdf=true")
+    response = await auth_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}&as_pdf=true")
     assert response.status_code == 200
     assert response.headers["content-type"] == "application/pdf"
     assert "attachment" in response.headers["content-disposition"]
     assert "INV-" in response.headers["content-disposition"]
 
 
-async def test_get_invoice_not_found(db_client: TestClient) -> None:
+async def test_get_invoice_not_found(auth_client: AsyncClient) -> None:
     """GET invoice inexistente retorna 404."""
-    response = await db_client.get(f"{INVOICES}/999999?owner_user_id={OWNER_USER_ID}")
+    response = await auth_client.get(f"{INVOICES}/999999?owner_user_id={OWNER_USER_ID}")
     assert response.status_code == 404
     assert response.json()["error"]["key"] == "not_found"
 
 
 async def test_get_invoice_forbidden(
 
-    db_client: TestClient, invoice_repo: InvoiceRepository
-
+    auth_client: AsyncClient, invoice_repo: InvoiceRepository, engine
 ) -> None:
     """GET invoice de outro owner retorna 404 (não 403 para não
 
     vazar existência)."""
+
+    # Create user 2 first
+    from src.backend.models.user import User, UserStatus
+    from src.backend.models.database import create_session_factory
+    session_factory = create_session_factory(engine)
+    async with session_factory() as session:
+        from sqlalchemy import select
+        result = await session.execute(select(User).where(User.id == 2))
+        if result.scalar_one_or_none() is None:
+            user2 = User(
+                id=2,
+                internal_username_hash="b" * 64,
+                name="Test User 2",
+                email="test2@example.com",
+                cpf="11111111111",
+                password_hash="dummy_hash",
+                status=UserStatus.ACTIVE.value,
+            )
+            session.add(user2)
+            await session.commit()
 
     async def _create():
         from src.backend.services.invoice_number import InvoiceNumberService
@@ -368,7 +387,7 @@ async def test_get_invoice_forbidden(
             invoice_number = await number_service.generate("00000000000000")
 
         stored = type('StoredInvoice', (), {
-            'id': next(_invoice_id), 'owner_user_id': OWNER_USER_ID, 'client_id': None,
+            'id': next(_invoice_id), 'owner_user_id': 2, 'client_id': None,
 
             'simulation_id': None, 'invoice_number': invoice_number,
 
@@ -418,10 +437,18 @@ async def test_get_invoice_forbidden(
 
     inv_id = await _create()
 
-    # Acessa com outro owner (isolamento): deve retornar 404, não vazar existência
-    response = await db_client.get(f"{INVOICES}/{inv_id}?owner_user_id=2")
+    try:
+        # Acessa com outro owner (isolamento): deve retornar 404, não vazar existência
+        response = await auth_client.get(f"{INVOICES}/{inv_id}")
 
-    assert response.status_code == 404
+        assert response.status_code == 404
+    finally:
+        # Cleanup: delete the invoice to avoid FK violation in teardown
+        from src.backend.models.invoice import Invoice as InvoiceModel
+        from sqlalchemy import delete
+        async with session_factory() as session:
+            await session.execute(delete(InvoiceModel).where(InvoiceModel.id == inv_id))
+            await session.commit()
 
 # ---------- Teste: Finalize (DEC-05) ----------
 
@@ -429,7 +456,7 @@ async def test_get_invoice_forbidden(
 # ---------- Teste: Finalize (DEC-05) ----------
 
 async def test_finalize_invoice_draft_to_finalized(
-    db_client: TestClient, invoice_repo: InvoiceRepository
+    auth_client: AsyncClient, invoice_repo: InvoiceRepository
 ) -> None:
     """POST /finalize transiciona draft → finalized com finalized_at."""
 
@@ -469,7 +496,7 @@ async def test_finalize_invoice_draft_to_finalized(
 
     inv_id = await _create_draft()
 
-    response = await db_client.post(
+    response = await auth_client.post(
         f"{INVOICES}/{inv_id}/finalize?owner_user_id={OWNER_USER_ID}",
         json={},
     )
@@ -480,7 +507,7 @@ async def test_finalize_invoice_draft_to_finalized(
 
 
 async def test_finalize_not_draft_returns_409(
-    db_client: TestClient, invoice_repo: InvoiceRepository
+    auth_client: AsyncClient, invoice_repo: InvoiceRepository
 ) -> None:
     """Finalizar invoice já finalized retorna 409."""
 
@@ -524,7 +551,7 @@ async def test_finalize_not_draft_returns_409(
     from src.backend.routers.invoices import finalize_invoice
 
     with pytest.raises(HTTPException) as exc:
-        await finalize_invoice(inv_id, invoice_repo, session=SessionData(OWNER_USER_ID, 1))
+        await finalize_invoice(inv_id, SessionData(OWNER_USER_ID, 1), invoice_repo)
     assert exc.value.status_code == 409
     assert "não está em status draft" in exc.value.detail
 
@@ -532,7 +559,7 @@ async def test_finalize_not_draft_returns_409(
 
 
 async def test_clone_invoice_creates_new_draft(
-    db_client: TestClient, invoice_repo: InvoiceRepository
+    auth_client: AsyncClient, invoice_repo: InvoiceRepository
 ) -> None:
     """POST /clone cria novo draft com novo número e supersedes_invoice_id."""
 
@@ -572,7 +599,7 @@ async def test_clone_invoice_creates_new_draft(
 
     original_id, original_number = await _create_finalized()
 
-    response = await db_client.post(
+    response = await auth_client.post(
         f"{INVOICES}/{original_id}/clone?owner_user_id={OWNER_USER_ID}",
     )
     assert response.status_code == 201
@@ -584,7 +611,7 @@ async def test_clone_invoice_creates_new_draft(
 
 
 async def test_clone_only_finalized_allowed(
-    db_client: TestClient, invoice_repo: InvoiceRepository
+    auth_client: AsyncClient, invoice_repo: InvoiceRepository
 ) -> None:
     """Clonar draft retorna 409 (somente invoices finalizadas podem ser clonadas)."""
 
@@ -627,7 +654,7 @@ async def test_clone_only_finalized_allowed(
 
     inv_id = await _create_draft()
     with pytest.raises(HTTPException) as exc:
-        await clone_invoice(inv_id, invoice_repo, session=SessionData(OWNER_USER_ID, 1))
+        await clone_invoice(inv_id, SessionData(OWNER_USER_ID, 1), invoice_repo)
     assert exc.value.status_code == 409
     assert "Invoice não está em status finalized" in exc.value.detail
 
@@ -678,25 +705,45 @@ async def test_erase_invoice_hard_delete(
     inv_id = await _create()
 
     # Deleta (somente drafts podem ser apagadas)
-    response = await erase_invoice(inv_id, invoice_repo, session=SessionData(OWNER_USER_ID, 1))
+    response = await erase_invoice(inv_id, SessionData(OWNER_USER_ID, 1), invoice_repo)
     assert response.status_code == 204
 
     # Confirma que não existe mais
     assert await invoice_repo.get_by_id(inv_id, OWNER_USER_ID) is None
 
 
-async def test_erase_invoice_not_found(db_client: TestClient) -> None:
+async def test_erase_invoice_not_found(auth_client: AsyncClient) -> None:
     """Erase invoice inexistente retorna 404."""
-    response = await db_client.delete(
+    response = await auth_client.delete(
         f"{INVOICES}/999999?owner_user_id={OWNER_USER_ID}"
     )
     assert response.status_code == 404
 
 
 async def test_erase_invoice_forbidden(
-    db_client: TestClient, invoice_repo: InvoiceRepository
+    auth_client: AsyncClient, invoice_repo: InvoiceRepository, engine
 ) -> None:
     """Erase invoice de outro owner retorna 404."""
+
+    # Create user 2 first
+    from src.backend.models.user import User, UserStatus
+    from src.backend.models.database import create_session_factory
+    session_factory = create_session_factory(engine)
+    async with session_factory() as session:
+        from sqlalchemy import select
+        result = await session.execute(select(User).where(User.id == 2))
+        if result.scalar_one_or_none() is None:
+            user2 = User(
+                id=2,
+                internal_username_hash="b" * 64,
+                name="Test User 2",
+                email="test2@example.com",
+                cpf="11111111111",
+                password_hash="dummy_hash",
+                status=UserStatus.ACTIVE.value,
+            )
+            session.add(user2)
+            await session.commit()
 
     async def _create():
         from datetime import datetime, UTC
@@ -707,7 +754,7 @@ async def test_erase_invoice_forbidden(
             invoice_number = await number_service.generate("00000000000000")
 
         stored = type('StoredInvoice', (), {
-            'id': next(_invoice_id), 'owner_user_id': OWNER_USER_ID, 'client_id': None,
+            'id': next(_invoice_id), 'owner_user_id': 2, 'client_id': None,
             'simulation_id': None, 'invoice_number': invoice_number,
             'status': 'finalized', 'locale': 'pt-BR', 'client_country_code': 'US',
             'issuer_name': 'Emitente', 'issuer_tax_id_digits': '00000000000000',
@@ -734,16 +781,24 @@ async def test_erase_invoice_forbidden(
 
     inv_id = await _create()
 
-    response = await db_client.delete(
-        f"{INVOICES}/{inv_id}?owner_user_id=2"
-    )
-    assert response.status_code == 404
+    try:
+        response = await auth_client.delete(
+            f"{INVOICES}/{inv_id}?owner_user_id=2"
+        )
+        assert response.status_code == 404  # invoice not found for this user
+    finally:
+        # Cleanup: delete the invoice to avoid FK violation in teardown
+        from src.backend.models.invoice import Invoice as InvoiceModel
+        from sqlalchemy import delete
+        async with session_factory() as session:
+            await session.execute(delete(InvoiceModel).where(InvoiceModel.id == inv_id))
+            await session.commit()
 
 # ---------- Teste: Bilingual templates (DEC-07) ----------
 
 
 async def test_template_pt_br_renders_brl_format(
-    db_client: TestClient, invoice_repo: InvoiceRepository
+    auth_client: AsyncClient, invoice_repo: InvoiceRepository
 ) -> None:
     """Template pt-BR usa formatação brasileira (R$ 1.234,56)."""
 
@@ -783,14 +838,14 @@ async def test_template_pt_br_renders_brl_format(
 
     inv_id = await _create()
 
-    response = await db_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}&as_pdf=true")
+    response = await auth_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}&as_pdf=true")
     assert response.status_code == 200
     # Verifica se o PDF foi gerado (conteúdo binário)
     assert response.content.startswith(b"%PDF-")
 
 
 async def test_template_en_renders_en_format(
-    db_client: TestClient, invoice_repo: InvoiceRepository
+    auth_client: AsyncClient, invoice_repo: InvoiceRepository
 ) -> None:
     """Template en usa formatação inglesa (1,234.56 BRL)."""
 
@@ -830,7 +885,7 @@ async def test_template_en_renders_en_format(
 
     inv_id = await _create()
 
-    response = await db_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}&as_pdf=true")
+    response = await auth_client.get(f"{INVOICES}/{inv_id}?owner_user_id={OWNER_USER_ID}&as_pdf=true")
     assert response.status_code == 200
     assert response.content.startswith(b"%PDF-")
 

@@ -66,4 +66,4 @@ EXPOSE 8000
 # As migrações (alembic upgrade head) rodam no serviço `migrate` do compose,
 # com esta mesma imagem, antes de o `web` iniciar. A configuração (inclusive
 # COGME_DATABASE_URL) chega só por variável de ambiente em tempo de execução.
-CMD ["uvicorn", "src.backend.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "src.backend.main:app", "--host", "0.0.0.0", "--port", "8000", "--proxy-headers", "--forwarded-allow-ips=*"]

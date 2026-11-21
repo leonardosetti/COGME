@@ -18,11 +18,14 @@ from typing import Any, Final
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Request, Response, status
 from pydantic import BaseModel
+from sqlalchemy import select
 
+from src.backend.models.client import Client
 from src.backend.models.invoice_repository import (
     InvoiceRepository,
     SqlAlchemyInvoiceRepository,
 )
+from src.backend.models.simulation import Simulation
 from src.backend.routers.common import (
     INTERNAL_ERROR_RESPONSE,
     VALIDATION_ERROR_RESPONSE,
@@ -203,11 +206,18 @@ async def finalize_invoice(
     repo: InvoiceRepository = Depends(get_invoice_repo),
 ) -> dict[str, Any]:
     """Finaliza invoice: draft -> finalized (DEC-05)."""
+    import logging
+    logger = logging.getLogger(__name__)
+
     sess = await _require_session(session)
+    logger.info(f"Finalize attempt: invoice_id={invoice_id}, user_id={sess.user_id}")
+
     invoice = await repo.get_by_id(invoice_id, sess.user_id)
     if invoice is None:
+        logger.warning(f"Finalize failed: invoice not found, invoice_id={invoice_id}, user_id={sess.user_id}")
         raise HTTPException(status_code=404, detail="Invoice not found")
     if invoice.status != "draft":
+        logger.warning(f"Finalize failed: invoice not in draft status, invoice_id={invoice_id}, status={invoice.status}")
         raise HTTPException(
             status_code=409,
             detail="Invoice não está em status draft",
@@ -217,7 +227,9 @@ async def finalize_invoice(
         invoice_id, sess.user_id, "finalized", datetime.now().astimezone()
     )
     if updated is None:
+        logger.error(f"Finalize failed: update_status returned None, invoice_id={invoice_id}, user_id={sess.user_id}")
         raise HTTPException(status_code=404, detail="Invoice not found")
+    logger.info(f"Finalize successful: invoice_id={invoice_id}, user_id={sess.user_id}")
     return asdict(updated)
 
 
@@ -349,6 +361,7 @@ def _to_invoice_response(inv) -> InvoiceResponse:
 async def create_invoice(
     payload: InvoiceCreateDraft,
     session: CurrentSession,
+    sf: SessionFactoryDep,
     repo: InvoiceRepository = Depends(get_invoice_repo),
 ) -> InvoiceResponse:
     """Cria uma invoice em status draft com número sequencial (DEC-06)."""
@@ -361,6 +374,36 @@ async def create_invoice(
             status_code=400,
             detail="Informe client_id ou client_fictitious.",
         )
+
+    # B-05: cliente e simulação devem pertencer ao usuário da sessão (isolamento P-14).
+    if payload.client_id is not None or payload.simulation_id is not None:
+        async with sf() as _check_session:
+            if payload.client_id is not None:
+                client = (
+                    await _check_session.execute(
+                        select(Client).where(
+                            Client.id == payload.client_id,
+                            Client.owner_user_id == sess.user_id,
+                        )
+                    )
+                ).scalar_one_or_none()
+                if client is None:
+                    raise HTTPException(
+                        status_code=404, detail="Cliente não encontrado."
+                    )
+            if payload.simulation_id is not None:
+                simulation = (
+                    await _check_session.execute(
+                        select(Simulation).where(
+                            Simulation.id == payload.simulation_id,
+                            Simulation.owner_user_id == sess.user_id,
+                        )
+                    )
+                ).scalar_one_or_none()
+                if simulation is None:
+                    raise HTTPException(
+                        status_code=404, detail="Simulação não encontrada."
+                    )
 
     invoice_number = await repo.get_next_number(payload.issuer_tax_id_digits)
 

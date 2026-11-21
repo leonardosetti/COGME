@@ -3,7 +3,7 @@ id: docs-especificacoes-spec-prop-018-identity-access-session
 title: Proposta de Spec — Identidade, aliases, senha, sessões e recuperação
 type: spec
 version: 0.1.0
-status: draft
+status: obsoleto
 owner: agent-project-analyst
 derived-from:
 - docs/change-requests/cr-003-identity-access-session.md

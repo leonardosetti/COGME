@@ -2,8 +2,11 @@
 
 from __future__ import annotations
 
-from fastapi import APIRouter
+import logging
 
+from fastapi import APIRouter, HTTPException
+
+from src.backend.errors import RatesUnavailableError
 from src.backend.routers.common import (
     INTERNAL_ERROR_RESPONSE,
     RATES_UNAVAILABLE_RESPONSE,
@@ -11,6 +14,8 @@ from src.backend.routers.common import (
     RateServiceDep,
 )
 from src.shared.schemas import Currency, RateQuote
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/v1", tags=["cotações"])
 
@@ -35,4 +40,10 @@ async def get_rate(currency: Currency, rate_service: RateServiceDep) -> RateQuot
     Returns:
         A cotação; ``stale`` é verdadeiro quando vem de cache vencido.
     """
-    return await rate_service.get_quote(currency)
+    try:
+        return await rate_service.get_quote(currency)
+    except RatesUnavailableError:
+        raise
+    except Exception as exc:
+        logger.error("Unhandled exception: %s", type(exc).__name__)
+        raise HTTPException(status_code=500, detail="Erro interno. Tente novamente mais tarde.")

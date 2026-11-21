@@ -15,6 +15,7 @@
     --primary-hover: #14532D;
     --danger: #B91C1C;
     --radius: 14px;
+    --radius-full: 9999px;
     --shadow: 0 10px 30px -10px rgba(2,6,23,0.10);
     --radius-sm: 8px;
     --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
@@ -970,6 +971,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-6);
+    align-items: stretch;
   }
 
   @media (min-width: 768px) {
@@ -981,9 +983,16 @@
   }
 
   .about-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: var(--space-6);
     text-align: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     transition: var(--transition);
+    height: 100%;
   }
 
   .about-card:hover {
@@ -996,6 +1005,7 @@
     font-size: 2.5rem;
     margin-bottom: var(--space-4);
     display: block;
+    flex-shrink: 0;
   }
 
   .about-card h4 {
@@ -1003,6 +1013,7 @@
     font-weight: 700;
     color: var(--ink);
     margin: 0 0 var(--space-3);
+    flex-shrink: 0;
   }
 
   .about-card p {
@@ -1010,6 +1021,9 @@
     color: var(--text-muted);
     line-height: 1.7;
     margin: 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
   }
 
   /* Steps (Funcionamento) */
@@ -1017,6 +1031,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-6);
+    align-items: stretch;
   }
 
   @media (min-width: 768px) {
@@ -1025,6 +1040,7 @@
 
   .step {
     display: flex;
+    flex-direction: column;
     gap: var(--space-4);
     flex: 1;
     padding: var(--space-6);
@@ -1032,11 +1048,13 @@
     border: 1px solid var(--border);
     border-radius: var(--radius);
     transition: var(--transition);
+    height: 100%;
   }
 
   .step:hover {
     border-color: var(--primary);
     box-shadow: var(--shadow);
+    transform: translateY(-2px);
   }
 
   .step-number {
@@ -1051,7 +1069,15 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    margin: 0 auto;
     box-shadow: 0 4px 14px -4px rgba(22,101,52,0.4);
+  }
+
+  .step-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    text-align: center;
   }
 
   .step-content h4 {
@@ -1066,6 +1092,10 @@
     color: var(--text-muted);
     line-height: 1.7;
     margin: 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   /* Quality Grid */
@@ -1073,6 +1103,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-6);
+    align-items: stretch;
   }
 
   @media (min-width: 768px) {
@@ -1084,13 +1115,27 @@
   }
 
   .quality-card {
+    display: flex;
+    flex-direction: column;
     padding: var(--space-6);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: var(--transition);
+    height: 100%;
+  }
+
+  .quality-card:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
   }
 
   .quality-icon {
     font-size: 2rem;
     margin-bottom: var(--space-4);
     display: block;
+    flex-shrink: 0;
   }
 
   .quality-card h4 {
@@ -1098,12 +1143,14 @@
     font-weight: 700;
     color: var(--ink);
     margin: 0 0 var(--space-4);
+    flex-shrink: 0;
   }
 
   .quality-card ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    flex: 1;
   }
 
   .quality-card li {
@@ -1122,39 +1169,57 @@
     font-weight: 700;
   }
 
-  /* Stack Grid */
-  .stack-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-4);
+  /* Stack Pills (horizontal flat pills) */
+  .stack-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    justify-content: center;
+    align-items: stretch;
   }
 
-  @media (min-width: 640px) {
-    .stack-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-
-  @media (min-width: 1024px) {
-    .stack-grid { grid-template-columns: repeat(3, 1fr); }
-  }
-
-  .stack-item {
-    padding: var(--space-4) var(--space-5);
+  .stack-pill {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+    padding: var(--space-3) var(--space-5);
+    min-width: 180px;
+    max-width: 280px;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border-radius: var(--radius-full);
     font-size: var(--fs-sm);
     color: var(--text);
-    line-height: 1.6;
+    line-height: 1.5;
     transition: var(--transition);
   }
 
-  .stack-item:hover {
+  .stack-pill:hover {
     border-color: var(--primary);
     box-shadow: var(--shadow);
+    transform: translateY(-2px);
   }
 
-  .stack-item strong {
-    color: var(--ink);
+  .stack-pill-label {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .stack-pill-techs {
+    color: var(--text-muted);
+    font-size: var(--fs-sm);
+    line-height: 1.4;
+  }
+
+  @media (max-width: 640px) {
+    .stack-pill {
+      min-width: 100%;
+      max-width: none;
+    }
   }
 
   /* Team Grid */
@@ -1162,6 +1227,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-6);
+    align-items: stretch;
   }
 
   @media (min-width: 768px) {
@@ -1169,9 +1235,16 @@
   }
 
   .team-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: var(--space-6);
     text-align: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     transition: var(--transition);
+    height: 100%;
   }
 
   .team-card:hover {
@@ -1184,6 +1257,7 @@
     font-size: 2.5rem;
     margin-bottom: var(--space-4);
     display: block;
+    flex-shrink: 0;
   }
 
   .team-card h4 {
@@ -1191,12 +1265,16 @@
     font-weight: 700;
     color: var(--ink);
     margin: 0 0 var(--space-2);
+    flex-shrink: 0;
   }
 
   .team-card p {
     font-size: var(--fs-sm);
     color: var(--text-muted);
     margin: 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
   }
 
   /* =========================================================================

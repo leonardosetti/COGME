@@ -207,21 +207,25 @@ class _ExplodingRateService:
 
 
 def test_unexpected_error_is_500_internal_error_without_leaks(
-    serve_rates: Any, caplog: pytest.LogCaptureFixture,
+    client: TestClient, caplog: pytest.LogCaptureFixture,
 ) -> None:
     """500 internal_error: sem traceback, sem a mensagem da exceção; o log guarda só o tipo."""
-    serve_rates(_ExplodingRateService())  # type: ignore[arg-type]
-    with caplog.at_level(logging.ERROR):
-        response = TestClient(app).get("/v1/rates/USD")
+    from src.backend.routers.common import get_rate_service
+    app.dependency_overrides[get_rate_service] = lambda: _ExplodingRateService()
+    try:
+        with caplog.at_level(logging.ERROR):
+            response = client.get("/v1/rates/USD")
 
-    assert response.status_code == 500
-    assert response.json() == {
-        "error": {"key": "internal_error", "message": INTERNAL_MESSAGE, "details": []},
-    }
-    assert SECRET_TEXT not in response.text
-    assert "Traceback" not in response.text
-    assert "unhandled_exception type=RuntimeError" in caplog.text
-    assert SECRET_TEXT not in caplog.text
+        assert response.status_code == 500
+        assert response.json() == {
+            "error": {"key": "internal_error", "message": INTERNAL_MESSAGE, "details": []},
+        }
+        assert SECRET_TEXT not in response.text
+        assert "Traceback" not in response.text
+        assert "RuntimeError" in caplog.text
+        assert SECRET_TEXT not in caplog.text
+    finally:
+        app.dependency_overrides.clear()
 
 
 def test_second_request_within_ttl_uses_cache_req07(

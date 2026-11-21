@@ -112,6 +112,20 @@ async def auth_register(request: Request) -> HTMLResponse:
     return render("auth/register.html", request=request)
 
 
+@app.get("/auth/verify-email", response_class=HTMLResponse)
+async def auth_verify_email(request: Request) -> HTMLResponse:
+    """Tela de verificação de e-mail (token via query param)."""
+    token = request.query_params.get("token", "")
+    return render("auth/verify_email.html", request=request, token=token)
+
+
+@app.get("/auth/reset", response_class=HTMLResponse)
+async def auth_reset(request: Request) -> HTMLResponse:
+    """Tela de redefinição de senha (token via query param)."""
+    token = request.query_params.get("token", "")
+    return render("auth/reset.html", request=request, token=token)
+
+
 # --- rotas server-side (fluxo sem JS, R-INT-05) ---
 
 def _normalize_decimal(value: str) -> str:

@@ -3,7 +3,7 @@ id: docs-especificacoes-spec-prop-020-client-directory
 title: Proposta de Spec — Carteira de clientes e estado ativo/inativo
 type: spec
 version: 0.1.0
-status: draft
+status: obsoleto
 owner: agent-project-analyst
 derived-from:
 - docs/change-requests/cr-005-client-directory.md

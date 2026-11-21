@@ -113,14 +113,65 @@ def upgrade() -> None:
         """
     )
 
+    # ---------- Tabela provider_cnpjs ----------
+    op.create_table(
+        "provider_cnpjs",
+        sa.Column("id", sa.BigInteger(), nullable=False),
+        sa.Column("user_id", sa.BigInteger(), nullable=False),
+        sa.Column("cnpj", sa.CHAR(14), nullable=False),
+        sa.Column("label", sa.String(80), nullable=True),
+        sa.Column("is_primary", sa.Boolean(), nullable=False, server_default=sa.text("FALSE")),
+        sa.Column("status", sa.String(16), nullable=False, server_default=sa.text("'active'")),
+        sa.Column("deleted_at", sa.DateTime(timezone=True), nullable=True),
+        sa.Column(
+            "created_at",
+            sa.DateTime(timezone=True),
+            nullable=False,
+            server_default=sa.text("NOW()"),
+        ),
+        sa.Column(
+            "updated_at",
+            sa.DateTime(timezone=True),
+            nullable=False,
+            server_default=sa.text("NOW()"),
+        ),
+        sa.PrimaryKeyConstraint("id", name="pk_provider_cnpjs"),
+        sa.UniqueConstraint("cnpj", name="uq_provider_cnpjs_cnpj"),
+        sa.ForeignKeyConstraint(
+            ["user_id"], ["users.id"], name="fk_provider_cnpjs_user", ondelete="CASCADE"
+        ),
+    )
+
+    op.create_index("ix_provider_cnpjs_user", "provider_cnpjs", ["user_id"])
+    op.create_index("ix_provider_cnpjs_status", "provider_cnpjs", ["status"])
+    op.execute("""
+        CREATE UNIQUE INDEX IF NOT EXISTS uq_provider_cnpjs_primary
+        ON provider_cnpjs (user_id)
+        WHERE is_primary AND status = 'active';
+    """)
+
+    # Trigger para updated_at em provider_cnpjs
+    op.execute(
+        """
+        CREATE TRIGGER trigger_provider_cnpjs_updated_at
+        BEFORE UPDATE ON provider_cnpjs
+        FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+        """
+    )
+
 
 def downgrade() -> None:
+    op.execute("DROP TRIGGER IF EXISTS trigger_provider_cnpjs_updated_at ON provider_cnpjs")
     op.execute("DROP TRIGGER IF EXISTS trigger_provider_bank_accounts_updated_at ON provider_bank_accounts")
     op.execute("DROP TRIGGER IF EXISTS trigger_provider_profiles_updated_at ON provider_profiles")
 
+    op.drop_index("ix_provider_cnpjs_status", table_name="provider_cnpjs")
+    op.drop_index("ix_provider_cnpjs_user", table_name="provider_cnpjs")
+    op.execute("DROP INDEX IF EXISTS uq_provider_cnpjs_primary")
     op.drop_index("ix_provider_bank_account_primary", table_name="provider_bank_accounts")
     op.drop_index("ix_provider_bank_account_user", table_name="provider_bank_accounts")
     op.drop_index("ix_provider_user", table_name="provider_profiles")
 
+    op.drop_table("provider_cnpjs")
     op.drop_table("provider_bank_accounts")
     op.drop_table("provider_profiles")

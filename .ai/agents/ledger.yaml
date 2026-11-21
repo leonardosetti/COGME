@@ -1,86 +1,97 @@
-version: "2.0"
+version: '2.0'
 current_session: null
 audit_trail:
-  - task_id: TA-ADV-001
-    sender: agent-nexus-prime-ultimate
-    receiver: agent-project-auditor
-    action: audit
-    status: accepted
-    exit_status: 0
-    timestamp: '2026-11-05T22:43:48.846695+00:00'
-    notes: ok
-  - task_id: TA-ADV-001
-    sender: agent-nexus-prime-ultimate
-    receiver: agent-project-auditor
-    action: audit
-    status: accepted
-    exit_status: 0
-    timestamp: '2026-11-06T13:39:28.186367+00:00'
-    notes: ok
-  - task_id: TA-0001
-    sender: agent-nexus-prime-ultimate
-    receiver: agent-project-analyst
-    action: analyze
-    status: accepted
-    exit_status: 0
-    timestamp: '2026-11-07T13:19:47+00:00'
-    notes: roteado_analise_viabilidade_L1; aguarda_parcel_L1_antes_L2_compliance
-    ref: docs/propostas/PROP-0001-pagina-FOSS-audits.md
-    decision: roteado_analise_viabilidade_L1; aguarda_parcel_L1_antes_L2_compliance
-  - task_id: TA-ADV-001
-    sender: agent-nexus-prime-ultimate
-    receiver: agent-project-auditor
-    action: audit
-    status: accepted
-    exit_status: 0
-    timestamp: '2026-11-13T20:34:41.817767+00:00'
-    notes: ok
-  - task_id: TA-ADV-001
-    sender: agent-nexus-prime-ultimate
-    receiver: agent-project-auditor
-    action: audit
-    status: accepted
-    exit_status: 0
-    timestamp: '2026-11-13T21:04:47.239154+00:00'
-    notes: ok
-  - task_id: TA-ADV-001
-    sender: agent-nexus-prime-ultimate
-    receiver: agent-project-auditor
-    action: audit
-    status: accepted
-    exit_status: 0
-    timestamp: '2026-11-14T03:23:23.364746+00:00'
-    notes: ok
-  - task_id: TA-ADV-001
-    sender: agent-nexus-prime-ultimate
-    receiver: agent-project-auditor
-    action: audit
-    status: accepted
-    exit_status: 0
-    timestamp: '2026-11-14T03:38:09.148138+00:00'
-    notes: ok
-  - task_id: TA-ADV-001
-    sender: agent-nexus-prime-ultimate
-    receiver: agent-project-auditor
-    action: audit
-    status: accepted
-    exit_status: 0
-    timestamp: '2026-11-14T04:01:48.359510+00:00'
-    notes: ok
-  - task_id: TA-ADV-001
-    sender: agent-nexus-prime-ultimate
-    receiver: agent-project-auditor
-    action: audit
-    status: accepted
-    exit_status: 0
-    timestamp: '2026-11-14T04:06:45.549018+00:00'
-    notes: ok
-  - task_id: TA-ADV-001
-    sender: agent-nexus-prime-ultimate
-    receiver: agent-project-auditor
-    action: audit
-    status: accepted
-    exit_status: 0
-    timestamp: '2026-11-14T04:36:16.651108+00:00'
-    notes: ok
+- task_id: TA-ADV-001
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-project-auditor
+  action: audit
+  status: accepted
+  exit_status: 0
+  timestamp: '2026-11-05T22:43:48.846695+00:00'
+  notes: ok
+- task_id: TA-ADV-001
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-project-auditor
+  action: audit
+  status: accepted
+  exit_status: 0
+  timestamp: '2026-11-06T13:39:28.186367+00:00'
+  notes: ok
+- task_id: TA-0001
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-project-analyst
+  action: analyze
+  status: accepted
+  exit_status: 0
+  timestamp: '2026-11-07T13:19:47+00:00'
+  notes: roteado_analise_viabilidade_L1; aguarda_parcel_L1_antes_L2_compliance
+  ref: docs/propostas/PROP-0001-pagina-FOSS-audits.md
+  decision: roteado_analise_viabilidade_L1; aguarda_parcel_L1_antes_L2_compliance
+- task_id: TA-ADV-001
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-project-auditor
+  action: audit
+  status: accepted
+  exit_status: 0
+  timestamp: '2026-11-13T20:34:41.817767+00:00'
+  notes: ok
+- task_id: TA-ADV-001
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-project-auditor
+  action: audit
+  status: accepted
+  exit_status: 0
+  timestamp: '2026-11-13T21:04:47.239154+00:00'
+  notes: ok
+- task_id: TA-ADV-001
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-project-auditor
+  action: audit
+  status: accepted
+  exit_status: 0
+  timestamp: '2026-11-14T03:23:23.364746+00:00'
+  notes: ok
+- task_id: TA-ADV-001
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-project-auditor
+  action: audit
+  status: accepted
+  exit_status: 0
+  timestamp: '2026-11-14T03:38:09.148138+00:00'
+  notes: ok
+- task_id: TA-ADV-001
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-project-auditor
+  action: audit
+  status: accepted
+  exit_status: 0
+  timestamp: '2026-11-14T04:01:48.359510+00:00'
+  notes: ok
+- task_id: TA-ADV-001
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-project-auditor
+  action: audit
+  status: accepted
+  exit_status: 0
+  timestamp: '2026-11-14T04:06:45.549018+00:00'
+  notes: ok
+- task_id: TA-ADV-001
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-project-auditor
+  action: audit
+  status: accepted
+  exit_status: 0
+  timestamp: '2026-11-14T04:36:16.651108+00:00'
+  notes: ok
+- task_id: TA-0028
+  sender: agent-nexus-prime-ultimate
+  receiver: agent-project-auditor
+  action: audit
+  exit_status: 1
+  timestamp: '2026-11-21T19:29:32+00:00'
+  status: rejected
+  dod: true
+  notes: 'Corretiva VIO-026: entrada original TA-0028 era auto-delegação (sender==receiver),
+    proibida pelo Art. 4.5. Encerrada por decisão CCB (Art. 5.1); controle de prevenção
+    já vigente no dispatcher (exit 1).'
 blocked_tasks: []

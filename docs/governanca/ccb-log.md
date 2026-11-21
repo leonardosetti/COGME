@@ -218,3 +218,39 @@ evidencia: arquivo movido via git mv; pytest collections relevantes (tests/agent
 impacto: Pipeline de testes nao e mais bloqueado por importacoes de modulos deletados; remocao nao quebra links internos nem workflows/CI (nenhuma referencia ao teste existia).
 rollback: git mv de volta para tests/agents/ (nao recomendado; modulos de suporte continuam deletados).
 pmbok-gate: Integracao (4.6) | Qualidade (8.3) | Conformidade (P-05, Art. 9)
+
+
+### CR-009-APP-2026-11-17 — Aprovação da CR-009 (Ciclo de vida do usuário, clientes multiempresa, dashboard e fluxo anônimo)
+contexto: CR-009 v0.2.1 registra a evolução do ciclo de vida do usuário em cinco frentes: fluxo anônimo sem persistência, cadastro com identidade composta (e-mail/senha obrigatórios, CPF/CNPJ opcionais e cumulativos), clientes multiempresa nacionais/internacionais, perfil/dashboard com CNPJ secundário, e página Sobre própria. Requer 15 decisões CCB (CR9-D01..D15) para liberar implementação.
+opcoes: [A] Aprovar todas as 15 decisões conforme recomendação | [B] Aprovar com alterações | [C] Rejeitar
+decisao: **A** — Aprovar CR9-D01..CR9-D15 conforme recomendação da CR-009 v0.2.1.
+ratificacao: Humana (GP Leonardo, CCB de membro unico — TAP v3 §1.c, Premissa P7)
+instrumento: GitHub Issue #68 (label `change-request`, Constitution Art. 9.3(i))
+evidencia: Comentário de aprovação em issue #68 (2026-11-17); CR-009 frontmatter atualizado para `decisao-ccb: aprovado` com `data-decisao: 2026-11-17`.
+impacto: CR-009 aprovada; SPEC-024/025/026 (emendas a SPEC-017/018/019/020/023) podem ser ratificadas; implementação bloqueada até ratificação das specs e fechamento dos 17 BLOQ da auditoria (G3).
+rollback: Reverter decisão em CCB-log e frontmatter da CR; specs permanecem `draft` até ratificação separada.
+pmbok-gate: Integracao (4.6) | Escopo (5.1) | Qualidade (8.3) | Conformidade (P-03, P-14, P-15, Art. 9.3)
+
+
+### RAT-2026-11-18-P01 — Promulgação das Especs 024/025/026 (Emendas CR-009)
+contexto: CR-009 aprovada (CR-009-APP-2026-11-17) habilitou a ratificação e promulgação das emendas SPEC-024 (identidade composta), SPEC-025 (clientes multiempresa e fluxo anônimo) e SPEC-026 (perfil, dashboard, CNPJ secundário e página Sobre). As três specs estavam em `status: ratificado` após aprovação do CCB.
+opcoes: [A] Promulgar as três specs para `status: ativo` | [B] Manter em ratificado aguardando fechamento dos BLOQ
+decisao: **A** — Promulgar SPEC-024, SPEC-025, SPEC-026 para `status: ativo`. As specs são contratos de implementação; o bloqueio de implementação permanece via auditoria (G3: 17 BLOQ), não via status da spec.
+ratificacao: Humana (GP Leonardo, CCB de membro unico — TAP v3 §1.c)
+instrumento: CR-009-APP-2026-11-17 (GitHub Issue #68)
+evidencia: Frontmatter das três specs atualizado para `status: ativo` em 2026-11-18; validadores de frontmatter e cross-refs OK.
+impacto: Specs 024/025/026 tornam-se contratos vigentes para implementação; implementação condicionada ao fechamento dos 17 BLOQ da auditoria (G3).
+rollback: Reverter status para `ratificado` se houver impugnação formal.
+pmbok-gate: Integracao (4.6) | Escopo (5.1) | Qualidade (8.3) | Conformidade (P-03, P-14, P-15, Art. 9.3)
+
+
+### ARQ-2026-11-18-P02 — Arquivamento das Propostas 017–023 (Superseded)
+contexto: As propostas `docs/especificacoes/spec-prop-017` a `spec-prop-023` eram versões preliminares (draft) das specs base (SPEC-017 a SPEC-023) que foram ratificadas e promulgadas em `.ai/specs/` (status `ativo` + `ratificado`). Com a aprovação da CR-009 e promulgação das emendas 024/025/026, as propostas antigas no diretório `docs/especificacoes/` tornaram-se obsoletas.
+opcoes: [A] Arquivar como `obsoleto` (superseded) | [B] Manter como draft para histórico
+decisao: **A** — Alterar `status: draft` → `status: obsoleto` nas 7 propostas antigas.
+ratificacao: Humana (GP Leonardo, CCB de membro unico)
+instrumento: CR-009-APP-2026-11-17
+evidencia: Frontmatter das 7 propostas atualizado para `status: obsoleto`; validadores OK.
+impacto: Elimina duplicidade e confusão entre versões draft e ratificadas; base canônica permanece em `.ai/specs/`.
+rollback: Reverter para `draft` se necessário.
+pmbok-gate: Integracao (4.6) | Qualidade (8.3) | Conformidade (P-05, Art. 9)

@@ -46,6 +46,15 @@ class Settings(BaseSettings):
     provider_timeout_seconds: float = Field(default=0.9, gt=0)
     log_level: str = "INFO"
     login_pepper: str = Field(repr=False, min_length=16)
+    env: str = Field(default="development", pattern="^(development|production)$")
+    
+    # SMTP para emails transacionais (reset senha, verificação, boas-vindas)
+    smtp_host: str = "localhost"
+    smtp_port: int = 25
+    smtp_user: str | None = None
+    smtp_password: str | None = Field(default=None, repr=False)
+    smtp_from: str = "noreply@localhost"
+    smtp_use_tls: bool = False
 
     @field_validator("database_url")
     @classmethod

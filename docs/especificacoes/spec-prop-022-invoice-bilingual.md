@@ -3,7 +3,7 @@ id: docs-especificacoes-spec-prop-022-invoice-bilingual
 title: Proposta de Spec — Invoice bilíngue PT-BR / EN
 type: spec
 version: 0.1.0
-status: draft
+status: obsoleto
 owner: agent-project-analyst
 derived-from:
 - docs/change-requests/cr-007-invoice-bilingual.md

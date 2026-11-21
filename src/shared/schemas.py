@@ -108,9 +108,19 @@ class ErrorKey(StrEnum):
 
     VALIDATION_ERROR = "validation_error"
     NOT_FOUND = "not_found"
+    CONFLICT = "conflict"
     RATES_UNAVAILABLE = "rates_unavailable"
     PDF_UNAVAILABLE = "pdf_unavailable"
     INTERNAL_ERROR = "internal_error"
+    UNAUTHORIZED = "unauthorized"
+    FORBIDDEN = "forbidden"
+    ACCOUNT_DORMANT = "account_dormant"
+    EMAIL_UNVERIFIED = "email_unverified"
+    PROFILE_INCOMPLETE = "profile_incomplete"
+    ISSUER_NOT_ALLOWED = "issuer_not_allowed"
+    ISSUER_INACTIVE = "issuer_inactive"
+    LIMIT_EXCEEDED = "limit_exceeded"
+    RATE_LIMITED = "rate_limited"
 
 
 def _raise_invalid_decimal() -> NoReturn:

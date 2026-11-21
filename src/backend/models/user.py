@@ -54,8 +54,9 @@ class User(Base):
         CheckConstraint(
             "status IN ('active','dormant','deleted')", name="chk_users_status"
         ),
-        UniqueConstraint("email", name="uq_users_email"),
-        UniqueConstraint("cpf", name="uq_users_cpf"),
+        # Partial unique indexes created via migration (email/cpf nullable)
+        # UniqueConstraint("email", name="uq_users_email"),
+        # UniqueConstraint("cpf", name="uq_users_cpf"),
         UniqueConstraint("internal_username_hash", name="uq_users_internal_username"),
         Index("ix_users_email", "email"),
         Index("ix_users_cpf", "cpf"),
@@ -68,12 +69,15 @@ class User(Base):
         String(64), nullable=False
     )  # HMAC-SHA256 hex
     name: Mapped[str] = mapped_column(String(120), nullable=False)
-    email: Mapped[str] = mapped_column(String(255), nullable=False)
+    email: Mapped[str | None] = mapped_column(String(255), nullable=True)
     phone: Mapped[str | None] = mapped_column(String(30), nullable=True)
     cpf: Mapped[str | None] = mapped_column(CHAR(11), nullable=True)
     password_hash: Mapped[str] = mapped_column(String(255), nullable=False)
     status: Mapped[str] = mapped_column(
         String(16), nullable=False, default=UserStatus.ACTIVE
+    )
+    email_verified_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
     )
     dormant_since: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True), nullable=True
@@ -190,6 +194,36 @@ class PasswordResetToken(Base):
         UniqueConstraint("token_hash", name="uq_pwd_reset_token"),
         Index("ix_pwd_reset_user", "user_id"),
         Index("ix_pwd_reset_expires", "expires_at"),
+    )
+
+    id: Mapped[int] = mapped_column(BIGINT, primary_key=True)
+    user_id: Mapped[int] = mapped_column(
+        BIGINT, ForeignKey("users.id", ondelete="CASCADE"), nullable=False
+    )
+    token_hash: Mapped[str] = mapped_column(
+        String(64), nullable=False
+    )  # SHA-256 hex
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        nullable=False,
+        default=lambda: datetime.now().astimezone(),
+    )
+    expires_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False
+    )
+    used_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+
+
+class EmailVerificationToken(Base):
+    """Token de verificação de posse do e-mail (duplo opt-in, TTL 24h)."""
+
+    __tablename__ = "email_verification_tokens"
+    __table_args__ = (
+        UniqueConstraint("token_hash", name="uq_email_verification_token"),
+        Index("ix_email_verification_user", "user_id"),
+        Index("ix_email_verification_expires", "expires_at"),
     )
 
     id: Mapped[int] = mapped_column(BIGINT, primary_key=True)

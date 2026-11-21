@@ -11,12 +11,13 @@ from pydantic import BaseModel, Field
 from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
+from src.backend.middleware.rate_limit import limiter
 from src.backend.routers.common import (
     CurrentSession,
     SessionFactoryDep,
     get_session_factory,
 )
-from src.backend.models.client import Client
+from src.backend.models.client import Client, Country
 
 router = APIRouter(prefix="/v1/clients", tags=["clientes"])
 
@@ -40,7 +41,10 @@ def _require_session(session: CurrentSession):
 
 class ClientRequest(BaseModel):
     name: str = Field(min_length=1, max_length=255)
-    tax_id: str = Field(pattern=r"^\d{11}$|^\d{14}$")
+    tax_id: str | None = Field(default=None, pattern=r"^\d{11}$|^\d{14}$")
+    tax_id_type: str | None = Field(default=None, max_length=16)
+    email: str | None = Field(default=None, max_length=255)
+    phone: str | None = Field(default=None, max_length=30)
     address: str | None = Field(default=None, max_length=500)
     country_code: str = Field(default="BR", max_length=2)
 
@@ -48,7 +52,7 @@ class ClientRequest(BaseModel):
 class ClientResponse(BaseModel):
     id: int
     name: str
-    tax_id: str
+    tax_id: str | None = None
     tax_id_type: str
     email: str | None = None
     phone: str | None = None
@@ -82,6 +86,19 @@ async def list_clients(
     return [_to_response(r) for r in rows]
 
 
+async def _validate_country(db: AsyncSession, country_code: str) -> None:
+    """Garante que ``country_code`` exista na tabela ``countries``."""
+    country = (
+        await db.execute(select(Country).where(Country.code == country_code))
+    ).scalar_one_or_none()
+    if country is None:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"País '{country_code}' não cadastrado.",
+        )
+
+
+@limiter.limit("20/minute")
 @router.post("", response_model=ClientResponse, status_code=status.HTTP_201_CREATED, summary="Cadastra cliente")
 async def create_client(
     payload: ClientRequest,
@@ -90,14 +107,33 @@ async def create_client(
     sf: async_sessionmaker[AsyncSession] = Depends(_session_factory),
 ) -> ClientResponse:
     sess = _require_session(session)
-    tax_id_digits = "".join(ch for ch in payload.tax_id if ch.isdigit())
-    tax_id_type = "cpf" if len(tax_id_digits) == 11 else "cnpj"
+    tax_id_digits = (
+        "".join(ch for ch in payload.tax_id if ch.isdigit()) if payload.tax_id else None
+    )
+
+    if payload.tax_id_type:
+        tax_id_type = payload.tax_id_type
+    elif tax_id_digits is None:
+        tax_id_type = "foreign"
+    elif len(tax_id_digits) == 11:
+        tax_id_type = "cpf"
+    elif len(tax_id_digits) == 14:
+        tax_id_type = "cnpj"
+    else:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Informe CPF (11 dígitos) ou CNPJ (14 dígitos).",
+        )
+
     async with sf() as db, db.begin():
+        await _validate_country(db, payload.country_code)
         row = Client(
             owner_user_id=sess.user_id,
             name=payload.name,
             tax_id_digits=tax_id_digits,
             tax_id_type=tax_id_type,
+            email=payload.email,
+            phone=payload.phone,
             address=payload.address,
             country_code=payload.country_code,
             status="active",
@@ -150,7 +186,10 @@ async def update_client(
             raise HTTPException(status_code=404, detail="Cliente não encontrado")
         # tax_id e owner são imutáveis.
         row.name = payload.name
+        row.email = payload.email
+        row.phone = payload.phone
         row.address = payload.address
+        await _validate_country(db, payload.country_code)
         row.country_code = payload.country_code
         return _to_response(row)
 

@@ -15,7 +15,7 @@ from src.shared.schemas import _Schema
 class InvoiceCreateDraft(_Schema):
     """Entrada para criar uma invoice em status draft (SPEC-020)."""
 
-    client_id: UUID | None = Field(
+    client_id: int | None = Field(
         default=None,
         description="Cliente do diretório. None = cliente fictício.",
     )
@@ -23,7 +23,7 @@ class InvoiceCreateDraft(_Schema):
         default=None,
         description="Indica se é cliente fictício. Obrigatório true se client_id=None.",
     )
-    simulation_id: UUID | None = Field(
+    simulation_id: int | None = Field(
         default=None,
         description="Simulação origem (snapshot).",
     )
@@ -64,7 +64,7 @@ class InvoiceCreateDraft(_Schema):
 class InvoiceUpdate(_Schema):
     """Campos atualizáveis de uma invoice draft (SPEC-020)."""
 
-    client_id: UUID | None = None
+    client_id: int | None = None
     client_fictitious: bool | None = None
     issuer_name: str | None = Field(default=None, min_length=1, max_length=120)
     issuer_tax_id_digits: str | None = Field(default=None, max_length=14)

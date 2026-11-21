@@ -89,7 +89,9 @@ class Invoice(Base):
             "gross_brl - spread_brl - iof_brl = net_brl",
             name="chk_invoice_identity",
         ),
-        UniqueConstraint("invoice_number", name="uq_invoices_invoice_number"),
+        UniqueConstraint(
+            "issuer_tax_id_digits", "invoice_number", name="uq_invoices_issuer_number"
+        ),
     )
 
     id: Mapped[int] = mapped_column(BIGINT, primary_key=True)
@@ -151,6 +153,9 @@ class Invoice(Base):
 
     # Lifecycle
     finalized_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    deleted_at: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True), nullable=True
     )
     supersedes_invoice_id: Mapped[int | None] = mapped_column(

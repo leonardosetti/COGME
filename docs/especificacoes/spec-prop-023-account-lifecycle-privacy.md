@@ -3,7 +3,7 @@ id: docs-especificacoes-spec-prop-023-account-lifecycle-privacy
 title: Proposta de Spec — Ciclo de vida da conta, dormência, exclusão e privacidade LGPD/GDPR
 type: spec
 version: 0.1.0
-status: draft
+status: obsoleto
 owner: agent-project-analyst
 derived-from:
 - docs/change-requests/cr-008-account-lifecycle-privacy.md

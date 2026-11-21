@@ -286,11 +286,21 @@ def test_error_keys_raised_by_errors_module_exist_in_error_key() -> None:
 
 
 def test_error_key_set_matches_spec_table() -> None:
-    """ErrorKey tem exatamente as cinco chaves da tabela de erros da §3."""
+    """ErrorKey tem as chaves da tabela de erros canônica (CR-009 §5.5)."""
     assert {member.value for member in ErrorKey} == {
         "validation_error",
         "not_found",
+        "conflict",
         "rates_unavailable",
         "pdf_unavailable",
         "internal_error",
+        "unauthorized",
+        "forbidden",
+        "account_dormant",
+        "email_unverified",
+        "profile_incomplete",
+        "issuer_not_allowed",
+        "issuer_inactive",
+        "limit_exceeded",
+        "rate_limited",
     }
