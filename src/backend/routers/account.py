@@ -162,6 +162,7 @@ async def delete_account(
     return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
+@limiter.limit("5/minute")
 @router.post(
     "/reactivate",
     summary="Reativacao de conta dormente (publica: identificador + senha)",

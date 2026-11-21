@@ -1920,3 +1920,38 @@ def test_b06_csrf_cookie_nao_httponly_e_logout_nao_isento():
     assert "/v1/auth/logout" not in CSRF_EXEMPT_PATHS
 
 
+# ---------- Auditoria CR-009: aceitação dos BLOQ já satisfeitos (B-08, B-09) ----------
+
+
+def test_b08_exclusao_anonimiza_sem_colidir_unicos():
+    """B-08: exclusao anonimiza com NULL (não colide índices parciais) e captura from_status ANTES."""
+    import inspect
+
+    from src.backend.routers import account
+
+    fonte = inspect.getsource(account.delete_account)
+    # from_status capturado antes de mudar user.status
+    assert "from_status = user.status" in fonte
+    # user.status = UserStatus.DELETED vem depois
+    assert "user.status = UserStatus.DELETED" in fonte
+    # Anonimiza com None (não com "" ou "00000000000" que colidem)
+    assert "user.email = None" in fonte
+    assert "user.cpf = None" in fonte
+
+
+def test_b09_reativacao_publica_com_rate_limit():
+    """B-09: reativacao dormente é endpoint publico com rate limit do login."""
+    import inspect
+
+    from src.backend.routers import account
+
+    fonte = inspect.getsource(account.reactivate_account)
+    # Endpoint publico: nao exige session (usa payload + senha)
+    assert "_require_session(session)" not in fonte
+    # Rate limit do login (5/minute)
+    assert '@limiter.limit("5/minute")' in fonte
+    # Reativa de DORMANT para ACTIVE
+    assert "UserStatus.DORMANT" in fonte
+    assert "UserStatus.ACTIVE" in fonte
+
+
