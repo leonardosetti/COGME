@@ -78,8 +78,9 @@ async def get_current_session(
         if row is None:
             return None
         user_session, user_status = row
-        # Sliding expiration.
+        # Sliding expiration: estende last_seen_at e expires_at.
         user_session.last_seen_at = now
+        user_session.expires_at = now + _SESSION_TTL
         return SessionData(user_id=user_session.user_id, session_id=user_session.id)
 
 

@@ -1999,3 +1999,71 @@ def test_b15_rate_limit_ve_ip_real_atraves_proxy():
     assert resposta.status_code in (200, 401, 403, 429, 500)
 
 
+# ---------- Auditoria CR-009: aceitação H-01 (sliding expiration estende expires_at) ----------
+
+
+def test_h01_sliding_expiration_estende_expira_em():
+    """H-01: sessão ativa estende last_seen_at E expires_at (não só last_seen_at)."""
+    import asyncio
+
+    from datetime import timedelta
+
+    from src.backend.middleware.session import get_current_session, _SESSION_TTL
+
+    class _FakeUserSession:
+        def __init__(self, user_id, session_id, expires_at):
+            self.user_id = user_id
+            self.id = session_id
+            self.last_seen_at = None
+            self.expires_at = expires_at
+
+    class _FakeResult:
+        def __init__(self, row):
+            self._row = row
+
+        def first(self):
+            return self._row
+
+    class _FakeAsyncSession:
+        def __init__(self, row):
+            self._row = row
+
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *exc):
+            return False
+
+        async def begin(self):
+            return self
+
+        async def execute(self, stmt):
+            return _FakeResult(self._row)
+
+        def begin(self):
+            return self
+
+    class _FakeSessionFactory:
+        def __init__(self, row):
+            self._row = row
+
+        def __call__(self):
+            return _FakeAsyncSession(self._row)
+
+    from datetime import datetime, timezone
+
+    agora = datetime.now(timezone.utc)
+    row = (_FakeUserSession(7, 3, agora + _SESSION_TTL), "ACTIVE")
+    sf = _FakeSessionFactory(row)
+
+    class _Req:
+        cookies = {"session": "token-valido"}
+
+    resultado = asyncio.run(get_current_session(_Req(), sf, "pepper"))
+    assert resultado is not None
+    assert resultado.user_id == 7
+    # expires_at foi estendido (maior que o original)
+    assert row[0].expires_at > agora + _SESSION_TTL
+    assert row[0].last_seen_at > agora
+
+
