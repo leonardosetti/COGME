@@ -1955,3 +1955,24 @@ def test_b09_reativacao_publica_com_rate_limit():
     assert "UserStatus.ACTIVE" in fonte
 
 
+# ---------- Auditoria CR-009: aceitação dos BLOQ já satisfeitos (B-11) ----------
+
+
+def test_b11_alembic_revisao_maximo_32_chars():
+    """B-11: nenhuma migration alembic tem revision maior que 32 chars (varchar(32))."""
+    import glob
+    import re
+
+    maior = 0
+    maior_nome = ""
+    for f in sorted(glob.glob("migrations/versions/*.py")):
+        txt = open(f, encoding="utf-8").read()
+        m = re.search(r'revision = "([^"]+)"', txt)
+        if m:
+            rev = m.group(1)
+            if len(rev) > maior:
+                maior = len(rev)
+                maior_nome = rev
+    assert maior <= 32, f"revision muito longa: {maior_nome} ({maior} chars)"
+
+
