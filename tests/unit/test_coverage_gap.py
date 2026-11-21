@@ -1,6 +1,7 @@
 """Testes focados para cobrir linhas missing do relatório de cobertura."""
 
 import logging
+import os
 import pytest
 from unittest.mock import AsyncMock, MagicMock, Mock
 
@@ -1730,5 +1731,105 @@ def test_b03_senha_verifica_argon2_ou_legado():
         dk = hashlib.pbkdf2_hmac("sha256", b"senha-teste", salt, 210_000)
         legado = base64.b64encode(salt + dk).decode()
         assert _verify_password("senha-teste", legado)
+
+
+# ---------- Auditoria CR-009: aceitação dos BLOQ já satisfeitos (B-10, B-12) ----------
+
+
+def test_b10_sessao_revalida_status_usuario():
+    """B-10: sessão de usuário excluído/dormente é inválida (get_current_session filtra User.status ACTIVE)."""
+    import asyncio
+
+    from src.backend.middleware.session import get_current_session, SessionData
+
+    class _FakeUserSession:
+        def __init__(self, user_id, session_id):
+            self.user_id = user_id
+            self.id = session_id
+            self.last_seen_at = None
+
+    class _FakeResult:
+        def __init__(self, row):
+            self._row = row
+
+        def first(self):
+            return self._row
+
+    class _FakeAsyncSession:
+        def __init__(self, row):
+            self._row = row
+
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *exc):
+            return False
+
+        def begin(self):
+            return self
+
+        async def execute(self, stmt):
+            row = self._row
+            if row is not None:
+                _, status = row
+                if status != "ACTIVE":
+                    row = None
+            return _FakeResult(row)
+
+    class _FakeSessionFactory:
+        def __init__(self, row):
+            self._row = row
+
+        def __call__(self):
+            return _FakeAsyncSession(self._row)
+
+    class _Req:
+        cookies = {"session": "token-valido"}
+
+    # Usuário ACTIVE -> sessão válida.
+    row_ativo = (_FakeUserSession(7, 3), "ACTIVE")
+    sf_ativo = _FakeSessionFactory(row_ativo)
+    resultado = asyncio.run(get_current_session(_Req(), sf_ativo, "pepper"))
+    assert isinstance(resultado, SessionData)
+    assert resultado.user_id == 7
+
+    # Usuário DELETED -> sessão inválida (None).
+    row_deletado = (_FakeUserSession(8, 4), "DELETED")
+    sf_deletado = _FakeSessionFactory(row_deletado)
+    resultado = asyncio.run(get_current_session(_Req(), sf_deletado, "pepper"))
+    assert resultado is None
+
+    # Usuário DORMANT -> sessão inválida (None).
+    row_dormente = (_FakeUserSession(9, 5), "DORMANT")
+    sf_dormente = _FakeSessionFactory(row_dormente)
+    resultado = asyncio.run(get_current_session(_Req(), sf_dormente, "pepper"))
+    assert resultado is None
+
+
+def test_b12_cookie_secure_somente_producao():
+    """B-12: cookie de sessão Secure apenas em produção; localhost/dev usa Secure=false."""
+    from src.backend.config import get_settings
+
+    get_settings.cache_clear()
+    import os
+
+    os.environ["COGME_DATABASE_URL"] = "postgresql+asyncpg://localhost/db"
+    os.environ["COGME_LOGIN_PEPPER"] = "pepper-teste-16chars"
+    os.environ["COGME_ENV"] = "development"
+    settings = get_settings()
+    assert settings.env == "development"
+    secure = settings.env == "production"
+    assert secure is False  # localhost/dev: cookie não é Secure
+
+    os.environ["COGME_ENV"] = "production"
+    get_settings.cache_clear()
+    settings = get_settings()
+    assert settings.env == "production"
+    secure = settings.env == "production"
+    assert secure is True  # produção: cookie Secure
+
+    os.environ.pop("COGME_ENV", None)
+    os.environ.pop("COGME_DATABASE_URL", None)
+    get_settings.cache_clear()
 
 
