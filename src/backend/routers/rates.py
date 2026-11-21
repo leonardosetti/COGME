@@ -4,9 +4,10 @@ from __future__ import annotations
 
 import logging
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Request
 
 from src.backend.errors import RatesUnavailableError
+from src.backend.middleware.rate_limit import limiter
 from src.backend.routers.common import (
     INTERNAL_ERROR_RESPONSE,
     RATES_UNAVAILABLE_RESPONSE,
@@ -20,6 +21,7 @@ logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/v1", tags=["cotações"])
 
 
+@limiter.limit("20/minute")
 @router.get(
     "/rates/{currency}",
     response_model=RateQuote,
@@ -30,7 +32,11 @@ router = APIRouter(prefix="/v1", tags=["cotações"])
         **RATES_UNAVAILABLE_RESPONSE,
     },
 )
-async def get_rate(currency: Currency, rate_service: RateServiceDep) -> RateQuote:
+async def get_rate(
+    currency: Currency,
+    request: Request,
+    rate_service: RateServiceDep,
+) -> RateQuote:
     """Devolve a cotação da moeda.
 
     Args:
