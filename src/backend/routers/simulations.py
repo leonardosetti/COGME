@@ -10,6 +10,7 @@ from pydantic import BaseModel, Field
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
+from src.backend.middleware.rate_limit import limiter
 from src.backend.routers.common import (
     CurrentSession,
     INTERNAL_ERROR_RESPONSE,
@@ -106,6 +107,7 @@ async def _session_factory(request: Request) -> async_sessionmaker[AsyncSession]
     status_code=status.HTTP_201_CREATED,
     summary="Salva uma simulação (opt-in, SPEC-020)",
 )
+@limiter.limit("20/minute")
 async def save_simulation(
     payload: SimulationSaveRequest,
     request: Request,
@@ -210,8 +212,10 @@ async def get_simulation(
         **RATES_UNAVAILABLE_RESPONSE,
     },
 )
+@limiter.limit("20/minute")
 async def post_simulation(
     payload: SimulationRequest,
+    request: Request,
     rate_service: RateServiceDep,
 ) -> SimulationResponse:
     """Calcula o detalhamento da simulação com a cotação vigente.
