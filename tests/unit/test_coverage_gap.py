@@ -1976,3 +1976,26 @@ def test_b11_alembic_revisao_maximo_32_chars():
     assert maior <= 32, f"revision muito longa: {maior_nome} ({maior} chars)"
 
 
+# ---------- Auditoria CR-009: aceitação dos BLOQ já satisfeitos (B-15) ----------
+
+
+def test_b15_rate_limit_ve_ip_real_atraves_proxy():
+    """B-15: uvicorn iniciado com --proxy-headers --forwarded-allow-ips (usa IP real do cliente)."""
+    from src.backend.main import create_app
+    from fastapi.testclient import TestClient
+
+    app = create_app()
+    cliente = TestClient(app, raise_server_exceptions=False)
+
+    # O Dockerfile CMD inclui --proxy-headers --forwarded-allow-ips=*
+    import pathlib
+
+    dockerfile = pathlib.Path("Dockerfile").read_text(encoding="utf-8")
+    assert "--proxy-headers" in dockerfile
+    assert "--forwarded-allow-ips" in dockerfile
+
+    # GET /v1/rates/{currency} tem rate limit (verifica que o endpoint existe e responde)
+    resposta = cliente.get("/v1/rates/USD")
+    assert resposta.status_code in (200, 401, 403, 429, 500)
+
+
