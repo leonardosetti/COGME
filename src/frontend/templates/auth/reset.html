@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Redefinir senha — COGME{% endblock %}
+
+{% block content %}
+<div class="container auth-container">
+    <div class="auth-card">
+        <h1>Redefinir senha</h1>
+        
+        {% if error %}
+        <div class="alert alert-error" role="alert">
+            {{ error }}
+        </div>
+        {% endif %}
+        
+        <form method="POST" action="/v1/auth/password/reset-confirm" class="auth-form">
+            <input type="hidden" name="token" value="{{ token }}">
+            
+            <div class="form-group">
+                <label for="new_password">Nova senha</label>
+                <input type="password" id="new_password" name="new_password" 
+                       minlength="8" maxlength="128" required autocomplete="new-password">
+                <small class="form-hint">Mínimo 8 caracteres</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="confirm_password">Confirmar nova senha</label>
+                <input type="password" id="confirm_password" name="confirm_password" 
+                       minlength="8" maxlength="128" required autocomplete="new-password">
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-block">
+                Redefinir senha
+            </button>
+        </form>
+        
+        <p class="auth-footer">
+            <a href="/auth/login">Voltar para login</a>
+        </p>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    const password = document.getElementById('new_password');
+    const confirm = document.getElementById('confirm_password');
+    
+    form.addEventListener('submit', function(e) {
+        if (password.value !== confirm.value) {
+            e.preventDefault();
+            alert('As senhas não coincidem.');
+            confirm.focus();
+        }
+    });
+});
+</script>
+{% endblock %}

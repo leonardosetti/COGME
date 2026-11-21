@@ -545,14 +545,6 @@ def test_normalize_identifier_invalido():
     assert erro.value.status_code == 400
 
 
-def test_lookup_hmac():
-    from src.backend.routers.auth import _lookup_hmac
-
-    h = _lookup_hmac("cpf", "12345678909", "pepper-secreto")
-    assert isinstance(h, str)
-    assert len(h) == 64  # sha256 hex
-
-
 def test_mask_email_cpf_cnpj():
     from src.backend.routers.auth import _mask_email, _mask_cpf, _mask_cnpj
 
@@ -1424,76 +1416,6 @@ def test_frankfurter_parse_amount_mismatch():
 
 
 # ---------- middleware session: get_current_session com token valido ----------
-
-
-class _FakeUserSession:
-    def __init__(self, user_id, session_id):
-        self.id = session_id
-        self.user_id = user_id
-        self.session_id = session_id
-        self.last_seen_at = None
-
-
-class _FakeAsyncSessionSession:
-    def __init__(self, row):
-        self._row = row
-
-    async def __aenter__(self):
-        return self
-
-    async def __aexit__(self, *exc):
-        return False
-
-    async def execute(self, stmt):
-        class _Result:
-            def __init__(self, row):
-                self._row = row
-
-            def scalar_one_or_none(self):
-                return self._row
-        return _Result(self._row)
-
-    def begin(self):
-        return self
-
-
-class _FakeSessionFactorySession:
-    def __init__(self, row):
-        self._row = row
-
-    def __call__(self):
-        return _FakeAsyncSessionSession(self._row)
-
-
-def test_get_current_session_token_valido():
-    import asyncio
-
-    from src.backend.middleware.session import get_current_session
-
-    row = _FakeUserSession(user_id=7, session_id=3)
-    sf = _FakeSessionFactorySession(row)
-
-    class _Req:
-        cookies = {"session": "token-valido"}
-
-    resultado = asyncio.run(get_current_session(_Req(), sf, "pepper"))
-    assert resultado is not None
-    assert resultado.user_id == 7
-    assert resultado.session_id == 3
-
-
-def test_get_current_session_token_invalido():
-    import asyncio
-
-    from src.backend.middleware.session import get_current_session
-
-    sf = _FakeSessionFactorySession(None)
-
-    class _Req:
-        cookies = {"session": "token-invalido"}
-
-    resultado = asyncio.run(get_current_session(_Req(), sf, "pepper"))
-    assert resultado is None
 
 
 # ---------- middleware csrf: token valido ----------

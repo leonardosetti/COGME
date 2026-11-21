@@ -27,6 +27,7 @@ from sqlalchemy import select, update, delete
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 from src.backend.config import get_settings
+from src.backend.routers.common import CurrentSession
 from src.backend.utils.email import send_reset_token_email, send_verification_email
 from src.backend.middleware.rate_limit import limiter
 from src.backend.middleware.session import SESSION_COOKIE_NAME, SessionData, get_current_session

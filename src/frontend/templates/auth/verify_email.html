@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Verificar e-mail — COGME{% endblock %}
+
+{% block content %}
+<div class="container auth-container">
+    <div class="auth-card">
+        <h1>Verificar e-mail</h1>
+        
+        {% if error %}
+        <div class="alert alert-error" role="alert">
+            {{ error }}
+        </div>
+        {% endif %}
+        
+        <form method="POST" action="/v1/auth/email/verify" class="auth-form">
+            <input type="hidden" name="token" value="{{ token }}">
+            
+            <p>Clique no botão abaixo para confirmar seu e-mail e ativar sua conta.</p>
+            
+            <button type="submit" class="btn btn-primary btn-block">
+                Verificar e-mail
+            </button>
+        </form>
+        
+        <p class="auth-footer">
+            <a href="/auth/login">Voltar para login</a>
+        </p>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Auto-submit for better UX - user just clicks the link in email
+    // No auto-submit to avoid accidental submissions
+});
+</script>
+{% endblock %}
