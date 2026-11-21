@@ -20,6 +20,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query, Request, Response,
 from pydantic import BaseModel
 from sqlalchemy import select
 
+from src.backend.middleware.rate_limit import limiter
 from src.backend.models.client import Client
 from src.backend.models.invoice_repository import (
     InvoiceRepository,
@@ -85,13 +86,18 @@ _ORIGINAL_RESPONSES: Final[dict[int | str, dict[str, Any]]] = {
 }
 
 
+@limiter.limit("20/minute")
 @router.post(
     "/invoice",
     response_class=Response,
     summary="Gera a invoice em PDF (endpoint original REQ-04)",
     responses=_ORIGINAL_RESPONSES,
 )
-async def post_invoice(payload: InvoiceRequest, rate_service: RateServiceDep) -> Response:
+async def post_invoice(
+    payload: InvoiceRequest,
+    request: Request,
+    rate_service: RateServiceDep,
+) -> Response:
     """Recalcula a simulação no servidor e devolve a invoice em PDF.
 
     Os dados pessoais da requisição não são gravados nem registrados em log, e a resposta não

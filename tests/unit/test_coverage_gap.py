@@ -511,8 +511,21 @@ def test_post_invoice_devolve_pdf_com_monkeypatch(monkeypatch):
     async def _pdf_falso(payload, rate_service):
         return b"%PDF-1.4 falso"
 
+    class _FakeRequest:
+        client = None
+
     monkeypatch.setattr(invoices, "render_invoice", _pdf_falso)
-    resposta = asyncio.run(invoices.post_invoice(payload, object()))
+    from starlette.requests import Request
+
+    async def _receive():
+        return {"type": "http.request", "body": b"", "more_body": False}
+
+    request = Request(
+        {"type": "http", "method": "POST", "path": "/invoice", "headers": [],
+         "query_string": b"", "client": ("testclient", 12345), "server": ("testserver", 80)},
+        _receive,
+    )
+    resposta = asyncio.run(invoices.post_invoice(payload, request, object()))
     assert resposta.status_code == 200
     assert resposta.body == b"%PDF-1.4 falso"
     assert resposta.headers["cache-control"] == "no-store"
