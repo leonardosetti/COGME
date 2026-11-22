@@ -1,3 +1,19 @@
+---
+id: cogme-roadmap
+title: COGME — Roadmap
+type: plano
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .planning/ROADMAP.md
+last-revised: '2026-11-22'
+lgpd-class: n/a
+tags:
+- planejamento
+- roadmap
+---
+
 # Roadmap: COGME — Milestone v1.1
 
 ## Milestone

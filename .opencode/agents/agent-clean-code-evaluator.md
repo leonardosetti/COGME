@@ -1,7 +1,7 @@
 ---
 id: opencode-agents-agent-clean-code-evaluator
 title: 'SYSTEM DIRECTIVE: AGENT-CLEAN-CODE-EVALUATOR (GSD · specialist · clean-code)'
-type: gsd-agent
+type: persona
 version: 1.0.0
 status: ativo
 owner: agent-project-analyst
@@ -14,7 +14,7 @@ tags:
 - agents
 - clean-code
 name: agent-clean-code-evaluator
-layer: GSD
+layer: L2
 role: specialist
 description: 'Agente GSD agent-clean-code-evaluator — Avaliação de qualidade e limpeza de código-fonte no ecossistema COGME.'
 ---

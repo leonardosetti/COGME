@@ -126,8 +126,8 @@
     "semantic_hash": ""
   },
   ".ai/agents/registry.yaml": {
-    "mtime": 1795376365.3629937,
-    "seen": 1795376377.2833056,
+    "mtime": 1795381637.9705303,
+    "seen": 1795381652.3704786,
     "ast_hash": "374317a39f34e08a5723edacefc25034",
     "semantic_hash": ""
   },
@@ -3414,9 +3414,9 @@
     "semantic_hash": ""
   },
   "requirements-dev.txt": {
-    "mtime": 1795368683.637376,
-    "seen": 1795368835.9214077,
-    "ast_hash": "82cafc2e68d64f3f7fc72e995063f19c",
+    "mtime": 1795381383.5578654,
+    "seen": 1795381652.385062,
+    "ast_hash": "c663b92b4844b8f31df2deffa78cd5ba",
     "semantic_hash": ""
   },
   "requirements.txt": {
@@ -4200,9 +4200,9 @@
     "semantic_hash": ""
   },
   ".github/workflows/auditoria-compliance.yml": {
-    "mtime": 1794779835.6166775,
-    "seen": 1795368835.9133604,
-    "ast_hash": "6706f5fe05e4c0a0030a8716f03a3f6d",
+    "mtime": 1795381367.7788634,
+    "seen": 1795381652.3719656,
+    "ast_hash": "f751b75c444e8c56075a4e3433ac921e",
     "semantic_hash": ""
   },
   "docs/auditorias/aud-20261106-1934-auditoria-compliance.json": {
@@ -5445,6 +5445,12 @@
     "mtime": 1795371750.8007357,
     "seen": 1795371973.6852593,
     "ast_hash": "9ca454ec111c567b4ac49712ce866c5d",
+    "semantic_hash": ""
+  },
+  "docker-compose.staging.yml": {
+    "mtime": 1795381420.5908697,
+    "seen": 1795381652.372101,
+    "ast_hash": "7822975329fefd2d42da4b2041d19b47",
     "semantic_hash": ""
   },
   "package-lock.json": {

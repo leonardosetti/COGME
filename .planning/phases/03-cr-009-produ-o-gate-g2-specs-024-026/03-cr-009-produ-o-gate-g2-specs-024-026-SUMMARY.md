@@ -1,3 +1,19 @@
+---
+id: cogme-summary-3
+title: COGME — SUMMARY Fase 3
+type: relatorio
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .planning/phases/03-cr-009-produ-o-gate-g2-specs-024-026/03-cr-009-produ-o-gate-g2-specs-024-026-SUMMARY.md
+last-revised: '2026-11-22'
+lgpd-class: n/a
+tags:
+- resumo
+- fase-3
+---
+
 # Phase 3 Plan [cr-009-produ-o-gate-g2-specs-024-026] Summary
 
 ## One-liner

@@ -1,3 +1,19 @@
+---
+id: cogme-aud-ta-062
+title: COGME — Auditoria TA-062
+type: audit
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- docs/auditorias/aud-ta-062-2026-11-22-auditoria-integridade-specs-017-022.md
+last-revised: '2026-11-22'
+lgpd-class: n/a
+tags:
+- auditoria
+- specs-017-022
+---
+
 # Auditoria de integridade — specs 017–022 (TA-062, Fase 1.5)
 
 **Data:** 2026-11-22  

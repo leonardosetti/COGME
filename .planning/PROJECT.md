@@ -1,3 +1,19 @@
+---
+id: cogme-project
+title: COGME — Projeto
+type: plano
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .planning/PROJECT.md
+last-revised: '2026-11-22'
+lgpd-class: n/a
+tags:
+- planejamento
+- projeto
+---
+
 # COGME
 
 ## What This Is

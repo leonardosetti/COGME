@@ -1,3 +1,20 @@
+---
+id: cogme-plan-3
+title: COGME — PLAN Fase 3
+type: plano
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .planning/phases/1_5/HANDOFF.md
+last-revised: '2026-11-22'
+lgpd-class: n/a
+tags:
+- planejamento
+- fase-3
+- planejamento
+---
+
 # PLAN — Fase 3: CR-009 Produção / Gate G2 (specs 024–026)
 
 ## Fase

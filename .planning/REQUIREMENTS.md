@@ -1,3 +1,19 @@
+---
+id: cogme-requirements
+title: COGME — Requisitos
+type: requisito
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .planning/REQUIREMENTS.md
+last-revised: '2026-11-22'
+lgpd-class: n/a
+tags:
+- requisitos
+- planejamento
+---
+
 # Requirements: COGME
 
 **Defined:** 2026-11-22

@@ -1,3 +1,20 @@
+---
+id: cogme-rel-release-v1
+title: COGME — Release Notes v1.0.0
+type: relatorio
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- docs/relatorios/rel-release-notes-v1.0.0.md
+last-revised: '2026-11-22'
+lgpd-class: n/a
+tags:
+- relatorio
+- release
+- v1-0-0
+---
+
 # Release v1.0.0 — COGME
 
 ## 📋 Visão Geral

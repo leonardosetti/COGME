@@ -1,3 +1,19 @@
+---
+id: cogme-state
+title: COGME — Estado do Planejamento
+type: plano
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .planning/STATE.md
+last-revised: '2026-11-22'
+lgpd-class: n/a
+tags:
+- planejamento
+- estado
+---
+
 milestone: v1.0
 status: executing
 phase: 4

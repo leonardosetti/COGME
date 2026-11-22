@@ -1,7 +1,7 @@
 ---
 id: opencode-agents-agent-agile-specialist
 title: 'SYSTEM DIRECTIVE: AGENT-AGILE-SPECIALIST (GSD · specialist · agile)'
-type: gsd-agent
+type: persona
 version: 1.0.0
 status: ativo
 owner: agent-project-analyst
@@ -14,7 +14,7 @@ tags:
 - agents
 - agile
 name: agent-agile-specialist
-layer: GSD
+layer: L2
 role: specialist
 description: 'Agente GSD agent-agile-specialist — Agilidade e gestão de entregas iterativas no ecossistema COGME.'
 ---
