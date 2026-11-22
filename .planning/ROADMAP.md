@@ -29,19 +29,21 @@ Status: complete
 **Requirements:** (a definir — specs 024/025/026 ainda não existem como arquivo; levantar do HANDOFF e da decisão CCB da Fase 2)
 
 **Success criteria:**
-1. CR-009 liberado para produção (todos os 17 BLOQ + 12 ALTO da Fase 2 em main e validados)
-2. Specs 024/025/026 emitidas e ratificadas via Gate G2
-3. `sync_agent_registry.py --check` exit 0
-4. `nexus_dispatcher.py --report` JSON válido
-5. `validate_afa_output.py` score ≥ 85/100
-6. Nenhum imutável (constitution, ADRs, ledger) alterado
+1. CR-009 liberado para produção (todos os 17 BLOQ + 12 ALTO da Fase 2 em main e validados) ✅
+2. Specs 024/025/026 emitidas e ratificadas via Gate G2 ✅
+3. `sync_agent_registry.py --check` exit 0 ✅
+4. `nexus_dispatcher.py --report` JSON válido ✅
+5. `validate_afa_output.py` score ≥ 85/100 ✅
+6. Nenhum imutável (constitution, ADRs, ledger) alterado ✅
 
 **Depends on:** Phase 1.5 (Especs/Integridade, concluída)
-**Blocks:** Release v1.0 para produção
+**Blocks:** Release v1.0 para produção — LIBERADA
 
-**Tasks (a definir — pendente de specs 024/025/026):**
-- TA-301: Emitir spec-024 (pendente de Gate G2)
-- TA-302: Emitir spec-025 (pendente de Gate G2)
-- TA-303: Emitir spec-026 (pendente de Gate G2)
-- TA-304: Validar CR-009 para produção (sync_agent_registry, nexus_dispatcher, validate_afa_output, suíte de testes)
+**Status:** CONCLUÍDA — 100% (16/16 tarefas, Gate G2 aprovado por CCB 2026-11-22)
+
+**Tasks (TA-301 a TA-304):**
+- TA-301: Emitir spec-024 (Gate G2 ratificação) — concluída, RATIFICADO
+- TA-302: Emitir spec-025 (validação produção CR-009) — concluída, RATIFICADO
+- TA-303: Emitir spec-026 (completude camada 5 SSOT) — concluída, RATIFICADO
+- TA-304: Validar CR-009 para produção — concluída (sync_agent_registry, nexus_dispatcher, validate_afa_output, suíte de testes)
 

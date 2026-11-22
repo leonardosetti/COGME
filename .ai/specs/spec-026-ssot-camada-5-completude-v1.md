@@ -3,7 +3,7 @@ id: ai-specs-spec-026-ssot-camada-5-completude-v1
 title: 'SPEC spec-026 — ssot-camada-5-completude-v1 — Completação da camada 5 do SSOT (constituição Art. 2) e rastreabilidade final specs/integridade'
 type: spec
 version: 0.1.0
-status: draft
+status: ratificado
 owner: agent-project-analyst
 derived-from:
 - .planning/phases/1_5/HANDOFF.md (Fase 1.5: Especs/Integridade, TA-061 a TA-065)
@@ -21,7 +21,7 @@ tags:
 spec-id: spec-026
 specname: ssot-camada-5-completude-v1
 version: 0.1.0
-status: draft
+status: ratificado
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-11-22
 updated: 2026-11-22
@@ -36,7 +36,7 @@ trace:
 
 # SPEC spec-026 — ssot-camada-5-completude-v1 — Completação da camada 5 do SSOT (constituição Art. 2) e rastreabilidade final specs/integridade
 
-**Status:** DRAFT — pendente de ratificação pelo Gate G2 (Fase 3). Define a completude da camada 5 do SSOT após a Fase 1.5.
+**Status:** RATIFICADO — Gate G2 aprovado por CCB (2026-11-22); promovido de DRAFT para RATIFICADO.
 
 ---
 
@@ -96,3 +96,4 @@ Emitida por TA-303 (Fase 3, agent-nexus-prime-ultimate → agent-sdd-specialist,
 ## CHANGELOG
 
 - 0.1.0 — 2026-11-22: emissão inicial como DRAFT; define completude da camada 5 do SSOT após Fase 1.5, critérios SSOT-AC-01..07, rastreabilidade dos artefatos specs/tap/eap/requisitos. Pendente de ratificação CCB/Gate G2.
+- 0.2.0 — 2026-11-22: ratificado pelo Gate G2 (CCB); promovido de DRAFT para RATIFICADO; critérios SSOT-AC-01..07 validadados; camada 5 do SSOT completa.

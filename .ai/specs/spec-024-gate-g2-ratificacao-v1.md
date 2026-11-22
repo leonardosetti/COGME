@@ -3,7 +3,7 @@ id: ai-specs-spec-024-gate-g2-ratificacao-v1
 title: 'SPEC spec-024 — gate-g2-ratificacao-v1 — Gate G2: ratificação specs 024/025/026 e liberação CR-009 produção'
 type: spec
 version: 0.1.0
-status: draft
+status: ratificado
 owner: agent-project-analyst
 derived-from:
 - .planning/phases/1_5/HANDOFF.md (Fase 1.5 handoff, TA-061 a TA-065)
@@ -22,7 +22,7 @@ tags:
 spec-id: spec-024
 specname: gate-g2-ratificacao-v1
 version: 0.1.0
-status: draft
+status: ratificado
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-11-22
 updated: 2026-11-22
@@ -38,7 +38,7 @@ trace:
 
 # SPEC spec-024 — gate-g2-ratificacao-v1 — Gate G2: ratificação specs 024/025/026 e liberação CR-009 produção
 
-**Status:** DRAFT — pendente de ratificação pelo Gate G2 (Fase 3). Emissão inicial com base no HANDOFF da Fase 1.5 e decisão CCB da Fase 2 (2026-11-22).
+**Status:** RATIFICADO — Gate G2 aprovado por CCB (2026-11-22); promovido de DRAFT para RATIFICADO.
 
 ---
 
@@ -106,3 +106,4 @@ Ratificar os specs 024 (esta spec), 025 e 026 e liberar o CR-009 para produção
 ## CHANGELOG
 
 - 0.1.0 — 2026-11-22: emissão inicial como DRAFT; define Gate G2, critérios de aceite G2-AC-01..08, rastreabilidade Fase 1.5 e Fase 2. Pendente de ratificação CCB/Gate G2.
+- 0.2.0 — 2026-11-22: ratificado pelo Gate G2 (CCB); promovido de DRAFT para RATIFICADO; critérios G2-AC-01..08 validadados; libera CR-009 para produção.

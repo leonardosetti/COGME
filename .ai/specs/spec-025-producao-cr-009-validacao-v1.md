@@ -3,7 +3,7 @@ id: ai-specs-spec-025-producao-cr-009-validacao-v1
 title: 'SPEC spec-025 — producao-cr-009-validacao-v1 — Validação de produção CR-009 (17 BLOQ + 12 ALTO) e critérios de release v1.0'
 type: spec
 version: 0.1.0
-status: draft
+status: ratificado
 owner: agent-project-analyst
 derived-from:
 - .planning/phases/2/PLAN.md (Fase 2: pré-produção CR-009 concluída)
@@ -24,7 +24,7 @@ tags:
 spec-id: spec-025
 specname: producao-cr-009-validacao-v1
 version: 0.1.0
-status: draft
+status: ratificado
 custody: agent-sdd-specialist (.ai/specs/)
 created: 2026-11-22
 updated: 2026-11-22
@@ -40,7 +40,7 @@ trace:
 
 # SPEC spec-025 — producao-cr-009-validacao-v1 — Validação de produção CR-009 (17 BLOQ + 12 ALTO) e critérios de release v1.0
 
-**Status:** DRAFT — pendente de ratificação pelo Gate G2 (Fase 3). Define os critérios de validação para liberar o CR-009 para produção.
+**Status:** RATIFICADO — Gate G2 aprovado por CCB (2026-11-22); promovido de DRAFT para RATIFICADO.
 
 ---
 
@@ -98,3 +98,4 @@ Emitida por TA-302 (Fase 3, agent-nexus-prime-ultimate → agent-sdd-specialist,
 ## CHANGELOG
 
 - 0.1.0 — 2026-11-22: emissão inicial como DRAFT; define critérios PROD-AC-01..08 para validação de produção CR-009 e release v1.0. Pendente de ratificação CCB/Gate G2.
+- 0.2.0 — 2026-11-22: ratificado pelo Gate G2 (CCB); promovido de DRAFT para RATIFICADO; critérios PROD-AC-01..08 validadados; CR-009 liberado para produção.
