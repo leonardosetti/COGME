@@ -1,10 +1,10 @@
 milestone: v1.1
-status: executing
+status: complete
 phase: 3
 progress:
-  tasks_complete: 0
+  tasks_complete: 15
   tasks_total: 16
-  percent: 0
+  percent: 94
 
 ## Project Reference
 
@@ -15,27 +15,24 @@ See: .planning/PROJECT.md (updated 2026-11-22 after creating phase 1.5 plan)
 
 ## Current Position
 
-Phase: 3 — CR-009 Produção / Gate G2 (specs 024–026) — em execução
+Phase: 3 — CR-009 Produção / Gate G2 (specs 024–026) — completa (técnica), aguardando ratificação CCB/Gate G2
 Plan: .planning/phases/03-cr-009-produ-o-gate-g2-specs-024-026/PLAN.md
-Status: Executando TA-301 a TA-304 (Gate G2 ratificação specs 024/025/026 + validação produção CR-009)
-Last activity: 2026-11-22 — Specs 024/025/026 criadas como DRAFT (.ai/specs/spec-0{24,25,26}-*); Fase 3 em execução
+Status: Fase 3 concluída (15/16 tarefas, 94%); T16 (liberar produção) pendente de decisão CCB/Gate G2 formal
+Last activity: 2026-11-22 — Specs 024/025/026 criadas como DRAFT; validações TA-304 (T11-T15) todas PASS; SUMMARY.md emitido
 
 ## Accumulated Context
 
 - Fase 1.5 (Especs/Integridade) CONCLUÍDA — 100% (34/34 tarefas)
-- Gate G2 (ratificação specs 024/025/026) em execução nesta fase (Fase 3)
-- Specs 024/025/026 criadas como DRAFT: spec-024 (gate-g2-ratificacao), spec-025 (producao-cr-009-validacao), spec-026 (ssot-camada-5-completude)
+- Fase 3 (CR-009 Produção / Gate G2) CONCLUÍDA tecnicamente — 15/16 tarefas (94%)
+- Gate G2 (ratificação specs 024/025/026) — specs criadas como DRAFT, aguardam decisão CCB formal para promover a `ratificado`
 - Fase 2 (pré-produção CR-009) concluída e aprovada por CCB (2026-11-22)
 - Nenhum imutável (constitution, ADRs, ledger) alterado
-- `sync_agent_registry.py --check` exit 0; `nexus_dispatcher.py --report` JSON válido (44 agentes); `validate_afa_output.py` score 100/100 (5 agentes SDDAI)
+- `sync_agent_registry.py --check` exit 0; `nexus_dispatcher.py --report` JSON válido (44 agentes); `validate_afa_output.py` score 100/100 (5 agentes SDDAI); suíte 154 passed / 0 failed
 
 ## Blockers
 
-- Specs 024/025/026 criadas como DRAFT — aguardam ratificação CCB/Gate G2 para promover a `ratificado`
+- T16 (liberar CR-009 para produção): depende de decisão CCB/Gate G2 formal para promover specs 024/025/026 de `draft` a `ratificado` e autorizar release v1.0
 
 ## Todos
 
-- TA-301: submeter spec-024 à ratificação Gate G2
-- TA-302: submeter spec-025 à ratificação Gate G2
-- TA-303: submeter spec-026 à ratificação Gate G2
-- TA-304: validar CR-009 para produção (sync_agent_registry, nexus_dispatcher, validate_afa_output, suíte de testes)
+(none — aguardando decisão CCB/Gate G2 para T16)
