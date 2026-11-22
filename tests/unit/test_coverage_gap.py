@@ -2258,3 +2258,20 @@ def test_h07_authenticated_routes():
         assert "COGME" in resposta.text
 
 
+# ---------- Auditoria CR-009: aceitação H-08 (#sobre HTML válido) ----------
+
+
+def test_h08_sobre_html_valido():
+    """H-08: seção #sobre sem tags HTML malformadas."""
+    import pathlib
+
+    html = pathlib.Path("src/frontend/templates/index.html").read_text(encoding="utf-8")
+    assert "</p </p>" not in html
+    assert "</        </article>" not in html
+    # Toda tag <p> aberta deve ser fechada no trecho sobre
+    sobre_inicio = html.index('<section class="about" id="sobre">')
+    sobre_fim = html.index("</section>", sobre_inicio)
+    sobre = html[sobre_inicio:sobre_fim]
+    assert sobre.count("<p>") == sobre.count("</p>")
+
+
