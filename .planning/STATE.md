@@ -1,10 +1,10 @@
-milestone: v1.1
-status: complete
-phase: 3
+milestone: v1.0
+status: executing
+phase: 4
 progress:
-  tasks_complete: 16
-  tasks_total: 16
-  percent: 100
+  tasks_complete: 0
+  tasks_total: 19
+  percent: 0
 
 ## Project Reference
 
@@ -15,24 +15,29 @@ See: .planning/PROJECT.md (updated 2026-11-22 after creating phase 1.5 plan)
 
 ## Current Position
 
-Phase: 3 — CR-009 Produção / Gate G2 (specs 024–026) — COMPLETA (100%)
-Plan: .planning/phases/03-cr-009-produ-o-gate-g2-specs-024-026/PLAN.md
-Status: Fase 3 concluída (16/16 tarefas, 100%); Gate G2 aprovado por CCB; specs 024/025/026 ratificadas; CR-009 liberado para produção
-Last activity: 2026-11-22 — Specs 024/025/026 ratificadas (RATIFICADO); Gate G2 aprovado por CCB; T16 (liberar produção) concluída
+Phase: 4 — Release v1.0 — Publicação e Pós-produção — em execução
+Plan: .planning/phases/04-release-v1-0-publica-o-e-p-s-produ-o/PLAN.md
+Status: Executando TA-401 a TA-405 (release v1.0, tag, release notes, pipelines, operação)
+Last activity: 2026-11-22 — Fase 4 planejada, PLAN.md criado, pronto para execução
 
 ## Accumulated Context
 
 - Fase 1.5 (Especs/Integridade) CONCLUÍDA — 100% (34/34 tarefas)
-- Fase 3 (CR-009 Produção / Gate G2) CONCLUÍDA — 100% (16/16 tarefas)
-- Gate G2 (ratificação specs 024/025/026) APROVADO por CCB (2026-11-22); specs 024/025/026 promovidas de DRAFT para RATIFICADO
-- Fase 2 (pré-produção CR-009) concluída e aprovada por CCB (2026-11-22)
+- Fase 3 (CR-009 Produção / Gate G2) CONCLUÍDA — 100% (16/16 tarefas), Gate G2 aprovado por CCB 2026-11-22
+- Specs 024/025/026 ratificadas (RATIFICADO)
+- CR-009 liberado para produção (17 BLOQ + 12 ALTO validados)
 - Nenhum imutável (constitution, ADRs, ledger) alterado
-- `sync_agent_registry.py --check` exit 0; `nexus_dispatcher.py --report` JSON válido (44 agentes); `validate_afa_output.py` score 100/100 (5 agentes SDDAI); suíte 154 passed / 0 failed
+- `sync_agent_registry.py --check` exit 0; `nexus_dispatcher.py --report` JSON válido (44 agentes); `validate_afa_output.py` score 100/100
+- Pipelines CI/CD corrigidos (auditoria-compliance, cr-spec-approval com trufflehog/license-checker, tests/e2e_playwright, docker-compose.staging.yml)
 
 ## Blockers
 
-(none — Gate G2 aprovado por CCB)
+(none — Gate G2 aprovado, release v1.0 autorizada)
 
 ## Todos
 
-(none — fase 3 completa, release v1.0 autorizada)
+- TA-401: Criar tag v1.0.0 e push para origin/main (HF-0701)
+- TA-402: Publicar release v1.0.0 com release notes (HF-0702)
+- TA-403: Verificar todos os pipelines CI/CD verdes (HF-0703)
+- TA-404: Revisar documentação de operação/runbook (HF-0704)
+- TA-405: Handoff para operação (monitoramento, alertas, backup) (HF-0705)

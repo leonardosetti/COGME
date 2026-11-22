@@ -47,3 +47,38 @@ Status: complete
 - TA-303: Emitir spec-026 (completude camada 5 SSOT) — concluída, RATIFICADO
 - TA-304: Validar CR-009 para produção — concluída (sync_agent_registry, nexus_dispatcher, validate_afa_output, suíte de testes)
 
+### Phase 4: Release v1.0 — Publicação e Pós-produção
+
+**Goal:** Publicar a release v1.0 do COGME para produção, com tag semver, release notes, documentação final e handoff para operação, após aprovação do Gate G2 (Fase 3).
+
+**Requirements:**
+- Tag semver v1.0.0 no repositório
+- Release notes publicadas no GitHub
+- Todos os pipelines CI/CD verdes (ci.yml, sddai-verify.yml, auditoria-compliance.yml)
+- Documentação de operação (runbook, health checks) atualizada
+- Handoff para operação (monitoramento, alertas, backup)
+
+**Success criteria:**
+1. Tag v1.0.0 criada e pushada para origin/main
+2. Release v1.0.0 publicada no GitHub com release notes
+3. Pipeline `ci.yml` verde (todos os 9 jobs passando)
+4. Pipeline `sddai-verify.yml` verde
+5. Pipeline `auditoria-compliance.yml` verde
+6. `sync_agent_registry.py --check` exit 0
+7. `nexus_dispatcher.py --report` JSON válido
+8. `validate_afa_output.py` score ≥ 85/100
+9. Nenhum imutável (constitution, ADRs, ledger) alterado
+10. Documentação de operação (runbook) existente e revisada
+
+**Depends on:** Phase 3 (CR-009 Produção / Gate G2, concluída)
+**Blocks:** Nenhuma (última fase do ciclo v1)
+
+**Status:** Planejada — aguardando discuss-phase
+
+**Tasks (TA-401 a TA-405):**
+- TA-401: Criar tag v1.0.0 e push para origin/main (HF-0701)
+- TA-402: Publicar release v1.0.0 com release notes (HF-0702)
+- TA-403: Verificar todos os pipelines CI/CD verdes (HF-0703)
+- TA-404: Revisar documentação de operação/runbook (HF-0704)
+- TA-405: Handoff para operação (monitoramento, alertas, backup) (HF-0705)
+
