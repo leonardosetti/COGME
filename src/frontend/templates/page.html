@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}COGME{% endblock %}</title>
+<link rel="stylesheet" href="/static/css/app-ifit.css">
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="/" class="brand"><div class="mark">C</div>COGME</a>
+    <ul class="nav-links">
+      <li><a href="/">Início</a></li>
+      {% if session %}
+      <li><a href="/dashboard">Dashboard</a></li>
+      <li><a href="/perfil">Perfil</a></li>
+      <li><a href="/clientes">Clientes</a></li>
+      {% else %}
+      <li><a href="/auth/login">Entrar</a></li>
+      <li><a href="/auth/register">Cadastre-se</a></li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+<main class="container">
+  <h1>{% block h1 %}COGME{% endblock %}</h1>
+  {% block content %}{% endblock %}
+</main>
+</body>
+</html>

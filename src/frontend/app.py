@@ -304,3 +304,29 @@ async def proxy_v1(path: str, request: Request) -> StreamingResponse:
         },
         media_type=resp.headers.get("content-type"),
     )
+
+
+# --- Páginas autenticadas (H-07: navbar/dashboard/perfil/clientes/sobre) ---
+
+@app.get("/dashboard", response_class=HTMLResponse)
+async def dashboard(request: Request) -> HTMLResponse:
+    """Painel do usuário logado."""
+    return render("page.html", title="Dashboard", content="<p>Bem-vindo ao seu dashboard.</p>")
+
+
+@app.get("/perfil", response_class=HTMLResponse)
+async def perfil(request: Request) -> HTMLResponse:
+    """Página de perfil do usuário."""
+    return render("page.html", title="Perfil", content="<p>Seus dados de perfil.</p>")
+
+
+@app.get("/clientes", response_class=HTMLResponse)
+async def clientes(request: Request) -> HTMLResponse:
+    """Página do diretório de clientes."""
+    return render("page.html", title="Clientes", content="<p>Seus clientes cadastrados.</p>")
+
+
+@app.get("/sobre", response_class=HTMLResponse)
+async def sobre(request: Request) -> HTMLResponse:
+    """Página institucional sobre o COGME."""
+    return render("page.html", title="Sobre", content="<p>COGME — Simulador de recebimento em moeda estrangeira.</p>")

@@ -2242,3 +2242,19 @@ def test_h06_no_google_fonts():
     assert "fonts.gstatic.com" not in html
 
 
+# ---------- Auditoria CR-009: aceitação H-07 (navbar/rotas autenticadas) ----------
+
+
+def test_h07_authenticated_routes():
+    """H-07: rotas /dashboard, /perfil, /clientes, /sobre existem e retornam 200."""
+    from fastapi.testclient import TestClient
+
+    from src.frontend.app import app
+
+    cliente = TestClient(app, raise_server_exceptions=False)
+    for caminho in ("/dashboard", "/perfil", "/clientes", "/sobre"):
+        resposta = cliente.get(caminho)
+        assert resposta.status_code == 200, f"{caminho} retornou {resposta.status_code}"
+        assert "COGME" in resposta.text
+
+
