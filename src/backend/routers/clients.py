@@ -9,6 +9,7 @@ from __future__ import annotations
 from fastapi import APIRouter, Depends, HTTPException, Query, Request, Response, status
 from pydantic import BaseModel, Field
 from sqlalchemy import select, update
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 from src.backend.middleware.rate_limit import limiter
@@ -139,8 +140,15 @@ async def create_client(
             status="active",
         )
         db.add(row)
-        await db.flush()
-        await db.refresh(row)
+        try:
+            await db.flush()
+            await db.refresh(row)
+        except IntegrityError:
+            await db.rollback()
+            raise HTTPException(
+                status_code=status.HTTP_409_CONFLICT,
+                detail="Cliente já cadastrado.",
+            )
         return _to_response(row)
 
 

@@ -2034,7 +2034,7 @@ def test_h01_sliding_expiration_estende_expira_em():
         async def __aexit__(self, *exc):
             return False
 
-        async def begin(self):
+        def begin(self):
             return self
 
         async def execute(self, stmt):
@@ -2065,5 +2065,92 @@ def test_h01_sliding_expiration_estende_expira_em():
     # expires_at foi estendido (maior que o original)
     assert row[0].expires_at > agora + _SESSION_TTL
     assert row[0].last_seen_at > agora
+
+
+# ---------- Auditoria CR-009: aceitação H-02 (IntegrityError -> 409) ----------
+
+
+def test_h02_create_client_duplicate_tax_409(monkeypatch):
+    """H-02: IntegrityError em create_client vira 409 (não 500)."""
+    from sqlalchemy.exc import IntegrityError
+
+    from src.backend.routers import clients
+
+    class _FakeResult:
+        def scalar_one_or_none(self):
+            return None
+
+    class _FakeSession:
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *exc):
+            return False
+
+        def begin(self):
+            return self
+
+        async def execute(self, stmt):
+            return _FakeResult()
+
+        def add(self, obj):
+            pass
+
+        async def rollback(self):
+            pass
+
+        async def flush(self):
+            raise IntegrityError("unique violation", None, None)
+
+    class _FakeSessionFactory:
+        def __call__(self):
+            return _FakeSession()
+
+    payload = type(
+        "P",
+        (),
+        {
+            "name": "Cliente X",
+            "tax_id": "12345678909",
+            "tax_id_type": "cpf",
+            "email": None,
+            "phone": None,
+            "address": None,
+            "country_code": "BR",
+        },
+    )()
+
+    sf = _FakeSessionFactory()
+    sess = type("S", (), {"user_id": 7})()
+
+    from starlette.requests import Request
+
+    async def _receive():
+        return {"type": "http.request", "body": b"", "more_body": False}
+
+    request = Request(
+        {"type": "http", "method": "POST", "path": "/v1/clients", "headers": [],
+         "query_string": b"", "client": ("testclient", 12345), "server": ("testserver", 80)},
+        _receive,
+    )
+
+    # Não há países cadastrados no banco fake; ignora validação de país.
+    async def _no_op_validate(db, code):
+        return None
+
+    monkeypatch.setattr(clients, "_validate_country", _no_op_validate)
+
+    try:
+        import asyncio
+
+        async def _run():
+            await clients.create_client(payload, request, session=sess, sf=sf)
+
+        asyncio.run(_run())
+    except clients.HTTPException as erro:
+        assert erro.status_code == 409
+        assert "Cliente já cadastrado" in erro.detail
+        return
+    raise AssertionError("esperava HTTPException 409")
 
 
