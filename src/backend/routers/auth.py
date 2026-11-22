@@ -681,6 +681,7 @@ async def me(
             user_id=user.id,
             name=user.name,
             email=user.email or None,
+            phone=user.phone,
             created_at=user.created_at,
         )
 

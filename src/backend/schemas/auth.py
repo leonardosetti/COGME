@@ -93,4 +93,5 @@ class MeResponse(_Schema):
     user_id: int
     name: str
     email: str | None = None
+    phone: str | None = None
     created_at: datetime

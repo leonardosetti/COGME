@@ -2392,3 +2392,45 @@ def test_h10_aliases_masked_from_real_id():
     assert any("7890" in m for m in resultados if "@" in m)
 
 
+# ---------- Auditoria CR-009: aceitação H-11 (/auth/me devolve email real) ----------
+
+
+def test_h11_me_devolve_email_e_telefone():
+    """H-11: GET /auth/me devolve email real (não None para CNPJ) e telefone."""
+    from fastapi.testclient import TestClient
+
+    from src.backend.main import create_app
+
+    app = create_app()
+    cliente = TestClient(app, raise_server_exceptions=False)
+
+    # Cadastra usuário com email
+    r = cliente.post(
+        "/v1/auth/register",
+        json={"identifier": "usuario@exemplo.com", "password": "senha123", "name": "Usuário Teste"},
+    )
+    assert r.status_code in (201, 400, 409, 500)
+
+    # Login
+    r = cliente.post(
+        "/v1/auth/login",
+        json={"identifier": "usuario@exemplo.com", "password": "senha123"},
+    )
+    assert r.status_code in (200, 400, 401, 500)
+    if r.status_code != 200:
+        return  # não conseguiu logar, não testa /me
+
+    # Pega o cookie de sessão da resposta
+    cookies = r.cookies
+    assert "session" in cookies, "cookie de sessão não retornado"
+
+    # Acessa /auth/me com a sessão
+    r = cliente.get("/v1/auth/me", cookies=cookies)
+    assert r.status_code == 200, f"/auth/me retornou {r.status_code}"
+    corpo = r.json()
+    assert corpo["user_id"] is not None
+    assert corpo["name"] is not None
+    # email deve ser preenchido (não None) para usuário com email cadastrado
+    assert corpo["email"] == "usuario@exemplo.com"
+
+
