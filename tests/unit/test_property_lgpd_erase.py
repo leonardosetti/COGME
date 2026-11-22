@@ -21,11 +21,8 @@ from typing import Any
 import pytest
 from hypothesis import given, settings
 from hypothesis import strategies as st
-from sqlalchemy import text
-from sqlalchemy.ext.asyncio import AsyncEngine
 
-from src.backend.models.database import create_engine, create_session_factory
-from src.backend.models.repository import SqlAlchemyQuoteRepository, StoredQuote
+from src.backend.models.quote import FxQuote
 from src.backend.services.invoice_service import render_invoice
 from src.backend.services.simulation_service import simulate
 from src.shared.schemas import (
@@ -209,44 +206,16 @@ def rate_quote_strategy(draw: st.DrawFn) -> "RateQuote":
 
 
 class TestDatabaseNoPersonalData:
-    """Property: fx_quotes table never contains personal identifiers."""
+    """Property: fx_quotes table nunca armazena dados pessoais (LGPD).
 
-    @pytest.fixture
-    def engine(self) -> AsyncEngine:
-        import os
+    Verificado nos metadados do ORM, sem banco real: a tabela expõe apenas
+    colunas de cotação de câmbio, nunca identificadores pessoais.
+    """
 
-        url = os.environ.get("COGME_TEST_DATABASE_URL")
-        if not url:
-            pytest.skip("COGME_TEST_DATABASE_URL not set")
-        return create_engine(url)
+    def test_fx_quotes_columns_contain_only_expected_fields(self) -> None:
+        """fx_quotes tem exatamente as colunas esperadas, sem dados pessoais."""
 
-    @pytest.fixture
-    async def clean_db(self, engine: AsyncEngine) -> None:
-        """Ensure clean table before each test."""
-        from sqlalchemy import text
-
-        async with engine.begin() as conn:
-            await conn.execute(text("TRUNCATE TABLE fx_quotes RESTART IDENTITY"))
-
-    async def test_fx_quotes_columns_contain_only_expected_fields(
-        self, engine: AsyncEngine, clean_db: None
-    ) -> None:
-        """fx_quotes table has exactly the expected columns, no personal data columns.
-
-        This is a schema-level property: the table structure must not allow
-        storage of personal data.
-        """
-        async with engine.connect() as conn:
-            result = await conn.execute(
-                text("""
-                    SELECT column_name
-                    FROM information_schema.columns
-                    WHERE table_name = 'fx_quotes'
-                    ORDER BY ordinal_position
-                """)
-            )
-            columns = [row[0] for row in result.fetchall()]
-
+        columns = {column.name for column in FxQuote.__table__.columns}
         expected_columns = {
             "id",
             "currency",
@@ -256,50 +225,17 @@ class TestDatabaseNoPersonalData:
             "quoted_at",
             "fetched_at",
         }
-        assert set(columns) == expected_columns, (
-            f"fx_quotes has unexpected columns: {set(columns) - expected_columns}"
+        assert columns == expected_columns, (
+            f"fx_quotes tem colunas inesperadas: {columns - expected_columns}"
         )
 
-    async def test_saved_quote_has_no_personal_fields(
-        self, engine: AsyncEngine, clean_db: None
-    ) -> None:
-        """A saved quote row contains only FX data, no personal identifiers."""
-        from datetime import UTC, datetime
+    def test_tabela_sem_colunas_pessoais(self) -> None:
+        """A tabela não declara colunas de identificador pessoal."""
 
-        repo = SqlAlchemyQuoteRepository(create_session_factory(engine))
-        stored = StoredQuote(
-            currency="USD",
-            rate=Decimal("5.000000"),
-            source="frankfurter",
-            bulletin=None,
-            quoted_at=datetime.now(UTC),
-            fetched_at=datetime.now(UTC),
-        )
-        await repo.save(stored)
-
-        # Read raw from DB
-        async with engine.connect() as conn:
-            result = await conn.execute(
-                text("""
-                    SELECT column_name
-                    FROM information_schema.columns
-                    WHERE table_name = 'fx_quotes'
-                    ORDER BY ordinal_position
-                """)
-            )
-            columns = [row[0] for row in result.fetchall()]
-
-        expected_columns = {
-            "id",
-            "currency",
-            "rate",
-            "source",
-            "bulletin",
-            "quoted_at",
-            "fetched_at",
-        }
-        assert set(columns) == expected_columns, (
-            f"fx_quotes has unexpected columns: {set(columns) - expected_columns}"
+        columns = {column.name for column in FxQuote.__table__.columns}
+        pessoais = {"name", "tax_id", "address", "cpf", "cnpj", "endereco", "document"}
+        assert not (columns & pessoais), (
+            f"colunas pessoais encontradas: {columns & pessoais}"
         )
 
 

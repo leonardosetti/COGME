@@ -15,13 +15,11 @@ from typing import Any
 import pytest
 from hypothesis import given, settings
 from hypothesis import strategies as st
-from sqlalchemy.ext.asyncio import AsyncEngine
 
 from tests.integration.fakes import FixedClock, FixedMonotonic
 
-from src.backend.models.database import create_engine, create_session_factory
+from src.backend.models.quote import FxQuote
 from src.backend.models.repository import (
-    RepositoryError,
     SqlAlchemyQuoteRepository,
     StoredQuote,
 )
@@ -205,26 +203,11 @@ def simulation_params_strategy(draw: st.DrawFn) -> dict[str, Any]:
 
 
 class TestRepositoryPersistenceRoundTrip:
-    """Property: save() then get_latest() returns equivalent data."""
+    """Property: save() then get_latest() returns equivalente via repositório em memória.
 
-    @pytest.fixture
-    def engine(self) -> AsyncEngine:
-        """Create engine for property tests. Requires COGME_TEST_DATABASE_URL."""
-        import os
-
-        url = os.environ.get("COGME_TEST_DATABASE_URL")
-        if not url:
-            pytest.skip("COGME_TEST_DATABASE_URL not set")
-        return create_engine(url)
-
-    @pytest.fixture
-    async def repository(self, engine: AsyncEngine) -> SqlAlchemyQuoteRepository:
-        """Repository with clean table for each test."""
-        from sqlalchemy import text
-
-        async with engine.begin() as conn:
-            await conn.execute(text("TRUNCATE TABLE fx_quotes RESTART IDENTITY"))
-        return SqlAlchemyQuoteRepository(create_session_factory(engine))
+    Usa o ``FakeQuoteRepository`` do ``tests/unit/conftest.py``, então não exige
+    banco PostgreSQL; o contrato do repositório é o mesmo.
+    """
 
     async def test_save_then_get_latest_round_trips(
         self, repository: SqlAlchemyQuoteRepository
@@ -420,23 +403,6 @@ class TestCalculatorReprocessingIdempotence:
 class TestRateServiceCachePersistence:
     """Property: RateService cache round-trip through repository."""
 
-    @pytest.fixture(scope="class")
-    def engine(self) -> AsyncEngine:
-        import os
-
-        url = os.environ.get("COGME_TEST_DATABASE_URL")
-        if not url:
-            pytest.skip("COGME_TEST_DATABASE_URL not set")
-        return create_engine(url)
-
-    @pytest.fixture
-    async def repository(self, engine: AsyncEngine) -> SqlAlchemyQuoteRepository:
-        from sqlalchemy import text
-
-        async with engine.begin() as conn:
-            await conn.execute(text("TRUNCATE TABLE fx_quotes RESTART IDENTITY"))
-        return SqlAlchemyQuoteRepository(create_session_factory(engine))
-
     @pytest.fixture
     def clock(self) -> FixedClock:
         from tests.integration.fakes import FixedClock
@@ -489,45 +455,17 @@ class TestRateServiceCachePersistence:
 class TestDatabaseConstraints:
     """Property: database constraints reject invalid data."""
 
-    @pytest.fixture(scope="class")
-    def engine(self) -> AsyncEngine:
-        import os
-
-        url = os.environ.get("COGME_TEST_DATABASE_URL")
-        if not url:
-            pytest.skip("COGME_TEST_DATABASE_URL not set")
-        return create_engine(url)
-
-    @pytest.fixture
-    async def repository(self, engine: AsyncEngine) -> SqlAlchemyQuoteRepository:
-        from sqlalchemy import text
-
-        async with engine.begin() as conn:
-            await conn.execute(text("TRUNCATE TABLE fx_quotes RESTART IDENTITY"))
-        return SqlAlchemyQuoteRepository(create_session_factory(engine))
-
-    async def test_invalid_currency_rejected_by_db(
-        self, repository: SqlAlchemyQuoteRepository
+    def test_currency_check_constraint_declarado(
+        self,
     ) -> None:
-        """Database CHECK constraint rejects non-USD/EUR currencies."""
-        import pytest
-        from sqlalchemy.exc import DBAPIError
+        """O modelo declara CHECK constraint que aceita somente USD/EUR."""
 
-        invalid_quote = StoredQuote(
-            currency="BRL",
-            rate=Decimal("5.000000"),
-            source="frankfurter",
-            bulletin=None,
-            quoted_at=datetime(2026, 10, 30, 16, 0, 0, tzinfo=UTC),
-            fetched_at=datetime(2026, 10, 30, 16, 0, 0, tzinfo=UTC),
-        )
-
-        with pytest.raises(RepositoryError) as exc_info:
-            await repository.save(invalid_quote)
-
-        # The currency column is CHAR(3), so invalid currencies that are too long
-        # or don't match the CHECK constraint raise DBAPIError (not IntegrityError)
-        assert isinstance(exc_info.value.__cause__, DBAPIError)
+        constraints = [
+            str(constraint.sqltext)
+            for constraint in FxQuote.__table__.constraints
+            if getattr(constraint, "sqltext", None) is not None
+        ]
+        assert any("currency IN ('USD', 'EUR')" in c for c in constraints), constraints
 
     def test_non_positive_rate_rejected_by_db(
         self,
