@@ -126,9 +126,9 @@
     "semantic_hash": ""
   },
   ".ai/agents/registry.yaml": {
-    "mtime": 1795381637.9705303,
-    "seen": 1795381652.3704786,
-    "ast_hash": "374317a39f34e08a5723edacefc25034",
+    "mtime": 1795383151.5699275,
+    "seen": 1795383160.9727507,
+    "ast_hash": "b0cb2bf2a74c0a20cbaf043776960c57",
     "semantic_hash": ""
   },
   ".ai/agents/universal-adjustment-session.yaml": {
@@ -1962,9 +1962,9 @@
     "semantic_hash": ""
   },
   ".opencode/agents/agent-agile-specialist.md": {
-    "mtime": 1795375714.8992543,
-    "seen": 1795376377.2915585,
-    "ast_hash": "b844ba58b4ac56b64b6ad1389bc98cb5",
+    "mtime": 1795382517.2319982,
+    "seen": 1795383160.9815016,
+    "ast_hash": "b453d0007286db90cb2be7099245e0f1",
     "semantic_hash": ""
   },
   ".opencode/agents/agent-ai-llm-rag-dag-mcp-roster-master-specialist.md": {
@@ -2016,9 +2016,9 @@
     "semantic_hash": ""
   },
   ".opencode/agents/agent-clean-code-evaluator.md": {
-    "mtime": 1795375714.8994284,
-    "seen": 1795376377.2916996,
-    "ast_hash": "c770f669e0e3a9c50bba706cd4d830c8",
+    "mtime": 1795382517.2319982,
+    "seen": 1795383160.9816444,
+    "ast_hash": "7e85adae318c2058eadae60542a43ec7",
     "semantic_hash": ""
   },
   ".opencode/agents/agent-cobit-specialist.md": {
@@ -4980,51 +4980,51 @@
     "semantic_hash": ""
   },
   ".planning/PROJECT.md": {
-    "mtime": 1795368282.149329,
-    "seen": 1795368835.9174309,
-    "ast_hash": "c8060c0cf9e45baec0b8d2578eba14f7",
+    "mtime": 1795382524.430999,
+    "seen": 1795383160.9822521,
+    "ast_hash": "dcda220e16855db75e36c5f4d085a2d0",
     "semantic_hash": ""
   },
   ".planning/REQUIREMENTS.md": {
-    "mtime": 1795368282.293329,
-    "seen": 1795368835.9174318,
-    "ast_hash": "19c7dcab46b012d2980fa73a2131d800",
+    "mtime": 1795382531.451,
+    "seen": 1795383160.9822533,
+    "ast_hash": "eb5ee6a0f2c94ca4c2d530b263d7fbed",
     "semantic_hash": ""
   },
   ".planning/ROADMAP.md": {
-    "mtime": 1795374649.0630755,
-    "seen": 1795374847.8844209,
-    "ast_hash": "cf5ca062448b8ae030b43ebc7046f0d6",
+    "mtime": 1795382534.8210003,
+    "seen": 1795383160.9822543,
+    "ast_hash": "e0ad313ea6a35d276d329145981aef3e",
     "semantic_hash": ""
   },
   ".planning/STATE.md": {
-    "mtime": 1795374640.7570746,
-    "seen": 1795374847.8844218,
-    "ast_hash": "ebf5cc2e8fea60b79e41e9646f363c38",
+    "mtime": 1795382940.394048,
+    "seen": 1795383160.9822555,
+    "ast_hash": "debd53ea1b72dba316ec926ccca5d5f9",
     "semantic_hash": ""
   },
   ".planning/phases/1/PLAN.md": {
-    "mtime": 1795190580.7164905,
-    "seen": 1795368835.9174702,
-    "ast_hash": "00a44cbb12252efcfbb54a61db52e060",
+    "mtime": 1795382562.1780035,
+    "seen": 1795383160.9823031,
+    "ast_hash": "0ebb246b9463c4b16dbfbb77a1070849",
     "semantic_hash": ""
   },
   ".planning/phases/1_5/HANDOFF.md": {
-    "mtime": 1795365772.0320346,
-    "seen": 1795368835.917471,
-    "ast_hash": "0a04d117fa81d1ed097da0e2b21849bd",
+    "mtime": 1795382557.471003,
+    "seen": 1795383160.9823046,
+    "ast_hash": "6f01bbdd028808f5faf34befda2f14ff",
     "semantic_hash": ""
   },
   ".planning/phases/2/PLAN.md": {
-    "mtime": 1795365751.7050323,
-    "seen": 1795368835.9174726,
-    "ast_hash": "eb43f20df3dfc36a87cf970904a0651a",
+    "mtime": 1795382566.326004,
+    "seen": 1795383160.9823058,
+    "ast_hash": "54492a7dceda0135c0851b0ccceb77de",
     "semantic_hash": ""
   },
   "PLAN.md": {
-    "mtime": 1794842442.920486,
-    "seen": 1795368835.9175043,
-    "ast_hash": "a2fa88a74f788330c2014a647f8bb961",
+    "mtime": 1795382581.1840057,
+    "seen": 1795383160.98234,
+    "ast_hash": "715cdae2bd19c45884816d89516fa295",
     "semantic_hash": ""
   },
   "docs/analise/parecer-juridico-cnpj-dado-pessoal.md": {
@@ -5046,9 +5046,9 @@
     "semantic_hash": ""
   },
   "docs/auditorias/relatorio-completude-sistema.md": {
-    "mtime": 1795364280.1598597,
-    "seen": 1795368835.9193728,
-    "ast_hash": "24c180ffc63a20ac669521bdb76fcb6d",
+    "mtime": 1795382617.4520102,
+    "seen": 1795383160.9844475,
+    "ast_hash": "e712df107b52c2507d860b0a872f3574",
     "semantic_hash": ""
   },
   "docs/change-requests/cr-009-crud-usuarios-dashboard-anonimo.md": {
@@ -5148,9 +5148,9 @@
     "semantic_hash": ""
   },
   "docs/decisoes/ccb-aprovacao-fase-2-pre-producao.md": {
-    "mtime": 1795364243.7258554,
-    "seen": 1795368835.9203968,
-    "ast_hash": "47fcbd381fd1fc8244a4db7166f017d6",
+    "mtime": 1795382617.4520102,
+    "seen": 1795383160.9860578,
+    "ast_hash": "3161189c32f92a0782414f487f030361",
     "semantic_hash": ""
   },
   "docs/especificacoes/spec-prop-024-identidade-composta-e-cadastro.md": {
@@ -5406,21 +5406,21 @@
     "semantic_hash": ""
   },
   ".planning/phases/01.5-especs-integridade/PLAN.md": {
-    "mtime": 1795367775.3042696,
-    "seen": 1795370429.087566,
-    "ast_hash": "045880c227d9271bab940f8a4052855e",
+    "mtime": 1795382539.059001,
+    "seen": 1795383160.982294,
+    "ast_hash": "5bd379f71b1484a21f20bcb9adc40287",
     "semantic_hash": ""
   },
   "docs/auditorias/aud-ta-062-2026-11-22-auditoria-integridade-specs-017-022.md": {
-    "mtime": 1795370319.591568,
-    "seen": 1795370429.0898304,
-    "ast_hash": "9cd0d58990758b0813fbcedae7059031",
+    "mtime": 1795382617.4520102,
+    "seen": 1795383160.9844468,
+    "ast_hash": "76bf930e63cfa990dca3f2a67aa37701",
     "semantic_hash": ""
   },
   ".planning/phases/03-cr-009-produ-o-gate-g2-specs-024-026/PLAN.md": {
-    "mtime": 1795370737.291617,
-    "seen": 1795370766.8443182,
-    "ast_hash": "3961a802fbad71a46a95ccd215765e84",
+    "mtime": 1795382543.1770012,
+    "seen": 1795383160.982301,
+    "ast_hash": "d44cfa5906db4440078679cb2856de39",
     "semantic_hash": ""
   },
   ".ai/specs/spec-024-gate-g2-ratificacao-v1.md": {
@@ -5442,15 +5442,45 @@
     "semantic_hash": ""
   },
   ".planning/phases/03-cr-009-produ-o-gate-g2-specs-024-026/03-cr-009-produ-o-gate-g2-specs-024-026-SUMMARY.md": {
-    "mtime": 1795371750.8007357,
-    "seen": 1795371973.6852593,
-    "ast_hash": "9ca454ec111c567b4ac49712ce866c5d",
+    "mtime": 1795382547.4590018,
+    "seen": 1795383160.982295,
+    "ast_hash": "64bc5cf4a8451d08534281f85ffaf22c",
     "semantic_hash": ""
   },
   "docker-compose.staging.yml": {
     "mtime": 1795381420.5908697,
     "seen": 1795381652.372101,
     "ast_hash": "7822975329fefd2d42da4b2041d19b47",
+    "semantic_hash": ""
+  },
+  "scripts/backup_pre_deploy.sh": {
+    "mtime": 1795382693.238019,
+    "seen": 1795383160.9757934,
+    "ast_hash": "1bb4714583b6de79c37258282135afa6",
+    "semantic_hash": ""
+  },
+  "scripts/restore_db.sh": {
+    "mtime": 1795382699.7250197,
+    "seen": 1795383160.9761083,
+    "ast_hash": "f889f52b138d6b3a5dea441aef2deb13",
+    "semantic_hash": ""
+  },
+  "scripts/smoke_tests.sh": {
+    "mtime": 1795382684.659018,
+    "seen": 1795383160.9761426,
+    "ast_hash": "14973732589cb8e5b4cc5055f4c8b076",
+    "semantic_hash": ""
+  },
+  ".planning/phases/04-release-v1-0-publica-o-e-p-s-produ-o/PLAN.md": {
+    "mtime": 1795382552.3870025,
+    "seen": 1795383160.982302,
+    "ast_hash": "fa964868924fd036e203b3ecb55c82bb",
+    "semantic_hash": ""
+  },
+  "docs/relatorios/rel-release-notes-v1.0.0.md": {
+    "mtime": 1795382608.345009,
+    "seen": 1795383160.987639,
+    "ast_hash": "6dfa2bef2400ec9d3574ea7ba1dd61ec",
     "semantic_hash": ""
   },
   "package-lock.json": {
