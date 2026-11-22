@@ -2216,3 +2216,17 @@ def test_h04_bank_data_encrypted():
     assert ProviderBankAccount.encrypted_data.property.columns[0].type.__class__.__name__ == "Text"
 
 
+# ---------- Auditoria CR-009: aceitação H-05 (CSP/HSTS/Permissions-Policy) ----------
+
+
+def test_h05_security_headers():
+    """H-05: nginx config tem CSP, HSTS e Permissions-Policy."""
+    import pathlib
+
+    conf = pathlib.Path("infra/nginx/default.conf").read_text(encoding="utf-8")
+    assert "Content-Security-Policy" in conf
+    assert "Strict-Transport-Security" in conf
+    assert "Permissions-Policy" in conf
+    assert "default-src 'self'" in conf
+
+
