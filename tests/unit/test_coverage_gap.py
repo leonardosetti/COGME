@@ -2275,3 +2275,63 @@ def test_h08_sobre_html_valido():
     assert sobre.count("<p>") == sobre.count("</p>")
 
 
+# ---------- Auditoria CR-009: aceitação H-09 (snapshot do banco no PDF) ----------
+
+
+def test_h09_invoice_snapshot_from_stored():
+    """H-09: render_pdf_from_stored constrói contexto a partir do StoredInvoice (banco), não do payload."""
+    from src.backend.services.invoice_service import render_pdf_from_stored
+
+    chamado = {}
+
+    def _falso(context):
+        chamado["ctx"] = context
+        return b"%PDF-1.4 falso"
+
+    import src.backend.services.invoice_service as inv_mod
+
+    inv_mod._render_pdf = _falso
+
+    stored = type(
+        "StoredInvoice",
+        (),
+        {
+            "regime": "hourly",
+            "currency": "USD",
+            "gross_foreign": 1000,
+            "gross_brl": 5000,
+            "spread_pct": 2,
+            "spread_brl": 100,
+            "iof_pct": 0.38,
+            "iof_brl": 19,
+            "net_brl": 4881,
+            "effective_rate": 5.0,
+            "quote_rate": 5.0,
+            "quoted_at": None,
+            "quote_bulletin": None,
+            "quote_source": "frankfurter",
+            "issuer_name": "Emitente",
+            "issuer_tax_id_digits": "00000000000000",
+            "issuer_address": None,
+            "client_name": "Cliente",
+            "client_tax_id_digits": "00000000000001",
+            "client_address": None,
+            "invoice_number": "INV-0001",
+            "periodo_inicio": "2026-01-01",
+            "description": "Serviço",
+            "amount": 1000,
+            "quantity": 1,
+            "stale": False,
+        },
+    )()
+
+    import asyncio
+
+    resultado = asyncio.run(render_pdf_from_stored(stored, object()))
+    assert resultado == b"%PDF-1.4 falso"
+    ctx = chamado["ctx"]
+    assert ctx["issuer"]["name"] == "Emitente"
+    assert ctx["client"]["name"] == "Cliente"
+    assert ctx["unit_amount"] == 1000
+
+
