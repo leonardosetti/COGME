@@ -42,19 +42,5 @@
 {% endblock %}
 
 {% block scripts %}
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('form');
-    const password = document.getElementById('new_password');
-    const confirm = document.getElementById('confirm_password');
-    
-    form.addEventListener('submit', function(e) {
-        if (password.value !== confirm.value) {
-            e.preventDefault();
-            alert('As senhas não coincidem.');
-            confirm.focus();
-        }
-    });
-});
-</script>
+<script src="/static/js/app.js"></script>
 {% endblock %}
