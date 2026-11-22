@@ -2230,3 +2230,15 @@ def test_h05_security_headers():
     assert "default-src 'self'" in conf
 
 
+# ---------- Auditoria CR-009: aceitação H-06 (Google Fonts removido) ----------
+
+
+def test_h06_no_google_fonts():
+    """H-06: nenhum recurso externo do Google Fonts nos templates."""
+    import pathlib
+
+    html = pathlib.Path("src/frontend/templates/base.html").read_text(encoding="utf-8")
+    assert "fonts.googleapis.com" not in html
+    assert "fonts.gstatic.com" not in html
+
+
