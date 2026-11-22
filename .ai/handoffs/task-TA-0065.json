@@ -4,5 +4,6 @@
   "target": "agent-sdd-specialist",
   "action": "spec",
   "handoff": "HF-0621",
-  "payload": "repovoar .ai/specs/requisitos.md (A.1) — gate E ratificado (constitution.md:226)"
+  "payload": "repovoar .ai/specs/requisitos.md (A.1) — gate E ratificado (constitution.md:226)",
+  "dod": true
 }
