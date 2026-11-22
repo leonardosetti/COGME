@@ -11,7 +11,7 @@ agents:
 - file: .opencode/agents/agent-agile-specialist.md
   name: agent-agile-specialist
   version: 1.0.0
-  layer: GSD
+  layer: L2
   role: specialist
   description: Agente GSD agent-agile-specialist — Agilidade e gestão de entregas iterativas no ecossistema
     COGME.
@@ -145,7 +145,7 @@ agents:
 - file: .opencode/agents/agent-clean-code-evaluator.md
   name: agent-clean-code-evaluator
   version: 1.0.0
-  layer: GSD
+  layer: L2
   role: specialist
   description: Agente GSD agent-clean-code-evaluator — Avaliação de qualidade e limpeza de código-fonte
     no ecossistema COGME.
