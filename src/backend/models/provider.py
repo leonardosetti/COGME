@@ -6,6 +6,7 @@ Ratificado por CCB/GP em RAT-2026-11-14-INVOICES.
 from __future__ import annotations
 
 from datetime import datetime
+from cryptography.fernet import Fernet
 from enum import Enum as PyEnum
 
 from sqlalchemy import (
@@ -17,6 +18,7 @@ from sqlalchemy import (
     ForeignKeyConstraint,
     Index,
     String,
+    Text,
     UniqueConstraint,
 )
 from sqlalchemy.orm import Mapped, mapped_column
@@ -103,6 +105,7 @@ class ProviderBankAccount(Base):
     account_holder: Mapped[str] = mapped_column(String(255), nullable=False)
     currency: Mapped[str] = mapped_column(CHAR(3), nullable=False, default="BRL")
     is_primary: Mapped[bool] = mapped_column(nullable=False, default=False)
+    encrypted_data: Mapped[str | None] = mapped_column(Text, nullable=True)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,
@@ -172,3 +175,28 @@ def validate_cnpj(cnpj: str) -> bool:
         return False
     d2 = _dv(cnpj[:13], 6)
     return int(cnpj[13]) == d2
+
+
+def _fernet_key() -> bytes:
+    """Chave de criptografia de campos sensíveis (variável COGME_ENCRYPTION_KEY)."""
+    import base64
+    import os
+
+    raw = os.environ.get("COGME_ENCRYPTION_KEY", "").encode()
+    if not raw:
+        raise RuntimeError("COGME_ENCRYPTION_KEY não definida")
+    return base64.urlsafe_b64encode(raw.ljust(32)[:32])
+
+
+def encrypt_value(plaintext: str | None) -> str | None:
+    """Criptografa um valor sensível com Fernet (AES-128)."""
+    if plaintext is None:
+        return None
+    return Fernet(_fernet_key()).encrypt(plaintext.encode()).decode()
+
+
+def decrypt_value(ciphertext: str | None) -> str | None:
+    """Descriptografa um valor sensível com Fernet (AES-128)."""
+    if ciphertext is None:
+        return None
+    return Fernet(_fernet_key()).decrypt(ciphertext.encode()).decode()

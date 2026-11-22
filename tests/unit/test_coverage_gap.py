@@ -2190,3 +2190,29 @@ def test_h03_cnpj_unique_constraint():
     assert "uq_provider_cnpjs_user_cnpj" in nomes
 
 
+# ---------- Auditoria CR-009: aceitação H-04 (dados bancários criptografados) ----------
+
+
+def test_h04_bank_data_encrypted():
+    """H-04: dados bancários são criptografados antes de persistir."""
+    import os
+
+    from src.backend.models.provider import decrypt_value, encrypt_value
+
+    os.environ["COGME_ENCRYPTION_KEY"] = "0123456789abcdef0123456789abcdef"
+
+    plaintext = "12345678-9"
+    encrypted = encrypt_value(plaintext)
+    assert encrypted is not None
+    assert encrypted != plaintext
+    assert decrypt_value(encrypted) == plaintext
+    assert decrypt_value(None) is None
+    assert encrypt_value(None) is None
+
+    # Modelo tem coluna encrypted_data
+    from src.backend.models.provider import ProviderBankAccount
+
+    assert hasattr(ProviderBankAccount, "encrypted_data")
+    assert ProviderBankAccount.encrypted_data.property.columns[0].type.__class__.__name__ == "Text"
+
+
