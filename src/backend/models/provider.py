@@ -122,6 +122,7 @@ class ProviderCnpj(Base):
     __tablename__ = "provider_cnpjs"
     __table_args__ = (
         UniqueConstraint("cnpj", name="uq_provider_cnpjs_cnpj"),
+        UniqueConstraint("user_id", "cnpj", name="uq_provider_cnpjs_user_cnpj"),
         Index("ix_provider_cnpjs_user", "user_id"),
         Index("ix_provider_cnpjs_status", "status"),
         ForeignKeyConstraint(
@@ -153,3 +154,21 @@ class ProviderCnpj(Base):
         default=lambda: datetime.now().astimezone(),
         onupdate=lambda: datetime.now().astimezone(),
     )
+
+
+def validate_cnpj(cnpj: str) -> bool:
+    """Valida CNPJ pelo algoritmo do módulo 11 (dois dígitos verificadores)."""
+    cnpj = "".join(ch for ch in cnpj if ch.isdigit())
+    if len(cnpj) != 14 or cnpj == cnpj[0] * 14:
+        return False
+
+    def _dv(cnpj_part: str, weight_start: int) -> int:
+        total = sum(int(d) * w for d, w in zip(cnpj_part, range(weight_start, 1, -1)))
+        rem = total % 11
+        return 0 if rem < 2 else 11 - rem
+
+    d1 = _dv(cnpj[:12], 5)
+    if int(cnpj[12]) != d1:
+        return False
+    d2 = _dv(cnpj[:13], 6)
+    return int(cnpj[13]) == d2

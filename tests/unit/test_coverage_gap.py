@@ -2154,3 +2154,39 @@ def test_h02_create_client_duplicate_tax_409(monkeypatch):
     raise AssertionError("esperava HTTPException 409")
 
 
+# ---------- Auditoria CR-009: aceitação H-03 (CNPJ único por usuário + checksum) ----------
+
+
+def test_h03_cnpj_checksum():
+    """H-03: validate_cnpj valida dígitos verificadores (módulo 11)."""
+    from src.backend.models.provider import validate_cnpj
+
+    assert validate_cnpj("00.000.000/0000-00") is False  # todos iguais
+    assert validate_cnpj("11.222.333/0001-82") is False  # dígito errado
+
+    # Gera um CNPJ válido usando o próprio algoritmo
+    import random
+
+    cnpj = [random.randint(0, 9) for _ in range(12)]
+    for peso_inicial in (5, 6):
+        total = sum(int(d) * w for d, w in zip(cnpj, range(peso_inicial, 1, -1)))
+        digito = 0 if total % 11 < 2 else 11 - total % 11
+        cnpj.append(digito)
+    cnpj_str = "".join(str(d) for d in cnpj)
+    assert validate_cnpj(cnpj_str) is True
+
+
+def test_h03_cnpj_unique_constraint():
+    """H-03: ProviderCnpj tem unique composto (user_id, cnpj)."""
+    from src.backend.models.provider import ProviderCnpj
+
+    constraints = [
+        c
+        for arg in ProviderCnpj.__table_args__
+        if hasattr(arg, "columns") and hasattr(arg, "name")
+        for c in [arg]
+    ]
+    nomes = {c.name for c in constraints}
+    assert "uq_provider_cnpjs_user_cnpj" in nomes
+
+
