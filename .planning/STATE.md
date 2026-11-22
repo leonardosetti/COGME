@@ -1,10 +1,10 @@
 milestone: v1.1
-status: complete
-phase: 1.5
+status: executing
+phase: 3
 progress:
-  tasks_complete: 34
-  tasks_total: 34
-  percent: 100
+  tasks_complete: 0
+  tasks_total: 16
+  percent: 0
 
 ## Project Reference
 
@@ -15,24 +15,27 @@ See: .planning/PROJECT.md (updated 2026-11-22 after creating phase 1.5 plan)
 
 ## Current Position
 
-Phase: 3 — CR-009 Produção / Gate G2 (specs 024–026) — planejado, aguardando execução
+Phase: 3 — CR-009 Produção / Gate G2 (specs 024–026) — em execução
 Plan: .planning/phases/03-cr-009-produ-o-gate-g2-specs-024-026/PLAN.md
-Status: Fase 1.5 completa (100%); Fase 3 planejada, pronta para /gsd-execute-phase
-Last activity: 2026-11-22 — Fase 3 planejada; Gate G2 desbloqueado
+Status: Executando TA-301 a TA-304 (Gate G2 ratificação specs 024/025/026 + validação produção CR-009)
+Last activity: 2026-11-22 — Specs 024/025/026 criadas como DRAFT (.ai/specs/spec-0{24,25,26}-*); Fase 3 em execução
 
 ## Accumulated Context
 
 - Fase 1.5 (Especs/Integridade) CONCLUÍDA — 100% (34/34 tarefas)
-- Gate G2 (ratificação specs 024/025/026) desbloqueado; depende desta fase (Fase 3)
+- Gate G2 (ratificação specs 024/025/026) em execução nesta fase (Fase 3)
+- Specs 024/025/026 criadas como DRAFT: spec-024 (gate-g2-ratificacao), spec-025 (producao-cr-009-validacao), spec-026 (ssot-camada-5-completude)
 - Fase 2 (pré-produção CR-009) concluída e aprovada por CCB (2026-11-22)
 - Nenhum imutável (constitution, ADRs, ledger) alterado
 - `sync_agent_registry.py --check` exit 0; `nexus_dispatcher.py --report` JSON válido (44 agentes); `validate_afa_output.py` score 100/100 (5 agentes SDDAI)
 
 ## Blockers
 
-- Specs 024/025/026 ainda não existem como arquivo; conteúdo depende de decisão CCB/Gate G2 (pendente de validação na Fase 3)
+- Specs 024/025/026 criadas como DRAFT — aguardam ratificação CCB/Gate G2 para promover a `ratificado`
 
 ## Todos
 
-- Revisar PLAN da Fase 3 e validar escopo dos specs 024/025/026
-- Executar Fase 3 via /gsd-execute-phase
+- TA-301: submeter spec-024 à ratificação Gate G2
+- TA-302: submeter spec-025 à ratificação Gate G2
+- TA-303: submeter spec-026 à ratificação Gate G2
+- TA-304: validar CR-009 para produção (sync_agent_registry, nexus_dispatcher, validate_afa_output, suíte de testes)
