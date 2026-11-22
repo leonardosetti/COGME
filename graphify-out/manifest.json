@@ -126,9 +126,9 @@
     "semantic_hash": ""
   },
   ".ai/agents/registry.yaml": {
-    "mtime": 1795374664.557648,
-    "seen": 1795374847.876148,
-    "ast_hash": "c7e84c3418fa5038ce3a8e3706dcccc3",
+    "mtime": 1795376365.3629937,
+    "seen": 1795376377.2833056,
+    "ast_hash": "374317a39f34e08a5723edacefc25034",
     "semantic_hash": ""
   },
   ".ai/agents/universal-adjustment-session.yaml": {
@@ -1962,9 +1962,9 @@
     "semantic_hash": ""
   },
   ".opencode/agents/agent-agile-specialist.md": {
-    "mtime": 1793936110.3977447,
-    "seen": 1793993412.2281613,
-    "ast_hash": "5dab7df88c8e54e786cced352d858210",
+    "mtime": 1795375714.8992543,
+    "seen": 1795376377.2915585,
+    "ast_hash": "b844ba58b4ac56b64b6ad1389bc98cb5",
     "semantic_hash": ""
   },
   ".opencode/agents/agent-ai-llm-rag-dag-mcp-roster-master-specialist.md": {
@@ -2016,9 +2016,9 @@
     "semantic_hash": ""
   },
   ".opencode/agents/agent-clean-code-evaluator.md": {
-    "mtime": 1793936110.3982468,
-    "seen": 1793993412.2281706,
-    "ast_hash": "3d79484626f42f3aa06593214f5daa45",
+    "mtime": 1795375714.8994284,
+    "seen": 1795376377.2916996,
+    "ast_hash": "c770f669e0e3a9c50bba706cd4d830c8",
     "semantic_hash": ""
   },
   ".opencode/agents/agent-cobit-specialist.md": {
