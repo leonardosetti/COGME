@@ -710,15 +710,16 @@ async def aliases(
             )
         ).scalars().all()
 
-    # O valor puro não é armazenado; retornamos máscara derivada do kind.
+    # Máscara derivada do identificador real (lookup_hmac), nunca valor puro.
     resultados: list[AliasResponse] = []
     for r in rows:
+        tail = r.lookup_hmac[-4:]
         if r.kind == UserLoginIdentifierKind.EMAIL:
-            masked = _mask_email(r.lookup_hmac[:8] + "@x.com")  # placeholder sem expor valor
+            masked = f"*****@{tail}"
         elif r.kind == UserLoginIdentifierKind.CPF:
-            masked = _mask_cpf("0" * 11)
+            masked = f"***.***.***-{tail}"
         else:
-            masked = _mask_cnpj("0" * 14)
+            masked = f"**.***.***/****-{tail}"
         resultados.append(AliasResponse(kind=r.kind, masked=masked))
     return resultados
 

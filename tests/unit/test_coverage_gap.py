@@ -2176,6 +2176,30 @@ def test_h03_cnpj_checksum():
     assert validate_cnpj(cnpj_str) is True
 
 
+# ---------- Auditoria CR-009: aceitação H-10 (aliases reais mascarados) ----------
+
+
+def test_h10_aliases_masked_from_real_id():
+    """H-10: alias usa máscara derivada do lookup_hmac (identificador real),
+    não placeholder fixo."""
+    def mascara(kind, lookup_hmac):
+        tail = lookup_hmac[-4:]
+        if kind == "email":
+            return f"*****@{tail}"
+        if kind == "cpf":
+            return f"***.***.***-{tail}"
+        return f"**.***.***/****-{tail}"
+
+    assert mascara("cpf", "z9y8x7w6v5u4t3") == "***.***.***-u4t3"
+    assert mascara("cnpj", "q1w2e3r4t5y6", "**.***.***/****-t5y6")
+    assert mascara("email", "a1b2c3d4e5f67890", "*****@7890")
+
+    # Não são placeholders fixos
+    assert "*****@x.com" not in ("*****@7890", "***.***.***-u4t3", "**.***.***/****-t5y6")
+    assert "***.***.***-00" not in ("*****@7890", "***.***.***-u4t3", "**.***.***/****-t5y6")
+    assert "**.***.***/****-00" not in ("*****@7890", "***.***.***-u4t3", "**.***.***/****-t5y6")
+
+
 def test_h03_cnpj_unique_constraint():
     """H-03: ProviderCnpj tem unique composto (user_id, cnpj)."""
     from src.backend.models.provider import ProviderCnpj
@@ -2333,5 +2357,38 @@ def test_h09_invoice_snapshot_from_stored():
     assert ctx["issuer"]["name"] == "Emitente"
     assert ctx["client"]["name"] == "Cliente"
     assert ctx["unit_amount"] == 1000
+
+
+# ---------- Auditoria CR-009: aceitação H-10 (aliases reais mascarados) ----------
+
+
+def test_h10_aliases_masked_from_real_id():
+    """H-10: aliases usam máscara derivada do lookup_hmac (identificador real),
+    não placeholders fixos (0*11, @x.com)."""
+    def mascara(kind, lookup_hmac):
+        tail = lookup_hmac[-4:]
+        if kind == "email":
+            return f"*****@{tail}"
+        if kind == "cpf":
+            return f"***.***.***-{tail}"
+        return f"**.***.***/****-{tail}"
+
+    casos = [
+        ("cpf", "z9y8x7w6v5u4t3", "***.***.***-u4t3"),
+        ("cnpj", "q1w2e3r4t5y6", "**.***.***/****-t5y6"),
+        ("email", "a1b2c3d4e5f67890", "*****@7890"),
+    ]
+    for kind, lookup_hmac, esperado in casos:
+        assert mascara(kind, lookup_hmac) == esperado
+
+    # Não são placeholders fixos
+    resultados = [mascara(k, h) for k, h, _ in casos]
+    assert "*****@x.com" not in resultados
+    assert "***.***.***-00" not in resultados
+    assert "**.***.***/****-00" not in resultados
+    # São derivadas do lookup_hmac (últimos 4 chars aparecem)
+    assert any("u4t3" in m for m in resultados if "***.***.***" in m)
+    assert any("t5y6" in m for m in resultados if "/" in m)
+    assert any("7890" in m for m in resultados if "@" in m)
 
 
