@@ -10,17 +10,14 @@ registry:
 agents:
 - file: .opencode/agents/agent-agile-specialist.md
   name: agent-agile-specialist
-  version: 0.1.0
-  layer: L2
+  version: 1.0.0
+  layer: GSD
   role: specialist
-  description: Agile Development Specialist Agent — segue o Manifesto Ágil e seus doze princípios.
+  description: Agente GSD agent-agile-specialist — Agilidade e gestão de entregas iterativas no ecossistema
+    COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-sdd-specialist
-  downstream:
-  - agent-pm
-  - agent-po
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-ai-llm-rag-dag-mcp-roster-master-specialist.md
   name: agent-ai-llm-rag-dag-mcp-roster-master-specialist
   version: 0.1.0
@@ -147,18 +144,14 @@ agents:
   - agent-qa-sdet
 - file: .opencode/agents/agent-clean-code-evaluator.md
   name: agent-clean-code-evaluator
-  version: 0.1.0
-  layer: L3
-  role: gate
-  description: Agente agent-clean-code-evaluator do ecossistema COGME.
+  version: 1.0.0
+  layer: GSD
+  role: specialist
+  description: Agente GSD agent-clean-code-evaluator — Avaliação de qualidade e limpeza de código-fonte
+    no ecossistema COGME.
   status: promulgado
-  upstream:
-  - agent-nexus-prime-ultimate
-  - agent-python-specialist
-  - agent-backend-dev
-  - agent-frontend-dev
-  downstream:
-  - agent-project-auditor
+  upstream: []
+  downstream: []
 - file: .opencode/agents/agent-cobit-specialist.md
   name: agent-cobit-specialist
   version: 0.1.0

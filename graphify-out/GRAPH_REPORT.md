@@ -1,40 +1,40 @@
-# Graph Report - COGME  (2026-11-14)
+# Graph Report - COGME  (2026-11-22)
 
 ## Corpus Check
-- 683 files · ~2,047,967 words
+- 796 files · ~2,151,440 words
 - Verdict: corpus is large enough that graph structure adds value.
-- Unclassified: 41 file(s) not represented in the graph (top: .drawio 12, (none) 6, .bkp 4)
+- Unclassified: 44 file(s) not represented in the graph (top: .drawio 12, (none) 6, .bkp 4)
 
 ## Summary
-- 10745 nodes · 13328 edges · 805 communities (711 shown, 94 thin omitted)
-- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 473 edges (avg confidence: 0.92)
+- 12504 nodes · 16374 edges · 923 communities (799 shown, 124 thin omitted)
+- Extraction: 95% EXTRACTED · 5% INFERRED · 0% AMBIGUOUS · INFERRED: 758 edges (avg confidence: 0.92)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `70cc9cd8`
+- Built from commit: `f610638d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- StoredQuote
-- pytest
+- auditoria_compliance.py
+- _client
 - nexus_delivery.py
-- test_invoice.py
-- schemas.py
-- calculate
+- backend/main.py
+- translate_validation_errors
+- test_rate_service_storage.py
 - CircuitBreaker
 - UI-SPEC — Especificação de UI/UX do COGME
 - test_nexus_yaml.py
-- RateSource
+- Currency
 - subprocess
-- app.py
+- test_invoice.py
 - Notas Adjacentes — Projeto COGME
 - SPEC spec-023 — ui-spec-v1 — Especificação de UI/UX do COGME
 - RELATÓRIO ANALÍTICO v1.1 — CONSOLIDAÇÃO PÓS-REVISÃO E PLANO DE ENTREGA PARCIAL (19/09/2026)
 - Relatório Canônico: Stack SDD Local — Arquitetura Convergente
 - extracao-modular-normalizacao-documental-do-plano-de-projeto-cogme.md
 - pathlib
-- StoredQuote
+- routers/auth.py
 - BASE DE CONHECIMENTO OPERACIONAL — PROJETO COGME v2.0
 - spec-003-sdd-conf-memory.spec.md
 - Relatório Canônico: Stack SDD Local — Arquitetura Convergente
@@ -44,7 +44,7 @@
 - BASE DE CONHECIMENTO OPERACIONAL — PROJETO COGME v2.1
 - plano-qualidade.md
 - Termo de Abertura do Projeto (TAP) – Seção 1
-- test_schemas.py
+- RateQuote
 - 1 INTEGRAÇÃO
 - RELATÓRIO CONSOLIDADO — ANÁLISE DE REQUISITOS, CONSTITUIÇÃO, GAPS E PROPOSTAS
 - 1. INVENTÁRIO DE GAPS / DRIFTS / CONTRADIÇÕES (com evidência)
@@ -53,13 +53,13 @@
 - validate.py
 - 📋 CARDS — COLUNA BACKLOG (Todos os entregáveis M1)
 - SEÇÃO 2 — GERENCIAMENTO DA INTEGRAÇÃO
-- pathlib
+- Decimal
 - 6. ROADMAP DE SEQUÊNCIA DE IMPLEMENTAÇÃO (até M4 = 15/12/2026)
 - 4 CUSTOS
 - SYSTEM DIRECTIVE: NEXUS-PRIME ULTIMATE (L0 · ORCHESTRATOR)
 - 3. Blocos Modulares de Retificação
 - 5. Detalhamento por fase (transcrição com rastreabilidade)
-- SEÇÃO 8 — REGISTRO DE INCIDENTE: LA-001
+- NOTAS ADJACENTES — Projeto COGME
 - PARTE I — NOTAS DE REVISÃO CONSOLIDADAS
 - 1 INTEGRAÇÃO
 - REFINAMENTO FINAL — SEÇÃO 5: QUALIDADE (v1.1)
@@ -131,12 +131,12 @@
 - re
 - SPEC spec-007 — invoice-data-model-v1 — Modelo canônico de dados da invoice (GAP-04 + CR-002)
 - test_dispatcher_and_sync.py
-- scripts/cli.py
+- test_rate_service_resilience.py
 - RELATORIO ANALITICO — Constituição COGME vs Estrutura de Requisitos e Especificacoes
 - 3. Plano de UAT de produto (domínio)
 - SPEC spec-015 — lgpd-produto-proposta-v1 — PROPOSTA: critérios LGPD de produto (B.3/GAP-08) — sujeita a ratificação CCB/PO
 - 3. Matriz de Compliance — Artigo por Artigo
-- 3. Matriz de Compliance — Artigo por Artigo
+- detect.py
 - PLANO CANÔNICO DE PRODUÇÃO DE AGENTES — COGME
 - SYSTEM DIRECTIVE: AGENT FACTORY ARCHITECT — ULTIMATE (AFA-ULTIMATE)
 - SPEC spec-002 — requisitos-review-round-1 — Requisitos REVIEW — ROUND 1 (WS-3 · COGME)
@@ -159,8 +159,8 @@
 - GLOSSÁRIO DO PROJETO COGME
 - SEÇÃO 4 — GERENCIAMENTO DO CRONOGRAMA
 - COGME — Conversor de Ganhos em Moeda Estrangeira
-- Decimal
-- DecimalJsonRequest
+- test_adversarial_mcp.py
+- get_session_factory
 - SPEC spec-006 — nfr-consolidados-v1 — Requisitos Não Funcionais consolidados (registro canônico da fase N2.2 da EAP)
 - SPEC spec-010 — qualidade-pdca-ishikawa-v1 — Entrega de qualidade REQ-10: 12 PDCAs consolidados + Ishikawa 6M (fase N6.3, onda 6 "Corrente da Qualidade")
 - 3. INVENTÁRIO — por domínio
@@ -204,7 +204,7 @@
 - SEÇÃO 9 — GERENCIAMENTO DOS RISCOS
 - 4: CUSTOS
 - name
-- invoice_request_strategy
+- InvoiceRequest
 - test_validate_afa_output.py
 - cavecrew/SKILL.md
 - uat_runner.py
@@ -232,7 +232,7 @@
 - publicar_pos_push.sh
 - Rules
 - Rules
-- Runbook / Playbook Operacional — COGME
+- calculate
 - back
 - Proposta de Spec — Contas multiusuário, dados da prestadora e histórico de invoices
 - db
@@ -317,7 +317,7 @@
 - ADR-007 — Redes de Projeto como Artefato Acadêmico Macro (Dualidade CPM × Kanban)
 - ADR-008 — Grafia Canônica do Stakeholder-Avaliador
 - ADR-009 — Contagem Canônica da EAP (12 Fases + 37 Pacotes de Trabalho)
-- Relatório de Evidências — Testes Unitários SDDAI
+- Phase 3 Plan [cr-009-produ-o-gate-g2-specs-024-026] Summary
 - Subseções Obrigatórias
 - 1 GERENCIAMENTO DA INTEGRAÇÃO DO PROJETO
 - Agile Development Specialist Agent
@@ -328,10 +328,10 @@
 - Persona: PM — Gerente de Projeto PMBOK 7ª
 - Persona: Coder — Desenvolvedor Full-Stack Sênior
 - Persona: PM — Gerente de Projeto PMBOK 7ª
-- Business Case — COGME
+- Proposta de Spec — Perfil, dashboard, CNPJ secundário e página Sobre
 - agent
-- clone_invoice
-- services
+- test_validate_nexus_yaml_green
+- front
 - healthcheck
 - ADR-001-005: SDD Intelligence Module Architecture
 - 02-desenvolvimento-das-areas-de-conhecimento.md
@@ -365,7 +365,7 @@
 - Persona: Tester — Engenheiro de QA
 - optimizer.py
 - INPUT CANÔNICO SUBORDINADO — COGME v4.1.1
-- test_adversarial_mcp.py
+- Proposta de Spec — Clientes multiempresa, clientes internacionais e fluxo anônimo
 - sandbox
 - system
 - storage
@@ -381,7 +381,7 @@
 - ADR-003 — Métricas de Fluxo (Substituição de EVM)
 - ADR-004 — Controle de Progresso via Tasklists Markdown (Rejeição de Subissues)
 - ADR-005 — Regime de Freeze do TAP e Precedência Intra-TAP
-- test_invoice.py
+- Shift-Left — COGME
 - ADR-015 — Emenda de Marco: Repactuação Temporal do M2 (Regime ADR-013-a)
 - SEÇÃO 11 — APÊNDICES E REFERÊNCIAS CRUZADAS
 - 2 GERENCIAMENTO DO ESCOPO
@@ -391,7 +391,7 @@
 - SYSTEM DIRECTIVE: AGENT-CLEAN-CODE-EVALUATOR (L3 · GATE · CLEAN CODE)
 - Norma de Nomenclatura para Artefatos *.md
 - test_onda5_agents.py
-- rate_service.py
+- account.py
 - Evaluate an optimization observation
 - caveman-stats
 - Handoff: Normalização integral do corpus de specs — slug, versionamento, corpo canônico, realocação e pendentes (TA-0031)
@@ -427,9 +427,9 @@
 - ADR-002 — Kanban como Método de Execução
 - ADR-003 — Métricas de Fluxo (Substituição de EVM)
 - ADR-004 — Controle de Progresso via Tasklists Markdown (Rejeição de Subissues)
-- ADR-005 — Regime de Freeze do TAP e Precedência Intra-TAP
+- scripts/cli.py
 - ADR-016 — Backend do MVP: cálculo, cotações, persistência e contrato de erro
-- simulate
+- SessionData
 - Plano de Consolidação Estrutural (Desbloat) — COGME
 - 4 GERENCIAMENTO DOS CUSTOS
 - env
@@ -437,7 +437,7 @@
 - 0.4 DECLARAÇÃO IDEOLÓGICA CANÔNICA (NÃO-NEGOCIÁVEL)
 - 12. AGENT PRODUCTION TEMPLATES
 - Drawing 2026-11-06 14.56.28.excalidraw.md
-- invoice_service.py
+- _get_environment
 - caveman-discover/SKILL.md
 - Ledger operacional — corte de histórico deprecated
 - Handoff: HF-0010
@@ -480,8 +480,8 @@
 - HF-0606 — Consulta de dominio: LGPD de produto — fundamentos para CCB (B.3/GAP-08)
 - Inventário de MCPs — COGME
 - Estimativa de esforço — Norma global de templates para artefatos *.md
-- env.py
-- aplicar_norma_templates.py
+- sqlalchemy
+- simulations.py
 - Proposta de Spec — Preenchimento de Tempo por Regime de Jornada
 - 2.4.5 Caminho crítico do projeto
 - 6. RELATÓRIO ANALÍTICO FINAL — JUSTIFICATIVAS DETALHADAS
@@ -516,7 +516,7 @@
 - 0.2 AFA-ULTIMATE PROTOCOLS (NON-NEGOTIABLE)
 - 0.3 INTEGRATION CONTRACT WITH EXISTING ECOSYSTEM
 - 0.6 REASONING ARCHITECTURE — OPTIMIZATION ALGORITHMS (NOVO v1.3.0)
-- Plano de Testes / QA Plan — COGME
+- datetime_utc_strategy
 - Parecer Jurídico — LGPD e GDPR para Expansão Multiusuário COGME
 - INDICE-ARTEFATOS.md
 - skills/caveman-learn — the Caveman Learn editing skill (Apache-2.0, public)
@@ -581,13 +581,13 @@
 - Seção de Troubleshooting
 - agent-health
 - contract-network
-- foss-compliance
+- Guia Prático de Adequação PMBOK 7 Híbrido — COGME
 - on
 - 0.1 SUPREME LAW AND HARDWARE ANCHOR
 - 0. ROLE AND SCOPE
 - ponytail-debt/SKILL.md
-- _compress_file_locked
-- Template de Proposta de Nova Spec
+- Runbook: Workflow de Aprovação CR + Spec → Produção de Recursos
+- Runbook / Playbook Operacional — COGME
 - 2.4.2 Recursos
 - 4. VALIDAÇÃO DAS PERSISTÊNCIAS
 - 10.2. Modelos Aprovados: Lista Definitiva
@@ -671,22 +671,24 @@
 - cogme-sddai-loader
 - cogme-sddai-memory
 - cogme-sddai-trainer
-- file_lock
+- env.py
+- test_onda7_agents.py
 - Plano de Consolidação Estrutural — COGME
 - Ratificação e Promulgação de Normas de Especificação
 - ADR-018 — Norma de nomenclatura de arquivos de artefato do projeto COGME
-- benchmark.py
+- PLAN — Fase 1.5: Especs/Integridade (TA-061 a TA-065)
 - Relatório Analítico: Persistência e Recuperação de Invoices
 - MCP `nexus-*` — DESCONTINUADO / DEPRECATED
 - Proposta de Spec — Identidade, aliases, senha, sessões e recuperação
 - Norma Global de Templates para Artefatos *.md
 - Conhecimento — Valor Efetivo Total (VET) de câmbio com spread e IOF
-- write_bytes_atomic
+- create_app
 - Proposta de Spec — Ciclo de vida da conta, dormência, exclusão e privacidade LGPD/GDPR
-- _body_candidate_error
+- Auditoria de conformidade — CR-009 (pré-produção)
 - SPEC spec-016 — preenchimento-tempo-jornada-v1 — Preenchimento de tempo por regime de jornada
-- FakeQuoteRepository
+- clients.py
 - PROP-0001-pagina-FOSS-audits.md
+- routers/provider.py
 - steps
 - AUDITORIA DE CONFORMIDADE — CR-002 Gate 1
 - validar_frontmatter_md.py
@@ -695,7 +697,7 @@
 - Proposta de Spec — Carteira de clientes e estado ativo/inativo
 - Proposta de Spec — Invoice bilíngue PT-BR / EN
 - RepositoryError
-- Template de Plano de Testes / QA Plan — COGME
+- 2. DETALHAMENTO POR NFR (Evidência e Validação)
 - CR-003 — Identidade, aliases de login, senha, sessões e recuperação
 - CR-004 — Perfil da prestadora e contas bancárias de depósito
 - Q: O projeto COGME prevê cadastro de usuários para consistência de dados do trabalho e histórico de invoices correto?
@@ -703,87 +705,188 @@
 - CR-006 — Simulações salvas, histórico e ciclo de vida das invoices
 - CR-007 — Invoice bilíngue PT-BR / EN
 - CR-008 — Ciclo de vida da conta, dormência, exclusão e privacidade LGPD/GDPR
-- .__call__
+- CSRFMiddleware
 - 📋 CARDS — COLUNA BACKLOG (Todos os entregáveis M1)
 - SPEC spec-004 — backend-mvp-v1 — Backend do MVP COGME (REQ-01 a REQ-05, REQ-07, REQ-14, REQ-16, REQ-17)
-- pytest
+- test_coverage_gap.py
 - CCB-003 — Deliberação CR-008: Ciclo de Vida, LGPD/GDPR e Expansão Multiusuário
 - Q: Ativar CR para cadastro de usuários, sessões, simulações e histórico de invoices; avaliar e publicar proposta de spec e levantar specs diretamente relacionadas.
-- test_agent_communication_hub.py
-- cogme_sddai_trainer/cli.py
+- SPEC spec-024 — gate-g2-ratificacao-v1 — Gate G2: ratificação specs 024/025/026 e liberação CR-009 produção
+- Auditoria de integridade — specs 017–022 (TA-062, Fase 1.5)
 - 4. Controles de Implementação (Checklist SPEC-017)
-- 📋 Cards do Backlog M1
-- NOTAS ADJACENTES — Projeto COGME
-- NR-1 — Auditoria da Seção 1 (Integração): v1.0 → v2.0
-- SEÇÃO 4 — BACKLOG DO MARCO M1 — CONSOLIDADO (21 CARDS)
-- SEÇÃO 5 — POLÍTICA DE ADRs E INTEGRAÇÃO DOCUMENTAL (ADITIVO OKB)
-- SEÇÃO 2 — LITERATURA DE APOIO: QUESTÕES ADJACENTES
-- SEÇÃO 7 — ESTRUTURA DO REPOSITÓRIO
-- detect.py
-- Template de Release Notes — COGME
-- Template de Post-Mortem (Blameless) — COGME
+- Business Case — COGME
+- Coluna: CONCLUÍDO (resolvidos)
+- BrowseTheWeb
+- get_current_session
+- CR-009 — Ciclo de vida do usuário, clientes multiempresa, dashboard e fluxo anônimo
+- Runbook — Ciclo de Codificação e Deploy (Espec Aprovada → Stage → Aprovação de Merge)
+- Actor
+- test_auth.py
+- test_frontend_ifit.py
+- Template de Plano de Testes / QA Plan — COGME
 - now
 - Graph Report - COGME  (2026-11-05)
 - test_agent_health_check.py
-- Registro de Dependências e Imagens
-- FakeMonotonicClock
+- _compress_file_locked
+- simulate_server
 - SPEC spec-018 — provider-profile-bank-account-v1 — Perfil da prestadora e contas bancárias de depósito
 - der.md
 - SPEC spec-020 — simulation-invoice-history-v1 — Simulações salvas, histórico e ciclo de vida das invoices
 - SPEC spec-021 — invoice-bilingual-v1 — Invoice bilíngue PT-BR / EN
-- Template de Matriz de Rastreabilidade de Requisitos (RTM) — COGME
-- performance_monitor.py
+- Plano de Testes / QA Plan — COGME
+- argparse
 - SPEC spec-022 — account-lifecycle-privacy-v1 — Ciclo de vida da conta, dormência, exclusão e privacidade LGPD/GDPR executiva
-- Template de Change Request (CR) — COGME
+- get_settings
 - SPEC spec-019 — client-directory-v1 — Carteira de clientes e estado ativo/inativo
-- invoice_repo
 - ADR-018 — Replanejamento TAP/M4 — Extensão para 30/12/2026 (Cenário A Completo)
-- fixture
-- _RefusingUrlFetcher
+- StoredQuote
+- test_agent_communication_hub.py
 - ADR-017 — Dependência Argon2id (`argon2-cffi`) para Hash de Senhas
 - Registro de Decisões LGPD — CR-002 (DEC-01 a DEC-07)
 - Ratificação CCB/GP — Persistência de Invoices + LGPD (DEC-04 a DEC-07)
-- Template de Status Report — COGME
-- agents/conftest.py
-- test_onda3_agents.py
+- 3. Incidentes encontrados, resolvidos e pendentes
+- test_b10_sessao_revalida_status_usuario
+- render
 - SPEC spec-017 — identity-access-session-v1 — Identidade, aliases, senha, sessões e recuperação
-- Matriz de Rastreabilidade de Requisitos (RTM) — COGME
-- auditoria_compliance.py
+- actor.py
+- PLAN — Fase 3: CR-009 Produção / Gate G2 (specs 024–026)
 - Ratificação CCB/GP — Parecer Auditoria/Compliance CR-002 Gate 1
-- Template de Plano de Comunicação — COGME
+- Procedimento de Manutenção Contínua de Artefatos
 - Settings
 - 2. Modelo STRIDE
 - Registro de Decisões CCB/GP — CR-002
-- RAID Log — COGME
-- Template de RAID Log — COGME
+- Termo de Encerramento / Lições Aprendidas — COGME
+- require_owner
 - json
-- Plano de Comunicação — COGME
-- Diagrama C4 — Nível 2: Contêineres (Container Diagram)
+- Question
+- FakeInvoiceRepository
 - run_mcp
+- Template de Release Notes — COGME
+- DecimalJsonRoute
+- audit_trail
+- integration/conftest.py
+- common.py
+- Template de Post-Mortem (Blameless) — COGME
+- Template de Proposta de Nova Spec
+- Plano de Testes — COGME (ISTQB CTFL)
+- clone_invoice
+- Release Notes v1.0.0 — COGME MVP (M1 Concluído)
+- decrypt_value
+- cogme_sddai_trainer/cli.py
+- Handoff — Fase 1.5: Especs/Integridade (TA-061 a TA-065)
+- test_emissao_invoice_funcional.py
+- AUD-2611-01 — Auditoria de registry + ledger + circuito de roteamento (TA-0032)
+- aplicar_norma_templates.py
+- test_h02_create_client_duplicate_tax_409
+- SPEC spec-025 — producao-cr-009-validacao-v1 — Validação de produção CR-009 (17 BLOQ + 12 ALTO) e critérios de release v1.0
+- Template de Matriz de Rastreabilidade de Requisitos (RTM) — COGME
+- 2. DETALHAMENTO POR DECISÃO
+- CCB — Decisões Finais CR-008 (D04, D05, D06) + Aprovações Gate 1/2
+- Contexto da Disciplina de Qualidade de Software — COGME
+- PLAN — Fase 1: Saneamento de compliance (P0–P3)
+- e2e_playwright/conftest.py
+- test_onda4_agents.py
+- _handle_http_error
+- Relatório de Completude do Sistema — COGME
+- Template de Change Request (CR) — COGME
+- 6. Contrato HTTP
+- Matriz de Rastreabilidade de Requisitos (RTM) — COGME
+- PLAN — Implementação das specs aprovadas (COGME)
+- SPEC spec-026 — ssot-camada-5-completude-v1 — Completação da camada 5 do SSOT (constituição Art. 2) e rastreabilidade final specs/integridade
+- Artefato Responsável — Implantação da Interface COGME (ifit.com)
+- COGME
+- v1 Requirements
+- Template de Status Report — COGME
+- Especificação de Procedimento de Teste — COGME (ISTQB CTFL)
+- Relatório Resumo de Teste — COGME (ISTQB CTFL Test Summary Report)
+- Workflow de QA Otimizado — COGME
+- Regras de Resolução de Incidentes — COGME
+- PLAN — Fase 2: Pré-produção CR-009 (ENCERRADA)
+- Parecer Jurídico — CNPJ como Dado Pessoal (LGPD Art. 5º II)
+- LockTimeoutError
+- Especificação de Projeto de Teste — COGME (ISTQB CTFL)
+- Registro de Teste — COGME (ISTQB CTFL Test Log)
+- Matriz de Rastreabilidade de Requisitos — COGME (RTM)
+- Shift-Left — COGME
+- app.py
+- _RefusingUrlFetcher
+- Decisão CCB — Aprovação e Ratificação da Fase 2 (Pré-produção CR-009)
+- Plano de Comunicação — COGME
+- Regras de Reporting, Registro e Logging de Incidentes — COGME
+- 3. Análise LGPD/GDPR (DEC-01..07 + CP-1..CP-5)
+- Diagrama C4 — Nível 2: Contêineres (Container Diagram)
 - Diagrama C4 — Nível 1: Contexto (System Context)
-- ADR-016 — Backend do MVP: cálculo, cotações, persistência e contrato de erro
+- Template de Plano de Comunicação — COGME
 - Registro de Partes Interessadas — COGME
-- FakeUtcClock
-- erase_invoice
-- list_invoices
+- pathlib
+- 5. Schemas de Request/Response (Pydantic v2)
+- handoff_parser.py
+- Template de RAID Log — COGME
+- RAID Log — COGME
+- Ciclo de Incidentes e Gerenciamento de Bugs — COGME
+- Stage
+- cogme_sddai_loader/cli.py
+- Proposta de Spec — Identidade composta, cadastro, login e recuperação
+- 3. Modelo de dados
+- 7. Migração e legado
+- Pirâmide de Testes — COGME
+- STATE.md
+- pre-push-ciclo-codificacao-deploy.sh
+- 10. Critérios de Aceite e Testes (v2.0.0)
+- sys
+- write_bytes_atomic
+- 10. Testes obrigatórios
+- 4. Normalização e validação
+- 5. Hash, senha e tokens
+- lint
+- playwright-e2e
+- Roadmap: COGME — Milestone v1.1
+- test_h09_invoice_snapshot_from_stored
+- 5. Cenários de Ataque Prioritários (Attack Trees)
+- 2. Análise Constitucional (Emenda E-20)
+- 5. Rastreabilidade e Consistência entre Specs
+- ADR-005 — Regime de Freeze do TAP e Precedência Intra-TAP
+- _body_candidate_error
+- 2. Derivação e limites
+- 9. Segurança e LGPD
 - get_rate
-- test_list_invoices_empty
-- test_get_invoice_not_found
-- test_erase_invoice_not_found
-- test_negative_zero_becomes_plain_zero
-- test_fixed_without_quantity_is_accepted
-- test_decimal_text_from_json_numbers_floats_and_canonical_scale
+- test_h10_aliases_masked_from_real_id
+- _br_number
+- TestDatabaseNoPersonalData
+- FakeUtcClock
+- FakeMonotonicClock
+- Registro de Dependências e Imagens
+- .get_next_number
+- 4. Análise de Performance de Memória
+- registry_data
+- ProviderCategory
+- test_dag_has_no_cycles
+- test_registry_yaml_parses
+- test_registry_slug_rule
+- test_no_duplicate_slugs
+- test_all_agents_have_required_keys
+- test_layers_valid
+- test_roles_valid
+- test_l0_exactly_one_orchestrator
+- test_no_self_references
+- test_no_duplicate_references
+- test_all_references_point_to_known_slugs
+- test_constitutional_no_cuda_cloud_inference
+- test_dispatcher_script_exists
+- test_sync_agent_registry_script_exists
+- test_validate_nexus_yaml_script_exists
+- test_registry_matches_agent_frontmatter
 
 ## God Nodes (most connected - your core abstractions)
 1. `Communities (717 total, 76 thin omitted)` - 642 edges
-2. `Currency` - 97 edges
-3. `RateSource` - 72 edges
+2. `Currency` - 105 edges
+3. `RateSource` - 76 edges
 4. `RateQuote` - 68 edges
-5. `RateService` - 58 edges
-6. `StoredQuote` - 52 edges
-7. `CircuitBreaker` - 49 edges
-8. `create_session_factory()` - 45 edges
-9. `create_engine()` - 41 edges
+5. `RateService` - 60 edges
+6. `StoredQuote` - 56 edges
+7. `CircuitBreaker` - 54 edges
+8. `InvoiceRepository` - 38 edges
+9. `InvoiceNumberService` - 38 edges
 10. `SimulationRequest` - 37 edges
 
 ## Surprising Connections (you probably didn't know these)
@@ -791,65 +894,65 @@
   .ai/specs/spec-020-simulation-invoice-history-v1.md → src/shared/schemas.py
 - `4.2 Schema `InvoiceRequest` (SPEC-020)` --references--> `InvoiceRequest`  [INFERRED]
   .ai/specs/spec-021-invoice-bilingual-v1.md → src/shared/schemas.py
-- `6. Rastreabilidade` --references--> `Regime`  [INFERRED]
-  .ai/specs/spec-016-preenchimento-tempo-jornada-v1.spec.md → src/shared/schemas.py
-- `3.4 OpenAPI: fonte única de verdade, render nunca hand-restyled, critérios de revisão` --references--> `ErrorResponse`  [INFERRED]
-  .ai/specs/spec-013-documentacao-tecnica-v1.spec.md → src/shared/schemas.py
-- `Plano de Implementação Paralela (4 Workstreams Independentes)` --references--> `SqlAlchemyInvoiceRepository`  [INFERRED]
-  docs/decisoes/ratificacao-ccb-invoices-2026-11-14.md → src/backend/models/invoice_repository.py
+- `6.2 `POST /v1/invoice`` --references--> `InvoiceRequest`  [INFERRED]
+  docs/especificacoes/spec-prop-025-clientes-multiempresa-e-fluxo-anonimo.md → src/shared/schemas.py
+- `5. Estratégia de automação` --references--> `RateService`  [INFERRED]
+  docs/qualidade/03-plano-testes-istqb.md → src/backend/services/rate_service.py
+- `6. Ambiente de teste` --references--> `RateService`  [INFERRED]
+  docs/qualidade/04-especificacao-projeto-teste.md → src/backend/services/rate_service.py
 
 ## Import Cycles
 - None detected.
 
-## Communities (805 total, 94 thin omitted)
+## Communities (923 total, 124 thin omitted)
 
-### Community 0 - "StoredQuote"
-Cohesion: 0.03
-Nodes (33): settings, debug, log_level, FxQuote, RepositoryError, SqlAlchemyQuoteRepository, StoredQuote, _alembic_config() (+25 more)
+### Community 0 - "auditoria_compliance.py"
+Cohesion: 0.27
+Nodes (5): append_vio(), main(), proximo_vio_numero(), run_passos(), salvar_relatorio()
 
-### Community 1 - "pytest"
+### Community 1 - "_client"
 Cohesion: 0.04
-Nodes (34): 3.1.4 Integração com APIs Externas, 3.2 Especificações → Implementação (Forward Traceability), God Nodes (most connected - your core abstractions), _accept_rate(), _brasilia_to_utc(), FrankfurterProvider, _get_json(), ProviderError (+26 more)
+Nodes (33): NFR-COMP-02: Fallback Automático APIs Câmbio, 3.2 Especificações → Implementação (Forward Traceability), 3.1.4 Integração com APIs Externas, _lifespan(), _accept_bulletin(), _accept_rate(), _brasilia_to_utc(), FrankfurterProvider (+25 more)
 
 ### Community 2 - "nexus_delivery.py"
 Cohesion: 0.11
 Nodes (17): PARTE 5 — MAPA DE FASES (sequência canônica), acquire_lock(), append_ledger(), escalate_pending(), find_parcel(), find_pending_tasks(), ledger_has_terminal(), load_ledger() (+9 more)
 
-### Community 3 - "test_invoice.py"
+### Community 3 - "backend/main.py"
 Cohesion: 0.02
-Nodes (49): get_rate_service(), _CachedQuote, _CacheRead, _fallback(), RateService, RateQuote, clock(), monotonic_clock() (+41 more)
+Nodes (48): Como o COGME aplica Shift-Left na prática, 4. Rastreabilidade caso ↔ teste automatizado, _configure_logging(), _error_response(), get_rate_service(), get_health(), ErrorBody, ErrorDetail (+40 more)
 
-### Community 4 - "schemas.py"
-Cohesion: 0.02
-Nodes (48): Opção B: **Persistência de Entrada + Reprocessamento (Source of Truth = Request)**, Decisões, Decisões, Surprising Connections (you probably didn't know these), get_settings(), PdfUnavailableError, _build_openapi(), _configure_logging() (+40 more)
+### Community 4 - "translate_validation_errors"
+Cohesion: 0.20
+Nodes (7): _build_openapi(), _field_name(), translate_validation_errors(), test_build_openapi_remove_422(), test_field_name_body_e_echo(), test_translate_validation_errors(), test_translate_validation_errors_loc_vazio()
 
-### Community 5 - "calculate"
-Cohesion: 0.06
-Nodes (23): 6.1 Fluxo de simulação (US-001/US-002/US-003 — candidatas, spec-002:158-160), 6.2 Registro de rótulos — labels 1:1 com os schemas da spec-004, 6.3 Fluxo de invoice (US-004 — candidata, spec-002:161), 6.4 Minimização LGPD nos formulários (P-04, constitution.md:90), 6. Fluxos e integração com a API `/v1`, Breakdown, calculate(), _gross() (+15 more)
+### Community 5 - "test_rate_service_storage.py"
+Cohesion: 0.10
+Nodes (12): _failing(), FailingRepository, FakeProvider, ForcedRowRepository, _ok(), _service(), test_out_of_contract_row_is_never_served_as_stale_req01(), test_out_of_contract_row_is_treated_as_absent_req07() (+4 more)
 
 ### Community 6 - "CircuitBreaker"
-Cohesion: 0.04
-Nodes (27): ⚠️ Critical Shared Symbols, DomainError, RatesUnavailableError, CircuitBreaker, breaker(), test_admits_attempt_after_reset_period(), test_blocks_for_sixty_seconds(), test_default_parameters_match_spec_section8_1() (+19 more)
+Cohesion: 0.08
+Nodes (17): ⚠️ Critical Shared Symbols, CircuitBreaker, breaker(), test_admits_attempt_after_reset_period(), test_blocks_for_sixty_seconds(), test_default_parameters_match_spec_section8_1(), test_failure_on_probe_reopens_the_circuit(), test_opens_on_third_consecutive_failure() (+9 more)
 
 ### Community 7 - "UI-SPEC — Especificação de UI/UX do COGME"
 Cohesion: 0.05
 Nodes (43): 10. Migration Plan (Incremental), 11. Risks & Mitigations, 12. Referências, 1.1 Style Direction, 1.2 Pattern: Minimal Single Column / Hero + Features + CTA, 1.3 Color Tokens (CSS Custom Properties), 1.4 Typography, 1.5 Icon System (+35 more)
 
 ### Community 8 - "test_nexus_yaml.py"
-Cohesion: 0.03
-Nodes (32): agents_list(), _parse_json_from_output(), registry_data(), test_agent_nexus_prime_ultimate_slug_exists(), test_agent_orchestrator_slug_removed(), test_agent_statuses_valid(), test_all_agents_have_required_keys(), test_all_references_point_to_known_slugs() (+24 more)
+Cohesion: 0.09
+Nodes (10): test_agent_nexus_prime_ultimate_slug_exists(), test_agent_orchestrator_slug_removed(), test_agent_statuses_valid(), test_all_slugs_kebab_case(), test_handoff_parser_script_exists(), test_infrastructure_agents_cpu_only(), test_layer_distribution_matches_topology(), test_layer_upstream_ordering() (+2 more)
 
-### Community 9 - "RateSource"
-Cohesion: 0.10
-Nodes (18): Suggested Questions, RateSource, _breaker(), _failing(), FakeProvider, _ok(), _service(), test_all_sources_failing_returns_stale_cache_req01() (+10 more)
+### Community 9 - "Currency"
+Cohesion: 0.12
+Nodes (17): RateSource, _breaker(), _failing(), FakeProvider, _ok(), _service(), test_all_sources_failing_returns_stale_cache_req01(), test_cache_age_boundary_is_inclusive_req07() (+9 more)
 
 ### Community 10 - "subprocess"
 Cohesion: 0.05
-Nodes (30): 3. Subutilização (AC3), main(), md_alterados(), run(), run(), test_gate_promulgation(), test_nexus_contract(), test_registry_covers_onda_1() (+22 more)
+Nodes (29): main(), md_alterados(), run(), create_issue(), get_existing_issues(), main(), add_labels(), get_issue_node_id() (+21 more)
 
-### Community 11 - "app.py"
-Cohesion: 0.10
-Nodes (10): _br_datetime(), _br_number(), _get_client(), index(), invoice_form(), proxy_v1(), render(), _shutdown() (+2 more)
+### Community 11 - "test_invoice.py"
+Cohesion: 0.07
+Nodes (19): Camada 2 — Integração (meio, volume médio), MemoryRepository, stored_quote(), captured(), _html_of(), _payload(), test_client_cannot_send_precomputed_values_req04(), test_frankfurter_quote_has_no_bulletin_row_req04() (+11 more)
 
 ### Community 12 - "Notas Adjacentes — Projeto COGME"
 Cohesion: 0.04
@@ -872,12 +975,12 @@ Cohesion: 0.05
 Nodes (40): 0. Verificações Factuais Contra a Constitution (que agora tenho completa), 1. Artefato: `docs/decisoes/adr-013-regime-emenda-tap.md` (NOVO), 1. Crítica Brutal às Duas Análises, 1. Veredito Inicial, 2. Artefato: Atualização de `docs/governanca/ccb-log.md` (APPEND), 2. Caminho Ótimo Unificado (First-Principles), 2. Estratégia de Execução (Compressão 48h), 3. Estrutura Canônica do Plano Profissional (+32 more)
 
 ### Community 17 - "pathlib"
-Cohesion: 0.09
-Nodes (20): handle(), load_registry(), main(), handle(), load_kb(), main(), save_kb(), handle() (+12 more)
+Cohesion: 0.12
+Nodes (18): handle(), load_registry(), main(), handle(), load_kb(), main(), save_kb(), handle() (+10 more)
 
-### Community 18 - "StoredQuote"
-Cohesion: 0.10
-Nodes (12): _failing(), FailingRepository, FakeProvider, ForcedRowRepository, _ok(), _service(), test_out_of_contract_row_is_never_served_as_stale_req01(), test_out_of_contract_row_is_treated_as_absent_req07() (+4 more)
+### Community 18 - "routers/auth.py"
+Cohesion: 0.07
+Nodes (34): EmailVerificationToken, UserLoginIdentifierKind, aliases(), email_resend(), email_verify(), _find_login_identifier(), _get_current_session_dep(), _hash_password() (+26 more)
 
 ### Community 19 - "BASE DE CONHECIMENTO OPERACIONAL — PROJETO COGME v2.0"
 Cohesion: 0.05
@@ -915,9 +1018,9 @@ Nodes (35): 5.10 DECLARAÇÃO DE RASTREABILIDADE, 5.11 PREMISSAS E RESTRIÇÕES 
 Cohesion: 0.06
 Nodes (33): 1. Análise da Conformidade com o PMBOK® 6ª ed., 1. INCONGRUÊNCIAS (Contradições internas que precisam ser resolvidas), 1. Objetivos deste Documento, 1. Viabilidade Geral, 2. FORTE COMPLEXIDADE (Possíveis inviabilizadores), 2. Melhoria Visual (Diagramação), 2. Recomendações para Viabilização, 3. Conclusão da Avaliação (+25 more)
 
-### Community 28 - "test_schemas.py"
-Cohesion: 0.12
-Nodes (15): _rejects(), _request(), test_amount_exact_limits(), test_enums_reject_unknown_values(), test_error_text_never_echoes_submitted_value(), test_extra_field_is_refused(), test_fixed_with_quantity_is_refused(), test_gross_that_rounds_to_zero_is_refused() (+7 more)
+### Community 28 - "RateQuote"
+Cohesion: 0.03
+Nodes (51): God Nodes (most connected - your core abstractions), PdfUnavailableError, RatesUnavailableError, QuoteRepository, render_invoice(), _render_pdf(), render_pdf_from_stored(), RateProvider (+43 more)
 
 ### Community 29 - "1 INTEGRAÇÃO"
 Cohesion: 0.06
@@ -951,9 +1054,9 @@ Nodes (18): 1. Fundamentação Técnica da Correção, 2. Impacto Imediato nos C
 Cohesion: 0.07
 Nodes (29): 2.10 Condições de Fracasso e Escalation, 2.11 Declaração de Rastreabilidade, 2.12 Premissas e Restrições Aplicáveis, 2.1 Identificação e Propósito, 2.2.1 Hierarquia de Resolução de Conflitos, 2.2.2 Papéis de Governança, 2.2.3 Governança Mínima Viável (GMV), 2.2.4 Obsolescência do PMBOK 6ª (Declaração Formal) (+21 more)
 
-### Community 37 - "pathlib"
-Cohesion: 0.07
-Nodes (15): main(), transform(), validate_transform_result(), main(), ingest(), validate_ingest_result(), coletar_arquivos(), gerar() (+7 more)
+### Community 37 - "Decimal"
+Cohesion: 0.09
+Nodes (10): _DecimalRule, _format_decimal(), _parse_decimal(), _parse_output_decimal(), _raise_invalid_decimal(), _round_money(), _significant_places(), test_schemas_format_decimal() (+2 more)
 
 ### Community 38 - "6. ROADMAP DE SEQUÊNCIA DE IMPLEMENTAÇÃO (até M4 = 15/12/2026)"
 Cohesion: 0.07
@@ -972,16 +1075,16 @@ Cohesion: 0.07
 Nodes (26): 1. Veredito Executivo Unificado, 2.1 Defeitos P0 — Críticos (bloqueiam a retificação), 2.2 Defeitos P1 — Altos (distorcem o conteúdo), 2.3 Defeitos P2 — Médios (cosméticos, acumulativos), 2. Matriz Consolidada de Defeitos (P0/P1/P2), 3. Blocos Modulares de Retificação, 4. Decisões CCB Pendentes (não executáveis por agente), 5. Matriz de Validação de Cross-References (+18 more)
 
 ### Community 42 - "5. Detalhamento por fase (transcrição com rastreabilidade)"
-Cohesion: 0.08
-Nodes (25): 10. Rastreabilidade, 1. Fonte única e precedência, 2. Contexto e origem, 3. Resolução de conflitos — divergências registradas (não resolvidas aqui), 4. Cadastro de fases (Tabela 2 do plano-integral), 5. Detalhamento por fase (transcrição com rastreabilidade), 6. Macro-fases e marcos, 7. Diagrama — fonte textual mermaid (DoR da classe `diagrama`) (+17 more)
+Cohesion: 0.07
+Nodes (26): 10. Rastreabilidade, 1. Fonte única e precedência, 21. Fase encerrada — canonização (EAP concluída), 2. Contexto e origem, 3. Resolução de conflitos — divergências registradas (não resolvidas aqui), 4. Cadastro de fases (Tabela 2 do plano-integral), 5. Detalhamento por fase (transcrição com rastreabilidade), 6. Macro-fases e marcos (+18 more)
 
-### Community 43 - "SEÇÃO 8 — REGISTRO DE INCIDENTE: LA-001"
-Cohesion: 0.29
-Nodes (7): 8.1 Acknowledgment, 8.2 Análise de Impacto, 8.3 Estratégia de Recuperação, 8.4 Priorização do Retrabalho, 8.5 Lição Aprendida — LA-001, 8.6 Recomendação Imediata ao GP, SEÇÃO 8 — REGISTRO DE INCIDENTE: LA-001
+### Community 43 - "NOTAS ADJACENTES — Projeto COGME"
+Cohesion: 0.06
+Nodes (31): 2.1 Área de Conhecimento para Rede de Projeto e Caminho Crítico, 2.2 Estruturação do Cumulative Flow Diagram (CFD) para Demonstração Formal, 2.3 Resolução da Inconsistência de Fronteira do M1, 4.1 Resumo dos 21 Cards, 4.2 Cards que Receberão Tasklist (ADR-004), 4.3 Mecanismo de Contorno: Tasklist como Substituto de Subissue, 4.4 Distribuição de Trabalho por Membro, 5.1 Gatilhos para Criação de Novas ADRs (+23 more)
 
 ### Community 44 - "PARTE I — NOTAS DE REVISÃO CONSOLIDADAS"
-Cohesion: 0.10
-Nodes (20): NR-2.1 — Resoluções Aplicadas (decisões do GP → v1.1), NR-2.2 — Registro de Diagramas e Rejeições Justificadas (Seção 2), NR-2.3 — Checklist de Validação da Seção 2 (v1.1), NR-2 — Auditoria da Seção 2 (Escopo): Rodada 7 → v1.1, NR-3.1 — Diretriz do GP aplicada (D3 — Freeze do TAP), NR-3.2 — Fundamentação do freeze (anti-hallucination: fontes verificáveis), NR-3.3 — Achados da rodada sobre a v1.1 (todos sanados na v1.2), NR-3.4 — Registro de Diagramas da Seção 3 (2 inserções, 5 rejeições) (+12 more)
+Cohesion: 0.08
+Nodes (26): NR-1.1 — Achados Críticos (bloqueantes para a Seção 1), NR-1.2 — Achados Externos (não bloqueiam a Seção 1; reportar ao GP), NR-1.3 — Auditoria de Invasão de Escopo entre Áreas (Seção 1), NR-1.4 — Registro de Diagramas da Seção 1 (4 inserções; rejeições justificadas), NR-1.5 — Checklist de Validação da Seção 1 (v2.0), NR-1 — Auditoria da Seção 1 (Integração): v1.0 → v2.0, NR-2.1 — Resoluções Aplicadas (decisões do GP → v1.1), NR-2.2 — Registro de Diagramas e Rejeições Justificadas (Seção 2) (+18 more)
 
 ### Community 45 - "1 INTEGRAÇÃO"
 Cohesion: 0.08
@@ -1004,12 +1107,12 @@ Cohesion: 0.00
 Nodes (642): Communities (717 total, 76 thin omitted), Community 0 - "RepositoryError", Community 100 - "SYSTEM DIRECTIVE: AGENT-AI-LLM-RAG-DAG-MCP-ROSTER-MASTER-SPECIALIST (L2 · SPECIALIST · AI ENGINEERING)", Community 101 - "SYSTEM DIRECTIVE: AGENT-ART-COMMUNICATION-MARKETING-PR-SPECIALIST (L2 · SPECIALIST · COMMUNICATIONS)", Community 102 - "SYSTEM DIRECTIVE: AGENT-BASH-SPECIALIST (L2 · SPECIALIST · SHELL CUSTODY)", Community 103 - "SYSTEM DIRECTIVE: AGENT-BUSINESS-ANALYSIS-SPECIALIST (L1 · SPECIALIST · BA)", Community 104 - "SYSTEM DIRECTIVE: AGENT-COBIT-SPECIALIST (L2 · SPECIALIST · COBIT)", Community 105 - "SYSTEM DIRECTIVE: AGENT-COPYRIGHT-SPECIALIST (L2 · SPECIALIST · COPYRIGHT)" (+634 more)
 
 ### Community 50 - "test_sddai_components.py"
-Cohesion: 0.17
-Nodes (11): 4.3. Validação de Testes Unitários, 3. Detalhamento por Teste, _extract_json(), _extract_json_from_proc(), _run(), test_cli_pipeline_full_run(), test_engineer_transform_valid_input(), test_loader_ingest_valid_file() (+3 more)
+Cohesion: 0.05
+Nodes (40): 1. Sumário Executivo, 2.1. Artefatos Auditados, 2.2. Normas Aplicáveis, 2. Escopo da Auditoria, 3.1. Art. 4 — Governança de Agentes, 3.2. Art. 3 — Princípios Inalienáveis, 3.3. Art. 6 — Método e SSOT, 3.4. Art. 7 — Segurança e Privacidade (+32 more)
 
 ### Community 51 - "Relatório Analítico — Performance da Memória Persistente (SDDAI)"
-Cohesion: 0.08
-Nodes (23): 1. Sumário Executivo, 2.1. Locais de Memória Persistente (Constitution Art. 6.7), 2.2. Mecanismos de Controle de Memória, 2. Arquitetura de Memória Persistente — Estado Atual, 3.1. Novos Artefatos de Memória, 3.2. Registro no Ledger (Audit Trail), 3. Impacto da Implementação SDDAI na Memória Persistente, 4.1. Orçamento de Contexto por Sessão (+15 more)
+Cohesion: 0.14
+Nodes (13): 1. Sumário Executivo, 2.1. Locais de Memória Persistente (Constitution Art. 6.7), 2.2. Mecanismos de Controle de Memória, 2. Arquitetura de Memória Persistente — Estado Atual, 3.1. Novos Artefatos de Memória, 3.2. Registro no Ledger (Audit Trail), 3. Impacto da Implementação SDDAI na Memória Persistente, 5.1. Execução do Pipeline SDDAI (`data_optimization`) (+5 more)
 
 ### Community 52 - "SYSTEM DIRECTIVE: AGENT-SDDAI-CLI (L2 · SPECIALIST · SDDAI PIPELINE ORCHESTRATOR)"
 Cohesion: 0.08
@@ -1156,16 +1259,16 @@ Cohesion: 0.09
 Nodes (20): caveman, Example output, How to invoke, See also, What it does, 1. Answer first, 2. Kill ceremony, 3. Short word (+12 more)
 
 ### Community 88 - "test_invoices_persistence.py"
-Cohesion: 0.11
-Nodes (29): create_engine(), create_session_factory(), InvoiceRepository, InvoiceNumberService, test_clone_invoice_creates_new_draft(), _create_finalized(), test_clone_only_finalized_allowed(), _create_draft() (+21 more)
+Cohesion: 0.06
+Nodes (34): InvoiceNumberService, test_clone_invoice_creates_new_draft(), _create_finalized(), test_clone_only_finalized_allowed(), _create_draft(), test_erase_invoice_forbidden(), _create(), _create() (+26 more)
 
 ### Community 89 - "SPEC spec-008 — frontend-web-responsive-v1 — Interface web responsiva 100% FOSS do MVP (camada `front`)"
-Cohesion: 0.11
-Nodes (18): 10. Critérios de aceite e testes, 11. Rastreabilidade, 12. Fora de escopo (YAGNI — P-11, constitution.md:104), 1. Contexto e origem, 2. Resolução de conflitos, 3. Requisitos da interface (normas da camada `front`), 4. Estrutura de `src/frontend/` e inventário de templates, 5. Estados de tela (+10 more)
+Cohesion: 0.08
+Nodes (23): 10. Critérios de aceite e testes, 11. Rastreabilidade, 12. Fora de escopo (YAGNI — P-11, constitution.md:104), 1. Contexto e origem, 2. Resolução de conflitos, 3. Requisitos da interface (normas da camada `front`), 4. Estrutura de `src/frontend/` e inventário de templates, 5. Estados de tela (+15 more)
 
 ### Community 90 - "TAP COGME — Linha de Base Congelada (espelho do plano-integral)"
 Cohesion: 0.09
-Nodes (21): 10. Marcos (TAP §6), 11. Premissas (TAP §9), 12. Restrições (TAP §8 e §11), 13. Partes interessadas (TAP §7) — lacuna declarada, 14. Riscos de alto nível (TAP §10) — lacuna declarada, 15. Critérios de sucesso (TAP §3.2) — lacuna declarada, 16. Critérios de aceite e testes (deste artefato), 17. Rastreabilidade (+13 more)
+Nodes (22): 10. Marcos (TAP §6), 11. Premissas (TAP §9), 12. Restrições (TAP §8 e §11), 13. Partes interessadas (TAP §7) — lacuna declarada, 14. Riscos de alto nível (TAP §10) — lacuna declarada, 15. Critérios de sucesso (TAP §3.2) — lacuna declarada, 16. Critérios de aceite e testes (deste artefato), 17. Rastreabilidade (+14 more)
 
 ### Community 91 - "CONSTITUIÇÃO DO PROJETO COGME"
 Cohesion: 0.09
@@ -1244,28 +1347,28 @@ Cohesion: 0.09
 Nodes (21): 0.1 SUPREME LAW AND CONTEXT ANCHOR, 0.2 AFA COMPACT PROTOCOLS, 0. ROLE AND SCOPE, 10. RED TEAM AWARENESS, 11. FAIL-CLOSED RULES, 12. ARTIFACT TEMPLATES, 13. INTEGRATION CONTRACTS, 14. ONBOARDING AND SUCCESSION (+13 more)
 
 ### Community 110 - "SYSTEM DIRECTIVE: AGENT-SIX-SIGMA-SPECIALIST (L2 · SPECIALIST · SIX SIGMA)"
-Cohesion: 0.05
-Nodes (34): 10. Verificação dos critérios de aceite (AC1–AC9), 11. Escalonamento (decisão Humano/CCB — Art. 5.1), 1. Escopo e método, 2.1 Camadas — `AGENT_TOPOLOGY` (scripts/validate_nexus_yaml.py:15-71), 2.2 Regras de roteamento vigentes (`scripts/nexus_dispatcher.py`), 2.3 Desvios doc↔código do dispatcher (achado), 2. Mapa do circuito (AC2), 4. Desvio de função (AC4) (+26 more)
+Cohesion: 0.10
+Nodes (20): 0.1 SUPREME LAW AND CONTEXT ANCHOR, 0.2 AFA COMPACT PROTOCOLS, 0. ROLE AND SCOPE, 10. RED TEAM AWARENESS, 11. FAIL-CLOSED RULES, 12. ARTIFACT TEMPLATES, 13. INTEGRATION CONTRACTS, 14. ONBOARDING AND SUCCESSION (+12 more)
 
 ### Community 111 - "SYSTEM DIRECTIVE: AGENT-SLDC-PROCESS-SPECIALIST (L2 · SPECIALIST · SDLC)"
 Cohesion: 0.09
 Nodes (21): 0.1 SUPREME LAW AND CONTEXT ANCHOR, 0.2 AFA COMPACT PROTOCOLS, 0. ROLE AND SCOPE, 10. RED TEAM AWARENESS, 11. FAIL-CLOSED RULES, 12. ARTIFACT TEMPLATES, 13. INTEGRATION CONTRACTS, 14. ONBOARDING AND SUCCESSION (+13 more)
 
 ### Community 112 - "re"
-Cohesion: 0.08
-Nodes (29): handle(), main(), atualizar_data(), bump_versao(), escrever(), injetar_ou_limpar_falha(), ler(), main() (+21 more)
+Cohesion: 0.09
+Nodes (27): atualizar_data(), bump_versao(), escrever(), injetar_ou_limpar_falha(), ler(), main(), secao_falha(), build_frontmatter() (+19 more)
 
 ### Community 113 - "SPEC spec-007 — invoice-data-model-v1 — Modelo canônico de dados da invoice (GAP-04 + CR-002)"
 Cohesion: 0.06
 Nodes (30): 10. Fora de Escopo (YAGNI), 11. Metadados da Emenda, 1. Contexto e origem, 2. Resolução de conflitos, 3.1 Schema Completo (PostgreSQL), 3.2 Tabela `invoice_sequences` (Numeração DEC-06), 3. Modelo de Dados — Tabela `invoices` (v2.0.0), 4.1 `issuer_snapshot` (Prestadora) (+22 more)
 
 ### Community 114 - "test_dispatcher_and_sync.py"
-Cohesion: 0.08
-Nodes (10): seeded_registry(), FakeBackClient, FakeResponse, front_client(), test_index_does_not_load_legacy_invoice_script(), test_server_side_connection_error_keeps_values(), test_server_side_fixed_regime_drops_quantity(), test_server_side_simulation_renders_error() (+2 more)
+Cohesion: 0.10
+Nodes (9): FakeBackClient, FakeResponse, front_client(), test_index_does_not_load_legacy_invoice_script(), test_server_side_connection_error_keeps_values(), test_server_side_fixed_regime_drops_quantity(), test_server_side_simulation_renders_error(), test_server_side_simulation_renders_result() (+1 more)
 
-### Community 115 - "scripts/cli.py"
-Cohesion: 0.21
-Nodes (7): main(), backup_dir_for(), compress_file(), is_sensitive_path(), legacy_backup_dir_for(), lock_path_for(), _state_base_dir()
+### Community 115 - "test_rate_service_resilience.py"
+Cohesion: 0.09
+Nodes (14): Suggested Questions, Currency, _half_open(), HungRepository, ScriptedProvider, _service(), StuckCleanupRepository, test_cancelled_leader_releases_probe_and_lock_req01() (+6 more)
 
 ### Community 116 - "RELATORIO ANALITICO — Constituição COGME vs Estrutura de Requisitos e Especificacoes"
 Cohesion: 0.10
@@ -1283,9 +1386,9 @@ Nodes (20): 1.1 Origem, 1.2 Natureza de PROPOSTA (não ratificada), 1. Contexto 
 Cohesion: 0.10
 Nodes (20): 1. Sumário Executivo, 2.1. Artefatos Auditados, 2.2. Normas Aplicáveis, 2. Escopo da Auditoria, 3.1. Art. 4 — Governança de Agentes, 3.2. Art. 3 — Princípios Inalienáveis, 3.3. Art. 6 — Método e SSOT, 3.4. Art. 7 — Segurança e Privacidade (+12 more)
 
-### Community 120 - "3. Matriz de Compliance — Artigo por Artigo"
-Cohesion: 0.10
-Nodes (20): 1. Sumário Executivo, 2.1. Artefatos Auditados, 2.2. Normas Aplicáveis, 2. Escopo da Auditoria, 3.1. Art. 4 — Governança de Agentes, 3.2. Art. 3 — Princípios Inalienáveis, 3.3. Art. 6 — Método e SSOT, 3.4. Art. 7 — Segurança e Privacidade (+12 more)
+### Community 120 - "detect.py"
+Cohesion: 0.22
+Nodes (5): detect_file_type(), _is_code_line(), _is_json_content(), _is_yaml_content(), should_compress()
 
 ### Community 121 - "PLANO CANÔNICO DE PRODUÇÃO DE AGENTES — COGME"
 Cohesion: 0.10
@@ -1304,8 +1407,8 @@ Cohesion: 0.10
 Nodes (20): 5.10 Declaração de Rastreabilidade, 5.11 Premissas e Restrições Aplicáveis, 5.1 Identificação e Propósito, 5.2 Abordagem de Gerenciamento da Qualidade, 5.3 Métricas de Qualidade, 5.4.1 Código-Fonte, 5.4.2 Testes Automatizados, 5.4.3 Documentação (+12 more)
 
 ### Community 125 - "📋 Cards do Backlog M1"
-Cohesion: 0.18
-Nodes (11): Backlog Marco M1 — Fundação (GitHub Projects), ✅ Checklist de Validação (Anti-Burocracia), 📅 Cronograma Sugerido (Pull System), 🎯 Distribuição de Trabalho, **Edson** — Carga total: 6h, **Fabricio** — Carga total: 10h, **Leonardo (GP)** — Carga total: 8h, 🚀 Próximos Passos Imediatos (+3 more)
+Cohesion: 0.10
+Nodes (20): Backlog Marco M1 — Fundação (GitHub Projects), 📋 Cards do Backlog M1, ✅ Checklist de Validação (Anti-Burocracia), 📅 Cronograma Sugerido (Pull System), 🎯 Distribuição de Trabalho, **Edson** — Carga total: 6h, **Fabricio** — Carga total: 10h, **Leonardo (GP)** — Carga total: 8h (+12 more)
 
 ### Community 126 - "PARTE B — Redação Integral (v1.1)"
 Cohesion: 0.10
@@ -1328,8 +1431,8 @@ Cohesion: 0.10
 Nodes (20): Bloco 1 — Governança e Planos de Gerenciamento (Fase N1.2), Bloco 3 — Configuração de Ambiente (Fase N4), Bloco 5 — Comunicação (Fase N8), Bloco 6 — Gestão de Mudanças (Fase N10), Card M1-01 — Plano de Integração, Card M1-02 — Plano de Escopo, Card M1-03 — Plano de Cronograma, Card M1-04 — Plano de Custos (+12 more)
 
 ### Community 131 - "argparse"
-Cohesion: 0.09
-Nodes (22): check_slug(), load_registry(), main(), _detect_cycle(), dfs(), main(), handle(), main() (+14 more)
+Cohesion: 0.10
+Nodes (20): check_slug(), load_registry(), main(), _detect_cycle(), dfs(), main(), disco_slugs(), main() (+12 more)
 
 ### Community 132 - "MANIFEST — corpus `.ai/specs/` (TA-0031, HF-0031)"
 Cohesion: 0.11
@@ -1375,13 +1478,13 @@ Nodes (18): 4.10 Premissas e Restrições Aplicáveis, 4.11 Controle de Versões
 Cohesion: 0.10
 Nodes (19): 10. Métricas de fluxo, 11. Referências públicas, 1.1 Objetivos do projeto, 1. Caracterização do projeto, 2.1 Hierarquia normativa (ordem absoluta), 2.2 Método e princípios, 2.3 Privacidade e proteção de dados, 2.4 Soberania computacional (+11 more)
 
-### Community 143 - "Decimal"
+### Community 143 - "test_adversarial_mcp.py"
 Cohesion: 0.11
-Nodes (7): _DecimalRule, _format_decimal(), _parse_decimal(), _parse_output_decimal(), _raise_invalid_decimal(), _round_money(), _significant_places()
+Nodes (16): ledger_call(), test_delivery_reply_required_nao_booleano_rejeitado(), test_delivery_task_id_fora_padrao_rejeitado(), test_hub_acao_invalida_rejeitada(), test_hub_auto_delegacao_rejeitada(), test_hub_envelope_legacy_mapeado(), test_ledger_campos_ausentes_rejeitado(), test_ledger_exit_status_texto_rejeitado() (+8 more)
 
-### Community 144 - "DecimalJsonRequest"
-Cohesion: 0.17
-Nodes (3): DecimalJsonRequest, handler(), _refuse_constant()
+### Community 144 - "get_session_factory"
+Cohesion: 0.09
+Nodes (12): BodyTooLargeError, DecimalJsonRequest, handler(), _refuse_constant(), _json_request(), receive(), test_decimal_json_request_json_com_decimal_exato(), test_decimal_json_request_ler_chunks_e_recusa_excedente_no_stream() (+4 more)
 
 ### Community 145 - "SPEC spec-006 — nfr-consolidados-v1 — Requisitos Não Funcionais consolidados (registro canônico da fase N2.2 da EAP)"
 Cohesion: 0.12
@@ -1445,7 +1548,7 @@ Nodes (4): run_validator(), TestContractValidation, TestLegacyTolerance, TestRea
 
 ### Community 160 - "SPEC spec-005 — container-layers-v1 — Camadas de containers para a produção ortogonal do COGME"
 Cohesion: 0.07
-Nodes (28): 10. User Stories (Padrão B — GWT), 11. Critérios de aceite binários desta SPEC, 12. Proposta de UAT, 13. Fora de escopo (YAGNI — P-11), 1. Contexto e tarefa (origem), 2. Resolução de conflitos documentais, 3.1 As três camadas (obrigatórias), 3.2 Camadas aderentes (análise YAGNI, P-11 constitution.md:104) (+20 more)
+Nodes (29): 10. User Stories (Padrão B — GWT), 11. Critérios de aceite binários desta SPEC, 12. Proposta de UAT, 13. Fora de escopo (YAGNI — P-11), 1. Contexto e tarefa (origem), 2. Resolução de conflitos documentais, 3.1 As três camadas (obrigatórias), 3.2 Camadas aderentes (análise YAGNI, P-11 constitution.md:104) (+21 more)
 
 ### Community 161 - "SEÇÃO 5 — ESTRUTURA ANALÍTICA DO PROJETO (EAP/WBS)"
 Cohesion: 0.12
@@ -1520,8 +1623,8 @@ Cohesion: 0.13
 Nodes (14): 1. Escopo, método e comandos forenses executados, 2. Forense dos eventos de 24/10 (linha do tempo consolidada — base do VIO-006/009), 3.1 WS-1 — `.ai/specs/constitution-round-1-proposta.md` → **APROVADO COM RESSALVAS p/ CCB**, 3.2 WS-2 — `docs/auditorias/aud-2610-03.md` → **APROVADO COM RESSALVAS p/ CCB** (substância íntegra; forma com defeito → VIO-011), 3.3 WS-3 — `.ai/specs/requisitos-review-round-1.md` → **APROVADO COM RESSALVAS p/ CCB**, 3. Veredito por artefato (com amostra de contra-provas), 4. Rastreabilidade task_id→artefato→ledger (P-08; achado VIO-009), 5. VIOs registrados nesta operação (numeração sequencial; NENHUM fechado) (+6 more)
 
 ### Community 179 - "test_openapi.py"
-Cohesion: 0.10
-Nodes (10): _operations(), schema(), test_error_response_is_documented_and_shared_req14(), test_error_responses_declare_their_keys_req14(), test_exactly_the_four_v1_routes_are_documented_req14(), test_fastapi_validation_schemas_are_removed_req14(), test_health_documents_no_error_responses_req14(), test_invoice_declares_pdf_success_and_pdf_unavailable_req14() (+2 more)
+Cohesion: 0.12
+Nodes (10): _operations(), schema(), test_docs_page_is_served_req14(), test_error_response_is_documented_and_shared_req14(), test_error_responses_declare_their_keys_req14(), test_fastapi_validation_schemas_are_removed_req14(), test_health_documents_no_error_responses_req14(), test_invoice_declares_pdf_success_and_pdf_unavailable_req14() (+2 more)
 
 ### Community 180 - "9.1 Sistema de Tags (Labels) — 27 Labels em 5 Categorias"
 Cohesion: 0.13
@@ -1552,12 +1655,12 @@ Cohesion: 0.13
 Nodes (14): 4.10 NOTAS DE CONTEXTO E REGISTRO DE SANEAMENTO DOS ARTEFATOS VIVOS, 4.1 IDENTIFICAÇÃO E PROPÓSITO, 4.2 ABORDAGEM DE GERENCIAMENTO DE CUSTOS, 4.3 LINHA DE BASE DE CUSTOS, 4.4 ESTRATÉGIAS DE MEDIÇÃO E CONTROLE, 4.5.1 Licenças Aprovadas (Whitelist), 4.5.2 Governança da Auditoria de Licenças, 4.5 REGRAS DE CONFORMIDADE FOSS (+6 more)
 
 ### Community 187 - "name"
-Cohesion: 0.24
-Nodes (15): steps, steps, steps, kill-switch-check, name, runs-on, steps, timeout-minutes (+7 more)
+Cohesion: 0.35
+Nodes (14): steps, steps, steps, steps, steps, steps, steps, steps (+6 more)
 
-### Community 188 - "invoice_request_strategy"
-Cohesion: 0.31
-Nodes (4): invoice_party_strategy(), invoice_request_strategy(), rate_quote_strategy(), simulation_request_strategy()
+### Community 188 - "InvoiceRequest"
+Cohesion: 0.08
+Nodes (13): settings, debug, log_level, Opção B: **Persistência de Entrada + Reprocessamento (Source of Truth = Request)**, Surprising Connections (you probably didn't know these), InvoiceRequest, invoice_party_strategy(), invoice_request_strategy() (+5 more)
 
 ### Community 189 - "test_validate_afa_output.py"
 Cohesion: 0.24
@@ -1667,13 +1770,13 @@ Nodes (12): 1. Classical register, 2. Particles carry structure, 3. Each fact on
 Cohesion: 0.15
 Nodes (12): 1. Fragments, 2. One word when one word is enough, 3. Each fact once, 4. Cut conjunctions only when order survives, 5. Tool runs, 6. Never perform, Floor, Persistence (+4 more)
 
-### Community 216 - "Runbook / Playbook Operacional — COGME"
+### Community 216 - "calculate"
 Cohesion: 0.06
-Nodes (30): 1.1 Topologia (Docker Compose — `docker-compose.yml`), 1.2 Variáveis de Ambiente Críticas (`.env` — **NUNCA versionar valores reais**), 1. VISÃO GERAL DA INFRAESTRUTURA, 2.1 Pré-Deploy Checklist (Gate 3 — Obrigatório), 2.2 Passos de Deploy (Produção), 2.3 Deploy Staging (Preview / PR), 2.4 Validação Pós-Deploy (Smoke Tests), 2. DEPLOY (Procedimento Padrão) (+22 more)
+Nodes (18): Breakdown, calculate(), _gross(), q2(), q6(), _run(), test_breakdown_is_frozen(), test_each_of_the_five_regimes_section2() (+10 more)
 
 ### Community 217 - "back"
-Cohesion: 0.15
-Nodes (13): cap_drop, depends_on, image, mem_limit, networks, pids_limit, read_only, restart (+5 more)
+Cohesion: 0.12
+Nodes (16): cap_drop, depends_on, image, mem_limit, networks, pids_limit, read_only, restart (+8 more)
 
 ### Community 218 - "Proposta de Spec — Contas multiusuário, dados da prestadora e histórico de invoices"
 Cohesion: 0.08
@@ -1752,8 +1855,8 @@ Cohesion: 0.15
 Nodes (12): 2.7.1.0 Reuniões Presenciais da Equipe (em sala de aula), 2.7.1.1 Comunicação Vertical, 2.7.1.2 Comunicação Horizontal, 2.7.1 Comunicação Interna, 2.7.2 Comunicações Externas, 2.7.3.1 Matriz de Comunicação (consolidada), 2.7.3.2 Diagrama de Fluxo das Comunicações, 2.7.3.3 Monitoramento das Comunicações (+4 more)
 
 ### Community 238 - "jobs"
-Cohesion: 0.15
-Nodes (12): concurrency, cancel-in-progress, group, jobs, lint, name, needs, runs-on (+4 more)
+Cohesion: 0.12
+Nodes (16): concurrency, cancel-in-progress, group, name, needs, runs-on, timeout-minutes, jobs (+8 more)
 
 ### Community 239 - "run_parser"
 Cohesion: 0.24
@@ -1776,8 +1879,8 @@ Cohesion: 0.17
 Nodes (12): 3. Criar o Symlink `active.md` (Elo Runtime), 4. Verificação de Integridade, 6. Registro de Lição Aprendida (LA-005), 7. Checklist de Validação Final, 8. Próxima Ação Recomendada, Capacidades, Critérios de Aceite Técnicos (REQ-08, REQ-09), Fluxos Críticos de UAT (Prioridade Máxima) (+4 more)
 
 ### Community 244 - "migrate"
-Cohesion: 0.17
-Nodes (12): condition, db, cap_drop, command, depends_on, image, mem_limit, networks (+4 more)
+Cohesion: 0.11
+Nodes (17): internal, cap_drop, command, image, mem_limit, networks, pids_limit, restart (+9 more)
 
 ### Community 245 - "REV-PLANO-GER-002 — Rodada 2 de revisão do Plano de Gerenciamento v2.1.0"
 Cohesion: 0.17
@@ -1908,8 +2011,8 @@ Cohesion: 0.18
 Nodes (10): ADR-005 — Regime do TAP: Freeze e Emenda Controlada (Baseline Vivo), Consequências, Contexto, Decisão, Governança, Histórico, Kill Switch, Mecanismo de Emenda (Delta Log) (+2 more)
 
 ### Community 277 - "ccb-log.md"
-Cohesion: 0.15
-Nodes (12): RAT-2026-10-31-A01 — Ratificação e Promulgação da Constituição v1.2.0, RAT-2026-10-31-A09 — Ratificação e Promulgação de Artefatos COGME (Rodada de Governança), RAT-2026-10-31-A10 — Ratificação da Governança CI/CD e DevSecOps, RAT-2026-10-31-A11 — Correção de Falsos Positivos no CI/CD e Security Scan, RAT-2026-10-31-A11 — Normalização, Sanitize e Ratificação do OKB v5.2.0 (Template Canônico OKB-TEMPLATE-CANON v1.0), RAT-2026-10-31-A12 — Correção de Falso Positivo no Health Check de Agentes, RAT-2026-10-31-A13 — Correção de Falsos Positivos de Credenciais no CI/CD, RAT-2026-10-31-A14 — Correção de Falsos Positivos de Credenciais no CI/CD (ADR-LOG-001) (+4 more)
+Cohesion: 0.12
+Nodes (15): ARQ-2026-11-18-P02 — Arquivamento das Propostas 017–023 (Superseded), CR-009-APP-2026-11-17 — Aprovação da CR-009 (Ciclo de vida do usuário, clientes multiempresa, dashboard e fluxo anônimo), RAT-2026-10-31-A01 — Ratificação e Promulgação da Constituição v1.2.0, RAT-2026-10-31-A09 — Ratificação e Promulgação de Artefatos COGME (Rodada de Governança), RAT-2026-10-31-A10 — Ratificação da Governança CI/CD e DevSecOps, RAT-2026-10-31-A11 — Correção de Falsos Positivos no CI/CD e Security Scan, RAT-2026-10-31-A11 — Normalização, Sanitize e Ratificação do OKB v5.2.0 (Template Canônico OKB-TEMPLATE-CANON v1.0), RAT-2026-10-31-A12 — Correção de Falso Positivo no Health Check de Agentes (+7 more)
 
 ### Community 278 - "Pipeline de Teste e Verificação — SDDAI integrado ao COGME"
 Cohesion: 0.18
@@ -1932,8 +2035,8 @@ Cohesion: 0.10
 Nodes (12): _breaker(), QuietProvider, ScriptedRepository, _service(), test_cancelled_reads_do_not_open_the_circuit(), test_half_open_admits_one_probe_under_concurrency(), test_open_breaker_skips_repository_and_serves_source(), test_open_breaker_without_sources_or_cache_is_unavailable() (+4 more)
 
 ### Community 283 - "3. Estrutura do corpo (obrigatório, nesta ordem)"
-Cohesion: 0.11
-Nodes (17): 1. Nomenclatura do arquivo (ADR-018), 2. Frontmatter YAML (obrigatório, único bloco), 3.10 Ratificação (instrumento CCB, data, status) — omitir se ainda não ratificada, 3.11 Referências (lista de links a arquivos canônicos), 3.1 Tabela de metadados (logo após o frontmatter), 3.2 Contexto, 3.3 Decisão, 3.4 Alternativas Consideradas (tabela, quando houver ≥ 2 opções) (+9 more)
+Cohesion: 0.09
+Nodes (21): 1. Nomenclatura do arquivo (ADR-018), 2. Frontmatter YAML (obrigatório, único bloco), 3.10 Ratificação (instrumento CCB, data, status) — omitir se ainda não ratificada, 3.11 Referências (lista de links a arquivos canônicos), 3.1 Tabela de metadados (logo após o frontmatter), 3.2 Contexto, 3.3 Decisão, 3.4 Alternativas Consideradas (tabela, quando houver ≥ 2 opções) (+13 more)
 
 ### Community 284 - "caveman-explore/package.json"
 Cohesion: 0.20
@@ -2007,9 +2110,9 @@ Nodes (9): ADR-008 — Grafia Canônica do Stakeholder-Avaliador, Consequências
 Cohesion: 0.20
 Nodes (9): ADR-009 — Contagem Canônica da EAP (12 Fases + 37 Pacotes de Trabalho), Consequências, Contexto, Decisão, Governança, kill_switch, Opções Consideradas, Sobreposição de Decisões (+1 more)
 
-### Community 302 - "Relatório de Evidências — Testes Unitários SDDAI"
-Cohesion: 0.20
-Nodes (9): 1. Sumário Executivo, 2. Métricas de Aceitação, 4.1. Saída Completa do Pytest, 4.2. Cobertura por Componente, 4. Evidências de Execução, 5. Conformidade com Constitution COGME, 6. Conclusão, 7. Assinatura de Evidências (+1 more)
+### Community 302 - "Phase 3 Plan [cr-009-produ-o-gate-g2-specs-024-026] Summary"
+Cohesion: 0.17
+Nodes (11): Completion Notes, Deviations from Plan, Frontmatter, Known Stubs, One-liner, Phase, Phase 3 Plan [cr-009-produ-o-gate-g2-specs-024-026] Summary, Plan (+3 more)
 
 ### Community 303 - "Subseções Obrigatórias"
 Cohesion: 0.20
@@ -2051,21 +2154,21 @@ Nodes (8): Capacidades, Critérios de Aceite (DoD), Domínio de Negócio COGME, 
 Cohesion: 0.22
 Nodes (8): Capacidades, Hierarquia de Autoridade, Identidade, Persona: PM — Gerente de Projeto PMBOK 7ª, Premissas Vigentes (TAP §9), Regime de Freeze do TAP (NC-00), Regras de Redação, Restrições
 
-### Community 313 - "Business Case — COGME"
-Cohesion: 0.07
-Nodes (29): 10.1 Recomendação, 10.2 Decisão CCB (Aguardando Ratificação), 10. RECOMENDAÇÃO E DECISÃO CCB, 11. CONTROLE DE VERSÕES, 1. SUMÁRIO EXECUTIVO, 2.1 Contexto, 2.2 Dor Quantificada (Estimativa), 2. PROBLEMA / OPORTUNIDADE (+21 more)
+### Community 313 - "Proposta de Spec — Perfil, dashboard, CNPJ secundário e página Sobre"
+Cohesion: 0.04
+Nodes (45): 10.1 Backend, 10.2 Frontend/e2e, 10.3 Visual, 10.4 Segurança, 10. Testes obrigatórios, 11. Rollback, 1. Ideia / Draft, 2.1 O que muda (+37 more)
 
 ### Community 314 - "agent"
 Cohesion: 0.22
 Nodes (8): agent, cli_command, environment, name, parameters, version, custom_param_1, custom_param_2
 
-### Community 315 - "clone_invoice"
-Cohesion: 0.17
-Nodes (3): clone_invoice(), test_next_invoice_number_different_issuers_independent(), test_next_invoice_number_sequential_per_issuer_month()
+### Community 315 - "test_validate_nexus_yaml_green"
+Cohesion: 0.18
+Nodes (8): 6.1. Gap — `canon_run.py` e `canon_guard.py` Não Executados, 6.2. Gap — Testes Pré-existentes Incompletos, 6.3. Gap — Sem Métrica de Tempo de Execução, 6. Gaps e Limitações Identificadas, 7. Recomendações de Melhoria, _parse_json_from_output(), test_dag_validator_green(), test_validate_nexus_yaml_green()
 
-### Community 316 - "services"
-Cohesion: 0.13
-Nodes (14): internal, command, image, networks, ports, restart, name, networks (+6 more)
+### Community 316 - "front"
+Cohesion: 0.33
+Nodes (6): command, image, networks, ports, restart, front
 
 ### Community 317 - "healthcheck"
 Cohesion: 0.56
@@ -2199,9 +2302,9 @@ Nodes (4): main(), optimize(), _read_meminfo(), validate_optimize_result()
 Cohesion: 0.25
 Nodes (7): APIs de câmbio, Governança operacional, Hardware, INPUT CANÔNICO SUBORDINADO — COGME v4.1.1, Motor e modelo SDD, Protocolo de agentes, Stack do produto
 
-### Community 350 - "test_adversarial_mcp.py"
-Cohesion: 0.11
-Nodes (16): ledger_call(), test_delivery_reply_required_nao_booleano_rejeitado(), test_delivery_task_id_fora_padrao_rejeitado(), test_hub_acao_invalida_rejeitada(), test_hub_auto_delegacao_rejeitada(), test_hub_envelope_legacy_mapeado(), test_ledger_campos_ausentes_rejeitado(), test_ledger_exit_status_texto_rejeitado() (+8 more)
+### Community 350 - "Proposta de Spec — Clientes multiempresa, clientes internacionais e fluxo anônimo"
+Cohesion: 0.04
+Nodes (44): 10.1 Unidade, 10.2 Integração, 10.3 Anônimo, 10.4 e2e, 10. Testes obrigatórios, 11. Rollback, 1. Ideia / Draft, 2.1 O que muda (+36 more)
 
 ### Community 351 - "sandbox"
 Cohesion: 0.25
@@ -2263,9 +2366,9 @@ Nodes (7): ADR-004 — Controle de Progresso via Tasklists Markdown (Rejeição 
 Cohesion: 0.25
 Nodes (7): ADR-005 — Regime de Freeze do TAP e Precedência Intra-TAP, Alternativas Consideradas, Consequências e Trade-offs, Contexto, Decisão, Governança, Histórico
 
-### Community 366 - "test_invoice.py"
-Cohesion: 0.08
-Nodes (18): MemoryRepository, stored_quote(), captured(), _html_of(), _payload(), test_client_cannot_send_precomputed_values_req04(), test_frankfurter_quote_has_no_bulletin_row_req04(), test_fresh_quote_has_no_stale_warning_req01() (+10 more)
+### Community 366 - "Shift-Left — COGME"
+Cohesion: 0.22
+Nodes (8): 1. Identificação, 2. Convenção de ID de caso de teste, 3. Catálogo de casos de teste (unidade e integração — implementados), 5. Status agregado (baseline UAT rodada 001, 13/11/2026), Camada Funcional/E2E (Playwright + Screenplay Pattern), Camada Integração (pytest + TestClient), Camada Unidade (pytest), Especificação de Caso de Teste — COGME (ISTQB CTFL)
 
 ### Community 367 - "ADR-015 — Emenda de Marco: Repactuação Temporal do M2 (Regime ADR-013-a)"
 Cohesion: 0.25
@@ -2303,9 +2406,9 @@ Nodes (7): 1. Objetivo, 2. Padrão de nomeação, 3. Tabela 1 — prefixo por di
 Cohesion: 0.15
 Nodes (6): fm(), run(), test_gate_promulgation(), test_nexus_contract(), test_onda5_chain_wiring(), test_registry_covers_onda_5()
 
-### Community 376 - "rate_service.py"
-Cohesion: 0.09
-Nodes (6): QuoteRepository, RateProvider, _failure_cause(), _Flight, _to_contract(), _utc_now()
+### Community 376 - "account.py"
+Cohesion: 0.06
+Nodes (19): AccountLifecycleEvent, LifecycleEventType, Country, Base, Invoice, InvoiceSequence, ProviderCnpj, ProviderProfile (+11 more)
 
 ### Community 377 - "Evaluate an optimization observation"
 Cohesion: 0.29
@@ -2324,8 +2427,8 @@ Cohesion: 0.29
 Nodes (6): 1. METADADOS DE VERSIONAMENTO (frontmatter YAML obrigatorio), 2. CLASSES TAXONOMICAS ORTOGONAIS (10 — papeis sem sobreposicao), 3. MAPA DE PARTICAO MIGRATORIA (somente o MAPEAMENTO e custodia desta spec; a migracao executavel pertence ao downstream TA-0012 e a aprovacao humana (CCB)), 4. CICLO DE VIDA E NOMENCLATURA DE VERSÃO, 5. FORNECIMENTO PARA O CICLO SDD (como o SDD v2 consome a taxonomia), 6. GATES DA TAXONOMIA (checklist pre/post-migration; violacao = BLOCK fail-closed)
 
 ### Community 381 - "environment"
-Cohesion: 0.57
-Nodes (8): environment, COGME_DATABASE_URL, COGME_LOG_LEVEL, COGME_PROVIDER_TIMEOUT_SECONDS, COGME_RATE_TTL_SECONDS, environment, environment, environment
+Cohesion: 0.33
+Nodes (16): environment, COGME_DATABASE_URL, COGME_ENV, COGME_LOG_LEVEL, COGME_LOGIN_PEPPER, COGME_PROVIDER_TIMEOUT_SECONDS, COGME_RATE_TTL_SECONDS, COGME_SMTP_FROM (+8 more)
 
 ### Community 382 - "Backlog Kanban COGME — conversão REQ → User Story (Gap E.4)"
 Cohesion: 0.29
@@ -2447,17 +2550,17 @@ Nodes (7): ADR-003 — Métricas de Fluxo (Substituição de EVM), Alternativas 
 Cohesion: 0.29
 Nodes (7): ADR-004 — Controle de Progresso via Tasklists Markdown (Rejeição de Subissues), Alternativas Consideradas, Consequências e Trade-offs, Contexto, Decisão, Governança, Histórico
 
-### Community 412 - "ADR-005 — Regime de Freeze do TAP e Precedência Intra-TAP"
-Cohesion: 0.29
-Nodes (7): ADR-005 — Regime de Freeze do TAP e Precedência Intra-TAP, Alternativas Consideradas, Consequências e Trade-offs, Contexto, Decisão, Governança, Histórico
+### Community 412 - "scripts/cli.py"
+Cohesion: 0.15
+Nodes (10): main(), backup_dir_for(), compress_file(), file_lock(), is_sensitive_path(), legacy_backup_dir_for(), lock_path_for(), _state_base_dir() (+2 more)
 
 ### Community 413 - "ADR-016 — Backend do MVP: cálculo, cotações, persistência e contrato de erro"
-Cohesion: 0.29
-Nodes (7): ADR-016 — Backend do MVP: cálculo, cotações, persistência e contrato de erro, Alternativas consideradas, Consequências, Contexto, Pendências para decisão humana, Ratificação, Referências
+Cohesion: 0.25
+Nodes (8): ADR-016 — Backend do MVP: cálculo, cotações, persistência e contrato de erro, Alternativas consideradas, Consequências, Contexto, Decisões, Pendências para decisão humana, Ratificação, Referências
 
-### Community 414 - "simulate"
-Cohesion: 0.21
-Nodes (8): SimulationRequest, FakeRateService, _quote(), test_fixed_regime_uses_amount_as_gross_section2(), test_response_carries_the_constant_notice(), test_response_serialises_money_as_plain_strings(), test_simulate_builds_response_from_section2_example(), test_stale_quote_propagates_to_response()
+### Community 414 - "SessionData"
+Cohesion: 0.11
+Nodes (17): create_invoice(), _to_invoice_response(), update_invoice(), InvoiceCreateDraft, InvoiceResponse, InvoiceUpdate, _FakeRateService, _FakeRepo (+9 more)
 
 ### Community 415 - "Plano de Consolidação Estrutural (Desbloat) — COGME"
 Cohesion: 0.29
@@ -2468,12 +2571,12 @@ Cohesion: 0.29
 Nodes (7): 4.1 Identificação e propósito, 4.2 Abordagem de prevenção e linha de base, 4.3 Medição e controle, 4.4 Regras de conformidade FOSS, 4.5 Mudanças, fracasso e escalation, 4.6 Notas de Contexto e rastreabilidade, 4 GERENCIAMENTO DOS CUSTOS
 
 ### Community 417 - "env"
-Cohesion: 0.52
-Nodes (7): env, env, COGME_DATABASE_URL, POSTGRES_DB, POSTGRES_PASSWORD, POSTGRES_USER, env
+Cohesion: 0.44
+Nodes (9): env, env, COGME_DATABASE_URL, POSTGRES_DB, POSTGRES_PASSWORD, POSTGRES_USER, env, env (+1 more)
 
 ### Community 418 - "final-status"
-Cohesion: 0.29
-Nodes (7): if, name, needs, runs-on, steps, timeout-minutes, final-status
+Cohesion: 0.33
+Nodes (6): if, name, needs, runs-on, timeout-minutes, final-status
 
 ### Community 419 - "0.4 DECLARAÇÃO IDEOLÓGICA CANÔNICA (NÃO-NEGOCIÁVEL)"
 Cohesion: 0.29
@@ -2483,9 +2586,9 @@ Nodes (7): 0.4 DECLARAÇÃO IDEOLÓGICA CANÔNICA (NÃO-NEGOCIÁVEL), Alinhament
 Cohesion: 0.29
 Nodes (7): 12.1 Orchestrator (L0), 12.2 Specialist (L1/L2/L3), 12.3 Generalist, 12.4 Skill (OpenCode), 12.5 MCP, 12.6 Master Analyst, 12. AGENT PRODUCTION TEMPLATES
 
-### Community 422 - "invoice_service.py"
-Cohesion: 0.13
-Nodes (9): brl(), date_br(), datetime_br(), _get_environment(), money_br(), _number_br(), percent_br(), rate_br() (+1 more)
+### Community 422 - "_get_environment"
+Cohesion: 0.11
+Nodes (13): brl(), date_br(), datetime_br(), _get_environment(), money_br(), _number_br(), percent_br(), rate_br() (+5 more)
 
 ### Community 423 - "caveman-discover/SKILL.md"
 Cohesion: 0.33
@@ -2655,13 +2758,13 @@ Nodes (5): Artefatos de controle, Inventário de MCPs — COGME, Novos MCPs, Pri
 Cohesion: 0.17
 Nodes (11): 1. Contexto e decisão, 2. Escopo real (levantado em 2026-11-05), 3.1 Frontmatter comum (todos os `*.md`), 3.2 Campos específicos por tipo de artefato, 3.3 Regras de governança, 3. Norma proposta (resumo — não aplicada ainda), 4. Cálculo de esforço, 5. Cronograma indicativo (não vinculante) (+3 more)
 
-### Community 465 - "env.py"
-Cohesion: 0.09
-Nodes (8): do_run_migrations(), get_database_url(), run_async_migrations(), run_migrations_offline(), run_migrations_online(), upgrade(), Base, InvoiceSequence
+### Community 465 - "sqlalchemy"
+Cohesion: 0.07
+Nodes (17): 1. Dependências diretas de runtime, downgrade(), upgrade(), upgrade(), upgrade(), upgrade(), upgrade(), upgrade() (+9 more)
 
-### Community 466 - "aplicar_norma_templates.py"
-Cohesion: 0.27
-Nodes (10): build_frontmatter(), collect_md_files(), dump_frontmatter(), expected_type(), extract_title(), main(), now_iso(), parse_frontmatter() (+2 more)
+### Community 466 - "simulations.py"
+Cohesion: 0.14
+Nodes (14): get_simulation(), list_simulations(), post_simulation(), _require_session(), save_simulation(), _session_factory(), SimulationSavedResponse, SimulationSaveRequest (+6 more)
 
 ### Community 467 - "Proposta de Spec — Preenchimento de Tempo por Regime de Jornada"
 Cohesion: 0.12
@@ -2780,12 +2883,12 @@ Cohesion: 0.33
 Nodes (5): COGME CI/CD Compliance Summary, Key Achievements, Next Steps, Scheduled Compliance Verification, Verification Metrics
 
 ### Community 496 - "build-layers"
-Cohesion: 0.33
-Nodes (6): name, needs, runs-on, steps, timeout-minutes, build-layers
+Cohesion: 0.40
+Nodes (5): name, needs, runs-on, timeout-minutes, build-layers
 
 ### Community 497 - "sdd-validation"
-Cohesion: 0.33
-Nodes (6): sdd-validation, name, needs, runs-on, steps, timeout-minutes
+Cohesion: 0.40
+Nodes (5): sdd-validation, name, needs, runs-on, timeout-minutes
 
 ### Community 498 - "0.2 AFA-ULTIMATE PROTOCOLS (NON-NEGOTIABLE)"
 Cohesion: 0.33
@@ -2799,9 +2902,9 @@ Nodes (6): 0.3 INTEGRATION CONTRACT WITH EXISTING ECOSYSTEM, AFA variant disposi
 Cohesion: 0.33
 Nodes (6): 0.6.1 Decision Framework (Agent Type Selection), 0.6.2 Simplex Method Application (Agent Configuration Optimization), 0.6.3 Pareto Optimality (Multi-Objective Trade-offs), 0.6.4 Constraint Satisfaction Problem (CSP) for Mandatory Sections, 0.6.5 Reasoning Budget Allocation (per forging task), 0.6 REASONING ARCHITECTURE — OPTIMIZATION ALGORITHMS (NOVO v1.3.0)
 
-### Community 502 - "Plano de Testes / QA Plan — COGME"
-Cohesion: 0.08
-Nodes (23): 10. APROVAÇÃO E CONTROLE DE VERSÕES, 1.1 Propósito, 1.2 Escopo, 1.3 Referências, 1. INTRODUÇÃO, 2.1 Pirâmide de Testes (Alvo), 2.2 Critérios de Qualidade (Quality Gates) — **Bloqueiam Merge/Deploy**, 2. ESTRATÉGIA DE TESTES (Test Strategy) (+15 more)
+### Community 502 - "datetime_utc_strategy"
+Cohesion: 0.27
+Nodes (4): datetime_utc_strategy(), simulation_params_strategy(), stored_quote_strategy(), stored_quote_strategy_latest()
 
 ### Community 504 - "Parecer Jurídico — LGPD e GDPR para Expansão Multiusuário COGME"
 Cohesion: 0.06
@@ -3055,9 +3158,9 @@ Nodes (5): name, needs, runs-on, timeout-minutes, agent-health
 Cohesion: 0.40
 Nodes (5): name, needs, runs-on, timeout-minutes, contract-network
 
-### Community 569 - "foss-compliance"
-Cohesion: 0.40
-Nodes (5): name, needs, runs-on, timeout-minutes, foss-compliance
+### Community 569 - "Guia Prático de Adequação PMBOK 7 Híbrido — COGME"
+Cohesion: 0.05
+Nodes (38): 10.1 Criando Novo Artefato, 10.2 Submetendo Mudança (CR), 10.3 Preparando Gate, 10. CHECKLIST DE USO RÁPIDO (Para Novos Membros), 11. HASH DE RATIFICAÇÃO CCB, 12.1 Mapa: Dependências Entre Artefatos, 12.2 Mapa: Fluxo de Informação (SSOT), 12. ANEXOS — MAPAS MENTAIS COMPLEMENTARES (+30 more)
 
 ### Community 570 - "on"
 Cohesion: 0.40
@@ -3075,13 +3178,13 @@ Nodes (5): 0. ROLE AND SCOPE, Absolute objective:, Form preference:, What you AR
 Cohesion: 0.50
 Nodes (3): Boundaries, Output, Scan
 
-### Community 574 - "_compress_file_locked"
-Cohesion: 0.14
-Nodes (8): build_compress_prompt(), build_fix_prompt(), _compress_file_locked(), _is_smaller_than_body(), mask_code_blocks(), read_source(), restore_code_blocks(), split_frontmatter()
+### Community 574 - "Runbook: Workflow de Aprovação CR + Spec → Produção de Recursos"
+Cohesion: 0.06
+Nodes (32): 10. CONFIGURAÇÃO GITHUB ACTIONS (`.github/workflows/cr-spec-approval.yml`), 11. CHECKLIST DE DOd (Definition of Done) — Por Recurso, 12. CONTROLE DE VERSÕES, 1. ARQUITETURA DO WORKFLOW, 2.1 Gatilho Principal (GitHub Actions), 2.2 Condições de Disparo (AND), 2. GATILHOS (Triggers), 3.1 Setup do Ambiente (+24 more)
 
-### Community 575 - "Template de Proposta de Nova Spec"
-Cohesion: 0.12
-Nodes (15): 10. Próximos Passos (após avaliação), 11. Metadados de Controle, 1. Ideia / Draft (obrigatório), 2. Análise de Derivação Multi-Spec (NOVO), 3. Viabilidade Técnica (para avaliação do agente), 4. Viabilidade Negocial (para avaliação do agente), 5. Custo Técnico Estimado, 6. Aderência ao Projeto / Produto (+7 more)
+### Community 575 - "Runbook / Playbook Operacional — COGME"
+Cohesion: 0.06
+Nodes (30): 1.1 Topologia (Docker Compose — `docker-compose.yml`), 1.2 Variáveis de Ambiente Críticas (`.env` — **NUNCA versionar valores reais**), 1. VISÃO GERAL DA INFRAESTRUTURA, 2.1 Pré-Deploy Checklist (Gate 3 — Obrigatório), 2.2 Passos de Deploy (Produção), 2.3 Deploy Staging (Preview / PR), 2.4 Validação Pós-Deploy (Smoke Tests), 2. DEPLOY (Procedimento Padrão) (+22 more)
 
 ### Community 576 - "2.4.2 Recursos"
 Cohesion: 0.50
@@ -3315,9 +3418,13 @@ Nodes (3): 1. Baseline observado (dados reais de auditoria), 2. Baseline simulad
 Cohesion: 0.25
 Nodes (7): 1. Identificação do projeto (Tabela 1 do plano-integral), 2. Objeto e justificativa, 3. EAP canônica, 4. Marcos (TAP §6, núcleo blindado sob ADR-013-a), 5. Regime de controle, 6. Rastreabilidade, TAP COGME — Termo de Abertura do Projeto (linha de base v3, congelada)
 
-### Community 693 - "file_lock"
-Cohesion: 0.20
-Nodes (4): file_lock(), LockTimeoutError, _try_lock_nonblocking(), _unlock()
+### Community 688 - "env.py"
+Cohesion: 0.16
+Nodes (5): do_run_migrations(), get_database_url(), run_async_migrations(), run_migrations_offline(), run_migrations_online()
+
+### Community 693 - "test_onda7_agents.py"
+Cohesion: 0.12
+Nodes (10): 3. Subutilização (AC3), fm(), run(), test_gate_promulgation(), test_nexus_contract(), test_no_loose_ends_too_early(), test_onda7_chain_wiring(), test_registry_covers_onda_7() (+2 more)
 
 ### Community 694 - "Plano de Consolidação Estrutural — COGME"
 Cohesion: 0.25
@@ -3331,9 +3438,9 @@ Nodes (8): 1. Template canônico de specs (MANIFEST.md §1.1–1.2), 2. Norma de
 Cohesion: 0.25
 Nodes (7): ADR-018 — Norma de nomenclatura de arquivos de artefato do projeto COGME, Alternativas consideradas, Consequências, Contexto, Decisão, Ratificação, Referências
 
-### Community 697 - "benchmark.py"
-Cohesion: 0.43
-Nodes (4): benchmark_pair(), count_tokens(), main(), print_table()
+### Community 697 - "PLAN — Fase 1.5: Especs/Integridade (TA-061 a TA-065)"
+Cohesion: 0.13
+Nodes (14): Arquivos de referência, Contexto (do HANDOFF), Critérios de aceite (checkáveis), Escopo (TA-061 a TA-065), Fase, Goal, PLAN — Fase 1.5: Especs/Integridade (TA-061 a TA-065), Próximo comando (+6 more)
 
 ### Community 698 - "Relatório Analítico: Persistência e Recuperação de Invoices"
 Cohesion: 0.09
@@ -3355,45 +3462,53 @@ Nodes (9): 1. Objetivo, 2. Escopo, 3. Frontmatter comum (obrigatório em todo *.
 Cohesion: 0.15
 Nodes (12): 1.1 Cotação comercial de referência, 1.2 Spread cambial, 1.3 IOF sobre o valor em reais, 1.4 Valor Efetivo Total (VET), 1. Passo a passo do cálculo realista, 2. Alíquotas vigentes do IOF (2026), 3. Exemplo prático (Compra de US$ 1.000), 4. Cuidados para uma simulação fiel (+4 more)
 
-### Community 703 - "write_bytes_atomic"
-Cohesion: 0.33
-Nodes (3): write_bytes_atomic(), _write_target(), write_text_atomic()
+### Community 703 - "create_app"
+Cohesion: 0.11
+Nodes (14): create_app(), rate_limit_exceeded_handler(), _csrf_should_protect(), test_csrf_exempt_auth_paths(), test_csrf_protected_mutable_route(), test_csrf_safe_methods_not_protected(), test_rate_limit_exceeded_handler_shape(), test_b01_cadastro_nao_loga_pii() (+6 more)
 
 ### Community 704 - "Proposta de Spec — Ciclo de vida da conta, dormência, exclusão e privacidade LGPD/GDPR"
 Cohesion: 0.11
 Nodes (17): 10. Decisões Bloqueadoras (CR-008) — **TODAS DEVEM SER RESOLVIDAS ANTES DE QUALQUER IMPLEMENTAÇÃO**, 11. Próximos Passos (ORDEM OBRIGATÓRIA), 1. Ideia / Draft, 2. Análise de Derivação Multi-Spec, 3. Viabilidade Técnica, 4. Viabilidade Negocial, 5. Custo Técnico Estimado, 6. Aderência ao Projeto / Produto (+9 more)
 
-### Community 705 - "_body_candidate_error"
-Cohesion: 0.33
-Nodes (3): _body_candidate_error(), first_nonblank_line(), _frontmatter_block_count()
+### Community 705 - "Auditoria de conformidade — CR-009 (pré-produção)"
+Cohesion: 0.07
+Nodes (23): 10. Gates de liberação, 11. Plano de correção priorizado, 12. Rastreabilidade CR/spec, 13. Veredito, 14. Assinatura, 1. Sumário executivo, 2.1 O que foi auditado, 2.2 Como foi verificado (+15 more)
 
 ### Community 706 - "SPEC spec-016 — preenchimento-tempo-jornada-v1 — Preenchimento de tempo por regime de jornada"
 Cohesion: 0.12
 Nodes (15): 1. Contexto e origem, 2. Resolução de conflitos, 3.1 Regime horário (hourly), 3.2 Regime diário (daily), 3.3 Regime semanal (weekly), 3.4 Regime mensal (monthly), 3.5 Tabela de feriados, 3. Requisitos funcionais por regime (+7 more)
 
+### Community 707 - "clients.py"
+Cohesion: 0.24
+Nodes (14): Client, activate_client(), ClientRequest, ClientResponse, create_client(), deactivate_client(), get_client(), list_clients() (+6 more)
+
 ### Community 708 - "PROP-0001-pagina-FOSS-audits.md"
 Cohesion: 0.13
 Nodes (14): 10. Próximos Passos (após avaliação), 11. Metadados de Controle, 1. Ideia / Draft (obrigatório), 2. Análise de Derivação Multi-Spec, 3. Viabilidade Técnica (para avaliação do agente), 4. Viabilidade Negocial (para avaliação do agente), 5. Custo Técnico Estimado, 6. Aderência ao Projeto / Produto (+6 more)
+
+### Community 709 - "routers/provider.py"
+Cohesion: 0.21
+Nodes (13): ProviderBankAccount, BankAccountRequest, BankAccountResponse, create_bank_account(), delete_bank_account(), get_profile(), list_bank_accounts(), ProviderProfileRequest (+5 more)
 
 ### Community 710 - "steps"
 Cohesion: 0.13
 Nodes (14): runs-on, steps, jobs, auditoria, name, on, schedule, workflow_dispatch (+6 more)
 
 ### Community 711 - "AUDITORIA DE CONFORMIDADE — CR-002 Gate 1"
-Cohesion: 0.06
-Nodes (30): 10. Assinatura dos Auditores, 11. Próximos Passos Pós-Ratificação CCB, 1. Sumário Executivo, 2.1 Validação Formal, 2.2 Alterações de Escopo (Art. 1.2, 1.3), 2.3 CHANGELOG e ADR-LOG, 2. Análise Constitucional (Emenda E-20), 3.1 Base Legal e Controlador (DEC-01/02) (+22 more)
+Cohesion: 0.18
+Nodes (10): 10. Assinatura dos Auditores, 11. Próximos Passos Pós-Ratificação CCB, 1. Sumário Executivo, 6. Conformidade com Princípios Constitucionais, 7. Plano de Implementação (ADR-018) — Validação de Viabilidade, 8. Achados MENORES (Action Items — Não Bloqueiam), 9. Recomendação de Liberação, AUDITORIA DE CONFORMIDADE — CR-002 Gate 1 (+2 more)
 
 ### Community 712 - "validar_frontmatter_md.py"
-Cohesion: 0.31
-Nodes (5): collect_md_files(), expected_type(), main(), parse_frontmatter(), validate()
+Cohesion: 0.29
+Nodes (6): collect_md_files(), expected_type(), is_excluded(), main(), parse_frontmatter(), validate()
 
 ### Community 713 - "Proposta de Spec — Perfil da prestadora e contas bancárias de depósito"
 Cohesion: 0.12
 Nodes (15): 10. Decisões Bloqueadoras (CR-004), 11. Próximos Passos, 1. Ideia / Draft, 2. Análise de Derivação Multi-Spec, 3. Viabilidade Técnica, 4. Viabilidade Negocial, 5. Custo Técnico Estimado, 6. Aderência ao Projeto / Produto (+7 more)
 
 ### Community 714 - "test_dispatcher_and_sync.py"
-Cohesion: 0.15
-Nodes (9): coletar_arquivos(), main(), prefixo_esperado(), validar(), run(), seed_registry(), TestDispatcher, TestSync (+1 more)
+Cohesion: 0.17
+Nodes (6): run(), seed_registry(), seeded_registry(), TestDispatcher, TestSync, write_task()
 
 ### Community 717 - "Proposta de Spec — Carteira de clientes e estado ativo/inativo"
 Cohesion: 0.12
@@ -3404,12 +3519,12 @@ Cohesion: 0.12
 Nodes (15): 10. Decisões Bloqueadoras (CR-007), 11. Próximos Passos, 1. Ideia / Draft, 2. Análise de Derivação Multi-Spec, 3. Viabilidade Técnica, 4. Viabilidade Negocial, 5. Custo Técnico Estimado, 6. Aderência ao Projeto / Produto (+7 more)
 
 ### Community 719 - "RepositoryError"
-Cohesion: 0.11
-Nodes (5): Invoice, RepositoryError, SqlAlchemyInvoiceRepository, StoredInvoice, get_invoice_repo()
+Cohesion: 0.18
+Nodes (3): RepositoryError, SqlAlchemyInvoiceRepository, StoredInvoice
 
-### Community 720 - "Template de Plano de Testes / QA Plan — COGME"
-Cohesion: 0.08
-Nodes (23): 10. APROVAÇÃO E CONTROLE DE VERSÕES, 1.1 Propósito, 1.2 Escopo, 1.3 Referências, 1. INTRODUÇÃO, 2.1 Pirâmide de Testes (Alvo), 2.2 Critérios de Qualidade (Quality Gates) — **Bloqueiam Merge/Deploy**, 2. ESTRATÉGIA DE TESTES (Test Strategy) (+15 more)
+### Community 720 - "2. DETALHAMENTO POR NFR (Evidência e Validação)"
+Cohesion: 0.07
+Nodes (29): 1. MATRIZ RESUMO (ISO/IEC 25010), 2.1 Performance Efficiency, 2.2 Compatibility, 2.3 Usability, 2.4 Reliability, 2.5 Security, 2.6 Maintainability, 2.7 Portability (+21 more)
 
 ### Community 721 - "CR-003 — Identidade, aliases de login, senha, sessões e recuperação"
 Cohesion: 0.15
@@ -3439,17 +3554,21 @@ Nodes (12): 1. Origem e relação com CR-002, 2.1 Funcionalidades, 2.2 Modelo de
 Cohesion: 0.15
 Nodes (12): 1. Origem e relação com CR-002, 2.1 Funcionalidades, 2.2 Modelo de dados (tabela nova), 2.3 Regras de integridade, 2. Escopo desta CR, 3. Decisões requeridas do CCB/PO (BLOQUEADORAS PARA TODAS AS DEMAIS CRs), 4. Artefatos afetados, 5. Spec proposta (+4 more)
 
+### Community 728 - "CSRFMiddleware"
+Cohesion: 0.07
+Nodes (22): CSRFMiddleware, send_wrapper(), _generate_csrf_token(), _json_error(), test_b06_csrf_cookie_nao_httponly_e_logout_nao_isento(), test_csrf_middleware_cookie_sem_header(), test_csrf_middleware_get_sem_cookie(), app() (+14 more)
+
 ### Community 729 - "📋 CARDS — COLUNA BACKLOG (Todos os entregáveis M1)"
 Cohesion: 0.18
 Nodes (11): **CARD 01** — Finalização Plano de Escopo v1.0, **CARD 02** — Plano de Cronograma v1.0, **CARD 03** — Plano de Custos v1.0, **CARD 04** — Plano de Qualidade v1.0 + 12 PDCAs + Ishikawa, **CARD 05** — Plano de Recursos v1.0, **CARD 06** — Plano de Comunicações v1.0, **CARD 07** — Plano de Riscos v1.0, **CARD 08** — Configurar GitHub Projects (SSOT) (+3 more)
 
 ### Community 730 - "SPEC spec-004 — backend-mvp-v1 — Backend do MVP COGME (REQ-01 a REQ-05, REQ-07, REQ-14, REQ-16, REQ-17)"
-Cohesion: 0.06
-Nodes (35): 10.1 Contrato HTTP, 10.2 Autenticação e Sessão (SPEC-017), 10.3 Persistência e Autorização, 10.3 Segurança (ADR-019), 10. Critérios de Aceite e Testes (v2.0.0), 11. Rastreabilidade, 12. Fora de Escopo (YAGNI) — Mantido, 13. Metadados da Emenda (+27 more)
+Cohesion: 0.14
+Nodes (13): 11. Rastreabilidade, 12. Fora de Escopo (YAGNI) — Mantido, 13. Metadados da Emenda, 1. Contexto e origem, 3.1 Stack Tecnológica, 3.2 Containerização (ADR-010, Art. 10.1), 3. Arquitetura e Stack (Mantida + Extensões), 7. Proteção CSRF (ADR-019 §4.6) (+5 more)
 
-### Community 731 - "pytest"
-Cohesion: 0.08
-Nodes (19): _message_for(), _accept_bulletin(), _as_utc(), _isolated_settings(), test_invalid_database_url_fails_startup_without_echo(), test_missing_database_url_fails_startup(), test_startup_builds_rate_service_and_health_answers(), test_accept_bulletin_rejects() (+11 more)
+### Community 731 - "test_coverage_gap.py"
+Cohesion: 0.03
+Nodes (48): _message_for(), _token_hash(), _mask_cnpj(), _mask_cpf(), _mask_email(), _reject_json_constant(), _today_in_brasilia(), _utc_now() (+40 more)
 
 ### Community 732 - "CCB-003 — Deliberação CR-008: Ciclo de Vida, LGPD/GDPR e Expansão Multiusuário"
 Cohesion: 0.10
@@ -3459,53 +3578,53 @@ Nodes (19): 1. Contexto, 2. Decisões Deliberadas, 3. Aprovação dos Artefatos 
 Cohesion: 0.40
 Nodes (4): Answer, Outcome, Q: Ativar CR para cadastro de usuários, sessões, simulações e histórico de invoices; avaliar e publicar proposta de spec e levantar specs diretamente relacionadas., Source Nodes
 
-### Community 735 - "cogme_sddai_trainer/cli.py"
-Cohesion: 0.28
-Nodes (3): main(), train(), validate_train_result()
+### Community 734 - "SPEC spec-024 — gate-g2-ratificacao-v1 — Gate G2: ratificação specs 024/025/026 e liberação CR-009 produção"
+Cohesion: 0.20
+Nodes (9): 1.1 Origem, 1.2 Decisões de Base (CCB Fase 2, 2026-11-22), 1. Contexto e Origem, 2. Objetivo do Gate G2, 3. Critérios de Aceite do Gate G2, 4. Rastreabilidade, 5. Fora de Escopo (YAGNI), CHANGELOG (+1 more)
+
+### Community 735 - "Auditoria de integridade — specs 017–022 (TA-062, Fase 1.5)"
+Cohesion: 0.20
+Nodes (9): 1. Escopo, 2. Resultado por critério, 3. Critérios de execução da fase (verificados), 4. Gaps e recomendações, 5. Conclusão, 6. Parcela half-duplex, Auditoria de integridade — specs 017–022 (TA-062, Fase 1.5), Gap 1 — MAPA TA-0031 ausente (6/6 specs) (+1 more)
 
 ### Community 736 - "4. Controles de Implementação (Checklist SPEC-017)"
 Cohesion: 0.11
 Nodes (17): 1. Contexto, 2. Ativos e Superfície de Ataque, 3. Threat Model (STRIDE), 4.1 Hash de Senha (ADR-017), 4.2 Sessão, 4.3 Recuperação de Senha, 4.4 Aliases de Login (`user_login_identifiers`), 4.5 Autorização por Recurso (Owner Check) (+9 more)
 
-### Community 737 - "📋 Cards do Backlog M1"
-Cohesion: 0.22
-Nodes (9): 📋 Cards do Backlog M1, **M1-01** — Plano de Integração v1.0, **M1-02** — Plano de Escopo v1.0, **M1-03** — Plano de Cronograma v1.0, **M1-04** — Plano de Custos v1.0, **M1-05** — Plano de Qualidade v1.0, **M1-06** — Configurar GitHub Projects (SSOT), **M1-07** — Submeter M1 via GitHub (+1 more)
+### Community 737 - "Business Case — COGME"
+Cohesion: 0.07
+Nodes (29): 10.1 Recomendação, 10.2 Decisão CCB (Aguardando Ratificação), 10. RECOMENDAÇÃO E DECISÃO CCB, 11. CONTROLE DE VERSÕES, 1. SUMÁRIO EXECUTIVO, 2.1 Contexto, 2.2 Dor Quantificada (Estimativa), 2. PROBLEMA / OPORTUNIDADE (+21 more)
 
-### Community 738 - "NOTAS ADJACENTES — Projeto COGME"
-Cohesion: 0.33
-Nodes (6): Documento de Registro Operacional, Governança Visual, Configuração SSOT e Ações Ad-Hoc, NOTA DE ENCERRAMENTO, NOTAS ADJACENTES — Projeto COGME, SEÇÃO 0 — METADADOS E CONTEXTO, SEÇÃO 9 — CONSOLIDAÇÃO DE INCONSISTÊNCIAS SANADAS, Versão 2.0 — Revisão Completa com Conteúdo Integral
+### Community 738 - "Coluna: CONCLUÍDO (resolvidos)"
+Cohesion: 0.07
+Nodes (28): 1. Visão geral do board (estado atual), 2. Métricas de qualidade (resultado da última avaliação), 3. Incidentes — cartões do board (prioridade, impacto, severidade, RCA), 4. RCA consolidada (causas-raiz por categoria), 5. RTM — resumo de rastreabilidade preenchida (detalhe em docs/qualidade/10-rtm-qualidade.md), 6. Plano de ação (próximos passos), 7. Assinatura do board, 8. Referências cruzadas (+20 more)
 
-### Community 739 - "NR-1 — Auditoria da Seção 1 (Integração): v1.0 → v2.0"
-Cohesion: 0.33
-Nodes (6): NR-1.1 — Achados Críticos (bloqueantes para a Seção 1), NR-1.2 — Achados Externos (não bloqueiam a Seção 1; reportar ao GP), NR-1.3 — Auditoria de Invasão de Escopo entre Áreas (Seção 1), NR-1.4 — Registro de Diagramas da Seção 1 (4 inserções; rejeições justificadas), NR-1.5 — Checklist de Validação da Seção 1 (v2.0), NR-1 — Auditoria da Seção 1 (Integração): v1.0 → v2.0
-
-### Community 740 - "SEÇÃO 4 — BACKLOG DO MARCO M1 — CONSOLIDADO (21 CARDS)"
-Cohesion: 0.40
-Nodes (5): 4.1 Resumo dos 21 Cards, 4.2 Cards que Receberão Tasklist (ADR-004), 4.3 Mecanismo de Contorno: Tasklist como Substituto de Subissue, 4.4 Distribuição de Trabalho por Membro, SEÇÃO 4 — BACKLOG DO MARCO M1 — CONSOLIDADO (21 CARDS)
-
-### Community 741 - "SEÇÃO 5 — POLÍTICA DE ADRs E INTEGRAÇÃO DOCUMENTAL (ADITIVO OKB)"
-Cohesion: 0.40
-Nodes (5): 5.1 Gatilhos para Criação de Novas ADRs, 5.2 ADR Tardia — Trade-offs e Política de Regularização, 5.3 Arquitetura de Integração Documental, 5.4 Ciclo de Vida da ADR no Fluxo Kanban, SEÇÃO 5 — POLÍTICA DE ADRs E INTEGRAÇÃO DOCUMENTAL (ADITIVO OKB)
-
-### Community 742 - "SEÇÃO 2 — LITERATURA DE APOIO: QUESTÕES ADJACENTES"
-Cohesion: 0.50
-Nodes (4): 2.1 Área de Conhecimento para Rede de Projeto e Caminho Crítico, 2.2 Estruturação do Cumulative Flow Diagram (CFD) para Demonstração Formal, 2.3 Resolução da Inconsistência de Fronteira do M1, SEÇÃO 2 — LITERATURA DE APOIO: QUESTÕES ADJACENTES
-
-### Community 743 - "SEÇÃO 7 — ESTRUTURA DO REPOSITÓRIO"
-Cohesion: 0.50
-Nodes (4): 7.1 Estrutura Canônica Proposta, 7.2 Estrutura Atual Real do Repositório (Mapeamento), 7.3 Mapeamento: Arquivo Atual → Novo Local (Principais), SEÇÃO 7 — ESTRUTURA DO REPOSITÓRIO
-
-### Community 744 - "detect.py"
-Cohesion: 0.22
-Nodes (5): detect_file_type(), _is_code_line(), _is_json_content(), _is_yaml_content(), should_compress()
-
-### Community 745 - "Template de Release Notes — COGME"
+### Community 739 - "BrowseTheWeb"
 Cohesion: 0.12
-Nodes (16): 10. DEPENDÊNCIAS E INFRAESTRUTURA, 11. TESTES E QUALIDADE (Quality Gate Results), 12. PROCEDIMENTOS OPERACIONAIS (Runbook Ref), 13. ISSUES CONHECIDOS (Known Issues), 14. AGRADECIMENTOS / CRÉDITOS, 15. LINKS ÚTEIS, 1. CABEÇALHO DA RELEASE, 2. RESUMO EXECUTIVO (1-2 parágrafos) (+8 more)
+Nodes (8): BrowseTheWeb, VisibleText, FillSimulationForm, NavigateTo, SubmitSimulation, _simulate(), test_simulacao_por_regime_exibe_liquido_formatado(), test_simulacao_usd_horario_exibe_resultado_detalhado()
 
-### Community 746 - "Template de Post-Mortem (Blameless) — COGME"
-Cohesion: 0.12
-Nodes (15): 10. APROVAÇÃO E FECHAMENTO, 11. CONTROLE DE VERSÕES, 1. CABEÇALHO DO INCIDENTE, 2. LINHA DO TEMPO (Timeline) — **Fatos apenas, sem julgamento**, 3. IMPACTO, 4.1 Declaração da Causa Raiz (1 frase), 4.2 Árvore de Causas (5 Porquês), 4.3 Fatores Contribuintes (Contributing Factors) (+7 more)
+### Community 740 - "get_current_session"
+Cohesion: 0.15
+Nodes (10): Assinatura, Auditoria de conformidade — CR-009 (pré-produção) — Versão de aprovação, Conclusão, Contagem de achados (revisão 1.2.0, 2026-11-22), Detalhe dos bloqueadores (BLOQ) sanados, Detalhe dos itens altos (H-01 a H-12) sanados, Evidências de execução, Riscos remanescentes (não bloqueiam pré-produção) (+2 more)
+
+### Community 741 - "CR-009 — Ciclo de vida do usuário, clientes multiempresa, dashboard e fluxo anônimo"
+Cohesion: 0.07
+Nodes (26): 10. Critérios para encerrar a CR, 11. Rollback, 12. Riscos e dependências, 13. LGPD e privacidade, 1. Resumo, 2. Regra aplicável e necessidade da CR, 3. Demanda declarada, 4.1 Fluxo anônimo sem persistência (+18 more)
+
+### Community 742 - "Runbook — Ciclo de Codificação e Deploy (Espec Aprovada → Stage → Aprovação de Merge)"
+Cohesion: 0.07
+Nodes (26): 10. GATE DE IMPLANTAÇÃO EM STAGE → AGUARDAR APROVAÇÃO PARA MERGE, 11. ROLLBACK E FALHAS DE PIPELINE, 12. CHECKLISTS, 13. CONTROLE DE VERSÕES, 1. OBJETIVO E ESCOPO, 2. PAPÉIS E RESPONSABILIDADES, 3. DEFINIÇÕES, 4.1 Confirma spec liberada (+18 more)
+
+### Community 744 - "test_auth.py"
+Cohesion: 0.14
+Nodes (12): _post_simulate(), test_csrf_invalid_is_403(), test_csrf_missing_is_403(), test_invoice_cross_user_is_404(), test_invoice_list_requires_session(), test_logout_returns_status(), test_response_net_invariant(), test_simulate_amount_zero_is_400() (+4 more)
+
+### Community 745 - "test_frontend_ifit.py"
+Cohesion: 0.11
+Nodes (10): client(), test_accessibility_labels(), test_features_section(), test_footer_rendered(), test_form_fields_present(), test_hero_section(), test_navbar_rendered(), test_public_routes_no_session() (+2 more)
+
+### Community 746 - "Template de Plano de Testes / QA Plan — COGME"
+Cohesion: 0.08
+Nodes (23): 10. APROVAÇÃO E CONTROLE DE VERSÕES, 1.1 Propósito, 1.2 Escopo, 1.3 Referências, 1. INTRODUÇÃO, 2.1 Pirâmide de Testes (Alvo), 2.2 Critérios de Qualidade (Quality Gates) — **Bloqueiam Merge/Deploy**, 2. ESTRATÉGIA DE TESTES (Test Strategy) (+15 more)
 
 ### Community 747 - "now"
 Cohesion: 0.19
@@ -3515,13 +3634,13 @@ Nodes (13): 2.1 Tabela `users`, 2.2 Tabela `user_login_identifiers`, 2.3 Tabela 
 Cohesion: 0.25
 Nodes (7): Community Hubs (Navigation), Corpus Check, Graph Freshness, Graph Report - COGME  (2026-11-05), Import Cycles, Knowledge Gaps, Summary
 
-### Community 750 - "Registro de Dependências e Imagens"
-Cohesion: 0.18
-Nodes (9): 9. Interoperabilidade: contrato declarado entre as três camadas, 1. Dependências diretas de runtime, 2. Dependências de desenvolvimento (`requirements-dev.txt`), 3. Dependências transitivas instaladas, 4. Imagens Docker, 5. Pendências e observações, Registro de Dependências e Imagens, downgrade() (+1 more)
-
-### Community 751 - "FakeMonotonicClock"
+### Community 750 - "_compress_file_locked"
 Cohesion: 0.14
-Nodes (4): FakeMonotonicClock, mono_clock(), repository(), utc_clock()
+Nodes (8): build_compress_prompt(), build_fix_prompt(), _compress_file_locked(), _is_smaller_than_body(), mask_code_blocks(), read_source(), restore_code_blocks(), split_frontmatter()
+
+### Community 751 - "simulate_server"
+Cohesion: 0.15
+Nodes (5): _get_client(), invoice_server(), _normalize_decimal(), proxy_v1(), simulate_server()
 
 ### Community 752 - "SPEC spec-018 — provider-profile-bank-account-v1 — Perfil da prestadora e contas bancárias de depósito"
 Cohesion: 0.14
@@ -3535,21 +3654,21 @@ Nodes (19): 1. Contexto e Origem, 2.1 Tabela `simulations` (Nova), 2.2 Emenda `i
 Cohesion: 0.09
 Nodes (21): 1. Contexto e Origem, 2.1 Fonte Canônica, 2.2 Cliente Fictício (Dummy), 2.3 Snapshot na Invoice Finalizada, 2. Regra de Idioma (CR7-D01), 3.1 Arquivos, 3.2 Macros Compartilhadas (`macros.html`), 3.3 Labels por Locale (+13 more)
 
-### Community 756 - "Template de Matriz de Rastreabilidade de Requisitos (RTM) — COGME"
-Cohesion: 0.14
-Nodes (13): 1. LEGENDA E CONVENÇÕES, 2. MATRIZ CONSOLIDADA (Visão Executiva), 3.1 Requisitos → Especificações (Forward Traceability), 3.2 Especificações → Implementação (Forward Traceability), 3.3 Implementação → Testes (Backward Traceability), 3.4 Testes → Critérios de Aceite (Validação), 3. DETALHAMENTO POR CAMADA (Opcional — para auditoria profunda), 4.1 Gaps Identificados (Requisito sem Implementação/Teste) (+5 more)
+### Community 756 - "Plano de Testes / QA Plan — COGME"
+Cohesion: 0.08
+Nodes (23): 10. APROVAÇÃO E CONTROLE DE VERSÕES, 1.1 Propósito, 1.2 Escopo, 1.3 Referências, 1. INTRODUÇÃO, 2.1 Pirâmide de Testes (Alvo), 2.2 Critérios de Qualidade (Quality Gates) — **Bloqueiam Merge/Deploy**, 2. ESTRATÉGIA DE TESTES (Test Strategy) (+15 more)
 
-### Community 757 - "performance_monitor.py"
-Cohesion: 0.21
-Nodes (7): 6. OUTPUT SCHEMA - FIELD CONTRACT, analyze_file(), main(), analyze(), _count_items(), main(), _split_sections()
+### Community 757 - "argparse"
+Cohesion: 0.07
+Nodes (20): main(), transform(), validate_transform_result(), 6. OUTPUT SCHEMA - FIELD CONTRACT, handle(), main(), analyze_file(), main() (+12 more)
 
 ### Community 758 - "SPEC spec-022 — account-lifecycle-privacy-v1 — Ciclo de vida da conta, dormência, exclusão e privacidade LGPD/GDPR executiva"
 Cohesion: 0.08
 Nodes (23): 1.1 Origem, 1.2 Decisões Ratificadas (CCB-003, 2026-11-14), 1. Contexto e Origem, 3.1 Dormência Automática (CR8-D03), 3.2 Dormência Manual, 3.3 Reativação (CR8-D04), 3.4 Exclusão Definitiva (CR8-D01), 3.5 Anonimização de Invoices Finalizadas (CR8-D01, CR8-D06) (+15 more)
 
-### Community 759 - "Template de Change Request (CR) — COGME"
-Cohesion: 0.15
-Nodes (12): 1. IDENTIFICAÇÃO DA MUDANÇA, 2.1 O que muda (Escopo da Alteração), 2.2 Por que muda (Justificativa / Causa Raiz), 2.3 Como era / Como fica (Estado Atual vs. Proposto), 2. DESCRIÇÃO DA MUDANÇA, 3. ANÁLISE DE IMPACTO (Obrigatória para Decisão CCB), 4. ALTERNATIVAS CONSIDERADAS, 5. PLANO DE IMPLEMENTAÇÃO (Se Aprovado) (+4 more)
+### Community 759 - "get_settings"
+Cohesion: 0.10
+Nodes (12): get_settings(), _pepper(), get_current_session_dep(), get_session_factory(), _build_email(), _ensure_dev_fallback_dir(), _save_dev_fallback(), send_reset_token_email() (+4 more)
 
 ### Community 760 - "SPEC spec-019 — client-directory-v1 — Carteira de clientes e estado ativo/inativo"
 Cohesion: 0.12
@@ -3559,9 +3678,9 @@ Nodes (16): 1. Contexto e Origem, 2.1 Tabela `clients`, 2. Modelo de Dados, 3.1 
 Cohesion: 0.17
 Nodes (11): 1. Contexto, 2. Decisão, 3. Cronograma Revisado M4 Estendido, 4. Cenários de Corte (se necessário), 5. Impacto no TAP v3 e Planos de Gerenciamento, 6. Ondas de Implementação (Mapeamento), 7. Riscos e Mitigações, 8. Conformidade (+3 more)
 
-### Community 764 - "_RefusingUrlFetcher"
-Cohesion: 0.07
-Nodes (25): 6. Critérios de Aceite e Testes, 6. Segurança — Controles Obrigatórios (Threat Model Aprovado), 10. Próximos Passos, 1.1 Contexto, 1.2 Premissas de Segurança, 1.3 Ativos de Alto Valor, 1. Visão Geral do Sistema, 3. Análise OWASP Top 10 2021 (+17 more)
+### Community 763 - "StoredQuote"
+Cohesion: 0.03
+Nodes (28): RepositoryError, SqlAlchemyQuoteRepository, StoredQuote, test_invalid_database_url_fails_startup_without_echo(), test_missing_database_url_fails_startup(), test_startup_builds_rate_service_and_health_answers(), _alembic_config(), _closed_port() (+20 more)
 
 ### Community 765 - "ADR-017 — Dependência Argon2id (`argon2-cffi`) para Hash de Senhas"
 Cohesion: 0.18
@@ -3575,37 +3694,37 @@ Nodes (10): CHANGELOG, DEC-01 + DEC-02: Base Legal Unificada — **APROVADA**, D
 Cohesion: 0.18
 Nodes (10): 1. Migration Alembic — `invoices` + `invoice_sequences` (F1), 2. Rota Erase — `DELETE /v1/invoices/{id}` (DEC-04), 3. Sequenciador — `next_invoice_number()` (DEC-06), 4. Templates Bilíngues (DEC-07), Assinatura CCB/GP, Decisões Consolidadas (4 Ratificações → 1 Instrumento), Especificação Técnica Consolidada (Para Implementação Paralela), Plano de Implementação Paralela (4 Workstreams Independentes) (+2 more)
 
-### Community 768 - "Template de Status Report — COGME"
-Cohesion: 0.18
-Nodes (10): 1. CABEÇALHO, 2. RESUMO EXECUTIVO (TL;DR — máx. 3 linhas), 3. MÉTRICAS DE FLUXO (Fonte: GitHub Projects / GitHub Insights), 4. PROGRESSO POR MARCO / WAVE (Roadmap M1–M4), 5. IMPEDIMENTOS E RISCOS ATIVOS (Top 5 — do RAID Log), 6. MUDANÇAS PROCESSADAS NO PERÍODO (Change Requests), 7. DECISÕES TÉCNICAS E GOVERNANÇA (ADRs / CCB Log), 8. PRÓXIMOS PASSOS (Próxima Semana / Próximo Relatório) (+2 more)
+### Community 768 - "3. Incidentes encontrados, resolvidos e pendentes"
+Cohesion: 0.09
+Nodes (22): 1. Identificação, 2. Escala de prioridade, impacto e severidade, 3. Incidentes encontrados, resolvidos e pendentes, 4. Índice de incidentes por status, 5. Assinatura, INC-001 — Falso positivo CI/CD: segurança (CUDA/cloud), INC-002 — Falso positivo CI/CD: health check de agentes, INC-003 — Falso positivo CI/CD: credenciais versionadas (+14 more)
 
-### Community 769 - "agents/conftest.py"
-Cohesion: 0.27
-Nodes (6): agents_dir(), golden_agent_md(), registry_path(), run_script(), _run_script(), scripts_dir()
+### Community 769 - "test_b10_sessao_revalida_status_usuario"
+Cohesion: 0.08
+Nodes (6): test_b10_sessao_revalida_status_usuario(), execute(), test_h01_sliding_expiration_estende_expira_em(), execute(), execute(), _FakeResult
 
-### Community 770 - "test_onda3_agents.py"
-Cohesion: 0.24
-Nodes (6): run(), test_analyst_zero_decision_contract(), test_architect_r01_coownership(), test_gate_promulgation(), test_nexus_contract(), test_registry_covers_onda_3()
+### Community 770 - "render"
+Cohesion: 0.21
+Nodes (11): auth_login(), auth_register(), auth_reset(), auth_verify_email(), clientes(), dashboard(), index(), invoice_form() (+3 more)
 
 ### Community 771 - "SPEC spec-017 — identity-access-session-v1 — Identidade, aliases, senha, sessões e recuperação"
 Cohesion: 0.11
 Nodes (18): 1. Contexto e Origem, 3.1 Cadastro, 3.2 Login, 3.3 Recuperação de Senha (CR3-D03/D04), 3.4 Sessão, 3.5 Recuperação de Senha (CR3-D03), 3.6 CSRF (CR3-D05), 3.7 Aliases e Pepper HMAC (+10 more)
 
-### Community 772 - "Matriz de Rastreabilidade de Requisitos (RTM) — COGME"
-Cohesion: 0.15
-Nodes (12): 1. LEGENDA E CONVENÇÕES, 2. MATRIZ CONSOLIDADA (Visão Executiva), 3.1 Requisitos → Especificações (Forward Traceability), 3.3 Implementação → Testes (Backward Traceability), 3.4 Testes → Critérios de Aceite (Validação), 3. DETALHAMENTO POR CAMADA (Para Auditoria Profunda), 4.1 Gaps Identificados (Requisito sem Implementação/Teste Completo), 4.2 Gold Plating Identificado (Implementação sem Requisito) (+4 more)
-
-### Community 773 - "auditoria_compliance.py"
-Cohesion: 0.27
-Nodes (5): append_vio(), main(), proximo_vio_numero(), run_passos(), salvar_relatorio()
+### Community 773 - "PLAN — Fase 3: CR-009 Produção / Gate G2 (specs 024–026)"
+Cohesion: 0.14
+Nodes (13): Arquivos de referência, Contexto, Critérios de aceite (checkáveis), Escopo (TA-301 a TA-304), Fase, Goal, PLAN — Fase 3: CR-009 Produção / Gate G2 (specs 024–026), Próximo comando (+5 more)
 
 ### Community 774 - "Ratificação CCB/GP — Parecer Auditoria/Compliance CR-002 Gate 1"
 Cohesion: 0.22
 Nodes (8): Action Items Menores (Ratificados com Prazo), CHANGELOG, Checkpoint de Governança (28/11/2026), Decisão CCB/GP, Próximos Passos Imediatos (Pós-Ratificação), Ratificação CCB/GP — Parecer Auditoria/Compliance CR-002 Gate 1, Registro de Assinatura (Art. 5.4), Veredito da Auditoria (Gate 1)
 
-### Community 775 - "Template de Plano de Comunicação — COGME"
-Cohesion: 0.25
-Nodes (7): 1. MATRIZ DE COMUNICAÇÃO (Stakeholders × Informações), 2. EVENTOS DE COMUNICAÇÃO RECORRENTES, 3. REPOSITÓRIOS DE INFORMAÇÃO (Single Source of Truth), 4. ESCALAÇÃO DE COMUNICAÇÃO (Escalação de Issues/Riscos), 5. COMUNICAÇÃO DE MUDANÇAS (Change Communication), 6. CONTROLE DE VERSÕES DO PLANO, Template de Plano de Comunicação — COGME
+### Community 775 - "Procedimento de Manutenção Contínua de Artefatos"
+Cohesion: 0.10
+Nodes (19): 1.1 Pre-commit Hook (Local), 1.2 CI Pipeline (GitHub Actions), 1. HOOKS DE VALIDAÇÃO (CI/CD), 2.1 `scripts/verificar_cross_refs.py`, 2. SCRIPT DE VERIFICAÇÃO DE CROSS-REFERENCES, 3.1 `scripts/sanitize_artifacts.py`, 3. SCRIPT DE SANITIZAÇÃO AUTOMÁTICA, 4.1 Semanal (Toda Segunda-feira) (+11 more)
+
+### Community 776 - "Settings"
+Cohesion: 0.18
+Nodes (4): Settings, test_config_log_level_invalid(), test_config_log_level_not_string(), test_settings_database_url_invalido()
 
 ### Community 777 - "2. Modelo STRIDE"
 Cohesion: 0.29
@@ -3615,57 +3734,393 @@ Nodes (7): 2.1 Spoofing (Falsificação de Identidade), 2.2 Tampering (Adultera�
 Cohesion: 0.29
 Nodes (6): ADRs Autorizadas (para emissão imediata), Decisões CR2-D01 a CR2-D09 — APROVADAS, Emenda Constitucional E-20 — RATIFICADA, Próximos Passos Imediatos, Registro de Decisões CCB/GP — CR-002, Rollback (se necessário)
 
-### Community 779 - "RAID Log — COGME"
-Cohesion: 0.29
-Nodes (6): 1. RISCOS (Risk Register), 2. PREMISSAS (Assumptions Log), 3. ISSUES (Problemas Abertos / Issue Log), 4. DEPENDÊNCIAS (Dependency Log), 5. CONTROLE DE MUDANÇAS DO RAID LOG, RAID Log — COGME
+### Community 779 - "Termo de Encerramento / Lições Aprendidas — COGME"
+Cohesion: 0.11
+Nodes (18): 10. CONTROLE DE VERSÕES, 1. IDENTIFICAÇÃO DO PROJETO, 2.1 Marcos Entregues (Checklist Final), 2.2 Itens Fora de Escopo (Confirmados Não Entregues), 2. ESCOPO ENTREGUE vs. PLANEJADO, 3. ACEITE FINAL (Formal Sign-off), 4. MÉTRICAS FINAIS (Project Performance), 5.1 Governança e Processo (+10 more)
 
-### Community 780 - "Template de RAID Log — COGME"
-Cohesion: 0.29
-Nodes (6): 1. RISCOS (Risk Register), 2. PREMISSAS (Assumptions Log), 3. ISSUES (Problemas Abertos / Issue Log), 4. DEPENDÊNCIAS (Dependency Log), 5. CONTROLE DE MUDANÇAS DO RAID LOG, Template de RAID Log — COGME
+### Community 780 - "require_owner"
+Cohesion: 0.14
+Nodes (16): 2. Resolução de conflitos, 4.1 Simulação (Existente — Mantido), 4.2 Identidade e Autenticação (NOVO — SPEC-017), 4.3 Prestadora e Contas Bancárias (NOVO — SPEC-018), 4.4 Clientes (NOVO — SPEC-019), 4.5 Simulações Salvas (NOVO — SPEC-020), 4.6 Invoices (EMENDADO — SPEC-007 + SPEC-020), 4.7 Lifecycle Conta (NOVO — SPEC-022) (+8 more)
 
 ### Community 781 - "json"
 Cohesion: 0.09
 Nodes (10): _finalize(), main(), run_component(), run_pipeline(), run_perf(), TestPerformanceMonitor, run_rag(), TestRagIndexer (+2 more)
 
-### Community 782 - "Plano de Comunicação — COGME"
+### Community 782 - "Question"
+Cohesion: 0.14
+Nodes (3): Question, ElementPresent, PageTitle
+
+### Community 783 - "FakeInvoiceRepository"
+Cohesion: 0.15
+Nodes (10): SessionData, FakeInvoiceRepository, _make_stored_invoice(), _RepoSemUpdate, test_clone_invoice_fluxos_404_409_e_sucesso(), test_erase_invoice_fluxos_404_409_e_sucesso(), test_finalize_invoice_fluxos_404_409_e_sucesso(), test_get_invoice_pdf_renderiza_com_monkeypatch() (+2 more)
+
+### Community 785 - "Template de Release Notes — COGME"
+Cohesion: 0.12
+Nodes (16): 10. DEPENDÊNCIAS E INFRAESTRUTURA, 11. TESTES E QUALIDADE (Quality Gate Results), 12. PROCEDIMENTOS OPERACIONAIS (Runbook Ref), 13. ISSUES CONHECIDOS (Known Issues), 14. AGRADECIMENTOS / CRÉDITOS, 15. LINKS ÚTEIS, 1. CABEÇALHO DA RELEASE, 2. RESUMO EXECUTIVO (1-2 parágrafos) (+8 more)
+
+### Community 786 - "DecimalJsonRoute"
+Cohesion: 0.14
+Nodes (10): ADR-016 — Backend do MVP: cálculo, cotações, persistência e contrato de erro, Alternativas consideradas, Consequências, Contexto, Decisões, Pendências para decisão humana, Ratificação, Referências (+2 more)
+
+### Community 787 - "audit_trail"
+Cohesion: 0.12
+Nodes (15): audit_trail, action, decision, dod, exit_status, notes, receiver, ref (+7 more)
+
+### Community 788 - "integration/conftest.py"
+Cohesion: 0.05
+Nodes (19): create_engine(), create_session_factory(), _alembic_config(), auth_client(), client(), clock(), _create_session_for_user(), db_client() (+11 more)
+
+### Community 789 - "common.py"
+Cohesion: 0.09
+Nodes (20): 3. Achados bloqueadores (BLOQ), B-01 — PII em log de cadastro, B-02 — Hash de identidade não é HMAC e hash interno não tem sal, B-03 — Senha em PBKDF2; Argon2id inativo por import quebrado, B-04 — Numeração de invoice colide entre emissores, B-05 — Cross-owner em `client_id` e `simulation_id` de invoice, B-06 — CSRF double-submit inutilizável; logout isento, B-07 — Reset de senha não entrega o token e link 404 (+12 more)
+
+### Community 790 - "Template de Post-Mortem (Blameless) — COGME"
+Cohesion: 0.12
+Nodes (15): 10. APROVAÇÃO E FECHAMENTO, 11. CONTROLE DE VERSÕES, 1. CABEÇALHO DO INCIDENTE, 2. LINHA DO TEMPO (Timeline) — **Fatos apenas, sem julgamento**, 3. IMPACTO, 4.1 Declaração da Causa Raiz (1 frase), 4.2 Árvore de Causas (5 Porquês), 4.3 Fatores Contribuintes (Contributing Factors) (+7 more)
+
+### Community 791 - "Template de Proposta de Nova Spec"
+Cohesion: 0.12
+Nodes (15): 10. Próximos Passos (após avaliação), 11. Metadados de Controle, 1. Ideia / Draft (obrigatório), 2. Análise de Derivação Multi-Spec (NOVO), 3. Viabilidade Técnica (para avaliação do agente), 4. Viabilidade Negocial (para avaliação do agente), 5. Custo Técnico Estimado, 6. Aderência ao Projeto / Produto (+7 more)
+
+### Community 792 - "Plano de Testes — COGME (ISTQB CTFL)"
+Cohesion: 0.12
+Nodes (15): 10. Aprovação, 1. Identificação, 2. Escopo de teste, 3. Abordagem de teste (pirâmide + Shift-Left), 4. Critérios de entrada e saída, 5. Estratégia de automação, 6. Entregáveis de teste (artefatos ISTQB), 7. Recursos e responsabilidades (RACI, spec-010 §3.4) (+7 more)
+
+### Community 793 - "clone_invoice"
+Cohesion: 0.08
+Nodes (13): InvoiceRepository, clone_invoice(), CloneResponse, download_invoice_pdf(), erase_invoice(), finalize_invoice(), get_invoice_pdf(), get_invoice_repo() (+5 more)
+
+### Community 794 - "Release Notes v1.0.0 — COGME MVP (M1 Concluído)"
+Cohesion: 0.12
+Nodes (15): 10. TESTES E QUALIDADE (Quality Gate Results), 11. PROCEDIMENTOS OPERACIONAIS (Runbook Ref), 12. ISSUES CONHECIDOS (Known Issues), 13. AGRADECIMENTOS / CRÉDITOS, 14. LINKS ÚTEIS, 1. RESUMO EXECUTIVO, 2. NOVIDADES (Added) — Novas Funcionalidades, 3. MELHORIAS (Changed) — Alterações em Funcionalidades Existentes (+7 more)
+
+### Community 795 - "decrypt_value"
+Cohesion: 0.29
+Nodes (4): decrypt_value(), encrypt_value(), _fernet_key(), test_h04_bank_data_encrypted()
+
+### Community 796 - "cogme_sddai_trainer/cli.py"
+Cohesion: 0.28
+Nodes (3): main(), train(), validate_train_result()
+
+### Community 797 - "Handoff — Fase 1.5: Especs/Integridade (TA-061 a TA-065)"
+Cohesion: 0.12
+Nodes (15): Arquivos de referência, Contexto, Critérios de aceitação por tarefa, Critérios de aceite globais (Fase 1.5), Dependências, Handoff — Fase 1.5: Especs/Integridade (TA-061 a TA-065), Objetivo, Próximo comando após esta fase (+7 more)
+
+### Community 798 - "test_emissao_invoice_funcional.py"
+Cohesion: 0.15
+Nodes (4): actor_named(), FillInvoiceForm, GenerateInvoice, test_emissao_invoice_gera_pdf_para_download()
+
+### Community 799 - "AUD-2611-01 — Auditoria de registry + ledger + circuito de roteamento (TA-0032)"
+Cohesion: 0.13
+Nodes (14): 10. Verificação dos critérios de aceite (AC1–AC9), 11. Escalonamento (decisão Humano/CCB — Art. 5.1), 1. Escopo e método, 2.1 Camadas — `AGENT_TOPOLOGY` (scripts/validate_nexus_yaml.py:15-71), 2.2 Regras de roteamento vigentes (`scripts/nexus_dispatcher.py`), 2.3 Desvios doc↔código do dispatcher (achado), 2. Mapa do circuito (AC2), 4. Desvio de função (AC4) (+6 more)
+
+### Community 800 - "aplicar_norma_templates.py"
+Cohesion: 0.27
+Nodes (10): build_frontmatter(), collect_md_files(), dump_frontmatter(), expected_type(), extract_title(), main(), now_iso(), parse_frontmatter() (+2 more)
+
+### Community 801 - "test_h02_create_client_duplicate_tax_409"
+Cohesion: 0.12
+Nodes (5): _pdf_falso(), test_h02_create_client_duplicate_tax_409(), _run(), test_post_invoice_devolve_pdf_com_monkeypatch(), _receive()
+
+### Community 802 - "SPEC spec-025 — producao-cr-009-validacao-v1 — Validação de produção CR-009 (17 BLOQ + 12 ALTO) e critérios de release v1.0"
+Cohesion: 0.22
+Nodes (8): 1.1 Origem, 1.2 Blockeres da Fase 2 (já resolvidos), 1. Contexto e Origem, 3. Critérios de Validação de Produção, 4. Rastreabilidade, 5. Fora de Escopo (YAGNI), CHANGELOG, SPEC spec-025 — producao-cr-009-validacao-v1 — Validação de produção CR-009 (17 BLOQ + 12 ALTO) e critérios de release v1.0
+
+### Community 803 - "Template de Matriz de Rastreabilidade de Requisitos (RTM) — COGME"
+Cohesion: 0.14
+Nodes (13): 1. LEGENDA E CONVENÇÕES, 2. MATRIZ CONSOLIDADA (Visão Executiva), 3.1 Requisitos → Especificações (Forward Traceability), 3.2 Especificações → Implementação (Forward Traceability), 3.3 Implementação → Testes (Backward Traceability), 3.4 Testes → Critérios de Aceite (Validação), 3. DETALHAMENTO POR CAMADA (Opcional — para auditoria profunda), 4.1 Gaps Identificados (Requisito sem Implementação/Teste) (+5 more)
+
+### Community 804 - "2. DETALHAMENTO POR DECISÃO"
+Cohesion: 0.14
+Nodes (13): 1. RESUMO DAS DECISÕES, 2. DETALHAMENTO POR DECISÃO, 3. ALTERAÇÕES DE CRONOGRAMA (MILESTONES), 4. PRÓXIMAS AÇÕES (EXECUÇÃO IMEDIATA), 5. ANEXOS, 5. RATIFICAÇÃO CCB, CCB — Decisões CR-008: Ciclo de Vida da Conta, Dormência, Exclusão e Privacidade LGPD/GDPR, CR8-D01 — Retenção/Anonimização/Eliminação Invoices Pós-Exclusão (+5 more)
+
+### Community 805 - "CCB — Decisões Finais CR-008 (D04, D05, D06) + Aprovações Gate 1/2"
+Cohesion: 0.14
+Nodes (13): 1. RESUMO DAS DECISÕES FINAIS, 2. DETALHAMENTO DAS DECISÕES PENDENTES, 3. THREAT MODEL — EXECUÇÃO AUTORIZADA, 4. SESSÃO CCB — VALIDAÇÃO IMPLEMENTAÇÃO, 5. GATE 1 — BUSINESS CASE RATIFICADO, 6. GATE 2 M1 — TEST PLAN, NFRs, SPECs M1, 7. RATIFICAÇÃO CCB FINAL, 8. PRÓXIMOS PASSOS (EXECUÇÃO IMEDIATA) (+5 more)
+
+### Community 806 - "Contexto da Disciplina de Qualidade de Software — COGME"
+Cohesion: 0.14
+Nodes (13): 1. Objetivo, 2. Escopo da disciplina, 3.1 Pirâmide de Testes, 3.2 Shift-Left, 3. Frameworks aplicados transversalmente, 4. Automação de testes, 5. Matriz de Rastreabilidade (RTM), 6. Artefatos ISTQB produzidos (+5 more)
+
+### Community 807 - "PLAN — Fase 1: Saneamento de compliance (P0–P3)"
+Cohesion: 0.14
+Nodes (13): Contexto (do discuss-phase), Critérios de aceite (checkáveis), Escopo (P0–P3), Fase, Fora de escopo (explicitamente excluídos), Goal, P0 — Desbloquear CI / auditoria compliance (fecha VIO-030/031/032; apoia TA-0068/HF-0500), P1 — Integridade dos agentes SDDAI (fecha VIO-024; apoia TA-0061/0062/0063/0064/0065) (+5 more)
+
+### Community 808 - "e2e_playwright/conftest.py"
+Cohesion: 0.18
+Nodes (4): actor(), base_url(), browser(), page()
+
+### Community 810 - "test_onda4_agents.py"
+Cohesion: 0.18
+Nodes (6): run(), test_gate_promulgation(), test_money_is_decimal_everywhere(), test_nexus_contract(), test_registry_covers_onda_4(), test_wave4_chain_wiring()
+
+### Community 811 - "_handle_http_error"
+Cohesion: 0.10
+Nodes (20): 5. Achados médios, B-16 — Handler canônico converte 401/403/422 em 500, DomainError, _handle_domain_error(), _handle_generic_error(), _handle_http_error(), _handle_validation_error(), _req_mock() (+12 more)
+
+### Community 812 - "Relatório de Completude do Sistema — COGME"
+Cohesion: 0.15
+Nodes (12): Assinatura, Calculo de completude do sistema, Completude por categoria de risco, Contagem de requisitos, Evolução da completude, Fórmula, Identificação, Interpretação (+4 more)
+
+### Community 813 - "Template de Change Request (CR) — COGME"
+Cohesion: 0.15
+Nodes (12): 1. IDENTIFICAÇÃO DA MUDANÇA, 2.1 O que muda (Escopo da Alteração), 2.2 Por que muda (Justificativa / Causa Raiz), 2.3 Como era / Como fica (Estado Atual vs. Proposto), 2. DESCRIÇÃO DA MUDANÇA, 3. ANÁLISE DE IMPACTO (Obrigatória para Decisão CCB), 4. ALTERNATIVAS CONSIDERADAS, 5. PLANO DE IMPLEMENTAÇÃO (Se Aprovado) (+4 more)
+
+### Community 814 - "6. Contrato HTTP"
+Cohesion: 0.15
+Nodes (13): 6.10 `POST /v1/auth/email/resend`, 6.11 Correção de identificador de login (suporte), 6.12 `POST /v1/account/complete-email`, 6.1 `POST /v1/auth/register`, 6.2 `POST /v1/auth/login`, 6.3 `GET /v1/auth/me`, 6.4 `PATCH /v1/auth/me`, 6.5 `PUT /v1/auth/me/email` (+5 more)
+
+### Community 815 - "Matriz de Rastreabilidade de Requisitos (RTM) — COGME"
+Cohesion: 0.15
+Nodes (12): 1. LEGENDA E CONVENÇÕES, 2. MATRIZ CONSOLIDADA (Visão Executiva), 3.1 Requisitos → Especificações (Forward Traceability), 3.3 Implementação → Testes (Backward Traceability), 3.4 Testes → Critérios de Aceite (Validação), 3. DETALHAMENTO POR CAMADA (Para Auditoria Profunda), 4.1 Gaps Identificados (Requisito sem Implementação/Teste Completo), 4.2 Gold Plating Identificado (Implementação sem Requisito) (+4 more)
+
+### Community 816 - "PLAN — Implementação das specs aprovadas (COGME)"
+Cohesion: 0.15
+Nodes (12): Contexto, CR-002 (Contas Multiusuário) — Status, Critérios de aceite spec-004 §10, Item 7 — Próximos Passos Imediatos (Pós-Ratificação) — EXECUTADOS, Item 8 — Action Items Menores (Gate 1 CR-002) — EXECUTADOS, Modelos ORM implementados (`src/backend/models/`), 🚀 ONDA 1 — LIBERADA, PLAN — Implementação das specs aprovadas (COGME) (+4 more)
+
+### Community 817 - "SPEC spec-026 — ssot-camada-5-completude-v1 — Completação da camada 5 do SSOT (constituição Art. 2) e rastreabilidade final specs/integridade"
+Cohesion: 0.22
+Nodes (8): 1.1 Origem, 1.2 Camada 5 do SSOT — Especs/Integridade, 1. Contexto e Origem, 3. Critérios de Completude da Camada 5, 4. Rastreabilidade, 5. Fora de Escopo (YAGNI), CHANGELOG, SPEC spec-026 — ssot-camada-5-completude-v1 — Completação da camada 5 do SSOT (constituição Art. 2) e rastreabilidade final specs/integridade
+
+### Community 818 - "Artefato Responsável — Implantação da Interface COGME (ifit.com)"
+Cohesion: 0.17
+Nodes (11): 1. Objetivo, 2.1 O que entra (In), 2.2 O que fica fora (Out), 2. Escopo da implantação, 3. Artefatos aderentes a criar/editar, 4. Regras de implantação, 5. Critérios de aceite (CA), 6. Rastreabilidade (+3 more)
+
+### Community 819 - "COGME"
+Cohesion: 0.17
+Nodes (11): Active, Business Context, COGME, Constraints, Context, Core Value, Key Decisions, Out of Scope (+3 more)
+
+### Community 820 - "v1 Requirements"
+Cohesion: 0.17
+Nodes (11): Auditoria de Integridade (TA-062), eap.md (TA-064), Gate G2 (Fase 3), Out of Scope, Requirements: COGME, requisitos.md (TA-065), Specs & Emendas (TA-061), tap.md (TA-063) (+3 more)
+
+### Community 822 - "Template de Status Report — COGME"
+Cohesion: 0.18
+Nodes (10): 1. CABEÇALHO, 2. RESUMO EXECUTIVO (TL;DR — máx. 3 linhas), 3. MÉTRICAS DE FLUXO (Fonte: GitHub Projects / GitHub Insights), 4. PROGRESSO POR MARCO / WAVE (Roadmap M1–M4), 5. IMPEDIMENTOS E RISCOS ATIVOS (Top 5 — do RAID Log), 6. MUDANÇAS PROCESSADAS NO PERÍODO (Change Requests), 7. DECISÕES TÉCNICAS E GOVERNANÇA (ADRs / CCB Log), 8. PRÓXIMOS PASSOS (Próxima Semana / Próximo Relatório) (+2 more)
+
+### Community 823 - "Especificação de Procedimento de Teste — COGME (ISTQB CTFL)"
+Cohesion: 0.18
+Nodes (10): 1. Identificação, 2.1 Camada Unidade — pytest, 2.2 Camada Integração — pytest + TestClient, 2.3 Camada Funcional/E2E — Playwright + Screenplay Pattern, 2. Procedimentos de execução por camada, 3. Execução no CI (gate constitucional), 4. Test Item Transmittal Report (ISTQB), 5. Ambiente e dados de teste (+2 more)
+
+### Community 824 - "Relatório Resumo de Teste — COGME (ISTQB CTFL Test Summary Report)"
+Cohesion: 0.18
+Nodes (10): 1. Identificação, 2. Resumo executivo, 3. Resultados por execução, 4. Cobertura de teste, 5. Defeitos e incidentes, 6. Avaliação de risco e confiança, 7. Conclusão e recomendação, 8. Aprovação (+2 more)
+
+### Community 825 - "Workflow de QA Otimizado — COGME"
+Cohesion: 0.18
+Nodes (10): 1. Visão geral do fluxo (estágios), 2. Estágio A — Desenvolvimento local (Shift-Left), 3. Estágio B — Pull Request (CI paralelo), 4. Estágio C — Merge e homologação, 5. Estágio D — UAT por marco, 6. Estágio E — Testes exploratórios (escopo específico), 7. Estágio F — Hotfixes (escopo específico), 8. Cadência e responsáveis (RACI) (+2 more)
+
+### Community 826 - "Regras de Resolução de Incidentes — COGME"
+Cohesion: 0.18
+Nodes (10): 1. Escala de prioridade (P), impacto (I) e severidade (S), 2. SLA de correção por classe, 3. Regras gerais de resolução, 4. Regras específicas por escopo, 5. Reabertura, 6. Rastreabilidade, E2E (Playwright Screenplay), Exploratórios (+2 more)
+
+### Community 827 - "PLAN — Fase 2: Pré-produção CR-009 (ENCERRADA)"
+Cohesion: 0.18
+Nodes (10): Arquivos-chave modificados nesta fase, Auditoria, Completude, Decisão CCB, Entregas realizadas, Fase, Goal (entregue), Métricas finais (+2 more)
+
+### Community 828 - "Parecer Jurídico — CNPJ como Dado Pessoal (LGPD Art. 5º II)"
+Cohesion: 0.20
+Nodes (9): 1. Objeto, 2. Contexto Fático, 3. Fundamento Legal, 4. Conclusão do Pareer, 5. Impacto no COGME, 6. Assinatura, GDPR, LGPD (+1 more)
+
+### Community 830 - "Especificação de Projeto de Teste — COGME (ISTQB CTFL)"
+Cohesion: 0.20
+Nodes (9): 1. Identificação, 2. Objetivo, 3. Itens de teste, 4. Técnicas de projeto de teste aplicadas, 5. Cobertura de teste por requisito, 6. Ambiente de teste, 7. Critérios de passagem e falha, 8. Rastreabilidade (+1 more)
+
+### Community 831 - "Registro de Teste — COGME (ISTQB CTFL Test Log)"
+Cohesion: 0.20
+Nodes (9): 1. Identificação, 2. Execuções registradas, 3. Detalhe por caso de teste (resumo dos casos CT-UN / CT-INT), 4. Incidentes registrados no log, 5. Assinatura do registro, Execução E-001 — Suíte pytest (baseline UAT rodada 001), Execução E-002 — Auditorias extraordinárias de CI/CD (falsos positivos), Execução E-003 — Funcional/E2E Playwright (nova camada, planejada) (+1 more)
+
+### Community 832 - "Matriz de Rastreabilidade de Requisitos — COGME (RTM)"
+Cohesion: 0.20
+Nodes (9): 1. Identificação, 2. Convenção de IDs, 3. Matriz preenchida (REQ → US → Caso de Teste → Evidência), 4. Matriz por camada de teste (inverso: Caso de Teste → REQ), 5. Casos de UAT camadas (container::F-0N) — rastreáveis à infra, 6. Cobertura analítica da rodada 001, 7. Rastreabilidade de artefatos ISTQB, 8. Declaração de conformidade (+1 more)
+
+### Community 833 - "Shift-Left — COGME"
+Cohesion: 0.33
+Nodes (5): Métricas de Shift-Left, Onde o Shift-Left acontece no COGME, Princípio, Rastreabilidade, Shift-Left — COGME
+
+### Community 835 - "_RefusingUrlFetcher"
+Cohesion: 0.08
+Nodes (22): 6. Critérios de Aceite e Testes, 6. Segurança — Controles Obrigatórios (Threat Model Aprovado), 10. Próximos Passos, 1.1 Contexto, 1.2 Premissas de Segurança, 1.3 Ativos de Alto Valor, 1. Visão Geral do Sistema, 3. Análise OWASP Top 10 2021 (+14 more)
+
+### Community 836 - "Decisão CCB — Aprovação e Ratificação da Fase 2 (Pré-produção CR-009)"
+Cohesion: 0.22
+Nodes (8): Assinatura, Contexto, Critérios de aceite da fase 2 (checkáveis), Decisão, Decisão CCB — Aprovação e Ratificação da Fase 2 (Pré-produção CR-009), Evidências, Identificação, Próximos passos
+
+### Community 837 - "Plano de Comunicação — COGME"
 Cohesion: 0.22
 Nodes (8): 1. MATRIZ DE COMUNICAÇÃO (Stakeholders × Informações), 2. EVENTOS DE COMUNICAÇÃO RECORRENTES, 3. REPOSITÓRIOS DE INFORMAÇÃO (Single Source of Truth), 4. ESCALAÇÃO DE COMUNICAÇÃO (Escalação de Issues/Riscos), 5. COMUNICAÇÃO DE MUDANÇAS (Change Communication), 6. COMUNICAÇÃO DE RISCOS E ISSUES (Risk/Issue Communication), 7. CONTROLE DE VERSÕES, Plano de Comunicação — COGME
 
-### Community 783 - "Diagrama C4 — Nível 2: Contêineres (Container Diagram)"
+### Community 838 - "Regras de Reporting, Registro e Logging de Incidentes — COGME"
+Cohesion: 0.22
+Nodes (8): 1. Canal de reporte, 2. Modelo obrigatório de registro (campos), 3. Logging e rastreabilidade, 4. Conformidade LGPD (P-04), 5. Reporting (consolidação), 6. Exemplo de entrada (INC-004, resumido), 7. Rastreabilidade, Regras de Reporting, Registro e Logging de Incidentes — COGME
+
+### Community 839 - "3. Análise LGPD/GDPR (DEC-01..07 + CP-1..CP-5)"
+Cohesion: 0.25
+Nodes (8): 3.1 Base Legal e Controlador (DEC-01/02), 3.2 Inventário Mínimo (DEC-03), 3.3 Retenção e Erase (DEC-04), 3.4 Ciclo Draft/Finalized/Clone (DEC-05), 3.5 Numeração Canônica (DEC-06), 3.6 Bilíngue (DEC-07), 3.7 Critérios de Produto Executáveis (CP-1..CP-5, spec-015 v0.3.0), 3. Análise LGPD/GDPR (DEC-01..07 + CP-1..CP-5)
+
+### Community 840 - "Diagrama C4 — Nível 2: Contêineres (Container Diagram)"
 Cohesion: 0.25
 Nodes (7): 1. Diagrama de Contêineres (Mermaid), 2. Tabela de Contêineres, 3. Comunicação e Protocolos, 4. Isolamento e Segurança (Defense in Depth), 5. Decisões Arquiteturais Relacionadas (ADRs), 6. Como Visualizar / Atualizar, Diagrama C4 — Nível 2: Contêineres (Container Diagram)
 
-### Community 785 - "Diagrama C4 — Nível 1: Contexto (System Context)"
+### Community 841 - "Diagrama C4 — Nível 1: Contexto (System Context)"
 Cohesion: 0.25
 Nodes (7): 1. Diagrama de Contexto (Mermaid), 2. Descrição dos Elementos, 3. Fluxos Principais (Use Cases), 4. Fronteiras e Isolamento (Segurança), 5. Decisões Arquiteturais Relacionadas (ADRs), 6. Como Visualizar / Atualizar, Diagrama C4 — Nível 1: Contexto (System Context)
 
-### Community 786 - "ADR-016 — Backend do MVP: cálculo, cotações, persistência e contrato de erro"
+### Community 842 - "Template de Plano de Comunicação — COGME"
 Cohesion: 0.25
-Nodes (7): ADR-016 — Backend do MVP: cálculo, cotações, persistência e contrato de erro, Alternativas consideradas, Consequências, Contexto, Pendências para decisão humana, Ratificação, Referências
+Nodes (7): 1. MATRIZ DE COMUNICAÇÃO (Stakeholders × Informações), 2. EVENTOS DE COMUNICAÇÃO RECORRENTES, 3. REPOSITÓRIOS DE INFORMAÇÃO (Single Source of Truth), 4. ESCALAÇÃO DE COMUNICAÇÃO (Escalação de Issues/Riscos), 5. COMUNICAÇÃO DE MUDANÇAS (Change Communication), 6. CONTROLE DE VERSÕES DO PLANO, Template de Plano de Comunicação — COGME
 
-### Community 787 - "Registro de Partes Interessadas — COGME"
+### Community 843 - "Registro de Partes Interessadas — COGME"
 Cohesion: 0.25
 Nodes (7): 1. MAPEAMENTO DE STAKEHOLDERS (Identificação Completa), 2. ANÁLISE DE PODER / INTERESSE (Power/Interest Matrix), 3. EXPECTATIVAS E REQUISITOS POR STAKEHOLDER, 4. ESTRATÉGIA DE ENGAJAMENTO POR FASE, 5. MATRIZ RACI (Responsabilidade por Entrega Principal) — *Resumo da Seção 8.3 do Template de Specs*, 6. CONTROLE DE MUDANÇAS DO REGISTRO, Registro de Partes Interessadas — COGME
 
+### Community 844 - "pathlib"
+Cohesion: 0.10
+Nodes (10): agents_dir(), golden_agent_md(), registry_path(), run_script(), _run_script(), scripts_dir(), run_dag(), TestDagValidator (+2 more)
+
+### Community 845 - "5. Schemas de Request/Response (Pydantic v2)"
+Cohesion: 0.29
+Nodes (7): 5.1 Auth Schemas (`src/backend/schemas/auth.py`), 5.2 Provider Schemas (`src/backend/schemas/provider.py`), 5.3 Client Schemas (`src/backend/schemas/client.py`), 5.4 Simulation Schemas (`src/backend/schemas/simulation.py`), 5.5 Invoice Schemas (`src/backend/schemas/invoice.py`), 5.6 Error Schema Unificado (Atualizado), 5. Schemas de Request/Response (Pydantic v2)
+
+### Community 846 - "handoff_parser.py"
+Cohesion: 0.31
+Nodes (4): main(), _normalize_meta(), _parse_frontmatter(), parse_handoff()
+
+### Community 847 - "Template de RAID Log — COGME"
+Cohesion: 0.29
+Nodes (6): 1. RISCOS (Risk Register), 2. PREMISSAS (Assumptions Log), 3. ISSUES (Problemas Abertos / Issue Log), 4. DEPENDÊNCIAS (Dependency Log), 5. CONTROLE DE MUDANÇAS DO RAID LOG, Template de RAID Log — COGME
+
+### Community 848 - "RAID Log — COGME"
+Cohesion: 0.29
+Nodes (6): 1. RISCOS (Risk Register), 2. PREMISSAS (Assumptions Log), 3. ISSUES (Problemas Abertos / Issue Log), 4. DEPENDÊNCIAS (Dependency Log), 5. CONTROLE DE MUDANÇAS DO RAID LOG, RAID Log — COGME
+
+### Community 849 - "Ciclo de Incidentes e Gerenciamento de Bugs — COGME"
+Cohesion: 0.29
+Nodes (6): 1. Estados do ciclo (board de qualidade), 2. Entrada no ciclo (detecção), 3. Saída do ciclo (encerramento), 4. Exemplo de percorrimento (INC-004 — testes pulados), 5. Ligação com outros documentos, Ciclo de Incidentes e Gerenciamento de Bugs — COGME
+
+### Community 851 - "cogme_sddai_loader/cli.py"
+Cohesion: 0.28
+Nodes (3): main(), ingest(), validate_ingest_result()
+
+### Community 852 - "Proposta de Spec — Identidade composta, cadastro, login e recuperação"
+Cohesion: 0.33
+Nodes (5): 11. Rollback, 1. Ideia / Draft, 8. Critérios de aceite, CHANGELOG, Proposta de Spec — Identidade composta, cadastro, login e recuperação
+
+### Community 853 - "3. Modelo de dados"
+Cohesion: 0.33
+Nodes (6): 3.1 `users`, 3.2 `user_login_identifiers`, 3.3 `email_verification_tokens`, 3.4 `identity_change_log`, 3.5 `password_reset_tokens`, 3. Modelo de dados
+
+### Community 854 - "7. Migração e legado"
+Cohesion: 0.33
+Nodes (6): 7.1 Correção da revisão Alembic, 7.2 Contas legadas, 7.3 Rehash de senha, 7.4 Backfill de documentos de emissão, 7.5 Backfill de `internal_username_hash`, 7. Migração e legado
+
+### Community 855 - "Pirâmide de Testes — COGME"
+Cohesion: 0.33
+Nodes (5): Camada 1 — Unidade (base, maior volume), Camada 3 — Funcional / E2E (topo, menor volume), Pirâmide de Testes — COGME, Rastreabilidade, Regras de composição
+
+### Community 856 - "STATE.md"
+Cohesion: 0.33
+Nodes (5): Accumulated Context, Blockers, Current Position, Project Reference, Todos
+
+### Community 857 - "pre-push-ciclo-codificacao-deploy.sh"
+Cohesion: 0.67
+Nodes (5): fail(), note(), pre-push-ciclo-codificacao-deploy.sh script, spec_field(), spec_liberada()
+
+### Community 858 - "10. Critérios de Aceite e Testes (v2.0.0)"
+Cohesion: 0.40
+Nodes (5): 10.1 Contrato HTTP, 10.2 Autenticação e Sessão (SPEC-017), 10.3 Persistência e Autorização, 10.3 Segurança (ADR-019), 10. Critérios de Aceite e Testes (v2.0.0)
+
+### Community 859 - "sys"
+Cohesion: 0.14
+Nodes (10): benchmark_pair(), count_tokens(), main(), print_table(), coletar_arquivos(), gerar(), ler_frontmatter(), check_cross_refs() (+2 more)
+
+### Community 860 - "write_bytes_atomic"
+Cohesion: 0.33
+Nodes (3): write_bytes_atomic(), _write_target(), write_text_atomic()
+
+### Community 861 - "10. Testes obrigatórios"
+Cohesion: 0.40
+Nodes (5): 10.1 Unidade, 10.2 Integração, 10.3 Segurança, 10.4 e2e, 10. Testes obrigatórios
+
+### Community 862 - "4. Normalização e validação"
+Cohesion: 0.40
+Nodes (5): 4.1 E-mail, 4.2 CPF, 4.3 CNPJ, 4.4 Senha, 4. Normalização e validação
+
+### Community 863 - "5. Hash, senha e tokens"
+Cohesion: 0.40
+Nodes (5): 5.1 Identificadores, 5.2 `internal_username_hash`, 5.3 Senha, 5.4 Tokens de sessão e reset, 5. Hash, senha e tokens
+
+### Community 864 - "lint"
+Cohesion: 0.40
+Nodes (5): lint, name, needs, runs-on, timeout-minutes
+
+### Community 865 - "playwright-e2e"
+Cohesion: 0.40
+Nodes (5): playwright-e2e, name, needs, runs-on, timeout-minutes
+
+### Community 866 - "Roadmap: COGME — Milestone v1.1"
+Cohesion: 0.33
+Nodes (5): Milestone, Phase 1.5: Especs/Integridade (CONCLUÍDA — 100%), Phase 3: CR-009 Produção / Gate G2 (specs 024–026), Phases, Roadmap: COGME — Milestone v1.1
+
+### Community 867 - "test_h09_invoice_snapshot_from_stored"
+Cohesion: 0.40
+Nodes (3): test_h09_invoice_snapshot_from_stored(), test_render_pdf_from_stored_monta_contexto(), _falso()
+
+### Community 868 - "5. Cenários de Ataque Prioritários (Attack Trees)"
+Cohesion: 0.50
+Nodes (4): 5.1 Comprometimento de Conta via Recovery, 5.2 Vazamento de Dados Bancários, 5.3 Acesso a Dados de Terceiros (Clientes), 5. Cenários de Ataque Prioritários (Attack Trees)
+
+### Community 869 - "2. Análise Constitucional (Emenda E-20)"
+Cohesion: 0.50
+Nodes (4): 2.1 Validação Formal, 2.2 Alterações de Escopo (Art. 1.2, 1.3), 2.3 CHANGELOG e ADR-LOG, 2. Análise Constitucional (Emenda E-20)
+
+### Community 870 - "5. Rastreabilidade e Consistência entre Specs"
+Cohesion: 0.50
+Nodes (4): 5.1 Cadeia de Dependências (Gates), 5.2 Consistência de Modelo de Dados, 5.3 Zero Conflitos Contratuais, 5. Rastreabilidade e Consistência entre Specs
+
+### Community 871 - "ADR-005 — Regime de Freeze do TAP e Precedência Intra-TAP"
+Cohesion: 0.29
+Nodes (7): ADR-005 — Regime de Freeze do TAP e Precedência Intra-TAP, Alternativas Consideradas, Consequências e Trade-offs, Contexto, Decisão, Governança, Histórico
+
+### Community 872 - "_body_candidate_error"
+Cohesion: 0.33
+Nodes (3): _body_candidate_error(), first_nonblank_line(), _frontmatter_block_count()
+
+### Community 873 - "2. Derivação e limites"
+Cohesion: 0.50
+Nodes (4): 2.1 O que muda, 2.2 O que não muda, 2.3 Fora de escopo, 2. Derivação e limites
+
+### Community 874 - "9. Segurança e LGPD"
+Cohesion: 0.50
+Nodes (4): 9.1 Controles obrigatórios, 9.2 LGPD/GDPR, 9.3 Ameaças e mitigação, 9. Segurança e LGPD
+
+### Community 901 - "Registro de Dependências e Imagens"
+Cohesion: 0.33
+Nodes (5): 2. Dependências de desenvolvimento (`requirements-dev.txt`), 3. Dependências transitivas instaladas, 4. Imagens Docker, 5. Pendências e observações, Registro de Dependências e Imagens
+
+### Community 903 - "4. Análise de Performance de Memória"
+Cohesion: 0.40
+Nodes (5): 4.1. Orçamento de Contexto por Sessão, 4.2. Custo de Re-hidratação Entre Sessões, 4.3. Idempotência e Duplicação Fatorial, 4.4. Separação Ortogonal L1/L2/L3 (Constitution Art. 6.5), 4. Análise de Performance de Memória
+
 ## Knowledge Gaps
 - **6 isolated node(s):** `cogme`, `cogme-sddai-cli`, `cogme-sddai-engineer`, `cogme-sddai-loader`, `cogme-sddai-memory` (+1 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 7994 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **94 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 9036 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **124 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Communities (717 total, 76 thin omitted)` connect `Communities (693 total, 73 thin omitted)` to `Graph Report - COGME  (2026-11-05)`?**
   _High betweenness centrality (0.028) - this node is a cross-community bridge._
-- **Are the 61 inferred relationships involving `Currency` (e.g. with `God Nodes (most connected - your core abstractions)` and `Suggested Questions`) actually correct?**
-  _`Currency` has 61 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 69 inferred relationships involving `Currency` (e.g. with `God Nodes (most connected - your core abstractions)` and `Suggested Questions`) actually correct?**
+  _`Currency` has 69 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `cogme`, `cogme-sddai-cli`, `cogme-sddai-engineer` to the rest of the system?**
   _6 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `StoredQuote` be split into smaller, more focused modules?**
-  _Cohesion score 0.028264758497316637 - nodes in this community are weakly interconnected._
-- **Why does `Graph Report - COGME  (2026-11-05)` connect `Graph Report - COGME  (2026-11-05)` to `Communities (693 total, 73 thin omitted)`, `schemas.py`, `pytest`, `RateSource`?**
-  _High betweenness centrality (0.026) - this node is a cross-community bridge._
-- **Are the 44 inferred relationships involving `RateSource` (e.g. with `God Nodes (most connected - your core abstractions)` and `Suggested Questions`) actually correct?**
-  _`RateSource` has 44 INFERRED edges - model-reasoned connections that need verification._
-- **Should `pytest` be split into smaller, more focused modules?**
-  _Cohesion score 0.044733044733044736 - nodes in this community are weakly interconnected._
+- **Should `_client` be split into smaller, more focused modules?**
+  _Cohesion score 0.03986562150055991 - nodes in this community are weakly interconnected._
+- **Why does `Graph Report - COGME  (2026-11-05)` connect `Graph Report - COGME  (2026-11-05)` to `Communities (693 total, 73 thin omitted)`, `InvoiceRequest`, `test_rate_service_resilience.py`, `RateQuote`?**
+  _High betweenness centrality (0.028) - this node is a cross-community bridge._
+- **Should `nexus_delivery.py` be split into smaller, more focused modules?**
+  _Cohesion score 0.11397849462365592 - nodes in this community are weakly interconnected._
+- **Why does `God Nodes (most connected - your core abstractions)` connect `RateQuote` to `_client`, `CircuitBreaker`, `Currency`, `Graph Report - COGME  (2026-11-05)`, `test_rate_service_resilience.py`, `StoredQuote`?**
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
