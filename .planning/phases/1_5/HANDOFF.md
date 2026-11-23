@@ -1,3 +1,19 @@
+---
+id: cogme-handoff-1-5
+title: COGME — Handoff Fase 1.5
+type: handoff
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .planning/phases/1_5/HANDOFF.md
+last-revised: '2026-11-22'
+lgpd-class: n/a
+tags:
+- handoff
+- fase-1-5
+---
+
 # Handoff — Fase 1.5: Especs/Integridade (TA-061 a TA-065)
 
 ## Objetivo

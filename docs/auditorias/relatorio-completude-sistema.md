@@ -1,3 +1,19 @@
+---
+id: cogme-rel-completude
+title: COGME — Relatório de Completude do Sistema
+type: audit
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- docs/auditorias/relatorio-completude-sistema.md
+last-revised: '2026-11-22'
+lgpd-class: n/a
+tags:
+- relatorio
+- completude
+---
+
 # Relatório de Completude do Sistema — COGME
 
 ## Identificação

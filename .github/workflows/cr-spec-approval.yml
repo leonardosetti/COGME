@@ -215,7 +215,12 @@ print(f'spec_issue={spec_issue}')
           python-version: '3.12'
 
       - name: Instalar Dependências
-        run: pip install -e .[dev] --quiet
+        run: |
+          pip install -e .[dev] --quiet
+          # Instalar trufflehog (binário Go) para varredura de segredos (G5)
+          curl -sSfL https://raw.githubusercontent.com/trufflesecurity/trufflehog/main/install.sh | sh -s -- -b /usr/local/bin || true
+          # Instalar license-checker (npm) para conformidade FOSS (G6)
+          npm install -g license-checker || true
 
       - name: G1 - Lint/Type (ruff + mypy strict)
         run: |
@@ -239,7 +244,7 @@ print(f'spec_issue={spec_issue}')
       - name: G4 - E2E Tests
         run: |
           echo "=== G4: E2E Tests ==="
-          pytest tests/e2e -xvs || exit 1
+          pytest tests/e2e_playwright -xvs || exit 1
           echo "✅ G4 PASS"
 
       - name: G5 - Security (SAST + Secrets)

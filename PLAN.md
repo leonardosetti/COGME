@@ -1,3 +1,19 @@
+---
+id: cogme-plan-root
+title: COGME — PLAN Raiz
+type: plano
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- PLAN.md
+last-revised: '2026-11-22'
+lgpd-class: n/a
+tags:
+- planejamento
+- raiz
+---
+
 # PLAN — Implementação das specs aprovadas (COGME)
 
 ## Contexto

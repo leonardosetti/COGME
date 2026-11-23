@@ -1,0 +1,143 @@
+# Stack de staging do COGME (espelho do docker-compose.yml para ambiente de homologação).
+# Usado pelo workflow cr-spec-approval.yml (deploy-staging).
+# Variáveis: COGME_ENV=staging, portas de staging.
+
+name: cogme-staging
+
+x-app: &app
+  build:
+    context: .
+    dockerfile: Dockerfile
+  image: cogme-back:staging
+  environment: &app-env
+    COGME_DATABASE_URL: ${COGME_DATABASE_URL:?defina COGME_DATABASE_URL no .env}
+    COGME_RATE_TTL_SECONDS: ${COGME_RATE_TTL_SECONDS:-3600}
+    COGME_PROVIDER_TIMEOUT_SECONDS: ${COGME_PROVIDER_TIMEOUT_SECONDS:-0.9}
+    COGME_LOG_LEVEL: ${COGME_LOG_LEVEL:-INFO}
+    COGME_LOGIN_PEPPER: ${COGME_LOGIN_PEPPER:?defina COGME_LOGIN_PEPPER no .env}
+    COGME_ENV: staging
+    COGME_SMTP_HOST: ${COGME_SMTP_HOST:-localhost}
+    COGME_SMTP_PORT: ${COGME_SMTP_PORT:-25}
+    COGME_SMTP_USER: ${COGME_SMTP_USER:-}
+    COGME_SMTP_PASSWORD: ${COGME_SMTP_PASSWORD:-}
+    COGME_SMTP_FROM: ${COGME_SMTP_FROM:-noreply@localhost}
+    COGME_SMTP_USE_TLS: ${COGME_SMTP_USE_TLS:-false}
+  networks: [data, edge]
+  security_opt: ["no-new-privileges:true"]
+  cap_drop: [ALL]
+
+services:
+  db:
+    image: postgres:15-alpine@sha256:54e0dd8e8cddcdbb9156c2486eed5a43eccb7214d7c6828097d41ce049fb3984
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?defina POSTGRES_USER no .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?defina POSTGRES_PASSWORD no .env}
+      POSTGRES_DB: ${POSTGRES_DB:?defina POSTGRES_DB no .env}
+    volumes:
+      - cogme_staging_pgdata:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5433:5432"
+    networks: [data]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 512m
+    pids_limit: 200
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  migrate:
+    <<: *app
+    command: ["alembic", "upgrade", "head"]
+    restart: "no"
+    networks: [data]
+    mem_limit: 256m
+    pids_limit: 100
+    depends_on:
+      db:
+        condition: service_healthy
+
+  back:
+    <<: *app
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    read_only: true
+    tmpfs: [/tmp]
+    mem_limit: 768m
+    pids_limit: 256
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/v1/health', timeout=3)"
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  front:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: cogme-back:staging
+    restart: unless-stopped
+    command: ["uvicorn", "src.frontend.app:app", "--host", "0.0.0.0", "--port", "8000"]
+    environment:
+      COGME_DATABASE_URL: ${COGME_DATABASE_URL:?defina COGME_DATABASE_URL no .env}
+      COGME_RATE_TTL_SECONDS: ${COGME_RATE_TTL_SECONDS:-3600}
+      COGME_PROVIDER_TIMEOUT_SECONDS: ${COGME_PROVIDER_TIMEOUT_SECONDS:-0.9}
+      COGME_LOG_LEVEL: ${COGME_LOG_LEVEL:-INFO}
+    ports:
+      - "127.0.0.1:8011:8000"
+    networks: [edge]
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/', timeout=3)"
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  proxy:
+    image: nginx:alpine@sha256:785835ea65db4bba6f021acc0f3be91b0fef76a53fe41f8588c6698d2aed0606
+    restart: unless-stopped
+    depends_on:
+      front:
+        condition: service_healthy
+      back:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8081:80"
+    volumes:
+      - ./infra/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    networks: [edge]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: [ALL]
+    cap_add: [CHOWN, SETUID, SETGID]
+    mem_limit: 128m
+    pids_limit: 64
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1:80/"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+networks:
+  data:
+    internal: true
+  edge: {}
+
+volumes:
+  cogme_staging_pgdata: {}
