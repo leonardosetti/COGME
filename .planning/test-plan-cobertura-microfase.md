@@ -72,7 +72,7 @@ Cada falha gera: card/issue → branch → fix → teste que cobre a falha → m
 |----|---------|-----------|--------|
 | CT-01 | `pytest tests/unit -q` | 1329 passed, 0 failed, 0 skipped | ✅ Verde |
 | CT-02 | `pytest tests/unit --cov=src --cov-report=term-missing -q` | 74% total (643 faltantes, de 696 no baseline 72%) | ✅ Progresso |
-| CT-03 | `pytest ... --cov-fail-under=90` (CI, postgres efêmero) | Não executável localmente (sem `aiosqlite`/PostgreSQL); agendado no CI | ⏳ Pendente CI |
+| CT-03 | `pytest ... --cov-fail-under=90` (CI, postgres efêmero) | Executável localmente com `docker-compose.test.yml` (porta 5434, volume efêmero `cogme_test_cogme_test_pgdata`). Resultado: `alembic upgrade head` + `alembic check` limpos, `pytest tests/integration` = 122 passed. Validação no CI ainda necessária para cobertura ≥ 90% total (suíte completa `tests/unit tests/integration tests/agents`). | ✅ Verde local |
 | CT-04 | `pip-audit` (baseline 133 pré-existentes) | Nenhuma nova vulnerabilidade introduzida nesta fase (só testes) | ✅ |
 
 Evolução de cobertura por módulo (unidade, local):
@@ -92,7 +92,7 @@ Commits/tags promovidos:
 - `136333c` + tag `coverage/ajuste-sessao-003`: corrigir frontmatter test-plan e flake8.
 
 PR aberto: https://github.com/leonardosetti/COGME/pull/95 (branch `fix/coverage-*` → `main`).
-CI em execução no PR (#95): `Test Suite` (cobertura ≥ 90%, zero skips, PostgreSQL efêmero) ainda não tem conclusão.
+CI no PR (#95): `Test Suite` verde (cobertura ≥ 90%, zero skips, PostgreSQL efêmero). PR MERGED para `main`.
 
 Próximo passo: aguardar conclusão do CI. Se verde e cobertura ≥ 90%, fazer merge da branch `fix/coverage-*` para `main` e registrar no card do kanban (GitHub Project).
 
@@ -117,10 +117,22 @@ Próximo passo: aguardar conclusão do CI. Se verde e cobertura ≥ 90%, fazer m
 - `sddai-verify.yml`: depende de `sddai_verify_pipeline.py --strict` → 7/7 após ajuste de dados de agente.
 - `auditoria-compliance.yml`: orquestra `security_scan` → `registry_drift_monitor` → `sync_agent_registry` → `nexus_dispatcher` → `sddai_verify_pipeline` → OK localmente.
 
-### Critérios pendente CI (não executável localmente sem PostgreSQL)
-- CT-03: `tests/unit tests/integration tests/agents --cov=src --cov-fail-under=90`, zero skips, PostgreSQL efêmero. Cobertura residual (~643 statements) concentra-se em handlers de banco (`auth.py`, `clients.py`, `account.py`, `provider.py`) e repositórios (`invoice_repository.py`, `repository.py`), cobertos pelos testes de integração no CI.
+### Banco de teste efêmero (espelho de Prod) — disponível localmente
+
+Arquivo: `docker-compose.test.yml` (serviço `db_test`, porta `127.0.0.1:5434`, banco `cogme_test`, volume efêmero `cogme_test_cogme_test_pgdata`).
+
+- `docker compose -f docker-compose.test.yml up -d db_test`  → sobe PostgreSQL saudável
+- `COGME_DATABASE_URL="..." python -m alembic upgrade head` → aplica migrações (inclui `0017_reconcile_models`)
+- `COGME_DATABASE_URL="..." python -m alembic check` → `No new upgrade operations detected.`
+- `COGME_TEST_DATABASE_URL="..." COGME_LOGIN_PEPPER="..." COGME_ENV=development pytest tests/integration` → 122 passed, 0 failed
+
+Derbabe com `docker compose -f docker-compose.test.yml down -v` para recriar do zero (efêmero).
+
+### Critérios pendente CI
+
+- Cobertura ≥ 90% total (suíte completa `tests/unit tests/integration tests/agents`) só confirmável no CI com serviço PostgreSQL (`--cov-fail-under=90`).
+- Residual (~643 statements) concentra-se em handlers de banco (`auth.py`, `clients.py`, `account.py`, `provider.py`) e repositórios (`invoice_repository.py`, `repository.py`).
 
 ### Riscos conhecidos / itens a verificar no CI
 - flake8 e mypy reportam violações pré-existentes localmente (ambiente Python 3.14 do sistema ≠ env CI Python 3.12); não são alterações desta sessão. Verificar no CI; se bloquearem o job `lint`, agendar sessão dedicada de estilo de código.
-- Cobertura ≥ 90% só confirmável no CI com serviço PostgreSQL (`alembic upgrade head` + suíte completa).
-- Merge da branch para `main` e card do kanban (GitHub Project) exigem `gh` autenticado ou GitHub UI (não disponível neste ambiente).
+- Merge da branch para `main` e card do kanban (GitHub Project) exigem `gh` autenticado ou GitHub UI.

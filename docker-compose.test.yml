@@ -1,0 +1,41 @@
+# Stack de testes efêmeros do COGME (espelho de Prod).
+# Usado para rodar testes de integração localmente contra PostgreSQL real,
+# sem tocar no banco de desenvolvimento persistente (porta 5432).
+#
+#   docker compose -f docker-compose.test.yml up -d db_test
+#   COGME_TEST_DATABASE_URL=postgresql+asyncpg://cogme:dummy-test-local@127.0.0.1:5433/cogme_test \
+#     pytest tests/integration
+#
+# O volume `cogme_test_pgdata` é efêmero: derrube com `down -v` para recriar do zero.
+
+name: cogme-test
+
+services:
+  db_test:
+    image: postgres:15-alpine@sha256:54e0dd8e8cddcdbb9156c2486eed5a43eccb7214d7c6828097d41ce049fb3984
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: cogme
+      POSTGRES_PASSWORD: dummy-test-local
+      POSTGRES_DB: cogme_test
+    volumes:
+      - cogme_test_pgdata:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5434:5432"
+    networks: [test]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 512m
+    pids_limit: 200
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cogme -d cogme_test"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+networks:
+  test:
+    internal: false
+
+volumes:
+  cogme_test_pgdata: {}
