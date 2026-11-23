@@ -89,5 +89,9 @@ Gap residual: ~643 statements, concentrados em handlers de router (`auth.py`, `c
 Commits/tags promovidos:
 - `c843b50` + tag `coverage/ajuste-sessao-001`: remove 6 skips + helpers de auth.
 - `f995150` + tag `coverage/ajuste-sessao-002`: email 100% + helpers de router.
+- `136333c` + tag `coverage/ajuste-sessao-003`: corrigir frontmatter test-plan e flake8.
 
-Próximo passo: CT-03/CT-04 no CI. Após verde e cobertura ≥ 90%, fazer merge da branch `fix/coverage-*` para `main` e registrar no card do kanban (GitHub Project).
+PR aberto: https://github.com/leonardosetti/COGME/pull/95 (branch `fix/coverage-*` → `main`).
+CI em execução no PR (#95): `Test Suite` (cobertura ≥ 90%, zero skips, PostgreSQL efêmero) ainda não tem conclusão.
+
+Próximo passo: aguardar conclusão do CI. Se verde e cobertura ≥ 90%, fazer merge da branch `fix/coverage-*` para `main` e registrar no card do kanban (GitHub Project).
