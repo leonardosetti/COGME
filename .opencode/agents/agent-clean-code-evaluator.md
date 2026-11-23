@@ -17,6 +17,8 @@ name: agent-clean-code-evaluator
 layer: L2
 role: specialist
 description: 'Agente GSD agent-clean-code-evaluator — Avaliação de qualidade e limpeza de código-fonte no ecossistema COGME.'
+downstream:
+  - agent-reviewer
 ---
 
 # GSD Agent: agent-clean-code-evaluator

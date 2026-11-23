@@ -17,6 +17,8 @@ name: agent-agile-specialist
 layer: L2
 role: specialist
 description: 'Agente GSD agent-agile-specialist — Agilidade e gestão de entregas iterativas no ecossistema COGME.'
+downstream:
+  - agent-reviewer
 ---
 
 # GSD Agent: agent-agile-specialist

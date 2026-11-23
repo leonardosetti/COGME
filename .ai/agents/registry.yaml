@@ -17,7 +17,8 @@ agents:
     COGME.
   status: promulgado
   upstream: []
-  downstream: []
+  downstream:
+  - agent-reviewer
 - file: .opencode/agents/agent-ai-llm-rag-dag-mcp-roster-master-specialist.md
   name: agent-ai-llm-rag-dag-mcp-roster-master-specialist
   version: 0.1.0
@@ -151,7 +152,8 @@ agents:
     no ecossistema COGME.
   status: promulgado
   upstream: []
-  downstream: []
+  downstream:
+  - agent-reviewer
 - file: .opencode/agents/agent-cobit-specialist.md
   name: agent-cobit-specialist
   version: 0.1.0
