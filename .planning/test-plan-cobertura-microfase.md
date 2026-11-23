@@ -1,7 +1,7 @@
 ---
 id: test-plan-cobertura-microfase
-title: Test Plan — Micro fase: cobertura de testes (COGME v1.0)
-type: test-plan
+title: "Test Plan — Micro fase: cobertura de testes (COGME v1.0)"
+type: plano
 version: 1.0.0
 status: ativo
 owner: agent-project-analyst

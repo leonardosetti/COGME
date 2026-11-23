@@ -12,8 +12,6 @@ from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
 
-import pytest
-
 from src.backend.utils import email as email_module
 
 
@@ -88,8 +86,8 @@ def test_send_reset_token_email_producao_chama_smtp() -> None:
     chamadas: list[object] = []
 
     class _FakeSMTP:
-        def __init__(self, host, port, timeout):
-            chamadas.append((host, port, timeout))
+        def __init__(self, host: str, port: int, timeout: int) -> None:
+            chamadas.append(("init", host, port, timeout))
 
         def __enter__(self):
             return self
@@ -97,15 +95,18 @@ def test_send_reset_token_email_producao_chama_smtp() -> None:
         def __exit__(self, *exc):
             return False
 
-        def starttls(self, context):
+        def starttls(self, context) -> None:
             chamadas.append("starttls")
 
-        def login(self, user, password):
-            chamadas.append(("login", user))
+        def login(self, user: str, password: str) -> None:
+            chamadas.append(("login", user, bool(password)))
 
-        def send_message(self, msg):
+        def send_message(self, msg: EmailMessage) -> None:
             chamadas.append(("send_message", msg["To"], msg["Subject"]))
 
+    msg = EmailMessage()
+    msg["To"] = "a@b.c"
+    msg["Subject"] = "s"
     with patch.object(email_module.smtplib, "SMTP", _FakeSMTP), patch(
         "src.backend.utils.email.get_settings", return_value=_settings("production")
     ):
@@ -133,6 +134,19 @@ def test_send_verification_email_dev_salva_fallback(tmp_path: Path) -> None:
     assert "verify|cliente@exemplo.com|tok-verify|" in conteudo
 
 
+def test_send_verification_email_producao_chama_smtp() -> None:
+    chamadas: list[object] = []
+    with patch.object(email_module, "_send_smtp", lambda msg: chamadas.append(msg)), patch(
+        "src.backend.utils.email.get_settings", return_value=_settings("production")
+    ):
+        email_module.send_verification_email(
+            "cliente@exemplo.com", "tok-verify", "http://localhost/verify?token=tok-verify"
+        )
+    assert len(chamadas) == 1
+    assert chamadas[0]["To"] == "cliente@exemplo.com"
+    assert chamadas[0]["Subject"] == "COGME — Verifique seu e-mail"
+
+
 # ---------- send_welcome_email (branch desenvolvimento: log, sem arquivo) ----------
 
 
@@ -147,59 +161,6 @@ def test_send_welcome_email_dev_log_e_nao_grava_arquivo(tmp_path: Path) -> None:
     assert not token_file.exists()
 
 
-# ---------- _send_smtp (mock de servidor, sem rede real) ----------
-
-
-def test_send_smtp_usa_tls_e_login() -> None:
-    chamadas: list[object] = []
-
-    class _FakeSMTP:
-        def __init__(self, host, port, timeout):
-            chamadas.append(("init", host, port, timeout))
-
-        def __enter__(self):
-            return self
-
-        def __exit__(self, *exc):
-            return False
-
-        def starttls(self, context):
-            chamadas.append("starttls")
-
-        def login(self, user, password):
-            chamadas.append(("login", user, bool(password)))
-
-        def send_message(self, msg):
-            chamadas.append(("send_message", msg["To"]))
-
-    msg = EmailMessage()
-    msg["To"] = "a@b.c"
-    msg["Subject"] = "s"
-    with patch.object(email_module.smtplib, "SMTP", _FakeSMTP), patch(
-        "src.backend.utils.email.get_settings",
-        return_value=_settings("production"),
-    ):
-        email_module._send_smtp(msg)
-
-    assert ("init", "smtp.example.local", 587, 10) in chamadas, chamadas
-    assert "starttls" in chamadas, chamadas
-    assert ("login", "user", True) in chamadas, chamadas
-    assert ("send_message", "a@b.c") in chamadas, chamadas
-
-
-def test_send_verification_email_producao_chama_smtp() -> None:
-    chamadas: list[object] = []
-    with patch.object(email_module, "_send_smtp", lambda msg: chamadas.append(msg)), patch(
-        "src.backend.utils.email.get_settings", return_value=_settings("production")
-    ):
-        email_module.send_verification_email(
-            "cliente@exemplo.com", "tok-verify", "http://localhost/verify?token=tok-verify"
-        )
-    assert len(chamadas) == 1
-    assert chamadas[0]["To"] == "cliente@exemplo.com"
-    assert chamadas[0]["Subject"] == "COGME — Verifique seu e-mail"
-
-
 def test_send_welcome_email_producao_chama_smtp() -> None:
     chamadas: list[object] = []
     with patch.object(email_module, "_send_smtp", lambda msg: chamadas.append(msg)), patch(
@@ -210,11 +171,15 @@ def test_send_welcome_email_producao_chama_smtp() -> None:
     assert chamadas[0]["To"] == "cliente@exemplo.com"
     assert chamadas[0]["Subject"] == "COGME — Bem-vindo!"
 
-def test_send_smtp_sem_tls_e_sem_auth() -> None:
+
+# ---------- _send_smtp (mock de servidor, sem rede real) ----------
+
+
+def test_send_smtp_usa_tls_e_login() -> None:
     chamadas: list[object] = []
 
     class _FakeSMTP:
-        def __init__(self, host, port, timeout):
+        def __init__(self, host: str, port: int, timeout: int) -> None:
             chamadas.append(("init", host, port, timeout))
 
         def __enter__(self):
@@ -223,13 +188,49 @@ def test_send_smtp_sem_tls_e_sem_auth() -> None:
         def __exit__(self, *exc):
             return False
 
-        def starttls(self, context):
+        def starttls(self, context) -> None:
             chamadas.append("starttls")
 
-        def login(self, user, password):
+        def login(self, user: str, password: str) -> None:
             chamadas.append(("login", user, bool(password)))
 
-        def send_message(self, msg):
+        def send_message(self, msg: EmailMessage) -> None:
+            chamadas.append(("send_message", msg["To"]))
+
+    msg = EmailMessage()
+    msg["To"] = "a@b.c"
+    msg["Subject"] = "s"
+    with patch.object(email_module.smtplib, "SMTP", _FakeSMTP), patch(
+        "src.backend.utils.email.get_settings", return_value=_settings("production")
+    ):
+        email_module._send_smtp(msg)
+
+    assert ("init", "smtp.example.local", 587, 10) in chamadas, chamadas
+    assert "starttls" in chamadas, chamadas
+    assert ("login", "user", True) in chamadas, chamadas
+    assert ("send_message", "a@b.c") in chamadas, chamadas
+
+
+def test_send_smtp_sem_tls_e_sem_auth() -> None:
+    chamadas: list[object] = []
+
+    class _FakeSMTP:
+        def __init__(self, host: str, port: int, timeout: int) -> None:
+            chamadas.append(("init", host, port, timeout))
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *exc):
+            return False
+
+        def starttls(self, context) -> None:
+            chamadas.append("starttls")
+
+        def login(self, user: str, password: str) -> None:
+            chamadas.append(("login", user, bool(password)))
+
+        def send_message(self, msg: EmailMessage) -> None:
             chamadas.append(("send_message", msg["To"]))
 
     msg = EmailMessage()
@@ -248,27 +249,3 @@ def test_send_smtp_sem_tls_e_sem_auth() -> None:
     assert "starttls" not in chamadas, chamadas
     assert not any(c[0] == "login" for c in chamadas), chamadas
     assert ("send_message", "a@b.c") in chamadas, chamadas
-
-
-def test_send_verification_email_producao_chama_smtp() -> None:
-    chamadas: list[object] = []
-    with patch.object(email_module, "_send_smtp", lambda msg: chamadas.append(msg)), patch(
-        "src.backend.utils.email.get_settings", return_value=_settings("production")
-    ):
-        email_module.send_verification_email(
-            "cliente@exemplo.com", "tok-verify", "http://localhost/verify?token=tok-verify"
-        )
-    assert len(chamadas) == 1
-    assert chamadas[0]["To"] == "cliente@exemplo.com"
-    assert chamadas[0]["Subject"] == "COGME — Verifique seu e-mail"
-
-
-def test_send_welcome_email_producao_chama_smtp() -> None:
-    chamadas: list[object] = []
-    with patch.object(email_module, "_send_smtp", lambda msg: chamadas.append(msg)), patch(
-        "src.backend.utils.email.get_settings", return_value=_settings("production")
-    ):
-        email_module.send_welcome_email("cliente@exemplo.com", "Cliente")
-    assert len(chamadas) == 1
-    assert chamadas[0]["To"] == "cliente@exemplo.com"
-    assert chamadas[0]["Subject"] == "COGME — Bem-vindo!"

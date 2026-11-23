@@ -18,7 +18,6 @@ from decimal import Decimal
 from io import StringIO
 from typing import Any
 
-import pytest
 from hypothesis import given, settings
 from hypothesis import strategies as st
 
