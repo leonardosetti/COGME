@@ -126,9 +126,9 @@
     "semantic_hash": ""
   },
   ".ai/agents/registry.yaml": {
-    "mtime": 1795383151.5699275,
-    "seen": 1795383160.9727507,
-    "ast_hash": "b0cb2bf2a74c0a20cbaf043776960c57",
+    "mtime": 1795457701.2351956,
+    "seen": 1795458091.436312,
+    "ast_hash": "0c9b2c59a702af2e7b32d8a77686e568",
     "semantic_hash": ""
   },
   ".ai/agents/universal-adjustment-session.yaml": {
@@ -588,9 +588,9 @@
     "semantic_hash": ""
   },
   ".github/workflows/ci.yml": {
-    "mtime": 1794788932.2565215,
-    "seen": 1795368835.9133623,
-    "ast_hash": "4275d2b962b10177753c1cde5bdd1476",
+    "mtime": 1795457675.2048118,
+    "seen": 1795458091.4377131,
+    "ast_hash": "d8a65b872d92066eea8f52f853d97687",
     "semantic_hash": ""
   },
   ".github/workflows/sddai-verify.yml": {
@@ -1176,9 +1176,9 @@
     "semantic_hash": ""
   },
   "tests/validation/test_nexus_yaml.py": {
-    "mtime": 1793936110.5647092,
-    "seen": 1793993412.2280118,
-    "ast_hash": "cd1dae2756b23ec8189abe5fed3c98d3",
+    "mtime": 1795457386.439778,
+    "seen": 1795458091.4408865,
+    "ast_hash": "31c639eb312e11038c4192a8cfd498cd",
     "semantic_hash": ""
   },
   ".agents/skills/cavecrew/README.md": {
@@ -1962,9 +1962,9 @@
     "semantic_hash": ""
   },
   ".opencode/agents/agent-agile-specialist.md": {
-    "mtime": 1795382517.2319982,
-    "seen": 1795383160.9815016,
-    "ast_hash": "b453d0007286db90cb2be7099245e0f1",
+    "mtime": 1795457398.5797794,
+    "seen": 1795458091.44324,
+    "ast_hash": "9a025671e1e2a7ec874c0bdc8dc89fd1",
     "semantic_hash": ""
   },
   ".opencode/agents/agent-ai-llm-rag-dag-mcp-roster-master-specialist.md": {
@@ -2016,9 +2016,9 @@
     "semantic_hash": ""
   },
   ".opencode/agents/agent-clean-code-evaluator.md": {
-    "mtime": 1795382517.2319982,
-    "seen": 1795383160.9816444,
-    "ast_hash": "7e85adae318c2058eadae60542a43ec7",
+    "mtime": 1795457398.5797794,
+    "seen": 1795458091.4433749,
+    "ast_hash": "f007efab3d3555a17156038db7048881",
     "semantic_hash": ""
   },
   ".opencode/agents/agent-cobit-specialist.md": {
@@ -4242,14 +4242,14 @@
     "semantic_hash": ""
   },
   "docs/auditorias/relatorio-registry_drift_monitor.py.json": {
-    "mtime": 1794779835.6176775,
-    "seen": 1795368835.9134877,
+    "mtime": 1795457699.41775,
+    "seen": 1795458091.4379988,
     "ast_hash": "08e944b6c71fe3222bf4f8b6efe61bcb",
     "semantic_hash": ""
   },
   "docs/auditorias/relatorio-security_scan.py.json": {
-    "mtime": 1794779835.6176775,
-    "seen": 1795368835.9134886,
+    "mtime": 1795457699.3586895,
+    "seen": 1795458091.438,
     "ast_hash": "d6215282ceaab31801a3ad4468785288",
     "semantic_hash": ""
   },
@@ -4446,15 +4446,15 @@
     "semantic_hash": ""
   },
   "tests/unit/test_property_lgpd_erase.py": {
-    "mtime": 1794800763.5066192,
-    "seen": 1795368835.9148307,
-    "ast_hash": "2b2ed465e337b55fc0225b1c62646078",
+    "mtime": 1795452711.4692297,
+    "seen": 1795458091.4407709,
+    "ast_hash": "b28800ca9973af0f371d18b78d9bdf58",
     "semantic_hash": ""
   },
   "tests/unit/test_property_persistence_reprocess.py": {
-    "mtime": 1794801324.3686712,
-    "seen": 1795368835.9148316,
-    "ast_hash": "45f29727495ef2d41ec5db2c0754f2cb",
+    "mtime": 1795386545.9554708,
+    "seen": 1795458091.4407718,
+    "ast_hash": "4ad6b60ff8008e10737c9ac45645e06d",
     "semantic_hash": ""
   },
   ".ai/specs/spec-017-identity-access-session-v1.md": {
@@ -4698,9 +4698,9 @@
     "semantic_hash": ""
   },
   "scripts/githooks/pre-push-ciclo-codificacao-deploy.sh": {
-    "mtime": 1794781608.893842,
-    "seen": 1795368835.913748,
-    "ast_hash": "da9d48321e529820f99dfb1687cc9e2b",
+    "mtime": 1795457503.6057918,
+    "seen": 1795458091.438507,
+    "ast_hash": "9e3dd05cb3a30398c75a77979749f462",
     "semantic_hash": ""
   },
   "scripts/update_backlog_cards.py": {
@@ -5028,9 +5028,9 @@
     "semantic_hash": ""
   },
   "docs/analise/parecer-juridico-cnpj-dado-pessoal.md": {
-    "mtime": 1794842420.844484,
-    "seen": 1795368835.9175618,
-    "ast_hash": "bc2eee31d3f8a1747b7854459057dbce",
+    "mtime": 1795457936.3538425,
+    "seen": 1795458091.444309,
+    "ast_hash": "330d10fb6ace80edb64519ab9f0e914d",
     "semantic_hash": ""
   },
   "docs/auditorias/aud-cr-009-2026-11-17-pre-producao.md": {
@@ -5481,6 +5481,42 @@
     "mtime": 1795382608.345009,
     "seen": 1795383160.987639,
     "ast_hash": "6dfa2bef2400ec9d3574ea7ba1dd61ec",
+    "semantic_hash": ""
+  },
+  "docs/seguranca/pip-audit-baseline.json": {
+    "mtime": 1795457615.4558048,
+    "seen": 1795458091.4380386,
+    "ast_hash": "bb0d3f4c0b313bfbb976b70c1a091ee6",
+    "semantic_hash": ""
+  },
+  "scripts/pip_audit_baseline_check.py": {
+    "mtime": 1795457770.217823,
+    "seen": 1795458091.4386232,
+    "ast_hash": "3795df761def5539967b0db738ccc69f",
+    "semantic_hash": ""
+  },
+  "tests/unit/test_auth_helpers.py": {
+    "mtime": 1795386692.645488,
+    "seen": 1795458091.4406729,
+    "ast_hash": "e8324650b4b579783e124e1ef4864ad0",
+    "semantic_hash": ""
+  },
+  "tests/unit/test_email_utils.py": {
+    "mtime": 1795452666.4692245,
+    "seen": 1795458091.440722,
+    "ast_hash": "81301b939c0a5985d2f88aec2a7ca554",
+    "semantic_hash": ""
+  },
+  "tests/unit/test_router_helpers.py": {
+    "mtime": 1795387250.3935533,
+    "seen": 1795458091.4408538,
+    "ast_hash": "2af9e3fa8659f0b85b2edf3f947523ad",
+    "semantic_hash": ""
+  },
+  ".planning/test-plan-cobertura-microfase.md": {
+    "mtime": 1795458019.8568523,
+    "seen": 1795458091.4441557,
+    "ast_hash": "67e5670edebaa111afc8bb017e21c9bc",
     "semantic_hash": ""
   },
   "package-lock.json": {
