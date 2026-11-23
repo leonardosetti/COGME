@@ -74,13 +74,15 @@ AGENT_TOPOLOGY = {
         "agent-sddai-trainer",
         "agent-sddai-memory",
         "agent-sddai-cli",
+        "agent-clean-code-evaluator",
     ],
     "L3": [
         "agent-reviewer",
         "agent-gatekeeper",
         "agent-project-auditor",
-        "agent-clean-code-evaluator",
     ],
+    # agent-clean-code-evaluator e agent-agile-specialist sao L2 no SSOT
+    # (registry.yaml + .opencode/agents/*.md); AGENT_TOPOLOGY deve refletir o SSOT.
     "META": ["agent-skill-master"],
     "FORGE-LEGACY": ["agent-factory-architect"],
 }

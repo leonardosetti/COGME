@@ -8,6 +8,7 @@ from src.backend.models.account_lifecycle import (
 )
 from src.backend.models.client import Client, Country
 from src.backend.models.invoice import Invoice, InvoiceSequence
+from src.backend.models.provider import ProviderBankAccount, ProviderCnpj, ProviderProfile
 from src.backend.models.quote import FxQuote
 from src.backend.models.simulation import Simulation
 from src.backend.models.user import (
@@ -28,6 +29,9 @@ __all__ = [
     "InvoiceSequence",
     "LifecycleEventType",
     "PasswordResetToken",
+    "ProviderBankAccount",
+    "ProviderCnpj",
+    "ProviderProfile",
     "Simulation",
     "User",
     "UserLoginIdentifier",

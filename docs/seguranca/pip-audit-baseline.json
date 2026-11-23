@@ -1,0 +1,401 @@
+{
+  "generated": "2026-11-23",
+  "source": "pip-audit (ambiente local Python 3.14)",
+  "total_vuln_entries": 133,
+  "unique_pairs": 98,
+  "note": "Vulnerabilidades PRE-EXISTENTES em dependências transitórias/dev, NÃO introduzidas pela fase de cobertura. O CI falha somente se aparecer (pacote, id) fora desta linha de base. Regerar ao alterar requirements.",
+  "baseline": [
+    {
+      "package": "anyio",
+      "vuln_id": "PYSEC-2026-4024"
+    },
+    {
+      "package": "anyio",
+      "vuln_id": "PYSEC-2026-4025"
+    },
+    {
+      "package": "authlib",
+      "vuln_id": "CVE-2026-116672"
+    },
+    {
+      "package": "authlib",
+      "vuln_id": "CVE-2026-96760"
+    },
+    {
+      "package": "authlib",
+      "vuln_id": "PYSEC-2026-4354"
+    },
+    {
+      "package": "authlib",
+      "vuln_id": "PYSEC-2026-4355"
+    },
+    {
+      "package": "authlib",
+      "vuln_id": "PYSEC-2026-4356"
+    },
+    {
+      "package": "authlib",
+      "vuln_id": "PYSEC-2026-4357"
+    },
+    {
+      "package": "authlib",
+      "vuln_id": "PYSEC-2026-4358"
+    },
+    {
+      "package": "authlib",
+      "vuln_id": "PYSEC-2026-4359"
+    },
+    {
+      "package": "authlib",
+      "vuln_id": "PYSEC-2026-4360"
+    },
+    {
+      "package": "black",
+      "vuln_id": "CVE-2026-114134"
+    },
+    {
+      "package": "dnspython",
+      "vuln_id": "CVE-2026-128089"
+    },
+    {
+      "package": "ecdsa",
+      "vuln_id": "PYSEC-2026-1325"
+    },
+    {
+      "package": "filelock",
+      "vuln_id": "CVE-2026-112907"
+    },
+    {
+      "package": "filelock",
+      "vuln_id": "CVE-2026-112908"
+    },
+    {
+      "package": "filelock",
+      "vuln_id": "CVE-2026-112909"
+    },
+    {
+      "package": "filelock",
+      "vuln_id": "CVE-2026-112910"
+    },
+    {
+      "package": "filelock",
+      "vuln_id": "CVE-2026-112911"
+    },
+    {
+      "package": "filelock",
+      "vuln_id": "CVE-2026-112912"
+    },
+    {
+      "package": "filelock",
+      "vuln_id": "CVE-2026-112913"
+    },
+    {
+      "package": "filelock",
+      "vuln_id": "CVE-2026-112915"
+    },
+    {
+      "package": "filelock",
+      "vuln_id": "CVE-2026-112934"
+    },
+    {
+      "package": "filelock",
+      "vuln_id": "CVE-2026-112935"
+    },
+    {
+      "package": "filelock",
+      "vuln_id": "CVE-2026-112938"
+    },
+    {
+      "package": "filelock",
+      "vuln_id": "CVE-2026-112939"
+    },
+    {
+      "package": "filelock",
+      "vuln_id": "CVE-2026-112940"
+    },
+    {
+      "package": "joserfc",
+      "vuln_id": "CVE-2026-119283"
+    },
+    {
+      "package": "joserfc",
+      "vuln_id": "CVE-2026-119284"
+    },
+    {
+      "package": "joserfc",
+      "vuln_id": "PYSEC-2026-2528"
+    },
+    {
+      "package": "joserfc",
+      "vuln_id": "PYSEC-2026-2530"
+    },
+    {
+      "package": "msgpack",
+      "vuln_id": "CVE-2026-114613"
+    },
+    {
+      "package": "msgpack",
+      "vuln_id": "PYSEC-2026-3625"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "CVE-2026-126296"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "CVE-2026-126297"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "CVE-2026-126298"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "CVE-2026-126299"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "CVE-2026-126300"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "CVE-2026-126301"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "CVE-2026-126302"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "CVE-2026-126303"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "CVE-2026-128134"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "CVE-2026-128135"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "CVE-2026-128137"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "CVE-2026-128139"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "CVE-2026-128140"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "CVE-2026-129221"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "CVE-2026-129222"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "CVE-2026-129223"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "CVE-2026-129224"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "CVE-2026-129225"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "CVE-2026-129226"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "CVE-2026-129227"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "CVE-2026-129228"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "CVE-2026-129230"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "CVE-2026-129231"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "CVE-2026-129232"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "CVE-2026-129234"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3582"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3583"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3584"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3722"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3723"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3728"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3730"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3731"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3733"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3734"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3735"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3736"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3737"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3738"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3739"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3740"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3741"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3748"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3749"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3750"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3751"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3752"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3790"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3868"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3869"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3870"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3871"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3954"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-3955"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-4318"
+    },
+    {
+      "package": "nltk",
+      "vuln_id": "PYSEC-2026-597"
+    },
+    {
+      "package": "python-jose",
+      "vuln_id": "PYSEC-2026-4298"
+    },
+    {
+      "package": "python-multipart",
+      "vuln_id": "PYSEC-2026-3036"
+    },
+    {
+      "package": "python-multipart",
+      "vuln_id": "PYSEC-2026-3037"
+    },
+    {
+      "package": "python-multipart",
+      "vuln_id": "PYSEC-2026-3040"
+    },
+    {
+      "package": "starlette",
+      "vuln_id": "PYSEC-2026-161"
+    },
+    {
+      "package": "starlette",
+      "vuln_id": "PYSEC-2026-2280"
+    },
+    {
+      "package": "starlette",
+      "vuln_id": "PYSEC-2026-2281"
+    },
+    {
+      "package": "starlette",
+      "vuln_id": "PYSEC-2026-248"
+    },
+    {
+      "package": "starlette",
+      "vuln_id": "PYSEC-2026-249"
+    }
+  ]
+}

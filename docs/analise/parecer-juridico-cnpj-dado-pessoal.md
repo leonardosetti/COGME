@@ -12,7 +12,7 @@ derived-from:
 - LGPD Lei 13.709/2018 (Art. 5º II, 11)
 - GDPR Regulamento (UE) 2016/679 (Considerando 26, Art. 4º.1)
 last-revised: '2026-11-16'
-lgpd-class: n/a (parecer técnico, sem PII)
+lgpd-class: n/a
 tags:
 - juridico
 - lgpd

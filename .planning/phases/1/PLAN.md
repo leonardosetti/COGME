@@ -1,3 +1,20 @@
+---
+id: cogme-plan-1
+title: COGME — PLAN Fase 1
+type: plano
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- .planning/phases/1/PLAN.md
+last-revised: '2026-11-22'
+lgpd-class: n/a
+tags:
+- planejamento
+- fase-1
+- planejamento
+---
+
 # PLAN — Fase 1: Saneamento de compliance (P0–P3)
 
 ## Fase

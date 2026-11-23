@@ -1,3 +1,20 @@
+---
+id: cogme-ccb-fase-2
+title: COGME — CCB Aprovação Fase 2
+type: adr
+version: 1.0.0
+status: ativo
+owner: agent-project-analyst
+derived-from:
+- docs/decisoes/ccb-aprovacao-fase-2-pre-producao.md
+last-revised: '2026-11-22'
+lgpd-class: n/a
+tags:
+- decisao
+- ccb
+- fase-2
+---
+
 # Decisão CCB — Aprovação e Ratificação da Fase 2 (Pré-produção CR-009)
 
 ## Identificação

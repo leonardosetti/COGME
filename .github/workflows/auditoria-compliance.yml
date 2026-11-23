@@ -18,7 +18,9 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Instalar dependencias (FOSS, stdlib apenas)
-        run: pip install -q -r requirements.txt
+      - name: Instalar dependencias (FOSS + dev para auditoria)
+        run: |
+          pip install -q -r requirements.txt
+          pip install -q -r requirements-dev.txt
       - name: Executar auditoria de compliance (fail-closed)
         run: python3 scripts/auditoria_compliance.py --report

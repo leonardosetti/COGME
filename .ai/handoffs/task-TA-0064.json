@@ -4,5 +4,6 @@
   "target": "agent-sdd-specialist",
   "action": "spec",
   "handoff": "HF-0620",
-  "payload": "repovoar .ai/specs/eap.md (A.3) com as fases EAP N1..N11 do plano-integral"
+  "payload": "repovoar .ai/specs/eap.md (A.3) com as fases EAP N1..N11 do plano-integral",
+  "dod": true
 }

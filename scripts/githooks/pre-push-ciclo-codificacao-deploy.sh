@@ -117,23 +117,30 @@ if [ -n "$SRC_CHANGED" ]; then
   fi
 fi
 
-# --- 6. testes unitários locais (sempre) ---
+# --- 6. testes unitários locais (sempre) + cobertura reportada ---
 echo "==> testes unitários locais (tests/unit)"
-if ! python3 -m pytest tests/unit -q --tb=short --cov=src --cov-report=term-missing --cov-fail-under=80 -p no:cacheprovider; then
-  fail "testes unitários locais falharam (erros ou coverage < 80%)."
+set +e
+PY_OUT=$(python3 -m pytest tests/unit -q --tb=short --cov=src --cov-report=term-missing -p no:cacheprovider 2>&1)
+PY_RC=$?
+set -e
+echo "$PY_OUT"
+if [ "$PY_RC" -ne 0 ]; then fail "testes unitários locais falharam (rc=$PY_RC)."; fi
+if echo "$PY_OUT" | grep -qE ", [1-9][0-9]* skipped"; then
+  fail "testes pulados detectados na suíte unitária (skipping proibido)."
 fi
+TOTAL=$(echo "$PY_OUT" | grep -E "^TOTAL" | awk '{print $NF}' | tr -d '%')
+echo "==> cobertura unitária: ${TOTAL:-n/d}% (alvo CI: >= 90% com PostgreSQL efêmero)"
 
-# --- 7. testes de integração (com DB) ou mock/stub ---
+# --- 7. testes de integração + cobertura >= 90% com DB real; sem PG, apenas avisa ---
 if [ -n "${COGME_TEST_DATABASE_URL:-}" ]; then
-  echo "==> testes de integração (tests/integration) com COGME_TEST_DATABASE_URL"
-  # Cobertura ≥ 80 é critério da suíte unitária (runbook §6.1); na integração só reporta (runbook §6.2).
-  if ! python3 -m pytest tests/integration -q --tb=short --cov=src --cov-report=term-missing -p no:cacheprovider; then
-    fail "testes de integração falharam."
+  echo "==> testes de integração + cobertura >= 90% (COGME_TEST_DATABASE_URL definido)"
+  if ! python3 -m pytest tests/unit tests/integration -q --tb=short --cov=src --cov-report=term-missing --cov-fail-under=90 -p no:cacheprovider; then
+    fail "testes de integração/cobertura falharam (cobertura < 90% ou erros)."
   fi
 else
   echo "==> COGME_TEST_DATABASE_URL não definido: integração com banco real pulada."
-  echo "==> usar mock/stub para dependências externas e registrar no relatório de testes."
-  note "Integração com banco real pulada (sem COGME_TEST_DATABASE_URL) — use mock/stub."
+  echo "==> Cobertura >= 90% é exigida pelo CI (test-suite com PostgreSQL efêmero); localmente apenas reportada acima."
+  note "Integração com banco real pulada (sem COGME_TEST_DATABASE_URL) — CI valida >= 90% com PostgreSQL efêmero."
 fi
 
 # --- 8. sanity de specs alteradas (status que libera codificação + rastreabilidade id) ---
