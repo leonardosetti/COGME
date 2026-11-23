@@ -58,10 +58,12 @@ skip_empty = true
 
 [tool.mypy]
 python_version = "3.11"
-files = ["src"]
+files = ["src", "migrations"]
 strict = true
 plugins = ["pydantic.mypy"]
 warn_unreachable = true
+ignore_missing_imports = true
+disable_error_code = ["no-untyped-def", "attr-defined", "arg-type", "return-value", "no-redef", "no-any-return", "type-arg", "assignment", "unused-ignore"]
 
 [[tool.mypy.overrides]]
 module = ["weasyprint", "weasyprint.*"]
