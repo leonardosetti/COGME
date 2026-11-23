@@ -7,14 +7,12 @@ Os endpoints de auth recebem limites mais rígidos (5/min login, 3/h reset).
 from __future__ import annotations
 
 from slowapi import Limiter
-from slowapi.errors import RateLimitExceeded
 from slowapi.util import get_remote_address
 
 limiter = Limiter(key_func=get_remote_address)
 
 
 def rate_limit_exceeded_handler(request, exc):
-    from starlette.requests import Request
     from starlette.responses import JSONResponse
 
     from src.shared.schemas import ErrorResponse

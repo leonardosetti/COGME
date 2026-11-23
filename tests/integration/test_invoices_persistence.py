@@ -13,6 +13,7 @@ from decimal import Decimal
 
 import pytest
 from fastapi.testclient import TestClient
+from httpx import AsyncClient
 from sqlalchemy.ext.asyncio import AsyncEngine
 
 from src.backend.main import app

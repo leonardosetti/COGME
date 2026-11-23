@@ -319,7 +319,7 @@ class SqlAlchemyInvoiceRepository:
         except _STORAGE_FAILURES as error:
             logger.exception(f"update_status: storage failure, invoice_id={invoice_id}, owner_user_id={owner_user_id}")
             raise RepositoryError("Falha ao atualizar status da invoice.") from error
-        except Exception as error:
+        except Exception:
             logger.exception(f"update_status: unexpected error, invoice_id={invoice_id}, owner_user_id={owner_user_id}")
             raise
 

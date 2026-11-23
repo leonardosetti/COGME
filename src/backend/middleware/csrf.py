@@ -8,10 +8,8 @@ de auth estão isentos (login gera o cookie).
 from __future__ import annotations
 
 import hmac
-from typing import Callable
 
-from fastapi import Request, HTTPException
-from starlette.status import HTTP_403_FORBIDDEN
+from fastapi import Request
 from starlette.types import ASGIApp, Message, Receive, Scope, Send
 
 CSRF_EXEMPT_PATHS: frozenset[str] = frozenset(

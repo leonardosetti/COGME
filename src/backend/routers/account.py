@@ -11,13 +11,12 @@ from __future__ import annotations
 from datetime import datetime, timezone
 
 from fastapi import APIRouter, Depends, HTTPException, Request, Response, status
-from sqlalchemy import select, update, delete
+from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 from src.backend.middleware.rate_limit import limiter
 from src.backend.routers.common import (
     CurrentSession,
-    SessionFactoryDep,
     get_session_factory,
 )
 from src.backend.models.account_lifecycle import AccountLifecycleEvent, LifecycleEventType
