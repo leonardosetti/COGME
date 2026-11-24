@@ -1,4 +1,4 @@
-"""Testes de unidade para src/backend/models/invoice_repository.py com banco de teste."""
+"""Testes de unidade para invoice_repository.py com banco de teste efêmero."""
 from __future__ import annotations
 
 from datetime import UTC, datetime
@@ -60,6 +60,9 @@ async def usuario(session_factory: async_sessionmaker[AsyncSession], clean_table
 @pytest.fixture
 def session_data() -> SessionData:
     return SessionData(user_id=1, session_id=1)
+
+
+from src.backend.middleware.session import SessionData
 
 
 async def _insert_invoice(
