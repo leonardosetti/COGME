@@ -1,8 +1,6 @@
 """Testes de unidade para handlers de conta (account.py) com banco de teste efêmero."""
 from __future__ import annotations
 
-from datetime import UTC, datetime
-from decimal import Decimal
 from types import SimpleNamespace
 
 import pytest
@@ -10,12 +8,11 @@ from fastapi import HTTPException
 from sqlalchemy.ext.asyncio import AsyncEngine, async_sessionmaker
 from sqlalchemy.ext.asyncio import create_async_engine
 from sqlalchemy import text
-from starlette.requests import Request
 
 from src.backend.models.database import create_session_factory
-from src.backend.models.user import User
+from src.backend.models.user import User, UserStatus
 from src.backend.middleware.session import SessionData
-from src.backend.routers.account import delete_account
+from src.backend.routers.account import delete_account, reactivate_account
 
 
 @pytest.fixture
@@ -62,6 +59,7 @@ def session_data() -> SessionData:
 
 @pytest.fixture
 def fake_request() -> Request:
+    from starlette.requests import Request
     scope = {
         "type": "http",
         "method": "DELETE",
