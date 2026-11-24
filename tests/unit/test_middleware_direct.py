@@ -39,3 +39,9 @@ def test_rate_limit_exceeded_handler_is_callable() -> None:
     from src.backend.middleware.rate_limit import rate_limit_exceeded_handler
 
     assert callable(rate_limit_exceeded_handler)
+
+
+def test_session_data_fields() -> None:
+    sd = SessionData(user_id=1, session_id=2)
+    assert sd.user_id == 1
+    assert sd.session_id == 2

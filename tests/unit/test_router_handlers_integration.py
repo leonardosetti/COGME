@@ -1,20 +1,10 @@
-"""Testes de unidade para handlers de clientes (clients.py) chamando funções diretamente.
-
-Cobrem CRUD de clientes passando um SessionData falso diretamente para as
-funções, evitando conflito de loop de eventos do anyio do TestClient.
-"""
-
+"""Testes de unidade para handlers de clientes (clients.py) chamando funções diretamente."""
 from __future__ import annotations
 
-from datetime import UTC, datetime
-from decimal import Decimal
 from types import SimpleNamespace
 
 import pytest
 from fastapi import HTTPException
-from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession, async_sessionmaker
-from sqlalchemy.ext.asyncio import create_async_engine
-from sqlalchemy import text
 from starlette.requests import Request
 
 from src.backend.models.database import create_session_factory
@@ -117,6 +107,38 @@ async def test_create_client(session_factory, usuario, session_data, fake_reques
 
 
 @pytest.mark.asyncio
+async def test_create_client_cnpj(session_factory, usuario, session_data, fake_request):
+    await _ensure_country(session_factory)
+    payload = ClientRequest(
+        name="Cliente CNPJ",
+        tax_id="12345678000195",
+        tax_id_type="cnpj",
+        email="cnpj@exemplo.com",
+        country_code="BR",
+    )
+    resp = await create_client(
+        payload, fake_request, session_data, session_factory
+    )
+    assert resp is not None
+    assert resp.name == "Cliente CNPJ"
+    assert resp.tax_id == "12345678000195"
+    assert resp.tax_id_type == "cnpj"
+
+
+@pytest.mark.asyncio
+async def test_create_client_invalid_country(session_factory, usuario, session_data, fake_request):
+    payload = ClientRequest(
+        name="Cliente Pais Invalido",
+        tax_id=None,
+        tax_id_type="foreign",
+        country_code="XX",
+    )
+    with pytest.raises(HTTPException) as exc:
+        await create_client(payload, fake_request, session_data, session_factory)
+    assert exc.value.status_code == 400
+
+
+@pytest.mark.asyncio
 async def test_get_client(session_factory, usuario, session_data, fake_request):
     await _ensure_country(session_factory)
     async with session_factory() as db, db.begin():
@@ -134,6 +156,14 @@ async def test_get_client(session_factory, usuario, session_data, fake_request):
     resp = await get_client(1, fake_request, session_data, session_factory)
     assert resp is not None
     assert resp.name == "Cliente A"
+
+
+@pytest.mark.asyncio
+async def test_get_client_not_found(session_factory, usuario, session_data, fake_request):
+    await _ensure_country(session_factory)
+    with pytest.raises(HTTPException) as exc:
+        await get_client(99999, fake_request, session_data, session_factory)
+    assert exc.value.status_code == 404
 
 
 @pytest.mark.asyncio
@@ -159,6 +189,36 @@ async def test_list_clients(session_factory, usuario, session_data, fake_request
 
 
 @pytest.mark.asyncio
+async def test_update_client(session_factory, usuario, session_data, fake_request):
+    await _ensure_country(session_factory)
+    async with session_factory() as db, db.begin():
+        db.add(
+            Client(
+                id=1,
+                owner_user_id=1,
+                name="Cliente Antigo",
+                tax_id_digits=None,
+                tax_id_type="foreign",
+                country_code="BR",
+                status="active",
+            )
+        )
+    payload = ClientRequest(name="Cliente Novo", country_code="BR")
+    resp = await update_client(1, payload, fake_request, session_data, session_factory)
+    assert resp.name == "Cliente Novo"
+
+
+@pytest.mark.asyncio
+async def test_update_client_not_found(session_factory, usuario, session_data, fake_request):
+    await _ensure_country(session_factory)
+    from fastapi import HTTPException
+    payload = ClientRequest(name="Cliente Novo", country_code="BR")
+    with pytest.raises(HTTPException) as exc:
+        await update_client(99999, payload, fake_request, session_data, session_factory)
+    assert exc.value.status_code == 404
+
+
+@pytest.mark.asyncio
 async def test_deactivate_and_activate_client(session_factory, usuario, session_data, fake_request):
     await _ensure_country(session_factory)
     async with session_factory() as db, db.begin():
@@ -180,208 +240,18 @@ async def test_deactivate_and_activate_client(session_factory, usuario, session_
 
 
 @pytest.mark.asyncio
-async def test_update_client(session_factory, usuario, session_data, fake_request):
-    await _ensure_country(session_factory)
-    async with session_factory() as db, db.begin():
-        db.add(
-            Client(
-                id=1,
-                owner_user_id=1,
-                name="Cliente Antigo",
-                tax_id_digits=None,
-                tax_id_type="foreign",
-                country_code="BR",
-                status="active",
-            )
-        )
-    payload = ClientRequest(name="Cliente Novo", country_code="BR")
-    resp = await update_client(1, payload, fake_request, session_data, session_factory)
-    assert resp.name == "Cliente Novo"
-
-
-@pytest.mark.asyncio
-async def test_create_client_cnpj(session_factory, usuario, session_data, fake_request):
-    await _ensure_country(session_factory)
-    payload = ClientRequest(
-        name="Cliente CNPJ",
-        tax_id="12345678000195",
-        tax_id_type="cnpj",
-        email="cnpj@exemplo.com",
-        country_code="BR",
-    )
-    resp = await create_client(
-        payload, fake_request, session_data, session_factory
-    )
-    assert resp is not None
-    assert resp.name == "Cliente CNPJ"
-    assert resp.tax_id == "12345678000195"
-    assert resp.tax_id_type == "cnpj"
-
-
-@pytest.mark.asyncio
-async def test_create_client_pais_invalido(session_factory, usuario, session_data, fake_request):
-    await _ensure_country(session_factory)
-    payload = ClientRequest(
-        name="Cliente Pais Invalido",
-        tax_id=None,
-        tax_id_type="foreign",
-        country_code="XX",
-    )
-    with pytest.raises(HTTPException) as exc:
-        await create_client(
-            payload, fake_request, session_data, session_factory
-        )
-    assert exc.value.status_code == 400
-
-
-@pytest.mark.asyncio
-async def test_get_client_nao_encontrado(session_factory, usuario, session_data, fake_request):
+async def test_deactivate_client_not_found(session_factory, usuario, session_data, fake_request):
     await _ensure_country(session_factory)
     from fastapi import HTTPException
     with pytest.raises(HTTPException) as exc:
-        await get_client(999, fake_request, session_data, session_factory)
+        await deactivate_client(99999, fake_request, session_data, session_factory)
     assert exc.value.status_code == 404
 
 
 @pytest.mark.asyncio
-async def test_update_client_nao_encontrado(session_factory, usuario, session_data, fake_request):
-    await _ensure_country(session_factory)
-    from fastapi import HTTPException
-    payload = ClientRequest(name="Cliente Novo", country_code="BR")
-    with pytest.raises(HTTPException) as exc:
-        await update_client(999, payload, fake_request, session_data, session_factory)
-    assert exc.value.status_code == 404
-
-
-@pytest.mark.asyncio
-async def test_deactivate_nao_encontrado(session_factory, usuario, session_data, fake_request):
+async def test_activate_client_not_found(session_factory, usuario, session_data, fake_request):
     await _ensure_country(session_factory)
     from fastapi import HTTPException
     with pytest.raises(HTTPException) as exc:
-        await deactivate_client(999, fake_request, session_data, session_factory)
-    assert exc.value.status_code == 404
-
-
-@pytest.mark.asyncio
-async def test_create_client_cnpj(session_factory, usuario, session_data, fake_request):
-    await _ensure_country(session_factory)
-    payload = ClientRequest(
-        name="Cliente CNPJ",
-        tax_id="12345678000195",
-        tax_id_type="cnpj",
-        email="cnpj@exemplo.com",
-        country_code="BR",
-    )
-    resp = await create_client(
-        payload, fake_request, session_data, session_factory
-    )
-    assert resp is not None
-    assert resp.name == "Cliente CNPJ"
-    assert resp.tax_id == "12345678000195"
-    assert resp.tax_id_type == "cnpj"
-
-
-@pytest.mark.asyncio
-async def test_create_client_pais_invalido(session_factory, usuario, session_data, fake_request):
-    await _ensure_country(session_factory)
-    payload = ClientRequest(
-        name="Cliente Pais Invalido",
-        tax_id=None,
-        tax_id_type="foreign",
-        country_code="XX",
-    )
-    with pytest.raises(HTTPException) as exc:
-        await create_client(
-            payload, fake_request, session_data, session_factory
-        )
-    assert exc.value.status_code == 400
-
-
-@pytest.mark.asyncio
-async def test_get_client_nao_encontrado(session_factory, usuario, session_data, fake_request):
-    await _ensure_country(session_factory)
-    from fastapi import HTTPException
-    with pytest.raises(HTTPException) as exc:
-        await get_client(999, fake_request, session_data, session_factory)
-    assert exc.value.status_code == 404
-
-
-@pytest.mark.asyncio
-async def test_update_client_nao_encontrado(session_factory, usuario, session_data, fake_request):
-    await _ensure_country(session_factory)
-    from fastapi import HTTPException
-    payload = ClientRequest(name="Cliente Novo", country_code="BR")
-    with pytest.raises(HTTPException) as exc:
-        await update_client(999, payload, fake_request, session_data, session_factory)
-    assert exc.value.status_code == 404
-
-
-@pytest.mark.asyncio
-async def test_deactivate_nao_encontrado(session_factory, usuario, session_data, fake_request):
-    await _ensure_country(session_factory)
-    from fastapi import HTTPException
-    with pytest.raises(HTTPException) as exc:
-        await deactivate_client(999, fake_request, session_data, session_factory)
-    assert exc.value.status_code == 404
-
-
-@pytest.mark.asyncio
-async def test_create_client_cnpj(session_factory, usuario, session_data, fake_request):
-    await _ensure_country(session_factory)
-    payload = ClientRequest(
-        name="Cliente CNPJ",
-        tax_id="12345678000195",
-        tax_id_type="cnpj",
-        email="cnpj@exemplo.com",
-        country_code="BR",
-    )
-    resp = await create_client(
-        payload, fake_request, session_data, session_factory
-    )
-    assert resp is not None
-    assert resp.name == "Cliente CNPJ"
-    assert resp.tax_id == "12345678000195"
-    assert resp.tax_id_type == "cnpj"
-
-
-@pytest.mark.asyncio
-async def test_create_client_pais_invalido(session_factory, usuario, session_data, fake_request):
-    await _ensure_country(session_factory)
-    payload = ClientRequest(
-        name="Cliente Pais Invalido",
-        tax_id=None,
-        tax_id_type="foreign",
-        country_code="XX",
-    )
-    with pytest.raises(HTTPException) as exc:
-        await create_client(
-            payload, fake_request, session_data, session_factory
-        )
-    assert exc.value.status_code == 400
-
-
-@pytest.mark.asyncio
-async def test_get_client_nao_encontrado(session_factory, usuario, session_data, fake_request):
-    await _ensure_country(session_factory)
-    with pytest.raises(HTTPException) as exc:
-        await get_client(999, fake_request, session_data, session_factory)
-    assert exc.value.status_code == 404
-
-
-@pytest.mark.asyncio
-async def test_update_client_nao_encontrado(session_factory, usuario, session_data, fake_request):
-    await _ensure_country(session_factory)
-    from fastapi import HTTPException
-    payload = ClientRequest(name="Cliente Novo", country_code="BR")
-    with pytest.raises(HTTPException) as exc:
-        await update_client(999, payload, fake_request, session_data, session_factory)
-    assert exc.value.status_code == 404
-
-
-@pytest.mark.asyncio
-async def test_deactivate_nao_encontrado(session_factory, usuario, session_data, fake_request):
-    await _ensure_country(session_factory)
-    from fastapi import HTTPException
-    with pytest.raises(HTTPException) as exc:
-        await deactivate_client(999, fake_request, session_data, session_factory)
+        await activate_client(99999, fake_request, session_data, session_factory)
     assert exc.value.status_code == 404
