@@ -20,6 +20,52 @@
 
 {% include '_footer.html' %}
 
+<script>
+(function () {
+  var navAnon = document.getElementById('nav-anon');
+  var navUser = document.getElementById('nav-user');
+  var navUserItems = document.querySelectorAll('#nav-user-dashboard,#nav-user-perfil,#nav-user-clientes');
+  if (!navAnon || !navUser) return;
+
+  function getCookie(name) {
+    var match = document.cookie.match('(?:^|; )' + name + '=([^;]*)');
+    return match ? match[1] : null;
+  }
+
+  function setAuthenticated(authed) {
+    if (authed) {
+      navAnon.classList.add('hidden');
+      navUser.classList.remove('hidden');
+      navUserItems.forEach(function (el) { el.classList.remove('hidden'); });
+    } else {
+      navAnon.classList.remove('hidden');
+      navUser.classList.add('hidden');
+      navUserItems.forEach(function (el) { el.classList.add('hidden'); });
+    }
+  }
+
+  fetch('/v1/auth/me', { credentials: 'include' }).then(function (res) {
+    setAuthenticated(res.ok);
+  }).catch(function () {
+    setAuthenticated(false);
+  });
+
+  var logout = document.getElementById('nav-logout');
+  if (logout) {
+    logout.addEventListener('click', function (e) {
+      e.preventDefault();
+      fetch('/v1/auth/logout', {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'X-CSRF-Token': getCookie('csrf_token') || '' }
+      }).then(function () {
+        location.reload();
+      });
+    });
+  }
+})();
+</script>
+
 {% block scripts %}{% endblock %}
 </body>
 </html>

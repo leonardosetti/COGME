@@ -12,10 +12,17 @@
       <li><a href="/">Início</a></li>
       <li><a href="/invoice">Emitir Invoice</a></li>
       <li><a href="/#sobre">Sobre</a></li>
+      <li id="nav-user-dashboard" class="hidden"><a href="/dashboard">Dashboard</a></li>
+      <li id="nav-user-perfil" class="hidden"><a href="/perfil">Perfil</a></li>
+      <li id="nav-user-clientes" class="hidden"><a href="/clientes">Clientes</a></li>
     </ul>
-    <div class="nav-actions">
+    <div class="nav-actions" id="nav-anon">
       <a href="/auth/login" class="btn-outline">Entrar</a>
       <a href="/auth/register" class="btn-primary">Cadastre-se</a>
+    </div>
+    <div class="nav-actions" id="nav-user" class="hidden">
+      <span class="nav-user-label">Conta conectada</span>
+      <a href="#" class="btn-outline" id="nav-logout">Sair</a>
     </div>
   </div>
 </nav>

@@ -71,6 +71,25 @@
         return;
       }
 
+      var isRegister = String(url).indexOf('/register') !== -1;
+      if (isRegister && payload.identifier && payload.password) {
+        // Login automático após cadastro: estabelece a sessão de cookie.
+        try {
+          var loginRes = await fetch('/v1/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({ identifier: payload.identifier, password: payload.password })
+          });
+          if (loginRes.ok) {
+            window.location.href = '/';
+            return;
+          }
+        } catch (err) { /* segue para tela de login */ }
+        window.location.href = '/auth/login';
+        return;
+      }
+
       window.location.href = '/';
     } catch (err) {
       showGlobalError('Não foi possível conectar à API.');
